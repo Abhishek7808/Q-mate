@@ -16,6 +16,7 @@ ${BROWSER} =  firefox
 # login data added into Data/Login_Data.robot
 
 *** Test Cases ***
+
 User should be able to access login page
     [Tags]  login
     ERP_Keywords.Open the Login Page

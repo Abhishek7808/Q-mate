@@ -1,8 +1,5 @@
-*** Settings ***
-Library  SeleniumLibrary
-
 *** Variables ***
-${PostClass_URL} =  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PostConfig/PostClassIndex
+${PostClass_URL} =  /PostConfig/PostClassIndex
 ${Table_URL} =  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']
 ${Add_New} =  id=modals-bootbox-custom
 ${Name_Entry} =  xpath=//input[@id='Name']
@@ -15,7 +12,7 @@ ${OK_Button} =  //button[contains(text(),'OK')]
 
 *** Keywords ***
 Go To Post Class Page
-     go to  ${PostClass_URL}
+     go to  ${URL.${ENVIRONMENT}}&{HRMS}[link]${PostClass_URL}
 
 Click Add New Post Class
      wait until page contains  Post Class

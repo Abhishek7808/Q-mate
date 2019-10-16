@@ -50,9 +50,19 @@ Check The Session
 #    ...  else
 
 Run Generic Tests
-    Generic.Check Error Occurred
-    Generic.Check Title Tag
+    [Arguments]  ${pageUrl}
+    go to  ${URL.${ENVIRONMENT}}/${pageUrl}
+    Check Error Occurred
+    Check Title Tag
 #    checkAccessValidator
+
+Check Error Occurred
+    page should not contain  Sorry! An error
+
+Check Title Tag
+    ${title}=  get title
+    should not be empty  ${title}
+    should not be equal  ${title}  Index
 
 Go To Home
     TopNavigation.Go Back To Home
@@ -62,7 +72,6 @@ Test UM
     ModuleNavigation.Navigate To UM Module
     Run Generic Tests
     ModuleNavigation.Verify UM Dashboard Is Loaded
-    Run Generic Tests
     #Go To Home
 
 Test HRMS
