@@ -49,6 +49,8 @@ Check The Session
 #    run keyword if  ${session}==${LOGIN_TEXT}  Attempt Login   ${Credentials}
 #    ...  else
 
+
+# TODO: separate tests form the run generic tests keywords to get more control on each type of tests. Edit existing keywords for the title tags, another for the any error found in the page.
 Run Generic Tests
     [Arguments]  ${pageUrl}
     go to  ${URL.${ENVIRONMENT}}/${pageUrl}

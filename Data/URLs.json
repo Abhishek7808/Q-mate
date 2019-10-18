@@ -6278,13 +6278,5 @@
 		"NAME": "Yearly Loan Report",
 		"MODULE": "HRM",
 		"URL": "HRM/LoanEntry/YearlyLoanReport"
-	},
-	{
-		"NAME": "voucher",
-		"MODULE": "A",
-		"URL": "a"
-	},
-	{
-		"NAME": ""
 	}
 ]

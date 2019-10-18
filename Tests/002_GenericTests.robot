@@ -27,17 +27,17 @@ Run all generic tests for all urls in one go
 #    [Template]  Run Generic Tests
 #    ${INVALID_USER}
 #    ${INVALID_PASSWORD}
+
+# TODO: Make two keywords for the below commands put them in common keywords file and remove these from here
      ${urls_json}=  Get file  Data/URLs.json
-     @{urls_list}=    Evaluate     json.loads('''${urls_json}''')    json
+     @{urls_list}=  Evaluate     json.loads('''${urls_json}''')    json
 # the variable ${urls_list} is now a python dictionary - the same as the original json, but only - accessible as dictionary in robotframwork
 
-
+# TODO: Remove following code and use Filter Module Urls form the ERP library to perform generic test cases
     :FOR  ${item}  IN  @{urls_list}
     \   Log  ${item}
     \   ${moduleName}=  Set variable    ${item['MODULE']}
     \   ${link}=    Set variable    ${item['URL']}
-    \   run keyword if  ${moduleName}==HRM  run generic tests  ${link}
+    \   run keyword if  '${moduleName}==HRM'  run generic tests  ${link}
     \   Log    ${link}
-
-
 
