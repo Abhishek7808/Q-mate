@@ -49,23 +49,6 @@ Check The Session
 #    run keyword if  ${session}==${LOGIN_TEXT}  Attempt Login   ${Credentials}
 #    ...  else
 
-
-# TODO: separate tests form the run generic tests keywords to get more control on each type of tests. Edit existing keywords for the title tags, another for the any error found in the page.
-Run Generic Tests
-    [Arguments]  ${pageUrl}
-    go to  ${URL.${ENVIRONMENT}}/${pageUrl}
-    Check Error Occurred
-    Check Title Tag
-#    checkAccessValidator
-
-Check Error Occurred
-    page should not contain  Sorry! An error
-
-Check Title Tag
-    ${title}=  get title
-    should not be empty  ${title}
-    should not be equal  ${title}  Index
-
 Go To Home
     TopNavigation.Go Back To Home
 
@@ -90,3 +73,25 @@ Test FA
     ModuleNavigation.Verify FA Dashboard Is Loaded
     #Go To Home
 
+
+Test All HRM Urls
+    Run Generic Tests  &{MODULE_BASE}[hrm]
+
+Test All FA Urls
+    Run Generic Tests  &{MODULE_BASE}[fa]
+
+Test All UM Urls
+    Run Generic Tests  &{MODULE}[URM]
+
+Test All SMM Urls
+    Run Generic Tests  &{MODULE}[SMM]
+
+Test All WPM Urls
+    Run Generic Tests  &{MODULE}[wpm]
+
+Run Generic Tests
+    [Arguments]  ${moduleName}
+    @{urlsList}  Generic.Get All Module Urls  ${moduleName}
+    Generic.Perform All Critical Generic Tests On Urls  @{urlsList}
+
+#Check ALL HRM Urls

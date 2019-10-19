@@ -20,7 +20,7 @@ Suite Setup  Common_Keywords.Begin Web Test
 
 *** Test Cases ***
 Admin should be able to login with correct username and password
-    [Tags]  debug
+    [Tags]  debug critical
     ERP_Keywords.Open The Login Page
     ERP_Keywords.Login To ERP  ${ADMIN_USER}
     ModuleNavigation.Go To HRMS Dashboard

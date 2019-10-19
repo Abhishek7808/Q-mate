@@ -11,7 +11,7 @@ ${DASHBOARD_TEXT}               Dashboard
 
 *** Keywords ***
 Navigate To Page
-    Go To  ${URL.${ENVIRONMENT}}
+    Go To  ${BASE_URL.${ENVIRONMENT}}
 
 Verify Page Loaded
      Page Should Contain Element  ${LOGIN_TEXT_HEADER}

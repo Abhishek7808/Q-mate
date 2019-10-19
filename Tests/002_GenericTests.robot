@@ -4,13 +4,12 @@ Resource  ../Resources/Common_Keywords.robot
 Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
 Resource  ../Data/Common_Data.robot
-Library  OperatingSystem
-Library  Collections
+Library  ../Library/ERP.py
 
 #Suite Setup  Common_Keywords.Begin Web Test
-#Suite Teardown  Common_Keywords.End Web Test
+Suite Teardown  Common_Keywords.End Web Test
 
-# robot -d Results Tests/001_ERP_Admin_Login.robot
+#robot -d results -i adminlogin -i generictests Tests/
 
 
 *** Variables ***
@@ -18,26 +17,26 @@ Library  Collections
 #${ENVIRONMENT} =  demo
 #${BROWSER} =  firefox
 # login data added into Data/Login_Data.robot
-
+${HRM_Module}  hrm
 
 *** Test Cases ***
-Run all generic tests for all urls in one go
+All ERP module pages should be working for admin user
     [Documentation]  Tests if yellow pages are appearing or title tags are missing.
-    [Tags]  generictests
-#    [Template]  Run Generic Tests
-#    ${INVALID_USER}
-#    ${INVALID_PASSWORD}
+     [Tags]  generictests  critical
+#   ERP_Keywords.Test All HRM Urls
+    ERP_Keywords.Test All FA Urls
+#    ERP_Keywords.Test All UM Urls
+#    ERP_Keywords.Test All SMM Urls
+#    ERP_Keywords.Test All SMM Urls
 
-# TODO: Make two keywords for the below commands put them in common keywords file and remove these from here
-     ${urls_json}=  Get file  Data/URLs.json
-     @{urls_list}=  Evaluate     json.loads('''${urls_json}''')    json
+All HRM module pages should be working for non admin user
+
+
+
+
+
+
+
 # the variable ${urls_list} is now a python dictionary - the same as the original json, but only - accessible as dictionary in robotframwork
 
-# TODO: Remove following code and use Filter Module Urls form the ERP library to perform generic test cases
-    :FOR  ${item}  IN  @{urls_list}
-    \   Log  ${item}
-    \   ${moduleName}=  Set variable    ${item['MODULE']}
-    \   ${link}=    Set variable    ${item['URL']}
-    \   run keyword if  '${moduleName}==HRM'  run generic tests  ${link}
-    \   Log    ${link}
 
