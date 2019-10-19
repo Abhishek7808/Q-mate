@@ -3,32 +3,6 @@
 ${MODULE_NAVIGATION_BUTTON}     xpath=//button[@id='on_scroll']
 ${NAVIGATION_MENU}              xpath=//div[@id='menu_kis']
 
-#Module Texts
-${HRMS_DASHBOARD_TEXT}                     HRM:Dashboard
-${UR_DASHBOARD_TEXT}
-${FA_DASHBOARD_TEXT}
-
-#Module Links
-&{HRMS}
-...  link=/HRM
-...  link_title=//a[@title='HRMS']
-...  dashboard_title=HRM:Dashboard
-
-&{FA}
-...  link=/ACC
-...  link_title=xpath=//a[@title='Financial Accounting']
-...  dashboard_title=Financial Accounts:Dashboard
-
-&{UM}
-...  link=/URM
-...  link_title=xpath=//a[@title='User Management']
-...  dashboard_title=User, Role and Workflow Management:Dashboard
-#${UM_LINK}                      a[href*='URM']
-
-&{SMM}
-...  link=/SMM
-...  link_title=xpath=//a[@title='User Management']
-...  dashboard_title=Sales & Marketing
 
 *** Keywords ***
 Open Modules Menu
@@ -54,28 +28,28 @@ Open Modules Menu
 Navigate To HRMS Module
     click link  &{HRMS}[link_title]
 Go To HRMS Dashboard
-    go to  ${URL.${ENVIRONMENT}}&{HRMS}[link]
+    go to  ${BASE_URL.${ENVIRONMENT}}&{HRMS}[link]
 Verify HRMS Dashboard Is Loaded
     title should be  &{HRMS}[dashboard_title]
 
 Navigate To FA Module
     click link  &{FA}[link_title]
 Go To FA Dashboard
-    go to  ${URL.${ENVIRONMENT}}&{FA}[link]
+    go to  ${BASE_URL.${ENVIRONMENT}}&{FA}[link]
 Verify FA Dashboard Is Loaded
     title should be  &{FA}[dashboard_title]
 
 Navigate To UM Module
     click link  &{UM}[link_title]
 Go To UM Dashboard
-     go to  ${URL.${ENVIRONMENT}}&{UM}[link]
+     go to  ${BASE_URL.${ENVIRONMENT}}&{UM}[link]
 Verify UM Dashboard Is Loaded
     title should be  &{UM}[dashboard_title]
 
 Navigate To SMM Module
     click link  &{SMM}[link_title]
 Go To SMM Dashboard
-     go to  ${URL.${ENVIRONMENT}}&{SMM}[link]
+     go to  ${BASE_URL.${ENVIRONMENT}}&{SMM}[link]
 Verify SMM Dashboard Is Loaded
     title should be  &{SMM}[dashboard_title]
 

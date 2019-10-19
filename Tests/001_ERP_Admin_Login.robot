@@ -1,4 +1,4 @@
- *** Settings ***
+*** Settings ***
 Documentation  ERP Tests
 Resource  ../Resources/Common_Keywords.robot
 Resource  ../Resources/ERP_Keywords.robot

@@ -37,6 +37,8 @@ Login To ERP
     Attempt Login   ${Credentials}
     Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}
 
+
+# TODO: Fix following keyword, it should login user again if login page is loaded and redirect back user to the last page
 Check The Session
     [Arguments]  ${Credentials}
     run keyword if  'login.Verify Page Loaded'=='PASS'
@@ -73,21 +75,6 @@ Test FA
     ModuleNavigation.Verify FA Dashboard Is Loaded
     #Go To Home
 
-
-Test All HRM Urls
-    Run Generic Tests  &{MODULE_BASE}[hrm]
-
-Test All FA Urls
-    Run Generic Tests  &{MODULE_BASE}[fa]
-
-Test All UM Urls
-    Run Generic Tests  &{MODULE}[URM]
-
-Test All SMM Urls
-    Run Generic Tests  &{MODULE}[SMM]
-
-Test All WPM Urls
-    Run Generic Tests  &{MODULE}[wpm]
 
 Run Generic Tests
     [Arguments]  ${moduleName}
