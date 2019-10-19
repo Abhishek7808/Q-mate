@@ -1,0 +1,12 @@
+{
+  "Admin": {
+    "username": "econnect",
+    "password": "admin",
+    "ExpectedResponseMessage": "Dashboard"
+  },
+  "Non-Admin": {
+    "username": "40052",
+    "password": "admin",
+    "ExpectedResponseMessage": "Dashboard"
+  }
+}

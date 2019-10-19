@@ -12,7 +12,8 @@ ${OK_Button} =  //button[contains(text(),'OK')]
 
 *** Keywords ***
 Go To Post Class Page
-     go to  ${URL.${ENVIRONMENT}}&{HRMS}[link]${PostClass_URL}
+     go to  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}${PostClass_URL}
+
 
 Click Add New Post Class
      wait until page contains  Post Class

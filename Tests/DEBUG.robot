@@ -26,3 +26,5 @@ Admin should be able to login with correct username and password
     ModuleNavigation.Go To HRMS Dashboard
     ModuleNavigation.Verify HRMS Dashboard Is Loaded
     PostClass.Go To Post Class Page
+
+    log to console  &{ALL_USER}.[${admin.username}]

@@ -41,9 +41,11 @@ Login To ERP
 # TODO: Fix following keyword, it should login user again if login page is loaded and redirect back user to the last page
 Check The Session
     [Arguments]  ${Credentials}
-    run keyword if  'login.Verify Page Loaded'=='PASS'
+    ${result}  ${true}
+    run keyword if test failed  login.Verify Page Loaded  set variable  ${result}  ${false}
     Attempt Login   ${Credentials}
-    Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}
+    run keyword if test failed  Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}  set variable  ${result}  ${false}
+    return from keyword  ${result}
 
 #    run keyword if
 #    ${session}=  run keyword and return  Login.Verify Page Loaded
