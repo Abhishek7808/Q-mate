@@ -1,4 +1,5 @@
 *** Settings ***
+Library  ../Library/ERP.py
 Resource  ../Resources/Common_Keywords.robot
 Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
@@ -7,7 +8,7 @@ Resource  ../Resources/page-objects/ModuleNavigation.robot
 Resource  ../Resources/page-objects/HRMS/PostClass.robot
 
 
-Suite Setup  Common_Keywords.Begin Web Test
+#Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
 
 # robot --loglevel debug -d Results Tests/DEBUG.robot
@@ -21,10 +22,12 @@ Suite Setup  Common_Keywords.Begin Web Test
 *** Test Cases ***
 Admin should be able to login with correct username and password
     [Tags]  debug critical
-    ERP_Keywords.Open The Login Page
-    ERP_Keywords.Login To ERP  ${ADMIN_USER}
-    ModuleNavigation.Go To HRMS Dashboard
-    ModuleNavigation.Verify HRMS Dashboard Is Loaded
-    PostClass.Go To Post Class Page
+#    ERP_Keywords.Open The Login Page
+#    ERP_Keywords.Login To ERP  ${ADMIN_USER}
+#    ModuleNavigation.Go To HRMS Dashboard
+#    ModuleNavigation.Verify HRMS Dashboard Is Loaded
+#    PostClass.Go To Post Class Page
+#
+#    log to console  &{ALL_USER}.[${admin.username}]
 
-    log to console  &{ALL_USER}.[${admin.username}]
+    Go To Erp Page  ${BASE_URL.${ENVIRONMENT}}/HRM/PayrollProcess/LoanDeductionRegisterReport

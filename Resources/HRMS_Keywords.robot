@@ -5,7 +5,7 @@ Resource  ./ERP_Keywords.robot
 
 *** Keywords ***
 Open Post Class Page
-    PostClass.Go To Post Class Page
+    PostClass.Go To ERP Page Post Class Page
 
 Add New Class
     PostClass.Click Add New Post Class

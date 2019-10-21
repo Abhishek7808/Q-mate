@@ -5,7 +5,7 @@ Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
 Resource  ../Data/Common_Data.robot
 
-Suite Setup  Common_Keywords.Begin Web Test
+#Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
 
 # robot -d Results Tests/001_ERP_Admin_Login.robot

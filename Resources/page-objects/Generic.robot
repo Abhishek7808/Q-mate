@@ -9,6 +9,7 @@ Get All Module Urls
     @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
     return from keyword  @{moduleUrls}
 
+# TODO: Add all error urls in a list and use Send All Errors keyword from ERP.py to send them.
 Perform All Critical Generic Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
     :FOR  ${url}  IN  @{moduleUrls}
@@ -21,14 +22,9 @@ Add Failed Url To The fatal Error List
     [Arguments]   ${url}
     append to list  ${fatalErorrs}    ${url}
 
-
-
-
 Report Fatal Errors To Developers
      [Arguments]  ${moduleName}  @{fatalErorrs}
-     Email Fatal Error List To Concern Person  ${moduleName}  @{fatalErorrs}
-
-
+     Send All Errors  ${moduleName}  @{fatalErorrs}
 
 #    \   Run Keyword And Continue On Failure  Check Title Tag
 Get Urls List Of Fatal Errors
@@ -36,10 +32,9 @@ Get Urls List Of Fatal Errors
     return from keyword  ${fatalErorrs}
 
 
-
 Open ERP Page
     [Arguments]  ${pageUrl}
-    go to  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
 
 Check Error Occurred

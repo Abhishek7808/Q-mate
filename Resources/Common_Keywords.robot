@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
+Resource  ../Data/Common_Data.robot
 
 *** Keywords ***
 Begin Web Test

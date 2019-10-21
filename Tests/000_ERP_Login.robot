@@ -4,16 +4,17 @@ Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
 Resource  ../Data/Common_Data.robot
 Resource  ../Resources/page-objects/TopNavigation.robot
-Suite Setup  Common_Keywords.Begin Web Test
-Suite Teardown  Common_Keywords.End Web Test
+#Suite Setup  Common_Keywords.Begin Web Test
+#Suite Teardown  Common_Keywords.End Web Test
 
 # robot -d Results Tests/000_ERP_Login.robot
 
 *** Variables ***
 #Overwrite default configuration
 #${ENVIRONMENT} =  demo
-${BROWSER} =  firefox
+#${BROWSER} =  firefox
 # login data added into Data/Login_Data.robot
+
 
 *** Test Cases ***
 

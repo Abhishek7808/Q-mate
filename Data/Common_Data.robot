@@ -30,3 +30,7 @@ ${URLS_JSON}  ./Data/URLs.json
 ...  link=/SMM
 ...  link_title=xpath=//a[@title='User Management']
 ...  dashboard_title=Sales & Marketing
+
+
+# Login page details
+${LOGIN_TEXT_HEADER}            xpath=//h4[@class='innerAll margin-none border-bottom text-center']

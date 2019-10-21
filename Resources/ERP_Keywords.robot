@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary
+Library  ../Library/ERP.py
 Resource  ./page-objects/Generic.robot
 Resource  ./page-objects/Login.robot
 Resource  ./page-objects/TopNavigation.robot
@@ -37,21 +38,8 @@ Login To ERP
     Attempt Login   ${Credentials}
     Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}
 
-
-# TODO: Fix following keyword, it should login user again if login page is loaded and redirect back user to the last page
-Check The Session
-    [Arguments]  ${Credentials}
-    ${result}  ${true}
-    run keyword if test failed  login.Verify Page Loaded  set variable  ${result}  ${false}
-    Attempt Login   ${Credentials}
-    run keyword if test failed  Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}  set variable  ${result}  ${false}
-    return from keyword  ${result}
-
-#    run keyword if
-#    ${session}=  run keyword and return  Login.Verify Page Loaded
-#    Log  variable value is  ${session}
-#    run keyword if  ${session}==${LOGIN_TEXT}  Attempt Login   ${Credentials}
-#    ...  else
+Go To ERP
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}
 
 Go To Home
     TopNavigation.Go Back To Home
@@ -61,22 +49,21 @@ Test UM
     ModuleNavigation.Navigate To UM Module
     Run Generic Tests
     ModuleNavigation.Verify UM Dashboard Is Loaded
-    #Go To Home
+    #Go To ERP Page Home
 
 Test HRMS
     ModuleNavigation.Open Modules Menu
     ModuleNavigation.Navigate To HRMS Module
     Run Generic Tests
     ModuleNavigation.Verify HRMS Dashboard Is Loaded
-    #Go To Home
+    #Go To ERP Page Home
 
 Test FA
     ModuleNavigation.Open Modules Menu
     ModuleNavigation.Navigate To FA Module
     Run Generic Tests
     ModuleNavigation.Verify FA Dashboard Is Loaded
-    #Go To Home
-
+    #Go To ERP Page Home
 
 Run Generic Tests
     [Arguments]  ${moduleName}

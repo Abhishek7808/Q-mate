@@ -11,8 +11,8 @@ ${Save_Button} =  //input[@id='btnSave']
 ${OK_Button} =  //button[contains(text(),'OK')]
 
 *** Keywords ***
-Go To Post Class Page
-     go to  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}${PostClass_URL}
+Go To ERP Page Post Class Page
+     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}${PostClass_URL}
 
 
 Click Add New Post Class

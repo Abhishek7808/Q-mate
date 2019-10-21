@@ -7,7 +7,7 @@ Resource  ../Data/Common_Data.robot
 Library  ../Library/ERP.py
 
 #Suite Setup  Common_Keywords.Begin Web Test
-Suite Teardown  Common_Keywords.End Web Test
+#Suite Teardown  Common_Keywords.End Web Test
 
 # robot -d results -i adminlogin -i generictests Tests/
 
