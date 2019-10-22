@@ -33,4 +33,11 @@ ${URLS_JSON}  ./Data/URLs.json
 
 
 # Login page details
-${LOGIN_TEXT_HEADER}            xpath=//h4[@class='innerAll margin-none border-bottom text-center']
+${LOGIN_TEXT}            Login to your E-Prashasan Account
+
+# Common Data
+${ROOT}  ${CURDIR}
+${TESTS}  ${CURDIR}${/}..${/}Tests
+${RESOURCES}  ${CURDIR}${/}..${/}Resources
+${PLUGINS}  ${CURDIR}${/}..${/}Plugins
+

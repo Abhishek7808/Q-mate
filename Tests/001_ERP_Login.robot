@@ -7,7 +7,7 @@ Resource  ../Resources/page-objects/TopNavigation.robot
 #Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
 
-# robot -d Results Tests/000_ERP_Login.robot
+# robot -d Results Tests/001_ERP_Login.robot
 
 *** Variables ***
 #Overwrite default configuration

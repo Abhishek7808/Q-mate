@@ -1,6 +1,5 @@
 *** Settings ***
-Library  SeleniumLibrary
-Library  ../Library/ERP.py
+Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Resource  ./page-objects/Generic.robot
 Resource  ./page-objects/Login.robot
 Resource  ./page-objects/TopNavigation.robot

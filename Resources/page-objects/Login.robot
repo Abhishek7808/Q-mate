@@ -1,10 +1,9 @@
 *** Settings ***
-Library  SeleniumLibrary
-Library  ../../Library/ERP.py
+Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 
 *** Variables ***
 ${LOGIN_TEXT}                   Login to your E-Prashasan Account
-#${LOGIN_TEXT_HEADER}            xpath=//h4[@class='innerAll margin-none border-bottom text-center']
+${LOGIN_TEXT_HEADER}            xpath=//h4[@class='innerAll margin-none border-bottom text-center']
 ${LOGIN_USERNAME_INPUT}         id=LoginIdForShow
 ${LOGIN_PASSWORD_INPUT}         id=PasswordForShow
 ${LOGIN_BUTTON}                 id=btnLogin
@@ -12,7 +11,7 @@ ${DASHBOARD_TEXT}               Dashboard
 
 *** Keywords ***
 Navigate To Page
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}
+    Go To  ${BASE_URL.${ENVIRONMENT}}
 
 Verify Page Loaded
      Page Should Contain Element  ${LOGIN_TEXT_HEADER}

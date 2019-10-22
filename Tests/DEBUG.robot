@@ -21,7 +21,7 @@ Resource  ../Resources/page-objects/HRMS/PostClass.robot
 
 *** Test Cases ***
 Admin should be able to login with correct username and password
-    [Tags]  debug critical
+    [Tags]  debug
 #    ERP_Keywords.Open The Login Page
 #    ERP_Keywords.Login To ERP  ${ADMIN_USER}
 #    ModuleNavigation.Go To HRMS Dashboard
@@ -30,4 +30,6 @@ Admin should be able to login with correct username and password
 #
 #    log to console  &{ALL_USER}.[${admin.username}]
 
-    Go To Erp Page  ${BASE_URL.${ENVIRONMENT}}/HRM/PayrollProcess/LoanDeductionRegisterReport
+    Go To Erp Page  ${BASE_URL.${ENVIRONMENT}}HRM/LeaveEncashmentDisbursement/EmployeeBillsDisbursmentIndex
+
+

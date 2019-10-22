@@ -1,5 +1,6 @@
 *** Settings ***
-Library  ../../Library/ERP.py
+Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
+
 
 *** Variables ***
 #Locators

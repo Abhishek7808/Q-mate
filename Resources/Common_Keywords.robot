@@ -1,9 +1,13 @@
 *** Settings ***
-Library  SeleniumLibrary
 Resource  ../Data/Common_Data.robot
+Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 
 *** Keywords ***
 Begin Web Test
+#    Set Global Variable  ${ROOT}  ${CURDIR}
+#    Set Global Variable  ${TESTS}  ${CURDIR}${/}..${/}Tests
+#    Set Global Variable  ${RESOURCES}  ${CURDIR}${/}..${/}Resources
+#    Set Global Variable  ${PLUGINS}  ${CURDIR}${/}..${/}Plugins
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
