@@ -15,7 +15,8 @@ Perform All Critical Generic Tests On Urls
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check page error
-    \   run keyword if  ${result} == None  Add Failed Url To The fatal Error List  ${url}
+    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${url}:01
+    \   ...    ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${url}:02
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 Add Failed Url To The fatal Error List
@@ -34,16 +35,19 @@ Get Urls List Of Fatal Errors
 Open ERP Page
     [Arguments]  ${pageUrl}
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
-    
+
 Check page error
     ${errorCheck1}  Check Error Occurred
     ${errorCheck2}  Check Title Tag
-    return from keyword if  '${errorCheck1}' == '${True}' and '${errorCheck2}' == '${True}'  ${True}
+    ${errorCode}  set variable if  '${errorCheck1}' == '1'  1
+    ${errorCode}  set variable if  '${errorCheck2}' == '2'  2
+    return from keyword  ${errorCode}
+
 Check Error Occurred
     ${errorStatus}  run keyword and return status  page should not contain  Sorry! An error
-    return from keyword if  ${True}
+    return from keyword if  '${errorStatus}' == '${False}'  1
 Check Title Tag
     ${title}=  get title
     ${titleStatus1}  run keyword and return status  should not be empty  ${title}
     ${titleStatus2}  run keyword and return status  should not be equal  ${title}  Index
-    return from keyword if  '${titleStatus1}' == '${True}' and '${titleStatus2}' == '${True}'  ${True}
+    return from keyword if  '${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'  2
