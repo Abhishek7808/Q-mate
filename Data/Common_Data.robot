@@ -40,4 +40,4 @@ ${ROOT}  ${CURDIR}
 ${TESTS}  ${CURDIR}${/}..${/}Tests
 ${RESOURCES}  ${CURDIR}${/}..${/}Resources
 ${PLUGINS}  ${CURDIR}${/}..${/}Plugins
-
+${LIBRARY}  ${CURDIR}${/}..${/}Library

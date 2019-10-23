@@ -15,8 +15,7 @@ Perform All Critical Generic Tests On Urls
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check page error
-    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${url}:01
-    \   ...    ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${url}:02
+    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${url}:01  ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${url}:02
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 Add Failed Url To The fatal Error List
