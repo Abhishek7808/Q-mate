@@ -8,7 +8,7 @@ Resource  ../Resources/page-objects/ModuleNavigation.robot
 #Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
 
-# robot -d Results -i adminlogin Tests/
+# robot -d Results -i adminlogin -i postclass Tests/
 
 *** Variables ***
 #Overwrite default configuration
