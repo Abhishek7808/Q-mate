@@ -39,13 +39,14 @@ Open ERP Page
 Check page error
     ${errorCheck1}  Check Error Occurred
     ${errorCheck2}  Check Title Tag
-    ${errorCode}  set variable if  '${errorCheck1}' == '1'  1
-    ${errorCode}  set variable if  '${errorCheck2}' == '2'  2
-    return from keyword  ${errorCode}
+    return from keyword if  '${errorCheck1}' == '1'  1
+    return from keyword if  '${errorCheck2}' == '2'  2
+
 
 Check Error Occurred
     ${errorStatus}  run keyword and return status  page should not contain  Sorry! An error
     return from keyword if  '${errorStatus}' == '${False}'  1
+
 Check Title Tag
     ${title}=  get title
     ${titleStatus1}  run keyword and return status  should not be empty  ${title}
