@@ -9,7 +9,7 @@ Get All Module Urls
     @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
     return from keyword  @{moduleUrls}
 
-# TODO: Add all error urls in a list and use Send All Errors keyword from ERP.py to send them.
+# TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.
 Perform All Critical Generic Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
     :FOR  ${url}  IN  @{moduleUrls}

@@ -1,6 +1,6 @@
 *** Settings ***
 Resource  ../Resources/Common_Keywords.robot
-Library     ${LIBRARY1}/ERP.py
+Library     ${LIBRARY}/Notifications.py
 Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
 Resource  ../Data/Common_Data.robot
@@ -30,7 +30,7 @@ Admin should be able to login with correct username and password
 #
 #    log to console  &{ALL_USER}.[${admin.username}]
 
-    send error notifications  yfjhtchgv
+    send email  me@divaksh.me  Test  Hi This is a test
 
 #    Go To Erp Page  ${BASE_URL.${ENVIRONMENT}}HRM/LeaveEncashmentDisbursement/EmployeeBillsDisbursmentIndex
 
