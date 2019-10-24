@@ -3,6 +3,10 @@ from robot.libraries.BuiltIn import BuiltIn
 from robot.api import logger
 from selenium.common.exceptions import NoSuchElementException, UnexpectedAlertPresentException
 from SeleniumLibrary.base import keyword, LibraryComponent
+import os
+import csv
+
+error_file = BuiltIn().get_variable_value("${ERRORFILE}")
 
 
 class ERP(LibraryComponent):
@@ -48,3 +52,44 @@ class ERP(LibraryComponent):
             else:
                 logger.console("User type should be admin, employee or citizen but you entered : " + user_type)
             self.driver.get(url)
+
+    @keyword
+    def create_error_report(self):
+        try:
+            file = open(error_file, "x")
+            file.close()
+        except:
+            pass
+
+    @keyword
+    def write_error_report(self, errorList=[]):
+        file = open(error_file, "w")
+        for item in errorList:
+            file.write(item)
+            file.write("\n")
+        file.close()
+
+    @keyword
+    def read_file_return_list(self):
+        List = []
+        with open(error_file, 'r') as f:
+            data = csv.reader(f)
+            for row in data:
+                List.append(row)
+        return List
+
+    @keyword
+    def filter_module_error_url(self, moduleName):
+        moduleErrorList=[]
+        errorList = self.read_file_return_list()
+        for item in errorList:
+            if moduleName.lower() == item[0][52:55].lower():
+                moduleErrorList.append(item)
+        return moduleErrorList
+
+    @keyword
+    def purge_error_report(self):
+        try:
+            os.remove(error_file)
+        except FileNotFoundError:
+            logger.console("Unable to delete Error File!! File Not Found")

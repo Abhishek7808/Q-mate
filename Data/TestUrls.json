@@ -1,102 +1,19 @@
 [
-	{
-		"NAME": "Deviation Statement",
-		"MODULE": "WPM",
-		"URL": "wpm/DeviationStatement"
+
+    {
+		"NAME": "DTB Configuration",
+		"MODULE": "URM",
+		"URL": "URM/TemplateBuilder/TemplateConfiguration"
 	},
 	{
-		"NAME": "Disbursement Statement",
-		"MODULE": "TLM",
-		"URL": "TLM/misfilter/StatementofDisbursementFilter"
-	},
-	{
-		"NAME": "FS/DP Para",
-		"MODULE": "ACM",
-		"URL": "ACM/FactualStatement"
-	},
-	{
-		"NAME": "Loan- Scheme Wise Statement",
-		"MODULE": "TLM",
-		"URL": "TLM/misfilter/StatementofLoanSchemeWiseFilter"
-	},
-	{
-		"NAME": "Project Work Order",
-		"MODULE": "WPM",
-		"URL": "Wpm/workorder"
-	},
-	{
-		"NAME": "Transfer Stock",
-		"MODULE": "MM",
-		"URL": "MM/Transfer/TransferList"
-	},
-	{
-		"NAME": "Work Order",
-		"MODULE": "IMS",
-		"URL": "IMS/workorder"
-	},
-	{
-		"NAME": "Write Off",
-		"MODULE": "TLM",
-		"URL": "TLM/LoanRecovery/ListLoaneeWriteOff"
-	},
-	{
-		"NAME": "7th Pay Fixation",
-		"MODULE": "HRM",
-		"URL": "HRM/FixationArrear/SeventhPayFixation"
-	},
-	{
-		"NAME": "ACP Eligilble Employees",
-		"MODULE": "HRM",
-		"URL": "HRM/ACP/ACPEligibleEmployee"
-	},
-	{
-		"NAME": "ACP Fixation",
-		"MODULE": "HRM",
-		"URL": "hrm/acp/ACPApprovalHR"
-	},
-	{
-		"NAME": "ACP Sanction",
-		"MODULE": "HRM",
-		"URL": "hrm/acp/ACPApproval"
-	},
-	{
-		"NAME": "AFC Detail",
-		"MODULE": "LDM",
-		"URL": "LDM/Report/AFCDetail"
-	},
-	{
-		"NAME": "AFS",
-		"MODULE": "CPF",
-		"URL": "CPF/AFS"
-	},
-	{
-		"NAME": "AG Audit Para's",
-		"MODULE": "ACM",
-		"URL": "ACM/MISFilter/OutstandingParaInspectionReportFilter"
-	},
-	{
-		"NAME": "AG Audit Unit",
-		"MODULE": "ACM",
-		"URL": "ACM/AGAuditPara/ComplainceIndex"
-	},
-	{
-		"NAME": "AG Inspection Para's",
-		"MODULE": "ACM",
-		"URL": "ACM/MISFilter/OutstandingParaAGInspectionReportFilter"
-	},
-	{
-		"NAME": "AG Inspection Report",
-		"MODULE": "ACM",
-		"URL": "ACM/AGAuditInspection"
-	},
-	{
-		"NAME": "AGI Approval",
-		"MODULE": "HRM",
-		"URL": "HRM/AGI?IsApprover=1"
-	},
-	{
-		"NAME": "AGI Rule",
-		"MODULE": "HRM",
-		"URL": "HRM/AGIConfiguration"
-	}
+      "NAME": "Document Template Builder",
+      "MODULE": "URM",
+      "URL": "URM/TemplateBuilder"
+   },
+
+{
+   "NAME": "Template Builder",
+   "MODULE": "URM",
+   "URL": "urm/templatebuilder"
+}
 ]

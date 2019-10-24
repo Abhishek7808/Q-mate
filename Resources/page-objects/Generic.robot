@@ -2,6 +2,7 @@
 @{moduleUrls}
 @{fatalErorrs}
 ${result}
+
 *** Keywords ***
 
 Get All Module Urls
@@ -12,22 +13,25 @@ Get All Module Urls
 # TODO: Add all error urls in a list and use Send All Errors keyword from ERP.py to send them.
 Perform All Critical Generic Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
+    ${File}  Create Error Report
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check page error
-    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${url}:01
-    \   ...    ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${url}:02
-    Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
+    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},01
+    \   ...    ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},02
+
+    Report Fatal Errors To Developers  ${moduleName}  ${file}    @{fatalErorrs}
 
 Add Failed Url To The fatal Error List
     [Arguments]   ${url}
     append to list  ${fatalErorrs}  ${url}
 
 Report Fatal Errors To Developers
-     [Arguments]  ${moduleName}  @{fatalErorrs}
+     [Arguments]  ${moduleName}  ${file}  @{fatalErorrs}
      log  ${fatalErorrs}
-     run keyword and continue on failure  Send All Errors  ${moduleName}  @{fatalErorrs}
-
+     run keyword and continue on failure  Write Error Report  ${fatalErorrs}
+     @{errorUrl}  Filter_Module_Error_Url  ${moduleName}
+     log  ${errorUrl}
 Get Urls List Of Fatal Errors
     [Arguments]  ${fatalErorrs}
     return from keyword  ${fatalErorrs}
@@ -39,9 +43,8 @@ Open ERP Page
 Check page error
     ${errorCheck1}  Check Error Occurred
     ${errorCheck2}  Check Title Tag
-    ${errorCode}  set variable if  '${errorCheck1}' == '1'  1
-    ${errorCode}  set variable if  '${errorCheck2}' == '2'  2
-    return from keyword  ${errorCode}
+    return from keyword if  '${errorCheck1}' == '1'  1
+    return from keyword if  '${errorCheck2}' == '2'  2
 
 Check Error Occurred
     ${errorStatus}  run keyword and return status  page should not contain  Sorry! An error

@@ -6,6 +6,7 @@ ${BROWSER}  chrome
 # All modules urls list in json
 ${URLS_JSON}  ./Data/URLs.json
 ${TEST_URLS}  ./Data/TestUrls.json
+
 #Module Details
 &{HRMS}
 ...  name=HRM
@@ -41,3 +42,7 @@ ${TESTS}  ${CURDIR}${/}..${/}Tests
 ${RESOURCES}  ${CURDIR}${/}..${/}Resources
 ${PLUGINS}  ${CURDIR}${/}..${/}Plugins
 
+
+
+
+${ERRORFILE}  ${CURDIR}${/}..${/}Results/ErrorReport.csv

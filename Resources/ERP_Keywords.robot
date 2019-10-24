@@ -67,6 +67,6 @@ Test FA
 Run Generic Tests
     [Arguments]  ${moduleName}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
-    Generic.Perform All Critical Generic Tests On Urls  @{urlsList}
+    Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
 
 #Check ALL HRM Urls
