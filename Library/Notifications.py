@@ -70,16 +70,23 @@ class Notifications:
         if "${FA.name}" == module_name:
             return True
 
-    def send_error_push_notification(self,module_name):
-        error_urls = self.filter_module_error_urls(module_name)
-        if BuiltIn().get_variable_value("${SEND_PUSH_NOTIFICATIONS}") and len(error_urls) != 0:
-            header = {"Content-Type": "application/json; charset=utf-8",
-                      "Authorization": "Basic NGM0ZmJhMWMtNGI4MC00MWE5LWEyZDYtNjk5YzI5Y2QyOWQz"}
+    @keyword
+    def send_error_push_notification(self):
+        # error_urls = self.filter_module_error_urls(module_name)
 
-            payload = {"app_id": "1a67aae1-fc4a-410d-8391-a39693d82147",
-                       "included_segments": ["All"],
-                       "contents": {"en": "English Message"}}
+        # if BuiltIn().get_variable_value("${SEND_PUSH_NOTIFICATIONS}") and len(error_urls) != 0:
 
-            req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
 
-            print(req.status_code, req.reason)
+        header = {"Content-Type": "application/json; charset=utf-8",
+                  "Authorization": "BASIC MTc2YzhjNGMtNTUwYy00MDk2LTgyZGYtMzRiNjU3YzMzYjEy"}
+
+        payload = {"app_id": "1a67aae1-fc4a-410d-8391-a39693d82147",
+                   "included_segments": ["All"],
+                   "contents": {"en": "Click here to see test report"},
+                   "headings": {"en": "Q-mate Test Report"},
+                   "url": ""
+                   }
+
+        req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
+        logger.console(req.status_code)
+        logger.console(req.reason)

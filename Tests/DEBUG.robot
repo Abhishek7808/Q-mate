@@ -30,7 +30,8 @@ Admin should be able to login with correct username and password
 #
 #    log to console  &{ALL_USER}.[${admin.username}]
 
-    send email  me@divaksh.me  Test  Hi This is a test
+#   send email  me@divaksh.me  Test  Hi This is a test
+    Send Error Push Notification
 
 #    Go To Erp Page  ${BASE_URL.${ENVIRONMENT}}HRM/LeaveEncashmentDisbursement/EmployeeBillsDisbursmentIndex
 
