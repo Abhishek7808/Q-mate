@@ -37,6 +37,7 @@ class ERP(LibraryComponent):
             alert = self.driver.switch_to_alert()
             alert.accept()
             print("alert accepted")
+            is_login_page = True
         else:
             is_login_page = True
 
