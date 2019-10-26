@@ -1,8 +1,7 @@
 *** Variables ***
 @{moduleUrls}
 @{fatalErorrs}
-${result}
-
+${result}=  None
 *** Keywords ***
 
 Get All Module Urls
@@ -17,7 +16,7 @@ Perform All Critical Generic Tests On Urls
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check page error
-    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${url}:01  ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${url}:02
+    \   run keyword unless  ${result} == None   Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 
@@ -26,11 +25,13 @@ Add Failed Url To The fatal Error List
     append to list  ${fatalErorrs}  ${url}
 
 Report Fatal Errors To Developers
-     [Arguments]  ${moduleName}  ${file}  @{fatalErorrs}
-     log  ${fatalErorrs}
+     [Arguments]  ${moduleName}  @{fatalErorrs}
      run keyword and continue on failure  Write Error Report  ${fatalErorrs}
-     @{errorUrl}  Filter_Module_Error_Url  ${moduleName}
-     log  ${errorUrl}
+     @{moduleErrorList}  Filter Module Error Url  ${moduleName}
+     ${errorReport}  Compose Error Message  ${moduleName}  ${moduleErrorList}
+     Send Email  ianubhavverma@gmail.com  ${moduleName} Error Report  ${errorReport}
+
+
 Get Urls List Of Fatal Errors
     [Arguments]  ${fatalErorrs}
     return from keyword  ${fatalErorrs}

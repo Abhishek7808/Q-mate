@@ -36,10 +36,16 @@ ${TEST_URLS}  ./Data/TestUrls.json
 # Login page details
 ${LOGIN_TEXT}            Login to your E-Prashasan Account
 
+#Generic  Error Report File Name
+${REPORT_NAME}  ErrorReport.csv
+
+
 # Common Data
 ${ROOT}  ${CURDIR}
 ${TESTS}  ${CURDIR}${/}..${/}Tests
 ${RESOURCES}  ${CURDIR}${/}..${/}Resources
 ${PLUGINS}  ${CURDIR}${/}..${/}Plugins
-${ERRORFILE}  ${CURDIR}${/}..${/}Results/ErrorReport.csv
+${LIBRARY}  ${CURDIR}${/}..${/}Library
+
+${ERRORFILE}  ${CURDIR}${/}..${/}Results/${REPORT_NAME}
 

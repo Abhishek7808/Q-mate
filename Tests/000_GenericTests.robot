@@ -5,10 +5,11 @@ Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
 Resource  ../Data/Common_Data.robot
 Library    Collections
-#Suite Setup  Common_Keywords.Begin Web Test
-#Suite Teardown  Common_Keywords.End Web Test
+Library  ${LIBRARY}/Notifications.py
+Suite Setup  Common_Keywords.Begin Web Test
+Suite Teardown  Common_Keywords.End Web Test
 
-# robot -d results -i adminlogin -i generictests Tests/
+# robot -d Results Tests/000_GenericTests.robot
 
 
 *** Variables ***

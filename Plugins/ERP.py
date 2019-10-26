@@ -56,6 +56,7 @@ class ERP(LibraryComponent):
 
     @keyword
     def create_error_report(self):
+        """Creates a Csv file in which errors are to be written"""
         try:
             file = open(error_file, "x")
             file.close()
@@ -64,6 +65,7 @@ class ERP(LibraryComponent):
 
     @keyword
     def write_error_report(self, errorList=[]):
+        """Writes list of errors in the created Csv file"""
         file = open(error_file, "w")
         for item in errorList:
             file.write(item)
@@ -72,24 +74,28 @@ class ERP(LibraryComponent):
 
     @keyword
     def read_file_return_list(self):
+        """Reads the Csv file and returns a list of errors"""
         List = []
-        with open(error_file, 'r') as f:
-            data = csv.reader(f)
-            for row in data:
+        with open(error_file, 'r') as errorFile:
+            errors = csv.reader(errorFile)
+            for row in errors:
+                #List.append(row[0]+" "+row[1])  # data we are getting from the csv file is in list format
                 List.append(row)
         return List
 
     @keyword
-    def filter_module_error_url(self, moduleName):
+    def filter_module_error_url(self, module):
+        """filter the list of errors according to the given module name"""
         moduleErrorList=[]
         errorList = self.read_file_return_list()
         for item in errorList:
-            if moduleName.lower() == item[0][52:55].lower():
+            if module.lower() == item[0][52:55].lower():
                 moduleErrorList.append(item)
         return moduleErrorList
 
     @keyword
     def purge_error_report(self):
+        """Deletes the previously created error report"""
         try:
             os.remove(error_file)
         except FileNotFoundError:

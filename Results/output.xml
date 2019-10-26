@@ -1,0 +1,3471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 3.1.2 (Python 3.7.4 on win32)" generated="20191026 13:11:07.068" rpa="false">
+<suite id="s1" name="000 GenericTests" source="D:\Q-mate\Tests\000_GenericTests.robot">
+<kw name="Begin Web Test" library="Common_Keywords" type="setup">
+<kw name="Purge Error Report" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<status status="PASS" starttime="20191026 13:11:07.381" endtime="20191026 13:11:07.381"></status>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<doc>Opens a new browser instance to the given ``url``.</doc>
+<arguments>
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:07.381" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20191026 13:11:07.381" endtime="20191026 13:11:09.716"></status>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20191026 13:11:09.717" endtime="20191026 13:11:10.876"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:07.381" endtime="20191026 13:11:10.876"></status>
+</kw>
+<test id="s1-t1" name="All ERP module pages should be working for admin user">
+<kw name="Run Generic Tests" library="ERP_Keywords">
+<arguments>
+<arg>${UM.name}</arg>
+</arguments>
+<kw name="Get All Module Urls" library="Generic">
+<arguments>
+<arg>${moduleName}</arg>
+</arguments>
+<assign>
+<var>@{urlsList}</var>
+</assign>
+<kw name="Filter Module Urls" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Returns a list of filtered URLs for the given module</doc>
+<arguments>
+<arg>${muduleName}</arg>
+<arg>${URLS_JSON}</arg>
+</arguments>
+<assign>
+<var>@{moduleUrls}</var>
+</assign>
+<msg timestamp="20191026 13:11:10.891" level="INFO">@{moduleUrls} = [ URM/AuditReport | URM/TemplateBuilder/TemplateConfiguration | URM/TemplateBuilder | URM/SentEmail | URM/ExternalUser | URM/User/LoginReportIndex | URM/user | URM/menu | URM/MessageConfiguration/AddE...</msg>
+<status status="PASS" starttime="20191026 13:11:10.876" endtime="20191026 13:11:10.891"></status>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<doc>Returns from the enclosing user keyword.</doc>
+<arguments>
+<arg>@{moduleUrls}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:10.891" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20191026 13:11:10.891" endtime="20191026 13:11:10.891"></status>
+</kw>
+<msg timestamp="20191026 13:11:10.891" level="INFO">@{urlsList} = [ URM/AuditReport | URM/TemplateBuilder/TemplateConfiguration | URM/TemplateBuilder | URM/SentEmail | URM/ExternalUser | URM/User/LoginReportIndex | URM/user | URM/menu | URM/MessageConfiguration/AddE...</msg>
+<status status="PASS" starttime="20191026 13:11:10.876" endtime="20191026 13:11:10.891"></status>
+</kw>
+<kw name="Perform All Critical Generic Tests On Urls" library="Generic">
+<arguments>
+<arg>${moduleName}</arg>
+<arg>@{urlsList}</arg>
+</arguments>
+<kw name="Create Error Report" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Creates a Text file in which errors are to be written</doc>
+<assign>
+<var>${File}</var>
+</assign>
+<msg timestamp="20191026 13:11:10.891" level="INFO">${File} = None</msg>
+<status status="PASS" starttime="20191026 13:11:10.891" endtime="20191026 13:11:10.891"></status>
+</kw>
+<kw name="${url} IN [ @{moduleUrls} ]" type="for">
+<kw name="${url} = URM/AuditReport" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:10.891" endtime="20191026 13:11:12.601"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:10.891" endtime="20191026 13:11:12.601"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:11:12.632" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:11:12.603" endtime="20191026 13:11:12.632"></status>
+</kw>
+<msg timestamp="20191026 13:11:12.632" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:11:12.602" endtime="20191026 13:11:12.632"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:12.632" endtime="20191026 13:11:12.633"></status>
+</kw>
+<msg timestamp="20191026 13:11:12.633" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:11:12.602" endtime="20191026 13:11:12.633"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:11:12.639" level="INFO">${title} = NotFound</msg>
+<status status="PASS" starttime="20191026 13:11:12.633" endtime="20191026 13:11:12.639"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:12.640" level="INFO">Length is 8</msg>
+<status status="PASS" starttime="20191026 13:11:12.640" endtime="20191026 13:11:12.640"></status>
+</kw>
+<msg timestamp="20191026 13:11:12.640" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:11:12.639" endtime="20191026 13:11:12.640"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:12.640" endtime="20191026 13:11:12.641"></status>
+</kw>
+<msg timestamp="20191026 13:11:12.641" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:11:12.640" endtime="20191026 13:11:12.641"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:12.641" endtime="20191026 13:11:12.641"></status>
+</kw>
+<msg timestamp="20191026 13:11:12.641" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:11:12.633" endtime="20191026 13:11:12.641"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:12.642" endtime="20191026 13:11:12.642"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:12.642" endtime="20191026 13:11:12.642"></status>
+</kw>
+<msg timestamp="20191026 13:11:12.642" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:11:12.601" endtime="20191026 13:11:12.642"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:12.643" endtime="20191026 13:11:12.643"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:10.891" endtime="20191026 13:11:12.643"></status>
+</kw>
+<kw name="${url} = URM/TemplateBuilder/TemplateConfiguration" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<kw name="Attempt Login" library="ERP_Keywords">
+<arguments>
+<arg>${ADMIN_USER}</arg>
+</arguments>
+<kw name="Fill Username" library="Login">
+<arguments>
+<arg>${Credentials.username}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${LOGIN_USERNAME_INPUT}</arg>
+<arg>${username}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:12.972" level="INFO">Typing text 'econnect' into text field 'id=LoginIdForShow'.</msg>
+<status status="PASS" starttime="20191026 13:11:12.972" endtime="20191026 13:11:13.057"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:12.971" endtime="20191026 13:11:13.057"></status>
+</kw>
+<kw name="Fill Password" library="Login">
+<arguments>
+<arg>${Credentials.password}</arg>
+</arguments>
+<kw name="Input Text" library="SeleniumLibrary">
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<arguments>
+<arg>${LOGIN_PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:13.058" level="INFO">Typing text 'admin' into text field 'id=PasswordForShow'.</msg>
+<status status="PASS" starttime="20191026 13:11:13.058" endtime="20191026 13:11:13.150"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:13.058" endtime="20191026 13:11:13.150"></status>
+</kw>
+<kw name="Submit The Form" library="Login">
+<kw name="Click Button" library="SeleniumLibrary">
+<doc>Clicks the button identified by ``locator``.</doc>
+<arguments>
+<arg>${LOGIN_BUTTON}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:13.151" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20191026 13:11:13.151" endtime="20191026 13:11:23.964"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:13.151" endtime="20191026 13:11:23.964"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:12.970" endtime="20191026 13:11:23.964"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:12.643" endtime="20191026 13:11:38.222"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:12.643" endtime="20191026 13:11:38.222"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:11:38.254" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:11:38.223" endtime="20191026 13:11:38.254"></status>
+</kw>
+<msg timestamp="20191026 13:11:38.254" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:11:38.223" endtime="20191026 13:11:38.254"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:38.254" endtime="20191026 13:11:38.254"></status>
+</kw>
+<msg timestamp="20191026 13:11:38.255" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:11:38.223" endtime="20191026 13:11:38.255"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:11:38.261" level="INFO">${title} = </msg>
+<status status="PASS" starttime="20191026 13:11:38.255" endtime="20191026 13:11:38.261"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:38.262" level="INFO">Length is 0</msg>
+<msg timestamp="20191026 13:11:38.262" level="FAIL">'' should not be empty.</msg>
+<status status="FAIL" starttime="20191026 13:11:38.262" endtime="20191026 13:11:38.262"></status>
+</kw>
+<msg timestamp="20191026 13:11:38.262" level="INFO">${titleStatus1} = False</msg>
+<status status="PASS" starttime="20191026 13:11:38.261" endtime="20191026 13:11:38.262"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:38.263" endtime="20191026 13:11:38.263"></status>
+</kw>
+<msg timestamp="20191026 13:11:38.263" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:11:38.262" endtime="20191026 13:11:38.263"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191026 13:11:38.264" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20191026 13:11:38.263" endtime="20191026 13:11:38.264"></status>
+</kw>
+<msg timestamp="20191026 13:11:38.264" level="INFO">${errorCheck2} = 2</msg>
+<status status="PASS" starttime="20191026 13:11:38.255" endtime="20191026 13:11:38.264"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:38.264" endtime="20191026 13:11:38.264"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191026 13:11:38.265" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20191026 13:11:38.264" endtime="20191026 13:11:38.265"></status>
+</kw>
+<msg timestamp="20191026 13:11:38.265" level="INFO">${result} = 2</msg>
+<status status="PASS" starttime="20191026 13:11:38.222" endtime="20191026 13:11:38.265"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<kw name="Add Failed Url To The fatal Error List" library="Generic">
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${fatalErorrs}</arg>
+<arg>${url}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:38.266" endtime="20191026 13:11:38.266"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:38.265" endtime="20191026 13:11:38.266"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:38.265" endtime="20191026 13:11:38.266"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:12.643" endtime="20191026 13:11:38.267"></status>
+</kw>
+<kw name="${url} = URM/TemplateBuilder" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:38.267" endtime="20191026 13:11:46.351"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:38.267" endtime="20191026 13:11:46.351"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:11:46.376" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:11:46.352" endtime="20191026 13:11:46.376"></status>
+</kw>
+<msg timestamp="20191026 13:11:46.376" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:11:46.352" endtime="20191026 13:11:46.377"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:46.377" endtime="20191026 13:11:46.377"></status>
+</kw>
+<msg timestamp="20191026 13:11:46.378" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:11:46.352" endtime="20191026 13:11:46.378"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:11:46.384" level="INFO">${title} = </msg>
+<status status="PASS" starttime="20191026 13:11:46.378" endtime="20191026 13:11:46.384"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:46.385" level="INFO">Length is 0</msg>
+<msg timestamp="20191026 13:11:46.385" level="FAIL">'' should not be empty.</msg>
+<status status="FAIL" starttime="20191026 13:11:46.385" endtime="20191026 13:11:46.385"></status>
+</kw>
+<msg timestamp="20191026 13:11:46.385" level="INFO">${titleStatus1} = False</msg>
+<status status="PASS" starttime="20191026 13:11:46.384" endtime="20191026 13:11:46.385"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:46.386" endtime="20191026 13:11:46.386"></status>
+</kw>
+<msg timestamp="20191026 13:11:46.386" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:11:46.386" endtime="20191026 13:11:46.386"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191026 13:11:46.387" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20191026 13:11:46.386" endtime="20191026 13:11:46.387"></status>
+</kw>
+<msg timestamp="20191026 13:11:46.387" level="INFO">${errorCheck2} = 2</msg>
+<status status="PASS" starttime="20191026 13:11:46.378" endtime="20191026 13:11:46.387"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:46.387" endtime="20191026 13:11:46.388"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191026 13:11:46.388" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20191026 13:11:46.388" endtime="20191026 13:11:46.388"></status>
+</kw>
+<msg timestamp="20191026 13:11:46.388" level="INFO">${result} = 2</msg>
+<status status="PASS" starttime="20191026 13:11:46.351" endtime="20191026 13:11:46.388"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<kw name="Add Failed Url To The fatal Error List" library="Generic">
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${fatalErorrs}</arg>
+<arg>${url}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:46.389" endtime="20191026 13:11:46.390"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:46.389" endtime="20191026 13:11:46.390"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:46.389" endtime="20191026 13:11:46.390"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:38.267" endtime="20191026 13:11:46.390"></status>
+</kw>
+<kw name="${url} = URM/SentEmail" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:46.391" endtime="20191026 13:11:52.696"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:46.390" endtime="20191026 13:11:52.696"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:11:52.719" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:11:52.697" endtime="20191026 13:11:52.719"></status>
+</kw>
+<msg timestamp="20191026 13:11:52.719" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:11:52.697" endtime="20191026 13:11:52.719"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:52.720" endtime="20191026 13:11:52.720"></status>
+</kw>
+<msg timestamp="20191026 13:11:52.720" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:11:52.697" endtime="20191026 13:11:52.720"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:11:52.725" level="INFO">${title} = Email Log</msg>
+<status status="PASS" starttime="20191026 13:11:52.721" endtime="20191026 13:11:52.725"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:11:52.725" level="INFO">Length is 9</msg>
+<status status="PASS" starttime="20191026 13:11:52.725" endtime="20191026 13:11:52.726"></status>
+</kw>
+<msg timestamp="20191026 13:11:52.726" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:11:52.725" endtime="20191026 13:11:52.726"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:52.726" endtime="20191026 13:11:52.727"></status>
+</kw>
+<msg timestamp="20191026 13:11:52.727" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:11:52.726" endtime="20191026 13:11:52.727"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:52.727" endtime="20191026 13:11:52.727"></status>
+</kw>
+<msg timestamp="20191026 13:11:52.727" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:11:52.721" endtime="20191026 13:11:52.727"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:52.728" endtime="20191026 13:11:52.728"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:52.728" endtime="20191026 13:11:52.728"></status>
+</kw>
+<msg timestamp="20191026 13:11:52.729" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:11:52.696" endtime="20191026 13:11:52.729"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:52.729" endtime="20191026 13:11:52.729"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:46.390" endtime="20191026 13:11:52.729"></status>
+</kw>
+<kw name="${url} = URM/ExternalUser" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:11:52.730" endtime="20191026 13:12:01.004"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:52.729" endtime="20191026 13:12:01.004"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:01.034" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:01.005" endtime="20191026 13:12:01.034"></status>
+</kw>
+<msg timestamp="20191026 13:12:01.034" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:01.005" endtime="20191026 13:12:01.034"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:01.034" endtime="20191026 13:12:01.035"></status>
+</kw>
+<msg timestamp="20191026 13:12:01.035" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:01.004" endtime="20191026 13:12:01.035"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:01.042" level="INFO">${title} = External User</msg>
+<status status="PASS" starttime="20191026 13:12:01.035" endtime="20191026 13:12:01.042"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:01.043" level="INFO">Length is 13</msg>
+<status status="PASS" starttime="20191026 13:12:01.043" endtime="20191026 13:12:01.043"></status>
+</kw>
+<msg timestamp="20191026 13:12:01.043" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:01.042" endtime="20191026 13:12:01.043"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:01.044" endtime="20191026 13:12:01.044"></status>
+</kw>
+<msg timestamp="20191026 13:12:01.044" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:01.043" endtime="20191026 13:12:01.044"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:01.044" endtime="20191026 13:12:01.044"></status>
+</kw>
+<msg timestamp="20191026 13:12:01.044" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:01.035" endtime="20191026 13:12:01.045"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:01.045" endtime="20191026 13:12:01.045"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:01.045" endtime="20191026 13:12:01.045"></status>
+</kw>
+<msg timestamp="20191026 13:12:01.045" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:01.004" endtime="20191026 13:12:01.045"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:01.046" endtime="20191026 13:12:01.046"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:52.729" endtime="20191026 13:12:01.046"></status>
+</kw>
+<kw name="${url} = URM/User/LoginReportIndex" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:01.046" endtime="20191026 13:12:06.617"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:01.046" endtime="20191026 13:12:06.617"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:06.639" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:06.618" endtime="20191026 13:12:06.639"></status>
+</kw>
+<msg timestamp="20191026 13:12:06.639" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:06.618" endtime="20191026 13:12:06.639"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:06.639" endtime="20191026 13:12:06.640"></status>
+</kw>
+<msg timestamp="20191026 13:12:06.640" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:06.617" endtime="20191026 13:12:06.640"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:06.646" level="INFO">${title} = NotFound</msg>
+<status status="PASS" starttime="20191026 13:12:06.641" endtime="20191026 13:12:06.646"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:06.647" level="INFO">Length is 8</msg>
+<status status="PASS" starttime="20191026 13:12:06.646" endtime="20191026 13:12:06.647"></status>
+</kw>
+<msg timestamp="20191026 13:12:06.647" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:06.646" endtime="20191026 13:12:06.647"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:06.647" endtime="20191026 13:12:06.647"></status>
+</kw>
+<msg timestamp="20191026 13:12:06.648" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:06.647" endtime="20191026 13:12:06.648"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:06.648" endtime="20191026 13:12:06.648"></status>
+</kw>
+<msg timestamp="20191026 13:12:06.648" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:06.640" endtime="20191026 13:12:06.648"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:06.648" endtime="20191026 13:12:06.649"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:06.649" endtime="20191026 13:12:06.649"></status>
+</kw>
+<msg timestamp="20191026 13:12:06.649" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:06.617" endtime="20191026 13:12:06.649"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:06.649" endtime="20191026 13:12:06.649"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:01.046" endtime="20191026 13:12:06.650"></status>
+</kw>
+<kw name="${url} = URM/user" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:06.650" endtime="20191026 13:12:15.505"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:06.650" endtime="20191026 13:12:15.505"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:15.530" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:15.507" endtime="20191026 13:12:15.530"></status>
+</kw>
+<msg timestamp="20191026 13:12:15.530" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:15.506" endtime="20191026 13:12:15.530"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:15.530" endtime="20191026 13:12:15.531"></status>
+</kw>
+<msg timestamp="20191026 13:12:15.531" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:15.506" endtime="20191026 13:12:15.531"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:15.536" level="INFO">${title} = Manage Users</msg>
+<status status="PASS" starttime="20191026 13:12:15.531" endtime="20191026 13:12:15.536"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:15.537" level="INFO">Length is 12</msg>
+<status status="PASS" starttime="20191026 13:12:15.537" endtime="20191026 13:12:15.537"></status>
+</kw>
+<msg timestamp="20191026 13:12:15.537" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:15.537" endtime="20191026 13:12:15.537"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:15.538" endtime="20191026 13:12:15.538"></status>
+</kw>
+<msg timestamp="20191026 13:12:15.538" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:15.537" endtime="20191026 13:12:15.538"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:15.538" endtime="20191026 13:12:15.539"></status>
+</kw>
+<msg timestamp="20191026 13:12:15.539" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:15.531" endtime="20191026 13:12:15.539"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:15.539" endtime="20191026 13:12:15.539"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:15.540" endtime="20191026 13:12:15.540"></status>
+</kw>
+<msg timestamp="20191026 13:12:15.540" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:15.505" endtime="20191026 13:12:15.540"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:15.540" endtime="20191026 13:12:15.541"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:06.650" endtime="20191026 13:12:15.541"></status>
+</kw>
+<kw name="${url} = URM/menu" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:15.542" endtime="20191026 13:12:26.028"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:15.541" endtime="20191026 13:12:26.028"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:26.058" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:26.029" endtime="20191026 13:12:26.058"></status>
+</kw>
+<msg timestamp="20191026 13:12:26.058" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:26.029" endtime="20191026 13:12:26.058"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:26.058" endtime="20191026 13:12:26.059"></status>
+</kw>
+<msg timestamp="20191026 13:12:26.059" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:26.028" endtime="20191026 13:12:26.059"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:26.065" level="INFO">${title} = Menu</msg>
+<status status="PASS" starttime="20191026 13:12:26.059" endtime="20191026 13:12:26.065"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:26.066" level="INFO">Length is 4</msg>
+<status status="PASS" starttime="20191026 13:12:26.066" endtime="20191026 13:12:26.066"></status>
+</kw>
+<msg timestamp="20191026 13:12:26.066" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:26.065" endtime="20191026 13:12:26.066"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:26.066" endtime="20191026 13:12:26.067"></status>
+</kw>
+<msg timestamp="20191026 13:12:26.067" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:26.066" endtime="20191026 13:12:26.067"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:26.067" endtime="20191026 13:12:26.067"></status>
+</kw>
+<msg timestamp="20191026 13:12:26.067" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:26.059" endtime="20191026 13:12:26.067"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:26.067" endtime="20191026 13:12:26.068"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:26.068" endtime="20191026 13:12:26.068"></status>
+</kw>
+<msg timestamp="20191026 13:12:26.068" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:26.028" endtime="20191026 13:12:26.068"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:26.068" endtime="20191026 13:12:26.069"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:15.541" endtime="20191026 13:12:26.069"></status>
+</kw>
+<kw name="${url} = URM/MessageConfiguration/AddEditNotificationActivity" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:26.069" endtime="20191026 13:12:34.534"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:26.069" endtime="20191026 13:12:34.534"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:34.562" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:34.536" endtime="20191026 13:12:34.562"></status>
+</kw>
+<msg timestamp="20191026 13:12:34.562" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:34.536" endtime="20191026 13:12:34.562"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:34.563" endtime="20191026 13:12:34.563"></status>
+</kw>
+<msg timestamp="20191026 13:12:34.563" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:34.535" endtime="20191026 13:12:34.563"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:34.569" level="INFO">${title} = Message Configuration</msg>
+<status status="PASS" starttime="20191026 13:12:34.563" endtime="20191026 13:12:34.569"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:34.570" level="INFO">Length is 21</msg>
+<status status="PASS" starttime="20191026 13:12:34.569" endtime="20191026 13:12:34.570"></status>
+</kw>
+<msg timestamp="20191026 13:12:34.570" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:34.569" endtime="20191026 13:12:34.570"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:34.570" endtime="20191026 13:12:34.570"></status>
+</kw>
+<msg timestamp="20191026 13:12:34.570" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:34.570" endtime="20191026 13:12:34.570"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:34.571" endtime="20191026 13:12:34.571"></status>
+</kw>
+<msg timestamp="20191026 13:12:34.571" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:34.563" endtime="20191026 13:12:34.571"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:34.571" endtime="20191026 13:12:34.571"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:34.572" endtime="20191026 13:12:34.572"></status>
+</kw>
+<msg timestamp="20191026 13:12:34.572" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:34.535" endtime="20191026 13:12:34.572"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:34.572" endtime="20191026 13:12:34.572"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:26.069" endtime="20191026 13:12:34.572"></status>
+</kw>
+<kw name="${url} = URM/Organization" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:34.573" endtime="20191026 13:12:45.214"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:34.573" endtime="20191026 13:12:45.214"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:45.237" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:45.215" endtime="20191026 13:12:45.237"></status>
+</kw>
+<msg timestamp="20191026 13:12:45.237" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:45.215" endtime="20191026 13:12:45.237"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:45.237" endtime="20191026 13:12:45.238"></status>
+</kw>
+<msg timestamp="20191026 13:12:45.238" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:45.215" endtime="20191026 13:12:45.238"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:45.244" level="INFO">${title} = Organization</msg>
+<status status="PASS" starttime="20191026 13:12:45.239" endtime="20191026 13:12:45.244"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:45.244" level="INFO">Length is 12</msg>
+<status status="PASS" starttime="20191026 13:12:45.244" endtime="20191026 13:12:45.244"></status>
+</kw>
+<msg timestamp="20191026 13:12:45.244" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:45.244" endtime="20191026 13:12:45.244"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:45.245" endtime="20191026 13:12:45.245"></status>
+</kw>
+<msg timestamp="20191026 13:12:45.245" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:45.245" endtime="20191026 13:12:45.245"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:45.245" endtime="20191026 13:12:45.246"></status>
+</kw>
+<msg timestamp="20191026 13:12:45.246" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:45.238" endtime="20191026 13:12:45.246"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:45.246" endtime="20191026 13:12:45.246"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:45.246" endtime="20191026 13:12:45.246"></status>
+</kw>
+<msg timestamp="20191026 13:12:45.247" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:45.215" endtime="20191026 13:12:45.247"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:45.247" endtime="20191026 13:12:45.247"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:34.572" endtime="20191026 13:12:45.247"></status>
+</kw>
+<kw name="${url} = URM/Organization/OrgConfigIndex" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:45.248" endtime="20191026 13:12:53.492"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:45.247" endtime="20191026 13:12:53.493"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:53.516" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:53.494" endtime="20191026 13:12:53.516"></status>
+</kw>
+<msg timestamp="20191026 13:12:53.517" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:53.493" endtime="20191026 13:12:53.517"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:53.517" endtime="20191026 13:12:53.517"></status>
+</kw>
+<msg timestamp="20191026 13:12:53.517" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:53.493" endtime="20191026 13:12:53.517"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:53.523" level="INFO">${title} = Organization Configuration</msg>
+<status status="PASS" starttime="20191026 13:12:53.518" endtime="20191026 13:12:53.523"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:53.524" level="INFO">Length is 26</msg>
+<status status="PASS" starttime="20191026 13:12:53.524" endtime="20191026 13:12:53.524"></status>
+</kw>
+<msg timestamp="20191026 13:12:53.524" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:53.524" endtime="20191026 13:12:53.524"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:53.525" endtime="20191026 13:12:53.525"></status>
+</kw>
+<msg timestamp="20191026 13:12:53.525" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:53.524" endtime="20191026 13:12:53.525"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:53.525" endtime="20191026 13:12:53.525"></status>
+</kw>
+<msg timestamp="20191026 13:12:53.526" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:53.518" endtime="20191026 13:12:53.526"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:53.526" endtime="20191026 13:12:53.526"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:53.526" endtime="20191026 13:12:53.526"></status>
+</kw>
+<msg timestamp="20191026 13:12:53.526" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:53.493" endtime="20191026 13:12:53.526"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:53.527" endtime="20191026 13:12:53.527"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:45.247" endtime="20191026 13:12:53.527"></status>
+</kw>
+<kw name="${url} = URM/menu/PrivilegeSearch" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:53.527" endtime="20191026 13:12:59.098"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:53.527" endtime="20191026 13:12:59.098"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:12:59.137" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:12:59.101" endtime="20191026 13:12:59.138"></status>
+</kw>
+<msg timestamp="20191026 13:12:59.138" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:12:59.100" endtime="20191026 13:12:59.138"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:59.138" endtime="20191026 13:12:59.139"></status>
+</kw>
+<msg timestamp="20191026 13:12:59.139" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:12:59.099" endtime="20191026 13:12:59.139"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:12:59.149" level="INFO">${title} = NotFound</msg>
+<status status="PASS" starttime="20191026 13:12:59.140" endtime="20191026 13:12:59.149"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:12:59.151" level="INFO">Length is 8</msg>
+<status status="PASS" starttime="20191026 13:12:59.150" endtime="20191026 13:12:59.151"></status>
+</kw>
+<msg timestamp="20191026 13:12:59.151" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:12:59.150" endtime="20191026 13:12:59.151"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:59.152" endtime="20191026 13:12:59.152"></status>
+</kw>
+<msg timestamp="20191026 13:12:59.152" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:12:59.152" endtime="20191026 13:12:59.152"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:59.153" endtime="20191026 13:12:59.153"></status>
+</kw>
+<msg timestamp="20191026 13:12:59.153" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:12:59.140" endtime="20191026 13:12:59.153"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:59.153" endtime="20191026 13:12:59.154"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:59.154" endtime="20191026 13:12:59.154"></status>
+</kw>
+<msg timestamp="20191026 13:12:59.154" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:12:59.099" endtime="20191026 13:12:59.154"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:59.155" endtime="20191026 13:12:59.155"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:53.527" endtime="20191026 13:12:59.155"></status>
+</kw>
+<kw name="${url} = URM/SentSMS" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:12:59.156" endtime="20191026 13:13:07.902"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:59.155" endtime="20191026 13:13:07.902"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:13:07.932" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:13:07.903" endtime="20191026 13:13:07.933"></status>
+</kw>
+<msg timestamp="20191026 13:13:07.933" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:13:07.903" endtime="20191026 13:13:07.933"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:07.933" endtime="20191026 13:13:07.933"></status>
+</kw>
+<msg timestamp="20191026 13:13:07.933" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:13:07.903" endtime="20191026 13:13:07.933"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:13:07.939" level="INFO">${title} = SMS Log</msg>
+<status status="PASS" starttime="20191026 13:13:07.934" endtime="20191026 13:13:07.939"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:13:07.940" level="INFO">Length is 7</msg>
+<status status="PASS" starttime="20191026 13:13:07.940" endtime="20191026 13:13:07.940"></status>
+</kw>
+<msg timestamp="20191026 13:13:07.940" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:13:07.940" endtime="20191026 13:13:07.940"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:07.941" endtime="20191026 13:13:07.941"></status>
+</kw>
+<msg timestamp="20191026 13:13:07.941" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:13:07.941" endtime="20191026 13:13:07.941"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:07.941" endtime="20191026 13:13:07.942"></status>
+</kw>
+<msg timestamp="20191026 13:13:07.942" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:13:07.934" endtime="20191026 13:13:07.942"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:07.942" endtime="20191026 13:13:07.942"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:07.942" endtime="20191026 13:13:07.943"></status>
+</kw>
+<msg timestamp="20191026 13:13:07.943" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:13:07.903" endtime="20191026 13:13:07.943"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:07.943" endtime="20191026 13:13:07.943"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:12:59.155" endtime="20191026 13:13:07.943"></status>
+</kw>
+<kw name="${url} = urm/templatebuilder" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:07.944" endtime="20191026 13:13:16.923"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:07.943" endtime="20191026 13:13:16.923"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:13:16.947" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:13:16.926" endtime="20191026 13:13:16.947"></status>
+</kw>
+<msg timestamp="20191026 13:13:16.947" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:13:16.925" endtime="20191026 13:13:16.947"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:16.948" endtime="20191026 13:13:16.948"></status>
+</kw>
+<msg timestamp="20191026 13:13:16.948" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:13:16.924" endtime="20191026 13:13:16.948"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:13:16.953" level="INFO">${title} = </msg>
+<status status="PASS" starttime="20191026 13:13:16.948" endtime="20191026 13:13:16.953"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:13:16.953" level="INFO">Length is 0</msg>
+<msg timestamp="20191026 13:13:16.954" level="FAIL">'' should not be empty.</msg>
+<status status="FAIL" starttime="20191026 13:13:16.953" endtime="20191026 13:13:16.954"></status>
+</kw>
+<msg timestamp="20191026 13:13:16.954" level="INFO">${titleStatus1} = False</msg>
+<status status="PASS" starttime="20191026 13:13:16.953" endtime="20191026 13:13:16.954"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:16.954" endtime="20191026 13:13:16.955"></status>
+</kw>
+<msg timestamp="20191026 13:13:16.955" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:13:16.954" endtime="20191026 13:13:16.955"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191026 13:13:16.956" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20191026 13:13:16.955" endtime="20191026 13:13:16.956"></status>
+</kw>
+<msg timestamp="20191026 13:13:16.956" level="INFO">${errorCheck2} = 2</msg>
+<status status="PASS" starttime="20191026 13:13:16.948" endtime="20191026 13:13:16.956"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:16.957" endtime="20191026 13:13:16.957"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<msg timestamp="20191026 13:13:16.957" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20191026 13:13:16.957" endtime="20191026 13:13:16.957"></status>
+</kw>
+<msg timestamp="20191026 13:13:16.957" level="INFO">${result} = 2</msg>
+<status status="PASS" starttime="20191026 13:13:16.924" endtime="20191026 13:13:16.957"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<kw name="Add Failed Url To The fatal Error List" library="Generic">
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<kw name="Append To List" library="Collections">
+<doc>Adds ``values`` to the end of ``list``.</doc>
+<arguments>
+<arg>${fatalErorrs}</arg>
+<arg>${url}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:16.958" endtime="20191026 13:13:16.959"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:16.958" endtime="20191026 13:13:16.959"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:16.958" endtime="20191026 13:13:16.959"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:07.943" endtime="20191026 13:13:16.959"></status>
+</kw>
+<kw name="${url} = URM" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:16.959" endtime="20191026 13:13:25.632"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:16.959" endtime="20191026 13:13:25.633"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:13:25.662" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:13:25.634" endtime="20191026 13:13:25.662"></status>
+</kw>
+<msg timestamp="20191026 13:13:25.662" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:13:25.633" endtime="20191026 13:13:25.662"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:25.662" endtime="20191026 13:13:25.663"></status>
+</kw>
+<msg timestamp="20191026 13:13:25.663" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:13:25.633" endtime="20191026 13:13:25.663"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:13:25.669" level="INFO">${title} = User, Role and Workflow Management:Dashboard</msg>
+<status status="PASS" starttime="20191026 13:13:25.663" endtime="20191026 13:13:25.669"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:13:25.670" level="INFO">Length is 44</msg>
+<status status="PASS" starttime="20191026 13:13:25.670" endtime="20191026 13:13:25.670"></status>
+</kw>
+<msg timestamp="20191026 13:13:25.671" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:13:25.669" endtime="20191026 13:13:25.671"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:25.671" endtime="20191026 13:13:25.671"></status>
+</kw>
+<msg timestamp="20191026 13:13:25.671" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:13:25.671" endtime="20191026 13:13:25.671"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:25.671" endtime="20191026 13:13:25.672"></status>
+</kw>
+<msg timestamp="20191026 13:13:25.672" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:13:25.663" endtime="20191026 13:13:25.672"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:25.672" endtime="20191026 13:13:25.672"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:25.673" endtime="20191026 13:13:25.673"></status>
+</kw>
+<msg timestamp="20191026 13:13:25.673" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:13:25.633" endtime="20191026 13:13:25.673"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:25.673" endtime="20191026 13:13:25.674"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:16.959" endtime="20191026 13:13:25.674"></status>
+</kw>
+<kw name="${url} = URM/Privilege" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:25.675" endtime="20191026 13:13:34.533"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:25.674" endtime="20191026 13:13:34.534"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:13:34.560" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:13:34.536" endtime="20191026 13:13:34.560"></status>
+</kw>
+<msg timestamp="20191026 13:13:34.561" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:13:34.535" endtime="20191026 13:13:34.561"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:34.561" endtime="20191026 13:13:34.561"></status>
+</kw>
+<msg timestamp="20191026 13:13:34.561" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:13:34.535" endtime="20191026 13:13:34.561"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:13:34.567" level="INFO">${title} = Privileges</msg>
+<status status="PASS" starttime="20191026 13:13:34.562" endtime="20191026 13:13:34.567"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:13:34.568" level="INFO">Length is 10</msg>
+<status status="PASS" starttime="20191026 13:13:34.568" endtime="20191026 13:13:34.568"></status>
+</kw>
+<msg timestamp="20191026 13:13:34.568" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:13:34.567" endtime="20191026 13:13:34.568"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:34.569" endtime="20191026 13:13:34.569"></status>
+</kw>
+<msg timestamp="20191026 13:13:34.569" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:13:34.568" endtime="20191026 13:13:34.569"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:34.569" endtime="20191026 13:13:34.570"></status>
+</kw>
+<msg timestamp="20191026 13:13:34.570" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:13:34.562" endtime="20191026 13:13:34.570"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:34.570" endtime="20191026 13:13:34.570"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:34.570" endtime="20191026 13:13:34.571"></status>
+</kw>
+<msg timestamp="20191026 13:13:34.571" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:13:34.534" endtime="20191026 13:13:34.571"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:34.571" endtime="20191026 13:13:34.571"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:25.674" endtime="20191026 13:13:34.571"></status>
+</kw>
+<kw name="${url} = URM/UserRole" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:34.572" endtime="20191026 13:13:42.810"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:34.572" endtime="20191026 13:13:42.810"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:13:42.843" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:13:42.811" endtime="20191026 13:13:42.843"></status>
+</kw>
+<msg timestamp="20191026 13:13:42.843" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:13:42.811" endtime="20191026 13:13:42.843"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:42.843" endtime="20191026 13:13:42.844"></status>
+</kw>
+<msg timestamp="20191026 13:13:42.844" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:13:42.810" endtime="20191026 13:13:42.844"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:13:42.851" level="INFO">${title} = User Roles</msg>
+<status status="PASS" starttime="20191026 13:13:42.844" endtime="20191026 13:13:42.851"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:13:42.852" level="INFO">Length is 10</msg>
+<status status="PASS" starttime="20191026 13:13:42.852" endtime="20191026 13:13:42.852"></status>
+</kw>
+<msg timestamp="20191026 13:13:42.852" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:13:42.851" endtime="20191026 13:13:42.852"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:42.852" endtime="20191026 13:13:42.864"></status>
+</kw>
+<msg timestamp="20191026 13:13:42.865" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:13:42.852" endtime="20191026 13:13:42.865"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:42.865" endtime="20191026 13:13:42.865"></status>
+</kw>
+<msg timestamp="20191026 13:13:42.865" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:13:42.844" endtime="20191026 13:13:42.865"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:42.865" endtime="20191026 13:13:42.866"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:42.866" endtime="20191026 13:13:42.866"></status>
+</kw>
+<msg timestamp="20191026 13:13:42.866" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:13:42.810" endtime="20191026 13:13:42.866"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:42.866" endtime="20191026 13:13:42.867"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:34.571" endtime="20191026 13:13:42.867"></status>
+</kw>
+<kw name="${url} = URM/WorkTypeConfiguration" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:42.867" endtime="20191026 13:13:51.665"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:42.867" endtime="20191026 13:13:51.665"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:13:51.686" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:13:51.666" endtime="20191026 13:13:51.686"></status>
+</kw>
+<msg timestamp="20191026 13:13:51.686" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:13:51.665" endtime="20191026 13:13:51.686"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:51.686" endtime="20191026 13:13:51.687"></status>
+</kw>
+<msg timestamp="20191026 13:13:51.687" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:13:51.665" endtime="20191026 13:13:51.687"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:13:51.692" level="INFO">${title} = Work Type</msg>
+<status status="PASS" starttime="20191026 13:13:51.687" endtime="20191026 13:13:51.692"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:13:51.693" level="INFO">Length is 9</msg>
+<status status="PASS" starttime="20191026 13:13:51.693" endtime="20191026 13:13:51.693"></status>
+</kw>
+<msg timestamp="20191026 13:13:51.693" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:13:51.692" endtime="20191026 13:13:51.693"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:51.693" endtime="20191026 13:13:51.694"></status>
+</kw>
+<msg timestamp="20191026 13:13:51.694" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:13:51.693" endtime="20191026 13:13:51.694"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:51.694" endtime="20191026 13:13:51.694"></status>
+</kw>
+<msg timestamp="20191026 13:13:51.694" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:13:51.687" endtime="20191026 13:13:51.694"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:51.694" endtime="20191026 13:13:51.695"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:51.695" endtime="20191026 13:13:51.695"></status>
+</kw>
+<msg timestamp="20191026 13:13:51.695" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:13:51.665" endtime="20191026 13:13:51.695"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:51.695" endtime="20191026 13:13:51.696"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:42.867" endtime="20191026 13:13:51.696"></status>
+</kw>
+<kw name="${url} = URM/WORKFLOW" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:13:51.696" endtime="20191026 13:14:00.651"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:51.696" endtime="20191026 13:14:00.651"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:14:00.680" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:14:00.652" endtime="20191026 13:14:00.680"></status>
+</kw>
+<msg timestamp="20191026 13:14:00.681" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:14:00.652" endtime="20191026 13:14:00.681"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:00.681" endtime="20191026 13:14:00.681"></status>
+</kw>
+<msg timestamp="20191026 13:14:00.681" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:14:00.652" endtime="20191026 13:14:00.681"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:14:00.688" level="INFO">${title} = Workflow Configuration</msg>
+<status status="PASS" starttime="20191026 13:14:00.682" endtime="20191026 13:14:00.688"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:14:00.689" level="INFO">Length is 22</msg>
+<status status="PASS" starttime="20191026 13:14:00.689" endtime="20191026 13:14:00.689"></status>
+</kw>
+<msg timestamp="20191026 13:14:00.689" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:14:00.688" endtime="20191026 13:14:00.689"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:00.690" endtime="20191026 13:14:00.690"></status>
+</kw>
+<msg timestamp="20191026 13:14:00.690" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:14:00.689" endtime="20191026 13:14:00.690"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:00.690" endtime="20191026 13:14:00.690"></status>
+</kw>
+<msg timestamp="20191026 13:14:00.690" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:14:00.681" endtime="20191026 13:14:00.691"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:00.691" endtime="20191026 13:14:00.691"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:00.691" endtime="20191026 13:14:00.691"></status>
+</kw>
+<msg timestamp="20191026 13:14:00.691" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:14:00.651" endtime="20191026 13:14:00.691"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:00.692" endtime="20191026 13:14:00.692"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:13:51.696" endtime="20191026 13:14:00.692"></status>
+</kw>
+<kw name="${url} = URM/WFEngine/WfConfigurationIndex" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:00.692" endtime="20191026 13:14:09.438"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:14:00.692" endtime="20191026 13:14:09.438"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:14:09.461" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:14:09.439" endtime="20191026 13:14:09.461"></status>
+</kw>
+<msg timestamp="20191026 13:14:09.461" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:14:09.439" endtime="20191026 13:14:09.461"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:09.461" endtime="20191026 13:14:09.461"></status>
+</kw>
+<msg timestamp="20191026 13:14:09.461" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:14:09.438" endtime="20191026 13:14:09.461"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:14:09.466" level="INFO">${title} = Work Flow Configuration Page</msg>
+<status status="PASS" starttime="20191026 13:14:09.462" endtime="20191026 13:14:09.466"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:14:09.466" level="INFO">Length is 28</msg>
+<status status="PASS" starttime="20191026 13:14:09.466" endtime="20191026 13:14:09.466"></status>
+</kw>
+<msg timestamp="20191026 13:14:09.466" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:14:09.466" endtime="20191026 13:14:09.466"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:09.467" endtime="20191026 13:14:09.467"></status>
+</kw>
+<msg timestamp="20191026 13:14:09.467" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:14:09.467" endtime="20191026 13:14:09.467"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:09.467" endtime="20191026 13:14:09.468"></status>
+</kw>
+<msg timestamp="20191026 13:14:09.468" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:14:09.462" endtime="20191026 13:14:09.468"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:09.468" endtime="20191026 13:14:09.468"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:09.469" endtime="20191026 13:14:09.469"></status>
+</kw>
+<msg timestamp="20191026 13:14:09.469" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:14:09.438" endtime="20191026 13:14:09.469"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:09.469" endtime="20191026 13:14:09.469"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:14:00.692" endtime="20191026 13:14:09.469"></status>
+</kw>
+<kw name="${url} = URM/WFEngine/UserRoleIndex" type="foritem">
+<kw name="Open ERP Page" library="Generic">
+<arguments>
+<arg>${url}</arg>
+</arguments>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
+if session is expired it will attempt the login with given user type. User type can be
+given from the command line arguments. default is ADMIN</doc>
+<arguments>
+<arg>${BASE_URL.${ENVIRONMENT}}/${pageUrl}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:09.470" endtime="20191026 13:14:18.087"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:14:09.470" endtime="20191026 13:14:18.087"></status>
+</kw>
+<kw name="Check page error" library="Generic">
+<assign>
+<var>${result}</var>
+</assign>
+<kw name="Check Error Occurred" library="Generic">
+<assign>
+<var>${errorCheck1}</var>
+</assign>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>page should not contain</arg>
+<arg>Sorry! An error</arg>
+</arguments>
+<assign>
+<var>${errorStatus}</var>
+</assign>
+<kw name="Page Should Not Contain" library="SeleniumLibrary">
+<doc>Verifies the current page does not contain ``text``.</doc>
+<arguments>
+<arg>Sorry! An error</arg>
+</arguments>
+<msg timestamp="20191026 13:14:18.112" level="INFO">Current page does not contain text 'Sorry! An error'.</msg>
+<status status="PASS" starttime="20191026 13:14:18.089" endtime="20191026 13:14:18.112"></status>
+</kw>
+<msg timestamp="20191026 13:14:18.112" level="INFO">${errorStatus} = True</msg>
+<status status="PASS" starttime="20191026 13:14:18.088" endtime="20191026 13:14:18.112"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorStatus}' == '${False}'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.112" endtime="20191026 13:14:18.113"></status>
+</kw>
+<msg timestamp="20191026 13:14:18.113" level="INFO">${errorCheck1} = None</msg>
+<status status="PASS" starttime="20191026 13:14:18.088" endtime="20191026 13:14:18.113"></status>
+</kw>
+<kw name="Check Title Tag" library="Generic">
+<assign>
+<var>${errorCheck2}</var>
+</assign>
+<kw name="Get Title" library="SeleniumLibrary">
+<doc>Returns the title of the current page.</doc>
+<assign>
+<var>${title}</var>
+</assign>
+<msg timestamp="20191026 13:14:18.119" level="INFO">${title} = Manage workflow Rights</msg>
+<status status="PASS" starttime="20191026 13:14:18.113" endtime="20191026 13:14:18.119"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be empty</arg>
+<arg>${title}</arg>
+</arguments>
+<assign>
+<var>${titleStatus1}</var>
+</assign>
+<kw name="Should Not Be Empty" library="BuiltIn">
+<doc>Verifies that the given item is not empty.</doc>
+<arguments>
+<arg>${title}</arg>
+</arguments>
+<msg timestamp="20191026 13:14:18.120" level="INFO">Length is 22</msg>
+<status status="PASS" starttime="20191026 13:14:18.120" endtime="20191026 13:14:18.120"></status>
+</kw>
+<msg timestamp="20191026 13:14:18.120" level="INFO">${titleStatus1} = True</msg>
+<status status="PASS" starttime="20191026 13:14:18.120" endtime="20191026 13:14:18.120"></status>
+</kw>
+<kw name="Run Keyword And Return Status" library="BuiltIn">
+<doc>Runs the given keyword with given arguments and returns the status as a Boolean value.</doc>
+<arguments>
+<arg>should not be equal</arg>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<assign>
+<var>${titleStatus2}</var>
+</assign>
+<kw name="Should Not Be Equal" library="BuiltIn">
+<doc>Fails if the given objects are equal.</doc>
+<arguments>
+<arg>${title}</arg>
+<arg>Index</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.121" endtime="20191026 13:14:18.121"></status>
+</kw>
+<msg timestamp="20191026 13:14:18.121" level="INFO">${titleStatus2} = True</msg>
+<status status="PASS" starttime="20191026 13:14:18.120" endtime="20191026 13:14:18.121"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.121" endtime="20191026 13:14:18.121"></status>
+</kw>
+<msg timestamp="20191026 13:14:18.121" level="INFO">${errorCheck2} = None</msg>
+<status status="PASS" starttime="20191026 13:14:18.113" endtime="20191026 13:14:18.122"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck1}' == '1'</arg>
+<arg>1</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.122" endtime="20191026 13:14:18.122"></status>
+</kw>
+<kw name="Return From Keyword If" library="BuiltIn">
+<doc>Returns from the enclosing user keyword if ``condition`` is true.</doc>
+<arguments>
+<arg>'${errorCheck2}' == '2'</arg>
+<arg>2</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.122" endtime="20191026 13:14:18.122"></status>
+</kw>
+<msg timestamp="20191026 13:14:18.122" level="INFO">${result} = None</msg>
+<status status="PASS" starttime="20191026 13:14:18.088" endtime="20191026 13:14:18.122"></status>
+</kw>
+<kw name="Run Keyword Unless" library="BuiltIn">
+<doc>Runs the given keyword with the given arguments if ``condition`` is false.</doc>
+<arguments>
+<arg>${result} == None</arg>
+<arg>Add Failed Url To The fatal Error List</arg>
+<arg>${BASE_URL.${ENVIRONMENT}}/${url},${result}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.123" endtime="20191026 13:14:18.123"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:14:09.469" endtime="20191026 13:14:18.123"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:10.891" endtime="20191026 13:14:18.123"></status>
+</kw>
+<kw name="Report Fatal Errors To Developers" library="Generic">
+<arguments>
+<arg>${moduleName}</arg>
+<arg>@{fatalErorrs}</arg>
+</arguments>
+<kw name="Run Keyword And Continue On Failure" library="BuiltIn">
+<doc>Runs the keyword and continues execution even if a failure occurs.</doc>
+<arguments>
+<arg>Write Error Report</arg>
+<arg>${fatalErorrs}</arg>
+</arguments>
+<kw name="Write Error Report" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<doc>Writes list of errors in the created text file</doc>
+<arguments>
+<arg>${fatalErorrs}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.124" endtime="20191026 13:14:18.125"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:14:18.123" endtime="20191026 13:14:18.125"></status>
+</kw>
+<kw name="Filter Module Error Url" library="SeleniumLibrary">
+<tags>
+<tag>plugin</tag>
+</tags>
+<arguments>
+<arg>${moduleName}</arg>
+</arguments>
+<assign>
+<var>@{moduleErrorList}</var>
+</assign>
+<msg timestamp="20191026 13:14:18.127" level="INFO">@{moduleErrorList} = [ ['http://demoprojects.e-connectsolutions.com/ERP-DEMO/URM/TemplateBuilder/TemplateConfiguration', '2'] | ['http://demoprojects.e-connectsolutions.com/ERP-DEMO/URM/TemplateBuilder', '2'] | ['http://d...</msg>
+<status status="PASS" starttime="20191026 13:14:18.125" endtime="20191026 13:14:18.127"></status>
+</kw>
+<kw name="Compose Error Message" library="Notifications">
+<arguments>
+<arg>${moduleName}</arg>
+<arg>${moduleErrorList}</arg>
+</arguments>
+<assign>
+<var>${errorReport}</var>
+</assign>
+<msg timestamp="20191026 13:14:18.127" level="INFO">${errorReport} =                     &lt;html&gt;
+                    &lt;head&gt;
+                    &lt;style&gt;
+                    table, th, td {
+                      border: 1px solid black;
+                      border-collap...</msg>
+<status status="PASS" starttime="20191026 13:14:18.127" endtime="20191026 13:14:18.128"></status>
+</kw>
+<kw name="Send Email" library="Notifications">
+<arguments>
+<arg>ianubhavverma@gmail.com</arg>
+<arg>${moduleName} Error Report</arg>
+<arg>${errorReport}</arg>
+</arguments>
+<status status="PASS" starttime="20191026 13:14:18.128" endtime="20191026 13:14:20.642"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:14:18.123" endtime="20191026 13:14:20.642"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:10.891" endtime="20191026 13:14:20.642"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:11:10.876" endtime="20191026 13:14:20.642"></status>
+</kw>
+<doc>Tests if yellow pages are appearing or title tags are missing.</doc>
+<tags>
+<tag>critical</tag>
+<tag>generictests</tag>
+</tags>
+<status status="PASS" starttime="20191026 13:11:10.876" endtime="20191026 13:14:20.642" critical="yes"></status>
+</test>
+<kw name="End Web Test" library="Common_Keywords" type="teardown">
+<kw name="Close All Browsers" library="SeleniumLibrary">
+<doc>Closes all open browsers and resets the browser cache.</doc>
+<status status="PASS" starttime="20191026 13:14:20.642" endtime="20191026 13:14:22.846"></status>
+</kw>
+<status status="PASS" starttime="20191026 13:14:20.642" endtime="20191026 13:14:22.846"></status>
+</kw>
+<doc>ERP Tests</doc>
+<status status="PASS" starttime="20191026 13:11:07.068" endtime="20191026 13:14:22.846"></status>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0">Critical Tests</stat>
+<stat pass="1" fail="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0">critical</stat>
+<stat pass="1" fail="0">generictests</stat>
+</tag>
+<suite>
+<stat pass="1" fail="0" id="s1" name="000 GenericTests">000 GenericTests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
