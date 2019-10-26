@@ -13,6 +13,7 @@ Begin Web Test
 
 End Web Test
     close all browsers
+    last
 
 Read JSON File
     [Arguments]  ${JSON_File}

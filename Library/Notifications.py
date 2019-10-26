@@ -11,6 +11,7 @@ from string import Template
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from subprocess import call
 
 
 class Notifications:
@@ -76,7 +77,6 @@ class Notifications:
 
         # if BuiltIn().get_variable_value("${SEND_PUSH_NOTIFICATIONS}") and len(error_urls) != 0:
 
-
         header = {"Content-Type": "application/json; charset=utf-8",
                   "Authorization": "BASIC MTc2YzhjNGMtNTUwYy00MDk2LTgyZGYtMzRiNjU3YzMzYjEy"}
 
@@ -84,9 +84,14 @@ class Notifications:
                    "included_segments": ["All"],
                    "contents": {"en": "Click here to see test report"},
                    "headings": {"en": "Q-mate Test Report"},
-                   "url": ""
+                   "url": "https://divaksh.com/qmate-reports"
                    }
 
         req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
         logger.console(req.status_code)
         logger.console(req.reason)
+#        call('echo "I like potatos"', shell=True)
+
+    @keyword
+    def last(self):
+        call('robotmetrics --inputpath Results --logo "http://support.e-connectsolutions.com/erp/wp-content/uploads/2018/10/rajerp-loader.png"', shell=True)
