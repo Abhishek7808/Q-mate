@@ -11,6 +11,7 @@ from string import Template
 
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
+from subprocess import call
 
 from email.parser import Parser
 class Notifications:
@@ -110,7 +111,6 @@ class Notifications:
 
         # if BuiltIn().get_variable_value("${SEND_PUSH_NOTIFICATIONS}") and len(error_urls) != 0:
 
-
         header = {"Content-Type": "application/json; charset=utf-8",
                   "Authorization": "BASIC MTc2YzhjNGMtNTUwYy00MDk2LTgyZGYtMzRiNjU3YzMzYjEy"}
 
@@ -118,7 +118,7 @@ class Notifications:
                    "included_segments": ["All"],
                    "contents": {"en": "Click here to see test report"},
                    "headings": {"en": "Q-mate Test Report"},
-                   "url": ""
+                   "url": "https://divaksh.com/qmate-reports"
                    }
 
         req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
