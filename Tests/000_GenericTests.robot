@@ -31,10 +31,8 @@ All ERP module pages should be working for admin user
 
 All ERP pages should not be accessed without persmissions
     [Tags]  generictests  critical  citizen
-    ${LOGIN}  set global variable  citizen
-    ERP_Keywords.Attempt Logout
     [Template]  Run Generic Tests From Citizen
-
+    ${UM.name}
 
 
 # the variable ${urls_list} is now a python dictionary - the same as the original json, but only - accessible as dictionary in robotframwork

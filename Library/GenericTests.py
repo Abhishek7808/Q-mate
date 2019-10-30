@@ -5,8 +5,10 @@ from robot.api import logger
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 
+error_file = BuiltIn().get_variable_value("${ERRORFILE}")
 
-class Generic:
+
+class GenericTests:
 
     @keyword
     def filter_module_urls(self, filer_module_name, urls_json):
