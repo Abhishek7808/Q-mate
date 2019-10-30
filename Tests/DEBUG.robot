@@ -8,8 +8,8 @@ Resource  ../Resources/page-objects/ModuleNavigation.robot
 Resource  ../Resources/page-objects/HRMS/PostClass.robot
 Library     Collections
 
-Suite Setup  Common_Keywords.Begin Web Test
-Suite Teardown  Common_Keywords.End Web Test
+#Suite Setup  Common_Keywords.Begin Web Test
+#Suite Teardown  Common_Keywords.End Web Test
 
 # robot --loglevel debug -d Results Tests/DEBUG.robot
 
@@ -36,6 +36,7 @@ Admin should be able to login with correct username and password
 #     send email  ianubhavverma@gmail.com  yeh  ${msg}
 
 #    Go To Erp Page  ${BASE_URL.${ENVIRONMENT}}HRM/LeaveEncashmentDisbursement/EmployeeBillsDisbursmentIndex
-    append to list  ${list}  hello
-    log to console  ${list}
-
+#    append to list  ${list}  hello
+#    log to console  ${list}
+    ${dict}  set variable  dict
+    log to console  ${dict.json()}

@@ -6,7 +6,7 @@ ${result}=  None
 
 Get All Module Urls
     [Arguments]  ${muduleName}
-    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
+    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${TEST_URLS}
     return from keyword  @{moduleUrls}
 
 # TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.
@@ -16,8 +16,18 @@ Perform All Critical Generic Tests On Urls
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check page error
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
     \   run keyword unless  ${result} == None   Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
+=======
+    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},01  ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},02
+
+>>>>>>> Stashed changes
+=======
+    \   run keyword if  ${result} == 1  Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},01  ELSE IF  ${result} == 2  Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},02
+
+>>>>>>> Stashed changes
 
 
 Add Failed Url To The fatal Error List

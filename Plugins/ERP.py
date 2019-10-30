@@ -56,7 +56,15 @@ class ERP(LibraryComponent):
 
     @keyword
     def create_error_report(self):
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         """Creates a Csv file in which errors are to be written"""
+=======
+        """Creates a new file so that the list of errors can be written on it"""
+>>>>>>> Stashed changes
+=======
+        """Creates a new file so that the list of errors can be written on it"""
+>>>>>>> Stashed changes
         try:
             file = open(error_file, "x")
             file.close()
@@ -65,7 +73,15 @@ class ERP(LibraryComponent):
 
     @keyword
     def write_error_report(self, errorList=[]):
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         """Writes list of errors in the created Csv file"""
+=======
+        """Writes the errors in the error report file"""
+>>>>>>> Stashed changes
+=======
+        """Writes the errors in the error report file"""
+>>>>>>> Stashed changes
         file = open(error_file, "w")
         for item in errorList:
             file.write(item)
@@ -74,7 +90,15 @@ class ERP(LibraryComponent):
 
     @keyword
     def read_file_return_list(self):
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         """Reads the Csv file and returns a list of errors"""
+=======
+        """Read the error report file and returns a list of errors written in the error report file"""
+>>>>>>> Stashed changes
+=======
+        """Read the error report file and returns a list of errors written in the error report file"""
+>>>>>>> Stashed changes
         List = []
         with open(error_file, 'r') as errorFile:
             errors = csv.reader(errorFile)
@@ -84,8 +108,16 @@ class ERP(LibraryComponent):
         return List
 
     @keyword
+<<<<<<< Updated upstream
     def filter_module_error_url(self, module):
         """filter the list of errors according to the given module name"""
+=======
+    def filter_module_error_url(self, moduleName):
+        """Filter the error list according to the given module and returns a new list """
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
+>>>>>>> Stashed changes
         moduleErrorList=[]
         errorList = self.read_file_return_list()
         for item in errorList:
@@ -95,7 +127,15 @@ class ERP(LibraryComponent):
 
     @keyword
     def purge_error_report(self):
+<<<<<<< Updated upstream
+<<<<<<< Updated upstream
         """Deletes the previously created error report"""
+=======
+        """Deletes the previous Error report file"""
+>>>>>>> Stashed changes
+=======
+        """Deletes the previous Error report file"""
+>>>>>>> Stashed changes
         try:
             os.remove(error_file)
         except FileNotFoundError:
