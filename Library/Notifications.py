@@ -15,14 +15,16 @@ from subprocess import call
 
 from email.parser import Parser
 class Notifications:
+    error_dict = {"1": "error(A)", "2": "error(B)"}
 
     @keyword
     def send_email(self, send_to, email_subject, email_message):
+        # """Sends an email to the person given as a parameter"""
         qmate_email = 'ashwani.vijay@e-connectsolutions.com'
         qmate_password = 'Joy@123'
 
         # set up the SMTP server
-      #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
+        #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
         s = smtplib.SMTP(host='smtp.e-connectsolutions.com', port=587)
         s.starttls()
         #logger.console(qmate_password)
@@ -61,8 +63,10 @@ class Notifications:
             email_subject = "List of errors in " + module_name
             email_message = self.compose_error_message(error_urls, module_name)
             self.send_email(emails_ids, email_subject, email_message)
+
     @keyword
     def compose_error_message(self, module_name,  error_urls):
+        # """ Compose a html table of errors"""
         number_of_items = len(error_urls)
         html_table=  """\
                     <html>
@@ -80,21 +84,23 @@ class Notifications:
                         <tr>
                             <th>Error Url</th>
                             <th>Error Name</th>
-                        </tr>""" + self.tableData(number_of_items, error_urls)+"""</table>
+                        </tr>""" + self.table_data(number_of_items, error_urls)+"""</table>
                     </body>
                     </html>"""
         message = html_table+ " more content in " + module_name
         return message
 
-    def tableData(self, number_of_itmes, error_urls):
+    def table_data(self, number_of_itmes, error_urls):
+        # """ Creates rows of the error table according to the number of errors"""
         table_data=""
         for x in range(number_of_itmes):
-            table_data+="\n"+"<tr>"+"\n"+"<td>"+error_urls[x][0]+"</td>"+"\n""<td>" + self.giveErrorName(error_urls[x][1]) + "</td>"+"\n"+"</tr>"
+            table_data+="\n"+"<tr>"+"\n"+"<td>"+error_urls[x][0]+"</td>"+"\n""<td>" + self.give_error_name(error_urls[x][1]) + "</td>"+"\n"+"</tr>"
         return table_data
 
-    def giveErrorName(self, error_code):
-        error_dict = {"1": "error(A)", "2": "error(B)"}
-        return error_dict.get(error_code)
+    def give_error_name(self,error_code):
+        # """ Takes error code as an argument and returns an error name corresponding to that code"""
+        self.error_dict = {"1": "error(A)", "2": "error(B)"}
+        return self.error_dict.get(error_code)
 
     def find_receiver(self, module_name):
         if BuiltIn().get_variable_value("${HRMS.name}") == module_name:

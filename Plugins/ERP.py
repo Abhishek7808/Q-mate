@@ -13,7 +13,7 @@ class ERP(LibraryComponent):
 
     @keyword
     def filter_module_urls(self, filer_module_name, urls_json):
-        """Returns a list of filtered URLs for the given module"""
+        # """Returns a list of filtered URLs for the given module"""
         filtered_urls = []
         with open(urls_json) as json_file:
             json_dict = json.load(json_file)
@@ -24,9 +24,9 @@ class ERP(LibraryComponent):
 
     @keyword
     def go_to_erp_page(self, url):
-        """Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url`` and validate ERP session
-           if session is expired it will attempt the login with given user type. User type can be
-           given from the command line arguments. default is ADMIN"""
+        # """Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url``
+        # and validate ERP session if session is expired it will attempt the login with given user type. User type
+        # can be given from the command line arguments. default is ADMIN"""
         self.driver.get(url)
         is_login_page = False
         try:
@@ -56,15 +56,7 @@ class ERP(LibraryComponent):
 
     @keyword
     def create_error_report(self):
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        """Creates a Csv file in which errors are to be written"""
-=======
-        """Creates a new file so that the list of errors can be written on it"""
->>>>>>> Stashed changes
-=======
-        """Creates a new file so that the list of errors can be written on it"""
->>>>>>> Stashed changes
+        # """Creates a Csv file in which errors are to be written"""
         try:
             file = open(error_file, "x")
             file.close()
@@ -72,70 +64,39 @@ class ERP(LibraryComponent):
             pass
 
     @keyword
-    def write_error_report(self, errorList=[]):
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        """Writes list of errors in the created Csv file"""
-=======
-        """Writes the errors in the error report file"""
->>>>>>> Stashed changes
-=======
-        """Writes the errors in the error report file"""
->>>>>>> Stashed changes
+    def write_error_report(self, error_list=[]):
+        # """Writes list of errors in the created Csv file"""
         file = open(error_file, "w")
-        for item in errorList:
+        for item in error_list:
             file.write(item)
             file.write("\n")
         file.close()
 
     @keyword
     def read_file_return_list(self):
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        """Reads the Csv file and returns a list of errors"""
-=======
-        """Read the error report file and returns a list of errors written in the error report file"""
->>>>>>> Stashed changes
-=======
-        """Read the error report file and returns a list of errors written in the error report file"""
->>>>>>> Stashed changes
-        List = []
+        # """Reads the Csv file and returns a list of errors"""
+
+        error_list = []
         with open(error_file, 'r') as errorFile:
             errors = csv.reader(errorFile)
             for row in errors:
-                #List.append(row[0]+" "+row[1])  # data we are getting from the csv file is in list format
-                List.append(row)
-        return List
+                # List.append(row[0]+" "+row[1])  # data we are getting from the csv file is in list format
+                error_list.append(row)
+        return error_list
 
     @keyword
-<<<<<<< Updated upstream
-    def filter_module_error_url(self, module):
-        """filter the list of errors according to the given module name"""
-=======
-    def filter_module_error_url(self, moduleName):
-        """Filter the error list according to the given module and returns a new list """
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-        moduleErrorList=[]
-        errorList = self.read_file_return_list()
-        for item in errorList:
-            if module.lower() == item[0][52:55].lower():
-                moduleErrorList.append(item)
-        return moduleErrorList
+    def filter_module_error_url(self, module_name):
+        # """Filter the error list according to the given module and returns a new list """
+        module_error_list = []
+        error_list = self.read_file_return_list()
+        for item in error_list:
+            if module_name.lower() == item[0][52:55].lower():
+                module_error_list.append(item)
+        return module_error_list
 
     @keyword
     def purge_error_report(self):
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-        """Deletes the previously created error report"""
-=======
-        """Deletes the previous Error report file"""
->>>>>>> Stashed changes
-=======
-        """Deletes the previous Error report file"""
->>>>>>> Stashed changes
+        # """Deletes the previously created error report"""
         try:
             os.remove(error_file)
         except FileNotFoundError:
