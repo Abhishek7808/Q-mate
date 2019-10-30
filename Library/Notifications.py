@@ -123,5 +123,6 @@ class Notifications:
 
         req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
         logger.console(req.status_code)
+
         logger.console(req.reason)
 
