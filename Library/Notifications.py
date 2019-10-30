@@ -14,6 +14,10 @@ from email.mime.text import MIMEText
 from subprocess import call
 
 from email.parser import Parser
+
+from Plugins.ERP import ERP
+
+
 class Notifications:
     error_dict = {"1": "error(A)", "2": "error(B)"}
 
@@ -56,12 +60,13 @@ class Notifications:
 
     @keyword
     def send_error_email_notification(self, module_name):
-        error_urls = self.filter_module_error_urls(module_name)
+        erp_object = ERP()
+        error_urls = erp_object.filter_module_error_urls(module_name)
         # check if error notifications needs to sent
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
             emails_ids = self.find_receiver(module_name)
             email_subject = "List of errors in " + module_name
-            email_message = self.compose_error_message(error_urls, module_name)
+            email_message = self.compose_error_message(module_name, error_urls)
             self.send_email(emails_ids, email_subject, email_message)
 
     @keyword
@@ -103,7 +108,7 @@ class Notifications:
         return self.error_dict.get(error_code)
 
     def find_receiver(self, module_name):
-        if BuiltIn().get_variable_value("${HRMS.name}") == module_name:
+        if BuiltIn().get_variable_value("${UM.name}") == module_name:
             email_id = "ianubhavverma@gmail.com"
             return True
         if "${FA.name}" == module_name:

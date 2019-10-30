@@ -6,7 +6,7 @@ ${result}=  None
 
 Get All Module Urls
     [Arguments]  ${muduleName}
-    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
+    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${TEST_URLS}
     return from keyword  @{moduleUrls}
 
 # TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.
@@ -27,9 +27,7 @@ Add Failed Url To The fatal Error List
 Report Fatal Errors To Developers
      [Arguments]  ${moduleName}  @{fatalErorrs}
      run keyword and continue on failure  Write Error Report  ${fatalErorrs}
-     @{moduleErrorList}  Filter Module Error Url  ${moduleName}
-     ${errorReport}  Compose Error Message  ${moduleName}  ${moduleErrorList}
-     Send Email  ianubhavverma@gmail.com  ${moduleName} Error Report  ${errorReport}
+     Send Error Email Notification  ${moduleName}
 
 
 Get Urls List Of Fatal Errors
