@@ -12,6 +12,8 @@ Begin Web Test
     #${FILE}  Get file  ${ErrorFile}
     #${x}  Evaluate  ${File}
 
+    #support for the library path
+    evaluate  sys.path.append(os.path.join('${LIBRARY}'))  modules=os, sys
     Remove File  ${ERRORFILE}
     open browser  about:blank  ${BROWSER}
     maximize browser window
