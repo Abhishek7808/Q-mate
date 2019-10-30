@@ -1,3 +1,6 @@
+*** Settings ***
+Library  ${LIBRARY}/Notifications.py
+
 *** Variables ***
 @{moduleUrls}
 @{fatalErorrs}
@@ -12,7 +15,7 @@ Get All Module Urls
 # TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.
 Perform All Critical Generic Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
-    ${File}  Create Error Report
+    create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check page error
@@ -47,8 +50,23 @@ Check page error
 Check Error Occurred
     ${errorStatus}  run keyword and return status  page should not contain  Sorry! An error
     return from keyword if  '${errorStatus}' == '${False}'  1
+
 Check Title Tag
     ${title}=  get title
     ${titleStatus1}  run keyword and return status  should not be empty  ${title}
     ${titleStatus2}  run keyword and return status  should not be equal  ${title}  Index
     return from keyword if  '${titleStatus1}' == '${False}' or '${titleStatus2}' == '${False}'  2
+
+Perform Permission Tests On Urls
+    [Arguments]  ${moduleName}  @{moduleUrls}
+#    create file  ${ERRORFILE}
+    :FOR  ${url}  IN  @{moduleUrls}
+    \   Open ERP Page  ${url}
+    \   ${result}  Check Permissions
+    \   run keyword unless  ${result} == None   Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
+    Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
+
+
+Check Permissions
+    ${permissionStatus}  run keyword and return status  page should contain  Sorry! You are not authorized to view this page.
+    return from keyword if  '${permissionStatus}' == '${False}'  3

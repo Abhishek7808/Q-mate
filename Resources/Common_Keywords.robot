@@ -12,14 +12,12 @@ Begin Web Test
     #${FILE}  Get file  ${ErrorFile}
     #${x}  Evaluate  ${File}
 
-    Purge Error Report
-
+    Remove File  ${ERRORFILE}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 End Web Test
     close all browsers
-    last
 
 Read JSON File
     [Arguments]  ${JSON_File}

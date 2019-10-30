@@ -6,6 +6,8 @@
 
 &{NONADMIN_USER}  username=40052  password=admin  ExpectedResponseMessage=Dashboard
 &{ADMIN_USER}  username=econnect  password=admin  ExpectedResponseMessage=Dashboard
+&{CITIZEN_USER}  username=41014  password=admin  ExpectedResponseMessage=Dashboard
+
 
 ###########################################################################
 # WARNING: DO NOT TOUCH, VARIABLES WRITTEN BELOW ARE USED IN THE LIBRARY  #

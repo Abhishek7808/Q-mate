@@ -1,25 +1,19 @@
 import json
-import requests
-
-from robot.libraries.BuiltIn import BuiltIn
-from robot.api import logger
-from selenium.common.exceptions import NoSuchElementException, UnexpectedAlertPresentException
-from SeleniumLibrary.base import keyword, LibraryComponent
 import smtplib
-
-from string import Template
-
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-from subprocess import call
+import requests
+from SeleniumLibrary.base import keyword
+from robot.api import logger
+from robot.libraries.BuiltIn import BuiltIn
+# from Library.Generic import filter_module_error_url
+from Library import Generic
 
-from email.parser import Parser
-
-from Plugins.ERP import ERP
+error_dict = {"1": "error(A)", "2": "error(B)"}
+error_file = BuiltIn().get_variable_value("${ERRORFILE}")
 
 
 class Notifications:
-    error_dict = {"1": "error(A)", "2": "error(B)"}
 
     @keyword
     def send_email(self, send_to, email_subject, email_message):
@@ -31,13 +25,10 @@ class Notifications:
         #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
         s = smtplib.SMTP(host='smtp.e-connectsolutions.com', port=587)
         s.starttls()
-        #logger.console(qmate_password)
+        # logger.console(qmate_password)
         s.login(qmate_email, qmate_password)
 
         msg = MIMEMultipart()  # create a message
-
-
-
 
         # Prints out the message body for our sake
 
@@ -49,19 +40,15 @@ class Notifications:
         # add in the message body
         msg.attach(MIMEText(email_message, 'html'))
 
-
-
         # send the message via the server set up earlier.
         s.send_message(msg)
-        del msg
 
         # Terminate the SMTP session and close the connection
         s.quit()
 
     @keyword
     def send_error_email_notification(self, module_name):
-        erp_object = ERP()
-        error_urls = erp_object.filter_module_error_urls(module_name)
+        error_urls = Generic.filter_module_error_url(module_name)
         # check if error notifications needs to sent
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
             emails_ids = self.find_receiver(module_name)
@@ -70,10 +57,10 @@ class Notifications:
             self.send_email(emails_ids, email_subject, email_message)
 
     @keyword
-    def compose_error_message(self, module_name,  error_urls):
+    def compose_error_message(self, module_name, error_urls):
         # """ Compose a html table of errors"""
         number_of_items = len(error_urls)
-        html_table=  """\
+        html_table = """\
                     <html>
                     <head>
                     <style>
@@ -89,20 +76,21 @@ class Notifications:
                         <tr>
                             <th>Error Url</th>
                             <th>Error Name</th>
-                        </tr>""" + self.table_data(number_of_items, error_urls)+"""</table>
+                        </tr>""" + self.table_data(number_of_items, error_urls) + """</table>
                     </body>
                     </html>"""
-        message = html_table+ " more content in " + module_name
+        message = html_table + " more content in " + module_name
         return message
 
     def table_data(self, number_of_itmes, error_urls):
         # """ Creates rows of the error table according to the number of errors"""
-        table_data=""
+        table_data = ""
         for x in range(number_of_itmes):
-            table_data+="\n"+"<tr>"+"\n"+"<td>"+error_urls[x][0]+"</td>"+"\n""<td>" + self.give_error_name(error_urls[x][1]) + "</td>"+"\n"+"</tr>"
+            table_data += "\n" + "<tr>" + "\n" + "<td>" + error_urls[x][
+                0] + "</td>" + "\n""<td>" + self.give_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
         return table_data
 
-    def give_error_name(self,error_code):
+    def give_error_name(self, error_code):
         # """ Takes error code as an argument and returns an error name corresponding to that code"""
         self.error_dict = {"1": "error(A)", "2": "error(B)"}
         return self.error_dict.get(error_code)
@@ -113,8 +101,6 @@ class Notifications:
             return True
         if "${FA.name}" == module_name:
             return True
-
-
 
     @keyword
     def send_error_push_notification(self):
@@ -134,6 +120,4 @@ class Notifications:
 
         req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
         logger.console(req.status_code)
-
         logger.console(req.reason)
-

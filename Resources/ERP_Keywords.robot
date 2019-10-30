@@ -1,5 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
+Library  ${LIBRARY}/Generic.py
 Resource  ./page-objects/Generic.robot
 Resource  ./page-objects/Login.robot
 Resource  ./page-objects/TopNavigation.robot
@@ -64,9 +65,14 @@ Test FA
     ModuleNavigation.Verify FA Dashboard Is Loaded
     #Go To ERP Page Home
 
-Run Generic Tests
+Run Generic Tests From Admin
     [Arguments]  ${moduleName}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
+
+Run Generic Tests From Citizen
+    [Arguments]  ${moduleName}
+    @{urlsList}  Generic.Get All Module Urls  ${moduleName}
+    Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
 
 #Check ALL HRM Urls
