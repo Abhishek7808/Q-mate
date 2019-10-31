@@ -7,9 +7,11 @@ import requests
 from SeleniumLibrary.base import keyword
 from robot.api import logger
 from robot.libraries.BuiltIn import BuiltIn
+from robot.api.deco import keyword
 
 #from Library.GenericTests import GenericTests
 # from Library import *
+#from Library import GenericTests
 from Library import GenericTests
 
 error_dict = {"1": "error(A)", "2": "error(B)"}

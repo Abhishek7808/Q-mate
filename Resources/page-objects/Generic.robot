@@ -1,6 +1,7 @@
 *** Settings ***
-Library  ${LIBRARY}/Notifications.py
 Library  OperatingSystem
+Library  ${LIBRARY}/Notifications.py
+
 
 *** Variables ***
 @{moduleUrls}
@@ -45,9 +46,16 @@ Open ERP Page
     [Arguments]  ${pageUrl}
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
+Open ERP Page Without Permission
+    [Arguments]  ${pageUrl}
+    ${userType}  set variable  citizen
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
+
 Check Page Error
     ${errorCheck1}  Check Error Occurred
-    ${errorCheck2}  Check Title Tag
+    ${errorCheck2}  Check Title TagPerform Permission Tests On Urls
+    [Arguments]  ${moduleName}  @{moduleUrls}
+
     return from keyword if  '${errorCheck1}' == '1'  1
     return from keyword if  '${errorCheck2}' == '2'  2
 
@@ -65,7 +73,7 @@ Perform Permission Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
 #    create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
-    \   Open ERP Page  ${url}
+    \   Open ERP Page Without Permission  ${url}
     \   ${result}  Check Permissions
     \   run keyword unless  ${result} == None   Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}

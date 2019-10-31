@@ -2,6 +2,8 @@
 Resource  ../Data/Common_Data.robot
 Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Library	 OperatingSystem
+Library	 String
+
 
 *** Keywords ***
 Begin Web Test
@@ -13,7 +15,9 @@ Begin Web Test
     #${x}  Evaluate  ${File}
 
     #support for the library path
-    evaluate  sys.path.append(os.path.join('${LIBRARY}'))  modules=os, sys
+    ${libPath}  Replace String  ${CURDIR}  Resources  Library
+#    log to console  ${Update123}
+    evaluate  sys.path.append(os.path.join('${libPath}'))  modules=os, sys
     Remove File  ${ERRORFILE}
     open browser  about:blank  ${BROWSER}
     maximize browser window

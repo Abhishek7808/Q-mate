@@ -31,14 +31,10 @@ Suite Teardown  Common_Keywords.End Web Test
 
 All ERP pages should not be accessed without persmissions
     [Tags]  generictests  critical  citizen
-    tERP_Keywords.Attempt Logout
-    set test variable  ${LOGIN}  citizen
-
     [Template]  Run Generic Tests From Citizen
     ${HRMS.name}
     ${FA.name}
     ${UM.name}
     ${SMM.name}
-
 
 # the variable ${urls_list} is now a python dictionary - the same as the original json, but only - accessible as dictionary in robotframwork
