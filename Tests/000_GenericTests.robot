@@ -19,20 +19,26 @@ Suite Teardown  Common_Keywords.End Web Test
 
 
 *** Test Cases ***
-All ERP module pages should be working for admin user
-    [Documentation]  Tests if yellow pages are appearing or title tags are missing.
-    [Tags]  generictests  critical
-    [Template]  Run Generic Tests From Admin
-#     ${HRMS.name}
-#     ${FA.name}
-      ${UM.name}
-#     ${SMM.name}
+#All ERP module pages should be working for admin user
+#    [Documentation]  Tests if yellow pages are appearing or title tags are missing.
+#    [Tags]  generictests  critical
+#    [Template]  Run Generic Tests From Admin
+##     ${HRMS.name}
+##     ${FA.name}
+#      ${UM.name}
+##     ${SMM.name}
 
 
 All ERP pages should not be accessed without persmissions
     [Tags]  generictests  critical  citizen
+    tERP_Keywords.Attempt Logout
+    set test variable  ${LOGIN}  citizen
+
     [Template]  Run Generic Tests From Citizen
+    ${HRMS.name}
+    ${FA.name}
     ${UM.name}
+    ${SMM.name}
 
 
 # the variable ${urls_list} is now a python dictionary - the same as the original json, but only - accessible as dictionary in robotframwork

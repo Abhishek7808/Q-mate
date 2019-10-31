@@ -1,5 +1,6 @@
 *** Settings ***
 Library  ${LIBRARY}/Notifications.py
+Library  OperatingSystem
 
 *** Variables ***
 @{moduleUrls}
@@ -9,7 +10,7 @@ ${result}=  None
 
 Get All Module Urls
     [Arguments]  ${muduleName}
-    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${TEST_URLS}
+    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
     return from keyword  @{moduleUrls}
 
 # TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.
@@ -18,20 +19,23 @@ Perform All Critical Generic Tests On Urls
     create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
-    \   ${result}  Check page error
+    \   ${result}  Check Page Error
     \   run keyword unless  ${result} == None   Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
-
 Add Failed Url To The fatal Error List
     [Arguments]   ${url}
-    append to list  ${fatalErorrs}  ${url}
+    Append To File  ${ERRORFILE}  ${url}
+
+
+#Add Failed Url To The fatal Error List
+#    [Arguments]   ${url}
+#    append to list  ${fatalErorrs}  ${url}
 
 Report Fatal Errors To Developers
      [Arguments]  ${moduleName}  @{fatalErorrs}
      run keyword and continue on failure  Write Error Report  ${fatalErorrs}
      Send Error Email Notification  ${moduleName}
-
 
 Get Urls List Of Fatal Errors
     [Arguments]  ${fatalErorrs}
@@ -41,7 +45,7 @@ Open ERP Page
     [Arguments]  ${pageUrl}
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
-Check page error
+Check Page Error
     ${errorCheck1}  Check Error Occurred
     ${errorCheck2}  Check Title Tag
     return from keyword if  '${errorCheck1}' == '1'  1
@@ -65,7 +69,6 @@ Perform Permission Tests On Urls
     \   ${result}  Check Permissions
     \   run keyword unless  ${result} == None   Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
-
 
 Check Permissions
     ${permissionStatus}  run keyword and return status  page should contain  Sorry! You are not authorized to view this page.

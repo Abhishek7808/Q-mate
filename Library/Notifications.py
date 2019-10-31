@@ -8,10 +8,8 @@ from SeleniumLibrary.base import keyword
 from robot.api import logger
 from robot.libraries.BuiltIn import BuiltIn
 
-# from Library.Generic import filter_module_error_urlf
-
-
-Library = error_file = BuiltIn().get_variable_value("${LIBRARY}")
+#from Library.GenericTests import GenericTests
+# from Library import *
 from Library import GenericTests
 
 error_dict = {"1": "error(A)", "2": "error(B)"}
@@ -54,7 +52,7 @@ class Notifications:
 
     @keyword
     def send_error_email_notification(self, module_name):
-        error_urls = GenericTests.GenericTests.filter_module_error_url(module_name)
+        error_urls = GenericTests().filter_module_error_url(module_name)
         # check if error notifications needs to sent
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
             emails_ids = self.find_receiver(module_name)
