@@ -9,14 +9,20 @@ from robot.api import logger
 from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import keyword
 
-#from Library.GenericTests import GenericTests
+# from Library.GenericTests import GenericTests
 # from Library import *
-#from Library import GenericTests
-from Library import GenericTests
+# from Library import GenericTests
+
+import GenericTests
 
 error_dict = {"1": "error(A)", "2": "error(B)"}
 
+#################################################################
+#  Initialize necessary variables from the configuration file  #
+#################################################################
 error_file = BuiltIn().get_variable_value("${ERRORFILE}")
+qmate_email = BuiltIn().get_variable_value("${EMAIL.address}")
+qmate_password = BuiltIn().get_variable_value("${EMAIL.password}")
 
 
 class Notifications:
@@ -24,8 +30,6 @@ class Notifications:
     @keyword
     def send_email(self, send_to, email_subject, email_message):
         # """Sends an email to the person given as a parameter"""
-        qmate_email = 'ashwani.vijay@e-connectsolutions.com'
-        qmate_password = 'Joy@123'
 
         # set up the SMTP server
         #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)

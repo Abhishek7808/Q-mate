@@ -36,5 +36,3 @@ All ERP pages should not be accessed without persmissions
     ${FA.name}
     ${UM.name}
     ${SMM.name}
-
-# the variable ${urls_list} is now a python dictionary - the same as the original json, but only - accessible as dictionary in robotframwork

@@ -1,19 +1,17 @@
 [
-
-    {
-		"NAME": "DTB Configuration",
-		"MODULE": "URM",
-		"URL": "URM/TemplateBuilder/TemplateConfiguration"
-	},
-	{
-      "NAME": "Document Template Builder",
-      "MODULE": "URM",
-      "URL": "URM/TemplateBuilder"
-   },
-
-{
-   "NAME": "Template Builder",
-   "MODULE": "URM",
-   "URL": "urm/templatebuilder"
-}
+  {
+    "NAME": "DTB Configuration",
+    "MODULE": "URM",
+    "URL": "URM/TemplateBuilder/TemplateConfiguration"
+  },
+  {
+    "NAME": "Document Template Builder",
+    "MODULE": "URM",
+    "URL": "URM/TemplateBuilder"
+  },
+  {
+    "NAME": "Template Builder",
+    "MODULE": "URM",
+    "URL": "urm/templatebuilder"
+  }
 ]

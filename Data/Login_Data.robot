@@ -9,8 +9,4 @@
 &{CITIZEN_USER}  username=41014  password=admin  ExpectedResponseMessage=Dashboard
 
 
-###########################################################################
-# WARNING: DO NOT TOUCH, VARIABLES WRITTEN BELOW ARE USED IN THE LIBRARY  #
-###########################################################################
-${LOGIN}  admin
 

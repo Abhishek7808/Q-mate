@@ -33,7 +33,6 @@ class GenericTests:
     @keyword
     def read_file_return_list(self):
         # """Reads the Csv file and returns a list of errors"""
-
         error_list = []
         with open(error_file, 'r') as errorFile:
             errors = csv.reader(errorFile)
