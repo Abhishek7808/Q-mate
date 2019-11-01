@@ -8,16 +8,27 @@ ${BROWSER}  chrome
 &{BASE_URL}  demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=demoprojects.e-connectsolutions.com/ERP-TEST  production=demoprojects.e-connectsolutions.com/ERP-DEMO
 
 
+####################
+#  Directory Names #
+####################
+${TESTS_DIR}        Tests
+${RESOURCE_DIR}    Resources
+${PLUGINS_DIR}      Plugins
+${LIBRARY_DIR}      Library
+${DATA_DIR}         Data
+${RESULTS_DIR}      Results
+
+
 ###################
 #  Path Settings  #
 ###################
-${ROOT}  ${CURDIR}
-${TESTS}  ${CURDIR}${/}..${/}Tests
-${RESOURCES}  ${CURDIR}${/}..${/}Resources
-${PLUGINS}  ${CURDIR}${/}..${/}Plugins
-${LIBRARY}  ${CURDIR}${/}..${/}Library
-${DATA}  ${CURDIR}${/}..${/}Data
-${RESULTS}  ${CURDIR}${/}..${/}Results
+${ROOT}       ${CURDIR}
+${TESTS}      ${CURDIR}${/}..${/}${TESTS_DIR}
+${RESOURCES}  ${CURDIR}${/}..${/}${RESOURCE_DIR}
+${PLUGINS}    ${CURDIR}${/}..${/}${PLUGINS_DIR}
+${LIBRARY}    ${CURDIR}${/}..${/}${LIBRARY_DIR}
+${DATA}       ${CURDIR}${/}..${/}${DATA_DIR}
+${RESULTS}    ${CURDIR}${/}..${/}${RESULTS_DIR}
 
 
 ######################
@@ -31,11 +42,12 @@ ${TEST_URLS_JSON_NAME}  TestUrls.json
 ######################
 #   File Locations   #
 ######################
-${ERRORFILE}  ${RESULTS}${/}..${/}${REPORT_NAME}
+${ERRORFILE}  ${RESULTS}${/}${REPORT_NAME}
 ${URLS_JSON}  ${DATA}${/}${URLS_JSON_NAME}
 ${TEST_URLS}  ${DATA}${/}${TEST_URLS_JSON_NAME}
 ${RECIEVERS_JSON}  ./Data/Recievers.json
 #${ERRORFILE}  ${CURDIR}${/}..${/}Results${/}${REPORT_NAME}
+
 
 ####################
 #  Email Settings  #

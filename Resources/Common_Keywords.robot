@@ -15,16 +15,18 @@ Begin Web Test
     #${x}  Evaluate  ${File}
 
     #support for the library path
-    ${libPath}  Replace String  ${CURDIR}  Resources  Library
+    ${libPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${LIBRARY_DIR}
 #    log to console  ${Update123}
     evaluate  sys.path.append(os.path.join(r'${libPath}'))  modules=os, sys
 
-#
- #  ${resultPath}  Replace String  ${CURDIR}  Resources  Results
+#    ${resultPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${RESULTS_DIR}
 #    Remove File  ${resultPath}/${REPORT_NAME}
 #    log to console  ${resultPath}/${REPORT_NAME}
-    log to console  ${ERRORFILE}
-    Remove File  ${ERRORFILE}
+#    log to console  ${resultPath}${/}${REPORT_NAME}
+
+    ${UpperDir}  ${Leaf}  Split String From Right  ${CURDIR}   ${/}    1
+#    log to console    ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
+    Remove File  ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
