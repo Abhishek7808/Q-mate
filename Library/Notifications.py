@@ -8,21 +8,13 @@ from SeleniumLibrary.base import keyword
 from robot.api import logger
 from robot.libraries.BuiltIn import BuiltIn
 from robot.api.deco import keyword
-
-# from Library.GenericTests import GenericTests
-# from Library import *
-# from Library import GenericTests
+import _json
 
 import GenericTests
 
 error_dict = {"1": "error(A)", "2": "error(B)"}
-
-#################################################################
-#  Initialize necessary variables from the configuration file  #
-#################################################################
 error_file = BuiltIn().get_variable_value("${ERRORFILE}")
-qmate_email = BuiltIn().get_variable_value("${EMAIL.address}")
-qmate_password = BuiltIn().get_variable_value("${EMAIL.password}")
+
 
 
 class Notifications:
@@ -30,6 +22,8 @@ class Notifications:
     @keyword
     def send_email(self, send_to, email_subject, email_message):
         # """Sends an email to the person given as a parameter"""
+        qmate_email = 'ashwani.vijay@e-connectsolutions.com'
+        qmate_password = 'Joy@123'
 
         # set up the SMTP server
         #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
@@ -57,14 +51,16 @@ class Notifications:
         s.quit()
 
     @keyword
-    def send_error_email_notification(self, module_name):
-        error_urls = GenericTests().filter_module_error_url(module_name)
+    def send_error_email_notification(self, module_name, receivers_json):
+        logger.console(self.find_receiver(module_name, receivers_json).get('emailid'))
+        gen_test = GenericTests.GenericTests()
+        error_urls = gen_test.filter_module_error_url(module_name)
         # check if error notifications needs to sent
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
-            emails_ids = self.find_receiver(module_name)
+            emails_ids = self.find_receiver(module_name, receivers_json)
             email_subject = "List of errors in " + module_name
             email_message = self.compose_error_message(module_name, error_urls)
-            self.send_email(emails_ids, email_subject, email_message)
+            self.send_email(emails_ids.get('emailid'), email_subject, email_message)
 
     @keyword
     def compose_error_message(self, module_name, error_urls):
@@ -96,21 +92,21 @@ class Notifications:
         # """ Creates rows of the error table according to the number of errors"""
         table_data = ""
         for x in range(number_of_itmes):
+
             table_data += "\n" + "<tr>" + "\n" + "<td>" + error_urls[x][
                 0] + "</td>" + "\n""<td>" + self.give_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
         return table_data
 
     def give_error_name(self, error_code):
         # """ Takes error code as an argument and returns an error name corresponding to that code"""
-        self.error_dict = {"1": "error(A)", "2": "error(B)"}
+        self.error_dict = {"1": "error(A)", "2": "error(B)", "3": "error(c)"}
         return self.error_dict.get(error_code)
 
-    def find_receiver(self, module_name):
-        if BuiltIn().get_variable_value("${UM.name}") == module_name:
-            email_id = "ianubhavverma@gmail.com"
-            return True
-        if "${FA.name}" == module_name:
-            return True
+    def find_receiver(self, module_name, receivers_json):
+        with open(receivers_json, 'r') as f:
+            receivers_dict = json.load(f)
+        return receivers_dict.get(module_name)
+
 
     @keyword
     def send_error_push_notification(self):

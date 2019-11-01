@@ -17,7 +17,13 @@ Begin Web Test
     #support for the library path
     ${libPath}  Replace String  ${CURDIR}  Resources  Library
 #    log to console  ${Update123}
-    evaluate  sys.path.append(os.path.join('${libPath}'))  modules=os, sys
+    evaluate  sys.path.append(os.path.join(r'${libPath}'))  modules=os, sys
+
+#
+ #  ${resultPath}  Replace String  ${CURDIR}  Resources  Results
+#    Remove File  ${resultPath}/${REPORT_NAME}
+#    log to console  ${resultPath}/${REPORT_NAME}
+    log to console  ${ERRORFILE}
     Remove File  ${ERRORFILE}
     open browser  about:blank  ${BROWSER}
     maximize browser window

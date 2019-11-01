@@ -31,10 +31,11 @@ ${TEST_URLS_JSON_NAME}  TestUrls.json
 ######################
 #   File Locations   #
 ######################
-${ERRORFILE}  ${RESULTS}/${REPORT_NAME}
-${URLS_JSON}  ${DATA}/${URLS_JSON_NAME}
-${TEST_URLS}  ${DATA}/${TEST_URLS_JSON_NAME}
-
+${ERRORFILE}  ${RESULTS}${/}..${/}${REPORT_NAME}
+${URLS_JSON}  ${DATA}${/}${URLS_JSON_NAME}
+${TEST_URLS}  ${DATA}${/}${TEST_URLS_JSON_NAME}
+${RECIEVERS_JSON}  ./Data/Recievers.json
+#${ERRORFILE}  ${CURDIR}${/}..${/}Results${/}${REPORT_NAME}
 
 ####################
 #  Email Settings  #

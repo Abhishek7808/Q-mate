@@ -1,17 +1,34 @@
 [
-  {
-    "NAME": "DTB Configuration",
-    "MODULE": "URM",
-    "URL": "URM/TemplateBuilder/TemplateConfiguration"
-  },
-  {
-    "NAME": "Document Template Builder",
-    "MODULE": "URM",
-    "URL": "URM/TemplateBuilder"
-  },
-  {
-    "NAME": "Template Builder",
-    "MODULE": "URM",
-    "URL": "urm/templatebuilder"
-  }
+
+    {
+		"NAME": "DTB Configuration",
+		"MODULE": "URM",
+		"URL": "URM/TemplateBuilder/TemplateConfiguration"
+	},
+	{
+      "NAME": "Document Template Builder",
+      "MODULE": "URM",
+      "URL": "URM/TemplateBuilder"
+    },
+
+    {
+       "NAME": "Template Builder",
+       "MODULE": "URM",
+       "URL": "urm/templatebuilder"
+    },
+    {
+        "NAME": "Adjustment",
+        "MODULE": "ACC",
+        "URL": "ACC/PaymentAdvise/PaymentAdviseJVIndex"
+	},
+    {
+		"NAME": "Advice configuration",
+		"MODULE": "ACC",
+		"URL": "ACC/PaymentAdvisebillType/Index"
+	},
+    {
+		"NAME": "Advice configuration",
+		"MODULE": "ACC",
+		"URL": "ACC/PaymentAdvisebillType/Index"
+	}
 ]

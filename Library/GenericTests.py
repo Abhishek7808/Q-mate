@@ -21,20 +21,19 @@ class GenericTests:
                 filtered_urls.append(item['URL'])
         return filtered_urls
 
-    @keyword
-    def write_error_report(self, error_list=[]):
-        # """Writes list of errors in the created Csv file"""
-        file = open(error_file, "w")
-        for item in error_list:
-            file.write(item)
-            file.write("\n")
-        file.close()
+    # @keyword
+    # def write_error_report(self, error_list=[]):
+    #     # """Writes list of errors in the created Csv file"""
+    #     file = open(error_file, "w")
+    #     for item in error_list:
+    #         file.write(item)
+    #         file.write("\n")
+    #     file.close()
 
-    @keyword
-    def read_file_return_list(self):
+    def read_file_return_list(self, file):
         # """Reads the Csv file and returns a list of errors"""
         error_list = []
-        with open(error_file, 'r') as errorFile:
+        with open(file, 'r') as errorFile:
             errors = csv.reader(errorFile)
             for row in errors:
                 # List.append(row[0]+" "+row[1])  # data we are getting from the csv file is in list format
@@ -44,8 +43,9 @@ class GenericTests:
     def filter_module_error_url(self, module_name):
         # """Filter the error list according to the given module and returns a new list """
         module_error_list = []
-        error_list = self.read_file_return_list()
+        error_list = self.read_file_return_list(error_file)
         for item in error_list:
             if module_name.lower() == item[0][52:55].lower():
                 module_error_list.append(item)
+           #logger.console(error_file)
         return module_error_list
