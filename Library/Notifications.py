@@ -53,7 +53,7 @@ class Notifications:
     @keyword
     def send_error_email_notification(self, module_name, receivers_json):
         logger.console(self.find_receiver(module_name, receivers_json).get('emailid'))
-        gen_test = GenericTests.GenericTests()
+        gen_test = GenericTests
         error_urls = gen_test.filter_module_error_url(module_name)
         # check if error notifications needs to sent
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
@@ -66,7 +66,7 @@ class Notifications:
     def compose_error_message(self, module_name, error_urls):
         # """ Compose a html table of errors"""
         number_of_items = len(error_urls)
-        html_table = """\
+        html_table = """
                     <html>
                     <head>
                     <style>

@@ -3,7 +3,7 @@ Documentation  ERP Tests
 Resource  ../Resources/Common_Keywords.robot
 Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
-Resource  ../Data/Common_Data.robot
+Resource  ${COMMONDATA}
 Library    Collections
 Suite Setup  Common_Keywords.Begin Web Test
 Suite Teardown  Common_Keywords.End Web Test

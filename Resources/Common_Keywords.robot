@@ -1,8 +1,8 @@
 *** Settings ***
-Resource  ../Data/Common_Data.robot
-Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
-Library	 OperatingSystem
-Library	 String
+Resource    ../Configuration.robot
+Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
+Library	    OperatingSystem
+Library	    String
 
 
 *** Keywords ***
@@ -24,9 +24,12 @@ Begin Web Test
 #    log to console  ${resultPath}/${REPORT_NAME}
 #    log to console  ${resultPath}${/}${REPORT_NAME}
 
-    ${UpperDir}  ${Leaf}  Split String From Right  ${CURDIR}   ${/}    1
-#    log to console    ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
-    Remove File  ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
+#   Get proper path of the file
+#    ${UpperDir}  ${Leaf}  Split String From Right  ${CURDIR}   ${/}    1
+##    log to console    ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
+#    Remove File  ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
+
+#    remove file  ${ERRORFILE}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 

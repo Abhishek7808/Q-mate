@@ -2,7 +2,7 @@
 Resource  ../Resources/Common_Keywords.robot
 Resource  ../Resources/HRMS_Keywords.robot
 Resource  ../Data/Login_Data.robot
-Resource  ../Data/Common_Data.robot
+Resource  Configuration.robot
 Resource  ../Resources/page-objects/ModuleNavigation.robot
 
 #Suite Setup  Common_Keywords.Begin Web Test

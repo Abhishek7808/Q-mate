@@ -1,12 +1,36 @@
 import csv
 import json
-import os
 from robot.api import logger
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 
-error_file = BuiltIn().get_variable_value("${ERRORFILE}")
+error_file = BuiltIn().get_variable_value(r"${ERRORFILE}")
 
+
+def filter_module_error_url(module_name):
+    # """Filter the error list according to the given module and returns a new list """
+    module_error_list = []
+    error_list = read_file_return_list(error_file)
+    for item in error_list:
+        if module_name.lower() == item[0][52:55].lower():
+            module_error_list.append(item)
+    # logger.console(error_file)
+    return module_error_list
+
+def read_file_return_list(file):
+    # """Reads the Csv file and returns a list of errors"""
+    error_list = []
+    try:
+        e_file = open(file, 'r')
+        errors = csv.reader(e_file)
+        for row in errors:
+            # List.append(row[0]+" "+row[1])  # data we are getting from the csv file is in list format
+            error_list.append(row)
+        e_file.close
+    except FileNotFoundError:
+        logger.console("Following file not found: ")
+        logger.console(file)
+    return error_list
 
 class GenericTests:
 
@@ -29,23 +53,3 @@ class GenericTests:
     #         file.write(item)
     #         file.write("\n")
     #     file.close()
-
-    def read_file_return_list(self, file):
-        # """Reads the Csv file and returns a list of errors"""
-        error_list = []
-        with open(file, 'r') as errorFile:
-            errors = csv.reader(errorFile)
-            for row in errors:
-                # List.append(row[0]+" "+row[1])  # data we are getting from the csv file is in list format
-                error_list.append(row)
-        return error_list
-
-    def filter_module_error_url(self, module_name):
-        # """Filter the error list according to the given module and returns a new list """
-        module_error_list = []
-        error_list = self.read_file_return_list(error_file)
-        for item in error_list:
-            if module_name.lower() == item[0][52:55].lower():
-                module_error_list.append(item)
-           #logger.console(error_file)
-        return module_error_list
