@@ -3,7 +3,7 @@ Resource  ../Resources/Common_Keywords.robot
 Library   ${LIBRARY}/Notifications.py
 Resource  ../Resources/ERP_Keywords.robot
 Resource  ../Data/Login_Data.robot
-Resource  Configuration.robot
+Resource  Configuration.resource
 Resource  ../Resources/page-objects/ModuleNavigation.robot
 Resource  ../Resources/page-objects/HRMS/PostClass.robot
 Library     Collections

@@ -1,5 +1,5 @@
 *** Settings ***
-Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
+Library  SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 
 
 *** Variables ***

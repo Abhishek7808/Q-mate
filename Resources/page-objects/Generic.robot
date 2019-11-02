@@ -7,17 +7,19 @@ Library  ${LIBRARY}/Notifications.py
 @{moduleUrls}
 @{fatalErorrs}
 ${result}=  None
+
+
 *** Keywords ***
 
 Get All Module Urls
     [Arguments]  ${muduleName}
-    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${TEST_URLS}
+    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
     return from keyword  @{moduleUrls}
 
 # TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.
 Perform All Critical Generic Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
-    create file  ${ERRORFILE}
+#   create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check Page Error
@@ -27,7 +29,6 @@ Perform All Critical Generic Tests On Urls
 Add Failed Url To The fatal Error List
     [Arguments]   ${url}
     Append To File  ${ERRORFILE}  ${url}\n
-
 
 #Add Failed Url To The fatal Error List
 #    [Arguments]   ${url}
@@ -71,7 +72,7 @@ Check Title Tag
 
 Perform Permission Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
-#    create file  ${ERRORFILE}
+#   create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page Without Permission  ${url}
     \   ${result}  Check Permissions

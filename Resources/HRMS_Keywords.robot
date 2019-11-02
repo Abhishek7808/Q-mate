@@ -1,6 +1,6 @@
 *** Settings ***
-Resource  ./page-objects/HRMS/PostClass.robot
-Resource  ./page-objects/LeftNavigation.robot
+Resource  ${PAGE OBJECTS}/HRMS/PostClass.robot
+Resource  ${PAGE OBJECTS}/LeftNavigation.robot
 Resource  ./ERP_Keywords.robot
 
 *** Keywords ***

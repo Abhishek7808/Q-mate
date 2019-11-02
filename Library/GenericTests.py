@@ -26,11 +26,12 @@ def read_file_return_list(file):
         for row in errors:
             # List.append(row[0]+" "+row[1])  # data we are getting from the csv file is in list format
             error_list.append(row)
-        e_file.close
+        e_file.close()
     except FileNotFoundError:
         logger.console("Following file not found: ")
         logger.console(file)
     return error_list
+
 
 class GenericTests:
 

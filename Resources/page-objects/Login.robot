@@ -1,5 +1,5 @@
 *** Settings ***
-Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
+Library  SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 
 *** Variables ***
 ${LOGIN_TEXT}                   Login to your E-Prashasan Account
@@ -8,9 +8,13 @@ ${LOGIN_USERNAME_INPUT}         id=LoginIdForShow
 ${LOGIN_PASSWORD_INPUT}         id=PasswordForShow
 ${LOGIN_BUTTON}                 id=btnLogin
 ${DASHBOARD_TEXT}               Dashboard
+${LOGOUT_LINK}                  Utility/Logout
+
 
 *** Keywords ***
 Navigate To Page
+    ${status}  run keyword and return status  Verify Page Loaded
+    run keyword if  '${status}' == '${Flase}'  Go To Logout
     Go To  ${BASE_URL.${ENVIRONMENT}}
 
 Verify Page Loaded
@@ -31,3 +35,6 @@ Submit The Form
 Verify Login Message
     [Arguments]   ${ExpectedResponseMessage}
     wait until page contains   ${ExpectedResponseMessage}
+
+Go To Logout
+    go to  ${BASE_URL.${ENVIRONMENT}}/${LOGOUT_LINK}

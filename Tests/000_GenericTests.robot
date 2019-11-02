@@ -1,13 +1,14 @@
 *** Settings ***
 Documentation  ERP Tests
-Resource  ../Resources/Common_Keywords.robot
-Resource  ../Resources/ERP_Keywords.robot
-Resource  ../Data/Login_Data.robot
+Resource  ../Configuration.resource
+Resource  ${RESOURCES}/Common_Keywords.robot
+Resource  ${RESOURCES}/ERP_Keywords.robot
+Resource  ${DATA}/Login_Data.robot
 Resource  ${COMMONDATA}
-Library    Collections
-Suite Setup  Common_Keywords.Begin Web Test
-Suite Teardown  Common_Keywords.End Web Test
+Library   Collections
 
+#Suite Setup  Common_Keywords.Begin Web Test
+#Suite Teardown  Common_Keywords.End Web Test
 # robot -d Results Tests/000_GenericTests.robot
 
 
@@ -19,20 +20,20 @@ Suite Teardown  Common_Keywords.End Web Test
 
 
 *** Test Cases ***
-#All ERP module pages should be working for admin user
-#    [Documentation]  Tests if yellow pages are appearing or title tags are missing.
-#    [Tags]  generictests  critical
-#    [Template]  Run Generic Tests From Admin
-##     ${HRMS.name}
-##     ${FA.name}
-#      ${UM.name}
-##     ${SMM.name}
+All ERP module pages should be working for admin user
+    [Documentation]  Tests if yellow pages are appearing or title tags are missing.
+    [Tags]  generictests  critical
+    [Template]  Run Generic Tests From Admin
+#    ${HRMS.name}
+    ${FA.name}
+    ${UM.name}
+#    ${SMM.name}
 
 
 All ERP pages should not be accessed without persmissions
     [Tags]  generictests  critical  citizen
-    [Template]  Run Generic Tests From Citizen
-    ${HRMS.name}
+    [Template]  Run Generic Tests From Other User
+#    ${HRMS.name}
     ${FA.name}
     ${UM.name}
-    ${SMM.name}
+#    ${SMM.name}

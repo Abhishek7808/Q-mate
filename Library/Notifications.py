@@ -12,9 +12,33 @@ import _json
 
 import GenericTests
 
-error_dict = {"1": "error(A)", "2": "error(B)"}
 error_file = BuiltIn().get_variable_value("${ERRORFILE}")
 
+
+def give_error_name(error_code):
+    # """ Takes error code as an argument and returns an error name corresponding to that code"""
+    # self.error_dict = {"1": "error(A)", "2": "error(B)", "3": "error(c)"}
+    return {
+        '1': BuiltIn().get_variable_value("${ERROR_DETAILS.e1}"),
+        '2': BuiltIn().get_variable_value("${ERROR_DETAILS.e2}"),
+        '3': BuiltIn().get_variable_value("${ERROR_DETAILS.e3}"),
+        '0': BuiltIn().get_variable_value("${ERROR_DETAILS.e0}"),
+    }
+
+
+def find_receiver(module_name, receivers_json):
+    with open(receivers_json, 'r') as f:
+        receivers_dict = json.load(f)
+    return receivers_dict.get(module_name)
+
+
+def table_data(number_of_items, error_urls):
+    # """ Creates rows of the error table according to the number of errors"""
+    table_data = ""
+    for x in range(number_of_items):
+        table_data += "\n" + "<tr>" + "\n" + "<td>" + error_urls[x][
+            0] + "</td>" + "\n""<td>" + give_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
+    return table_data
 
 
 class Notifications:
@@ -52,12 +76,12 @@ class Notifications:
 
     @keyword
     def send_error_email_notification(self, module_name, receivers_json):
-        logger.console(self.find_receiver(module_name, receivers_json).get('emailid'))
+        logger.console(find_receiver(module_name, receivers_json).get('emailid'))
         gen_test = GenericTests
         error_urls = gen_test.filter_module_error_url(module_name)
         # check if error notifications needs to sent
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
-            emails_ids = self.find_receiver(module_name, receivers_json)
+            emails_ids = find_receiver(module_name, receivers_json)
             email_subject = "List of errors in " + module_name
             email_message = self.compose_error_message(module_name, error_urls)
             self.send_email(emails_ids.get('emailid'), email_subject, email_message)
@@ -82,31 +106,11 @@ class Notifications:
                         <tr>
                             <th>Error Url</th>
                             <th>Error Name</th>
-                        </tr>""" + self.table_data(number_of_items, error_urls) + """</table>
+                        </tr>""" + table_data(number_of_items, error_urls) + """</table>
                     </body>
                     </html>"""
         message = html_table + " more content in " + module_name
         return message
-
-    def table_data(self, number_of_itmes, error_urls):
-        # """ Creates rows of the error table according to the number of errors"""
-        table_data = ""
-        for x in range(number_of_itmes):
-
-            table_data += "\n" + "<tr>" + "\n" + "<td>" + error_urls[x][
-                0] + "</td>" + "\n""<td>" + self.give_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
-        return table_data
-
-    def give_error_name(self, error_code):
-        # """ Takes error code as an argument and returns an error name corresponding to that code"""
-        self.error_dict = {"1": "error(A)", "2": "error(B)", "3": "error(c)"}
-        return self.error_dict.get(error_code)
-
-    def find_receiver(self, module_name, receivers_json):
-        with open(receivers_json, 'r') as f:
-            receivers_dict = json.load(f)
-        return receivers_dict.get(module_name)
-
 
     @keyword
     def send_error_push_notification(self):

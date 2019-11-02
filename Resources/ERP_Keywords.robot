@@ -1,10 +1,10 @@
 *** Settings ***
-Library  SeleniumLibrary  plugins=${PLUGINS}/ERP.py
-Library  ${LIBRARY}/GenericTests.py
-Resource  ./page-objects/Generic.robot
-Resource  ./page-objects/Login.robot
-Resource  ./page-objects/TopNavigation.robot
-Resource  ./page-objects/ModuleNavigation.robot
+Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
+Library   GenericTests.py
+Resource  ${PAGE OBJECTS}/Generic.robot
+Resource  ${PAGE OBJECTS}/Login.robot
+Resource  ${PAGE OBJECTS}/TopNavigation.robot
+Resource  ${PAGE OBJECTS}/ModuleNavigation.robot
 
 *** Keywords ***
 Open the Login Page
@@ -17,10 +17,13 @@ Attempt Login
     Login.Fill Password  ${Credentials.password}
     Login.Submit The Form
 
-Attempt Logout
+Attempt Full Logout
     TopNavigation.Open User Action Menu
     TopNavigation.Click On Logout Link
     TopNavigation.Verify Login Page Is Loaded
+
+Attempt Logout
+    Login.Go To Logout
 
 Test Mutiple Login Failed Scenarios
     [Arguments]  ${Credentials}
@@ -31,7 +34,7 @@ Test Mutiple Login Successful Scenarios
     [Arguments]  ${Credentials}
     Attempt Login   ${Credentials}
     Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}
-    Attempt Logout
+    Attempt Full Logout
 
 Login To ERP
     [Arguments]  ${Credentials}
@@ -70,8 +73,9 @@ Run Generic Tests From Admin
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
 
-Run Generic Tests From Citizen
+Run Generic Tests From Other User
     [Arguments]  ${moduleName}
+    Attempt Logout
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
 

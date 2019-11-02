@@ -1,9 +1,9 @@
 *** Settings ***
-Resource  ../Resources/Common_Keywords.robot
-Resource  ../Resources/ERP_Keywords.robot
-Resource  ../Resources/HRMS_Keywords.robot
-Resource  Configuration.robot
-Resource  ../Data/Login_Data.robot
+Resource  ../Configuration.resource
+Resource  ${RESOURCES}/Common_Keywords.robot
+Resource  ${RESOURCES}/ERP_Keywords.robot
+Resource  ${RESOURCES}/HRMS_Keywords.robot
+Resource  ${DATA}/Login_Data.robot
 
 # robot --loglevel debug -d Results -i navigation Tests/
 #Suite Setup  Common_Keywords.Begin Web Test

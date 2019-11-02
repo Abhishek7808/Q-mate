@@ -3,32 +3,34 @@
 ##########################
 #  Environment Settings  #
 ##########################
-${ENVIRONMENT}    demo
-${BROWSER}        chrome
-&{BASE_URL}       demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=demoprojects.e-connectsolutions.com/ERP-TEST  production=demoprojects.e-connectsolutions.com/ERP-DEMO
+${ENVIRONMENT}       demo
+${BROWSER}           chrome
+&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=demoprojects.e-connectsolutions.com/ERP-TEST  production=demoprojects.e-connectsolutions.com/ERP-DEMO
 
 
 ####################
 #  Directory Names #
 ####################
-${TESTS_DIR}        Tests
-${RESOURCE_DIR}     Resources
-${PLUGINS_DIR}      Plugins
-${LIBRARY_DIR}      Library
-${DATA_DIR}         Data
-${RESULTS_DIR}      Results
+${TESTS_DIR}             Tests
+${RESOURCE_DIR}          Resources
+${PLUGINS_DIR}           Plugins
+${LIBRARY_DIR}           Library
+${DATA_DIR}              Data
+${RESULTS_DIR}           Results
+${PAGE_OBJECTS_DIR}      page-objects
 
 
 ###################
 #  Path Settings  #
 ###################
-${ROOT}       ${CURDIR}
-${TESTS}      ${CURDIR}${/}${TESTS_DIR}
-${RESOURCES}  ${CURDIR}${/}${RESOURCE_DIR}
-${PLUGINS}    ${CURDIR}${/}${PLUGINS_DIR}
-${LIBRARY}    ${CURDIR}${/}${LIBRARY_DIR}
-${DATA}       ${CURDIR}${/}${DATA_DIR}
-${RESULTS}    ${CURDIR}${/}${RESULTS_DIR}
+${ROOT}             ${CURDIR}
+${TESTS}            ${CURDIR}${/}${TESTS_DIR}
+${RESOURCES}        ${CURDIR}${/}${RESOURCE_DIR}
+${PLUGINS}          ${CURDIR}${/}${PLUGINS_DIR}
+${LIBRARY}          ${CURDIR}${/}${LIBRARY_DIR}
+${DATA}             ${CURDIR}${/}${DATA_DIR}
+${RESULTS}          ${CURDIR}${/}${RESULTS_DIR}
+${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
 
 
 ######################
@@ -69,3 +71,10 @@ ${LOGIN}  admin  #employee, citizen, admin
 
 # Login page details used in the plugin ERP.py
 ${LOGIN_TEXT}            Login to your E-Prashasan Account
+
+# Error Definations
+&{ERROR_DETAILS}
+...  e1=Page is not loading properly
+...  e2=Appropriate title tag is missing
+...  e3=Page is accessible without permissions
+

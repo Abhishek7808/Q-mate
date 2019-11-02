@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../Configuration.robot
+Resource    ../Configuration.resource
 Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Library	    OperatingSystem
 Library	    String
@@ -7,29 +7,16 @@ Library	    String
 
 *** Keywords ***
 Begin Web Test
-#    Set Global Variable  ${ROOT}  ${CURDIR}
-#    Set Global Variable  ${TESTS}  ${CURDIR}${/}..${/}Tests
-#    Set Global Variable  ${RESOURCES}  ${CURDIR}${/}..${/}Resources
-#    Set Global Variable  ${PLUGINS}  ${CURDIR}${/}..${/}Plugins
-    #${FILE}  Get file  ${ErrorFile}
-    #${x}  Evaluate  ${File}
-
     #support for the library path
-    ${libPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${LIBRARY_DIR}
-#    log to console  ${Update123}
-    evaluate  sys.path.append(os.path.join(r'${libPath}'))  modules=os, sys
+    # ${libPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${LIBRARY_DIR}
+    log to console  ${LIBRARY}
+    evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
 
-#    ${resultPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${RESULTS_DIR}
-#    Remove File  ${resultPath}/${REPORT_NAME}
-#    log to console  ${resultPath}/${REPORT_NAME}
-#    log to console  ${resultPath}${/}${REPORT_NAME}
+    #support for the plugin path
+    #${pluginPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${PLUGINS_DIR}
+    #evaluate  sys.path.append(os.path.join(r'${PLUGINS}'))  modules=os, sys
 
-#   Get proper path of the file
-#    ${UpperDir}  ${Leaf}  Split String From Right  ${CURDIR}   ${/}    1
-##    log to console    ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
-#    Remove File  ${UpperDir}${/}${RESULTS_DIR}${/}${REPORT_NAME}
-
-#    remove file  ${ERRORFILE}
+    remove file  ${ERRORFILE}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
@@ -40,6 +27,7 @@ Read JSON File
     [Arguments]  ${JSON_File}
     ${JSON}=  Get file  ${JSON_File}
     return from keyword  ${JSON}
+    log
 
 Evaluate And Store JSON File
     [Arguments]  ${JSON}
