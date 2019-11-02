@@ -42,5 +42,4 @@ class ERP(LibraryComponent):
 
         if is_login_page:
             login_user(user_type)
-            user_type = BuiltIn().get_variable_value("${LOGIN}")
             self.driver.get(url)

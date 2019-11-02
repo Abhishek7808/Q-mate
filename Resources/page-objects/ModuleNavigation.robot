@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
-
+Resource  ${DATA}/Common_Data.robot
 
 *** Variables ***
 #Locators
@@ -30,32 +30,32 @@ Open Modules Menu
 #################################
 
 Navigate To HRMS Module
-    click link  &{HRMS}[link_title]
+    click link  ${HRMS.link_title}
 Go To ERP Page HRMS Dashboard
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}&{HRMS}[link]
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}
 Verify HRMS Dashboard Is Loaded
-    title should be  &{HRMS}[dashboard_title]
+    title should be  ${HRMS.dashboard_title}
 
 Navigate To FA Module
-    click link  &{FA}[link_title]
+    click link  ${FA.link_title}
 Go To ERP Page FA Dashboard
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}&{FA}[link]
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${FA.link}
 Verify FA Dashboard Is Loaded
-    title should be  &{FA}[dashboard_title]
+    title should be  ${FA.dashboard_title}
 
 Navigate To UM Module
-    click link  &{UM}[link_title]
+    click link  ${UM.link_title}
 Go To ERP Page UM Dashboard
-     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}&{UM}[link]
+     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${UM.link}
 Verify UM Dashboard Is Loaded
-    title should be  &{UM}[dashboard_title]
+    title should be  ${UM.dashboard_title}
 
 Navigate To SMM Module
-    click link  &{SMM}[link_title]
+    click link  ${SMM.link_title}
 Go To ERP Page SMM Dashboard
-     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}&{SMM}[link]
+     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${SMM.link}
 Verify SMM Dashboard Is Loaded
-    title should be  &{SMM}[dashboard_title]
+    title should be  ${SMM.dashboard_title}
 
 Open Dashboard From Logo
 

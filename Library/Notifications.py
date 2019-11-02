@@ -15,15 +15,17 @@ import GenericTests
 error_file = BuiltIn().get_variable_value("${ERRORFILE}")
 
 
-def give_error_name(error_code):
+def get_error_name(error_code):
     # """ Takes error code as an argument and returns an error name corresponding to that code"""
     # self.error_dict = {"1": "error(A)", "2": "error(B)", "3": "error(c)"}
-    return {
-        '1': BuiltIn().get_variable_value("${ERROR_DETAILS.e1}"),
-        '2': BuiltIn().get_variable_value("${ERROR_DETAILS.e2}"),
-        '3': BuiltIn().get_variable_value("${ERROR_DETAILS.e3}"),
-        '0': BuiltIn().get_variable_value("${ERROR_DETAILS.e0}"),
+    error_messages = BuiltIn().get_variable_value("${ERROR_DETAILS}")
+    # logger.console(error_messages)
+    switcher = {
+        1: error_messages.get(1),
+        2: error_messages.get(2),
+        3: error_messages.get(3)
     }
+    return switcher.get(error_code, "No error code found")
 
 
 def find_receiver(module_name, receivers_json):
@@ -36,8 +38,7 @@ def table_data(number_of_items, error_urls):
     # """ Creates rows of the error table according to the number of errors"""
     table_data = ""
     for x in range(number_of_items):
-        table_data += "\n" + "<tr>" + "\n" + "<td>" + error_urls[x][
-            0] + "</td>" + "\n""<td>" + give_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
+        table_data += "\n" + "<tr>" + "\n" + "<td>" + error_urls[x][0] + "</td>" + "\n""<td>" + get_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
     return table_data
 
 
@@ -46,8 +47,8 @@ class Notifications:
     @keyword
     def send_email(self, send_to, email_subject, email_message):
         # """Sends an email to the person given as a parameter"""
-        qmate_email = 'ashwani.vijay@e-connectsolutions.com'
-        qmate_password = 'Joy@123'
+        qmate_email = BuiltIn().get_variable_value("${EMAIL.address}")
+        qmate_password = BuiltIn().get_variable_value("${EMAIL.password}")
 
         # set up the SMTP server
         #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
@@ -76,7 +77,7 @@ class Notifications:
 
     @keyword
     def send_error_email_notification(self, module_name, receivers_json):
-        logger.console(find_receiver(module_name, receivers_json).get('emailid'))
+        #        logger.console(find_receiver(module_name, receivers_json).get('emailid'))
         gen_test = GenericTests
         error_urls = gen_test.filter_module_error_url(module_name)
         # check if error notifications needs to sent

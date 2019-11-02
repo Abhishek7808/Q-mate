@@ -13,7 +13,7 @@ ${result}=  None
 
 Get All Module Urls
     [Arguments]  ${muduleName}
-    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
+    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${TEST_URLS}
     return from keyword  @{moduleUrls}
 
 # TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.
@@ -54,9 +54,7 @@ Open ERP Page Without Permission
 
 Check Page Error
     ${errorCheck1}  Check Error Occurred
-    ${errorCheck2}  Check Title TagPerform Permission Tests On Urls
-    [Arguments]  ${moduleName}  @{moduleUrls}
-
+    ${errorCheck2}  Check Title Tag
     return from keyword if  '${errorCheck1}' == '1'  1
     return from keyword if  '${errorCheck2}' == '2'  2
 

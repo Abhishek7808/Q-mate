@@ -4,7 +4,7 @@
 #  Environment Settings  #
 ##########################
 ${ENVIRONMENT}       demo
-${BROWSER}           chrome
+${BROWSER}           ff
 &{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=demoprojects.e-connectsolutions.com/ERP-TEST  production=demoprojects.e-connectsolutions.com/ERP-DEMO
 
 
@@ -74,7 +74,7 @@ ${LOGIN_TEXT}            Login to your E-Prashasan Account
 
 # Error Definations
 &{ERROR_DETAILS}
-...  e1=Page is not loading properly
-...  e2=Appropriate title tag is missing
-...  e3=Page is accessible without permissions
+...  1=Page is not loading properly
+...  2=Appropriate title tag is missing
+...  3=Page is accessible without permissions
 

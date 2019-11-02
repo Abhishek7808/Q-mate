@@ -9,7 +9,7 @@ Library	    String
 Begin Web Test
     #support for the library path
     # ${libPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${LIBRARY_DIR}
-    log to console  ${LIBRARY}
+    #log to console  ${LIBRARY}
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
 
     #support for the plugin path
@@ -17,6 +17,7 @@ Begin Web Test
     #evaluate  sys.path.append(os.path.join(r'${PLUGINS}'))  modules=os, sys
 
     remove file  ${ERRORFILE}
+
     open browser  about:blank  ${BROWSER}
     maximize browser window
 

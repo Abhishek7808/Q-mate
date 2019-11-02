@@ -15,6 +15,7 @@ All modules should open their dashboards
     [Tags]  navigation
 
     ERP_Keywords.Go To ERP
+    sleep  5s
 
     ERP_Keywords.Test UM
     ERP_Keywords.Go To Home

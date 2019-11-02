@@ -22,7 +22,7 @@ Library   Collections
 *** Test Cases ***
 All ERP module pages should be working for admin user
     [Documentation]  Tests if yellow pages are appearing or title tags are missing.
-    [Tags]  generictests  critical
+    [Tags]  generictests  critical  admin
     [Template]  Run Generic Tests From Admin
 #    ${HRMS.name}
     ${FA.name}
@@ -31,6 +31,7 @@ All ERP module pages should be working for admin user
 
 
 All ERP pages should not be accessed without persmissions
+    [Documentation]  Tests if access validator not properly implimented on the page
     [Tags]  generictests  critical  citizen
     [Template]  Run Generic Tests From Other User
 #    ${HRMS.name}

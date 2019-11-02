@@ -13,8 +13,6 @@ ${LOGOUT_LINK}                  Utility/Logout
 
 *** Keywords ***
 Navigate To Page
-    ${status}  run keyword and return status  Verify Page Loaded
-    run keyword if  '${status}' == '${Flase}'  Go To Logout
     Go To  ${BASE_URL.${ENVIRONMENT}}
 
 Verify Page Loaded
