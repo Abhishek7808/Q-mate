@@ -8,7 +8,7 @@ ${LOGIN_USERNAME_INPUT}         id=LoginIdForShow
 ${LOGIN_PASSWORD_INPUT}         id=PasswordForShow
 ${LOGIN_BUTTON}                 id=btnLogin
 ${DASHBOARD_TEXT}               Dashboard
-${LOGOUT_LINK}                  Utility/Logout
+${LOGOUT}                  Utility/Logout
 
 
 *** Keywords ***
@@ -35,4 +35,6 @@ Verify Login Message
     wait until page contains   ${ExpectedResponseMessage}
 
 Go To Logout
-    go to  ${BASE_URL.${ENVIRONMENT}}/${LOGOUT_LINK}
+    log to console  ${BASE_URL.${ENVIRONMENT}}/${LOGOUT_LINK}
+    go to  ${BASE_URL.${ENVIRONMENT}}${/}${LOGOUT}
+

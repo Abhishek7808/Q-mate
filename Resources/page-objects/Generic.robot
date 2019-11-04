@@ -24,7 +24,7 @@ Perform All Critical Generic Tests On Urls
     \   Open ERP Page  ${url}
     \   ${result}  Check Page Error
     \   run keyword unless  ${result} == None   Add Failed Url To The fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
-    Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
+    #Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 Add Failed Url To The fatal Error List
     [Arguments]   ${url}

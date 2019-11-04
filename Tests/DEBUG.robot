@@ -20,5 +20,5 @@ Library     Collections
 # login data added into Data/Login_Data.robot
 @{list}
 *** Test Cases ***
-This test case is for debug purpose only
-    [Tags]  debug
+#This test case is for debug purpose only
+    #[Tags]  debug

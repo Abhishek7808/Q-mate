@@ -1,6 +1,6 @@
 *** Settings ***
 Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
-Library   GenericTests.py
+Library   ${LIBRARY}/GenericTests.py
 Resource  ${PAGE OBJECTS}/Generic.robot
 Resource  ${PAGE OBJECTS}/Generic.robot
 Resource  ${PAGE OBJECTS}/Login.robot
@@ -37,7 +37,7 @@ Test Mutiple Login Successful Scenarios
     run keyword unless  ${status}  Login.Go To Logout
     Attempt Login   ${Credentials}
     Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}
-    sleep 5s
+    BuiltIn.sleep  5s
     Attempt Full Logout
 
 Login To ERP
@@ -54,7 +54,7 @@ Go To Home
 Test UM
     ModuleNavigation.Open Modules Menu
     ModuleNavigation.Navigate To UM Module
- #   Run Generic Tests From Admin
+#    Run Generic Tests From Admin
     ModuleNavigation.Verify UM Dashboard Is Loaded
     #Go To ERP Page Home
 
@@ -68,7 +68,7 @@ Test HRMS
 Test FA
     ModuleNavigation.Open Modules Menu
     ModuleNavigation.Navigate To FA Module
- #   Run Generic Tests From Admin
+#   Run Generic Tests From Admin
     ModuleNavigation.Verify FA Dashboard Is Loaded
     #Go To ERP Page Home
 

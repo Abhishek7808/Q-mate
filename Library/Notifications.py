@@ -3,7 +3,7 @@ import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 
-import requests
+#import requests
 from SeleniumLibrary.base import keyword
 from robot.api import logger
 from robot.libraries.BuiltIn import BuiltIn
@@ -20,10 +20,11 @@ def get_error_name(error_code):
     # self.error_dict = {"1": "error(A)", "2": "error(B)", "3": "error(c)"}
     error_messages = BuiltIn().get_variable_value("${ERROR_DETAILS}")
     # logger.console(error_messages)
+    # logger.console(error_messages.get('1 '))
     switcher = {
-        1: error_messages.get(1),
-        2: error_messages.get(2),
-        3: error_messages.get(3)
+        "1": error_messages.get('1'),
+        "2": error_messages.get('2'),
+        "3": error_messages.get('3')
     }
     return switcher.get(error_code, "No error code found")
 
