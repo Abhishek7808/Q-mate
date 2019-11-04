@@ -43,3 +43,10 @@ class ERP(LibraryComponent):
         if is_login_page:
             login_user(user_type)
             self.driver.get(url)
+
+    @keyword
+    def select_last_dropdown_element(self, dropdown_id):
+        dropdown = self.driver.find_element_by_id(dropdown_id)
+        dropdown.click()
+        options = dropdown.find_elements_by_tag_name('option')
+        options[len(options) - 1].click()

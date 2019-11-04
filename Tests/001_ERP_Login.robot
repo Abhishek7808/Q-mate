@@ -6,8 +6,8 @@ Resource  ${DATA}/Login_Data.robot
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
 Resource  ${DATA}/Common_Data.robot
 
-Suite Setup  Common_Keywords.Begin Web Test
-Suite Teardown  Common_Keywords.End Web Test
+#Suite Setup  Common_Keywords.Begin Web Test
+#Suite Teardown  Common_Keywords.End Web Test
 
 # robot -d Results Tests/001_ERP_Login.robot
 
@@ -21,18 +21,18 @@ Suite Teardown  Common_Keywords.End Web Test
 *** Test Cases ***
 
 User should be able to access login page
-    [Tags]  login
+    [Tags]  login  loginpage
     ERP_Keywords.Open the Login Page
 
 Invalid login scenarios should display correct error messages
-    [Tags]  login
+    [Tags]  login  invalidlogin
     [Template]  Test Mutiple Login Failed Scenarios
     ${INVALID_USER}
     ${INVALID_PASSWORD}
     #${BLANK_USER}
 
 Users should be able to login with correct username and password
-    [Tags]  login
+    [Tags]  login  validlogin
     [Template]  Test Mutiple Login Successful Scenarios
     ${ADMIN_USER}
     ${NONADMIN_USER}

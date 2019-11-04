@@ -6,13 +6,13 @@ Resource  ${RESOURCES}/HRMS_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 
 # robot --loglevel debug -d Results -i navigation Tests/
-Suite Setup  Common_Keywords.Begin Web Test
-Suite Teardown  Common_Keywords.End Web Test
+# Suite Setup  Common_Keywords.Begin Web Test
+# Suite Teardown  Common_Keywords.End Web Test
 
 *** Test Cases ***
 All modules should open their dashboards
     [Documentation]  Open all modules one by one from the main dashboard
-    [Tags]  navigation
+    [Tags]  modulenavigation
 
     ERP_Keywords.Go To ERP
     sleep  5s
