@@ -2,8 +2,7 @@ import json
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
-
-#import requests
+import requests
 from SeleniumLibrary.base import keyword
 from robot.api import logger
 from robot.libraries.BuiltIn import BuiltIn
@@ -19,7 +18,7 @@ def get_error_name(error_code):
     # """ Takes error code as an argument and returns an error name corresponding to that code"""
     # self.error_dict = {"1": "error(A)", "2": "error(B)", "3": "error(c)"}
     error_messages = BuiltIn().get_variable_value("${ERROR_DETAILS}")
-    # logger.console(error_messages)
+    #logger.console(error_messages)
     # logger.console(error_messages.get('1 '))
     switcher = {
         "1": error_messages.get('1'),
@@ -38,9 +37,38 @@ def find_receiver(module_name, receivers_json):
 def table_data(number_of_items, error_urls):
     # """ Creates rows of the error table according to the number of errors"""
     table_data = ""
+    count = 1
     for x in range(number_of_items):
-        table_data += "\n" + "<tr>" + "\n" + "<td>" + error_urls[x][0] + "</td>" + "\n""<td>" + get_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
+        table_data += "\n" + "<tr>" + "\n" + "<td>" + str(count) + "</td>" "<td>" + error_urls[x][0] + "</td>" + "\n""<td>" + get_error_name(error_urls[x][1]) + "</td>" + "\n" + "</tr>"
+        count += 1
     return table_data
+
+
+def compose_error_message(module_name, error_urls):
+    # """ Compose a html table of errors"""
+    number_of_items = len(error_urls)
+    html_table = """
+                <html>
+                <head>
+                <style>
+                table, th, td {
+                  border: 1px solid black;
+                  border-collapse: collapse;
+                }
+                </style>
+                <title>Error Report</title>
+                </head>
+                <body>
+                <table>
+                    <tr>
+                        <th> Sr. No. </th>
+                        <th>Error Url</th>
+                        <th>Error Name</th>
+                    </tr>""" + table_data(number_of_items, error_urls) + """</table>
+                </body>
+                </html>"""
+    message = html_table + " more content in " + module_name
+    return message
 
 
 class Notifications:
@@ -85,34 +113,8 @@ class Notifications:
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
             emails_ids = find_receiver(module_name, receivers_json)
             email_subject = "List of errors in " + module_name
-            email_message = self.compose_error_message(module_name, error_urls)
+            email_message = compose_error_message(module_name, error_urls)
             self.send_email(emails_ids.get('emailid'), email_subject, email_message)
-
-    @keyword
-    def compose_error_message(self, module_name, error_urls):
-        # """ Compose a html table of errors"""
-        number_of_items = len(error_urls)
-        html_table = """
-                    <html>
-                    <head>
-                    <style>
-                    table, th, td {
-                      border: 1px solid black;
-                      border-collapse: collapse;
-                    }
-                    </style>
-                    <title>Error Report</title>
-                    </head>
-                    <body>
-                    <table>
-                        <tr>
-                            <th>Error Url</th>
-                            <th>Error Name</th>
-                        </tr>""" + table_data(number_of_items, error_urls) + """</table>
-                    </body>
-                    </html>"""
-        message = html_table + " more content in " + module_name
-        return message
 
     @keyword
     def send_error_push_notification(self):

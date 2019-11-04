@@ -69,7 +69,10 @@ Open User Action Menu
     wait until element is visible  ${USER_ACTION_DROPDOWN_LINK}
     mouse over  ${USER_ACTION_DROPDOWN_LINK}
 
-Click On Logout Link
+Click On Logout
+    close all browsers
+
+Read JSON File Link
     wait until element is visible  ${LOGOUT_LINK}
     click element  ${LOGOUT_LINK}
 

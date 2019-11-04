@@ -62,6 +62,15 @@ ${COMMON_DATA}        ${DATA}${/}${COMMON_DATA_NAME}
 ${SEND_EMAIL_NOTIFICATIONS}  True
 
 
+####################
+#  Time Settings   #
+####################
+${DELAY}          0
+${RETRY TIME}     5s
+${RETRY INTERVAL}    200ms
+
+
+
 ######################################################################################
 # WARNING: DO NOT TOUCH, VARIABLES WRITTEN BELOW ARE USED IN THE PLUGIN AND LIBRARY  #
 ######################################################################################
@@ -72,7 +81,7 @@ ${LOGIN}  admin  #employee, citizen, admin
 # Login page details used in the plugin ERP.py
 ${LOGIN_TEXT}            Login to your E-Prashasan Account
 
-# Error Definations
+# Error Definition
 &{ERROR_DETAILS}
 ...  1= Page is not loading properly
 ...  2= Appropriate title tag is missing
