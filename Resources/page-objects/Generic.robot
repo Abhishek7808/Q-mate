@@ -13,7 +13,7 @@ ${result}=  None
 
 Get All Module Urls
     [Arguments]  ${muduleName}
-    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${TEST_URLS}
+    @{moduleUrls}  Filter Module Urls  ${muduleName}  ${URLS_JSON}
     return from keyword  @{moduleUrls}
 
 # TODO: Add all error urls in a list and use Send All Errors keyword from Notifications.py to send them.

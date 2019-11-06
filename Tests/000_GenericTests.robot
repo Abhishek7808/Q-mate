@@ -24,17 +24,17 @@ All ERP module pages should be working for admin user
     [Documentation]  Tests if yellow pages are appearing or title tags are missing.
     [Tags]  critical  generictests  common
     [Template]  Run Generic Tests From Admin
-#    ${HRMS.name}
+    ${HRMS.name}
     ${FA.name}
     ${UM.name}
-#    ${SMM.name}
+    ${SMM.name}
 
 
 All ERP pages should not be accessed without persmissions
     [Documentation]  Tests if access validator not properly implimented on the page
     [Tags]  critical  generictests  permission
     [Template]  Run Generic Tests From Other User
-#    ${HRMS.name}
+    ${HRMS.name}
     ${FA.name}
     ${UM.name}
-#    ${SMM.name}
+    ${SMM.name}
