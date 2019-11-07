@@ -14,7 +14,6 @@ ${OK_Button} =  //button[contains(text(),'OK')]
 Go To ERP Page Post Class Page
      Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}${PostClass_URL}
 
-
 Click Add New Post Class
      wait until page contains  Post Class
      Click link  ${Add_New}
@@ -64,6 +63,3 @@ Verify The Deleted Element
     wait until page contains  Action
     sleep  2s
     page should not contain  ${Name}
-
-
-

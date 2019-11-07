@@ -26,3 +26,9 @@
 ...  link=/SMM
 ...  link_title=xpath=//a[@title='User Management']
 ...  dashboard_title=Sales & Marketing
+
+&{CPF}
+...  name=CPF
+...  link=/SMM
+...  link_title=xpath=//a[@title='CPF']
+...  dashboard_title=CPF

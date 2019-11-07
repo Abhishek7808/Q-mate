@@ -26,19 +26,19 @@ class ERP(LibraryComponent):
         # """Variant of builtin Go To keyword for ERP. Navigates the active browser instance to the provided ``url``
         # and validate ERP session if session is expired it will attempt the login with given user type. User type
         # can be given from the command line arguments. default is ADMIN"""
-        self.driver.get(url)
         is_login_page = False
         try:
-            self.driver.find_element_by_id("btnLogin")
-        except NoSuchElementException:
-            pass
+            self.driver.get(url)
         except UnexpectedAlertPresentException:
             alert = self.driver.switch_to_alert()
             alert.accept()
-            print("alert accepted")
+            logger.console("Session timeout alert, alert accepted")
             is_login_page = True
-        else:
+        try:
+            self.driver.find_element_by_id("btnLogin")
             is_login_page = True
+        except NoSuchElementException:
+            pass
 
         if is_login_page:
             login_user(user_type)

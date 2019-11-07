@@ -57,8 +57,8 @@ ${COMMON_DATA}        ${DATA}${/}${COMMON_DATA_NAME}
 #  Email Settings  #
 ####################
 &{EMAIL}
-...  address=ashwani.vijay@e-connectsolutions.com
-...  password=Joy@123
+...  address=anubhav.verma@e-connectsolutions.com
+...  password=A@nub@19
 ${SEND_EMAIL_NOTIFICATIONS}  True
 
 
@@ -85,5 +85,8 @@ ${LOGIN_TEXT}            Login to your E-Prashasan Account
 &{ERROR_DETAILS}
 ...  1= Page is not loading properly
 ...  2= Appropriate title tag is missing
-...  3= Page is accessible without permissions
+...  3= Resource not found
+...  4= Page is accessible without permissions
 
+#Notify False Positive Link
+${NOTIFY_FALSE_ERROR_LINK}  https://divaksh.com/q-mate/false_positive.php?q=
