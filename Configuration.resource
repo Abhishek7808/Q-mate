@@ -5,7 +5,7 @@
 ##########################
 ${ENVIRONMENT}       demo
 ${BROWSER}           chrome
-&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=demoprojects.e-connectsolutions.com/ERP-TEST  production=demoprojects.e-connectsolutions.com/ERP-DEMO
+&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://demoprojects.e-connectsolutions.com/ERP-DEMO
 
 
 ####################
@@ -37,7 +37,7 @@ ${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
 #    File Names      #
 ######################
 ${REPORT_NAME}              ErrorReport.csv
-${URLS_JSON_NAME}           URLs.json
+${URLS_JSON_NAME}           TestUrls.json
 ${TEST_URLS_JSON_NAME}      TestUrls.json
 ${RECIEVERS_JSON_NAME}      Receivers.json
 ${COMMON_DATA_NAME}         Common_Data.robot
@@ -83,7 +83,7 @@ ${LOGIN_TEXT}            Login to your E-Prashasan Account
 
 # Error Definition
 &{ERROR_DETAILS}
-...  1= Page is not loading properly
+...  1= Encountered with a showstopper
 ...  2= Appropriate title tag is missing
 ...  3= Resource not found
 ...  4= Page is accessible without permissions

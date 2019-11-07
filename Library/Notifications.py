@@ -98,12 +98,12 @@ th, td {
                     <tr>
                         <th bgcolor="#d1d1d1"> Sr. No. </th>
                         <th bgcolor="#d1d1d1"> URL </th>
-                        <th bgcolor="#d1d1d1"> Issue Found </th>
+                        <th bgcolor="#d1d1d1"> Issue </th>
                         <th bgcolor="#d1d1d1"> False Positive </th>
                     </tr>""" + table_data(number_of_items, error_urls) + """</table>
                 </body>
                 </html>"""
-    message = "<br>Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
+    message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
         "${ENVIRONMENT}") + " environment and found possible issues on following pages <br><br>" + html_table + "<br><b>Important: </b>This is an automated email fired by RajERP Bot. There are very thin chances of any false positive report, but just in case, if you find any, please do let us know about it by clicking on the <u>Notify</u> link right next to the URL."
 
     #    logger.console(message)
