@@ -14,8 +14,9 @@ def filter_module_error_url(module_name):
     for item in error_list:
         if module_name.lower() == item[0][52:55].lower():
             module_error_list.append(item)
-    #logger.console("hi")
+    # logger.console("hi")
     return module_error_list
+
 
 def read_file_return_list(file):
     # """Reads the Csv file and returns a list of errors"""

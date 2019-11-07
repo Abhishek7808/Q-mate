@@ -6,7 +6,7 @@ Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Resource  ${PAGE OBJECTS}/ModuleNavigation.robot
 Resource  ${PAGE OBJECTS}/HRMS/PostClass.robot
-Library     Collections
+Library   Collections
 
 #Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
@@ -32,17 +32,20 @@ ${PERFERENCE DROPDOWN}  Pre_Unit
 Change Unit Pefrence
     [Tags]  debug
     open erp page  /HRM/salaryDisbursment/SalayDisbursmentIndex
-    TopNavigation.Open User Action Menu
-    click element  ${Change Preference}
-    sleep  5s
-    click element  ${PERFERENCE MENU ID}
-    Wait Until Page Contains Element  xpath=//ul[contains(@class,'select2-results')]
-    ${count}  Get Element Count  //div[@id='select2-drop']//li
-    FOR  ${i}  IN RANGE  1  ${count}
-    \    click element  xpath=//div[@id='select2-drop']//li[${i}]
-    \    click element  ${PERFERENCE MENU ID}
+#    TopNavigation.Open User Action Menu
+#    click element  ${Change Preference}
+#    sleep  5s
+#    click element  ${PERFERENCE MENU ID}
+#    Wait Until Page Contains Element  xpath=//ul[contains(@class,'select2-results')]
+#    ${count}  Get Element Count  //div[@id='select2-drop']//li
+#    FOR  ${i}  IN RANGE  1  ${count}
+#    \    click element  xpath=//div[@id='select2-drop']//li[${i}]
+#    \    click element  ${PERFERENCE MENU ID}
+#
+#    sleep  10s
 
-    sleep  10s
+#    Send Error Email Notification  ${HRMS.name}  ${RECIEVERS_JSON}
+
 #    Mouse Down    xpath=//li[contains(.,'Udaipur')]
 #    select last dropdown element  ${PERFERENCE DROPDOWN}
 

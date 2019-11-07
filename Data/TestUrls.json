@@ -30,5 +30,180 @@
 		"NAME": "Advice configuration",
 		"MODULE": "ACC",
 		"URL": "ACC/PaymentAdvisebillType/Index"
-	}
+	},
+      {
+        "MODULE": "HRM",
+        "NAME": "7th Pay Fixation",
+        "URL": "HRM/FixationArrear/SeventhPayFixation"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "ACP Eligilble Employees",
+        "URL": "HRM/ACP/ACPEligibleEmployee"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "ACP Fixation",
+        "URL": "hrm/acp/ACPApprovalHR"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "ACP Sanction",
+        "URL": "hrm/acp/ACPApproval"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "AGI Approval",
+        "URL": "HRM/AGI?IsApprover=1"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "AGI Rule",
+        "URL": "HRM/AGIConfiguration"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "AGM(Data Bank) Cell",
+        "URL": "HRM/RetirementProcess/AGM_DATABANK_Index"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "APAR Approval",
+        "URL": "HRM/APAR/AparApproval?id=-1"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "APAR Approving Officer",
+        "URL": "hrm/APAR/detail?id=-1&source=APPROVAL"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "APAR Controlling Officer",
+        "URL": "hrm/APAR/detail?id=-1&source=REVIEW"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "APAR Employee Appeal",
+        "URL": "HRM/APAR/AppealList"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "APAR HR",
+        "URL": "hrm/APAR/detail?id=-1&source=HR"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "APAR Reporting Officer",
+        "URL": "hrm/APAR/detail?id=-1&source=REPORTING"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "APAR Status",
+        "URL": "hrm/apar?flag=A"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Absentee HO Section",
+        "URL": "HRM/AttendanceVerificationSection"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Absentee Sheet",
+        "URL": "HRM/AttendanceVerification"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Additional Charge",
+        "URL": "HRM/orderproposal/ProposalApproval?SearchProposalType=41"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Advance Approval",
+        "URL": "HRM/AdvanceConversion/AdvanceIndex"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Advance Conversion",
+        "URL": "HRM/AdvanceConversion"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Annexure C1",
+        "URL": "HRM/PayrollProcess/SalaryDetailReportFilter?flag=C1"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Annexure Columns",
+        "URL": "HRM/AnnexureConfig"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Annexure Configuration",
+        "URL": "HRM/AnnexureConfig/AnnexureConfigIndex"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Annual Grade Increment",
+        "URL": "HRM/AGI"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Annual Return",
+        "URL": "HRM/AnnualReturn"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Annual Return",
+        "URL": "HRM/AnnualReturn/AnnualReturnIndex"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Appeal",
+        "URL": "HRM/APAR/FirstAppealList"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Appeals",
+        "URL": "HRM/APAR/AppealList"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Appellette Board",
+        "URL": "HRM/APAR/SecondAppealList"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Application Deputation Out",
+        "URL": "HRM/EmployeeRequest/ApplyDeputationIndex"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Application",
+        "URL": "HRM/FurtherStudy?IsApprover=1"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Apply Further Study",
+        "URL": "HRM/FurtherStudy"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Apply TA/DA",
+        "URL": "HRM/BillSettlement/TourApplication"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Appraisal Form",
+        "URL": "HRM/APAR/AppraisalFormIndex"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Approval Configuration",
+        "URL": "hrm/ApplicationConfiguration"
+    },
+    {
+        "MODULE": "HRM",
+        "NAME": "Arrear Adjust Approval",
+        "URL": "HRM/ArrearProcess/ArrearConversionApprovalIndex"
+    }
 ]

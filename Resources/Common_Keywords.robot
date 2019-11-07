@@ -16,7 +16,7 @@ Begin Web Test
     #${pluginPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${PLUGINS_DIR}
     #evaluate  sys.path.append(os.path.join(r'${PLUGINS}'))  modules=os, sys
 
-    remove file  ${ERRORFILE}
+    # remove file  ${ERRORFILE}
 
     open browser  about:blank  ${BROWSER}
     maximize browser window
