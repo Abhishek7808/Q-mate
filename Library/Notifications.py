@@ -147,7 +147,7 @@ class Notifications:
 
         # send the message via the server set up earlier.
         #        smtp_obj_response = smtp_obj.send_message(msg.as_string())
-        smtp_obj.sendmail(qmate_email, send_to, msg.as_string())
+        smtp_obj.sendmail(qmate_email, msg["To"].split(","), msg.as_string())
 
         # check the email response
         #        logger.console(smtp_obj_response)

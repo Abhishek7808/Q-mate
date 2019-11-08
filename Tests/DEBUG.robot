@@ -6,10 +6,10 @@ Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Resource  ${PAGE OBJECTS}/ModuleNavigation.robot
 Resource  ${PAGE OBJECTS}/HRMS/PostClass.robot
+Resource  ${PAGE OBJECTS}/TopNavigation.robot
 
-
-Suite Setup  Common_Keywords.Begin Web Test
-Suite Teardown  Common_Keywords.End Web Test
+#Suite Setup  Common_Keywords.Begin Web Test
+#Suite Teardown  Common_Keywords.End Web Test
 
 # robot --loglevel debug -d Results Tests/DEBUG.robot
 
@@ -26,29 +26,22 @@ ${salaryUrl} =  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/salaryDi
 
 ${PERFERENCE MENU ID}  xpath=//div[@id='s2id_Pre_Unit']
 ${Change Preference}  xpath=//a[contains(text(),'Change Preference')]
-${PERFERENCE DROPDOWN}  Pre_Unit
-
+${PERFERENCE DROPDOWN}  SalaryCycleId
+@{finalList}
 *** Test Cases ***
 
-Change Unit Pefrence
+All paybills should be checked
     [Tags]  debug
-    open erp page  /HRM/salaryDisbursment/SalayDisbursmentIndex
-#    TopNavigation.Open User Action Menu
-#    click element  ${Change Preference}
-#    sleep  5s
-#    click element  ${PERFERENCE MENU ID}
-#    Wait Until Page Contains Element  xpath=//ul[contains(@class,'select2-results')]
-#    ${count}  Get Element Count  //div[@id='select2-drop']//li
-#    FOR  ${i}  IN RANGE  1  ${count}
-#    \    click element  xpath=//div[@id='select2-drop']//li[${i}]
-#    \    click element  ${PERFERENCE MENU ID}
+
+    Common_Keywords.Open SalaryDisbursement Page  ${finalList}
+
 #
 #    sleep  10s
-
-#    Send Error Email Notification  ${HRMS.name}  ${RECIEVERS_JSON}
-
+#
 #    Mouse Down    xpath=//li[contains(.,'Udaipur')]
-#    select last dropdown element  ${PERFERENCE DROPDOWN}
+#   select last dropdown element  ${PERFERENCE DROPDOWN}
+#
 
 
 
+#  Send Error Email Notification  ${HRMS.name}  ${RECIEVERS_JSON}
