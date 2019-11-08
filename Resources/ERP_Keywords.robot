@@ -2,7 +2,6 @@
 Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 Library   ${LIBRARY}/GenericTests.py
 Resource  ${PAGE OBJECTS}/Generic.robot
-Resource  ${PAGE OBJECTS}/Generic.robot
 Resource  ${PAGE OBJECTS}/Login.robot
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
 Resource  ${PAGE OBJECTS}/ModuleNavigation.robot
@@ -73,7 +72,7 @@ Test FA
     #Go To ERP Page Home
 
 Run Generic Tests From Admin
-    [Arguments]  ${moduleName}
+    [Arguments]  ${moduleName}Resource  ${PAGE OBJECTS}/Login.robot
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
 
@@ -84,3 +83,4 @@ Run Generic Tests From Other User
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
 
 #Check ALL HRM Urls
+

@@ -22,10 +22,6 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 # login data added into Data/Login_Data.robot
 
 
-${PERFERENCE MENU ID}  xpath=//div[@id='s2id_Pre_Unit']
-${Change Preference}  xpath=//a[contains(text(),'Change Preference')]
-${PERFERENCE DROPDOWN}  SalaryCycleId
-@{finalList}
 *** Test Cases ***
 
 
@@ -43,3 +39,4 @@ All paybills should be checked
 
 
 
+*** Keywords ***
