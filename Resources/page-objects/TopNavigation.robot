@@ -7,7 +7,8 @@ ${HOME_LINK}    xpath=//div[@id='brandWrapper']//div//img
 ${CHANGE PEFERENCE LINK}  xpath=//a[contains(text(),'Change Preference')]
 ${UNIT PERFERENCE MENU}  xpath=//div[@id='s2id_Pre_Unit']
 ${UNIT PERFERENCE DROPDOWN}  xpath=//ul[contains(@class,'select2-results')]
-${UNIT PERFERENCE DROPDOWN LIST ITEM}  //div[@id='select2-drop']//li
+${UNIT PERFERENCE DROPDOWN LIST ITEM}  //*[@id='Pre_Unit']//option
+${UNIT PERFERENCE DROPDOWN INPUT BOX}  //*[@id="select2-drop"]/div/input
 ${APPLY PERFERENCE BUTTON}  //*[@id="SAVE_OPTION"]
 
 
@@ -23,11 +24,11 @@ Open Notifications
 Open User Action Menu
     wait until element is visible  ${USER_ACTION_DROPDOWN_LINK}
     mouse over  ${USER_ACTION_DROPDOWN_LINK}
-    sleep  500ms
+    sleep  1s
 
 Open Change Preference Modal
     TopNavigation.Open User Action Menu
-    sleep  2s
+#    sleep  2s
     click element  ${CHANGE PEFERENCE LINK}
     sleep  2s
 
@@ -42,8 +43,13 @@ Get Unit Count In Preference Modal
 
 Select Unit In Preference Modal
     [Arguments]  ${i}
-    click element  ${UNIT PERFERENCE DROPDOWN LIST ITEM}[${i}]
+    click element  ${UNIT PERFERENCE DROPDOWN LIST ITEM} [${i}]
     sleep  2s
+
+Select Unit In Preference Modal By Name
+    [Arguments]  ${unitName}
+#    click element  ${UNIT PERFERENCE MENU}
+    input text  ${UNIT PERFERENCE DROPDOWN INPUT BOX}  ${unitName}
 
 Apply Pereference
     click button  ${APPLY PERFERENCE BUTTON}

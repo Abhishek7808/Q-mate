@@ -23,12 +23,14 @@ Perform All Critical Generic Tests On Urls
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check Page Error
-    \   run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
+    \   run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
     #Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 Add Failed Url To The Fatal Error List
-    [Arguments]   ${url}
-    append to file  ${ERRORFILE}  ${url}\n
+    [Arguments]   ${url}  ${result}
+    ${errorCode}  get from dictionary  ${ERROR_DETAILS}  ${result}
+    run keyword and continue on failure  fail  ${errorCode} : ${url}
+    append to file  ${ERRORFILE}  ${url},${result}\n
 
 #Add Failed Url To The fatal Error List
 #    [Arguments]   ${url}
@@ -81,7 +83,7 @@ Perform Permission Tests On Urls
     \   Open ERP Page Without Permission  ${url}
     \   ${errorCheck}  Check Error Occurred  #if page has any other error do not report it
     \   ${result}  run keyword if  ${errorCheck} == None   Check Permissions
-    \   run keyword if  ${result} == 4   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url},${result}
+    \   run keyword if  ${result} == 4   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
     Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 

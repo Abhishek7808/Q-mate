@@ -37,7 +37,7 @@ ${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
 #    File Names      #
 ######################
 ${REPORT_NAME}              ErrorReport.csv
-${URLS_JSON_NAME}           TestUrls.json
+${URLS_JSON_NAME}           URLs.json
 ${TEST_URLS_JSON_NAME}      TestUrls.json
 ${RECIEVERS_JSON_NAME}      Receivers.json
 ${COMMON_DATA_NAME}         Common_Data.robot

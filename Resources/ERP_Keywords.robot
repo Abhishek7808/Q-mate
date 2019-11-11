@@ -72,7 +72,7 @@ Test FA
     #Go To ERP Page Home
 
 Run Generic Tests From Admin
-    [Arguments]  ${moduleName}Resource  ${PAGE OBJECTS}/Login.robot
+    [Arguments]  ${moduleName}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
 

@@ -20,23 +20,27 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 #${ENVIRONMENT} =  demo
 #${BROWSER} =  firefox
 # login data added into Data/Login_Data.robot
-
+${number} =  376.00
 
 *** Test Cases ***
 
 
 All paybills should be checked
     [Tags]  debug
-
-    Common_Keywords.Open SalaryDisbursement Page  ${finalList}
+#
+#    Common_Keywords.Open SalaryDisbursement Page  ${finalList}
 
 #
 #    sleep  10s
 #
 #    Mouse Down    xpath=//li[contains(.,'Udaipur')]
 #   select last dropdown element  ${PERFERENCE DROPDOWN}
+
 #
+    log to console  ${number}
 
-
+    ${floatnum}  Evaluate  "%.2f" % ${number}
+    #${floatnum2}  convert to number  ${floatnum}  2
+    log to console  ${floatnum}
 
 *** Keywords ***
