@@ -41,6 +41,7 @@ ${URLS_JSON_NAME}           URLs.json
 ${TEST_URLS_JSON_NAME}      TestUrls.json
 ${RECIEVERS_JSON_NAME}      Receivers.json
 ${COMMON_DATA_NAME}         Common_Data.robot
+${CREDENTIALS_FILE_NAME}         Credentials.json
 
 
 ######################
@@ -51,6 +52,7 @@ ${URLS_JSON}          ${DATA}${/}${URLS_JSON_NAME}
 ${TEST_URLS}          ${DATA}${/}${TEST_URLS_JSON_NAME}
 ${RECIEVERS_JSON}     ${DATA}${/}${RECIEVERS_JSON_NAME}
 ${COMMON_DATA}        ${DATA}${/}${COMMON_DATA_NAME}
+${CREDENTIALS_FILE}   ${DATA}${/}${CREDENTIALS_FILE_NAME}
 
 
 ####################
@@ -102,6 +104,12 @@ ${RETRY INTERVAL}    200ms
 ...  link=/CPF
 ...  link_title=xpath=//a[@title='CPF']
 ...  dashboard_title=CPF:Dashboard
+
+
+########################
+#    Organizations     #
+########################
+
 
 
 

@@ -38,9 +38,12 @@ All paybills should be checked
 
 #
     log to console  ${number}
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}
+#    ${floatnum}  Evaluate  "%.2f" % ${number}
+#    #${floatnum2}  convert to number  ${floatnum}  2
+#    log to console  ${floatnum}
 
-    ${floatnum}  Evaluate  "%.2f" % ${number}
-    #${floatnum2}  convert to number  ${floatnum}  2
-    log to console  ${floatnum}
+
+
 
 *** Keywords ***
