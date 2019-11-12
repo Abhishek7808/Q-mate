@@ -23,36 +23,40 @@ Open Notifications
 
 Open User Action Menu
     wait until element is visible  ${USER_ACTION_DROPDOWN_LINK}
+    sleep  5s
     mouse over  ${USER_ACTION_DROPDOWN_LINK}
-    sleep  1s
+
 
 Open Change Preference Modal
     TopNavigation.Open User Action Menu
-#    sleep  2s
-    click element  ${CHANGE PEFERENCE LINK}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click link  ${CHANGE PEFERENCE LINK}
     sleep  2s
 
 Open Unit Dropdown In Preference Modal
-    click element  ${UNIT PERFERENCE MENU}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  ${UNIT PERFERENCE MENU}
     Wait Until Page Contains Element  ${UNIT PERFERENCE DROPDOWN}
 
 Get Unit Count In Preference Modal
-    Open Unit Dropdown In Preference Modal
+#   Open Unit Dropdown In Preference Modal
     ${count}  get element count  ${UNIT PERFERENCE DROPDOWN LIST ITEM}
     return from keyword  ${count}
 
 Select Unit In Preference Modal
     [Arguments]  ${i}
-    click element  ${UNIT PERFERENCE DROPDOWN LIST ITEM} [${i}]
+    ${num}  convert to string  ${i}
+    select from list by index  id=Pre_Unit  ${num}
     sleep  2s
 
 Select Unit In Preference Modal By Name
     [Arguments]  ${unitName}
 #    click element  ${UNIT PERFERENCE MENU}
-    input text  ${UNIT PERFERENCE DROPDOWN INPUT BOX}  ${unitName}
+#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  input text  ${UNIT PERFERENCE DROPDOWN INPUT BOX}  ${unitName}
+    select from list by label  id=Pre_Unit  ${unitName}
 
 Apply Pereference
-    click button  ${APPLY PERFERENCE BUTTON}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click button  ${APPLY PERFERENCE BUTTON}
+    ${status}  run keyword and return status  wait until page contains  OK
+    return from keyword  ${status}
 
 Click On Logout Link
     click element  ${LOGOUT_LINK}
@@ -62,6 +66,10 @@ Verify Login Page Is Loaded
 
 Go Back To Home
     click element  ${HOME_LINK}
+
+Open Preference Unit Page
+    go to erp page  ${BASE_URL.${ENVIRONMENT}}/Utility/ChangePrefereence
+
 
 
 

@@ -4,15 +4,16 @@ Resource  ${RESOURCES}/Common_Keywords.robot
 Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${RESOURCES}/DA_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
+Library    SeleniumLibrary
 
 *** Test Cases ***
-#Disbursed amount should match with the report amount for all units
-#    [Tags]  dataanalysis  disbursmentallunits
-#    DA_Keywords.Match Disbursed Amount With The Report For All Units
+Disbursed amount should match with the report amount for all units
+    [Tags]  dataanalysis  disbursmentallunits
+    DA_Keywords.Match Disbursed Amount With The Report For All Units
 
 
 Disbured amount should match with the report amount for given unit
     [Tags]  dataanalysis  disbursmentunit
-    DA_Keywords.Match Disbursed Amount With The Report For A Unit
+    DA_Keywords.Match Disbursed Amount With The Report For A Unit  Head Office (20)
 
 

@@ -66,7 +66,7 @@ ${SEND_EMAIL_NOTIFICATIONS}  True
 #  Time Settings   #
 ####################
 ${DELAY}          0
-${RETRY TIME}     5s
+${RETRY TIME}     10s
 ${RETRY INTERVAL}    200ms
 
 

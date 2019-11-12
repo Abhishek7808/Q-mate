@@ -5,7 +5,7 @@ ${APPLY FILTER}  //button[contains(text(),'Apply Filter')]
 
 
 Select Filter Menu
-     click button  ${FILTER BUTTON}
+     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click button  ${FILTER BUTTON}
      sleep  2s
 
 
