@@ -6,6 +6,12 @@ Resource  ${RESOURCES}/DA_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Library    SeleniumLibrary
 
+
+*** Variable ***
+${ENVIRONMENT}   production
+${UNIT}          Head Office
+
+
 *** Test Cases ***
 Disbursed amount should match with the report amount for all units
     [Tags]  dataanalysis  disbursmentallunits
@@ -14,6 +20,6 @@ Disbursed amount should match with the report amount for all units
 
 Disbured amount should match with the report amount for given unit
     [Tags]  dataanalysis  disbursmentunit
-    DA_Keywords.Match Disbursed Amount With The Report For A Unit  Head Office (20)
+    DA_Keywords.Match Disbursed Amount With The Report For A Unit  ${UNIT}
 
 

@@ -40,7 +40,7 @@ Report Fatal Errors To Developers
      [Arguments]  ${moduleName}  @{fatalErorrs}
      #run keyword and continue on failure  Write Error Report  ${fatalErorrs}
      log  ${fatalErorrs}
-     Send Error Email Notification  ${moduleName}  ${RECIEVERS_JSON}
+     Send Error Email Notification  ${moduleName}  ${CONTACTS_JSON}
 
 Get Urls List Of Fatal Errors
     [Arguments]  ${fatalErorrs}

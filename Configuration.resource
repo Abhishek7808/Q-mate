@@ -5,7 +5,8 @@
 ##########################
 ${ENVIRONMENT}       demo
 ${BROWSER}           chrome
-&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://demoprojects.e-connectsolutions.com/ERP-DEMO
+&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://rajerp.rajasthan.gov.in
+${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}/adminlogin
 
 
 ####################
@@ -39,9 +40,9 @@ ${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
 ${REPORT_NAME}              ErrorReport.csv
 ${URLS_JSON_NAME}           URLs.json
 ${TEST_URLS_JSON_NAME}      TestUrls.json
-${RECIEVERS_JSON_NAME}      Receivers.json
+${CONTACTS_JSON_NAME}       Receivers.json
 ${COMMON_DATA_NAME}         Common_Data.robot
-${CREDENTIALS_FILE_NAME}         Credentials.json
+${CREDENTIALS_FILE_NAME}    Credentials.json
 
 
 ######################
@@ -50,7 +51,7 @@ ${CREDENTIALS_FILE_NAME}         Credentials.json
 ${ERRORFILE}          ${RESULTS}${/}${REPORT_NAME}
 ${URLS_JSON}          ${DATA}${/}${URLS_JSON_NAME}
 ${TEST_URLS}          ${DATA}${/}${TEST_URLS_JSON_NAME}
-${RECIEVERS_JSON}     ${DATA}${/}${RECIEVERS_JSON_NAME}
+${CONTACTS_JSON}      ${DATA}${/}${CONTACTS_JSON_NAME}
 ${COMMON_DATA}        ${DATA}${/}${COMMON_DATA_NAME}
 ${CREDENTIALS_FILE}   ${DATA}${/}${CREDENTIALS_FILE_NAME}
 

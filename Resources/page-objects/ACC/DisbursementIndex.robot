@@ -1,5 +1,5 @@
 *** Variables ***
-${disbursementIndex}  /HRM/salaryDisbursment/SalayDisbursmentIndex
+${disbursementIndex}  HRM/salaryDisbursment/SalayDisbursmentIndex
 ${cycle}  SalaryCycleId
 ${paybillTableRow}     //*[@id="classListing"]/div[1]/table/tbody/tr
 ${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
@@ -38,21 +38,6 @@ Match All Paybills Net Amounts With Reports For All Units
     \   Check Paybill
     \   TopNavigation.Open Preference Unit Page
 
-
-
-Match All Paybills Net Amounts with Reports
-    TopNavigation.Open User Action Menu
-    TopNavigation.Open Change Preference Modal
-    TopNavigation.Open Unit Dropdown In Preference Modal
-    ${allUnits}  TopNavigation.Return Unit Count In Preference Modal
-    FOR  ${unit}  IN RANGE  1  ${allUnits}
-    \   TopNavigation.Select Unit In Preference Modal  ${unit}
-    \   Apply Pereference
-    \   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Apply Last Cycle Filter
-    \   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Check Paybill
-    \   TopNavigation.Open User Action Menu
-    \   TopNavigation.Open Change Preference Modal
-    \   TopNavigation.Open Unit Dropdown In Preference Modal
 
 Apply Last Cycle Filter
     NavigationHelper.Select Filter Menu
