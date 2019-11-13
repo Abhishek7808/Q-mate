@@ -13,8 +13,10 @@ Open the Login Page
 
 Attempt Login
     [Arguments]  ${Credentials}
-    Login.Fill Username  ${Credentials.username}
-    Login.Fill Password  ${Credentials.password}
+    ${username}  get from dictionary  ${Credentials}  username
+    ${password}  get from dictionary  ${Credentials}  password
+    Login.Fill Username  ${username}
+    Login.Fill Password  ${password}
     Login.Submit The Form
 
 Attempt Full Logout

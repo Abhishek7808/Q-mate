@@ -117,7 +117,7 @@ ${RETRY INTERVAL}    200ms
 # WARNING: DO NOT TOUCH, VARIABLES WRITTEN BELOW ARE USED IN THE PLUGIN AND LIBRARY  #
 ######################################################################################
 
-# Dafault user type for ERP Login used in plugin ERP.py
+# Default user type for ERP Login used in plugin ERP.py
 ${LOGIN}  admin  #employee, citizen, admin
 
 # Login page details used in the plugin ERP.py

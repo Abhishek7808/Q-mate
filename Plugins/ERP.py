@@ -9,21 +9,14 @@ import csv
 
 def login_user(user_type):
     # gets user type from the global variable or command line argument
-    if user_type == 'admin':
-        BuiltIn().run_keyword("Attempt Login", "${ADMIN_USER}")
-    elif user_type == 'employee':
-        BuiltIn().run_keyword("Attempt Login", "${NONADMIN_USER}")
-    elif user_type == 'citizen':
-        BuiltIn().run_keyword("Attempt Login", "${CITIZEN_USER}")
-    else:
-        # BuiltIn.set_global_variable(get_organization_credentials(organization))
-        logger.console(get_organization_credentials(user_type))
-        BuiltIn().run_keyword("Attempt Login", get_organization_credentials(user_type))
-        logger.console("User type should be admin, employee or citizen but you entered : " + user_type)
+    # BuiltIn.set_global_variable(get_organization_credentials(organization))
+    logger.console(get_organization_credentials(user_type))
+    BuiltIn().run_keyword("Attempt Login", get_organization_credentials(user_type))
+    logger.console("User type should be admin, employee or citizen but you entered : " + user_type)
 
 
 def get_organization_credentials(organization):
-    logger.console(BuiltIn().get_variable_value("${CREDENTIALS_FIL}"))
+    logger.console(BuiltIn().get_variable_value("${CREDENTIALS_FILE}"))
     f = open(BuiltIn().get_variable_value("${CREDENTIALS_FILE}"), 'r')
     return json.load(f).get(organization)
 

@@ -20,7 +20,7 @@ Match All Paybills Net Amount With The Report For Given Unit
     ${status}  TopNavigation.Apply Pereference
     run keyword if  ${status} == False  Match All Paybills Net Amount With The Report For Given Unit
     Go To Disbursement Index Page
-#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Apply Last Cycle Filter
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Apply Last Cycle Filter
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Check Paybill
 
 Match All Paybills Net Amounts With Reports For All Units
@@ -33,7 +33,7 @@ Match All Paybills Net Amounts With Reports For All Units
     \   ${status}  TopNavigation.Apply Pereference
     \   run keyword if  ${status} == False  Match All Paybills Net Amounts With Reports For All Units
     \   Go To Disbursement Index Page
-#   \   Apply Last Cycle Filter
+    \   Apply Last Cycle Filter
     \   sleep  2s
     \   Check Paybill
     \   TopNavigation.Open Preference Unit Page
