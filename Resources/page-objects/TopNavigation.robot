@@ -47,11 +47,14 @@ Select Unit In Preference Modal
     select from list by index  id=Pre_Unit  ${num}
     sleep  2s
 
-Select Unit In Preference Modal By Name
-    [Arguments]  ${unitName}
+Select Unit In Preference Modal By ID
+    [Arguments]  ${unitID}
 #    click element  ${UNIT PERFERENCE MENU}
 #    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  input text  ${UNIT PERFERENCE DROPDOWN INPUT BOX}  ${unitName}
-    select from list by label  id=Pre_Unit  ${unitName}
+    Open Preference Unit Page
+    select from list by value  id=Pre_Unit  ${unitID}
+    ${status}  Apply Pereference
+    return from keyword  ${status}
 
 Apply Pereference
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click button  ${APPLY PERFERENCE BUTTON}

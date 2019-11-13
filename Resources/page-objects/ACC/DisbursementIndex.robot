@@ -14,14 +14,13 @@ Go To Disbursement Index Page
 
 #Complete follwoing keyword, it will take unit as an argument and perform tests on it.
 Match All Paybills Net Amount With The Report For Given Unit
-    [Arguments]  ${unitName}
-    TopNavigation.Open Preference Unit Page
-    TopNavigation.Select Unit In Preference Modal By Name  ${unitName}
-    ${status}  TopNavigation.Apply Pereference
+    [Arguments]  ${unitID}
+    ${status}  run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}
     run keyword if  ${status} == False  Match All Paybills Net Amount With The Report For Given Unit
     Go To Disbursement Index Page
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Apply Last Cycle Filter
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Check Paybill
+    Apply Given Cycle Filter
+    sleep  2s
+    Check Paybill
 
 Match All Paybills Net Amounts With Reports For All Units
     TopNavigation.Open Preference Unit Page
@@ -33,16 +32,20 @@ Match All Paybills Net Amounts With Reports For All Units
     \   ${status}  TopNavigation.Apply Pereference
     \   run keyword if  ${status} == False  Match All Paybills Net Amounts With Reports For All Units
     \   Go To Disbursement Index Page
-    \   Apply Last Cycle Filter
+    \   Apply Given Cycle Filter
     \   sleep  2s
     \   Check Paybill
     \   TopNavigation.Open Preference Unit Page
 
-
-Apply Last Cycle Filter
+Apply Given Cycle Filter
+#    [Arguments]  ${cycleID}
     NavigationHelper.Select Filter Menu
-    select last dropdown element  ${cycle}
+    run keyword if  ${cycleID} != None  select from list by value  ${cycle}  ${cycleID}  ELSE  select last dropdown element  ${cycle}
     NavigationHelper.Apply Filter
+Apply Last Cycle Filter
+#    NavigationHelper.Select Filter Menu
+    select last dropdown element  ${cycle}
+#    NavigationHelper.Apply Filter
 
 Check Paybill
     ${allPaybills}  Get Paybill Count
@@ -69,7 +72,7 @@ Get Paybill Number
 
 Get Data Of Report Page
     [Arguments]  ${paybillTableRow}
-    click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[7]/div/div/a[2]/i
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[7]/div/div/a[2]/i
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[7]/div/div/ul/li[1]/a[1]
     Switch Tab
     @{list}  create list

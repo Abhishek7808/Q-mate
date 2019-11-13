@@ -13,6 +13,6 @@ Match Disbursed Amount With The Report For All Units
     DisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Disbursed Amount With The Report For A Unit
-    [Arguments]  ${unitName}
+    [Arguments]  ${unitID}
     DisbursementIndex.Go To Disbursement Index Page
-    DisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitName}
+    DisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}

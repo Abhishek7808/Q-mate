@@ -1,6 +1,6 @@
 *** Settings ***
 Library  SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
-Resource  ${DATA}/Common_Data.robot
+
 
 *** Variables ***
 #Locators

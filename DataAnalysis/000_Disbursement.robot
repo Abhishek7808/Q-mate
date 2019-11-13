@@ -8,10 +8,11 @@ Library    SeleniumLibrary
 
 
 *** Variable ***
-${ENVIRONMENT}   production
-${UNIT}          Head Office
+#${ENVIRONMENT}   production
+${unitID}        None
+${cycleID}       None
 
-
+#robot -d Results -i disbursmentallunits DataAnalysis
 *** Test Cases ***
 Disbursed amount should match with the report amount for all units
     [Tags]  dataanalysis  disbursmentallunits
@@ -20,6 +21,6 @@ Disbursed amount should match with the report amount for all units
 
 Disbured amount should match with the report amount for given unit
     [Tags]  dataanalysis  disbursmentunit
-    DA_Keywords.Match Disbursed Amount With The Report For A Unit  ${UNIT}
+    DA_Keywords.Match Disbursed Amount With The Report For A Unit  ${unitID}
 
 
