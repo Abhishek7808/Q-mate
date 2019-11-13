@@ -9,20 +9,24 @@ ${reportPageTable}  xpath=//table[@id='HBA']
 
 *** Keywords ***
 Go To Disbursement Index Page
+    [Documentation]  Opens salary disbursement page
     go to erp page  ${BASE_URL.${ENVIRONMENT}}/${disbursementIndex}
     sleep  2s
 
 #Complete follwoing keyword, it will take unit as an argument and perform tests on it.
 Match All Paybills Net Amount With The Report For Given Unit
+    [Documentation]  Matches the Salaries in disburement page and report page for a given unit
     [Arguments]  ${unitID}
     ${status}  run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}
-    run keyword if  ${status} == False  Match All Paybills Net Amount With The Report For Given Unit
+    run keyword if  ${status} == False and ${testCount}!=3  Match All Paybills Net Amount With The Report For Given Unit
     Go To Disbursement Index Page
     Apply Given Cycle Filter
     sleep  2s
     Check Paybill
+    ${testCount}  set variable  1
 
 Match All Paybills Net Amounts With Reports For All Units
+    [Documentation]  Matches the Salaries in disburement page and report page for all units
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
     log to console  ${allUnits} number of total units
@@ -36,34 +40,40 @@ Match All Paybills Net Amounts With Reports For All Units
     \   sleep  2s
     \   Check Paybill
     \   TopNavigation.Open Preference Unit Page
+    \   ${testCount}  set variable  1
 
 Apply Given Cycle Filter
-#    [Arguments]  ${cycleID}
+    [Documentation]  Opens filter menu in salary disbursement page and applies the given salary cycle filter
     NavigationHelper.Select Filter Menu
     run keyword if  ${cycleID} != None  select from list by value  ${cycle}  ${cycleID}  ELSE  select last dropdown element  ${cycle}
     NavigationHelper.Apply Filter
+
 Apply Last Cycle Filter
-#    NavigationHelper.Select Filter Menu
+    [Documentation]  Opens filter menu in salary disbursement page and applies the last salary cycle filter
+    NavigationHelper.Select Filter Menu
     select last dropdown element  ${cycle}
-#    NavigationHelper.Apply Filter
+    NavigationHelper.Apply Filter
 
 Check Paybill
+    [Documentation]  Checks the available paybill at the salary disbursement page
     ${allPaybills}  Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    ${paybillNumber}  Get Paybill Number  //tr[${paybill}]//td[2]//span[2]
     \    @{list1}  Get Data Of Report Page  ${paybill}
     \    @{list2}  Get Data Of Disbursement Details Page  ${paybill}
-    \    Compare And Add To List  ${list1}  ${list2}  ${paybillNumber}
+    \    Compare And Add To Report  ${list1}  ${list2}  ${paybillNumber}
     \    Go To Disbursement Index Page
    # log to console  ${finalList} Final List
 
 Get Paybill Count
+    [Documentation]  Returns the number of rows in the given paybill
     ${rowsCount}  get element count  ${paybillTableRow}
     log to console  ${rowsCount} rows in paybill table
     return from keyword  ${rowsCount}
 
 
 Get Paybill Number
+    [Documentation]  Returns the paybill number from the paybill table
     [Arguments]  ${paybillSpan}
     ${paybillText}  get text  ${paybillSpan}
     ${paybillTextDict}  split string  ${paybillText}
@@ -71,6 +81,7 @@ Get Paybill Number
 
 
 Get Data Of Report Page
+    [Documentation]  Returns the list of salaries of employees listed in report page
     [Arguments]  ${paybillTableRow}
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[7]/div/div/a[2]/i
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[7]/div/div/ul/li[1]/a[1]
@@ -87,12 +98,14 @@ Get Data Of Report Page
     return from keyword  @{list}
 
 Change The Number Into A Formatted Amount
+    [Documentation]  Changes the given salary into a floating point number
     [Arguments]  ${salary}
     ${formattedSalary}=  replace string  ${salary}  ,  ${EMPTY}
     ${decimalSalary}=  Evaluate  "%.2f" % ${formattedSalary}
     return from keyword  ${decimalSalary}
 
 Get Data Of Disbursement Details Page
+    [Documentation]  Returns the list of salaries of employees listed in disbursement page
     [Arguments]  ${paybill}
     Switch Tab
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[7]/div/div/a[1]/i
@@ -106,7 +119,8 @@ Get Data Of Disbursement Details Page
     \    append to list  ${list}  ${decimalSalary}
     return from keyword  @{list}
 
-Compare And Add To List
+Compare And Add To Report
+    [Documentation]  Compares both report page list and disbursement page list and add the result of camparision into a report
     [Arguments]  ${list1}  ${list2}  ${paybillNumber}
     log to console  ${list1} data of disbursement page
     log to console  ${list2} data of report page
@@ -116,6 +130,7 @@ Compare And Add To List
 
 
 Get Amount Column Number
+    [Documentation]  Gives the column number of the 'Net Amount' column
     [Arguments]  ${tableUrl}
     ${text2}  set variable  Net Amount
     ${NumberOfColumns}  get element count  ${tableUrl}/thead/tr/th
@@ -126,12 +141,14 @@ Get Amount Column Number
 
 
 Add To The Disbusement Test Report
+    [Documentation]  Add unmatched salaries to the Test Report
     [Arguments]  ${paybillNumber}  ${index}
     ${employeeID}  Get Employee ID  ${disbursementTable}  ${index}  3
     run keyword and continue on failure  fail  Salary of Employee ID. ${employeeID} in ${paybillNumber} didn't match
     append to file  ${ERRORFILE}  Paybill No. ${paybillNumber}, Employee ID. ${employeeID}\n
 
 Get Employee ID
+    [Documentation]  Returns the employee ID from the given table data
     [Arguments]  ${tableID}  ${rowNumber}  ${columnNumber}
     ${employeeData}   get table cell  ${tableID}  ${rowNumber+2}  ${columnNumber}
     ${employeeDataDict}  split string  ${employeeData}  -
@@ -139,11 +156,13 @@ Get Employee ID
     return from keyword  ${employeeID}
 
 Switch Tab
+    [Documentation]  Switches the robot to the previous tab
     @{windowTitles}    get window handles
     ${windowToOpen}=    get from list    ${windowTitles}  -1
     Select Window    ${windowToOpen}
 
 Close Last Tab
+    [Documentation]  Closes the last tab
     ${title_var}        Get Window Titles
     Select Window       title=@{title_var}[0]
     close window
