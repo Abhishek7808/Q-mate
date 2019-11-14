@@ -12,6 +12,8 @@ ${UNIT PERFERENCE DROPDOWN INPUT BOX}  //*[@id="select2-drop"]/div/input
 ${APPLY PERFERENCE BUTTON}  //*[@id="SAVE_OPTION"]
 
 
+
+
 *** Keywords ***
 Open Dashboard From Logo
 
@@ -47,28 +49,40 @@ Get Unit Count In Preference Modal
 
 Select Unit In Preference Modal
     [Documentation]  Selects the given unit from the unit dropdown
-    [Arguments]  ${i}
+    [Arguments]  ${i}  ${testCount}
+    Open Preference Unit Page
     ${num}  convert to string  ${i}
     select from list by index  id=Pre_Unit  ${num}
     sleep  2s
+    Apply Pereference
+    ${testCount}  set variable  ${testCount+1}
+    log to console  ${testCount} testCount is increased
+    ${status}  Check Preference Is Selected Or Not
+    run keyword if  ${status} == False and ${testCount} !=3  Select Unit In Preference Modal  ${i}  ${testCount}
+    run keyword if  ${testCount} ==3  fail  Filter is not apllied
+    ${testCount}  convert to integer  1
 
+Check Preference Is Selected Or Not
+    ${status}  run keyword and return status  wait until page contains  OK
+    return from keyword  ${status}
 Select Unit In Preference Modal By ID
     [Documentation]  Selects the unit by unit id from the unit dropdown
-    [Arguments]  ${unitID}
-#    click element  ${UNIT PERFERENCE MENU}
-#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  input text  ${UNIT PERFERENCE DROPDOWN INPUT BOX}  ${unitName}
-
+    [Arguments]  ${unitID}  ${testCount}
     Open Preference Unit Page
     select from list by value  id=Pre_Unit  ${unitID}
-    ${status}  Apply Pereference
-    return from keyword  ${status}
+    Apply Pereference
+    ${testCount}  set variable  ${testCount+1}
+    log to console  ${testCount} testCount is increased
+    ${status}  Check Preference Is Selected Or Not
+    run keyword if  ${status} == False and ${testCount} !=3  Select Unit In Preference Modal By ID  ${unitID}  ${testCount}
+    run keyword if  ${testCount} ==3  fail  Filter is not apllied
+    ${testCount}  convert to integer  1
+
 
 Apply Pereference
     [Documentation]  Applies the selectd preference
-    ${testCount}  set variable  ${testCount} + 1
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click button  ${APPLY PERFERENCE BUTTON}
-    ${status}  run keyword and return status  wait until page contains  OK
-    return from keyword  ${status}
+
 
 Click On Logout Link
     click element  ${LOGOUT_LINK}
@@ -82,6 +96,7 @@ Go Back To Home
 Open Preference Unit Page
     [Documentation]  Opens the preference unit page
     go to erp page  ${BASE_URL.${ENVIRONMENT}}/Utility/ChangePrefereence
+    sleep  2s
 
 
 

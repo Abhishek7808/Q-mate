@@ -10,11 +10,11 @@ ${unitName}  None
 *** Keywords ***
 Match Disbursed Amount With The Report For All Units
     [Documentation]  Opens salary disbursement page and matches the salaries in the paybills of diffrent units for a given salary cycle
-    DisbursementIndex.Go To Disbursement Index Page
-    DisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
+    ${testCount}  DisbursementIndex.Go To Disbursement Index Page
+    DisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${testCount}
 
 Match Disbursed Amount With The Report For A Unit
     [Documentation]  Opens salary disbursement page and matches the salaries in the paybills of given unit for a given salary cycle
     [Arguments]  ${unitID}
-    DisbursementIndex.Go To Disbursement Index Page
-    DisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}
+    ${testCount}  DisbursementIndex.Go To Disbursement Index Page
+    DisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${testCount}

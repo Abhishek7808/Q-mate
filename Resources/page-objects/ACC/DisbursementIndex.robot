@@ -11,36 +11,35 @@ ${reportPageTable}  xpath=//table[@id='HBA']
 Go To Disbursement Index Page
     [Documentation]  Opens salary disbursement page
     go to erp page  ${BASE_URL.${ENVIRONMENT}}/${disbursementIndex}
+    ${testCount}  convert to integer  ${count}
     sleep  2s
+    return from keyword  ${testCount}
 
 #Complete follwoing keyword, it will take unit as an argument and perform tests on it.
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
-    [Arguments]  ${unitID}
-    ${status}  run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}
-    run keyword if  ${status} == False and ${testCount}!=3  Match All Paybills Net Amount With The Report For Given Unit
+    [Arguments]  ${unitID}  ${testCount}
+    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${testCount}
     Go To Disbursement Index Page
     Apply Given Cycle Filter
     sleep  2s
     Check Paybill
-    ${testCount}  set variable  1
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
+    [Arguments]  ${testCount}
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
     log to console  ${allUnits} number of total units
     FOR  ${unit}  IN RANGE  1  ${allUnits}
     \   log to console  ${unit} unit
-    \   TopNavigation.Select Unit In Preference Modal  ${unit}
-    \   ${status}  TopNavigation.Apply Pereference
-    \   run keyword if  ${status} == False  Match All Paybills Net Amounts With Reports For All Units
+    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${testCount}
     \   Go To Disbursement Index Page
     \   Apply Given Cycle Filter
     \   sleep  2s
     \   Check Paybill
     \   TopNavigation.Open Preference Unit Page
-    \   ${testCount}  set variable  1
+
 
 Apply Given Cycle Filter
     [Documentation]  Opens filter menu in salary disbursement page and applies the given salary cycle filter

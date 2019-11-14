@@ -20,7 +20,8 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 #${ENVIRONMENT} =  demo
 #${BROWSER} =  firefox
 # login data added into Data/Login_Data.robot
-${number} =  376.00
+${number} =  1
+#${num}  convert to integer  3
 
 *** Test Cases ***
 
@@ -37,13 +38,19 @@ All paybills should be checked
 #   select last dropdown element  ${PERFERENCE DROPDOWN}
 
 #
-    log to console  ${number}
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}
-    sleep  4s
+#    log to console  ${number}
+#    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}
+#    sleep  4s
 #    ${floatnum}  Evaluate  "%.2f" % ${number}
 #    #${floatnum2}  convert to number  ${floatnum}  2
 #    log to console  ${floatnum}
+     ${num}  convert to integer  ${number}
 
+#     ${num}  set variable  ${num+1}
+#     log to console  ${num}
+     FOR  ${i}  IN RANGE  1  5
+     \   ${num}  set variable  ${num+1}
+     \   log to console  ${num}
 
 
 

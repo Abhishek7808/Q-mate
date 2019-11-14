@@ -9,9 +9,10 @@ Library    SeleniumLibrary
 
 *** Variable ***
 #${ENVIRONMENT}   production
-${unitID}        None
+${unitID}        None  #9
 ${cycleID}       None
-${testCount}     1
+${count}    0
+
 #robot -d Results -i disbursmentallunits DataAnalysis
 *** Test Cases ***
 Disbursed amount should match with the report amount for all units
