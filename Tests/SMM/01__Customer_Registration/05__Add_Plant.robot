@@ -17,7 +17,7 @@ ${RETRY INTERVAL}    200ms
 *** Test Cases ***
 Check_Add_Plant_process
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    Plant=Plant 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    Plant=Plant 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -29,7 +29,7 @@ Check_Add_Plant_process
 
 Add_Plant_at_the_time_of_PO_request
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    Plant=Plant 1    PO=PO 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    Plant=Plant 1    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]

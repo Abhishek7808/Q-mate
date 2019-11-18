@@ -7,7 +7,7 @@ Resource          ${CURDIR}${/}Keywords${/}browser.robot
 Check the process of User Account Deactivation
     [Documentation]    Deactivates an application submitted by the user
     Switch To    Department
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    4
     View Company Details
@@ -23,7 +23,7 @@ Check the process of User Account Deactivation
 Check the process of User Account Activation
     [Documentation]    Activates an application submitted by the user
     Switch To    Department
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    667
     View Company Details
@@ -38,7 +38,7 @@ Check the process of User Account Activation when requested by MTM
     [Documentation]    Activates an application submitted by the user
     [Tags]    Skip
     Switch To    Department
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 3
+    set test variables    Company=Company Department 1    Branch=Branch Department 3
     Go To Customer List
     Apply Filter    4
     View Company Details

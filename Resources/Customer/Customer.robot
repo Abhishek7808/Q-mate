@@ -232,7 +232,7 @@ Fill Inward Slip
     [Arguments]    ${CRO No}
     Switch To    Department
     Sleep    2s
-    #Set Test Variables
+    #set test variables
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
     Sleep    2s
     Input Text Value    ${Key Description["Search By CRO"]["Locator"]}    ${CRO No}

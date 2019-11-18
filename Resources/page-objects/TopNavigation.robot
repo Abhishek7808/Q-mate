@@ -49,34 +49,34 @@ Get Unit Count In Preference Modal
 
 Select Unit In Preference Modal
     [Documentation]  Selects the given unit from the unit dropdown
-    [Arguments]  ${i}  ${testCount}
+    [Arguments]  ${i}  ${retryCount}
     Open Preference Unit Page
     ${num}  convert to string  ${i}
     select from list by index  id=Pre_Unit  ${num}
     sleep  2s
     Apply Pereference
-    ${testCount}  set variable  ${testCount+1}
-    log to console  ${testCount} testCount is increased
+    ${retryCount}  set variable  ${retryCount+1}
+    log to console  ${retryCount} retryCount is increased
     ${status}  Check Preference Is Selected Or Not
-    run keyword if  ${status} == False and ${testCount} !=3  Select Unit In Preference Modal  ${i}  ${testCount}
-    run keyword if  ${testCount} ==3  fail  Filter is not apllied
-    ${testCount}  convert to integer  1
+    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal  ${i}  ${retryCount}
+    run keyword if  ${retryCount} ==3  fail  Filter is not apllied
+    ${retryCount}  convert to integer  1
 
 Check Preference Is Selected Or Not
     ${status}  run keyword and return status  wait until page contains  OK
     return from keyword  ${status}
 Select Unit In Preference Modal By ID
     [Documentation]  Selects the unit by unit id from the unit dropdown
-    [Arguments]  ${unitID}  ${testCount}
+    [Arguments]  ${unitID}  ${retryCount}
     Open Preference Unit Page
     select from list by value  id=Pre_Unit  ${unitID}
     Apply Pereference
-    ${testCount}  set variable  ${testCount+1}
-    log to console  ${testCount} testCount is increased
+    ${retryCount}  set variable  ${retryCount+1}
+    log to console  ${retryCount} retryCount is increased
     ${status}  Check Preference Is Selected Or Not
-    run keyword if  ${status} == False and ${testCount} !=3  Select Unit In Preference Modal By ID  ${unitID}  ${testCount}
-    run keyword if  ${testCount} ==3  fail  Filter is not apllied
-    ${testCount}  convert to integer  1
+    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal By ID  ${unitID}  ${retryCount}
+    run keyword if  ${retryCount} ==3  fail  Filter is not apllied
+    ${retryCount}  convert to integer  1
 
 
 Apply Pereference

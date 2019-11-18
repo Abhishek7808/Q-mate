@@ -1,53 +1,43 @@
-*** Variables ***
-${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
-${columnText}  Net Amount
-${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
-#${employeeIdColumn}  3
-
-
 *** Keywords ***
 
-#TODO: varaible are not required to set here, they can be set in variable section and used
-Set Variables
-    Set Test Variable  ${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
-    Set Test Variable  ${columnText}  Net Amount
-    Set Test Variable  ${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
+Go To Bonus Disbursement Index Page And Set Variables
+    BonusDisbursementIndex.Set Variables
+    ${retryCount}  DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
+    return from keyword  ${retryCount}
 
-Go To Bonus Disbursement Index Page
-    ${testCount}  DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-    return from keyword  ${testCount}
+Set Variables
+    set test variable  ${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
+    set test variable  ${disburseTableColumnText}  Net Amount
+    set test variable  ${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
+
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
-    # TODO: change the variable name from ${testCount} to ${retryCount}
-    [Arguments]  ${unitID}  ${testCount}
-    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${testCount}
+    [Arguments]  ${unitID}  ${retryCount}
+    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${retryCount}
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     DisbursementIndex.Open Filters
     DisbursementIndex.Apply Given Financial Year
     DisbursementIndex.Apply Given Cycle Filter
     DisbursementIndex.Apply Filters
     sleep  2s
-    # TODO: change the variable name from ${columnText} to something readable
-    DisbursementIndex.Check Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}
+    DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
-    # TODO: change the variable name from ${testCount} to ${retryCount}
-    [Arguments]  ${testCount}
+    [Arguments]  ${retryCount}
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
     log to console  ${allUnits} number of total units
     FOR  ${unit}  IN RANGE  1  ${allUnits}
     \   log to console  ${unit} unit
-    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${testCount}
+    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     \   DisbursementIndex.Open Filters
     \   DisbursementIndex.Apply Given Financial Year
     \   DisbursementIndex.Apply Given Cycle Filter
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    # TODO: change the variable name from ${columnText} to something readable
-    \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}
+    \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
     \   TopNavigation.Open Preference Unit Page
 

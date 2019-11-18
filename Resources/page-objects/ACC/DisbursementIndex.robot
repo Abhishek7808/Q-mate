@@ -13,39 +13,39 @@ Go To Disbursement Index Page
     [Arguments]  ${disbursementUnitUrl}
     [Documentation]  Opens salary disbursement page
     go to erp page  ${BASE_URL.${ENVIRONMENT}}/${disbursementUnitUrl}
-    ${testCount}  convert to integer  ${count}
+    ${retryCount}  convert to integer  ${count}
     sleep  2s
-    return from keyword  ${testCount}
+    return from keyword  ${retryCount}
 
 #Go To Arrear Disbursement Index Page
 #    go to erp page  ${BASE_URL.${ENVIRONMENT}}/${disbursementIndex}
-#    ${testCount}  convert to integer  ${count}
+#    ${retryCount}  convert to integer  ${count}
 #    sleep  2s
-#    return from keyword  ${testCount}
+#    return from keyword  ${retryCount}
 
 #Complete follwoing keyword, it will take unit as an argument and perform tests on it.
 #Match All Paybills Net Amount With The Report For Given Unit
 #    [Documentation]  Matches the Salaries in disburement page and report page for a given unit
-#    [Arguments]  ${unitID}  ${testCount}  ${disbursementUrl}  ${columnText}  ${disbursementTable}
-#    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${testCount}
+#    [Arguments]  ${unitID}  ${retryCount}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
+#    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${retryCount}
 #    Go To Disbursement Index Page  ${disbursementUrl}
 #    # Apply Given Cycle Filter
 #    sleep  2s
-#    Check Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}
+#    Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
 
 #Match All Paybills Net Amounts With Reports For All Units
 #    [Documentation]  Matches the Salaries in disburement page and report page for all units
-#    [Arguments]  ${testCount}  ${disbursementUrl}  ${columnText}  ${disbursementTable}
+#    [Arguments]  ${retryCount}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
 #    TopNavigation.Open Preference Unit Page
 #    ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
 #    log to console  ${allUnits} number of total units
 #    FOR  ${unit}  IN RANGE  1  ${allUnits}
 #    \   log to console  ${unit} unit
-#    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${testCount}
+#    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
 #    \   Go To Disbursement Index Page  ${disbursementUrl}
 #    \   Apply Given Cycle Filter
 #    \   sleep  2s
-#    \   Check Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}
+#    \   Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
 #    \   TopNavigation.Open Preference Unit Page
 
 Open Filters
@@ -121,8 +121,8 @@ Get Data Of Report Page
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
     \    ${salary}  get table cell  ${reportPageTable}  ${row+1}  ${columnNumber}
-    \    ${decimalSalary}  Change The Number Into A Formatted Amount  ${salary}
-    \    append to list   ${list}   ${decimalSalary}
+    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${salary}
+    \    append to list   ${list}   ${formattedAmount}
     close window
     return from keyword  @{list}
 
@@ -130,8 +130,8 @@ Change The Number Into A Formatted Amount
     [Documentation]  Changes the given salary into a floating point number
     [Arguments]  ${salary}
     ${formattedSalary}=  replace string  ${salary}  ,  ${EMPTY}
-    ${decimalSalary}  run keyword if  '${formattedSalary}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedSalary}
-    return from keyword  ${decimalSalary}
+    ${formattedAmount}  run keyword if  '${formattedSalary}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedSalary}
+    return from keyword  ${formattedAmount}
 
 Get Data Of Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
@@ -144,14 +144,9 @@ Get Data Of Disbursement Details Page
     @{list}  create list
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
-    \    ${status}  run keyword and return status  should be equal as strings  ${columnToBeFetched}  Amount to be Disbursed
-    \    ${elementValue}  Run Keyword if  ${status} == ${True}  get element attribute  //*[@id="EmpSalGrid"]/tbody/tr[1]/td[${columnNumber}]/input  value
-    \    log to console  ${elementValue} value red from table
     \    ${textValue}  get table cell  ${disbursementTable}  ${row+1}  ${columnNumber}
-    \    ${finalValue}  set variable if  ${elementValue} == None or ${elementValue} == '${EMPTY}'  ${textValue}  ${elementValue}
-    \    log to console  ${finalValue} value of disbursed amount
-    \    ${decimalSalary}  Change The Number Into A Formatted Amount  ${finalValue}
-    \    append to list  ${list}  ${decimalSalary}
+    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${textValue}
+    \    append to list  ${list}  ${formattedAmount}
     return from keyword  @{list}
 
 Compare And Add To Report

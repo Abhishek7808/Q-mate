@@ -12,7 +12,7 @@ Library           RequestsLibrary
 To check the process of customer account creation from Marketing Team Member as Proxy
     [Documentation]    Registers a Company with its Branch by Marketing Team Member at Department Side
     Delete Data Of Company    ${Test Data["${CONFIG["Company Department 1"]}"]["Enter PAN"]}
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 1
+    set test variables    Company=Company Department 1    Branch=Branch Department 1
     Switch To    Department
     Go To Add Customer From Department
     Company Registration By Department    New Company
@@ -22,7 +22,7 @@ To check the process of customer account creation from Marketing Team Member as 
 To check that MTM completes registration process when customer has partially filled the application
     [Documentation]    Completes the registration by Marketing Team Member when the application is in draft mode
     Switch To    Customer
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
+    set test variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    250ms    Select Purchaser
     Company Registration By Customer    New    Draft
@@ -36,7 +36,7 @@ To check that MTM completes registration process when customer has partially fil
 
 To check the process of Linking email/sso id to customer account
     [Documentation]    Marketing Team Member links an account to a SSOID
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 3
+    set test variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 3
     Switch To    Department
     Go To Add Customer From Department
     Company Registration By Department    New Branch
@@ -53,7 +53,7 @@ To check the process of Linking email/sso id to customer account
 
 To check the process of edit function when customer registration is in draft mode
     [Documentation]    Edits the information given by the user when the application is in draft mode
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 4    Plant=Plant 1    SSO ID=SSOID 3
+    set test variables    Company=Company Department 1    Branch=Branch Department 4    Plant=Plant 1    SSO ID=SSOID 3
     Switch To    Customer
     Login From Customer    ${SSO ID["SSOID"]}
     Select Customer
@@ -70,7 +70,7 @@ To check the process of edit function when customer registration is in draft mod
 
 Check new branch registration when the company already have branches registered in it
     [Documentation]    Creates a new branch of a company when it already has new branches
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 3
+    set test variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 3
     Switch To    Department
     Go To Add Customer From Department
     Company Registration By Department    New Branch
@@ -79,7 +79,7 @@ Check new branch registration when the company already have branches registered 
 
 Check the branch registration when user selects branch from an existing registered branches in a company
     [Documentation]    Selects an existing branch of a company
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 1
+    set test variables    Company=Company Department 1    Branch=Branch Department 1
     Switch To    Department
     Go To Add Customer From Department
     Company Registration By Department    Existing

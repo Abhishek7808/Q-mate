@@ -69,7 +69,7 @@ Get Data From Type To Keyword Map
 
 Fill Form
     : FOR    ${Page Obj}    IN    @{Form["Pages"]}
-    \    Set Test Variable    ${Page}    ${Page Obj}
+    \    set test variable    ${Page}    ${Page Obj}
     \    ${Status}    Run Keyword And Return Status    Fill Page
     \    Sleep    2s
     \    ${Status1}    Run Keyword And Return Status    Page should contain Button    ${Page["Button"]}
@@ -85,7 +85,7 @@ Fill Page
 
 Confirm Form
     : FOR    ${Page Obj}    IN    @{Form["Pages"]}
-    \    Set Test Variable    ${Page}    ${Page Obj}
+    \    set test variable    ${Page}    ${Page Obj}
     \    ${Status}    Run Keyword And Return Status    Confirm Page
     \    Sleep    2s
     \    Run Keyword If    ${Status}==${FALSE}    FAIL
@@ -97,7 +97,7 @@ Confirm Page
 
 Partial Form
     : FOR    ${Page Obj}    IN    @{Form["Pages"]}
-    \    Set Test Variable    ${Page}    ${Page Obj}
+    \    set test variable    ${Page}    ${Page Obj}
     \    ${Status}    Run Keyword And Return Status    Partial Page
     \    Sleep    2s
     \    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    ${Page["Button"]}

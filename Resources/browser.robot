@@ -21,13 +21,13 @@ Switch To
     ${File Name}    Run Keyword If    '${Switch To}'=='Customer'    Set Variable    ${Customer Key Description File}
     ...    ELSE    Set Variable    ${Department Key Description File}
     ${Key Description Obj}    Load Json File    ${File Name}
-    Set Test Variable    ${Key Description}    ${Key Description Obj}
+    set test variable    ${Key Description}    ${Key Description Obj}
     Switch Browser    ${Switch To}
 
-Set Test Variables
+set test variables
     [Arguments]    &{Variables}
     : FOR    ${Var}    IN    @{Variables.keys()}
-    \    Set Test Variable    ${${Var}}    ${Test Data["${CONFIG["${Variables["${Var}"]}"]}"]}
+    \    set test variable    ${${Var}}    ${Test Data["${CONFIG["${Variables["${Var}"]}"]}"]}
 
 Delete Data Of Company
     [Arguments]    ${panNo}
@@ -73,7 +73,7 @@ Set Global Variables
     Set Global Variable    ${CONFIG}    ${Config Obj}
 
 Open Browsers
-    #Set Test Variable    ${Key Description}    ${Department Key Description}
+    #set test variable    ${Key Description}    ${Department Key Description}
     ${browser}  set variable  Chrome
     ${dict}    Create Dictionary    executable_path=${${BROWSER} PATH}
     Create Webdriver    driver_name=${browser}    alias=Department    kwargs=${dict}

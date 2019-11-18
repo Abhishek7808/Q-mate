@@ -16,7 +16,7 @@ Suite Teardown    Finish Testing
 *** Test Cases ***
 To check the edit process of customer details when customer is not approved by department
     [Documentation]    Edits the details of a customer when it has not been approved by department i.e. pending state
-    Set Test Variables    Company=Company Customer 3    Branch=Branch Customer 5
+    set test variables    Company=Company Customer 3    Branch=Branch Customer 5
     Switch To    Department
     Go To Customer List
     Apply Filter    1
@@ -37,8 +37,8 @@ To check the edit process of customer details when customer is not approved by d
 To check the edit process of customer details when customer is approved by department
     [Documentation]    Edits the details of a customer when it has been approved by department
     Switch To    Customer
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 3
-    #Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
+    set test variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 3
+    #set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    250ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -48,7 +48,7 @@ To check the edit process of customer details when customer is approved by depar
 Check Cancel Customer Registration
     [Documentation]    Deactivates an application by Marketing Team Member
     Switch To    Department
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    4
     View Company Details
@@ -69,7 +69,7 @@ Check Cancel Customer Registration
 Check registration edit functionality, when account deactivated
     [Documentation]    Checks if deactivated account information can be edited
     Switch To    Department
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    667
     View Company Details

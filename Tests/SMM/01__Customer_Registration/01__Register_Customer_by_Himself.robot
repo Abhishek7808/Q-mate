@@ -21,23 +21,23 @@ ${RETRY INTERVAL}    200ms
 *** Test Cases ***
 Testing API
     [Documentation]    Deletes the data of company and SSO ID
-    Set Test Variable    ${panNo}    QMATE1234D
+    set test variable    ${panNo}    QMATE1234D
     Delete Data Of Company    ${panNo}
-    Set Test Variable    ${panNo}    QMATE1234C
+    set test variable    ${panNo}    QMATE1234C
     Delete Data Of Company    ${panNo}
-    Set Test Variable    ${panNo}    QMATE5555Q
+    set test variable    ${panNo}    QMATE5555Q
     Delete Data Of Company    ${panNo}
-    Set Test Variable    ${panNo}    QMATE5555T
+    set test variable    ${panNo}    QMATE5555T
     Delete Data Of Company    ${panNo}
-    Set Test Variable    ${ssoId}    archit010
+    set test variable    ${ssoId}    archit010
     Delete Data Of SSOID    ${ssoId}
-    Set Test Variable    ${ssoId}    chauhan.yuvi
+    set test variable    ${ssoId}    chauhan.yuvi
     Delete Data Of SSOID    ${ssoId}
-    Set Test Variable    ${ssoId}    1860
+    set test variable    ${ssoId}    1860
     Delete Data Of SSOID    ${ssoId}
-    Set Test Variable    ${ssoId}    1862
+    set test variable    ${ssoId}    1862
     Delete Data Of SSOID    ${ssoId}
-    Set Test Variable    ${ssoId}    1863
+    set test variable    ${ssoId}    1863
     Delete Data Of SSOID    ${ssoId}
 
 Check Customer Registration Process
@@ -45,7 +45,7 @@ Check Customer Registration Process
     Switch To    Customer
     Delete Data of Company    ${Test Data["${CONFIG["Company Customer 1"]}"]["Enter PAN"]}
     Delete Data of Company    ${Test Data["${CONFIG["Company Customer 2"]}"]["Enter PAN"]}
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Delete Data Of SSOID    ${SSO ID["SSOID"]}
     Login From Customer    ${SSO ID["SSOID"]}
     Click Element    //div[contains(text(),'I want to purchase mineral')]
@@ -56,7 +56,7 @@ Check Customer Registration Process
 Check new branch registration when the company already have branches registered in it
     [Documentation]    Done
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    xpath=//div/button//span[text()='Customer']
@@ -67,7 +67,7 @@ Check new branch registration when the company already have branches registered 
 Check the branch registration when user selects branch from an existing registered branches in a company
     [Documentation]    Done
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 2
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     Click Element    //div[contains(text(),'I want to purchase mineral')]
     Company Registration By Customer    Existing    Pending
@@ -76,7 +76,7 @@ Check the branch registration when user selects branch from an existing register
 Check the registration process when customer has partially filled the application
     [Documentation]    Done
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 4    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 2    Branch=Branch Customer 4    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Click element    xpath=//div/button//span[text()='Customer']
     Sleep    2s
@@ -100,7 +100,7 @@ Check the registration process when customer has partially filled the applicatio
 Check the draft branch visibility in 'View Branch' option on registration form
     [Documentation]    Done
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Click element    xpath=//div/button//span[text()='Customer']
     Sleep    2s
@@ -115,7 +115,7 @@ Check the draft branch visibility in 'View Branch' option on registration form
 
 Check the reject process of customer registration by departmental user
     [Documentation]    Done
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 4    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 2    Branch=Branch Customer 4    SSO ID=SSOID 1
     Switch To    Department
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}
@@ -136,7 +136,7 @@ Check the reject process of customer registration by departmental user
 
 Check the edit process of customer details when customer is not approved by department
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    \#CitizenServices
@@ -149,7 +149,7 @@ Check the edit process of customer details when customer is not approved by depa
 Check the approval process of customer registration by departmental user
     [Documentation]    Done
     Switch To    Department
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    //div[@id='dropdownOpen']/button
@@ -171,7 +171,7 @@ Check the approval process of customer registration by departmental user
 Check the edit process of customer details when customer is approved by department
     [Documentation]    Done
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    \#CitizenServices
@@ -181,7 +181,7 @@ Check the edit process of customer details when customer is approved by departme
 Check the TCS rate applicable according to customer-wise
     [Documentation]    Done
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
+    set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Click element    xpath=//div/button//span[text()='Customer']
     Sleep    2s
