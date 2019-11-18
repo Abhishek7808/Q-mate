@@ -1,0 +1,842 @@
+{
+  "SSOID archit010": {
+    "Name": "ARCHIT JAIN",
+    "Designation": "Sr. Vice President",
+    "Mobile Number": "7073737393",
+    "Alternate Mobile Number": "9414165125",
+    "SSOID": "archit010",
+    "Email ID": "architjainudr@hotmail.com",
+    "Aadhaar Number": "",
+    "Fax": "9414165125",
+    "Pincode": "313001",
+    "State": "Rajasthan",
+    "City": "Udaipur",
+    "Address": "4/307 Ashok Nagar",
+    "Validity Date": {
+      "Date": "13",
+      "Month": "Nov",
+      "Year": "2020"
+    }
+  },
+  "SSOID kritika.maroo": {
+    "Name": "KRITIKA MAROO",
+    "Designation": "Vice President",
+    "Mobile Number": "",
+    "Alternate Mobile Number": "",
+    "SSOID": "kritika.maroo",
+    "Email ID": "kritika.maroo1@gmail.com",
+    "Aadhaar Number": "",
+    "Fax": "",
+    "Pincode": "313001",
+    "State": "Rajasthan",
+    "City": "Udaipur"
+  },
+  "SSOID chauhan.yuvi": {
+    "Name": "YUVRAJ SINGH CHAUHAN",
+    "Designation": "Manager",
+    "Mobile Number": "9784748259",
+    "Alternate Mobile Number": "",
+    "SSOID": "chauhan.yuvi",
+    "Email ID": "chauhan.yuvrajsingh156@gmail.com",
+    "Aadhaar Number": "",
+    "Fax": "9861285422",
+    "Pincode": "313001",
+    "State": "Rajasthan",
+    "City": "Udaipur",
+    "Address": "392,VEENA NAGAR HIRAN MAGRI SEC.-6",
+    "Validity Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    }
+  },
+  "SSOID meghajain138": {
+    "Name": "MEGHA JAIN",
+    "Designation": "Sr. Manager",
+    "Mobile Number": "9660775776",
+    "Alternate Mobile Number": "9829710100",
+    "SSOID": "meghajain138",
+    "Email ID": "meghajain138@gmail.com",
+    "Aadhaar Number": "",
+    "Fax": "978455648",
+    "Pincode": "313001",
+    "State": "Rajasthan",
+    "City": "Udaipur"
+  },
+  "SSOID shahshubham": {
+    "Name": "Shubham Shah",
+    "Designation": "Sr. Manager",
+    "Mobile Number": "9660775776",
+    "Alternate Mobile Number": "9829710100",
+    "SSOID": "shahshubham",
+    "Email ID": "inboxtoshubham@gmail.com",
+    "Aadhaar Number": "",
+    "Fax": "",
+    "Pincode": "313001",
+    "State": "Rajasthan",
+    "City": "Udaipur",
+    "Validity Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    }
+  },
+  "Company QMATE1234C": {
+    "Enter PAN": "QMATE1234C",
+    "Company Type": "Public Sector Undertaking",
+    "Company Name": "Nagarro",
+    "Company Pincode": "313001",
+    "Company Address Line 1": "Plot 18/19/20",
+    "Company Address Line 2": "Nagarro Solutions Pvt. Lmt.",
+    "Company City": "Udaipur",
+    "Company State": "Rajasthan",
+    "Company PANFile": "Company QMATE1234C\\\\PANFile.png"
+  },
+  "Company QMATE1234D": {
+    "Enter PAN": "QMATE1234D",
+    "Company Type": "Public Sector Undertaking",
+    "Company Name": "Accenture",
+    "Company Pincode": "313001",
+    "Company Address Line 1": "Plot 18-20",
+    "Company Address Line 2": "Accenture Solutions Pvt. Lmt.",
+    "Company City": "Jaisalmer",
+    "Company State": "Rajasthan",
+    "Company PANFile": "Company QMATE1234D\\\\PANFile.png"
+  },
+  "Company QMATE1234T": {
+    "Enter PAN": "QMATE1234T",
+    "Company Type": "Public Sector Undertaking",
+    "Company Name": "Infosys",
+    "Company Pincode": "313001",
+    "Company Address Line 1": "Plot 18/19/20",
+    "Company Address Line 2": "Infosys Solutions Pvt. Lmt.",
+    "Company City": "Udaipur",
+    "Company State": "Rajasthan",
+    "Company PANFile": "Company QMATE1234T\\\\PANFile.png"
+  },
+  "Company QMATE5555Q": {
+    "Enter PAN": "QMATE5555Q",
+    "Company Type": "Public Sector Undertaking",
+    "Company Name": "PWD",
+    "Company Pincode": "313001",
+    "Company Address Line 1": "Plot 18/19/20",
+    "Company Address Line 2": "MIA",
+    "Company City": "Udaipur",
+    "Company State": "Rajasthan",
+    "Company PANFile": "Company QMATE5555Q\\\\PANFile.png"
+  },
+  "Company QMATE5555T": {
+    "Enter PAN": "QMATE5555T",
+    "Company Type": "Public Sector Undertaking",
+    "Company Name": "TCS",
+    "Company Pincode": "313001",
+    "Company Address Line 1": "Plot 18/19/20",
+    "Company Address Line 2": "MIA",
+    "Company City": "Udaipur",
+    "Company State": "Rajasthan",
+    "Company PANFile": "Company QMATE5555Q\\\\PANFile.png"
+  },
+  "Company QMATE1234S": {
+    "Enter PAN": "QMATE1234S",
+    "Company Type": "Public Sector Undertaking",
+    "Company Name": "CTS",
+    "Company Pincode": "313001",
+    "Company Address Line 1": "Plot 18/19/20",
+    "Company Address Line 2": "CTS Solutions Pvt. Lmt.",
+    "Company City": "Udaipur",
+    "Company State": "Rajasthan",
+    "Company PANFile": "Company QMATE1234S\\\\PANFile.png"
+  },
+  "Company EIOPS6727Q": {
+    "Enter PAN": "EIOPS6727Q",
+    "Company Type": "Public Sector Undertaking",
+    "Company Name": "PWD",
+    "Company Pincode": "313001",
+    "Company Address Line 1": "Plot 18/19/20",
+    "Company Address Line 2": "MIA",
+    "Company City": "Udaipur",
+    "Company State": "Rajasthan",
+    "Company PANFile": "Company EIOPS6727Q\\\\PANFile.png"
+  },
+  "Branch Gurgaon": {
+    "User Type": "Traders",
+    "TCS Rate": "78",
+    "Name": "Nagarro Gurgaon",
+    "Pincode": "122007",
+    "Address Line 1": "4/304",
+    "Address Line 2": "Nagarro Solutions Pvt. Lmt.",
+    "City": "Gurgaon",
+    "State": "Haryana",
+    "GSTIN": "23__PAN__2Z5",
+    "GSTINFile": "Branch Gurgaon\\\\GSTINFile.png",
+    "TIN": "747874754",
+    "TINFile": "Branch Gurgaon\\\\TINFile.png",
+    "IBM": "941416512",
+    "IBMFile": "Branch Gurgaon\\\\IBMFile.png",
+    "IBM Registration Date": {
+      "Date": "3",
+      "Month": "Oct",
+      "Year": "2010"
+    },
+    "Group Name": "QMATE1234D",
+    "Group Description": "This is for exchange of FI"
+  },
+  "Branch Jaipur": {
+    "User Type": "Traders",
+    "TCS Rate": "12",
+    "Name": "Nagarro Jaipur",
+    "Pincode": "302015",
+    "Address Line 1": "Plot 13/14/25",
+    "Address Line 2": "Nagarro Solutions Pvt. Lmt.",
+    "City": "Jaipur",
+    "State": "Rajasthan",
+    "GSTIN": "23__PAN__2Z5",
+    "GSTINFile": "Branch Jaipur\\\\GSTINFile.png",
+    "TIN": "747874754",
+    "TINFile": "Branch Jaipur\\\\TINFile.png",
+    "IBM": "941416512",
+    "IBMFile": "Branch Jaipur\\\\IBMFile.png",
+    "IBM Registration Date": {
+      "Date": "3",
+      "Month": "Feb",
+      "Year": "2015"
+    },
+    "Group Name": "QMATE1234D",
+    "Group Description": "This is for exchange of FI"
+  },
+  "Branch Jodhpur": {
+    "User Type": "Purchaser",
+    "Name": "Nagarro Jodhpur",
+    "Pincode": "342007",
+    "Address Line 1": "3/708",
+    "Address Line 2": "Nagarro Solutions Pvt. Lmt.",
+    "City": "Jodhpur",
+    "State": "Rajasthan",
+    "GSTIN": "23__PAN__2Z5",
+    "GSTINFile": "Branch Jodhpur\\\\GSTINFile.png",
+    "TIN": "747874754",
+    "TINFile": "Branch Jodhpur\\\\TINFile.png",
+    "IBM": "941416512",
+    "IBMFile": "Branch Jodhpur\\\\IBMFile.png",
+    "IBM Registration Date": {
+      "Date": "13",
+      "Month": "Dec",
+      "Year": "2006"
+    },
+    "Group Name": "QMATE1234D",
+    "Group Description": "This is for exchange of FI"
+  },
+  "Branch Churu": {
+    "User Type": "Purchaser",
+    "Name": "Nagarro Churu",
+    "Pincode": "331001",
+    "Address Line 1": "Bhulpalpura",
+    "Address Line 2": "Nagarro Solutions Pvt. Lmt.",
+    "City": "Churu",
+    "State": "Rajasthan",
+    "GSTIN": "23__PAN__2Z5",
+    "GSTINFile": "Branch Churu\\\\GSTINFile.png",
+    "TIN": "747874754",
+    "TINFile": "Branch Churu\\\\TINFile.png",
+    "IBM": "94141651212",
+    "IBMFile": "Branch Churu\\\\IBMFile.png",
+    "IBM Registration Date": {
+      "Date": "23",
+      "Month": "Oct",
+      "Year": "2006"
+    },
+    "Group Name": "QMATE1234D",
+    "Group Description": "This is for exchange of FI"
+  },
+  "Branch Bikaner": {
+    "User Type": "Traders",
+    "TCS Rate": "12",
+    "Name": "Nagarro Bikaner",
+    "Pincode": "334001",
+    "Address Line 1": "Hiran Magri",
+    "Address Line 2": "Nagarro Solutions Pvt. Lmt.",
+    "City": "Bikaner",
+    "State": "Rajasthan",
+    "GSTIN": "23__PAN__2Z5",
+    "GSTINFile": "Branch Bikaner\\\\GSTINFile.png",
+    "TIN": "747874754",
+    "TINFile": "Branch Bikaner\\\\TINFile.png",
+    "IBM": "941416512",
+    "IBMFile": "Branch Bikaner\\\\IBMFile.png",
+    "IBM Registration Date": {
+      "Date": "23",
+      "Month": "Oct",
+      "Year": "2006"
+    },
+    "Group Name": "QMATE1234D",
+    "Group Description": "This is for exchange of FI"
+  },
+  "Plant 2001": {
+    "Plant Location": "Bhilwara",
+    "Capacity of Production (in MT)": "230",
+    "Year of Commissioning": "2001",
+    "Production(MT)(Prev. Year)": "200",
+    "Do you Purchase Minerals from Others": "0",
+    "Estimate Yearly Req.(MT)": "100",
+    "Registration Number": "9414165120",
+    "Approx Transport Charges": "12000",
+    "Plant Capacity": "400",
+    "Document Upload": "Plant 2001\\\\PlantDocument.png",
+    "Plant Details Submit Button": ""
+  },
+  "Plant 2002": {
+    "Plant Location": "Udaipur",
+    "Capacity of Production (in MT)": "600",
+    "Year of Commissioning": "2002",
+    "Production(MT)(Prev. Year)": "450",
+    "Do you Purchase Minerals from Others": " No",
+    "Estimate Yearly Req.(MT)": "150",
+    "Registration Number": "9414165121",
+    "Approx Transport Charges": "62000",
+    "Plant Capacity": "1000",
+    "Document Upload": "Plant 2002\\\\PlantDocument.png",
+    "Plant Details Submit Button": ""
+  },
+  "Plant 2006": {
+    "Plant Location": "Jaipur",
+    "Capacity of Production (in MT)": "8000",
+    "Year of Commissioning": "2006",
+    "Production(MT)(Prev. Year)": "4000",
+    "Do you Purchase Minerals from Others": " No",
+    "Estimate Yearly Req.(MT)": "1500",
+    "Registration Number": "9414165122",
+    "Approx Transport Charges": "52000",
+    "Plant Capacity": "10000",
+    "Document Upload": "Plant 2006\\\\PlantDocument.png",
+    "Plant Details Submit Button": ""
+  },
+  "Plant 2008": {
+    "Plant Location": "Bikaner",
+    "Capacity of Production (in MT)": "2300",
+    "Year of Commissioning": "2008",
+    "Production(MT)(Prev. Year)": "4000",
+    "Do you Purchase Minerals from Others": " No",
+    "Estimate Yearly Req.(MT)": "1500",
+    "Registration Number": "9414165123",
+    "Approx Transport Charges": "12000",
+    "Plant Capacity": "5000",
+    "Document Upload": "Plant 2008\\\\PlantDocument.png",
+    "Plant Details Submit Button": ""
+  },
+  "FI LC1": {
+    "Instrument Type": "Letter of Credit (LC)",
+    "Unit Name": "Phosphate",
+    "BG/LC Number": "111114",
+    "BG/LC Date": {
+      "Year": "2017",
+      "Month": "Jan",
+      "Date": "1"
+    },
+    "BG/LC Amount": "90000000",
+    "Validity Date": {
+      "Year": "2019",
+      "Month": "Feb",
+      "Date": "15"
+    },
+    "Transfer Amount": "5000",
+    "Bank": "ICICI Bank",
+    "Presentation Days": "5",
+    "Negotiating Bank": "HDFC Bank",
+    "Negotiating Bank Account Number": "94146854",
+    "LC Type": "Normal",
+    "Remark": "FI Added Successfully",
+    "Document Upload": "FI LC1\\\\FI.png"
+  },
+  "FI LC2": {
+    "Instrument Type": "Letter of Credit (LC)",
+    "Unit Name": "Phosphate",
+    "BG/LC Number": "111115",
+    "BG/LC Date": {
+      "Year": "2017",
+      "Month": "Nov",
+      "Date": "1"
+    },
+    "BG/LC Amount": "90000000",
+    "Validity Date": {
+      "Year": "2020",
+      "Month": "Dec",
+      "Date": "1"
+    },
+    "Transfer Amount": "5000",
+    "Bank": "Standard Chartered Bank",
+    "Presentation Days": "5",
+    "Negotiating Bank": "ICICI Bank",
+    "Negotiating Bank Account Number": "94146854",
+    "LC Type": "Normal",
+    "Remark": "FI Added Successfully",
+    "Document Upload": "FI LC2\\\\FI.png"
+  },
+  "FI LC3": {
+    "Instrument Type": "Letter of Credit (LC)",
+    "Unit Name": "Phosphate",
+    "BG/LC Number": "96607896",
+    "LC/BG Date": {
+      "Date": "08",
+      "Month": "Oct",
+      "Year": "2018"
+    },
+    "BG/LC Amount": "90000000",
+    "Validity Date": {
+      "Date": "08",
+      "Month": "Oct",
+      "Year": "2019"
+    },
+    "Transfer Amount": "5000",
+    "Bank": "ICICI Bank",
+    "Presentation Days": "10",
+    "Negotiating Bank": "HDFC Bank",
+    "Negotiating Bank Account Number": "988749631",
+    "LC Type": "Normal",
+    "File Upload": "FI LC3\\\\FI.png"
+  },
+  "FI LC4": {
+    "Instrument Type": "Letter of Credit (LC)",
+    "Unit Name": "Phosphate",
+    "BG/LC Number": "986034",
+    "LC/BG Date": {
+      "Date": "08",
+      "Month": "Oct",
+      "Year": "2018"
+    },
+    "BG/LC Amount": "90000000",
+    "Validity Date": {
+      "Date": "08",
+      "Month": "Oct",
+      "Year": "2019"
+    },
+    "Transfer Amount": "5000",
+    "Bank": "SBI Bank",
+    "Presentation Days": "10",
+    "Negotiating Bank": "ICICI Bank",
+    "Negotiating Bank Account Number": "98896899",
+    "LC Type": "Normal",
+    "File Upload": "FI LC4\\\\FI.png"
+  },
+  "Purchase Order 1": {
+    "Coming Against Auction": "UnSelect",
+    "Unit Name": "Phosphate",
+    "Select Product": "30% P205 Crushed Rock phosphate",
+    "PO Quantity": "2500",
+    "Preferred Mode of Payment": "Credit",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "Document Upload": "PO 1\\\\PO.pdf",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Reject Remarks": "You are being rejected",
+    "Edit Request": "Select",
+    "New Expiry Date": {
+      "Date": "13",
+      "Month": "Nov",
+      "Year": "2020"
+    }
+  },
+  "Purchase Order 2": {
+    "Coming Against Auction": "UnSelect",
+    "Unit Name": "Phosphate",
+    "Select Product": "30% P205 Crushed Rock phosphate",
+    "PO Quantity": "3000",
+    "Preferred Mode of Payment": "Credit",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "Document Upload": "PO 2\\\\PO.pdf",
+    "Destination Pincode": "302005",
+    "Destination City": "Jaipur",
+    "Destination State": "Rajasthan",
+    "Reject Remarks": "You are being rejected",
+    "Edit Request": "Select",
+    "New Expiry Date": {
+      "Date": "13",
+      "Month": "Nov",
+      "Year": "2020"
+    }
+  },
+  "Purchase Order 3": {
+    "Coming Against Auction": "Select",
+    "Unit Name": "Phosphate",
+    "Select Product": "30% P205 Crushed Rock phosphate",
+    "PO Quantity": "3500",
+    "Preferred Mode of Payment": "Credit",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "BID Number": "9414165125",
+    "Product Price": "23000",
+    "Document Upload": "PO 3\\\\PO.pdf",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Reject Remarks": "You are being rejected",
+    "Edit Request": "Select",
+    "New Expiry Date": {
+      "Date": "13",
+      "Month": "Nov",
+      "Year": "2020"
+    }
+  },
+  "Purchase Order 4": {
+    "Coming Against Auction": "Select",
+    "Unit Name": "Phosphate",
+    "Select Product": "30% P205 Crushed Rock phosphate",
+    "PO Quantity(MT)": "14520",
+    "Preferred Mode of Payment": "Credit",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "BID Number": "9414165125",
+    "Product Price": "23000",
+    "Pincode": "302005",
+    "City": "Jaipur",
+    "State": "Rajasthan",
+    "Document Upload": "PO 4\\\\PO.pdf",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Reject Remarks": "You are being rejected",
+    "Edit Request": "Select",
+    "New Expiry Date": {
+      "Date": "13",
+      "Month": "Nov",
+      "Year": "2020"
+    }
+  },
+  "Purchase Order 5": {
+    "Coming Against Auction": "UnSelect",
+    "Unit Name": "Phosphate",
+    "Select Product": "Lignite ROM EX Stockyard Matasukh",
+    "PO Quantity(MT)": "15520",
+    "Preferred Mode of Payment": "Credit",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "Pincode": "324004",
+    "City": "Kota",
+    "State": "Rajasthan",
+    "Document Upload": "PO 5\\\\PO.png",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Reject Remarks": "You are being rejected",
+    "New Expiry Date": {
+      "Date": "13",
+      "Month": "Nov",
+      "Year": "2020"
+    }
+  },
+  "Purchase Order 6": {
+    "Coming Against Auction": "UnSelect",
+    "Unit Name": "Phosphate",
+    "Select Product": "Lignite ROM EX Stockyard Matasukh",
+    "PO Quantity(MT)": "13420",
+    "Preferred Mode of Payment": "Credit",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "Pincode": "324004",
+    "City": "Kota",
+    "State": "Rajasthan",
+    "Document Upload": "PO 6\\\\PO.png",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Reject Remarks": "You are being rejected",
+    "New Expiry Date": {
+      "Date": "13",
+      "Month": "Nov",
+      "Year": "2020"
+    }
+  },
+  "Contract Release Order 1": {
+    "Unit Name": "Phosphate",
+    "Product Name": "30% P205 Crushed Rock phosphate",
+    "Available Quantity": "200",
+    "Product Quantity Required": "120",
+    "No. of Credit Days Required": "6",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Select Dispatch Point": "JHAMARKOTRA",
+    "Total Amount": "632205",
+    "Select Payment": "Credit",
+    "Select Instrument Type": "Letter of Credit (LC)",
+    "Select Instrument": "9661111",
+    "Amount": "632205",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2020"
+    },
+    "Reject Remarks": "You are being rejected",
+    "Close Remarks": "You are being closed"
+  },
+  "Contract Release Order 2": {
+    "Unit Name": "Phosphate",
+    "Product Name": "30% P205 Crushed Rock phosphate",
+    "Available Quantity": "600",
+    "Product Quantity Required": "100",
+    "No. of Credit Days Required": "5",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Select Dispatch Point": "JHAMARKOTRA",
+    "Total Amount": "526838",
+    "Select Payment": "Credit",
+    "Select Instrument Type": "Letter of Credit (LC)",
+    "Select Instrument": "9661111",
+    "Amount": "526838",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2020"
+    },
+    "Reject Remarks": "You are being rejected",
+    "Close Remarks": "You are being closed"
+  },
+  "Contract Release Order 3": {
+    "Unit Name": "Phosphate",
+    "Product Name": "30% P205 Crushed Rock phosphate",
+    "Available Quantity": "600",
+    "Product Quantity Required": "125",
+    "No. of Credit Days Required": "4",
+    "Destination Pincode": "313001",
+    "Destination City": "Udaipur",
+    "Destination State": "Rajasthan",
+    "Select Dispatch Point": "JHAMARKOTRA",
+    "Accept Change Of Dispatch Point": "Yes",
+    "Total Amount": "658547",
+    "Select Payment": "Credit",
+    "Select Instrument Type": "Letter of Credit (LC) ",
+    "Select Instrument": "5555555",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2020"
+    },
+    "Amount": "658547",
+    "Reject Remarks": "You are being rejected",
+    "Close Remarks": "You are being closed"
+  },
+  "Contract Release Order 4": {
+    "Unit Name": "Phosphate",
+    "Product Name": "30% P205 Crushed Rock phosphate",
+    "Product Description": "",
+    "Available Quantity": "1500",
+    "Product Quantity Required": "120",
+    "No. of Credit Days Required": "4",
+    "Pincode": "313329",
+    "City": "Rajsamand",
+    "State": "Rajasthan",
+    "Select Dispatch Point": "JHAMARKOTRA",
+    "Accept Change Of Dispatch Point": "Yes",
+    "Total Amount": "530319",
+    "Select Payment": "Credit",
+    "Select Instrument Type": "Letter of Credit (LC) ",
+    "Select Instrument": "5555555",
+    "Expiry Date": {
+      "Date": "31",
+      "Month": "Mar",
+      "Year": "2020"
+    },
+    "Reject Remarks": "You are being rejected",
+    "Close Remarks": "You are being closed"
+  },
+  "Debit Note 1": {
+    "Adjustment For": "Discount",
+    "Adjustment Date": {
+      "Date": "12",
+      "Month": "Dec",
+      "Year": "2018"
+    },
+    "Due Date": {
+      "Date": "1",
+      "Month": "Dec",
+      "Year": "2019"
+    }
+  },
+  "Product Bolt": {
+    "Product Name": "Bolt",
+    "Is Auctionable": "Yes",
+    "HSN Code": "4901",
+    "Product Description": "",
+    "Ledger Type": [
+      "JHAMARKOTRA",
+      "BHURASAR"
+    ],
+    "Free Credit Days": "15",
+    "Head": "SALE OF BENEFICIATED ROCKPHOSPHATE",
+    "Invoice Generation": "Manual"
+  },
+  "Product cvcv": {
+    "Product Name": "cvcv",
+    "Is Auctionable": "Yes",
+    "HSN Code": "2510",
+    "Product Description": "",
+    "Ledger Type": [
+      "JHAMARKOTRA"
+    ],
+    "Free Credit Days": "6",
+    "Head": "SALE OF BENEFICIATED ROCKPHOSPHATE",
+    "Invoice Generation": "Dispatched"
+  },
+  "Product Aerrow 22": {
+    "Product Name": "Aerrow 22",
+    "Is Auctionable": "Yes",
+    "HSN Code": "2510",
+    "Product Description": "",
+    "Ledger Type": [
+      "JHAMARKOTRA"
+    ],
+    "Free Credit Days": "19",
+    "Head": "SALE OF BENEFICIATED ROCKPHOSPHATE",
+    "Invoice Generation": "Dispatched"
+  },
+  "Product Add Price": {
+    "Effective from": {
+      "Date": "13",
+      "Month": "Dec",
+      "Year": "2018"
+    },
+    "Product Rate(per MT)": "1500",
+    "Processing Rate(per MT)": "1000"
+  },
+  "Product Add Interest": {
+    "Interest Effective from": {
+      "Date": "5",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "Day From": "10",
+    "Day To": "170",
+    "Interest Rate(Per MT)": "10"
+  },
+  "Schedule On": {
+    "Select Component*": "Excise",
+    "Start From": {
+      "Date": "13",
+      "Month": "Dec",
+      "Year": "2018"
+    },
+    "End": {
+      "Date": "9",
+      "Month": "Mar",
+      "Year": "2019"
+    },
+    "Application From": {
+      "Date": "9",
+      "Month": "Dec",
+      "Year": "2018"
+    }
+  },
+  "Product Structure": {
+    "Structure": " All Structures",
+    "Product": {
+      "Type": "Group",
+      "Value": " Diesel"
+    },
+    "Calculation Type": "None"
+  },
+  "Formula": {
+    "Calculation Type": " Formula",
+    "Priority": "2",
+    "Formula": [
+      {
+        "Type": "Keyword",
+        "Value": " GST"
+      },
+      {
+        "Type": "Button",
+        "Value": "*"
+      },
+      {
+        "Type": "Amount",
+        "Value": "200"
+      }
+    ]
+  },
+  "Generate Receipt 1": {
+    "Receipt Against": "Outstanding",
+    "Deposited In": "BANK ICICI JAIPUR",
+    "Remarks": "Hey I am loving it",
+    "Instrument Type": "Cheque",
+    "Bank": "Standard Chartered Bank",
+    "Instrument No.": "986646165",
+    "Amount": "45457"
+  },
+  "Dispatch Slip 1": {
+    "Enter Vehicle Number": "RJ27CC8888",
+    "Select Vehicle Type": "Trailer",
+    "Tare Weight": "100",
+    "Max Capacity": "800",
+    "Driver Name": "Shyam",
+    "Driver Mobile": "65456565",
+    "In Weight": "105",
+    "Lease Id": "8788495",
+    "Select Stock Location": "Store RSMM 2",
+    "Gross Weight": "100"
+  },
+  "Dispatch Slip 2": {
+    "Enter Vehicle Number": "RJ27CC8888",
+    "Select Vehicle Type": "Trailer",
+    "Tare Weight": "100",
+    "Max Capacity": "400",
+    "Driver Name": "RadheShyam",
+    "Driver Mobile": "65456565",
+    "In Weight": "500",
+    "Lease Id": "8785785",
+    "Select Stock Location": "Store RSMM 2",
+    "Gross Weight": "499"
+  },
+  "Dispatch Slip 3": {
+    "Enter Vehicle Number": "RJ27CC8888",
+    "Select Vehicle Type": "Trailer",
+    "Tare Weight": "100",
+    "Max Capacity": "400",
+    "Driver Name": "RadheShyam",
+    "Driver Mobile": "65456565",
+    "In Weight": "500",
+    "Lease Id": "8785785",
+    "Select Stock Location": "Store RSMM 2",
+    "Gross Weight": "507"
+  },
+  "Branch tt": {
+    "User Type": "Traders",
+    "TCS Rate": "12",
+    "Name": "tt",
+    "Pincode": "302015",
+    "Address Line 1": "Plot 13/14/25",
+    "Address Line 2": "Nagarro Solutions Pvt. Lmt.",
+    "City": "Udaipur",
+    "State": "Rajasthan",
+    "GSTIN": "23__PAN__2Z5",
+    "GSTINFile": "Branch Udaipur\\\\GSTINFile.png",
+    "TIN": "747874754",
+    "TINFile": "Branch Udaipur\\\\TINFile.png",
+    "IBM": "941416512",
+    "IBMFile": "Branch Udaipur\\\\IBMFile.png",
+    "IBM Registration Date": {
+      "Date": "3",
+      "Month": "Feb",
+      "Year": "2015"
+    }
+  }
+}

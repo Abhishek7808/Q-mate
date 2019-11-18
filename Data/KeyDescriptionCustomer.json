@@ -1,0 +1,482 @@
+{
+  "Login SSO": {
+    "Locator": "txtSSOName",
+    "Type": "Text Value"
+  },
+  "Login Button": {
+    "Locator": "btn",
+    "Type": "Button"
+  },
+  "User Type": {
+    "Locator": "purchaseSelfuse",
+    "Type": "Dropdown"
+  },
+  "TCS Rate": {
+    "Locator": "tcsRate",
+    "Type": "Text Value"
+  },
+  "Enter PAN": {
+    "Locator": "companyPan",
+    "Type": "Text Value"
+  },
+  "Create New Branch Button": {
+    "Locator": "btnCreateNewBranch",
+    "Type": "Button"
+  },
+  "Company Type": {
+    "Locator": "companyType",
+    "Type": "Dropdown"
+  },
+  "Company Name": {
+    "Locator": "companyName",
+    "Type": "Text Value"
+  },
+  "Company Pincode": {
+    "Locator": "companyPinCode",
+    "Type": "Text Value"
+  },
+  "Company Address Line 1": {
+    "Locator": "companyAddress1",
+    "Type": "Text Value"
+  },
+  "Company Address Line 2": {
+    "Locator": "companyAddress2",
+    "Type": "Text Value"
+  },
+  "Company City": {
+    "Locator": "companyCity",
+    "Type": "Disabled"
+  },
+  "Company State": {
+    "Locator": "companyState",
+    "Type": "Disabled"
+  },
+  "Same As Above": {
+    "Locator": "chkSameAsAbove",
+    "Type": "Checkbox"
+  },
+  "Branch Name": {
+    "Locator": "branchName",
+    "Type": "Text Value"
+  },
+  "Branch Pincode": {
+    "Locator": "branchPinCode",
+    "Type": "Text Value"
+  },
+  "Branch Address Line 1": {
+    "Locator": "branchAddress1",
+    "Type": "Text Value"
+  },
+  "Branch Address Line 2": {
+    "Locator": "branchAddress2",
+    "Type": "Text Value"
+  },
+  "Branch City": {
+    "Locator": "branchCity",
+    "Type": "Disabled"
+  },
+  "Branch State": {
+    "Locator": "branchState",
+    "Type": "Disabled"
+  },
+  "Company Details Submit Button": {
+    "Locator": "btnNext",
+    "Type": "Button"
+  },
+  "PAN": {
+    "Locator": "pan",
+    "Type": "Disabled"
+  },
+  "PANFile": {
+    "Locator": "pan",
+    "Type": "File"
+  },
+  "GSTIN": {
+    "Locator": "gstin",
+    "Type": "Text Value"
+  },
+  "GSTINFile": {
+    "Locator": "gstin",
+    "Type": "File"
+  },
+  "TIN": {
+    "Locator": "tin",
+    "Type": "Text Value"
+  },
+  "TINFile": {
+    "Locator": "tin",
+    "Type": "File"
+  },
+  "IBM": {
+    "Locator": "ibm",
+    "Type": "Text Value"
+  },
+  "IBMFile": {
+    "Locator": "ibm",
+    "Type": "File"
+  },
+  "IBM Registration Date": {
+    "Locator": "ibmRegDate",
+    "Type": "Date"
+  },
+  "Customer Details Submit Button": {
+    "Locator": "btnSubmit",
+    "Type": "Button"
+  },
+  "Customer Details Update Button": {
+    "Locator": "btnUpdate",
+    "Type": "Button"
+  },
+  "SSO ID": {
+    "Locator": "SSOID",
+    "Type": "Text Value"
+  },
+  "Your Name": {
+    "Locator": "yourname",
+    "Type": "Read Only"
+  },
+  "Your Designation": {
+    "Locator": "yourdesignation",
+    "Type": "Read Only"
+  },
+  "Mobile Number": {
+    "Locator": "mobilenumber",
+    "Type": "Read Only"
+  },
+  "Alternate Mobile Number": {
+    "Locator": "alternatemobilenumber",
+    "Type": "Read Only"
+  },
+  "Email ID": {
+    "Locator": "emailid",
+    "Type": "Read Only"
+  },
+  "Fax": {
+    "Locator": "fax",
+    "Type": "Read Only"
+  },
+  "Contact Details Submit Button": {
+    "Locator": "btnNext",
+    "Type": "Button"
+  },
+  "Plant Location": {
+    "Locator": "plantLocation",
+    "Type": "Text Value"
+  },
+  "Capacity of Production (in MT)": {
+    "Locator": "productionCapacity",
+    "Type": "Text Value"
+  },
+  "Year of Commissioning": {
+    "Locator": "commisionYear",
+    "Type": "Text Value"
+  },
+  "Production(MT)(Prev. Year)": {
+    "Locator": "acctualproduction",
+    "Type": "Text Value"
+  },
+  "Do you Purchase Minerals from Others": {
+    "Locator": "radio-button-demo",
+    "Type": "Radio Button"
+  },
+  "Ratio of Other:RSMML": {
+    "Locator": "ratio",
+    "Type": "Text Value"
+  },
+  "Estimate Yearly Req.(MT)": {
+    "Locator": "yearlyRequirement",
+    "Type": "Text Value"
+  },
+  "Registration Number": {
+    "Locator": "registrationNumber",
+    "Type": "Text Value"
+  },
+  "Approx Transport Charges": {
+    "Locator": "transportCharge",
+    "Type": "Text Value"
+  },
+  "Plant Capacity": {
+    "Locator": "capacity",
+    "Type": "Text Value"
+  },
+  "Document Upload": {
+    "Locator": "outlined-button-file",
+    "Type": "File"
+  },
+  "Plant Button PO Form": {
+    "Locator": "btnFillPlantDetail",
+    "Type": "Button"
+  },
+  "Customer Group Group Name": {
+    "Locator": "groupName",
+    "Type": "Text Value"
+  },
+  "Customer Group Group Description": {
+    "Locator": "groupDescription",
+    "Type": "Text Value"
+  },
+  "Customer Group Button": {
+    "Locator": "btnCreateGroupPopup",
+    "Type": "Button"
+  },
+  "Plant Details Submit Button": {
+    "Locator": "btnSubmitPlant",
+    "Type": "Button"
+  },
+  "Plant Details Save Button": {
+    "Locator": "btnDone",
+    "Type": "Button"
+  },
+  "Add Agent SSO ID": {
+    "Locator": "ssoId",
+    "Type": "Text Value"
+  },
+  "Add Agent Agent Name": {
+    "Locator": "agentName",
+    "Type": "Disabled"
+  },
+  "Add Agent Validity Date": {
+    "Locator": "validityDate",
+    "Type": "Date"
+  },
+  "Add Agent Pincode": {
+    "Locator": "pinCode",
+    "Type": "Disabled"
+  },
+  "Add Agent City": {
+    "Locator": "(//input[@id='city'])[last()]",
+    "Type": "Disabled"
+  },
+  "Add Agent State": {
+    "Locator": "(//input[@id='state'])[last()]",
+    "Type": "Disabled"
+  },
+  "Add Agent Address": {
+    "Locator": "address",
+    "Type": "Disabled"
+  },
+  "Add Agent Mobile Number": {
+    "Locator": "mobileNumber",
+    "Type": "Disabled"
+  },
+  "Add Agent Telephone Number (Office)": {
+    "Locator": "telePhoneNumberOffice",
+    "Type": "Read Only"
+  },
+  "Add Agent Alternate Number": {
+    "Locator": "alternateNumber",
+    "Type": "Disabled"
+  },
+  "Add Agent Fax": {
+    "Locator": "fax",
+    "Type": "Disabled"
+  },
+  "Add Agent Email": {
+    "Locator": "email",
+    "Type": "Disabled"
+  },
+  "Add Agent Button": {
+    "Locator": "//button[@id='btnSaveUpdate']|//button[@id='btnSaveModel']",
+    "Type": "Button"
+  },
+  "Financial Instrument Add Button": {
+    "Locator": "btnAddFiInstrument",
+    "Type": "Button"
+  },
+  "Financial Instrument Instrument Type": {
+    "Locator": "instrumentType",
+    "Type": "Dropdown"
+  },
+  "Financial Instrument Unit Name": {
+    "Locator": "unitName",
+    "Type": "Dropdown"
+  },
+  "Financial Instrument BG/LC Number": {
+    "Locator": "fiNumber",
+    "Type": "Text Value"
+  },
+  "Financial Instrument LC/BG Date": {
+    "Locator": "fiDate",
+    "Type": "Date"
+  },
+  "Financial Instrument BG/LC Amount": {
+    "Locator": "fiAmount",
+    "Type": "Text Value"
+  },
+  "Financial Instrument Validity Date": {
+    "Locator": "validityDate",
+    "Type": "Date"
+  },
+  "Financial Instrument Bank": {
+    "Locator": "bank",
+    "Type": "Text Value"
+  },
+  "Financial Instrument Remark": {
+    "Locator": "remark",
+    "Type": "Text Value"
+  },
+  "Financial Instrument Presentation Days": {
+    "Locator": "presentationDays",
+    "Type": "Text Value"
+  },
+  "Financial Instrument Negotiating Bank": {
+    "Locator": "negotiatingBank",
+    "Type": "Text Value"
+  },
+  "Financial Instrument Negotiating Bank Account Number": {
+    "Locator": "negotiatingBankAccNo",
+    "Type": "Text Value"
+  },
+  "Financial Instrument LC Type": {
+    "Locator": "lcType",
+    "Type": "Dropdown"
+  },
+  "Financial Instrument File Upload": {
+    "Locator": "document",
+    "Type": "File"
+  },
+  "Financial Instrument Submit Button": {
+    "Locator": "btnSubmit",
+    "Type": "Button"
+  },
+  "Financial Instrument Update Button": {
+    "Locator": "btnUpdate",
+    "Type": "Button"
+  },
+  "Purchase Order Coming Against Auction": {
+    "Locator": "isFromAuctionable",
+    "Type": "Checkbox"
+  },
+  "Purchase Order Unit Name": {
+    "Locator": "unit",
+    "Type": "Dropdown"
+  },
+  "Purchase Order Select Product": {
+    "Locator": "product",
+    "Type": "Dropdown"
+  },
+  "Purchase Order PO Quantity": {
+    "Locator": "poQuantity",
+    "Type": "Text Value"
+  },
+  "Purchase Order Preferred Mode of Payment": {
+    "Locator": "modeOfPayment",
+    "Type": "Dropdown"
+  },
+  "Purchase Order Pincode": {
+    "Locator": "pinCode",
+    "Type": "Text Value"
+  },
+  "Purchase Order City": {
+    "Locator": "city",
+    "Type": "Text Value"
+  },
+  "Purchase Order State": {
+    "Locator": "state",
+    "Type": "Text Value"
+  },
+  "Purchase Order Agreement": {
+    "Locator": "agreement",
+    "Type": "File"
+  },
+  "Purchase Order BID Number": {
+    "Locator": "bidNumber",
+    "Type": "Text Value"
+  },
+  "Purchase Order Product Price": {
+    "Locator": "productPrice",
+    "Type": "Text Value"
+  },
+  "Purchase Order Agent": {
+    "Locator": "react-select-2-input",
+    "Type": "Search Agent"
+  },
+  "Purchase Order Submit Button": {
+    "Locator": "submitpo",
+    "Type": "Button"
+  },
+  "Contract Release Order Select PO": {
+    "Locator": "purchaseOrderId",
+    "Type": "Dropdown"
+  },
+  "Contract Release Order PO Number": {
+    "Locator": "poNumber",
+    "Type": "Disabled"
+  },
+  "Contract Release Order Unit Name": {
+    "Locator": "unitName",
+    "Type": "Disabled"
+  },
+  "Contract Release Order Product Name": {
+    "Locator": "productName",
+    "Type": "Disabled"
+  },
+  "Contract Release Order Product Description": {
+    "Locator": "productDescription",
+    "Type": "Disabled"
+  },
+  "Contract Release Order Available Quantity": {
+    "Locator": "availableQuantity",
+    "Type": "Disabled"
+  },
+  "Contract Release Order Product Quantity Required": {
+    "Locator": "productQuantityRequired",
+    "Type": "Text Value"
+  },
+  "Contract Release Order Number Of Credit Days Required": {
+    "Locator": "numberOfCreditDaysRequired",
+    "Type": "Text Value"
+  },
+  "Contract Release Order Pincode": {
+    "Locator": "pincode",
+    "Type": "Read Only"
+  },
+  "Contract Release Order City": {
+    "Locator": "destinationCity",
+    "Type": "Read Only"
+  },
+  "Contract Release Order State": {
+    "Locator": "destinationState",
+    "Type": "Read Only"
+  },
+  "Contract Release Order Select Dispatch Point": {
+    "Locator": "dispatchPoint",
+    "Type": "Dropdown"
+  },
+  "Contract Release Order Accept Change Of Dispatch Point": {
+    "Locator": "AcceptChangeOfDispatch",
+    "Type": "Checkbox"
+  },
+  "Contract Release Order Total Amount": {
+    "Locator": "totalAmount",
+    "Type": "Disabled"
+  },
+  "Contract Release Order Select Payment": {
+    "Locator": "paymentMode",
+    "Type": "Dropdown"
+  },
+  "Contract Release Order Select Instrument Type": {
+    "Locator": "instrumentType",
+    "Type": "Dropdown"
+  },
+  "Contract Release Order Select Instrument": {
+    "Locator": "instrument",
+    "Type": "Dropdown"
+  },
+  "Contract Release Order Agent": {
+    "Locator": "react-select-2-input",
+    "Type": "Search Agent"
+  },
+  "Add Instrument Button": {
+    "Locator": "btnAddInstrument",
+    "Type": "Button"
+  },
+  "Contract Release Order Amount": {
+    "Locator": "(//input[@id='amount'])[last()]",
+    "Type": "Text Value"
+  },
+  "Contract Release Order Button": {
+    "Locator": "btnSubmit",
+    "Type": "Button"
+  }
+}

@@ -22,6 +22,10 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 # login data added into Data/Login_Data.robot
 ${number} =  1
 #${num}  convert to integer  3
+${string}  Period:September Date: 15-Nov-2019 Paybill No. 1012/2019-2020 ; Date 15-Nov-2019 Amount: 70,459.00 ; Payment Mode: Cheque (Disburse Bank : Bank of Baroda Tilak Marg) Unit: Head Office ; Remarks:
+
+
+
 
 *** Test Cases ***
 
@@ -48,10 +52,15 @@ All paybills should be checked
 
 #     ${num}  set variable  ${num+1}
 #     log to console  ${num}
-     FOR  ${i}  IN RANGE  1  5
-     \   ${num}  set variable  ${num+1}
-     \   log to console  ${num}
+#     FOR  ${i}  IN RANGE  1  5
+#     \   ${num}  set variable  ${num+1}
+#     \   log to console  ${num}
+#    run keyword if  ${num} == '${EMPTY}'  log to console  hi
 
-
+    log to console  ${string}
+    ${first}  Split String From Right  ${string}  Paybill No.
+    log to console  ${first}
+    ${second}  Split String From Right  ${first}[1]  ;
+    log to console  ${second}
 
 *** Keywords ***

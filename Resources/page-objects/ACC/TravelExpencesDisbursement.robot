@@ -1,0 +1,54 @@
+*** Variables ***
+${disbursementUrl}  HRM/TravelExpencesDisbursement
+${columnText}  Bill Amount
+${disbursementTable}  //*[@id="classlisting"]/div/table
+${employeeIdColumn}  2
+*** Keywords ***
+Set Variables
+    Set Test Variable  ${disbursementUrl}  HRM/TravelExpencesDisbursement
+    Set Test Variable  ${columnText}  Bill Amount
+    Set Test Variable  ${disbursementTable}  //*[@id="classlisting"]/div/table
+    Set Test Variable  ${employeeIdColumn}  2
+
+Go To Travel Disbursement Index Page
+    ${testCount}  DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
+    return from keyword  ${testCount}
+
+Match All Paybills Net Amount With The Report For Given Unit
+    [Documentation]  Matches the Salaries in disburement page and report page for a given unit
+    [Arguments]  ${unitID}  ${testCount}
+    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${testCount}
+    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
+    # DisbursementIndex.Apply Given Cycle Filter
+    sleep  2s
+    Check Travel Expence Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}  ${employeeIdColumn}
+
+Match All Paybills Net Amounts With Reports For All Units
+    [Documentation]  Matches the Salaries in disburement page and report page for all units
+    [Arguments]  ${testCount}  ${employeeIdColumn}
+    TopNavigation.Open Preference Unit Page
+    ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
+    log to console  ${allUnits} number of total units
+    FOR  ${unit}  IN RANGE  1  ${allUnits}
+    \   log to console  ${unit} unit
+    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${testCount}
+    \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
+#    \   DisbursementIndex.Apply Given Cycle Filter
+    \   sleep  2s
+    \   Check Travel Expence Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}  ${employeeIdColumn}
+    \   TopNavigation.Open Preference Unit Page
+
+Check Travel Expence Paybill
+    [Documentation]  Checks the available paybill at the salary disbursement page
+    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}=3
+    ${allPaybills}  DisbursementIndex.Get Paybill Count
+    FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
+    \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}
+    \    @{list1}  DisbursementIndex.Get Data Of Report Page  ${paybill}
+    \    @{list2}  DisbursementIndex.Get Data Of Disbursement Details Page  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
+    \    DisbursementIndex.Compare And Add To Report  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
+    \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
+#    \    Open Filters
+#    \    Apply Given Financial Year  ${finDropdownID}
+#    \    Apply Filters
+    \    sleep  2s
