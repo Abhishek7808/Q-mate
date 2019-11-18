@@ -2,7 +2,7 @@
 Resource  ../Configuration.resource
 Resource  ${RESOURCES}/Common_Keywords.robot
 Resource  ${RESOURCES}/ERP_Keywords.robot
-Resource  ${RESOURCES}/DA_Keywords.robot
+Resource  ${RESOURCES}/DV_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Library    SeleniumLibrary
 
@@ -28,26 +28,29 @@ ${count}    0
 #${exGratiaDisbursement}  HRM/exgratiadisbursement/ExGratiaDisbursementIndex
 #${exGratiaColumnText}  ExGratia Amount
 #${exGratiaDisTable}  xpath=//*[@id="EmpSalGrid"]
-#robot -d Results -i disbursmentallunits DataAnalysis
+#robot -d Results -i disbursmentallunits DataValidation
 *** Test Cases ***
+
+
+# TODO: create test cases as per the sheet.
 Disbursed amount should match with the report amount for all units
     [Tags]  dataanalysis  disbursementallunits
-    DA_Keywords.Match Salary Disbursed Amount With The Report For All Units
-    DA_Keywords.Match Travel Disbursed Amount With The Report For All Units
-    DA_Keywords.Match Bonus Disbursed Amount With The Report For All Units
-    DA_Keywords.Match Honorarium Disbursed Amount With The Report For All Units
-    DA_Keywords.Match Exgratia Disbursed Amount With The Report For All Units
-    DA_Keywords.Match Arrear Disbursed Amount With The Report For All Units
+    DV_Keywords.Match Salary Disbursed Amount With The Report For All Units
+    DV_Keywords.Match Travel Disbursed Amount With The Report For All Units
+    DV_Keywords.Match Bonus Disbursed Amount With The Report For All Units
+    DV_Keywords.Match Honorarium Disbursed Amount With The Report For All Units
+    DV_Keywords.Match Exgratia Disbursed Amount With The Report For All Units
+    DV_Keywords.Match Arrear Disbursed Amount With The Report For All Units
 
 
 Disbured amount should match with the report amount for given unit
     [Tags]  dataanalysis  disbursementunit
-    DA_Keywords.Match Salary Disbursed Amount With The Report For A Unit  ${unitID}
-    DA_Keywords.Match Honorarium Disbursed Amount With The Report For A Unit  ${unitID}
-    DA_Keywords.Match Travel Disbursed Amount With The Report For A Unit  ${unitID}
-    DA_Keywords.Match Bonus Disbursed Amount With The Report For A Unit   ${unitID}
-    DA_Keywords.Match Exgratia Disbursed Amount With The Report For A Unit  ${unitID}
-    DA_Keywords.Match Arrear Disbursed Amount With The Report For A Unit  ${unitID}
+    DV_Keywords.Match Salary Disbursed Amount With The Report For A Unit  ${unitID}
+    DV_Keywords.Match Honorarium Disbursed Amount With The Report For A Unit  ${unitID}
+    DV_Keywords.Match Travel Disbursed Amount With The Report For A Unit  ${unitID}
+    DV_Keywords.Match Bonus Disbursed Amount With The Report For A Unit   ${unitID}
+    DV_Keywords.Match Exgratia Disbursed Amount With The Report For A Unit  ${unitID}
+    DV_Keywords.Match Arrear Disbursed Amount With The Report For A Unit  ${unitID}
 
 
 

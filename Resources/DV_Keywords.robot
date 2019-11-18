@@ -9,7 +9,9 @@ Resource  ${PAGE OBJECTS}${/}${FA.name}/SalaryDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/ExgratiaDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/HonorariumDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/BonusDisbursementIndex.robot
+# TODO: Remove if not used anywhere
 Resource  ${PAGE OBJECTS}/NavigationHelper.robot
+
 *** Variables ***
 ${unitName}  None
 
