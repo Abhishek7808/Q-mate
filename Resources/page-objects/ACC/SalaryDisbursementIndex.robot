@@ -10,8 +10,6 @@ Set Variables
     set test variable  ${disburseTableColumnText}  Net Amount
     set test variable  ${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
 
-
-
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
     [Arguments]  ${unitID}  ${retryCount}

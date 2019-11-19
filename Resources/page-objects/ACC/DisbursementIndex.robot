@@ -92,7 +92,6 @@ Check Paybill
 Get Paybill Count
     [Documentation]  Returns the number of rows in the given paybill
     ${rowsCount}  get element count  ${paybillTableRow}
-    log to console  ${rowsCount} rows in paybill table
     return from keyword  ${rowsCount}
 
 
@@ -141,6 +140,7 @@ Get Data Of Disbursement Details Page
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[${columnNumber}]/div/div/a[1]/i
     ${numberOfRows}  get element count  ${disbursementTable}/tbody/tr
     ${columnNumber}  Get Amount Column Number  ${disbursementTable}  ${columnToBeFetched}
+    log to console  ${columnNumber}
     @{list}  create list
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
@@ -156,31 +156,31 @@ Compare And Add To Report
     log to console  ${list2} data of disbursement page
     ${numberOfItems}  get length  ${list1}
     FOR  ${index}  IN RANGE  ${numberOfItems}
-    \   run keyword if  '@{list1}[${index}]' != '@{list2}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
+    \   run keyword and ignore error  run keyword if  '@{list1}[${index}]' != '@{list2}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
 
 
 Get Amount Column Number
     [Documentation]  Gives the column number of the 'Net Amount' column
     [Arguments]  ${tableUrl}  ${requiredText}
-    log to console  ${requiredText}
     ${text2}  set variable  ${requiredText}
-    log to console  ${text2}
     ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableUrl}/thead/tr/th
-    log to console  ${NumberOfColumns} total number of columns in disbursement table
+    log to console  ${tableUrl}/thead/tr/th
+    log to console  ${text2} ${NumberOfColumns} disbursement table columns
     FOR  ${columnNumber}  IN RANGE  1  ${NumberOfColumns+1}
     \   ${text}   get table cell  ${tableUrl}  1  ${columnNumber}
-    \   log to console  ${text}
     \   ${status}  run keyword and return status  should be equal as strings  ${text}  ${text2}
+    \   log to console  ${text} ${text2} ${columnNumber}
     \   run keyword if  ${status} == ${true}  return from keyword  ${columnNumber}
-    \   log to console  ${columnNumber}
+
 
 
 Add To The Disbusement Test Report
     [Documentation]  Add unmatched salaries to the Test Report
     [Arguments]  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
-    ${employeeID}  DisbursementIndex.Get Employee ID   ${disbursementTable}  ${index}  ${employeeIdColumn}
-    run keyword and continue on failure  fail  Salary of Employee ID ${employeeID} in ${paybillNumber} didn't match
-    append to file  ${ERRORFILE}  Paybill No. ${paybillNumber}, Employee ID. ${employeeID}\n
+    ${employeeID}  Get Employee ID   ${disbursementTable}  ${index}  ${employeeIdColumn}
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    run keyword and continue on failure  fail  ${disbursementType}: Disbursement Amount Of Employee ID ${employeeID} in ${paybillNumber} didn't match
+    append to file  ${ERRORFILE}  ${disbursementType}: Paybill No. ${paybillNumber}, Employee ID. ${employeeID}\n
 
 Get Employee ID
     [Documentation]  Returns the employee ID from the given table data
@@ -189,6 +189,13 @@ Get Employee ID
     ${employeeDataDict}  split string  ${employeeData}  -
     ${employeeID}  get from list  ${employeeDataDict}  0
     return from keyword  ${employeeID}
+
+Get Disbursement Type
+  [Arguments]  ${disbursementUrl}
+  ${disbursementUrlDict}  split string  ${disbursementUrl}  /
+  ${formattedDict}  split string  ${disbursementUrlDict}[1]  Dis
+  ${disbursementType}  Catenate  ${formattedDict}[0] Disbursement
+  return from keyword   ${disbursementType}
 
 Switch Tab
     [Documentation]  Switches the robot to the previous tab

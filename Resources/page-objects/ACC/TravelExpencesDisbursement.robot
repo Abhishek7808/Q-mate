@@ -37,7 +37,7 @@ Match All Paybills Net Amounts With Reports For All Units
 
 Check Travel Expence Paybill
     [Documentation]  Checks the available paybill at the salary disbursement page
-    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}=3
+    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}
     ${allPaybills}  DisbursementIndex.Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}

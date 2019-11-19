@@ -42,45 +42,53 @@ Disbursed travel amount should match with the report amount for all units
     DV_Keywords.Match Travel Disbursed Amount With The Report For All Units
 
 Disbursed bonus amount should match with the report amount for all units
-    [Tags]  bonusdisbursmentallunits  Disbursement
+    [Tags]  bonusdisbursementallunits  Disbursement
     DV_Keywords.Match Bonus Disbursed Amount With The Report For All Units
 
 Disbursed honorarium amount should match with the report amount for all units
-    [Tags]  honorariumdisbursmentallunits  Disbursement
+    [Tags]  honorariumdisbursementallunits  Disbursement
     DV_Keywords.Match Honorarium Disbursed Amount With The Report For All Units
 
 Disbursed exgratia amount should match with the report amount for all units
-    [Tags]  exgratiadisbursmentallunits  Disbursement
+    [Tags]  exgratiadisbursementallunits  Disbursement
     DV_Keywords.Match Exgratia Disbursed Amount With The Report For All Units
 
 Disbursed arrear amount should match with the report amount for all units
-    [Tags]  arreardisbursmentallunits  Disbursement
+    [Tags]  arreardisbursementallunits  Disbursement
     DV_Keywords.Match Arrear Disbursed Amount With The Report For All Units
+
+Disbursed Leave Encashment amount should match with the report amount for all units
+    [Tags]  LeaveEncashmentdisbursementallunits  Disbursement
+    DV_Keywords.Match Leave Encashment Disbursed Amount With The Report For All Units
 
 
 Disbursed salary amount should match with the report amount for given unit
-    [Tags]  salarydisbursmentunit  disbursementunit
+    [Tags]  salarydisbursementunit  disbursementunit
     DV_Keywords.Match Salary Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed honorarium amount should match with the report amount for given unit
-    [Tags]  honorariumdisbursmentunit  disbursementunit
+    [Tags]  honorariumdisbursementunit  disbursementunit
     DV_Keywords.Match Honorarium Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed travel amount should match with the report amount for given unit
-    [Tags]  traveldisbursmentunit  disbursementunit
+    [Tags]  traveldisbursementunit  disbursementunit
     DV_Keywords.Match Travel Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed Bonus amount should match with the report amount for given unit
-    [Tags]  bonusdisbursmentunit  disbursementunit
+    [Tags]  bonusdisbursementunit  disbursementunit
     DV_Keywords.Match Bonus Disbursed Amount With The Report For A Unit   ${unitID}
 
 Disbursed exgratia amount should match with the report amount for given unit
-    [Tags]  exgratiadisbursmentunit  disbursementunit
+    [Tags]  exgratiadisbursementunit  disbursementunit
     DV_Keywords.Match Exgratia Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed arrear amount should match with the report amount for given unit
-    [Tags]  arreardisbursmentunit  disbursementunit
+    [Tags]  arreardisbursementunit  disbursementunit
     DV_Keywords.Match Arrear Disbursed Amount With The Report For A Unit  ${unitID}
+
+Disbursed Leave Encashment amount should match with the report amount for given unit
+    [Tags]  LeaveEncashmentdisbursementunit  disbursementunit
+    DV_Keywords.Match Leave Encashment Disbursed Amount With The Report For A Unit  ${unitID}
 
 
 
