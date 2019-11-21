@@ -22,7 +22,7 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 # login data added into Data/Login_Data.robot
 ${number} =  1
 #${num}  convert to integer  3
-${string}  HRM/salaryDisbursment/SalayDisbursmentIndex
+${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
 
 
 
@@ -48,7 +48,7 @@ All paybills should be checked
 #    ${floatnum}  Evaluate  "%.2f" % ${number}
 #    #${floatnum2}  convert to number  ${floatnum}  2
 #    log to console  ${floatnum}
-     ${num}  convert to integer  ${number}
+     #${num}  convert to integer  ${number}
 
 #     ${num}  set variable  ${num+1}
 #     log to console  ${num}
@@ -57,11 +57,11 @@ All paybills should be checked
 #     \   log to console  ${num}
 #    run keyword if  ${num} == '${EMPTY}'  log to console  hi
 
-    log to console  ${string}
-    @{first}  Split String  ${string}  /
-    log to console  ${first}[1]
-    ${formattedDict}  split string  ${first}[1]  Disbursment
-    log to console  ${formattedDict}[1]
+   ${disbursementUrlDict}  split string from right  ${disbursementUrl}  /  1
+   log to console  ${disbursementUrlDict}
+   ${formattedDict}  split string  ${disbursementUrlDict}[1]  Dis
+   ${disbursementType}  Catenate  ${formattedDict}[0] Disbursement
+   log to console  ${disbursementType}
 #    ${second}  Split String From Right  ${first}[1]  ;
 #    log to console  ${second}
 

@@ -12,33 +12,20 @@ ${ENVIRONMENT}    demo
 ${unitID}         None  #9 Head office  :3
 ${cycleID}        None
 ${financialYear}  20182019
+#${dateFrom}  01012017
+#${dateTo}
 ${count}    0
-#${salaryDisbursementIndex}  HRM/salaryDisbursment/SalayDisbursmentIndex
-#${salaryColoumnText}  Net Amount
-#${salaryDisTable}  xpath=//*[@id="EmpSalGrid"]
-#${arrearDisbursementIndex}  HRM/ArrearDisbursement/ArrearDisbursementIndex
-#${arrearColumnText}  Amount to be Disbursed
-#${arrearDisTable}  xpath=//*[@id="EmpSalGrid"]
-#${bonusDisbursement}  HRM/HonorariumDisbursement/BonusDisbursementIndex
-#${bonusColumnText}  Net Amount
-#${bonusDisTable}  xpath=//*[@id="EmpSalGrid"]
-#${honorariumDisbursement}  HRM/HonorariumDisbursement
-#${honorariumColumnText}  Net Amount
-#${honorariumDisTable}  xpath=//*[@id="EmpSalGrid"]
-#${exGratiaDisbursement}  HRM/exgratiadisbursement/ExGratiaDisbursementIndex
-#${exGratiaColumnText}  ExGratia Amount
-#${exGratiaDisTable}  xpath=//*[@id="EmpSalGrid"]
-#robot -d Results -i disbursmentallunits DataValidation
+# robot -d Results --variable unitId:3 -i traveldisbursementunit DataValidation
+
+
 *** Test Cases ***
-
-
 
 Disbursed salary amount should match with the report amount for all units
     [Tags]  salarydisbursementallunits  Disbursement
     DV_Keywords.Match Salary Disbursed Amount With The Report For All Units
 
 Disbursed travel amount should match with the report amount for all units
-    [Tags]  traveldisbursmentallunits   Disbursement
+    [Tags]  traveldisbursementallunits   Disbursement
     DV_Keywords.Match Travel Disbursed Amount With The Report For All Units
 
 Disbursed bonus amount should match with the report amount for all units
@@ -58,7 +45,7 @@ Disbursed arrear amount should match with the report amount for all units
     DV_Keywords.Match Arrear Disbursed Amount With The Report For All Units
 
 Disbursed Leave Encashment amount should match with the report amount for all units
-    [Tags]  LeaveEncashmentdisbursementallunits  Disbursement
+    [Tags]  leaveEncashmentdisbursementallunits  Disbursement
     DV_Keywords.Match Leave Encashment Disbursed Amount With The Report For All Units
 
 
@@ -87,7 +74,7 @@ Disbursed arrear amount should match with the report amount for given unit
     DV_Keywords.Match Arrear Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed Leave Encashment amount should match with the report amount for given unit
-    [Tags]  LeaveEncashmentdisbursementunit  disbursementunit
+    [Tags]  leaveEncashmentdisbursementunit  disbursementunit
     DV_Keywords.Match Leave Encashment Disbursed Amount With The Report For A Unit  ${unitID}
 
 

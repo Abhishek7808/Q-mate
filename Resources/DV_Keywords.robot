@@ -8,6 +8,7 @@ Resource  ${PAGE OBJECTS}${/}${FA.name}/TravelExpencesDisbursement.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/SalaryDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/ExgratiaDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/HonorariumDisbursementIndex.robot
+Resource  ${PAGE OBJECTS}${/}${FA.name}/BonusDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/LeaveEncashmentDisbursementIndex.robot
 
 Resource  ${PAGE OBJECTS}/NavigationHelper.robot

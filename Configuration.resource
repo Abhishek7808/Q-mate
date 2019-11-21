@@ -19,7 +19,7 @@ ${LIBRARY_DIR}           Library
 ${DATA_DIR}              Data
 ${RESULTS_DIR}           Results
 ${PAGE_OBJECTS_DIR}      page-objects
-
+${DV_DIR}                DV
 
 ###################
 #  Path Settings  #
@@ -32,12 +32,13 @@ ${LIBRARY}          ${CURDIR}${/}${LIBRARY_DIR}
 ${DATA}             ${CURDIR}${/}${DATA_DIR}
 ${RESULTS}          ${CURDIR}${/}${RESULTS_DIR}
 ${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
-
+${DV}               ${CURDIR}${/}${RESULTS_DIR}${/}${DV_DIR}
 
 ######################
 #    File Names      #
 ######################
 ${REPORT_NAME}              ErrorReport.csv
+${DV_REPORT_NAME}           Disbursement.csv
 ${URLS_JSON_NAME}           URLs.json
 ${TEST_URLS_JSON_NAME}      TestUrls.json
 ${CONTACTS_JSON_NAME}       Receivers.json
@@ -49,6 +50,7 @@ ${CREDENTIALS_FILE_NAME}    Credentials.json
 #   File Locations   #
 ######################
 ${ERRORFILE}          ${RESULTS}${/}${REPORT_NAME}
+${DV_REPORT}          ${RESULTS}${/}${DV}
 ${URLS_JSON}          ${DATA}${/}${URLS_JSON_NAME}
 ${TEST_URLS}          ${DATA}${/}${TEST_URLS_JSON_NAME}
 ${CONTACTS_JSON}      ${DATA}${/}${CONTACTS_JSON_NAME}
