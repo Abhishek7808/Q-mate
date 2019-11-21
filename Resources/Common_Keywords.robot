@@ -17,7 +17,7 @@ Begin Web Test
     #evaluate  sys.path.append(os.path.join(r'${PLUGINS}'))  modules=os, sys
 
     remove file  ${ERRORFILE}
-
+    remove file  ${DV_REPORT}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 

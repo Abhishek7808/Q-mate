@@ -89,7 +89,7 @@ Match Arrear Disbursed Amount With The Report For A Unit
     ArrearDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
 
 Match Leave Encashment Disbursed Amount With The Report For All Units
-    ${retryCount}  LeaveEncashmentDisbursementIndex.Go To Arrear Disbursement Index Page And Set Variables
+    ${retryCount}  LeaveEncashmentDisbursementIndex.Go To Leave Encashment Disbursement Index Page And Set Variables
     LeaveEncashmentDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
 
 Match Leave Encashment Disbursed Amount With The Report For A Unit

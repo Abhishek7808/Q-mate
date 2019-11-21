@@ -77,22 +77,16 @@ def get_disbursement_table_data(number_of_items, disbursement_list):
     for x in range(number_of_items):
         if count % 2 != 0:
             table_data += '<tr><td bgcolor="#fff">' + str(
-                count) + '</td><td bgcolor="#fff"><a href="' + error_urls[x][
-                              0] + '">' + error_urls[x][
-                              0] + '</a></td><td bgcolor="#fff">' + get_error_name(
-                error_urls[x][1]) + '</td><td bgcolor="#fff"> <a href="' + notify_false_error_link(
-                error_urls[x][
-                    0], error_urls[x][
-                    1]) + '">Notify</a></tr>'
+                count) + '</td><td bgcolor="#fff">' + disbursement_list[x][
+                        0] + '</td><td bgcolor="#fff">' + disbursement_list[x][1]\
+                          + '<td bgcolor="#fff">' + disbursement_list[x][2]\
+                           + '</td></tr>'
         else:
             table_data += '<tr><td bgcolor="#f1f1f1">' + str(
-                count) + '</td><td bgcolor="#f1f1f1"><a href="' + error_urls[x][
-                              0] + '">' + error_urls[x][
-                              0] + '</a></td><td bgcolor="#f1f1f1">' + get_error_name(
-                error_urls[x][1]) + '</td><td bgcolor="#f1f1f1"><a href="' + notify_false_error_link(
-                error_urls[x][
-                    0], error_urls[x][
-                    1]) + '">Notify</a></tr>'
+                count) + '</td><td bgcolor="#f1f1f1">' + disbursement_list[x][
+                              0] + '</td><td bgcolor="#f1f1f1">' + disbursement_list[x][1] \
+                            + '</td><td bgcolor="#f1f1f1">' + disbursement_list[x][
+                              2] + '</td></tr>'
         count += 1
     return table_data
 
@@ -161,36 +155,36 @@ def compose_disbursement_message(disbursement_list):
                             <th bgcolor="#d1d1d1"> Disbursement Type </th>
                             <th bgcolor="#d1d1d1"> Paybill No. </th>
                             <th bgcolor="#d1d1d1"> Employee ID </th>
-                            <th bgcolor="#d1d1d1"> False Positive </th>
                         </tr>""" + get_disbursement_table_data(number_of_items, disbursement_list) + """</table>
                     </body>
                     </html>"""
-    message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
-        "${ENVIRONMENT}") + " environment and found possible issues on following pages <br><br>" + html_table + "<br><b>Important: </b>This is an automated email fired by RajERP Bot. There are very thin chances of any false positive report, but just in case, if you find any, please do let us know about it by clicking on the <u>Notify</u> link right next to the URL."
+    # message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
+    #     "${ENVIRONMENT}") + " environment and found possible issues on following pages <br><br>" + html_table + "<br><b>Important: </b>This is an automated email fired by RajERP Bot. There are very thin chances of any false positive report, but just in case, if you find any, please do let us know about it by clicking on the <u>Notify</u> link right next to the URL."
 
     #    logger.console(message)
 
-    return message
+    return html_table
 
 class Notifications:
 
     @keyword
     def send_email(self, send_to, email_subject, email_message):
         # """Sends an email to the person given as a parameter"""
+        logger.console("hi 1")
         qmate_email = BuiltIn().get_variable_value("${EMAIL.address}")
         qmate_password = BuiltIn().get_variable_value("${EMAIL.password}")
-
+        logger.console("hi 2")
         # set up the SMTP server
         #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
         smtp_obj = smtplib.SMTP(host='smtp.e-connectsolutions.com', port=587)
-
+        logger.console("hi 3")
         # debug mode
         #       smtp_obj.set_debuglevel(1)
 
         smtp_obj.starttls()
         # logger.console(qmate_password)ehlo()
         smtp_obj.login(qmate_email, qmate_password)
-
+        logger.console("hi 4")
         msg = MIMEMultipart()  # create a message
 
         # Prints out the message body for our sake
@@ -202,14 +196,14 @@ class Notifications:
         msg['From'] = qmate_email
         msg['To'] = send_to
         msg['Subject'] = email_subject
-
+        logger.console("hi 5")
         # add in the message body
         msg.attach(MIMEText(email_message, 'html'))
-
+        logger.console("hi 6")
         # send the message via the server set up earlier.
         #        smtp_obj_response = smtp_obj.send_message(msg.as_string())
         smtp_obj.sendmail(qmate_email, msg["To"].split(","), msg.as_string())
-
+        logger.console("hi 7")
         # check the email response
         #        logger.console(smtp_obj_response)
 
@@ -217,10 +211,12 @@ class Notifications:
         smtp_obj.quit()
 
     @keyword
-    def send_error_email_notification(self, module_name, receivers_json):
+    def send_error_email_notification(self, module_name=None, receivers_json=None):
         #        logger.console(find_receiver(module_name, receivers_json).get('emailid'))
+        error_urls = []
         gen_test = GenericTests
-        error_urls = gen_test.filter_module_error_url(module_name)
+        if module_name is not None:
+            error_urls = gen_test.filter_module_error_url(module_name)
         disbursement_list = gen_test.read_file_return_list(disbursement_file)
         # logger.console(error_urls)
 
@@ -233,7 +229,10 @@ class Notifications:
 
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(disbursement_list) != 0:
             email_message = compose_disbursement_message(disbursement_list)
-
+            email_subject = "Disbursement Report"
+            emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
+            self.send_email(emails_ids, email_subject, email_message) \
+ \
     @keyword
     def send_error_push_notification(self):
         # error_urls = self.filter_module_error_urls(module_name)

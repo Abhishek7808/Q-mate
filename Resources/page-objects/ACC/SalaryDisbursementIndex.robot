@@ -34,7 +34,7 @@ Match All Paybills Net Amounts With Reports For All Units
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     \   DisbursementIndex.Open Filters
     \   DisbursementIndex.Apply Given Financial Year
-    \   DisbursementIndex.Apply Given Cycle Filter
+    #\   DisbursementIndex.Apply Given Cycle Filter
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
     \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}

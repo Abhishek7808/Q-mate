@@ -47,7 +47,7 @@ Check Leave Encashment Paybill
     ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
     log to console  ${disbursementType}
     DisbursementIndex.Show Maximum Entries
-    sleepww  2s
+    sleep  2s
     ${allPaybills}  Get Paybill Count
     # TODO: change the Check paybill range before testing on live ,it should start from 1
     FOR  ${paybill}  IN RANGE  2  ${allPaybills+1}

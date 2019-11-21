@@ -6,11 +6,12 @@ Resource  ${RESOURCES}/DV_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Library    SeleniumLibrary
 
+Suite Teardown  DisbursementIndex.Send Disbursement Test Report To Developers
 
 *** Variable ***
 ${ENVIRONMENT}    demo
 ${unitID}         None  #9 Head office  :3
-${cycleID}        None
+${cycleID}        None  #99
 ${financialYear}  20182019
 #${dateFrom}  01012017
 #${dateTo}
