@@ -71,6 +71,30 @@ def table_data(number_of_items, error_urls):
         count += 1
     return table_data
 
+def get_disbursement_table_data(number_of_items, disbursement_list):
+    table_data = ""
+    count = 1
+    for x in range(number_of_items):
+        if count % 2 != 0:
+            table_data += '<tr><td bgcolor="#fff">' + str(
+                count) + '</td><td bgcolor="#fff"><a href="' + error_urls[x][
+                              0] + '">' + error_urls[x][
+                              0] + '</a></td><td bgcolor="#fff">' + get_error_name(
+                error_urls[x][1]) + '</td><td bgcolor="#fff"> <a href="' + notify_false_error_link(
+                error_urls[x][
+                    0], error_urls[x][
+                    1]) + '">Notify</a></tr>'
+        else:
+            table_data += '<tr><td bgcolor="#f1f1f1">' + str(
+                count) + '</td><td bgcolor="#f1f1f1"><a href="' + error_urls[x][
+                              0] + '">' + error_urls[x][
+                              0] + '</a></td><td bgcolor="#f1f1f1">' + get_error_name(
+                error_urls[x][1]) + '</td><td bgcolor="#f1f1f1"><a href="' + notify_false_error_link(
+                error_urls[x][
+                    0], error_urls[x][
+                    1]) + '">Notify</a></tr>'
+        count += 1
+    return table_data
 
 def compose_error_message(module_name, error_urls):
     # """ Compose a html table of errors"""
@@ -134,10 +158,11 @@ def compose_disbursement_message(disbursement_list):
         <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">
                         <tr>
                             <th bgcolor="#d1d1d1"> Sr. No. </th>
-                            <th bgcolor="#d1d1d1"> URL </th>
-                            <th bgcolor="#d1d1d1"> Issue </th>
+                            <th bgcolor="#d1d1d1"> Disbursement Type </th>
+                            <th bgcolor="#d1d1d1"> Paybill No. </th>
+                            <th bgcolor="#d1d1d1"> Employee ID </th>
                             <th bgcolor="#d1d1d1"> False Positive </th>
-                        </tr>""" + table_data(number_of_items, error_urls) + """</table>
+                        </tr>""" + get_disbursement_table_data(number_of_items, disbursement_list) + """</table>
                     </body>
                     </html>"""
     message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
