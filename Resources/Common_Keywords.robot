@@ -22,7 +22,7 @@ Begin Web Test
     maximize browser window
 
 End Web Test
-    close all browsers
+    close browser
 
 Read JSON File
     [Arguments]  ${JSON_File}

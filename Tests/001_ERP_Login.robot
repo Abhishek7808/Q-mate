@@ -4,7 +4,7 @@ Resource  ${RESOURCES}/Common_Keywords.robot
 Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
-Resource  ${DATA}/Common_Data.robot
+
 
 #Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test

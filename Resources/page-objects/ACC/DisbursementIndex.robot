@@ -136,6 +136,8 @@ Add To The Disbusement Test Report
     run keyword and continue on failure  fail  ${disbursementType}: Disbursement Amount Of Employee ID ${employeeID} in ${paybillNumber} didn't match
     append to file  ${DV_REPORT}  ${disbursementType}, Paybill No. ${paybillNumber}, Employee ID. ${employeeID}\n
 
+Send Disbursement Test Report To Developers
+    [Arguments]  @{}
 
 Get Amount Column Number
     [Documentation]  Gives the column number of the 'Net Amount' column

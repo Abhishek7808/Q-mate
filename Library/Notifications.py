@@ -12,7 +12,7 @@ import base64
 import GenericTests
 
 error_file = BuiltIn().get_variable_value("${ERRORFILE}")
-
+disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
 
 def notify_false_error_link(url, error_code):
     base_url = BuiltIn().get_variable_value("${NOTIFY_FALSE_ERROR_LINK}")
@@ -110,6 +110,42 @@ th, td {
 
     return message
 
+def compose_disbursement_message(disbursement_list):
+    number_of_items = len(disbursement_list)
+    html_table = """
+    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+    <html lang="en">
+    <head>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+      <title></title>
+
+      <style type="text/css">
+    th, td {
+        vertical-align: middle;
+        align:left;
+    }
+      </style>    
+
+    </head>
+    <body style="margin:0; padding:0; background-color:#fff;">
+        <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">
+                        <tr>
+                            <th bgcolor="#d1d1d1"> Sr. No. </th>
+                            <th bgcolor="#d1d1d1"> URL </th>
+                            <th bgcolor="#d1d1d1"> Issue </th>
+                            <th bgcolor="#d1d1d1"> False Positive </th>
+                        </tr>""" + table_data(number_of_items, error_urls) + """</table>
+                    </body>
+                    </html>"""
+    message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
+        "${ENVIRONMENT}") + " environment and found possible issues on following pages <br><br>" + html_table + "<br><b>Important: </b>This is an automated email fired by RajERP Bot. There are very thin chances of any false positive report, but just in case, if you find any, please do let us know about it by clicking on the <u>Notify</u> link right next to the URL."
+
+    #    logger.console(message)
+
+    return message
 
 class Notifications:
 
@@ -160,7 +196,7 @@ class Notifications:
         #        logger.console(find_receiver(module_name, receivers_json).get('emailid'))
         gen_test = GenericTests
         error_urls = gen_test.filter_module_error_url(module_name)
-
+        disbursement_list = gen_test.read_file_return_list(disbursement_file)
         # logger.console(error_urls)
 
         # check if error notifications needs to sent
@@ -168,7 +204,10 @@ class Notifications:
             emails_ids = find_receiver(module_name, receivers_json)
             email_subject = "Audit Report of " + module_name
             email_message = compose_error_message(module_name, error_urls)
-            self.send_email(emails_ids.get('emailid'), email_subject, email_message)
+            self.send_email(emails_ids.get('emailid'), email_subject, email_message)\
+
+        if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(disbursement_list) != 0:
+            email_message = compose_disbursement_message(disbursement_list)
 
     @keyword
     def send_error_push_notification(self):

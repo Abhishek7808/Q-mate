@@ -5,7 +5,7 @@ from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 
 error_file = BuiltIn().get_variable_value(r"${ERRORFILE}")
-
+disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
 
 def filter_module_error_url(module_name):
     # """Filter the error list according to the given module and returns a new list """
@@ -16,6 +16,10 @@ def filter_module_error_url(module_name):
             module_error_list.append(item)
     # logger.console("hi")
     return module_error_list
+
+def get_disbursement_list():
+    disbursement_list = read_file_return_list(disbursement_file)
+
 
 
 def read_file_return_list(file):

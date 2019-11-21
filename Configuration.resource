@@ -50,7 +50,7 @@ ${CREDENTIALS_FILE_NAME}    Credentials.json
 #   File Locations   #
 ######################
 ${ERRORFILE}          ${RESULTS}${/}${REPORT_NAME}
-${DV_REPORT}          ${RESULTS}${/}${DV}
+${DV_REPORT}          ${DV}${/}${DV_REPORT_NAME}
 ${URLS_JSON}          ${DATA}${/}${URLS_JSON_NAME}
 ${TEST_URLS}          ${DATA}${/}${TEST_URLS_JSON_NAME}
 ${CONTACTS_JSON}      ${DATA}${/}${CONTACTS_JSON_NAME}

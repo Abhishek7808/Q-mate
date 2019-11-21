@@ -15,7 +15,7 @@ ${financialYear}  20182019
 #${dateFrom}  01012017
 #${dateTo}
 ${count}    0
-# robot -d Results --variable unitId:3 -i traveldisbursementunit DataValidation
+# robot -d Results --variable unitId:3 -i disbursementunit DataValidation
 
 
 *** Test Cases ***
