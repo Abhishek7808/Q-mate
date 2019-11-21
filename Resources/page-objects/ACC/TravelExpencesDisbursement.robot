@@ -22,7 +22,7 @@ Match All Paybills Net Amount With The Report For Given Unit
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
-    [Arguments]  ${retryCount}  ${employeeIdColumn}
+    [Arguments]  ${retryCount}
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
     log to console  ${allUnits} number of total units
@@ -38,8 +38,12 @@ Match All Paybills Net Amounts With Reports For All Units
 Check Travel Expence Paybill
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    log to console  ${disbursementType}
     ${allPaybills}  DisbursementIndex.Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
+    \    DisbursementIndex.Show Maximum Entries
+    \    sleep  2s
     \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}
     \    @{list1}  DisbursementIndex.Get Data Of Report Page  ${paybill}
     \    @{list2}  DisbursementIndex.Get Data Of Disbursement Details Page  ${paybill}  ${columnToBeFetched}  ${disbursementTable}

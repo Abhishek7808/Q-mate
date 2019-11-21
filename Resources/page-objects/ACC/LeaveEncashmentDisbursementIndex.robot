@@ -21,7 +21,7 @@ Match All Paybills Net Amount With The Report For Given Unit
     #DisbursementIndex.Apply Given Cycle Filter
     #DisbursementIndex.Apply Filters
     sleep  5s
-    LeaveEncashmentDisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}  ${employeeIdColumn}
+    LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}  ${employeeIdColumn}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
@@ -38,14 +38,21 @@ Match All Paybills Net Amounts With Reports For All Units
 #    \   DisbursementIndex.Apply Given Cycle Filter
 #    \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   LeaveEncashmentDisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}  ${employeeIdColumn}
+    \   LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}  ${employeeIdColumn}
     \   TopNavigation.Open Preference Unit Page
 
-Check Paybill
+Check Leave Encashment Paybill
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    log to console  ${disbursementType}
+    DisbursementIndex.Show Maximum Entries
+    sleepww  2s
     ${allPaybills}  Get Paybill Count
-    FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
+    # TODO: change the Check paybill range before testing on live ,it should start from 1
+    FOR  ${paybill}  IN RANGE  2  ${allPaybills+1}
+    \    DisbursementIndex.Show Maximum Entries
+    \    sleep  2s
     \    ${paybillNumber}  LeaveEncashmentDisbursementIndex.Get Voucher Number  ${paybill}
     \    @{list1}  DisbursementIndex.Get Data Of Report Page  ${paybill}
     \    @{list2}  LeaveEncashmentDisbursementIndex.Get Data Of Leave Encashment Disbursement Details Page  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
@@ -63,6 +70,7 @@ Get Data Of Leave Encashment Disbursement Details Page
     ${columnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTable}  Actions
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[${columnNumber}]/div/div/a[1]/i
     ${numberOfRows}  get element count  ${disbursementTable}/tbody/tr
+    log to console  ${numberOfRows+1}
     ${columnNumber}  DisbursementIndex.Get Amount Column Number  ${disbursementTable}  ${columnToBeFetched}
     #log to console  ${columnNumber}
     @{list}  create list
@@ -80,7 +88,7 @@ Get Voucher Number
     ${payBillDetails}  get table cell  ${paybillTable}  ${paybillTableRow+1}  ${columnNumber}
     #${paybillText}  get text  ${payBillDetails}
     ${paybillTextDict1}  Split String From Right   ${payBillDetails}  ;
-    log to console  ${paybillTextDict1}
+    log to console  ${paybillTextDict1}[0]
     #${paybillTextDict2}  Split String From Right  ${paybillTextDict1}[1]  ;
     # log to console  ${paybillTextDict} paybill dictionary
     return from keyword  ${paybillTextDict1}[0]

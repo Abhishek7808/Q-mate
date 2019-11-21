@@ -20,7 +20,7 @@ Match All Paybills Net Amount With The Report For Given Unit
 #    DisbursementIndex.Apply Given Cycle Filter
     DisbursementIndex.Apply Filters
     sleep  2s
-    DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
+    ArrearDisbursementIndex.Check Arrear Disbursement Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
