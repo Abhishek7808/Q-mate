@@ -30,7 +30,7 @@ Match Salary Disbursed Amount With The Report For A Unit
     [Arguments]   ${unitID}
     #SalaryDisbursementIndex.Set Variables
     ${retryCount}  SalaryDisbursementIndex.Go To Salary Disbursement Index Page And Set Variables
-    SalaryDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
+    SalaryDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 
 Match Travel Disbursed Amount With The Report For All Units
@@ -42,7 +42,7 @@ Match Travel Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
     # TravelExpencesDisbursement.Set Variables
     ${retryCount}  TravelExpencesDisbursement.Go To Travel Disbursement Index Page And Set Variables
-    TravelExpencesDisbursement.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
+    TravelExpencesDisbursement.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Bonus Disbursed Amount With The Report For All Units
     # BonusDisbursementIndex.Set Variables
@@ -53,7 +53,7 @@ Match Bonus Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
     # BonusDisbursementIndex.Set Variables
     ${retryCount}  BonusDisbursementIndex.Go To Bonus Disbursement Index Page And Set Variables
-    BonusDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
+    BonusDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Honorarium Disbursed Amount With The Report For All Units
     # HonorariumDisbursementIndex.Set Variables
@@ -64,7 +64,7 @@ Match Honorarium Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
     #HonorariumDisbursementIndex.Set Variables
     ${retryCount}  HonorariumDisbursementIndex.Go To Honorarium Disbursement Index Page And Set Variables
-    HonorariumDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
+    HonorariumDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Exgratia Disbursed Amount With The Report For All Units
     # ExgratiaDisbursementIndex.Set Variables
@@ -75,7 +75,7 @@ Match Exgratia Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
     # ExgratiaDisbursementIndex.Set Variables
     ${retryCount}  ExgratiaDisbursementIndex.Go To Exgratia Disbursement Index Page And Set Variables
-    ExgratiaDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
+    ExgratiaDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Arrear Disbursed Amount With The Report For All Units
     # ArrearDisbursementIndex.Set Variables
@@ -86,7 +86,7 @@ Match Arrear Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
     # ArrearDisbursementIndex.Set Variables
     ${retryCount}  ArrearDisbursementIndex.Go To Arrear Disbursement Index Page And Set Variables
-    ArrearDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
+    ArrearDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Leave Encashment Disbursed Amount With The Report For All Units
     ${retryCount}  LeaveEncashmentDisbursementIndex.Go To Leave Encashment Disbursement Index Page And Set Variables
@@ -95,4 +95,4 @@ Match Leave Encashment Disbursed Amount With The Report For All Units
 Match Leave Encashment Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
     ${retryCount}  LeaveEncashmentDisbursementIndex.Go To Leave Encashment Disbursement Index Page And Set Variables
-    LeaveEncashmentDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${unitID}  ${retryCount}
+    LeaveEncashmentDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}

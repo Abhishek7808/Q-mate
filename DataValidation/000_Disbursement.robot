@@ -10,9 +10,9 @@ Suite Teardown  DisbursementIndex.Send Disbursement Test Report To Developers
 
 *** Variable ***
 ${ENVIRONMENT}    demo
-${unitID}         None  #9 Head office  :3
-${cycleID}        None  #99
-${financialYear}  20182019
+${UNITID}        None  #9 Head office  :3
+${CYCLEID}        None  #99
+${FINANCIALYEAR}  20182019
 #${dateFrom}  01012017
 #${dateTo}
 ${count}    0

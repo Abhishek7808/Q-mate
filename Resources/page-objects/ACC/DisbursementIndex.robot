@@ -27,12 +27,12 @@ Apply Filters
 
 Apply Given Financial Year
     [Arguments]  ${finDropdownID}=Finyear
-    select from list by value  ${finDropdownID}  ${financialYear}
+    select from list by value  ${finDropdownID}  ${FINANCIALYEAR}
 
 Apply Given Cycle Filter
     [Documentation]  Opens filter menu in salary disbursement page and applies the given salary cycle filter
     sleep  2s
-    run keyword if  ${cycleID} != None  select from list by value  ${cycle}  ${cycleID}  ELSE  select last dropdown element  ${cycle}
+    run keyword if  ${CYCLEID} != None  select from list by value  ${cycle}  ${CYCLEID}  ELSE  select last dropdown element  ${cycle}
 
 Apply Last Cycle Filter
     [Documentation]  Opens filter menu in salary disbursement page and applies the last salary cycle filter

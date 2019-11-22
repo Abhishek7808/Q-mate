@@ -13,8 +13,8 @@ Set Variables
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
-    [Arguments]  ${unitID}  ${retryCount}
-    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${retryCount}
+    [Arguments]  ${UNITID}  ${retryCount}
+    run keyword if  ${UNITID}!= None  TopNavigation.Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     DisbursementIndex.Open Filters
     DisbursementIndex.Apply Given Financial Year  ${finDropdownID}
@@ -31,9 +31,9 @@ Match All Paybills Net Amounts With Reports For All Units
     \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     \   DisbursementIndex.Open Filters
-    \   DisbursementIndex.Apply Given Financial Year
+    \   DisbursementIndex.Apply Given Financial Year  ${finDropdownID}
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
+    \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}   ${finDropdownID}
     \   TopNavigation.Open Preference Unit Page
 

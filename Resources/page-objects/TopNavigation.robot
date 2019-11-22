@@ -56,7 +56,6 @@ Select Unit In Preference Modal
     sleep  2s
     Apply Pereference
     ${retryCount}  set variable  ${retryCount+1}
-    log to console  ${retryCount} retryCount is increased
     ${status}  Check Preference Is Selected Or Not
     run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal  ${i}  ${retryCount}
     run keyword if  ${retryCount} ==3  fail  Filter is not apllied
@@ -67,14 +66,14 @@ Check Preference Is Selected Or Not
     return from keyword  ${status}
 Select Unit In Preference Modal By ID
     [Documentation]  Selects the unit by unit id from the unit dropdown
-    [Arguments]  ${unitID}  ${retryCount}
+    [Arguments]  ${UNITID}  ${retryCount}
     Open Preference Unit Page
     select from list by value  id=Pre_Unit  ${unitID}
     Apply Pereference
     ${retryCount}  set variable  ${retryCount+1}
     log to console  ${retryCount} retryCount is increased
     ${status}  Check Preference Is Selected Or Not
-    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal By ID  ${unitID}  ${retryCount}
+    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
     run keyword if  ${retryCount} ==3  fail  Filter is not apllied
     ${retryCount}  convert to integer  1
 
