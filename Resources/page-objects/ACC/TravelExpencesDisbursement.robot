@@ -25,9 +25,7 @@ Match All Paybills Net Amounts With Reports For All Units
     [Arguments]  ${retryCount}
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
-    log to console  ${allUnits} number of total units
     FOR  ${unit}  IN RANGE  1  ${allUnits}
-    \   log to console  ${unit} unit
     \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
 #    \   DisbursementIndex.Apply Given Cycle Filter
@@ -38,15 +36,17 @@ Match All Paybills Net Amounts With Reports For All Units
 Check Travel Expence Paybill
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}
-    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
-    log to console  ${disbursementType}
     ${allPaybills}  DisbursementIndex.Get Paybill Count
+    ${PaybillActionsColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTable}  Actions
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
     \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}
-    \    @{list1}  DisbursementIndex.Get Data Of Report Page  ${paybill}
-    \    @{list2}  DisbursementIndex.Get Data Of Disbursement Details Page  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
+    \    DisbursementIndex.Go To Report Page  ${paybill}  ${PaybillActionsColumnNumber}
+    \    @{list1}  DisbursementIndex.Get Data Of Report Page
+    \    DisbursementIndex.Switch Tab
+    \    DisbursementIndex.Go To Disbursement Page  ${paybill}  ${PaybillActionsColumnNumber}
+    \    @{list2}  DisbursementIndex.Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTable}
     \    DisbursementIndex.Compare And Add To Report  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
     \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
 #    \    Open Filters

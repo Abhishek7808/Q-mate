@@ -28,9 +28,7 @@ Match All Paybills Net Amounts With Reports For All Units
     [Arguments]  ${retryCount}
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
-    log to console  ${allUnits} number of total units
     FOR  ${unit}  IN RANGE  1  ${allUnits}
-    \   log to console  ${unit} unit
     \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
 #    \   DisbursementIndex.Open Filters
@@ -44,18 +42,20 @@ Match All Paybills Net Amounts With Reports For All Units
 Check Leave Encashment Paybill
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}
-    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
-    log to console  ${disbursementType}
-    DisbursementIndex.Show Maximum Entries
-    sleep  2s
+    ${PaybillActionsColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTable}  Actions
+    #DisbursementIndex.Show Maximum Entries
+    #sleep  2s
     ${allPaybills}  Get Paybill Count
-    # TODO: change the Check paybill range before testing on live ,it should start from 1
+    # TODO: change the Check paybill range before testing on live ,it should start from 1 remove comments from show max entries
     FOR  ${paybill}  IN RANGE  2  ${allPaybills+1}
-    \    DisbursementIndex.Show Maximum Entries
+    #\    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
     \    ${paybillNumber}  LeaveEncashmentDisbursementIndex.Get Voucher Number  ${paybill}
-    \    @{list1}  DisbursementIndex.Get Data Of Report Page  ${paybill}
-    \    @{list2}  LeaveEncashmentDisbursementIndex.Get Data Of Leave Encashment Disbursement Details Page  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
+    \    DisbursementIndex.Go To Report Page  ${paybill}  ${PaybillActionsColumnNumber}
+    \    @{list1}  DisbursementIndex.Get Data Of Report Page
+    \    DisbursementIndex.Switch Tab
+    \    DisbursementIndex.Go To Disbursement Page  ${paybill}  ${PaybillActionsColumnNumber}
+    \    @{list2}  LeaveEncashmentDisbursementIndex.Get Data Of Leave Encashment Disbursement Details Page  ${columnToBeFetched}  ${disbursementTable}
     \    DisbursementIndex.Compare And Add To Report  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
     \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
 #    \    Open Filters
@@ -65,14 +65,9 @@ Check Leave Encashment Paybill
 
 Get Data Of Leave Encashment Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
-    [Arguments]  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
-    Switch Tab
-    ${columnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTable}  Actions
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[${columnNumber}]/div/div/a[1]/i
+    [Arguments]  ${columnToBeFetched}  ${disbursementTable}
     ${numberOfRows}  get element count  ${disbursementTable}/tbody/tr
-    log to console  ${numberOfRows+1}
     ${columnNumber}  DisbursementIndex.Get Amount Column Number  ${disbursementTable}  ${columnToBeFetched}
-    #log to console  ${columnNumber}
     @{list}  create list
     FOR  ${row}  IN RANGE  1  ${numberOfRows+1}
     \    sleep  2s
@@ -86,9 +81,5 @@ Get Voucher Number
     [Arguments]  ${paybillTableRow}
     ${columnNumber}  Get Amount Column Number  ${paybillTable}  Voucher Detail
     ${payBillDetails}  get table cell  ${paybillTable}  ${paybillTableRow+1}  ${columnNumber}
-    #${paybillText}  get text  ${payBillDetails}
     ${paybillTextDict1}  Split String From Right   ${payBillDetails}  ;
-    log to console  ${paybillTextDict1}[0]
-    #${paybillTextDict2}  Split String From Right  ${paybillTextDict1}[1]  ;
-    # log to console  ${paybillTextDict} paybill dictionary
     return from keyword  ${paybillTextDict1}[0]

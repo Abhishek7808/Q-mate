@@ -46,15 +46,17 @@ Show Maximum Entries
 Check Paybill
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${finDropdownID}=Finyear  ${employeeIdColumn}=3
-    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
-    log to console  ${disbursementType}
+    ${PaybillActionsColumnNumber}  Get Amount Column Number  ${paybillTable}  Actions
     ${allPaybills}  Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
     \    ${paybillNumber}  Get Paybill Number  ${paybill}
-    \    @{list1}  Get Data Of Report Page  ${paybill}
-    \    @{list2}  Get Data Of Disbursement Details Page  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
+    \    Go To Report Page  ${paybill}  ${PaybillActionsColumnNumber}
+    \    @{list1}  Get Data Of Report Page
+    \    Switch Tab
+    \    Go To Disbursement Page  ${paybill}  ${PaybillActionsColumnNumber}
+    \    @{list2}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTable}
     \    Compare And Add To Report  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
     \    Go To Disbursement Index Page  ${disbursementUnitUrl}
     \    Open Filters
@@ -75,15 +77,15 @@ Get Paybill Number
     #${paybillText}  get text  ${payBillDetails}
     ${paybillTextDict1}  Split String From Right   ${payBillDetails}  Paybill No.
     ${paybillTextDict2}  Split String From Right  ${paybillTextDict1}[1]  ;
-    # log to console  ${paybillTextDict} paybill dictionary
     return from keyword  ${paybillTextDict2}[0]
+
+Go To Report Page
+    [Arguments]   ${paybillTableRow}  ${columnNumber}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/a[2]/i
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/ul/li[1]/a[1]
 
 Get Data Of Report Page
     [Documentation]  Returns the list of salaries of employees listed in report page
-    [Arguments]  ${paybillTableRow}
-    ${columnNumber}  Get Amount Column Number  ${paybillTable}  Actions
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/a[2]/i
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/ul/li[1]/a[1]
     Switch Tab
     @{list}  create list
     ${numberOfRows}  get element count  ${reportPageTable}/tbody/tr
@@ -103,12 +105,13 @@ Change The Number Into A Formatted Amount
     ${formattedAmount}  run keyword if  '${formattedSalary}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedSalary}
     return from keyword  ${formattedAmount}
 
+Go To Disbursement Page
+    [Arguments]   ${paybill}  ${columnNumber}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[${columnNumber}]/div/div/a[1]/i
+
 Get Data Of Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
-    [Arguments]  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
-    Switch Tab
-    ${columnNumber}  Get Amount Column Number  ${paybillTable}  Actions
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[${columnNumber}]/div/div/a[1]/i
+    [Arguments]  ${columnToBeFetched}  ${disbursementTable}
     ${numberOfRows}  get element count  ${disbursementTable}/tbody/tr
     ${columnNumber}  Get Amount Column Number  ${disbursementTable}  ${columnToBeFetched}
     @{list}  create list
@@ -122,8 +125,8 @@ Get Data Of Disbursement Details Page
 Compare And Add To Report
     [Documentation]  Compares both report page list and disbursement page list and add the result of camparision into a report
     [Arguments]  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
-    log to console  ${list1} data of report page
-    log to console  ${list2} data of disbursement page
+    log to console  ${list1} Data of Report Page
+    log to console  ${list2} Data of Disbursement Page
     ${numberOfItems}  get length  ${list1}
     FOR  ${index}  IN RANGE  ${numberOfItems}
     \   run keyword if  '@{list1}[${index}]' != '@{list2}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
@@ -146,7 +149,7 @@ Get Amount Column Number
     ${text2}  set variable  ${requiredText}
     ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableUrl}/thead/tr/th
     FOR  ${columnNumber}  IN RANGE  1  ${NumberOfColumns+1}
-    \   ${text}   get table cell  ${tableUrl}  1  ${columnNumber}
+    \   ${text}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${tableUrl}  1  ${columnNumber}
     \   ${status}  run keyword and return status  should be equal as strings  ${text}  ${text2}
     \   run keyword if  ${status} == ${true}  return from keyword  ${columnNumber}
 
