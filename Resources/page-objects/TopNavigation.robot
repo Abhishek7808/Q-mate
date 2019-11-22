@@ -71,7 +71,6 @@ Select Unit In Preference Modal By ID
     select from list by value  id=Pre_Unit  ${unitID}
     Apply Pereference
     ${retryCount}  set variable  ${retryCount+1}
-    log to console  ${retryCount} retryCount is increased
     ${status}  Check Preference Is Selected Or Not
     run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
     run keyword if  ${retryCount} ==3  fail  Filter is not apllied

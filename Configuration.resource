@@ -62,8 +62,8 @@ ${CREDENTIALS_FILE}   ${DATA}${/}${CREDENTIALS_FILE_NAME}
 #  Email Settings  #
 ####################
 &{EMAIL}
-...  address=anubhav.verma@e-connectsolutions.com
-...  password=A@nub@19
+...  address=rpa@e-connectsolutions.com
+...  password=R@pa@19
 ${SEND_EMAIL_NOTIFICATIONS}  True
 
 

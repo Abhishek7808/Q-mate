@@ -9,7 +9,7 @@ Library    SeleniumLibrary
 Suite Teardown  DisbursementIndex.Send Disbursement Test Report To Developers
 
 *** Variable ***
-${ENVIRONMENT}    demo
+${ENVIRONMENT}    production
 ${UNITID}        None  #9 Head office  :3
 ${CYCLEID}        None  #99
 ${FINANCIALYEAR}  20182019
