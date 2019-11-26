@@ -39,6 +39,7 @@ ${DV}               ${CURDIR}${/}${RESULTS_DIR}${/}${DV_DIR}
 ######################
 ${REPORT_NAME}              ErrorReport.csv
 ${DV_REPORT_NAME}           Disbursement.csv
+${CPF_REPORT_NAME}          BeneficiaryReport.csv
 ${URLS_JSON_NAME}           URLs.json
 ${TEST_URLS_JSON_NAME}      TestUrls.json
 ${CONTACTS_JSON_NAME}       Receivers.json
@@ -51,6 +52,7 @@ ${CREDENTIALS_FILE_NAME}    Credentials.json
 ######################
 ${ERRORFILE}          ${RESULTS}${/}${REPORT_NAME}
 ${DV_REPORT}          ${DV}${/}${DV_REPORT_NAME}
+${CPF_REPORT}         ${RESULTS}${/}${CPF_REPORT_NAME}
 ${URLS_JSON}          ${DATA}${/}${URLS_JSON_NAME}
 ${TEST_URLS}          ${DATA}${/}${TEST_URLS_JSON_NAME}
 ${CONTACTS_JSON}      ${DATA}${/}${CONTACTS_JSON_NAME}
@@ -72,7 +74,7 @@ ${SEND_EMAIL_NOTIFICATIONS}  True
 ####################
 ${DELAY}          0
 ${RETRY TIME}     10s
-${RETRY INTERVAL}    200ms
+${RETRY INTERVAL}    400ms
 
 
 ########################

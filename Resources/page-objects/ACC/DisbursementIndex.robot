@@ -180,3 +180,8 @@ Close Last Tab
     Select Window       title=@{title_var}[0]
     close window
 
+Close Current Tab
+    [Documentation]  Closes the current tab
+    ${title_var}        Get Window Titles
+    Select Window       title=@{title_var}[1]
+    close window
