@@ -125,11 +125,11 @@ Get Data Of Disbursement Details Page
 Compare And Add To Report
     [Documentation]  Compares both report page list and disbursement page list and add the result of camparision into a report
     [Arguments]  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
-    log to console  ${list1} Data of Report Page
-    log to console  ${list2} Data of Disbursement Page
-    ${numberOfItems}  get length  ${list1}
+#    log to console  ${list1} Data of Report Page
+#    log to console  ${list2} Data of Disbursement Page
+    ${numberOfItems}  run keyword if  ${list1} != []  get length  ${list1}  ELSE  get length  ${list2}
     FOR  ${index}  IN RANGE  ${numberOfItems}
-    \   run keyword if  '@{list1}[${index}]' != '@{list2}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
+    \   run keyword and continue on failure  run keyword if  '@{list1}[${index}]' != '@{list2}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
 
 Add To The Disbusement Test Report
     [Documentation]  Add unmatched salaries to the Test Report

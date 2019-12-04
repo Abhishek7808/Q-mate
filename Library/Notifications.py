@@ -94,7 +94,6 @@ def get_disbursement_table_data(number_of_items, disbursement_list):
 def get_Beneficiary_table_data(number_of_items, Beneficiary_list):
     table_data = ""
     count = 1
-    logger.console(Beneficiary_list)
     for x in range(number_of_items):
         if count % 2 != 0:
             table_data += '<tr><td bgcolor="#fff">' + str(

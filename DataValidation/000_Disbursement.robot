@@ -9,7 +9,7 @@ Library    SeleniumLibrary
 Suite Teardown  DisbursementIndex.Send Disbursement Test Report To Developers
 
 *** Variable ***
-${ENVIRONMENT}    production
+${ENVIRONMENT}    demo
 ${UNITID}        None  #9 Head office  :3
 ${CYCLEID}        None  #99
 ${FINANCIALYEAR}  20182019
@@ -51,32 +51,33 @@ Disbursed Leave Encashment amount should match with the report amount for all un
 
 
 Disbursed salary amount should match with the report amount for given unit
-    [Tags]  salarydisbursementunit  disbursementunit
+    [Tags]  salarydisbursementunit  salary  disbursementunit
     DV_Keywords.Match Salary Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed honorarium amount should match with the report amount for given unit
-    [Tags]  honorariumdisbursementunit  disbursementunit
+    [Tags]  honorariumdisbursementunit  honorarium  disbursementunit
     DV_Keywords.Match Honorarium Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed travel amount should match with the report amount for given unit
-    [Tags]  traveldisbursementunit  disbursementunit
+    [Tags]  traveldisbursementunit  travel  disbursementunit
     DV_Keywords.Match Travel Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed Bonus amount should match with the report amount for given unit
-    [Tags]  bonusdisbursementunit  disbursementunit
+    [Tags]  bonusdisbursementunit  bonus  disbursementunit
     DV_Keywords.Match Bonus Disbursed Amount With The Report For A Unit   ${unitID}
 
 Disbursed exgratia amount should match with the report amount for given unit
-    [Tags]  exgratiadisbursementunit  disbursementunit
+    [Tags]  exgratiadisbursementunit  exgratia  disbursementunit
     DV_Keywords.Match Exgratia Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed arrear amount should match with the report amount for given unit
-    [Tags]  arreardisbursementunit  disbursementunit
+    [Tags]  arreardisbursementunit  arrear  disbursementunit
     DV_Keywords.Match Arrear Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed Leave Encashment amount should match with the report amount for given unit
-    [Tags]  leaveEncashmentdisbursementunit  disbursementunit
+    [Tags]  leaveEncashmentdisbursementunit  leaveEncashment  disbursementunit
     DV_Keywords.Match Leave Encashment Disbursed Amount With The Report For A Unit  ${unitID}
+
 
 
 

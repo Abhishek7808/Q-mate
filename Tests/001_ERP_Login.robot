@@ -22,6 +22,7 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 
 User should be able to access login page
     [Tags]  login  loginpage
+    run keyword and ignore error  ERP_Keywords.Attempt Full Logout
     ERP_Keywords.Open the Login Page
 
 Invalid login scenarios should display correct error messages
