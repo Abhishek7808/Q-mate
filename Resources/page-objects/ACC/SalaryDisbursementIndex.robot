@@ -8,7 +8,7 @@ Go To Salary Disbursement Index Page And Set Variables
 Set Variables
     set test variable  ${disbursementUrl}  HRM/salaryDisbursment/SalayDisbursmentIndex
     set test variable  ${disburseTableColumnText}  Net Amount
-    set test variable  ${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
+    set test variable  ${disbursementTableID}  xpath=//*[@id="EmpSalGrid"]
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
@@ -20,7 +20,7 @@ Match All Paybills Net Amount With The Report For Given Unit
     #DisbursementIndex.Apply Given Cycle Filter
     DisbursementIndex.Apply Filters
     sleep  5s
-    DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
+    DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
@@ -32,9 +32,9 @@ Match All Paybills Net Amounts With Reports For All Units
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     \   DisbursementIndex.Open Filters
     \   DisbursementIndex.Apply Given Financial Year
-    #\   DisbursementIndex.Apply Given Cycle Filter
+    \   DisbursementIndex.Apply Given Cycle Filter
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTable}
+    \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
     \   TopNavigation.Open Preference Unit Page
 

@@ -1,10 +1,10 @@
 *** Variables ***
 
 ${cycle}  SalaryCycleId
-${paybillTable}   //*[@id="classListing"]/div[1]/table
+${paybillTableID}  //*[@id="classListing"]/div[1]/table
 ${paybillTableRow}     //*[@id="classListing"]/div[1]/table/tbody/tr
-#${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
-${reportPageTable}  xpath=//table[@id='HBA']
+#${disbursementTableID}  xpath=//*[@id="EmpSalGrid"]
+${reportPageTableID}  xpath=//table[@id='HBA']
 ${showMaxDD}  DDLpageSize
 @{finalList}
 
@@ -26,8 +26,8 @@ Apply Filters
     NavigationHelper.Apply Filter
 
 Apply Given Financial Year
-    [Arguments]  ${finDropdownID}=Finyear
-    select from list by value  ${finDropdownID}  ${FINANCIALYEAR}
+    [Arguments]  ${financialYearDD}=Finyear
+    select from list by value  ${financialYearDD}  ${FINANCIALYEAR}
 
 Apply Given Cycle Filter
     [Documentation]  Opens filter menu in salary disbursement page and applies the given salary cycle filter
@@ -45,22 +45,22 @@ Show Maximum Entries
 
 Check Paybill
     [Documentation]  Checks the available paybill at the salary disbursement page
-    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${finDropdownID}=Finyear  ${employeeIdColumn}=3
-    ${PaybillActionsColumnNumber}  Get Amount Column Number  ${paybillTable}  Actions
+    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${financialYearDD}=Finyear  ${employeeIdColumn}=3
+    ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
     ${allPaybills}  Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
     \    ${paybillNumber}  Get Paybill Number  ${paybill}
-    \    Go To Report Page  ${paybill}  ${PaybillActionsColumnNumber}
-    \    @{list1}  Get Data Of Report Page
+    \    Go To Report Page  ${paybill}  ${PaybillTableColumnNumber}
+    \    @{ReportData}  Get Data Of Report Page
     \    Switch Tab
-    \    Go To Disbursement Page  ${paybill}  ${PaybillActionsColumnNumber}
-    \    @{list2}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTable}
-    \    Compare And Add To Report  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
+    \    Go To Disbursement Page  ${paybill}  ${PaybillTableColumnNumber}
+    \    @{disbursementData}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    \    Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
     \    Go To Disbursement Index Page  ${disbursementUnitUrl}
     \    Open Filters
-    \    Apply Given Financial Year  ${finDropdownID}
+    \    Apply Given Financial Year  ${financialYearDD}
     \    Apply Filters
     \    sleep  5s
 
@@ -72,12 +72,11 @@ Get Paybill Count
 Get Paybill Number
     [Documentation]  Returns the paybill number from the paybill table
     [Arguments]  ${paybillTableRow}
-    ${columnNumber}  Get Amount Column Number  ${paybillTable}  Disbursement Detail
-    ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTable}  ${paybillTableRow+1}  ${columnNumber}
-    #${paybillText}  get text  ${payBillDetails}
-    ${paybillTextDict1}  Split String From Right   ${payBillDetails}  Paybill No.
-    ${paybillTextDict2}  Split String From Right  ${paybillTextDict1}[1]  ;
-    return from keyword  ${paybillTextDict2}[0]
+    ${columnNumber}  Get Amount Column Number  ${paybillTableID}  Disbursement Detail
+    ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber}
+    ${paybillDetailSet1}  Split String From Right   ${payBillDetails}  Paybill No.
+    ${paybillDetailSet2}  Split String From Right  ${paybillDetailSet1}[1]  ;
+    return from keyword  ${paybillDetailSet2}[0]
 
 Go To Report Page
     [Arguments]   ${paybillTableRow}  ${columnNumber}
@@ -88,21 +87,21 @@ Get Data Of Report Page
     [Documentation]  Returns the list of salaries of employees listed in report page
     Switch Tab
     @{list}  create list
-    ${numberOfRows}  get element count  ${reportPageTable}/tbody/tr
-    ${columnNumber}  get element count  ${reportPageTable}/thead/tr/th
+    ${numberOfRows}  get element count  ${reportPageTableID}/tbody/tr
+    ${columnNumber}  get element count  ${reportPageTableID}/thead/tr/th
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
-    \    ${salary}  get table cell  ${reportPageTable}  ${row+1}  ${columnNumber}
-    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${salary}
+    \    ${amount}  get table cell  ${reportPageTableID}  ${row+1}  ${columnNumber}
+    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${amount}
     \    append to list   ${list}   ${formattedAmount}
     close window
     return from keyword  @{list}
 
 Change The Number Into A Formatted Amount
     [Documentation]  Changes the given salary into a floating point number
-    [Arguments]  ${salary}
-    ${formattedSalary}=  replace string  ${salary}  ,  ${EMPTY}
-    ${formattedAmount}  run keyword if  '${formattedSalary}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedSalary}
+    [Arguments]  ${amount}
+    ${formattedAmount}=  replace string  ${amount}  ,  ${EMPTY}
+    ${formattedAmount}  run keyword if  '${formattedAmount}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedAmount}
     return from keyword  ${formattedAmount}
 
 Go To Disbursement Page
@@ -111,61 +110,60 @@ Go To Disbursement Page
 
 Get Data Of Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
-    [Arguments]  ${columnToBeFetched}  ${disbursementTable}
-    ${numberOfRows}  get element count  ${disbursementTable}/tbody/tr
-    ${columnNumber}  Get Amount Column Number  ${disbursementTable}  ${columnToBeFetched}
+    [Arguments]  ${columnToBeFetched}  ${disbursementTableID}
+    ${numberOfRows}  get element count  ${disbursementTableID}/tbody/tr
+    ${columnNumber}  Get Amount Column Number  ${disbursementTableID}  ${columnToBeFetched}
     @{list}  create list
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
-    \    ${textValue}  get table cell  ${disbursementTable}  ${row+1}  ${columnNumber}
-    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${textValue}
+    \    ${amount}  get table cell  ${disbursementTableID}  ${row+1}  ${columnNumber}
+    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${amount}
     \    append to list  ${list}  ${formattedAmount}
     return from keyword  @{list}
 
 Compare And Add To Report
     [Documentation]  Compares both report page list and disbursement page list and add the result of camparision into a report
-    [Arguments]  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
-#    log to console  ${list1} Data of Report Page
-#    log to console  ${list2} Data of Disbursement Page
-    ${numberOfItems}  run keyword if  ${list1} != []  get length  ${list1}  ELSE  get length  ${list2}
+    [Arguments]  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
+    log to console  Comparing the amounts of Report page and Disbursement Page for paybill Number ${paybillNumber}...\n ${ReportData} ${disbursementData}
+    ${numberOfItems}  run keyword if  ${ReportData} != []  get length  ${ReportData}  ELSE  get length  ${disbursementData}
     FOR  ${index}  IN RANGE  ${numberOfItems}
-    \   run keyword and continue on failure  run keyword if  '@{list1}[${index}]' != '@{list2}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
+    \   ${status}  run keyword and return status  run keyword if  '@{ReportData}[${index}]' != '@{disbursementData}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTableID}  ${employeeIdColumn}
+    \   run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  There is an error in one of the pages of paybill ${paybillNumber}
 
 Add To The Disbusement Test Report
     [Documentation]  Add unmatched salaries to the Test Report
-    [Arguments]  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
-    ${employeeID}  Get Employee ID   ${disbursementTable}  ${index}  ${employeeIdColumn}
+    [Arguments]  ${paybillNumber}  ${index}  ${disbursementTableID}  ${employeeIdColumn}
+    ${employeeID}  Get Employee ID   ${disbursementTableID}  ${index}  ${employeeIdColumn}
     ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
-    run keyword and continue on failure  fail  ${disbursementType}: Disbursement Amount Of Employee ID ${employeeID} in ${paybillNumber} didn't match
+    run keyword and continue on failure  fail  ${disbursementType}: Disbursement Amount Of Employee ID ${employeeID} in Paybill NUmber: ${paybillNumber} didn't match
     append to file  ${DV_REPORT}  ${disbursementType}, ${paybillNumber}, ${employeeID}\n
-
 
 Send Disbursement Test Report To Developers
     Send Error Email Notification
 
 Get Amount Column Number
     [Documentation]  Gives the column number of the 'Net Amount' column
-    [Arguments]  ${tableUrl}  ${requiredText}
-    ${text2}  set variable  ${requiredText}
-    ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableUrl}/thead/tr/th
-    FOR  ${columnNumber}  IN RANGE  1  ${NumberOfColumns+1}
-    \   ${text}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${tableUrl}  1  ${columnNumber}
-    \   ${status}  run keyword and return status  should be equal as strings  ${text}  ${text2}
-    \   run keyword if  ${status} == ${true}  return from keyword  ${columnNumber}
+    [Arguments]  ${tableID}  ${requiredText}
+    #${text2}  set variable  ${requiredText}
+    ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableID}/thead/tr/th
+    FOR  ${column}  IN RANGE  1  ${NumberOfColumns+1}
+    \   ${columnText}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${tableID}  1  ${column}
+    \   ${status}  run keyword and return status  should be equal as strings  ${columnText}  ${requiredText}
+    \   run keyword if  ${status} == ${true}  return from keyword  ${column}
 
 Get Employee ID
     [Documentation]  Returns the employee ID from the given table data
     [Arguments]  ${tableID}  ${rowNumber}  ${columnNumber}
     ${employeeData}   get table cell  ${tableID}  ${rowNumber+2}  ${columnNumber}
-    ${employeeDataDict}  split string  ${employeeData}  -
-    ${employeeID}  get from list  ${employeeDataDict}  0
+    ${employeeDataSet}  split string  ${employeeData}  -
+    ${employeeID}  get from list  ${employeeDataSet}  0
     return from keyword  ${employeeID}
 
 Get Disbursement Type
   [Arguments]  ${disbursementUrl}
-  ${disbursementUrlDict}  split string from right  ${disbursementUrl}  /  1
-  ${formattedDict}  split string  ${disbursementUrlDict}[1]  Dis
-  ${disbursementType}  Catenate  ${formattedDict}[0] Disbursement
+  ${disbursementUrlSet}  split string from right  ${disbursementUrl}  /  1
+  ${stringSet}  split string  ${disbursementUrlSet}[1]  Dis
+  ${disbursementType}  Catenate  ${stringSet}[0] Disbursement
   return from keyword   ${disbursementType}
 
 Switch Tab
