@@ -13,8 +13,6 @@ ${ENVIRONMENT}    demo
 ${UNITID}        None  #9 Head office  :3
 ${CYCLEID}        None  #99
 ${FINANCIALYEAR}  20182019
-#${dateFrom}  01012017
-#${dateTo}
 ${count}    0
 # robot -d Results --variable unitId:3 -i disbursementunit DataValidation
 
@@ -26,7 +24,7 @@ Disbursed salary amount should match with the report amount for all units
     DV_Keywords.Match Salary Disbursed Amount With The Report For All Units
 
 Disbursed travel amount should match with the report amount for all units
-    [Tags]  traveldisbursementallunits   Disbursement
+    [Tags]  travelexpencesdisbursementallunits   Disbursement
     DV_Keywords.Match Travel Disbursed Amount With The Report For All Units
 
 Disbursed bonus amount should match with the report amount for all units
@@ -59,7 +57,7 @@ Disbursed honorarium amount should match with the report amount for given unit
     DV_Keywords.Match Honorarium Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed travel amount should match with the report amount for given unit
-    [Tags]  traveldisbursementunit  travel  disbursementunit
+    [Tags]  travelexpencesdisbursementunit  travelexpences  disbursementunit
     DV_Keywords.Match Travel Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed Bonus amount should match with the report amount for given unit
