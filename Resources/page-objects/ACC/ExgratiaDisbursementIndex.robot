@@ -20,7 +20,8 @@ Match All Paybills Net Amount With The Report For Given Unit
     DisbursementIndex.Apply Given Financial Year  ${financialYearDD}
     DisbursementIndex.Apply Filters
     sleep  2s
-    DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${financialYearDD}  ${disbursementTableID}
+    run keyword if  ${PAYBILLNO} == None  DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${financialYearDD}
+    run keyword if  ${PAYBILLNO} != None  DisbursementIndex.Check Specified Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
@@ -34,6 +35,6 @@ Match All Paybills Net Amounts With Reports For All Units
     \   DisbursementIndex.Apply Given Financial Year  ${financialYearDD}
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   DisbursementIndex.Check Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}   ${financialYearDD}
+    \   DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}   ${financialYearDD}
     \   TopNavigation.Open Preference Unit Page
 

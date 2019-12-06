@@ -21,7 +21,8 @@ Match All Paybills Net Amount With The Report For Given Unit
     #DisbursementIndex.Apply Given Cycle Filter
     #DisbursementIndex.Apply Filters
     sleep  5s
-    LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
+    run keyword if  '${PAYBILLNO}' == None  LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
+    run keyword if  '${PAYBILLNO}' != None  LeaveEncashmentDisbursementIndex.Check Specified Leave Encashment Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
@@ -36,17 +37,17 @@ Match All Paybills Net Amounts With Reports For All Units
 #    \   DisbursementIndex.Apply Given Cycle Filter
 #    \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
+    \   LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
     \   TopNavigation.Open Preference Unit Page
 
-Check Leave Encashment Paybill
+Check Leave Encashment Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}
     ${PaybillTableColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTableID}  Actions
     #DisbursementIndex.Show Maximum Entries
     #sleep  2s
     ${allPaybills}  Get Paybill Count
-    # TODO: change the Check paybill range before testing on live ,it should start from 1, remove comments from show max entries
+    # TODO: change the Check Paybills range before testing on live ,it should start from 1, remove comments from show max entries
     FOR  ${paybill}  IN RANGE  2  ${allPaybills+1}
     #\    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
@@ -62,6 +63,22 @@ Check Leave Encashment Paybill
 #    \    Apply Given Financial Year  ${financialYearDD}
 #    \    Apply Filters
 #    \    sleep  5s
+
+Check Specified Leave Encashment Paybill
+    [Arguments]  ${PAYBILLNO}  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}=3
+    ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
+    #DisbursementIndex.Show Maximum Entries
+    sleep  2s
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
+    sleep  1s
+    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
+    @{ReportData}  Get Data Of Report Page
+    Switch Tab
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-eye']
+    sleep  2s
+    @{disbursementData}  LeaveEncashmentDisbursementIndex.Get Data Of Leave Encashment Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    sleep  2s
+    Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
 
 Get Data Of Leave Encashment Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page

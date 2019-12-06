@@ -14,6 +14,7 @@ ${UNITID}        None  #9 Head office  :3
 ${CYCLEID}        None  #99
 ${FINANCIALYEAR}  20182019
 ${count}    0
+${PAYBILLNO}   None
 # robot -d Results --variable unitId:3 -i disbursementunit DataValidation
 
 

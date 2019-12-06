@@ -4,7 +4,7 @@ Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/DisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/ArrearDisbursementIndex.robot
-Resource  ${PAGE OBJECTS}${/}${FA.name}/TravelExpencesDisbursement.robot
+Resource  ${PAGE OBJECTS}${/}${FA.name}/TravelExpencesDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/SalaryDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/ExgratiaDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/HonorariumDisbursementIndex.robot
@@ -28,13 +28,13 @@ Match Salary Disbursed Amount With The Report For A Unit
     SalaryDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Travel Disbursed Amount With The Report For All Units
-    ${retryCount}  TravelExpencesDisbursement.Go To Travel Disbursement Index Page And Set Variables
-    TravelExpencesDisbursement.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Disbursement Index Page And Set Variables
+    TravelExpencesDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
 
 Match Travel Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
-    ${retryCount}  TravelExpencesDisbursement.Go To Travel Disbursement Index Page And Set Variables
-    TravelExpencesDisbursement.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Disbursement Index Page And Set Variables
+    TravelExpencesDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Bonus Disbursed Amount With The Report For All Units
     ${retryCount}  BonusDisbursementIndex.Go To Bonus Disbursement Index Page And Set Variables

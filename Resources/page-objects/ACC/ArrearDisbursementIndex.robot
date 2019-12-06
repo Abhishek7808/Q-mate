@@ -20,7 +20,8 @@ Match All Paybills Net Amount With The Report For Given Unit
 #    DisbursementIndex.Apply Given Cycle Filter
     DisbursementIndex.Apply Filters
     sleep  2s
-    ArrearDisbursementIndex.Check Arrear Disbursement Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
+    run keyword if  ${PAYBILLNO} == None  ArrearDisbursementIndex.Check Arrear Disbursement Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
+    run keyword if  ${PAYBILLNO} != None  ArrearDisbursementIndex.Check Specified Arrear Disbursement Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
@@ -35,10 +36,10 @@ Match All Paybills Net Amounts With Reports For All Units
 #    \   DisbursementIndex.Apply Given Cycle Filter
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   ArrearDisbursementIndex.Check Arrear Disbursement Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
+    \   ArrearDisbursementIndex.Check Arrear Disbursement Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
     \   TopNavigation.Open Preference Unit Page
 
-Check Arrear Disbursement Paybill
+Check Arrear Disbursement Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${financialYearDD}=Finyear  ${employeeIdColumn}=3
     ${allPaybills}  DisbursementIndex.Get Paybill Count
@@ -59,6 +60,21 @@ Check Arrear Disbursement Paybill
     \    DisbursementIndex.Apply Filters
     \    sleep  5s
 
+Check Specified Arrear Disbursement Paybill
+    [Arguments]  ${PAYBILLNO}  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}=3
+    ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
+    DisbursementIndex.Show Maximum Entries
+    sleep  2s
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
+    sleep  1s
+    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
+    @{ReportData}  Get Data Of Report Page
+    Switch Tab
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-pencil']
+    sleep  2s
+    @{disbursementData}  ArrearDisbursementIndex.Get Data Of Arrear Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    sleep  2s
+    Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
 
 Get Data Of Arrear Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page

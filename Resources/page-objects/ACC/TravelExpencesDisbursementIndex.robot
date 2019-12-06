@@ -1,7 +1,7 @@
 *** Keywords ***
 
 Go To Travel Disbursement Index Page And Set Variables
-    TravelExpencesDisbursement.Set Variables
+    TravelExpencesDisbursementIndex.Set Variables
     ${retryCount}  DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     return from keyword  ${retryCount}
 
@@ -18,7 +18,8 @@ Match All Paybills Net Amount With The Report For Given Unit
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     # DisbursementIndex.Apply Given Cycle Filter
     sleep  2s
-    Check Travel Expence Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
+    run keyword if  ${PAYBILLNO} == None  Check Travel Expence Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
+    run keyword if  ${PAYBILLNO} != None  TravelExpencesDisbursementIndex.Check Specified TravelExpences Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
@@ -30,10 +31,10 @@ Match All Paybills Net Amounts With Reports For All Units
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
 #    \   DisbursementIndex.Apply Given Cycle Filter
     \   sleep  2s
-    \   Check Travel Expence Paybill  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
+    \   Check Travel Expence Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
     \   TopNavigation.Open Preference Unit Page
 
-Check Travel Expence Paybill
+Check Travel Expence Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}
     ${allPaybills}  DisbursementIndex.Get Paybill Count
@@ -53,3 +54,19 @@ Check Travel Expence Paybill
 #    \    Apply Given Financial Year  ${financialYearDD}
 #    \    Apply Filters
     \    sleep  2s
+
+Check Specified TravelExpences Paybill
+    [Arguments]  ${PAYBILLNO}  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}=3
+    ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
+    DisbursementIndex.Show Maximum Entries
+    sleep  2s
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
+    sleep  1s
+    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
+    @{ReportData}  Get Data Of Report Page
+    Switch Tab
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-eye']
+    sleep  2s
+    @{disbursementData}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    sleep  2s
+    Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}

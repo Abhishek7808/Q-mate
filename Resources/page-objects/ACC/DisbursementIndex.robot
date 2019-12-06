@@ -43,7 +43,7 @@ Apply Last Cycle Filter
 Show Maximum Entries
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  select last dropdown element  ${showMaxDD}
 
-Check Paybill
+Check Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${financialYearDD}=Finyear  ${employeeIdColumn}=3
     ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
@@ -63,6 +63,22 @@ Check Paybill
     \    Apply Given Financial Year  ${financialYearDD}
     \    Apply Filters
     \    sleep  5s
+
+Check Specified Paybill
+    [Arguments]  ${PAYBILLNO}  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}=3
+    ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
+    DisbursementIndex.Show Maximum Entries
+    sleep  2s
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
+    sleep  1s
+    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
+    @{ReportData}  Get Data Of Report Page
+    Switch Tab
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-pencil']
+    sleep  2s
+    @{disbursementData}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    sleep  2s
+    Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
 
 Get Paybill Count
     [Documentation]  Returns the number of rows in the given paybill
@@ -127,8 +143,8 @@ Compare And Add To Report
     log to console  Comparing the amounts of Report page and Disbursement Page for paybill Number ${paybillNumber}...\n ${ReportData} ${disbursementData}
     ${numberOfItems}  run keyword if  ${ReportData} != []  get length  ${ReportData}  ELSE  get length  ${disbursementData}
     FOR  ${index}  IN RANGE  ${numberOfItems}
-    \   ${status}  run keyword and return status  run keyword if  '@{ReportData}[${index}]' != '@{disbursementData}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTableID}  ${employeeIdColumn}
-    \   run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  There is an error in one of the pages of paybill ${paybillNumber}
+    \   run keyword and continue on failure  run keyword if  '@{ReportData}[${index}]' != '@{disbursementData}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTableID}  ${employeeIdColumn}
+    #\   run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  There is an error in one of the pages of paybill ${paybillNumber}
 
 Add To The Disbusement Test Report
     [Documentation]  Add unmatched salaries to the Test Report
