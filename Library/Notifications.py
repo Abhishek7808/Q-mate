@@ -46,69 +46,79 @@ def find_receiver(module_name, receivers_json):
     return receivers_dict.get(module_name)
 
 
-def table_data(number_of_items, error_urls):
+def get_generic_table_data(number_of_items, error_urls):
     # """ Creates rows of the error table according to the number of errors"""
     table_data = ""
     count = 1
     for x in range(number_of_items):
         if count % 2 != 0:
-            table_data += '<tr><td bgcolor="#fff">' + str(
-                count) + '</td><td bgcolor="#fff"><a href="' + error_urls[x][
-                              0] + '">' + error_urls[x][
-                              0] + '</a></td><td bgcolor="#fff">' + get_error_name(
-                error_urls[x][1]) + '</td><td bgcolor="#fff"> <a href="' + notify_false_error_link(
-                error_urls[x][
-                    0], error_urls[x][
-                    1]) + '">Notify</a></tr>'
+            table_data += '<tr>' + set_table_cell(str(count), 'white') +\
+                          set_table_cell(error_urls[x][0], 'white', 'link', error_urls[x][0]) +\
+                          set_table_cell(get_error_name(error_urls[x][1]), 'white') +\
+                          set_table_cell('Notify', 'white', 'link', notify_false_error_link(error_urls[x][0], error_urls[x][1])) +\
+                          '</tr>'
         else:
-            table_data += '<tr><td bgcolor="#f1f1f1">' + str(
-                count) + '</td><td bgcolor="#f1f1f1"><a href="' + error_urls[x][
-                              0] + '">' + error_urls[x][
-                              0] + '</a></td><td bgcolor="#f1f1f1">' + get_error_name(
-                error_urls[x][1]) + '</td><td bgcolor="#f1f1f1"><a href="' + notify_false_error_link(
-                error_urls[x][
-                    0], error_urls[x][
-                    1]) + '">Notify</a></tr>'
+            table_data += '<tr>' + set_table_cell(str(count), 'grey') +\
+                          set_table_cell(error_urls[x][0], 'grey', 'link', error_urls[x][0]) +\
+                          set_table_cell(get_error_name(error_urls[x][1]), 'grey') +\
+                          set_table_cell('Notify', 'grey', 'link', notify_false_error_link(error_urls[x][0], error_urls[x][1])) +\
+                          '</tr>'
         count += 1
     return table_data
+
 
 def get_disbursement_table_data(number_of_items, disbursement_list):
     table_data = ""
     count = 1
     for x in range(number_of_items):
         if count % 2 != 0:
-            table_data += '<tr><td bgcolor="#fff">' + str(
-                count) + '</td><td bgcolor="#fff">' + disbursement_list[x][
-                        0] + '</td><td bgcolor="#fff">' + disbursement_list[x][1]\
-                          + '<td bgcolor="#fff">' + disbursement_list[x][2]\
-                           + '</td></tr>'
+            table_data += '<tr>' + set_table_cell(str(count),'white') +\
+                           set_table_cell(disbursement_list[x][0],'white') + \
+                          set_table_cell(disbursement_list[x][1], 'white') + \
+                          set_table_cell(disbursement_list[x][2], 'white') + \
+                          '</tr>'
         else:
-            table_data += '<tr><td bgcolor="#f1f1f1">' + str(
-                count) + '</td><td bgcolor="#f1f1f1">' + disbursement_list[x][
-                              0] + '</td><td bgcolor="#f1f1f1">' + disbursement_list[x][1] \
-                            + '</td><td bgcolor="#f1f1f1">' + disbursement_list[x][
-                              2] + '</td></tr>'
+            table_data += '<tr>' + set_table_cell(str(count),'grey') +\
+                           set_table_cell(disbursement_list[x][0],'grey') + \
+                          set_table_cell(disbursement_list[x][1], 'grey') + \
+                          set_table_cell(disbursement_list[x][2], 'grey') + \
+                          '</tr>'
         count += 1
     return table_data
+
+
+
+def set_table_cell(cell_data, color, element_type = None, link = None):
+    if element_type is None:
+        if color is 'white':
+            return '<td bgcolor="#fff">'+cell_data+'</td>'
+        if color is 'grey':
+            return '<td bgcolor="#f1f1f1">' + cell_data + '</td>'
+
+    if element_type is 'link':
+        if color is 'white':
+            return '<td bgcolor="#fff"><a href="' + link + '">' + cell_data + '</a></td>'
+        if color is 'grey':
+            return '<td bgcolor="#f1f1f1"><a href="' + link + '">' + cell_data + '</a></td>'
 
 def get_Beneficiary_table_data(number_of_items, Beneficiary_list):
     table_data = ""
     count = 1
     for x in range(number_of_items):
         if count % 2 != 0:
-            table_data += '<tr><td bgcolor="#fff">' + str(
-                count) + '</td><td bgcolor="#fff">' + Beneficiary_list[x][
-                              0] + '</td><td bgcolor="#fff">' + Beneficiary_list[x][1] \
-                          + '</td><td bgcolor="#fff">' + Beneficiary_list[x][2] \
-                          + '</td><td bgcolor="#fff">' + Beneficiary_list[x][3] \
-                          + '</td></tr>'
+            table_data += '<tr>' + set_table_cell(str(count),'white') +\
+                          set_table_cell(Beneficiary_list[x][0], 'white') + \
+                          set_table_cell(Beneficiary_list[x][1], 'white') + \
+                          set_table_cell(Beneficiary_list[x][2], 'white') + \
+                          set_table_cell(Beneficiary_list[x][3], 'white') + \
+                          '</tr>'
         else:
-            table_data += '<tr><td bgcolor="#f1f1f1">' + str(
-                count) + '</td><td bgcolor="#f1f1f1">' + Beneficiary_list[x][
-                              0] + '</td><td bgcolor="#f1f1f1">' + Beneficiary_list[x][1] \
-                          + '</td><td bgcolor="#f1f1f1">' + Beneficiary_list[x][
-                              2] + '</td><td bgcolor="#f1f1f1">' + Beneficiary_list[x][3] \
-                          + '</td></tr>'
+            table_data +='<tr>' + set_table_cell(str(count),'white') +\
+                          set_table_cell(Beneficiary_list[x][0], 'grey') + \
+                          set_table_cell(Beneficiary_list[x][1], 'grey') + \
+                          set_table_cell(Beneficiary_list[x][2], 'grey') + \
+                          set_table_cell(Beneficiary_list[x][3], 'grey') + \
+                          '</tr>'
         count += 1
     return table_data
 
@@ -140,7 +150,7 @@ th, td {
                         <th bgcolor="#d1d1d1"> URL </th>
                         <th bgcolor="#d1d1d1"> Issue </th>
                         <th bgcolor="#d1d1d1"> False Positive </th>
-                    </tr>""" + table_data(number_of_items, error_urls) + """</table>
+                    </tr>""" + get_generic_table_data(number_of_items, error_urls) + """</table>
                 </body>
                 </html>"""
     message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
