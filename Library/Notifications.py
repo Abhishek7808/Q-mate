@@ -113,7 +113,7 @@ def get_Beneficiary_table_data(number_of_items, Beneficiary_list):
                           set_table_cell(Beneficiary_list[x][3], 'white') + \
                           '</tr>'
         else:
-            table_data +='<tr>' + set_table_cell(str(count),'white') +\
+            table_data += '<tr>' + set_table_cell(str(count),'white') +\
                           set_table_cell(Beneficiary_list[x][0], 'grey') + \
                           set_table_cell(Beneficiary_list[x][1], 'grey') + \
                           set_table_cell(Beneficiary_list[x][2], 'grey') + \
