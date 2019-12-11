@@ -23,15 +23,21 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 ${number} =  1
 #${num}  convert to integer  3
 ${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
+${paybillString}  Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
 
-
-
+Paybill No. 1001/20182019 ; Date 30-Mar-2019
+Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
 
 *** Test Cases ***
 
 
 All paybills should be checked
     [Tags]  debug
+    ${paybillDetailSet1}  Split String From Right   ${paybillString}  Paybill No. :
+    ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  0  14
+    log to console  ${paybillNumber}
+
+
 #
 #    Common_Keywords.Open SalaryDisbursement Page  ${finalList}
 
@@ -57,11 +63,11 @@ All paybills should be checked
 #     \   log to console  ${num}
 #    run keyword if  ${num} == '${EMPTY}'  log to console  hi
 
-   ${disbursementUrlDict}  split string from right  ${disbursementUrl}  /  1
-   log to console  ${disbursementUrlDict}
-   ${formattedDict}  split string  ${disbursementUrlDict}[1]  Dis
-   ${disbursementType}  Catenate  ${formattedDict}[0] Disbursement
-   log to console  ${disbursementType}
+#   ${disbursementUrlDict}  split string from right  ${disbursementUrl}  /  1
+#   log to console  ${disbursementUrlDict}
+#   ${formattedDict}  split string  ${disbursementUrlDict}[1]  Dis
+#   ${disbursementType}  Catenate  ${formattedDict}[0] Disbursement
+#   log to console  ${disbursementType}
 #    ${second}  Split String From Right  ${first}[1]  ;
 #    log to console  ${second}
 

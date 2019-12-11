@@ -9,6 +9,7 @@ Set Variables
     set test variable  ${disbursementUrl}  HRM/salaryDisbursment/SalayDisbursmentIndex
     set test variable  ${disburseTableColumnText}  Net Amount
     set test variable  ${disbursementTableID}  xpath=//*[@id="EmpSalGrid"]
+    set test variable  ${paybillDetailsColumnHead}  PayBill Detail
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
@@ -20,7 +21,7 @@ Match All Paybills Net Amount With The Report For Given Unit
     #DisbursementIndex.Apply Given Cycle Filter
     #DisbursementIndex.Apply Filters
     sleep  5s
-    run keyword if  ${PAYBILLNO} == None  DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
+    run keyword if  ${PAYBILLNO} == None  SalaryDisbursementIndex.Check Salary Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${paybillDetailsColumnHead}
     run keyword if  ${PAYBILLNO} != None  DisbursementIndex.Check Specified Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
 
 Match All Paybills Net Amounts With Reports For All Units
@@ -31,11 +32,40 @@ Match All Paybills Net Amounts With Reports For All Units
     FOR  ${unit}  IN RANGE  1  ${allUnits}
     \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-    \   DisbursementIndex.Open Filters
-    \   DisbursementIndex.Apply Given Financial Year
-    \   DisbursementIndex.Apply Given Cycle Filter
-    \   DisbursementIndex.Apply Filters
+#    \   DisbursementIndex.Open Filters
+#    \   DisbursementIndex.Apply Given Financial Year
+#    \   DisbursementIndex.Apply Given Cycle Filter
+#    \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
+    \   SalaryDisbursementIndex.Check Salary Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${paybillDetailsColumnHead}
     \   TopNavigation.Open Preference Unit Page
 
+Check Salary Paybills
+    [Documentation]  Checks the available paybill at the salary disbursement page
+    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${paybillDetailsColumnHead}=Disbursement Detail  ${employeeIdColumn}=3
+    ${allPaybills}  DisbursementIndex.Get Paybill Count
+    ${PaybillTableColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTableID}  Actions
+    FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
+    \    DisbursementIndex.Show Maximum Entries
+    \    sleep  2s
+    \    ${paybillNumber}  SalaryDisbursementIndex.Get Salary Paybill Number  ${paybill}  ${paybillDetailsColumnHead}
+    \    DisbursementIndex.Go To Report Page  ${paybill}  ${PaybillTableColumnNumber}
+    \    @{ReportData}  DisbursementIndex.Get Data Of Report Page
+    \    DisbursementIndex.Switch Tab
+    \    DisbursementIndex.Go To Disbursement Page  ${paybill}  ${PaybillTableColumnNumber}
+    \    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    \    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
+    \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
+#    \    Open Filters
+#    \    Apply Given Financial Year  ${financialYearDD}
+#    \    Apply Filters
+    \    sleep  2s
+
+Get Salary Paybill Number
+    [Documentation]  Returns the paybill number from the paybill table
+    [Arguments]  ${paybillTableRow}   ${paybillDetailsColumnHead}
+    ${columnNumber}  Get Amount Column Number  ${paybillTableID}  ${paybillDetailsColumnHead}
+    ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber}
+    ${paybillDetailSet1}  Split String From Right  ${payBillDetails}   Paybill No. :
+    ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  0  14
+    return from keyword  ${paybillNumber}

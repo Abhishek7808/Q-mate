@@ -15,6 +15,10 @@ error_file = BuiltIn().get_variable_value("${ERRORFILE}")
 disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
 Beneficiary_report_file = BuiltIn().get_variable_value(r"${CPF_REPORT}")
 
+white = "#fff"
+grey = "#f1f1f1"
+
+
 def notify_false_error_link(url, error_code):
     base_url = BuiltIn().get_variable_value("${NOTIFY_FALSE_ERROR_LINK}")
     return base_url + create_false_error_json(url, error_code)
@@ -52,19 +56,25 @@ def get_generic_table_data(number_of_items, error_urls):
     count = 1
     for x in range(number_of_items):
         if count % 2 != 0:
-            table_data += '<tr>' + set_table_cell(str(count), 'white') +\
-                          set_table_cell(error_urls[x][0], 'white', 'link', error_urls[x][0]) +\
-                          set_table_cell(get_error_name(error_urls[x][1]), 'white') +\
-                          set_table_cell('Notify', 'white', 'link', notify_false_error_link(error_urls[x][0], error_urls[x][1])) +\
-                          '</tr>'
+            table_data += '<tr>' + set_table_cell(str(count), white) + \
+                          set_table_cell('<a href="' + error_urls[x][0] + '">' + error_urls[x][0] + '</a>', white) + \
+                          set_table_cell(get_error_name(error_urls[x][1]), white) + \
+                          set_table_cell('<a href="' + notify_false_error_link(error_urls[x][0],
+                                                                               error_urls[x][1]) + '">Notify</a>',
+                                         white) + '</tr>'
         else:
-            table_data += '<tr>' + set_table_cell(str(count), 'grey') +\
-                          set_table_cell(error_urls[x][0], 'grey', 'link', error_urls[x][0]) +\
-                          set_table_cell(get_error_name(error_urls[x][1]), 'grey') +\
-                          set_table_cell('Notify', 'grey', 'link', notify_false_error_link(error_urls[x][0], error_urls[x][1])) +\
-                          '</tr>'
+            table_data += '<tr>' + set_table_cell(str(count), grey) + \
+                          set_table_cell('<a href="' + error_urls[x][0] + '">' + error_urls[x][0] + '</a>', grey) + \
+                          set_table_cell(get_error_name(error_urls[x][1]), grey) + \
+                          set_table_cell('<a href="' + notify_false_error_link(error_urls[x][0],
+                                                                               error_urls[x][1]) + '">Notify</a>',
+                                         grey) + '</tr>'
         count += 1
     return table_data
+
+
+def set_table_cell(cell_data, cell_color):
+    return str('<td bgcolor=' + cell_color + '>' + cell_data + '</td>')
 
 
 def get_disbursement_table_data(number_of_items, disbursement_list):
@@ -72,80 +82,67 @@ def get_disbursement_table_data(number_of_items, disbursement_list):
     count = 1
     for x in range(number_of_items):
         if count % 2 != 0:
-            table_data += '<tr>' + set_table_cell(str(count),'white') +\
-                           set_table_cell(disbursement_list[x][0],'white') + \
-                          set_table_cell(disbursement_list[x][1], 'white') + \
-                          set_table_cell(disbursement_list[x][2], 'white') + \
-                          '</tr>'
+            table_data += '<tr>' + set_table_cell(str(count), white) + \
+                          set_table_cell(disbursement_list[x][0], white) + \
+                          set_table_cell(disbursement_list[x][1], white) + \
+                          set_table_cell(disbursement_list[x][2], white) + '</tr>'
         else:
-            table_data += '<tr>' + set_table_cell(str(count),'grey') +\
-                           set_table_cell(disbursement_list[x][0],'grey') + \
-                          set_table_cell(disbursement_list[x][1], 'grey') + \
-                          set_table_cell(disbursement_list[x][2], 'grey') + \
-                          '</tr>'
+            table_data += '<tr>' + set_table_cell(str(count), grey) + \
+                          set_table_cell(disbursement_list[x][0], grey) + \
+                          set_table_cell(disbursement_list[x][1], grey) + \
+                          set_table_cell(disbursement_list[x][2], grey) + '</tr>'
         count += 1
     return table_data
 
 
-
-def set_table_cell(cell_data, color, element_type = None, link = None):
-    if element_type is None:
-        if color is 'white':
-            return '<td bgcolor="#fff">'+cell_data+'</td>'
-        if color is 'grey':
-            return '<td bgcolor="#f1f1f1">' + cell_data + '</td>'
-
-    if element_type is 'link':
-        if color is 'white':
-            return '<td bgcolor="#fff"><a href="' + link + '">' + cell_data + '</a></td>'
-        if color is 'grey':
-            return '<td bgcolor="#f1f1f1"><a href="' + link + '">' + cell_data + '</a></td>'
-
-def get_Beneficiary_table_data(number_of_items, Beneficiary_list):
+def get_Beneficiary_table_data(number_of_items, beneficiary_list):
     table_data = ""
     count = 1
     for x in range(number_of_items):
         if count % 2 != 0:
-            table_data += '<tr>' + set_table_cell(str(count),'white') +\
-                          set_table_cell(Beneficiary_list[x][0], 'white') + \
-                          set_table_cell(Beneficiary_list[x][1], 'white') + \
-                          set_table_cell(Beneficiary_list[x][2], 'white') + \
-                          set_table_cell(Beneficiary_list[x][3], 'white') + \
-                          '</tr>'
+            table_data += '<tr>' + set_table_cell(str(count), white) + \
+                          set_table_cell(beneficiary_list[x][0], white) + \
+                          set_table_cell(beneficiary_list[x][1], white) + \
+                          set_table_cell(beneficiary_list[x][2], white) + \
+                          set_table_cell(beneficiary_list[x][3], white) + '</tr>'
         else:
-            table_data += '<tr>' + set_table_cell(str(count),'white') +\
-                          set_table_cell(Beneficiary_list[x][0], 'grey') + \
-                          set_table_cell(Beneficiary_list[x][1], 'grey') + \
-                          set_table_cell(Beneficiary_list[x][2], 'grey') + \
-                          set_table_cell(Beneficiary_list[x][3], 'grey') + \
-                          '</tr>'
+            table_data += '<tr>' + set_table_cell(str(count), grey) + \
+                          set_table_cell(beneficiary_list[x][0], grey) + \
+                          set_table_cell(beneficiary_list[x][1], grey) + \
+                          set_table_cell(beneficiary_list[x][2], grey) + \
+                          set_table_cell(beneficiary_list[x][3], grey) + '</tr>'
         count += 1
     return table_data
 
-def compose_error_message(module_name, error_urls):
+
+def get_table_structure():
+    return """
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+            <html lang="en">
+            <head>
+              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            
+              <title></title>
+            
+              <style type="text/css">
+            th, td {
+                vertical-align: middle;
+                align:left;
+            }
+              </style>    
+            
+            </head>
+            <body style="margin:0; padding:0; background-color:#fff;">
+                <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">"""
+
+
+def compose_generic_error_message(module_name, error_urls):
     # """ Compose a html table of errors"""
     number_of_items = len(error_urls)
-    html_table = """
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <title></title>
-
-  <style type="text/css">
-th, td {
-    vertical-align: middle;
-    align:left;
-}
-  </style>    
-
-</head>
-<body style="margin:0; padding:0; background-color:#fff;">
-    <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">
-                    <tr>
+    html_table = get_table_structure() +\
+                        """<tr>
                         <th bgcolor="#d1d1d1"> Sr. No. </th>
                         <th bgcolor="#d1d1d1"> URL </th>
                         <th bgcolor="#d1d1d1"> Issue </th>
@@ -160,29 +157,11 @@ th, td {
 
     return message
 
+
 def compose_disbursement_message(disbursement_list):
     number_of_items = len(disbursement_list)
-    html_table = """
-    <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-    <html lang="en">
-    <head>
-      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-      <title></title>
-
-      <style type="text/css">
-    th, td {
-        vertical-align: middle;
-        align:left;
-    }
-      </style>    
-
-    </head>
-    <body style="margin:0; padding:0; background-color:#fff;">
-        <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">
-                        <tr>
+    html_table = get_table_structure() +\
+                            """<tr>
                             <th bgcolor="#d1d1d1"> Sr. No. </th>
                             <th bgcolor="#d1d1d1"> Disbursement Type </th>
                             <th bgcolor="#d1d1d1"> Paybill No. </th>
@@ -197,35 +176,17 @@ def compose_disbursement_message(disbursement_list):
 
     return html_table
 
-def compose_Beneficiary_report_message(Beneficiary_list):
-    number_of_items = len(Beneficiary_list)
-    html_table = """
-        <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-        <html lang="en">
-        <head>
-          <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-          <meta name="viewport" content="width=device-width, initial-scale=1">
-          <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-          <title></title>
-
-          <style type="text/css">
-        th, td {
-            vertical-align: middle;
-            align:left;
-        }
-          </style>    
-
-        </head>
-        <body style="margin:0; padding:0; background-color:#fff;">
-            <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">
-                            <tr>
+def compose_Beneficiary_report_message(beneficiary_list):
+    number_of_items = len(beneficiary_list)
+    html_table = get_table_structure() +\
+                                """<tr>
                                 <th bgcolor="#d1d1d1"> Sr. No. </th>
                                 <th bgcolor="#d1d1d1"> Organisation Name </th>
                                 <th bgcolor="#d1d1d1"> Employee Code </th>
                                 <th bgcolor="#d1d1d1"> Financial Year </th>
                                 <th bgcolor="#d1d1d1"> Error Field </th>
-                            </tr>""" + get_Beneficiary_table_data(number_of_items, Beneficiary_list) + """</table>
+                            </tr>""" + get_Beneficiary_table_data(number_of_items, beneficiary_list) + """</table>
                         </body>
                         </html>"""
     # message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
@@ -234,6 +195,7 @@ def compose_Beneficiary_report_message(Beneficiary_list):
     #    logger.console(message)
 
     return html_table
+
 
 class Notifications:
 
@@ -284,14 +246,14 @@ class Notifications:
         if module_name is not None:
             error_urls = gen_test.filter_module_error_url(module_name)
         disbursement_list = gen_test.read_file_return_list(disbursement_file)
-        Beneficiary_list = gen_test.read_file_return_list(Beneficiary_report_file)
+        beneficiary_list = gen_test.read_file_return_list(Beneficiary_report_file)
         # logger.console(error_urls)
 
         # check if error notifications needs to sent
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
             emails_ids = find_receiver(module_name, receivers_json)
             email_subject = "Audit Report of " + module_name
-            email_message = compose_error_message(module_name, error_urls)
+            email_message = compose_generic_error_message(module_name, error_urls)
             self.send_email(emails_ids.get('emailid'), email_subject, email_message)
 
         if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(disbursement_list) != 0:
@@ -300,12 +262,11 @@ class Notifications:
             emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
             self.send_email(emails_ids, email_subject, email_message)
 
-        if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(Beneficiary_list) != 0:
-            email_message = compose_Beneficiary_report_message(Beneficiary_list)
+        if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(beneficiary_list) != 0:
+            email_message = compose_Beneficiary_report_message(beneficiary_list)
             email_subject = "Beneficiary Report"
             emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
             self.send_email(emails_ids, email_subject, email_message)
-
 
     @keyword
     def send_error_push_notification(self):

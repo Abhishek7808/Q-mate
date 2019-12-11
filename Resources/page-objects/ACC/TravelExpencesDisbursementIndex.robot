@@ -1,6 +1,6 @@
 *** Keywords ***
 
-Go To Travel Disbursement Index Page And Set Variables
+Go To Travel Expences Disbursement Index Page And Set Variables
     TravelExpencesDisbursementIndex.Set Variables
     ${retryCount}  DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     return from keyword  ${retryCount}
@@ -16,7 +16,7 @@ Match All Paybills Net Amount With The Report For Given Unit
     [Arguments]  ${UNITID}  ${retryCount}
     run keyword if  ${UNITID}!= None  TopNavigation.Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-    # DisbursementIndex.Apply Given Cycle Filter
+    #DisbursementIndex.Apply Given Cycle Filter
     sleep  2s
     run keyword if  ${PAYBILLNO} == None  Check Travel Expence Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
     run keyword if  ${PAYBILLNO} != None  TravelExpencesDisbursementIndex.Check Specified TravelExpences Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
@@ -35,14 +35,14 @@ Match All Paybills Net Amounts With Reports For All Units
     \   TopNavigation.Open Preference Unit Page
 
 Check Travel Expence Paybills
-    [Documentation]  Checks the available paybill at the salary disbursement page
-    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}
+    [Documentation]  Checks the available paybill at the travel expences disbursement page
+    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}  ${paybillDetailsColumnHead}=Disbursement Detail
     ${allPaybills}  DisbursementIndex.Get Paybill Count
     ${PaybillTableColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTableID}  Actions
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
-    \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}
+    \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}  ${paybillDetailsColumnHead}
     \    DisbursementIndex.Go To Report Page  ${paybill}  ${PaybillTableColumnNumber}
     \    @{ReportData}  DisbursementIndex.Get Data Of Report Page
     \    DisbursementIndex.Switch Tab

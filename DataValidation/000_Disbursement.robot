@@ -19,14 +19,14 @@ ${PAYBILLNO}   None
 
 
 *** Test Cases ***
-
+# TODO: Test is not ready to be tested on live remove all comments before running
 Disbursed salary amount should match with the report amount for all units
     [Tags]  salarydisbursementallunits  Disbursement
     DV_Keywords.Match Salary Disbursed Amount With The Report For All Units
 
 Disbursed travel amount should match with the report amount for all units
     [Tags]  travelexpencesdisbursementallunits   Disbursement
-    DV_Keywords.Match Travel Disbursed Amount With The Report For All Units
+    DV_Keywords.Match Travel Expences Disbursed Amount With The Report For All Units
 
 Disbursed bonus amount should match with the report amount for all units
     [Tags]  bonusdisbursementallunits  Disbursement
@@ -59,7 +59,7 @@ Disbursed honorarium amount should match with the report amount for given unit
 
 Disbursed travel amount should match with the report amount for given unit
     [Tags]  travelexpencesdisbursementunit  travelexpences  disbursementunit
-    DV_Keywords.Match Travel Disbursed Amount With The Report For A Unit  ${unitID}
+    DV_Keywords.Match Travel Expences Disbursed Amount With The Report For A Unit  ${unitID}
 
 Disbursed Bonus amount should match with the report amount for given unit
     [Tags]  bonusdisbursementunit  bonus  disbursementunit

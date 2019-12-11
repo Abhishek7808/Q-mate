@@ -27,13 +27,13 @@ Match Salary Disbursed Amount With The Report For A Unit
     ${retryCount}  SalaryDisbursementIndex.Go To Salary Disbursement Index Page And Set Variables
     SalaryDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
-Match Travel Disbursed Amount With The Report For All Units
-    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Disbursement Index Page And Set Variables
+Match Travel Expences Disbursed Amount With The Report For All Units
+    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Expences Disbursement Index Page And Set Variables
     TravelExpencesDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
 
-Match Travel Disbursed Amount With The Report For A Unit
+Match Travel Expences Disbursed Amount With The Report For A Unit
     [Arguments]  ${unitID}
-    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Disbursement Index Page And Set Variables
+    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Expences Disbursement Index Page And Set Variables
     TravelExpencesDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
 
 Match Bonus Disbursed Amount With The Report For All Units

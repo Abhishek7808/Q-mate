@@ -47,7 +47,7 @@ Check Arrear Disbursement Paybills
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
-    \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}
+    \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}  ${paybillDetailsColumnHead}
     \    DisbursementIndex.Go To Report Page  ${paybill}  ${PaybillTableColumnNumber}
     \    @{ReportData}  DisbursementIndex.Get Data Of Report Page
     \    DisbursementIndex.Switch Tab

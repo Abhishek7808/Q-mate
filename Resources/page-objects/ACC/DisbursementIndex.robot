@@ -45,13 +45,13 @@ Show Maximum Entries
 
 Check Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
-    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${financialYearDD}=Finyear  ${employeeIdColumn}=3
+    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${paybillDetailsColumnHead}=Disbursement Detail  ${financialYearDD}=Finyear  ${employeeIdColumn}=3
     ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
     ${allPaybills}  Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
-    \    ${paybillNumber}  Get Paybill Number  ${paybill}
+    \    ${paybillNumber}  Get Paybill Number  ${paybill}  ${paybillDetailsColumnHead}
     \    Go To Report Page  ${paybill}  ${PaybillTableColumnNumber}
     \    @{ReportData}  Get Data Of Report Page
     \    Switch Tab
@@ -87,12 +87,12 @@ Get Paybill Count
 
 Get Paybill Number
     [Documentation]  Returns the paybill number from the paybill table
-    [Arguments]  ${paybillTableRow}
-    ${columnNumber}  Get Amount Column Number  ${paybillTableID}  Disbursement Detail
+    [Arguments]  ${paybillTableRow}   ${paybillDetailsColumnHead}
+    ${columnNumber}  Get Amount Column Number  ${paybillTableID}  ${paybillDetailsColumnHead}
     ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber}
-    ${paybillDetailSet1}  Split String From Right   ${payBillDetails}  Paybill No.
-    ${paybillDetailSet2}  Split String From Right  ${paybillDetailSet1}[1]  ;
-    return from keyword  ${paybillDetailSet2}[0]
+    ${paybillDetailSet1}  Split String From Right  ${payBillDetails}  Paybill No.
+    ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  1  15
+    return from keyword  ${paybillNumber}
 
 Go To Report Page
     [Arguments]   ${paybillTableRow}  ${columnNumber}
@@ -102,6 +102,9 @@ Go To Report Page
 Get Data Of Report Page
     [Documentation]  Returns the list of salaries of employees listed in report page
     Switch Tab
+    ${errorStatus}  Generic.Check Error Occurred
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    run keyword if  '${errorStatus}' == '1'  fail  Report page of ${disbursementType} showed an error
     @{list}  create list
     ${numberOfRows}  get element count  ${reportPageTableID}/tbody/tr
     ${columnNumber}  get element count  ${reportPageTableID}/thead/tr/th
@@ -127,6 +130,9 @@ Go To Disbursement Page
 Get Data Of Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
     [Arguments]  ${columnToBeFetched}  ${disbursementTableID}
+    ${errorStatus}  Generic.Check Error Occurred
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    run keyword if  '${errorStatus}' == '1'  fail  Disbursement page of ${disbursementType} showed an error
     ${numberOfRows}  get element count  ${disbursementTableID}/tbody/tr
     ${columnNumber}  Get Amount Column Number  ${disbursementTableID}  ${columnToBeFetched}
     @{list}  create list
