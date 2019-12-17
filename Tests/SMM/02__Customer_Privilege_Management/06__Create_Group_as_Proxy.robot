@@ -1,0 +1,52 @@
+*** Settings ***
+Test Teardown     Go To Base State
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Department${/}Department.robot
+Resource          ${RESOURCES}${/}Customer${/}Customer.robot
+Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Library           SeleniumLibrary
+
+Suite Setup       Start Testing
+Suite Teardown    Finish Testing
+
+*** Test Cases ***
+Check Group Creation
+    [Documentation]    Creates a group by department
+    [Tags]  groupproxy  groupproxy1
+    Switch To    Department
+    Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
+    Go To Add Customer Group By Department
+    Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
+    Input Valid Value    Customer Group Description    ${Branch["Group Description"]}
+    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Company["Company Name"]} (${Company["Enter PAN"]})
+    Input Valid Value    Customer Group Enter Customer PAN or Name    ${Val}
+    Input Valid Value    Customer Group Add Button
+    Sleep    3s
+
+Check Group Creation, When Already A Group Exists With Same Code/PAN No
+    [Documentation]    Checks if a group with same name can be created
+    [Tags]  groupproxy  groupproxy2
+    Switch To    Department
+    Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    SSO ID=SSOID 3
+    Go To Add Customer Group By Department
+    Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
+    Input Valid Value    Customer Group Description    ${Branch["Group Description"]}
+    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Company["Company Name"]} (${Company["Enter PAN"]})
+    Input Valid Value    Customer Group Enter Customer PAN or Name    ${Val}
+    Input Valid Value    Customer Group Add Button
+    Sleep    3s
+    Alert Should Be Present    Group Name already exist in selected Group .
+    Sleep    3s
+    Input Valid Value    Customer Group View List Button From Add Group
+    Sleep    2s
+    Input Valid Value    Customer Group Search Text    ${Branch["Group Name"]}
+    Sleep    2s
+    Click Element    //span[contains(text(),'${Branch["Group Name"]}')]/../following-sibling::td/i[@title='View']
+    Sleep    2s
+    Input Valid Value    Customer Group Add Member
+    Sleep    2s
+    Set Test Variables    Branch=Branch Department 4
+    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[@title='Add']
+    Sleep    3s
+    Input Valid Value    Customer Group View List Button
