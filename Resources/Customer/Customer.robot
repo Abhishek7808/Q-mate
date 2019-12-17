@@ -119,7 +119,10 @@ Fill PO
     Input Valid Value    Purchase Order State    ${PO["Destination State"]}
     #click button  btnAddAgentPo
     #Fill Agent
-    Input Valid Value    Purchase Order Agent  ${SSO ID["Name"]}
+    input text  react-select-2-input  ${SSO ID["Name"]}
+    Press Key    react-select-2-input    \\13
+    #Input Valid Value    Purchase Order Agent  ${SSO ID["Name"]}
+
     Input Valid Value    Purchase Order Submit Button
 
 Fill FI
@@ -217,6 +220,7 @@ Approve FI
     Sleep    2s
 
 Approve PO
+    [Arguments]  ${PO No}
     Switch To    Verify
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/PurchaseOrder
@@ -225,7 +229,7 @@ Approve PO
     Select From List By Label    plantStatus    Pending
     Click Button    btnApplyFillter
     Sleep    3s
-    Click Element    //span[contains(text(),'${PO["Select Product"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
+    Click Element    //span[contains(text(),'${PO No}')]/../following-sibling::td/i[contains(text(),'visibility')]
     Sleep    3s
     ${Status}    Run Keyword And Return Status    Page Should Not Contain Button    btnactionApprove
     Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms    Click Element    //span[contains(text(),'Company Details')]
@@ -244,8 +248,8 @@ Approve PO
     Select From List By Label    plantStatus    Approved
     Click Button    btnApplyFillter
     Sleep    3s
-    ${PO No}  Get Text    //span[contains(text(),'30% P205 Crushed Rock phosphate')]/../preceding-sibling::td[2]
-    [Return]    ${PO No}
+#    ${PO No}  Get Text    //span[contains(text(),'30% P205 Crushed Rock phosphate')]/../preceding-sibling::td[2]
+#    [Return]    ${PO No}
 
 Fill Inward Slip
     [Arguments]    ${CRO No}

@@ -19,7 +19,7 @@ Suite Teardown    Finish Testing
 Add Financial Instrument
     [Tags]  Financial  Financial1
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -30,8 +30,6 @@ Add Financial Instrument
     Fill FI
     Sleep    3s
     Element Should Be Visible    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
-    # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
-    # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
     Set Test Variables    Branch=Branch Customer 1    FI=FI 1
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -48,7 +46,7 @@ Add Financial Instrument
 Check the edit process for pending FI
     [Tags]  Financial  Financial2
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -65,31 +63,45 @@ Check the edit process for pending FI
 Check that only after Financial Instrument approval, CRO can be generated
     [Tags]  Financial  Financial3
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    FI=FI 2   PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
-    Sleep    5s
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+    Sleep    3s
+    Click Element    dropdownOpen
+    Select From List By Label    status    Approved
+    Click Button    btnApplyFillter
+    Sleep    1s
+    ${Product}    Get Substring    ${PO["Select Product"]}    0    -8
+    log to console  ${Product}
+    sleep  3s
+    Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${Product}')]/../following-sibling::td/i[contains(@title,'View')]
+    Sleep    2s
+    click element  //span[contains(text(),'CRO List')]
+    click element  //button[@id='btnRequestCRO']
     ${List Item}    Get List Items    purchaseOrderId
     Log    ${List Item}
     ${List Item}    Catenate    ${List Item}
     ${List Item}    Split String    ${List Item}    ,
     ${List Item}    Get From List    ${List Item}    1
-    Log    ${List Item}
+    Log to console  ${List Item}
     ${List Item}    Split String    ${List Item}    '
-    ${List Item}    Get From List    ${List Item}    0
-    Select From List By Label    purchaseOrderId    ${List Item}
+    ${List Item}    Get From List    ${List Item}    1
+    Log to console  ${List Item}
+    Wait Until Keyword Succeeds    5s    200ms    Select From List By Label    purchaseOrderId    ${List Item}
     Press Key    purchaseOrderId    //09
     Sleep    2s
+    Input Valid Value    Contract Release Order Product Quantity Required  12
+    Input Valid Value    Contract Release Order Select Dispatch Point    JHAMARKOTRA
     Select From List By Label    paymentMode    Credit
     Simulate Event    paymentMode    blur
     Select From List By Label    paymentMode    Credit
-    Sleep    1s
-    Select From List By Label    instrumentType    Letter of Credit (LC)
+    Sleep    3s
+
+    Wait Until Keyword Succeeds    10s    200ms    Select From List By Label    instrumentType    Letter of Credit (LC)
     Sleep    2s
     ${Value}    Get List Items    instrument
     : FOR    ${Val}    IN    @{Value}
@@ -98,7 +110,7 @@ Check that only after Financial Instrument approval, CRO can be generated
 Check edit functionality for approved FI
     [Tags]  Financial  Financial4
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Approve FI

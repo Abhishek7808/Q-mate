@@ -41,7 +41,7 @@ Check the agent registration process through agent tab
 Check the agent registration process through PO form
     [Tags]  Addagent  Addagent2
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    PO=PO 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -59,7 +59,7 @@ Check the agent registration process through PO form
 To check the edit functionality of agent details from agent tab when PO pending or approved
     [Tags]  Addagent  Addagent3
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    PO=PO 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -83,7 +83,7 @@ To check the edit functionality of agent details from agent tab when PO pending 
 To check the edit functionality of agent details from CRO form when CRO pending
     [Tags]  Addagent  Addagent4
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    PO=PO 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -100,11 +100,15 @@ To check the edit functionality of agent details from CRO form when CRO pending
     Switch To    Customer
     Sleep    1s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
-    Sleep    5s
-    Select From List By Label    purchaseOrderId    ${PO No}
-    Press Key    purchaseOrderId    //09
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+    ${Product}    Get Substring    ${PO["Select Product"]}    0    -8
+    log to console  ${Product}
+    Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${Product}')]/../following-sibling::td/i[contains(@title,'View')]
+    Sleep    2s
+    click element  //span[contains(text(),'CRO List')]
+    click element  //button[@id='btnRequestCRO']
+#    Select From List By Label    purchaseOrderId    ${PO No}
+#    Press Key    purchaseOrderId    //09
     Sleep    2s
     Element Should Be Visible    //span[contains(text(),'${SSO ID["Name"]}')]
 

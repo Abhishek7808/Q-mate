@@ -18,9 +18,9 @@ Suite Teardown    Finish Testing
 
 *** Test Cases ***
 Request for Purchase Order(PO)
-    [Tags]  requestpurchaseorder  requestpurchaseorder1
+    [Tags]  requestpurchaseorder  rqpo1
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
@@ -31,16 +31,19 @@ Request for Purchase Order(PO)
     Sleep    3s
 
 Get notification after PO request approved/rejected
-    [Tags]  requestpurchaseorder  requestpurchaseorder2
+    [Tags]  requestpurchaseorder  rqpo2
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+    Sleep  2s
+    ${PO No}  get text  //span[contains(text(),'Pending')]/../../preceding-sibling::td/span[@title='${PO["Select Product"]}']/../preceding-sibling::td[2]
+    #/../preceding-sibling::td[2]
     Sleep    3s
     Switch To    Verify
-    ${PO No}    Approve PO
+    Approve PO  ${PO No}
     Switch To    Customer
     Sleep    1s
     Click Element    dropdownOpen
@@ -53,9 +56,9 @@ Get notification after PO request approved/rejected
     Page should Contain Element    //button/span[text()='Approved']
 
 Check edit functionality when status of PO is approved/rejected.
-    [Tags]  requestpurchaseorder  requestpurchaseorder3
+    [Tags]  requestpurchaseorder  rqpo3
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -80,9 +83,9 @@ Check edit functionality when status of PO is approved/rejected.
     Page Should Contain Element    //td/i[contains(text(),'visibility')]
 
 Check that signed copy of End User Agreement is mandatory for PO approval
-    [Tags]  requestpurchaseorder  requestpurchaseorder4
+    [Tags]  requestpurchaseorder  rqpo4
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 2
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
@@ -101,9 +104,9 @@ Check that signed copy of End User Agreement is mandatory for PO approval
 #    Page Should Contain    Upload File
 
 Request for Purchase Order(PO) for auctionable products
-    [Tags]  requestpurchaseorder  requestpurchaseorder5
+    [Tags]  requestpurchaseorder  rqpo5
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 3
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices

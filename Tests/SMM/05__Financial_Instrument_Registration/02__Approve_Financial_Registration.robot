@@ -15,9 +15,9 @@ Suite Teardown    Finish Testing
 *** Test Cases ***
 To check the approval process of FI requests
     [Documentation]    Approves the Financial Instrument submitted by the customer
-    [Tags]  Approvefinancial  Approvefinancial1
+    [Tags]  Approvefinancial  Approvefinancial1  apfn1
     #Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    FI=FI 1    SSO ID=SSOID 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1    SSO ID=SSOID 2
     #Login From Customer    ${SSO ID["SSOID"]}
     #Sleep    2s
     #Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -43,9 +43,9 @@ To check the approval process of FI requests
 
 Cancel Financial Instruments, not used in any Active CROs
     [Documentation]    Rejects the Financial Instrument submitted by the customer
-    [Tags]  Approvefinancial  Approvefinancial2
+    [Tags]  Approvefinancial  Approvefinancial2  apfn2
     #Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    FI=FI 2    SSO ID=SSOID 1
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 2    SSO ID=SSOID 2
     #Login From Customer    ${SSO ID["SSOID"]}
     #Sleep    2s
     #Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -60,7 +60,7 @@ Cancel Financial Instruments, not used in any Active CROs
     #Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    FI=FI 2
     Go To Financial Instrument List From Department
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
-    Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
+    Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'Pending')]/../../following-sibling::td/i[@title='View']
     Input Valid Value    Financial Instrument Reject Button
     Sleep    2s
     Switch To    Verify

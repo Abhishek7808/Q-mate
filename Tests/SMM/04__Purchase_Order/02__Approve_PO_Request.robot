@@ -18,14 +18,14 @@ Check edit functionality for pending PO
     [Tags]  approvepo  approvepo1
     Switch To    Department
     Go To Purchase Order List
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 3
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     View Company Details
     Update PO By Department
 
 PO Request Approval Process
     [Documentation]    Approves PO when submitted by the customer
     [Tags]  approvepo  approvepo2
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 3
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     Switch To    Department
     #Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    Purchase Order=PO 1
     Go To Purchase Order List
@@ -55,14 +55,18 @@ PO Request Rejection Process
     [Tags]  approvepo  approvepo3
     Switch To    Department
     Go To Purchase Order List
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    PO=PO 2
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
+    Click Element    //div[@id='dropdownOpen']/button/i
+    Sleep    1s
+    Select From List By Value    plantStatus    4
+    Click Button    btnApplyFillter
+    sleep  3s
     View Company Details
     sleep  2s
     Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
     Input Valid Value    Purchase Order Reject Button
     Input Valid Value    Purchase Order Reject Remarks    ${PO["Reject Remarks"]}
-    Input Valid Value    Purchase Order Reject Remarks Submit Button
-    Input Valid Value    Purchase Order Reject Edit Request    ${PO["Edit Request"]}
+    #Input Valid Value    Purchase Order Reject Edit Request    ${PO["Edit Request"]}
     Input Valid Value    Purchase Order Reject Remarks Submit Button
     Sleep    3s
     Switch To    Verify
@@ -70,7 +74,7 @@ PO Request Rejection Process
     Click Element    //div[@id='dropdownOpen']/button/i
     Sleep    1s
     Select From List By Value    plantStatus    5
-    Click Button    btnApplytFillter
+    Click Button    btnApplyFillter
     Wait Until Keyword Succeeds    5s    250ms    Page Should Contain Element    //span[contains(text(),'${Branch["Name"]}')]
 
 Check PO cancellation when status is approved or pending
@@ -80,6 +84,8 @@ Check PO cancellation when status is approved or pending
     #Needs help from yuvraj
     Go To Purchase Order List
     Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 3    PO=PO 1
+    input text  searchText  ${Branch["Name"]}
+    sleep  3s
     View Company Details
     Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
     Input Valid Value    Purchase Order Reject Button
