@@ -18,23 +18,23 @@ Suite Teardown    Finish Testing
 *** Test Cases ***
 Check Receipt Advice Generation
     [Documentation]    Still
-    [Tags]    recieptadvice  recieptadvice1
+    [Tags]    receiptadvice  receiptadvice1
     Switch To    Department
-    Set Test Variables    Customer=Customer Department 1    Branch=Branch Department 2    Receipt=Receipt 1
+    Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    Receipt=Receipt 1
     Go To Receipt Generation
     Input Valid Value    Generate Receipt Create New Button
     Sleep    5s
     Generate Receipt By Department
     Sleep    2s
 
-To check the process of Edit Receipt Advice
-    [Tags]    Skip
+#To check the process of Edit Receipt Advice
+#    [Tags]    Skip
 
 Check Financial instrument after receipt generation
     [Documentation]    Still
-    [Tags]   recieptadvice  recieptadvice2
+    [Tags]   receiptadvice  receiptadvice2
     Switch To    Department
-    Set Test Variables    FI=FI 1   Company=Company Department 1    Branch=Branch Department 1  Receipt=Receipt 1
+    Set Test Variables    FI=FI 1   Company=Company Department 3    Branch=Branch Department 1  Receipt=Receipt 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    	111114
     View Company Details

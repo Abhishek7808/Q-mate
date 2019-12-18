@@ -80,8 +80,11 @@ Fill Agent
     Input Valid Value    Add Agent Alternate Number    ${SSO ID["Alternate Mobile Number"]}
     Input Valid Value    Add Agent Fax    ${SSO ID["Fax"]}
     Input Valid Value    Add Agent Email    ${SSO ID["Email ID"]}
-    ${status}  run keyword and return status  Input Valid Value    Add Agent Button
-    run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  Add Agent Button have not appeared
+    run keyword and ignore error  Input Valid Value    Add Agent Button
+    ${message}  Handle Alert
+    run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
+    #run keyword and ignore error  Input Valid Value    Add Agent Button
+    #run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  Add Agent Button have not appeared
 
 Fill Plants
     #[Arguments]    ${Key Description}
@@ -250,6 +253,37 @@ Approve PO
     Sleep    3s
 #    ${PO No}  Get Text    //span[contains(text(),'30% P205 Crushed Rock phosphate')]/../preceding-sibling::td[2]
 #    [Return]    ${PO No}
+
+Approve PO By Product
+    Switch To    Verify
+    Sleep    2s
+    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/PurchaseOrder
+    Sleep    2s
+    Click Element    dropdownOpen
+    Select From List By Label    plantStatus    Pending
+    Click Button    btnApplyFillter
+    Sleep    3s
+    Click Element    //span[contains(text(),'${PO["Select Product"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
+    Sleep    3s
+    ${Status}    Run Keyword And Return Status    Page Should Not Contain Button    btnactionApprove
+    Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms    Click Element    //span[contains(text(),'Company Details')]
+    Run Keyword If    ${Status}    Sleep    3s
+    Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms    Click Element    //button[@id='btnactionApprove']
+    Run Keyword If    ${Status}    Sleep    3s
+    Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms    Click Element    //span[contains(text(),'PO Detail')]
+    Run Keyword If    ${Status}    Sleep    1s
+    ${Status}    Run Keyword And Return Status    Page Should Contain Element    outlined-button-file-agreementFileObject
+    Run Keyword If    ${Status}    Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
+    Wait Until Keyword Succeeds    5s    100ms    Click Button    //button[@id='btnactionApprove']
+    Sleep    2s
+    Click Button    //button[@id='btnconfirmVerify']
+    Sleep    6s
+    Click Element    dropdownOpen
+    Select From List By Label    plantStatus    Approved
+    Click Button    btnApplyFillter
+    Sleep    3s
+    ${PO No}  Get Text    //span[contains(text(),'30% P205 Crushed Rock phosphate')]/../preceding-sibling::td[2]
+    [Return]    ${PO No}
 
 Fill Inward Slip
     [Arguments]    ${CRO No}

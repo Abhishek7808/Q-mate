@@ -7,5 +7,5 @@ Library           Collections
 Library           SeleniumLibrary
 
 *** Test Cases ***
-To check the process request receipt
-    [Tags]    Skip
+#To check the process request receipt
+#    [Tags]    Skip

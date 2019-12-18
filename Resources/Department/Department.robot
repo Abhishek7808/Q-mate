@@ -203,6 +203,7 @@ Fill PO By Department
 
 Fill Agent By Department
     Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
+    sleep  2s
     Input Valid Value    Add Agent Agent Name    ${SSO ID["Name"]}
     Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}
     ${Status}    Run Keyword And Return Status    Page Should Contain Element    agentModalPinCode
@@ -216,6 +217,9 @@ Fill Agent By Department
     Input Valid Value    Add Agent Fax    ${SSO ID["Fax"]}
     Input Valid Value    Add Agent Email    ${SSO ID["Email ID"]}
     Input Valid Value    Add Agent Save Button
+    ${message}  Handle Alert
+    run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
+
 
 Update PO By Department
     ${status}  run keyword and return status  Input Valid Value    Purchase Order Unit Name    ${PO["Unit Name"]}

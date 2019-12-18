@@ -11,20 +11,37 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Suite Setup       Start Testing
 Suite Teardown    Finish Testing
 
+*** Keyword ***
+Create Financial Instrument
+    Switch To    Customer
+    go to  http://demoprojects.e-connectsolutions.com/ERP-DEMO//temp/sso.aspx
+    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2   SSO ID=SSOID 2    FI=FI 1
+    Login From Customer    ${SSO ID["SSOID"]}
+    Sleep    2s
+    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
+    sleep  5s
+    Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'Transfer History')]
+    sleep  2s
+    Wait Until Keyword Succeeds    5s    500ms    Click Button    btnTransferInstrument
+    Sleep    1s
+    Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 1"]}"]}
+    Wait Until Keyword Succeeds    5s    200ms    Select From List By Label    //select[@id='member']    ${Branch["Name"]}
+    Wait Until Keyword Succeeds    5s    200ms    Input Text    Amount    5000
+    Click Button    btnRequestTransfer
 
 *** Test Cases ***
 Approve or Reject LC/BG Transfer
     [Documentation]    Approves / rejects a tranfer of Financial Instrument
     [Tags]    approvelcbg
     #Approving a Transfer Request
+    Create Financial Instrument
     Switch To    Department
-    Set Test Variables    Company=Company Department 2    Branch=Branch Department 2    FI=FI 1
+    Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    FI=FI 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
-#    ${text}    get text    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td[contains(text(),'${FI["Validity Date"]["Date"]}-${FI["Validity Date"]["Month"]}-${FI["Validity Date"]["Year"]}')]/following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
-#    log to console  ${text}
-    #/following-sibling::td/i[@title='View']
-                                                                   #//span[contains(text(),'${Branch["Name"]}')]/../preceding-sibling::td//span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
     Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../preceding-sibling::td//span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td[contains(text(),'${FI["Validity Date"]["Date"]}-${FI["Validity Date"]["Month"]}-${FI["Validity Date"]["Year"]}')]/following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Transfer${SPACE}History')]
     Set test Variables    Branch=Branch Department 1
@@ -35,6 +52,7 @@ Approve or Reject LC/BG Transfer
     Sleep    2s
     Element Should Be Visible    //span[contains(text(),'${FI["Transfer Amount"]}')]/../preceding-sibling::td//span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'Approved')]
     #Rejecting a Transfer Request
+    Create Financial Instrument
     Switch To    Department
     Set Test Variables    Company=Company Department 2    Branch=Branch Department 2    FI=FI 1
     Go To Financial Instrument List From Department

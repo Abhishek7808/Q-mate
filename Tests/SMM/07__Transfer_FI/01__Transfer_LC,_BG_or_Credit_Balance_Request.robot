@@ -23,9 +23,9 @@ Suite Teardown    Finish Testing
 To check the Transfer of LC/BG
     [Tags]    transferlcbg  transferlcbg1
     Switch To    Customer
-    Set Test Variable    ${SSO ID}    ${Test Data["${CONFIG["SSOID 1"]}"]}
+    Set Test Variable    ${SSO ID}    ${Test Data["${CONFIG["SSOID 2"]}"]}
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
-    Set Test Variable    ${Company}    ${Test Data["${CONFIG["Company Customer 1"]}"]}
+    Set Test Variable    ${Company}    ${Test Data["${CONFIG["Company Customer 2"]}"]}
     Set Test Variable    ${FI}    ${Test Data["${CONFIG["FI 2"]}"]}
     Set Test Variable    ${PO}    ${Test Data["${CONFIG["PO 1"]}"]}
     Set Test Variable    ${CRO}    ${Test Data["${CONFIG["CRO 2"]}"]}
@@ -44,6 +44,7 @@ To check the Transfer of LC/BG
     Wait Until Keyword Succeeds    5s    200ms    Select From List By Label    //select[@id='member']    ${Branch["Name"]}
     Wait Until Keyword Succeeds    5s    200ms    Input Text    Amount    5000
     Click Button    btnRequestTransfer
+    sleep  4s
     Sleep    2s
     Switch To    Verify
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Finance/InstrumentList
@@ -70,9 +71,9 @@ To check the Transfer of LC/BG
 To check that the transfer of FI can only be done within group members.
     [Tags]    transferlcbg  transferlcbg2
     Switch To    Customer
-    Set Test Variable    ${SSO ID}    ${Test Data["${CONFIG["SSOID 1"]}"]}
+    Set Test Variable    ${SSO ID}    ${Test Data["${CONFIG["SSOID 2"]}"]}
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
-    Set Test Variable    ${Company}    ${Test Data["${CONFIG["Company Customer 1"]}"]}
+    Set Test Variable    ${Company}    ${Test Data["${CONFIG["Company Customer 2"]}"]}
     Set Test Variable    ${FI}    ${Test Data["${CONFIG["FI 2"]}"]}
     Set Test Variable    ${PO}    ${Test Data["${CONFIG["PO 1"]}"]}
     Set Test Variable    ${CRO}    ${Test Data["${CONFIG["CRO 2"]}"]}

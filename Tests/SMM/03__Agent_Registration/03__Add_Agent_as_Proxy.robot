@@ -16,7 +16,7 @@ To check the process when department user as proxy add agent from menu
     [Documentation]    Adds an agent (transporter) to a company by department
     [Tags]   Addagentasproxy  Addagentasproxy1
     Switch To    Department
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 3
+    Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 2
     Go To Add Purchase Order From Department
     #Fill To Add Agent
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
@@ -27,9 +27,11 @@ To check the process when department user as proxy add agent from menu
     #Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Save Button
     #Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Agent    ${SSO ID["Name"]}
     Click Button    btnAddAgentPo
-    ${status}  run keyword and return status  Fill Agent By Department
-    run keyword if  ${status} == ${False}  fail  btnSaveModel button not working
-    run keyword if  ${status} == ${True}  Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Submit Button
+    Fill Agent By Department
+    sleep  3s
+    input text  react-select-2-input  ${SSO ID["Name"]}
+    Press Key    react-select-2-input    \\13
+    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Submit Button
 
 To check the process when department user add agent from PO form
     [Documentation]    Adds an agent from PO form
@@ -43,11 +45,12 @@ To check the process when department user add agent from PO form
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Button
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
     Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}
-    ${status}  run keyword and return status  Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Save Button
-    log  ${status}
-    run keyword if  ${status} == ${False}  fail  btnSaveModel button not working
+    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Save Button
+    ${message}  Handle Alert
+    run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
+    sleep  4s
     # Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Agent    ${SSO ID["Name"]}
-    run keyword if  ${status} == ${True}  Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Submit Button
+    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Submit Button
 
 #To check the process when DU change Agent Details by selecting PO
 #    [Tags]    Skip
