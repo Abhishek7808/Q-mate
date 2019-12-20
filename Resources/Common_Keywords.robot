@@ -4,25 +4,61 @@ Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Library	    OperatingSystem
 Library	    String
 Library     Collections
+Resource    browser.robot
+
+#Test Teardown     Go To Base State
+Library           SeleniumLibrary
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           RequestsLibrary
+#Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}${/}Common_Keywords.robot
+Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Department${/}Department.robot
+Resource          ${RESOURCES}${/}Customer${/}Customer.robot
+Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
+Resource          ${DATA}${/}website.robot
+Resource          ${DATA}${/}locators.robot
+Resource          ${DATA}${/}alerts.robot
+
 
 *** Keywords ***
-Begin Web Test
-    #support for the library path
-    # ${libPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${LIBRARY_DIR}
-    #log to console  ${LIBRARY}
-    evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
 
-    #support for the plugin path
-    #${pluginPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${PLUGINS_DIR}
-    #evaluate  sys.path.append(os.path.join(r'${PLUGINS}'))  modules=os, sys
-
-    remove file  ${ERRORFILE}
-    remove file  ${DV_REPORT}
+Begin Basic Testing
+    Set Paths
+    Remove Files
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
-End Web Test
+End Basic Testing
     close browser
+
+Begin SMM Testing
+    #support for the library path
+    # ${libPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${LIBRARY_DIR}
+    #log to console  ${LIBRARY}
+    Set Paths
+    Remove Files
+    #support for the plugin path
+    #${pluginPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${PLUGINS_DIR}
+    #evaluate  sys.path.append(os.path.join(r'${PLUGINS}'))  modules=os, sys
+    #open browser  about:blank  ${BROWSER}
+    browser.Start Testing
+    #Open Browsers123
+    #open browser  about:blank  ${BROWSER}
+    #maximize browser window
+
+End SMM Testing
+    browser.Finish Testing
+
+Set Paths
+    evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
+
+Remove Files
+    remove file  ${ERRORFILE}
+    remove file  ${DV_REPORT}
 
 Read JSON File
     [Arguments]  ${JSON_File}
@@ -40,3 +76,30 @@ Read And Evaluate JSON File
     ${JSON}   Read JSON File  ${JSON_File}
     ${File_JSON}  Evaluate And Store JSON File  ${JSON}
     return from keyword  ${File_JSON}
+
+#Begin Disbursement Testing
+#    Set Paths
+#    Remove Files
+#    open browser  about:blank  ${BROWSER}
+#    maximize browser window
+#
+#End Disbursement Testing
+#    close browser
+#
+#Begin Login Testing
+#    Set Paths
+#    Remove Files
+#    open browser  about:blank  ${BROWSER}
+#    maximize browser window
+#
+#End Login Testing
+#    close browser
+#
+#Begin Module_Navigation Testing
+#    Set Paths
+#    Remove Files
+#    open browser  about:blank  ${BROWSER}
+#    maximize browser window
+#
+#End Module_Navigation Testing
+    close browser

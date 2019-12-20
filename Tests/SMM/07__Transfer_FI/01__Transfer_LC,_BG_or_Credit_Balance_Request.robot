@@ -12,8 +12,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Variables ***
@@ -47,6 +45,7 @@ To check the Transfer of LC/BG
     sleep  4s
     Sleep    2s
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Finance/InstrumentList
     Sleep    1s
     Input Text    searchText    ${FI["BG/LC Number"]}

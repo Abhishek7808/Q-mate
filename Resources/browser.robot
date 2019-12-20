@@ -85,16 +85,16 @@ Open Browsers
     #Create Webdriver    driver_name=${BROWSER}    alias=Department    #kwargs=${dict}
     Maximize Browser Window
     Go To    ${LOGIN URL}
-    Login From Department    archit.rsmml    admin
-    Create WebDriver  ${BROWSER}  alias=Department  alias=Customer  kwargs=${dict}
+    #Login From Department    archit.rsmml    admin
+    Create WebDriver  ${BROWSER}    alias=Customer  kwargs=${dict}
     #Create Webdriver    driver_name=${BROWSER}    alias=Customer    #kwargs=${dict}
     Maximize Browser Window
     Go To    ${LOGIN URL}/temp/sso.aspx
-    Create WebDriver  ${BROWSER}  alias=Department  alias=Verify  kwargs=${dict}
+    Create WebDriver  ${BROWSER}    alias=Verify  kwargs=${dict}
     #Create Webdriver    driver_name=${BROWSER}    alias=Verify    #kwargs=${dict}
     Maximize Browser Window
     Go To    ${LOGIN URL}
-    Login From Department    megha.rsmml    admin
+    #Login From Department    megha.rsmml    admin
 
 Go To Base State
     Switch Browser    Customer

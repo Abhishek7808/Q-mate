@@ -10,8 +10,6 @@ Resource          ${RESOURCES}${/}Fields${/}Field.robot
 
 # robot -d Results Tests/SMM/01__Customer_Registration/03__Manage_Customer_Registration.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 *** Test Cases ***
 To check the edit process of customer details when customer is not approved by department
@@ -19,6 +17,7 @@ To check the edit process of customer details when customer is not approved by d
     [Tags]  manage  mnotapproved  manage1
     set test variables    Company=Company Customer 1    Branch=Branch Customer 3
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Go To Customer List
     Apply Filter    1      #Draft
     sleep  3s
@@ -45,6 +44,7 @@ Check Cancel Customer Registration
     [Documentation]    Deactivates an application by Marketing Team Member
     [Tags]  manage  mcancle  manage3
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1    #jaipur
     Go To Customer List
     Apply Filter    4
@@ -53,6 +53,7 @@ Check Cancel Customer Registration
     Input Valid Value    Customer Details Deactive Button
     Sleep    2s
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Customer List
     Apply Filter    667
     Wait Until Keyword Succeeds    5s    250ms    Page Should Contain    ${Branch["Name"]}  #,${Company["Company Name"]}
@@ -68,6 +69,7 @@ Check registration edit functionality, when account deactivated
     [Documentation]    Checks if deactivated account information can be edited
     [Tags]  manage  mdeactivated  manage4
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    667
@@ -75,6 +77,7 @@ Check registration edit functionality, when account deactivated
     View Company Details
     Company Registration By Department    Activate
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
     Apply Filter    4

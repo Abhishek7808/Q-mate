@@ -288,6 +288,7 @@ Approve PO By Product
 Fill Inward Slip
     [Arguments]    ${CRO No}
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Sleep    2s
     #set test variables
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
@@ -313,6 +314,7 @@ Fill Inward Slip
 Fill Outward Slip
     [Arguments]    ${CRO No}
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
     Sleep    2s

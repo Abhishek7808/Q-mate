@@ -12,8 +12,7 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
+
 
 *** Test Cases ***
 Add Financial Instrument

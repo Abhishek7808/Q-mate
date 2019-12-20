@@ -8,8 +8,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
@@ -17,6 +15,7 @@ Check CRO request approval process
     [Documentation]    Approves CRO request by Forwarding it to ME, Selecting Dispatch Point, Expiry Date, and forwarding it to ME Executive
     [Tags]  croapproval  croapproval1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
     Wait Until keyword Succeeds    5s    250ms    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'${CRO["Product Quantity Required"]}')]/../following-sibling::td/i[@title='View']
@@ -26,7 +25,7 @@ Check CRO request approval process
     Wait Until Keyword Succeeds    10s    500ms    Input Valid Value    Contract Release Order Expiry Date    ${CRO["Expiry Date"]}
     Wait Until Keyword Succeeds    10s    500ms    Input Valid Value    Contract Release Order Forward To Marketing Executive Button
     Wait Until Keyword Succeeds    10s    500ms    Input Valid Value    Contract Release Order View List Button
-    Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To CRO List
     Sleep    1s
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -39,6 +38,7 @@ Check CRO request rejection process
     [Documentation]    Reject a CRO request with a rejection message
     [Tags]  croapproval  croapproval2
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
     Wait Until keyword Succeeds    5s    250ms    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'${CRO["Product Quantity Required"]}')]/../following-sibling::td/i[@title='View']
@@ -51,6 +51,7 @@ Check that CRO validity date cannot exceed the validity of financial instrument
     [Tags]  croapproval  croapproval3
     #This keyword is not to be run as this functionality has not been made so far
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    CRO=CRO 1
     Go To CRO List
     Sleep    1s

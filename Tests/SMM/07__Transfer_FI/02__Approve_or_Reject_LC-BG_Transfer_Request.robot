@@ -8,8 +8,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 *** Keyword ***
 Create Financial Instrument
@@ -39,6 +37,7 @@ Approve or Reject LC/BG Transfer
     #Approving a Transfer Request
     Create Financial Instrument
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    FI=FI 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
@@ -54,6 +53,7 @@ Approve or Reject LC/BG Transfer
     #Rejecting a Transfer Request
     Create Financial Instrument
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 2    Branch=Branch Department 2    FI=FI 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}

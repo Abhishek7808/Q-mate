@@ -12,8 +12,7 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
+
 
 *** Test Cases ***
 #TODO: Make new CROs for running 2nd, 3rd and 4th test

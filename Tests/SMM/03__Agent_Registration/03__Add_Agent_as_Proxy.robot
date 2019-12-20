@@ -7,8 +7,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Library           SeleniumLibrary
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
@@ -16,6 +14,7 @@ To check the process when department user as proxy add agent from menu
     [Documentation]    Adds an agent (transporter) to a company by department
     [Tags]   Addagentasproxy  Addagentasproxy1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 2
     Go To Add Purchase Order From Department
     #Fill To Add Agent
@@ -37,6 +36,7 @@ To check the process when department user add agent from PO form
     [Documentation]    Adds an agent from PO form
     [Tags]   Addagentasproxy  Addagentasproxy2
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 2
     Go To Add Purchase Order From Department
     #Fill To Add Agent

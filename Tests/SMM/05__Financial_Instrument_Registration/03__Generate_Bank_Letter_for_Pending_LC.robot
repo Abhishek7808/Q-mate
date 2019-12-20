@@ -8,14 +8,13 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 *** Test Cases ***
 Filter and View LC for pending payment, and print Bank letter
     [Documentation]    Generate bank letter/print the letter
     [Tags]  bankletter  bankletter1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}

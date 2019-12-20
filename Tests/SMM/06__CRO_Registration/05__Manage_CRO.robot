@@ -8,8 +8,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
@@ -17,6 +15,7 @@ Cancel CRO request before inbound Weighment Slip is generated
     [Documentation]    Rejects a CRO request with appropriate remarks
     [Tags]  cancelcro
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Go To CRO List
     Click Element    //div[@id='dropdownOpen']/button/i

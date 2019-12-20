@@ -12,8 +12,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 *** Test Cases ***
 # TODO: increase product quantity required in CRO 1, CRO 2, CRO 3 and hanece increase amount also

@@ -12,14 +12,13 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
 Check product registration
     [Tags]    checkproduct  checkproduct1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables   PD=PD 1  SC=SC 1
     Go To Product List By Department
     Input Valid Value    Add New Product Button
@@ -31,6 +30,7 @@ Check product registration
 To check when Marketing Head can add more price components for a product (One time a day i.e. same proce component can't be added on same date)
     [Tags]    checkproduct  checkproduct2
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables  PD=PD 1  SC=SC 1
     Go To Product List By Department
     Wait Until Keyword Succeeds    2s    400ms    Input Valid Value    Product Search By Name    ${PD["Product Name"]}

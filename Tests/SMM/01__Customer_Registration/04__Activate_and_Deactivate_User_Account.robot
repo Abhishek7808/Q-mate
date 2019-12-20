@@ -5,8 +5,6 @@ Resource          ../../../Configuration.resource
 Resource          ${RESOURCES}${/}browser.robot
 
 # robot -d Results Tests/SMM/01__Customer_Registration/04__Activate_and_Deactivate_User_Account.robot
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 *** Test Cases ***
 
@@ -14,6 +12,7 @@ Check the process of User Account Deactivation
     [Documentation]    Deactivates an application submitted by the user
     [Tags]  deactivationuser  Account  Account1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     set test variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    4
@@ -23,6 +22,7 @@ Check the process of User Account Deactivation
     Sleep    2s
     Input Valid Value    View Customer List
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
     Apply Filter    4
@@ -32,6 +32,7 @@ Check the process of User Account Activation
     [Documentation]    Activates an application submitted by the user
     [Tags]  activationuser  Account  Account2
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     set test variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    667     #Deactivated
@@ -39,6 +40,7 @@ Check the process of User Account Activation
     View Company Details
     Input Valid Value    Customer Details Active Button
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
     Apply Filter    4
@@ -48,6 +50,7 @@ Check the process of User Account Activation when requested by MTM
     [Documentation]    Activates an application submitted by the user
     [Tags]    accountactivation  Account  Account3
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     set test variables    Company=Company Department 2    Branch=Branch Department 2
     Go To Customer List
     Apply Filter    4
@@ -60,6 +63,7 @@ Check the process of User Account Activation when requested by MTM
     View Company Details
     Input Valid Value    Customer Details Active Button
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
     Apply Filter    4

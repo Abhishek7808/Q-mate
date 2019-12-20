@@ -11,8 +11,7 @@ Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
+
 
 *** Test Cases ***
 Check 'Add Members To Group'

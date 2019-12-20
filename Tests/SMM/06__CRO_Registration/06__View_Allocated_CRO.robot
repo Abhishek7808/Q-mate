@@ -8,15 +8,12 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
-
-
 *** Test Cases ***
 View Allocated CRO Status
     [Documentation]    CRO allocated quantity will be visible to weighbridge manager
     [Tags]  croallocated
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
     Sleep    1s

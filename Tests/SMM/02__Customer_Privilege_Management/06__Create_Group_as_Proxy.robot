@@ -7,14 +7,14 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Library           SeleniumLibrary
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
+
 
 *** Test Cases ***
 Check Group Creation
     [Documentation]    Creates a group by department
     [Tags]  groupproxy  groupproxy1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
     Go To Add Customer Group By Department
     Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
@@ -28,6 +28,7 @@ Check Group Creation, When Already A Group Exists With Same Code/PAN No
     [Documentation]    Checks if a group with same name can be created
     [Tags]  groupproxy  groupproxy2
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    SSO ID=SSOID 3
     Go To Add Customer Group By Department
     Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}

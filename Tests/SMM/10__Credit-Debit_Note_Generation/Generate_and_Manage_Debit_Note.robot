@@ -7,14 +7,13 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 *** Test Cases ***
 Check the process to Generate Debit Note
     [Documentation]    Generates debit note
     [Tags]    debitnote
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Go To Differentials Adjustment
     Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1  DN=DN 1
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]}

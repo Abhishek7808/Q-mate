@@ -12,8 +12,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
@@ -43,6 +41,7 @@ Get notification after PO request approved/rejected
     #/../preceding-sibling::td[2]
     Sleep    3s
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Approve PO  ${PO No}
     Switch To    Customer
     Sleep    1s

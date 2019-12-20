@@ -11,8 +11,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
@@ -20,6 +18,7 @@ Check Receipt Advice Generation
     [Documentation]    Still
     [Tags]    receiptadvice  receiptadvice1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    Receipt=Receipt 1
     Go To Receipt Generation
     Input Valid Value    Generate Receipt Create New Button
@@ -34,6 +33,7 @@ Check Financial instrument after receipt generation
     [Documentation]    Still
     [Tags]   receiptadvice  receiptadvice2
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    FI=FI 1   Company=Company Department 3    Branch=Branch Department 1  Receipt=Receipt 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    	111114

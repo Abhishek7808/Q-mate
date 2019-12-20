@@ -14,8 +14,7 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
+
 
 *** Variables ***
 ${Type To Keyword File}    TypeToKeyword.json
@@ -26,6 +25,7 @@ ${RETRY INTERVAL}    200ms
 To check the process WeighBridge Manager (WM) generate the loading Advice
     [Tags]    loadingadvice
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/LoadingAdvice/LoadingAdviceList
     Set Test Variables    Company=Company Customer 1    Branch=Branch Department 2

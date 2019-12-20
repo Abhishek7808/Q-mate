@@ -8,8 +8,7 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
+
 
 
 *** Test Cases ***
@@ -17,6 +16,7 @@ Check edit functionality for pending PO
     [Documentation]    Edits the PO form when it is in pending mode
     [Tags]  approvepo  approvepo1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Go To Purchase Order List
     Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     View Company Details
@@ -27,6 +27,7 @@ PO Request Approval Process
     [Tags]  approvepo  approvepo2
     Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     #Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    Purchase Order=PO 1
     Go To Purchase Order List
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -42,6 +43,7 @@ PO Request Approval Process
     #Apply Filter    4
     #Page Should Not Contain Element    ${Branch["Name"]},${Company["Company Name"]}
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Purchase Order List
     Click Element    //div[@id='dropdownOpen']/button/i
     Sleep    1s
@@ -54,6 +56,7 @@ PO Request Rejection Process
     [Documentation]    Rejects PO when submitted by the customer
     [Tags]  approvepo  approvepo3
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Go To Purchase Order List
     Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -70,6 +73,7 @@ PO Request Rejection Process
     Input Valid Value    Purchase Order Reject Remarks Submit Button
     Sleep    3s
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Purchase Order List
     Click Element    //div[@id='dropdownOpen']/button/i
     Sleep    1s
@@ -81,6 +85,7 @@ Check PO cancellation when status is approved or pending
     [Tags]  approvepo  approvepo4
     #When PO is in pending state
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     #Needs help from yuvraj
     Go To Purchase Order List
     Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 3    PO=PO 1

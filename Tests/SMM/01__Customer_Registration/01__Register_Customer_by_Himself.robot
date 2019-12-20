@@ -1,19 +1,25 @@
 *** Settings ***
+Resource  ../Configuration.resource
+Resource  ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
+#Resource          ../../../Configuration.resource
+#Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}browser.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
+
+
+
+#Suite Setup          Common_Keywords.Begin Web Test
+#Suite Teardown       Common_Keywords.End Web Test
 
 *** Variables ***
 ${RETRY TIME}     5s
@@ -54,9 +60,10 @@ Delete Data Of Given SSOID Or Company
 Check Customer Registration Process
     [Documentation]    Done
     [Tags]  Himself  selfregistration  Himself1
+    #go to  google.com
     Switch To    Customer
-    Delete Data of Company    ${Test Data["${CONFIG["Company Customer 1"]}"]["Enter PAN"]}
-    Delete Data of Company    ${Test Data["${CONFIG["Company Customer 2"]}"]["Enter PAN"]}
+    #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 1"]}"]["Enter PAN"]}
+    #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 2"]}"]["Enter PAN"]}
     set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Delete Data Of SSOID    ${SSO ID["SSOID"]}
     Login From Customer    ${SSO ID["SSOID"]}
@@ -171,6 +178,7 @@ Check the approval process of customer registration by departmental user
     [Documentation]    Done
     [Tags]  approval  Himself  himself8
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}

@@ -11,8 +11,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
@@ -20,6 +18,7 @@ To check the process Appropriate Receipt
     [Documentation]    Fills receipt form and generates new receipt
     [Tags]    receipt
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    Receipt=Receipt 1
     Go To Receipt Generation
     Input Valid Value    Generate Receipt Create New Button

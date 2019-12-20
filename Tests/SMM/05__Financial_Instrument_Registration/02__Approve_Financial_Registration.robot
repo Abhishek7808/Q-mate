@@ -8,9 +8,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
-
 
 *** Test Cases ***
 To check the approval process of FI requests
@@ -28,6 +25,7 @@ To check the approval process of FI requests
     #Sleep    3s
     #Element Should Be Visible    //td[contains(text(),'${FI["BG/LC Number"]}')]/following-sibling::td//span[contains(text(),'Pending')]/ancestor::td/following-sibling::td/i[@title='View']
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     #Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
@@ -36,6 +34,7 @@ To check the approval process of FI requests
     log  ${status}
     run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  approve button has not appreared
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
     Sleep    2s
@@ -57,6 +56,7 @@ Cancel Financial Instruments, not used in any Active CROs
     #Sleep    3s
     #Element Should Be Visible    //td[contains(text(),'${FI["BG/LC Number"]}')]/following-sibling::td//span[contains(text(),'Pending')]/ancestor::td/following-sibling::td/i[@title='View']
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     #Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    FI=FI 2
     Go To Financial Instrument List From Department
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
@@ -64,6 +64,7 @@ Cancel Financial Instruments, not used in any Active CROs
     Input Valid Value    Financial Instrument Reject Button
     Sleep    2s
     Switch To    Verify
+    Login From Department    megha.rsmml    admin
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
     Sleep    2s

@@ -8,15 +8,13 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
-
 *** Test Cases ***
 #TODO: not working because date can not be changed
 Check edit functionality when FI period extended for approved FI's
     [Documentation]    Extends FI Date for approved FI's
     [Tags]  periodextend  peroidextend1
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    FI=FI 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}

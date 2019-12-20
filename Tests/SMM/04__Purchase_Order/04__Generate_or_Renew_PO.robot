@@ -8,8 +8,6 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-Suite Setup       Start Testing
-Suite Teardown    Finish Testing
 
 
 *** Test Cases ***
@@ -17,6 +15,7 @@ Check Generate/Renew PO process
     [Documentation]    Renew PO by adding new expiry date
     [Tags]  generatepo
     Switch To    Department
+    Login From Department    archit.rsmml    admin
     Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Go To Renew PO Process
     #Input Valid Value    Renew PO Search By Number
