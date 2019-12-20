@@ -28,7 +28,7 @@ To check the process WeighBridge Manager (WM) generate the loading Advice
     Login From Department    archit.rsmml    admin
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/LoadingAdvice/LoadingAdviceList
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Department 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Department 2
     click element  //span[contains(text(),'${Branch["Name"]}')]/../preceding-sibling::td//input
 #    Open Browser    http://demoprojects.e-connectsolutions.com/ERP-DEMO    chrome
 #    Maximize Browser Window

@@ -15,7 +15,7 @@ To check the process when department user as proxy add agent from menu
     [Tags]   Addagentasproxy  Addagentasproxy1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 2
     Go To Add Purchase Order From Department
     #Fill To Add Agent
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
@@ -37,7 +37,7 @@ To check the process when department user add agent from PO form
     [Tags]   Addagentasproxy  Addagentasproxy2
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 2
     Go To Add Purchase Order From Department
     #Fill To Add Agent
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})

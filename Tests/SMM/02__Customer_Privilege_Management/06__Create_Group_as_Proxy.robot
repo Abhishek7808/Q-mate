@@ -15,7 +15,7 @@ Check Group Creation
     [Tags]  groupproxy  groupproxy1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
+    Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
     Go To Add Customer Group By Department
     Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
     Input Valid Value    Customer Group Description    ${Branch["Group Description"]}
@@ -29,7 +29,7 @@ Check Group Creation, When Already A Group Exists With Same Code/PAN No
     [Tags]  groupproxy  groupproxy2
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    SSO ID=SSOID 3
+    Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    SSO ID=SSOID 3
     Go To Add Customer Group By Department
     Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
     Input Valid Value    Customer Group Description    ${Branch["Group Description"]}
@@ -47,7 +47,7 @@ Check Group Creation, When Already A Group Exists With Same Code/PAN No
     Sleep    2s
     Input Valid Value    Customer Group Add Member
     Sleep    2s
-    Set Test Variables    Branch=Branch Department 4
+    Common_Keywords.Set Test Variables    Branch=Branch Department 4
     Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[@title='Add']
     Sleep    3s
     Input Valid Value    Customer Group View List Button

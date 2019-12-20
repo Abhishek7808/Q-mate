@@ -16,7 +16,7 @@ Approve DI Requests
     [Tags]  approvecrofin  approvecrofin1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
     Sleep    1s
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -46,7 +46,7 @@ Check CRO request approval process when all the approvals(CRO request & DI) done
     [Tags]  approvecrofin  approvecrofin2
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Go To CRO List
     Sleep    5s
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -77,7 +77,7 @@ Reject DI Request
     [Tags]  approvecrofin  approvecrofin3
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     Go To CRO List
     Sleep    5s
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -95,7 +95,7 @@ Reject CRO Request
     [Tags]  approvecrofin  approvecrofin4
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Go To CRO List
     Sleep    5s
     Click Element    //div[@id='dropdownOpen']/button/i

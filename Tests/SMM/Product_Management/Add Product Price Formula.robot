@@ -21,7 +21,7 @@ Check the process to Add Product price formula
 #    Switch Browser    Department
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables  PD=PD 1  SC=SC 1
+    Common_Keywords.Set Test Variables  PD=PD 1  SC=SC 1
     Go To Add Product From Department
     sleep  1s
     click button  btnAddProduct
@@ -44,7 +44,7 @@ To check that user can create a new formula using fields
     Switch To    Department
     Login From Department    archit.rsmml    admin
     #Set Test Variable    ${Key Description}    ${Department Key Description}
-    Set Test Variables    SC=SC 2  PD=PD 1
+    Common_Keywords.Set Test Variables    SC=SC 2  PD=PD 1
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Product/AddEditProduct
     Fill Product By Department
     sleep  5s

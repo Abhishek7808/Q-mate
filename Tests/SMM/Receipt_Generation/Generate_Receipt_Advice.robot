@@ -19,7 +19,7 @@ Check Receipt Advice Generation
     [Tags]    receiptadvice  receiptadvice1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    Receipt=Receipt 1
+    Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    Receipt=Receipt 1
     Go To Receipt Generation
     Input Valid Value    Generate Receipt Create New Button
     Sleep    5s
@@ -34,7 +34,7 @@ Check Financial instrument after receipt generation
     [Tags]   receiptadvice  receiptadvice2
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    FI=FI 1   Company=Company Department 3    Branch=Branch Department 1  Receipt=Receipt 1
+    Common_Keywords.Set Test Variables    FI=FI 1   Company=Company Department 3    Branch=Branch Department 1  Receipt=Receipt 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    	111114
     View Company Details

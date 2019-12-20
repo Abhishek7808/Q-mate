@@ -15,7 +15,7 @@ Check the process to Generate Debit Note
     Switch To    Department
     Login From Department    archit.rsmml    admin
     Go To Differentials Adjustment
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1  DN=DN 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1  DN=DN 1
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]}
     Input Valid Value    Debit Note Create Button
     Sleep    3s

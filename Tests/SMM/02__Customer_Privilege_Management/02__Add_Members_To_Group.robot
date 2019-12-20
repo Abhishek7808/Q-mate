@@ -17,7 +17,7 @@ Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Check 'Add Members To Group'
     [Tags]  Addmember  addmember1
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -48,7 +48,7 @@ Check 'Add Members To Group'
 Check that only group admin should have right to add members in a group
     [Tags]  Addmember  addmember2
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2  #jodhpur
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2  #jodhpur
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices

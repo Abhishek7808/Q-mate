@@ -22,7 +22,7 @@ Check_Add_Plant_process
     Switch To    Customer
 #    set test variable    ${ssoId}    chauhan.yuvi
 #    Delete Data Of SSOID    ${ssoId}
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    Plant=Plant 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    Plant=Plant 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -40,7 +40,7 @@ Check_Add_Plant_process
 #Add_Plant_at_the_time_of_PO_request
 #    [Tags]  Addplant  Addplant2
 #    Switch To    Customer
-#    set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    Plant=Plant 1    PO=PO 2
+#    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    Plant=Plant 1    PO=PO 2
 #    Login From Customer    ${SSO ID["SSOID"]}
 #    Sleep    2s
 #    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]

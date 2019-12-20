@@ -18,17 +18,17 @@ Check edit functionality for pending PO
     Switch To    Department
     Login From Department    archit.rsmml    admin
     Go To Purchase Order List
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     View Company Details
     Update PO By Department
 
 PO Request Approval Process
     [Documentation]    Approves PO when submitted by the customer
     [Tags]  approvepo  approvepo2
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    #Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    Purchase Order=PO 1
+    #Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    Purchase Order=PO 1
     Go To Purchase Order List
     Click Element    //div[@id='dropdownOpen']/button/i
     Sleep    1s
@@ -58,7 +58,7 @@ PO Request Rejection Process
     Switch To    Department
     Login From Department    archit.rsmml    admin
     Go To Purchase Order List
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
     Click Element    //div[@id='dropdownOpen']/button/i
     Sleep    1s
     Select From List By Value    plantStatus    4
@@ -88,7 +88,7 @@ Check PO cancellation when status is approved or pending
     Login From Department    archit.rsmml    admin
     #Needs help from yuvraj
     Go To Purchase Order List
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 3    PO=PO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 3    PO=PO 1
     input text  searchText  ${Branch["Name"]}
     sleep  3s
     View Company Details

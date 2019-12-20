@@ -4,7 +4,7 @@ Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Library	    OperatingSystem
 Library	    String
 Library     Collections
-Resource    browser.robot
+Resource    BrowserNavigation.robot
 
 #Test Teardown     Go To Base State
 Library           SeleniumLibrary
@@ -36,19 +36,26 @@ End Basic Testing
     close browser
 
 Begin SMM Testing
-    #support for the library path
-    # ${libPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${LIBRARY_DIR}
-    #log to console  ${LIBRARY}
-    Set Paths
-    Remove Files
-    #support for the plugin path
-    #${pluginPath}  Replace String  ${CURDIR}  ${RESOURCE_DIR}  ${PLUGINS_DIR}
-    #evaluate  sys.path.append(os.path.join(r'${PLUGINS}'))  modules=os, sys
-    #open browser  about:blank  ${BROWSER}
-    browser.Start Testing
-    #Open Browsers123
-    #open browser  about:blank  ${BROWSER}
-    #maximize browser window
+    Set Global Variables
+    browser.Open Browsers
+
+Set Global Variables
+    ${Test Data Obj}    Load Json File    ${Test Data File}
+    Set Global Variable    ${Test Data}    ${Test Data Obj}
+    ${Config Obj}    Load Json File    ${configFile}
+    Set Global Variable    ${CONFIG}    ${Config Obj}
+
+Load Json File
+    [Arguments]    ${File Name}
+    [Documentation]    Loads all json files into their json objects.
+    ${Data}    Get File    ${File Name}
+    ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
+    [Return]    ${Data Obj}
+
+Set Test Variables
+    [Arguments]    &{Variables}
+    : FOR    ${Var}    IN    @{Variables.keys()}
+    \    set test variable    ${${Var}}    ${Test Data["${CONFIG["${Variables["${Var}"]}"]}"]}
 
 End SMM Testing
     browser.Finish Testing
@@ -102,4 +109,4 @@ Read And Evaluate JSON File
 #    maximize browser window
 #
 #End Module_Navigation Testing
-    close browser
+#    close browser

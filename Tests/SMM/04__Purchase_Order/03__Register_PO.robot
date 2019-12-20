@@ -16,7 +16,7 @@ Register PO for auctionable product
     [Tags]  registerpo
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    PO=PO 3    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    PO=PO 3    SSO ID=SSOID 2
     Go To Add Purchase Order From Department
     Fill PO By Department
     Sleep    2s

@@ -1,6 +1,6 @@
 *** Settings ***
-Resource  ../Configuration.resource
-Resource  ${RESOURCES}/Common_Keywords.robot
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
@@ -28,7 +28,7 @@ Check Customer Registration Process
     Switch To    Customer
     #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 1"]}"]["Enter PAN"]}
     #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 2"]}"]["Enter PAN"]}
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Delete Data Of SSOID    ${SSO ID["SSOID"]}
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
@@ -41,7 +41,7 @@ Check new branch registration when the company already have branches registered 
     [Documentation]    Done
     [Tags]  alreadybranches  Himself  himself2
     Switch To    Customer
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    xpath=//div/button//span[text()='Customer']
@@ -53,7 +53,7 @@ Check the branch registration when user selects branch from an existing register
     [Documentation]    This is not working when we are using same ssoid
     [Tags]  userselectsbranch  Himself  himself3
     Switch To    Customer
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 3
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
     run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
@@ -64,7 +64,7 @@ Check the registration process when customer has partially filled the applicatio
     [Documentation]    Done
     [Tags]  partially  Himself  himself4
     Switch To    Customer
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
     run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
@@ -88,7 +88,7 @@ Check the draft branch visibility in 'View Branch' option on registration form
     [Documentation]    Done
     [Tags]  branchvisibility  Himself  himself5
     Switch To    Customer
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
     run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
@@ -104,7 +104,7 @@ Check the draft branch visibility in 'View Branch' option on registration form
 Check the reject process of customer registration by departmental user
     [Documentation]    Done
     [Tags]  reject  Himself  himself6
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     Switch To    Department
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}
@@ -128,7 +128,7 @@ Check the reject process of customer registration by departmental user
 Check the edit process of customer details when customer is not approved by department
     [Tags]  notapproved  Himself  himself7
     Switch To    Customer
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    \#CitizenServices
@@ -143,7 +143,7 @@ Check the approval process of customer registration by departmental user
     [Tags]  approval  Himself  himself8
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    //div[@id='dropdownOpen']/button
@@ -168,7 +168,7 @@ Check the edit process of customer details when customer is approved by departme
     [Documentation]    Done
     [Tags]  customerapproved  Himself  himself9
     Switch To    Customer
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     run keyword and ignore error  Click Element    //div[contains(text(),'I want to purchase mineral')]
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -180,7 +180,7 @@ Check the TCS rate applicable according to customer-wise
     [Documentation]    Done
     [Tags]  TCS  Himself  himself10
     Switch To    Customer
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
     run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer

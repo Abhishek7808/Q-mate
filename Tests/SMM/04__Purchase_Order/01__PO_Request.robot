@@ -18,7 +18,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Request for Purchase Order(PO)
     [Tags]  requestpurchaseorder  rqpo1
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
@@ -31,7 +31,7 @@ Request for Purchase Order(PO)
 Get notification after PO request approved/rejected
     [Tags]  requestpurchaseorder  rqpo2
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
@@ -57,7 +57,7 @@ Get notification after PO request approved/rejected
 Check edit functionality when status of PO is approved/rejected.
     [Tags]  requestpurchaseorder  rqpo3
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -84,7 +84,7 @@ Check edit functionality when status of PO is approved/rejected.
 Check that signed copy of End User Agreement is mandatory for PO approval
     [Tags]  requestpurchaseorder  rqpo4
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
@@ -105,7 +105,7 @@ Check that signed copy of End User Agreement is mandatory for PO approval
 Request for Purchase Order(PO) for auctionable products
     [Tags]  requestpurchaseorder  rqpo5
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices

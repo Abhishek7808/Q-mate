@@ -19,7 +19,7 @@ To check the process Appropriate Receipt
     [Tags]    receipt
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    Receipt=Receipt 1
+    Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    Receipt=Receipt 1
     Go To Receipt Generation
     Input Valid Value    Generate Receipt Create New Button
     Sleep    5s

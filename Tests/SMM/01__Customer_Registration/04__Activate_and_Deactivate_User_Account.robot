@@ -13,7 +13,7 @@ Check the process of User Account Deactivation
     [Tags]  deactivationuser  Account  Account1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    4
     sleep  1s
@@ -33,7 +33,7 @@ Check the process of User Account Activation
     [Tags]  activationuser  Account  Account2
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    set test variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    667     #Deactivated
     sleep  2s
@@ -51,7 +51,7 @@ Check the process of User Account Activation when requested by MTM
     [Tags]    accountactivation  Account  Account3
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    set test variables    Company=Company Department 2    Branch=Branch Department 2
+    Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 2
     Go To Customer List
     Apply Filter    4
     sleep  2s

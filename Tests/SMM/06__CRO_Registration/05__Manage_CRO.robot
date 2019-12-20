@@ -16,7 +16,7 @@ Cancel CRO request before inbound Weighment Slip is generated
     [Tags]  cancelcro
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Go To CRO List
     Click Element    //div[@id='dropdownOpen']/button/i
     Select From List By Value    poStatus    4

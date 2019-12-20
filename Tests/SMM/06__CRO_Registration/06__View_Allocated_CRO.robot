@@ -14,7 +14,7 @@ View Allocated CRO Status
     [Tags]  croallocated
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
     Sleep    1s
     Click Element    //div[@id='dropdownOpen']/button/i

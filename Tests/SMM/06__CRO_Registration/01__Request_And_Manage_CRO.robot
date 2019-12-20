@@ -18,7 +18,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Check Request CRO process
     [Tags]  requestcro  requestcro1
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2   FI=FI 2    PO=PO 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2   FI=FI 2    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -40,11 +40,11 @@ Check Request CRO process
     Fill CRO
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
     Sleep    1s
-    Set Test Variables    CRO=CRO 2
+    Common_Keywords.Set Test Variables    CRO=CRO 2
     Fill CRO
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
     Sleep    1s
-    Set Test Variables    CRO=CRO 3
+    Common_Keywords.Set Test Variables    CRO=CRO 3
     Fill CRO
     sleep  5s
     Wait Until Keyword Succeeds    5s    200ms    Page should contain element    //span[contains(text(),'Request CRO')]
@@ -52,7 +52,7 @@ Check Request CRO process
 View CRO request status
     [Tags]  requestcro  requestcro2
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 1    PO=PO 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 1    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -64,11 +64,11 @@ View CRO request status
     Fill CRO
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
     Sleep    1s
-    Set Test Variables    CRO=CRO 2
+    Common_Keywords.Set Test Variables    CRO=CRO 2
     Fill CRO
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
     Sleep    1s
-    Set Test Variables    CRO=CRO 3
+    Common_Keywords.Set Test Variables    CRO=CRO 3
     Fill CRO
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${SSO ID["Name"]}')]/../following-sibling::td/i[@title='View']
     Wait Until Keyword Succeeds    5s    200ms    Element Should Be Visible    //span[text()='Pending']
@@ -76,7 +76,7 @@ View CRO request status
 Check edit functionality when CRO is pending
     [Tags]  requestcro  requestcro3
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -93,7 +93,7 @@ Check edit functionality when CRO is pending
 Check that financial instrument available balance should be more than or equal to CRO amount when CRO is approved
     [Tags]  requestcro  requestcro4
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -118,7 +118,7 @@ Check that financial instrument available balance should be more than or equal t
 Check that CRO quantity cannot be greater than PO remaining balance
     [Tags]  requestcro  requestcro5
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]

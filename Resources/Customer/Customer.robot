@@ -290,7 +290,7 @@ Fill Inward Slip
     Switch To    Department
     Login From Department    archit.rsmml    admin
     Sleep    2s
-    #set test variables
+    #Common_Keywords.Set Test Variables
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
     Sleep    2s
     #Input Text Value    ${Key Description["Search By CRO"]["Locator"]}    ${CRO No}

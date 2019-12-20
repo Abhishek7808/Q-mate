@@ -17,7 +17,7 @@ Approve and Forward DI
     [Tags]  forward  forward1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
     Sleep    1s
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -45,7 +45,7 @@ Check CRO request approval process when both the approvals(CRO request & DI) don
     [Tags]  forward  forward2
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     Go To CRO List
     Wait Until keyword Succeeds    5s    250ms    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'${CRO["Product Quantity Required"]}')]/../following-sibling::td/i[@title='View']
     Input Valid Value    Contract Release Order Forward to ME Button
@@ -64,7 +64,7 @@ View DI request and Reject DI request
     [Tags]  forward  forward3
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    CRO=CRO 1
+    Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    CRO=CRO 1
     Go To CRO List
     Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'${CRO["Product Quantity Required"]}')]/../following-sibling::td/i[@title='View']
 
@@ -73,7 +73,7 @@ View CRO request and Reject CRO request
     [Tags]  forward  forward4
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     Go To CRO List
     Wait Until keyword Succeeds    5s    250ms    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'${CRO["Product Quantity Required"]}')]/../following-sibling::td/i[@title='View']
     Input Valid Value    Contract Release Order Reject Button

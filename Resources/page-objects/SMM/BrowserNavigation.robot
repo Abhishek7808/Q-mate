@@ -9,11 +9,11 @@ Resource          ${DATA}${/}website.robot
 Resource          ${DATA}${/}locators.robot
 Resource          ${DATA}${/}alerts.robot
 
-*** Variables ***
-${Test Data File}                       ${DATA}${/}testData.json
-${Department Key Description File}      ${DATA}${/}KeyDescriptionDepartment.json
-${Customer Key Description File}        ${DATA}${/}KeyDescriptionCustomer.json
-${configFile}                           ${DATA}${/}config.json
+#*** Variables ***
+#${Test Data File}                       ${DATA}${/}testData.json
+#${Department Key Description File}      ${DATA}${/}KeyDescriptionDepartment.json
+#${Customer Key Description File}        ${DATA}${/}KeyDescriptionCustomer.json
+#${configFile}                           ${DATA}${/}config.json
 
 *** Keywords ***
 Switch To
@@ -24,31 +24,30 @@ Switch To
     set test variable    ${Key Description}    ${Key Description Obj}
     Switch Browser    ${Switch To}
 
-set test variables
-    [Arguments]    &{Variables}
-    : FOR    ${Var}    IN    @{Variables.keys()}
-    \    set test variable    ${${Var}}    ${Test Data["${CONFIG["${Variables["${Var}"]}"]}"]}
+#Set Test Variables
+#    [Arguments]    &{Variables}
+#    : FOR    ${Var}    IN    @{Variables.keys()}
+#    \    set test variable    ${${Var}}    ${Test Data["${CONFIG["${Variables["${Var}"]}"]}"]}
 
-Start Testing
-    Set Global Variables
-    Open Browsers
+#Start Testing
+#    Set Global Variables
+#    Open Browsers
 
-Load Json File
-    [Arguments]    ${File Name}
-    [Documentation]    Loads all json files into their json objects.
-    ${Data}    Get File    ${File Name}
-    ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
-    [Return]    ${Data Obj}
+#Load Json File
+#    [Arguments]    ${File Name}
+#    [Documentation]    Loads all json files into their json objects.
+#    ${Data}    Get File    ${File Name}
+#    ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
+#    [Return]    ${Data Obj}
 
-Finish Testing
-    Close All Browsers
+#Finish Testing
+#    Close All Browsers
 
-Set Global Variables
-    log to console  hi
-    ${Test Data Obj}    Load Json File    ${Test Data File}
-    Set Global Variable    ${Test Data}    ${Test Data Obj}
-    ${Config Obj}    Load Json File    ${configFile}
-    Set Global Variable    ${CONFIG}    ${Config Obj}
+#Set Global Variables
+#    ${Test Data Obj}    Load Json File    ${Test Data File}
+#    Set Global Variable    ${Test Data}    ${Test Data Obj}
+#    ${Config Obj}    Load Json File    ${configFile}
+#    Set Global Variable    ${CONFIG}    ${Config Obj}
 
 Open Browsers
     #set test variable    ${Key Description}    ${Department Key Description}

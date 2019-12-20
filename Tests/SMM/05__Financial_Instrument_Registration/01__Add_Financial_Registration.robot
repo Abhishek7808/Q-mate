@@ -18,7 +18,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Add Financial Instrument
     [Tags]  Financial  Financial1
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -30,7 +30,7 @@ Add Financial Instrument
     Sleep    3s
     Element Should Be Visible    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
     Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
-    Set Test Variables    Branch=Branch Customer 1    FI=FI 1
+    Common_Keywords.Set Test Variables    Branch=Branch Customer 1    FI=FI 1
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
@@ -38,14 +38,14 @@ Add Financial Instrument
     Fill FI
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Button    btnAddFiInstrument
-    Set Test Variables    FI=FI 2
+    Common_Keywords.Set Test Variables    FI=FI 2
     Fill FI
     Sleep    2s
 
 Check the edit process for pending FI
     [Tags]  Financial  Financial2
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -62,7 +62,7 @@ Check the edit process for pending FI
 Check that only after Financial Instrument approval, CRO can be generated
     [Tags]  Financial  Financial3
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    FI=FI 2   PO=PO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    FI=FI 2   PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -109,7 +109,7 @@ Check that only after Financial Instrument approval, CRO can be generated
 Check edit functionality for approved FI
     [Tags]  Financial  Financial4
     Switch To    Customer
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Approve FI

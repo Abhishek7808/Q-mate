@@ -19,7 +19,7 @@ Check product registration
     [Tags]    checkproduct  checkproduct1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables   PD=PD 1  SC=SC 1
+    Common_Keywords.Set Test Variables   PD=PD 1  SC=SC 1
     Go To Product List By Department
     Input Valid Value    Add New Product Button
     Sleep    3s
@@ -31,7 +31,7 @@ To check when Marketing Head can add more price components for a product (One ti
     [Tags]    checkproduct  checkproduct2
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables  PD=PD 1  SC=SC 1
+    Common_Keywords.Set Test Variables  PD=PD 1  SC=SC 1
     Go To Product List By Department
     Wait Until Keyword Succeeds    2s    400ms    Input Valid Value    Product Search By Name    ${PD["Product Name"]}
     Sleep    2s

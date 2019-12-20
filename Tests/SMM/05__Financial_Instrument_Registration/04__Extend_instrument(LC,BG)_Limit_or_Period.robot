@@ -15,7 +15,7 @@ Check edit functionality when FI period extended for approved FI's
     [Tags]  periodextend  peroidextend1
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    FI=FI 1
+    Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    FI=FI 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
     Sleep    5s

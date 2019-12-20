@@ -16,7 +16,7 @@ Check Generate/Renew PO process
     [Tags]  generatepo
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Go To Renew PO Process
     #Input Valid Value    Renew PO Search By Number
     #//span[contains(text(),'30% P205 Crushed Rock phosphate')]/../preceding-sibling::td[2]

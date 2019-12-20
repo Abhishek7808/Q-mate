@@ -15,7 +15,7 @@ Resource          ${RESOURCES}${/}Fields${/}Field.robot
 To check the edit process of customer details when customer is not approved by department
     [Documentation]    Edits the details of a customer when it has not been approved by department i.e. pending state
     [Tags]  manage  mnotapproved  manage1
-    set test variables    Company=Company Customer 1    Branch=Branch Customer 3
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3
     Switch To    Department
     Login From Department    archit.rsmml    admin
     Go To Customer List
@@ -32,8 +32,8 @@ To check the edit process of customer details when customer is approved by depar
     [Documentation]    Edits the details of a customer when it has been approved by department
     [Tags]  manage  mapproved  manage2
     Switch To    Customer
-    set test variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
-    #set test variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
+    Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
+    #Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    250ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -45,7 +45,7 @@ Check Cancel Customer Registration
     [Tags]  manage  mcancle  manage3
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1    #jaipur
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1    #jaipur
     Go To Customer List
     Apply Filter    4
     sleep  3s
@@ -70,7 +70,7 @@ Check registration edit functionality, when account deactivated
     [Tags]  manage  mdeactivated  manage4
     Switch To    Department
     Login From Department    archit.rsmml    admin
-    set test variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
+    Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
     Apply Filter    667
     sleep  3s
