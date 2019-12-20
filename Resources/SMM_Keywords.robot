@@ -1,5 +1,5 @@
 *** Settings ***
-Resource  DeleteData.robot
+Resource  ${PAGE OBJECTS}/DeleteData.robot
 
 *** Keywords ***
 

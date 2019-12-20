@@ -9,58 +9,22 @@ Library           String
 Library           RequestsLibrary
 #Resource          ../../../Configuration.resource
 #Resource          ${RESOURCES}${/}Common_Keywords.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
 Resource          ${RESOURCES}${/}browser.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-
-
-
-#Suite Setup          Common_Keywords.Begin Web Test
-#Suite Teardown       Common_Keywords.End Web Test
-
 *** Variables ***
 ${RETRY TIME}     5s
 ${RETRY INTERVAL}    200ms
-${COMPANYPAN}  None
-${SSOIDNAME}   None
 
 *** Test Cases ***
-Delete the data of all companies and ssoids
-    [Documentation]    Deletes the data of company and SSO ID
-    [Tags]  delete  Himself
-    set test variable    ${panNo}    QMATE1234D
-    Delete Data Of Company    ${panNo}
-    set test variable    ${panNo}    QMATE1234C
-    Delete Data Of Company    ${panNo}
-    set test variable    ${panNo}    QMATE6665Q
-    Delete Data Of Company    ${panNo}
-    set test variable    ${panNo}    QMATE5555T
-    Delete Data Of Company    ${panNo}
-    set test variable    ${ssoId}    archit010
-    Delete Data Of SSOID    ${ssoId}
-    set test variable    ${ssoId}    chauhan.yuvi
-    Delete Data Of SSOID    ${ssoId}
-    set test variable    ${ssoId}    1860
-    Delete Data Of SSOID    ${ssoId}
-    set test variable    ${ssoId}    1862
-    Delete Data Of SSOID    ${ssoId}
-    set test variable    ${ssoId}    1863
-    Delete Data Of SSOID    ${ssoId}
-    set test variable    ${ssoId}    shahshubham
-    Delete Data Of SSOID    ${ssoId}
-
-Delete Data Of Given SSOID Or Company
-    [Tags]  deletegiven
-    run keyword if  '${COMPANYPAN}' != 'None'  Delete Data Of Company  ${COMPANYPAN}
-    run keyword if  '${SSOIDNAME}' != 'None'  Delete Data Of SSOID  ${SSOIDNAME}
 
 Check Customer Registration Process
     [Documentation]    Done
     [Tags]  Himself  selfregistration  Himself1
-    #go to  google.com
     Switch To    Customer
     #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 1"]}"]["Enter PAN"]}
     #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 2"]}"]["Enter PAN"]}
