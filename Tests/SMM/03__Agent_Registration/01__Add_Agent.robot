@@ -26,7 +26,7 @@ Check the agent registration process through agent tab
     [Tags]  Addagent  Addagent1
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -41,7 +41,7 @@ Check the agent registration process through PO form
     [Tags]  Addagent  Addagent2
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    PO=PO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -59,7 +59,7 @@ To check the edit functionality of agent details from agent tab when PO pending 
     [Tags]  Addagent  Addagent3
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -83,7 +83,7 @@ To check the edit functionality of agent details from CRO form when CRO pending
     [Tags]  Addagent  Addagent4
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -116,7 +116,7 @@ To check the validations applied when agent selected in CRO request form
     [Tags]  Addagent  Addagent5
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    PO=PO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s

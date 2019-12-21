@@ -15,7 +15,7 @@ To check the approval process of FI requests
     [Tags]  Approvefinancial  Approvefinancial1  apfn1
     #BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1    SSO ID=SSOID 2
-    #Login From Customer    ${SSO ID["SSOID"]}
+    #Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     #Sleep    2s
     #Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     #Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
@@ -45,7 +45,7 @@ Cancel Financial Instruments, not used in any Active CROs
     [Tags]  Approvefinancial  Approvefinancial2  apfn2
     #BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 2    SSO ID=SSOID 2
-    #Login From Customer    ${SSO ID["SSOID"]}
+    #Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     #Sleep    2s
     #Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     #Sleep    2s

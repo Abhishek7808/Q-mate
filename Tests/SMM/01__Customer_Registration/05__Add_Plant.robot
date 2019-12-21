@@ -23,7 +23,7 @@ Check_Add_Plant_process
 #    set test variable    ${ssoId}    chauhan.yuvi
 #    Delete Data Of SSOID    ${ssoId}
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    Plant=Plant 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
@@ -41,7 +41,7 @@ Check_Add_Plant_process
 #    [Tags]  Addplant  Addplant2
 #    BrowserControl.Switch To    Customer
 #    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    Plant=Plant 1    PO=PO 2
-#    Login From Customer    ${SSO ID["SSOID"]}
+#    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
 #    Sleep    2s
 #    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
 #    Sleep    2s

@@ -18,7 +18,7 @@ Check 'Add Members To Group'
     [Tags]  Addmember  addmember1
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
@@ -35,7 +35,7 @@ Check 'Add Members To Group'
     run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    addF button not appreared
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[@aria-hidden='true']
     Sleep    2s
-    Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
+    SMM_Keywords.Go To Profile Selection Page
     # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -49,7 +49,7 @@ Check that only group admin should have right to add members in a group
     [Tags]  Addmember  addmember2
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2  #jodhpur
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList

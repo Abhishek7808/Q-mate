@@ -34,7 +34,7 @@ To check the edit process of customer details when customer is approved by depar
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
     #Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    5s    250ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
     Capture Page Screenshot

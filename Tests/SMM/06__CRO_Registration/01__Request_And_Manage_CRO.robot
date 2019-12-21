@@ -19,7 +19,7 @@ Check Request CRO process
     [Tags]  requestcro  requestcro1
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2   FI=FI 2    PO=PO 1    CRO=CRO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -53,7 +53,7 @@ View CRO request status
     [Tags]  requestcro  requestcro2
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 1    PO=PO 1    CRO=CRO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -77,7 +77,7 @@ Check edit functionality when CRO is pending
     [Tags]  requestcro  requestcro3
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -94,7 +94,7 @@ Check that financial instrument available balance should be more than or equal t
     [Tags]  requestcro  requestcro4
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -119,7 +119,7 @@ Check that CRO quantity cannot be greater than PO remaining balance
     [Tags]  requestcro  requestcro5
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s

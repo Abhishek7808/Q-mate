@@ -1,6 +1,6 @@
 *** Settings ***
 Resource          ../Configuration.resource
-Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}DeleteData.robot
 Library           RequestsLibrary
 Library           SeleniumLibrary
 Library           OperatingSystem

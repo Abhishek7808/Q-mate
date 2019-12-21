@@ -17,7 +17,7 @@ Reject group request process
     [Tags]  Accept  reject1
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -32,7 +32,7 @@ Reject group request process
 #    log  ${status}
 #    run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    Approved button not appeard
 #    Sleep    2s
-    Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
+    SMM_Keywords.Go To Profile Selection Page
     # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
@@ -50,7 +50,7 @@ Accept group request process
     [Tags]  Accept  accept2
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -59,7 +59,7 @@ Accept group request process
     Sleep    2s
     Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     ${status}  run keyword and return status  Click Button    sendAddreq
-    Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
+    SMM_Keywords.Go To Profile Selection Page
     # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
@@ -76,7 +76,7 @@ Accept group request process
     log  ${status}
     run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    approved button not appeared
     Sleep    2s
-    Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
+    SMM_Keywords.Go To Profile Selection Page
     # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s

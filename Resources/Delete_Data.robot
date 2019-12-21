@@ -2,7 +2,7 @@
 
 *** Keywords ***
 
-Delete Data Of Company
+Delete All The Prewritten Data Of Company From ERP
     [Arguments]    ${panNo}
     Create Session     ERP DEMO    http://demoprojects.e-connectsolutions.com/erp-demo/
     ${dict}    Get Request    ERP DEMO    api/Login/Validate?loginId=vinodrsmml&password=21232F297A57A5A743894A0E4A801FC3&ipAddress=191.11.100.148
@@ -13,7 +13,7 @@ Delete Data Of Company
     ${Resp}    Get Request    ERP DEMO    api/Common/ErasePanNumberData?panNo=${panNo}    headers=${dict1}
     run keyword and ignore error  Should Be Equal As Strings    ${Resp.status_code}    200
 
-Delete Data Of SSOID
+Delete All The Prewritten Data Of SSOID From ERP
     [Arguments]    ${ssoId}
     Create Session    ERP DEMO    http://demoprojects.e-connectsolutions.com/erp-demo/
     ${dict}    Get Request    ERP DEMO    api/Login/Validate?loginId=vinodrsmml&password=21232F297A57A5A743894A0E4A801FC3&ipAddress=191.11.100.148

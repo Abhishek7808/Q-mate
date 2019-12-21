@@ -17,7 +17,7 @@ Give admin rights to member in a group
     [Tags]  managegroup
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
@@ -35,7 +35,7 @@ Give admin rights to member in a group
     Sleep    2s
     Click Button    btnSwitchAdmin
     Sleep    2s
-    Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
+    SMM_Keywords.Go To Profile Selection Page
     # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s

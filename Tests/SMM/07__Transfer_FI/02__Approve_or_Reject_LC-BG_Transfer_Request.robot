@@ -14,7 +14,7 @@ Create Financial Instrument
     BrowserControl.Switch To    Customer
     go to  http://demoprojects.e-connectsolutions.com/ERP-DEMO//temp/sso.aspx
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2   SSO ID=SSOID 2    FI=FI 1
-    Login From Customer    ${SSO ID["SSOID"]}
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices

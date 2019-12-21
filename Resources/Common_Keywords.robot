@@ -13,6 +13,7 @@ Library           Collections
 Library           String
 Library           RequestsLibrary
 #Resource          ../../../Configuration.resource
+Resource          ${PAGE OBJECTS}/SMM/CustomerLogin.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
@@ -90,7 +91,7 @@ Read And Evaluate JSON File
 
 Login From Customer
     [Arguments]  ${ssoid}
-    Login.Login From Customer With SSOID  ${ssoid}
+    CustomerLogin.Login From Customer With SSOID  ${ssoid}
 
 #Begin Disbursement Testing
 #    Set Paths
