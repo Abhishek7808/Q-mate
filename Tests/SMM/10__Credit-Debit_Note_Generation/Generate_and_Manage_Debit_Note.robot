@@ -12,7 +12,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Check the process to Generate Debit Note
     [Documentation]    Generates debit note
     [Tags]    debitnote
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Go To Differentials Adjustment
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1  DN=DN 1

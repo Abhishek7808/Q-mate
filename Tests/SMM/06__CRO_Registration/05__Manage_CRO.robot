@@ -14,7 +14,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Cancel CRO request before inbound Weighment Slip is generated
     [Documentation]    Rejects a CRO request with appropriate remarks
     [Tags]  cancelcro
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Go To CRO List

@@ -15,7 +15,7 @@ Resource          ${RESOURCES}${/}Fields${/}Field.robot
 *** Test Cases ***
 Give admin rights to member in a group
     [Tags]  managegroup
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s

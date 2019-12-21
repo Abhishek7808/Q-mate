@@ -205,7 +205,7 @@ Select Customer
     Click Element    xpath=//div/button//span[text()='Customer']
 
 Approve FI
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Finance/InstrumentList
     Sleep    2s
@@ -224,7 +224,7 @@ Approve FI
 
 Approve PO
     [Arguments]  ${PO No}
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/PurchaseOrder
     Sleep    2s
@@ -255,7 +255,7 @@ Approve PO
 #    [Return]    ${PO No}
 
 Approve PO By Product
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/PurchaseOrder
     Sleep    2s
@@ -287,7 +287,7 @@ Approve PO By Product
 
 Fill Inward Slip
     [Arguments]    ${CRO No}
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Sleep    2s
     #Common_Keywords.Set Test Variables
@@ -313,7 +313,7 @@ Fill Inward Slip
 
 Fill Outward Slip
     [Arguments]    ${CRO No}
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation

@@ -20,7 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 To check the Transfer of LC/BG
     [Tags]    transferlcbg  transferlcbg1
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Set Test Variable    ${SSO ID}    ${Test Data["${CONFIG["SSOID 2"]}"]}
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
     Set Test Variable    ${Company}    ${Test Data["${CONFIG["Company Customer 2"]}"]}
@@ -44,7 +44,7 @@ To check the Transfer of LC/BG
     Click Button    btnRequestTransfer
     sleep  4s
     Sleep    2s
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Finance/InstrumentList
     Sleep    1s
@@ -57,7 +57,7 @@ To check the Transfer of LC/BG
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${FI["Transfer Amount"]}')]/../preceding-sibling::td//span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'Pending')]/../../following-sibling::td/i[contains(@title,'Edit')]
     Wait Until Keyword Succeeds    5s    200ms    Click Button    actionName-Approve
     Sleep    2s
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
 #    Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
 #    Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Go To  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -69,7 +69,7 @@ To check the Transfer of LC/BG
 
 To check that the transfer of FI can only be done within group members.
     [Tags]    transferlcbg  transferlcbg2
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Set Test Variable    ${SSO ID}    ${Test Data["${CONFIG["SSOID 2"]}"]}
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
     Set Test Variable    ${Company}    ${Test Data["${CONFIG["Company Customer 2"]}"]}
@@ -98,7 +98,7 @@ To check that the transfer of FI can only be done within group members.
 
 To check that the transfer amount cannot exceed available amount of FI
     [Tags]    transferlcbg  transferlcbg3
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Set Test Variable    ${SSO ID}    ${Test Data["${CONFIG["SSOID 1"]}"]}
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
     Set Test Variable    ${Company}    ${Test Data["${CONFIG["Company Customer 1"]}"]}

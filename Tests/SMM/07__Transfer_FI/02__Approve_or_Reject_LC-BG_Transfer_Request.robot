@@ -11,7 +11,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Keyword ***
 Create Financial Instrument
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     go to  http://demoprojects.e-connectsolutions.com/ERP-DEMO//temp/sso.aspx
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2   SSO ID=SSOID 2    FI=FI 1
     Login From Customer    ${SSO ID["SSOID"]}
@@ -36,7 +36,7 @@ Approve or Reject LC/BG Transfer
     [Tags]    approvelcbg
     #Approving a Transfer Request
     Create Financial Instrument
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    FI=FI 1
     Go To Financial Instrument List From Department
@@ -52,7 +52,7 @@ Approve or Reject LC/BG Transfer
     Element Should Be Visible    //span[contains(text(),'${FI["Transfer Amount"]}')]/../preceding-sibling::td//span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td//span[contains(text(),'Approved')]
     #Rejecting a Transfer Request
     Create Financial Instrument
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 2    FI=FI 1
     Go To Financial Instrument List From Department

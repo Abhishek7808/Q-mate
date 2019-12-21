@@ -10,7 +10,7 @@ Library           RequestsLibrary
 #Resource          ../../../Configuration.resource
 #Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}SMM_Keywords.robot
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
@@ -25,11 +25,11 @@ ${RETRY INTERVAL}    200ms
 Check Customer Registration Process
     [Documentation]    Done
     [Tags]  Himself  selfregistration  Himself1
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 1"]}"]["Enter PAN"]}
     #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 2"]}"]["Enter PAN"]}
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
-    Delete Data Of SSOID    ${SSO ID["SSOID"]}
+    SMM_Keywords.Delete All The Prewritten Data Of SSOID From ERP    ${SSO ID["SSOID"]}
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
     run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
@@ -40,7 +40,7 @@ Check Customer Registration Process
 Check new branch registration when the company already have branches registered in it
     [Documentation]    Done
     [Tags]  alreadybranches  Himself  himself2
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -52,7 +52,7 @@ Check new branch registration when the company already have branches registered 
 Check the branch registration when user selects branch from an existing registered branches in a company with diffrent SSOID
     [Documentation]    This is not working when we are using same ssoid
     [Tags]  userselectsbranch  Himself  himself3
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 3
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
@@ -63,7 +63,7 @@ Check the branch registration when user selects branch from an existing register
 Check the registration process when customer has partially filled the application
     [Documentation]    Done
     [Tags]  partially  Himself  himself4
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
@@ -87,7 +87,7 @@ Check the registration process when customer has partially filled the applicatio
 Check the draft branch visibility in 'View Branch' option on registration form
     [Documentation]    Done
     [Tags]  branchvisibility  Himself  himself5
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
@@ -105,7 +105,7 @@ Check the reject process of customer registration by departmental user
     [Documentation]    Done
     [Tags]  reject  Himself  himself6
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    //div[@id='dropdownOpen']/button
@@ -116,7 +116,7 @@ Check the reject process of customer registration by departmental user
     sleep  2s
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    click element  //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[@title='View']
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Valid Value    Customer Branch Reject Button
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Go To    http://demoprojects.e-connectsolutions.com/erp-demo/temp/sso.aspx
     Login From Customer    ${SSO ID["SSOID"]}
     run keyword and ignore error  Click Element    //div[contains(text(),'I want to purchase mineral')]
@@ -127,7 +127,7 @@ Check the reject process of customer registration by departmental user
 
 Check the edit process of customer details when customer is not approved by department
     [Tags]  notapproved  Himself  himself7
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -141,7 +141,7 @@ Check the edit process of customer details when customer is not approved by depa
 Check the approval process of customer registration by departmental user
     [Documentation]    Done
     [Tags]  approval  Himself  himself8
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
@@ -156,7 +156,7 @@ Check the approval process of customer registration by departmental user
     Sleep    2s
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    action-Approve
     Sleep    5s
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Login From Customer    ${SSO ID["SSOID"]}
     run keyword and ignore error  Click Element    //div[contains(text(),'I want to purchase mineral')]
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
@@ -167,7 +167,7 @@ Check the approval process of customer registration by departmental user
 Check the edit process of customer details when customer is approved by department
     [Documentation]    Done
     [Tags]  customerapproved  Himself  himself9
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     run keyword and ignore error  Click Element    //div[contains(text(),'I want to purchase mineral')]
@@ -179,7 +179,7 @@ Check the edit process of customer details when customer is approved by departme
 Check the TCS rate applicable according to customer-wise
     [Documentation]    Done
     [Tags]  TCS  Himself  himself10
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]

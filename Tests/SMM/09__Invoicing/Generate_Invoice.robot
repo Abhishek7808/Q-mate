@@ -12,7 +12,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Invoice Generation (including pending Moisture Rate)
     [Documentation]    Generates invoice from product management (moisture rebate)
     [Tags]    invoice
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Go To Schedule In Product Management From Department
     #Click Button    Next

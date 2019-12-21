@@ -19,7 +19,7 @@ Check the process to Add Product price formula
 #    Set Test Variable    ${Key Description}    ${Department Key Description}
 #    Set Test Variable    ${Schedule}    ${testData["Schedule On"]}
 #    Switch Browser    Department
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables  PD=PD 1  SC=SC 1
     Go To Add Product From Department
@@ -41,7 +41,7 @@ Check the process to Add Product price formula
 
 To check that user can create a new formula using fields
     [Tags]    checkformula
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     #Set Test Variable    ${Key Description}    ${Department Key Description}
     Common_Keywords.Set Test Variables    SC=SC 2  PD=PD 1

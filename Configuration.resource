@@ -20,7 +20,7 @@ ${DATA_DIR}              Data
 ${RESULTS_DIR}           Results
 ${PAGE_OBJECTS_DIR}      page-objects
 ${DV_DIR}                DV
-
+${SMM_DIR}               SMM
 ###################
 #  Path Settings  #
 ###################
@@ -33,6 +33,7 @@ ${DATA}             ${CURDIR}${/}${DATA_DIR}
 ${RESULTS}          ${CURDIR}${/}${RESULTS_DIR}
 ${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
 ${DV}               ${CURDIR}${/}${RESULTS_DIR}${/}${DV_DIR}
+${SMM}              ${PAGE OBJECTS}${/}${SMM_DIR}
 
 ######################
 #    File Names      #

@@ -11,7 +11,7 @@ Resource          ${RESOURCES}${/}browser.robot
 Check the process of User Account Deactivation
     [Documentation]    Deactivates an application submitted by the user
     [Tags]  deactivationuser  Account  Account1
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
     Go To Customer List
@@ -21,7 +21,7 @@ Check the process of User Account Deactivation
     Input Valid Value    Customer Details Deactive Button
     Sleep    2s
     Input Valid Value    View Customer List
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
@@ -31,7 +31,7 @@ Check the process of User Account Deactivation
 Check the process of User Account Activation
     [Documentation]    Activates an application submitted by the user
     [Tags]  activationuser  Account  Account2
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
     Go To Customer List
@@ -39,7 +39,7 @@ Check the process of User Account Activation
     sleep  2s
     View Company Details
     Input Valid Value    Customer Details Active Button
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
@@ -49,7 +49,7 @@ Check the process of User Account Activation
 Check the process of User Account Activation when requested by MTM
     [Documentation]    Activates an application submitted by the user
     [Tags]    accountactivation  Account  Account3
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 2
     Go To Customer List
@@ -62,7 +62,7 @@ Check the process of User Account Activation when requested by MTM
     sleep  3s
     View Company Details
     Input Valid Value    Customer Details Active Button
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}

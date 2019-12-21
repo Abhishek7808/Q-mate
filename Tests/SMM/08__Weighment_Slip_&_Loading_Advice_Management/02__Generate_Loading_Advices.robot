@@ -24,7 +24,7 @@ ${RETRY INTERVAL}    200ms
 *** Test Cases ***
 To check the process WeighBridge Manager (WM) generate the loading Advice
     [Tags]    loadingadvice
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Sleep    2s
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/LoadingAdvice/LoadingAdviceList

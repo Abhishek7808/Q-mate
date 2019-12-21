@@ -17,7 +17,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Add Financial Instrument
     [Tags]  Financial  Financial1
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -44,7 +44,7 @@ Add Financial Instrument
 
 Check the edit process for pending FI
     [Tags]  Financial  Financial2
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -61,7 +61,7 @@ Check the edit process for pending FI
 
 Check that only after Financial Instrument approval, CRO can be generated
     [Tags]  Financial  Financial3
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    FI=FI 2   PO=PO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -108,12 +108,12 @@ Check that only after Financial Instrument approval, CRO can be generated
 
 Check edit functionality for approved FI
     [Tags]  Financial  Financial4
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     Approve FI
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices

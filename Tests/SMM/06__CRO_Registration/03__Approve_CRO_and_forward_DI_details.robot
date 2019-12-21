@@ -15,7 +15,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Approve and Forward DI
     [Documentation]    Approves the CRO so forwarded and again forwards it to Sales Executive
     [Tags]  forward  forward1
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
@@ -30,7 +30,7 @@ Approve and Forward DI
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Contract Release Order View List Button
     Click Element    //div[@id='dropdownOpen']/button/i
     Sleep    1s
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To CRO List
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -43,7 +43,7 @@ Approve and Forward DI
 Check CRO request approval process when both the approvals(CRO request & DI) done at 2nd level only
     [Documentation]    Approves the pending CRO by forwarding it to ME, Selecting the dispatch point, expiry date and then forwrding to Sales Executive
     [Tags]  forward  forward2
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     Go To CRO List
@@ -62,7 +62,7 @@ Check CRO request approval process when both the approvals(CRO request & DI) don
 View DI request and Reject DI request
     [Documentation]    Views and then rejects the DI request
     [Tags]  forward  forward3
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    CRO=CRO 1
     Go To CRO List
@@ -71,7 +71,7 @@ View DI request and Reject DI request
 View CRO request and Reject CRO request
     [Documentation]    Views and then rejects a CRO with an appropriate message
     [Tags]  forward  forward4
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     Go To CRO List
@@ -86,7 +86,7 @@ View CRO request and Reject CRO request
     Select From List By Value    poStatus    663
     Click Button    btnApplyFillter
     Sleep    5s
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To CRO List
     Click Element    //div[@id='dropdownOpen']/button/i

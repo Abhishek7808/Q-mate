@@ -17,7 +17,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Check Receipt Advice Generation
     [Documentation]    Still
     [Tags]    receiptadvice  receiptadvice1
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    Receipt=Receipt 1
     Go To Receipt Generation
@@ -32,7 +32,7 @@ Check Receipt Advice Generation
 Check Financial instrument after receipt generation
     [Documentation]    Still
     [Tags]   receiptadvice  receiptadvice2
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    FI=FI 1   Company=Company Department 3    Branch=Branch Department 1  Receipt=Receipt 1
     Go To Financial Instrument List From Department

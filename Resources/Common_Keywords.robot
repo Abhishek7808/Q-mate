@@ -4,7 +4,7 @@ Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Library	    OperatingSystem
 Library	    String
 Library     Collections
-Resource    BrowserNavigation.robot
+#Resource    BrowserControl.robot
 
 #Test Teardown     Go To Base State
 Library           SeleniumLibrary
@@ -14,7 +14,7 @@ Library           String
 Library           RequestsLibrary
 #Resource          ../../../Configuration.resource
 Resource          ${RESOURCES}${/}Common_Keywords.robot
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}Fields${/}Field.robot
@@ -37,7 +37,8 @@ End Basic Testing
 
 Begin SMM Testing
     Set Global Variables
-    browser.Open Browsers
+    BrowserControl.Open Browsers For SMM
+    #Set SMM Test Variables
 
 Set Global Variables
     ${Test Data Obj}    Load Json File    ${Test Data File}
@@ -52,13 +53,16 @@ Load Json File
     ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
     [Return]    ${Data Obj}
 
+#Set SMM Test Variables
+
+
 Set Test Variables
     [Arguments]    &{Variables}
     : FOR    ${Var}    IN    @{Variables.keys()}
     \    set test variable    ${${Var}}    ${Test Data["${CONFIG["${Variables["${Var}"]}"]}"]}
 
 End SMM Testing
-    browser.Finish Testing
+    BrowserControl.Finish Testing
 
 Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys

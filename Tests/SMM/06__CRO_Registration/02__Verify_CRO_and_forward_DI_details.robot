@@ -14,7 +14,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Check CRO request approval process
     [Documentation]    Approves CRO request by Forwarding it to ME, Selecting Dispatch Point, Expiry Date, and forwarding it to ME Executive
     [Tags]  croapproval  croapproval1
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
@@ -37,7 +37,7 @@ Check CRO request approval process
 Check CRO request rejection process
     [Documentation]    Reject a CRO request with a rejection message
     [Tags]  croapproval  croapproval2
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
@@ -50,7 +50,7 @@ Check that CRO validity date cannot exceed the validity of financial instrument
     [Documentation]    Checks whether CRO validity exceeds FI validity date
     [Tags]  croapproval  croapproval3
     #This keyword is not to be run as this functionality has not been made so far
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    CRO=CRO 1
     Go To CRO List

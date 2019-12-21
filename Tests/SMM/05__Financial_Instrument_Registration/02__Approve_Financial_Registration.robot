@@ -13,7 +13,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 To check the approval process of FI requests
     [Documentation]    Approves the Financial Instrument submitted by the customer
     [Tags]  Approvefinancial  Approvefinancial1  apfn1
-    #Switch To    Customer
+    #BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1    SSO ID=SSOID 2
     #Login From Customer    ${SSO ID["SSOID"]}
     #Sleep    2s
@@ -24,7 +24,7 @@ To check the approval process of FI requests
     #Fill FI
     #Sleep    3s
     #Element Should Be Visible    //td[contains(text(),'${FI["BG/LC Number"]}')]/following-sibling::td//span[contains(text(),'Pending')]/ancestor::td/following-sibling::td/i[@title='View']
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     #Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1
     Go To Financial Instrument List From Department
@@ -33,7 +33,7 @@ To check the approval process of FI requests
     ${status}  run keyword and return status  Input Valid Value    Financial Instrument Approve Button
     log  ${status}
     run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  approve button has not appreared
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}
@@ -43,7 +43,7 @@ To check the approval process of FI requests
 Cancel Financial Instruments, not used in any Active CROs
     [Documentation]    Rejects the Financial Instrument submitted by the customer
     [Tags]  Approvefinancial  Approvefinancial2  apfn2
-    #Switch To    Customer
+    #BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 2    SSO ID=SSOID 2
     #Login From Customer    ${SSO ID["SSOID"]}
     #Sleep    2s
@@ -55,7 +55,7 @@ Cancel Financial Instruments, not used in any Active CROs
     # Fill FI
     #Sleep    3s
     #Element Should Be Visible    //td[contains(text(),'${FI["BG/LC Number"]}')]/following-sibling::td//span[contains(text(),'Pending')]/ancestor::td/following-sibling::td/i[@title='View']
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     #Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    FI=FI 2
     Go To Financial Instrument List From Department
@@ -63,7 +63,7 @@ Cancel Financial Instruments, not used in any Active CROs
     Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'Pending')]/../../following-sibling::td/i[@title='View']
     Input Valid Value    Financial Instrument Reject Button
     Sleep    2s
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    ${FI["BG/LC Number"]}

@@ -16,7 +16,7 @@ To check the edit process of customer details when customer is not approved by d
     [Documentation]    Edits the details of a customer when it has not been approved by department i.e. pending state
     [Tags]  manage  mnotapproved  manage1
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Go To Customer List
     Apply Filter    1      #Draft
@@ -31,7 +31,7 @@ To check the edit process of customer details when customer is not approved by d
 To check the edit process of customer details when customer is approved by department
     [Documentation]    Edits the details of a customer when it has been approved by department
     [Tags]  manage  mapproved  manage2
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
     #Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Login From Customer    ${SSO ID["SSOID"]}
@@ -43,7 +43,7 @@ To check the edit process of customer details when customer is approved by depar
 Check Cancel Customer Registration
     [Documentation]    Deactivates an application by Marketing Team Member
     [Tags]  manage  mcancle  manage3
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1    #jaipur
     Go To Customer List
@@ -52,7 +52,7 @@ Check Cancel Customer Registration
     View Company Details
     Input Valid Value    Customer Details Deactive Button
     Sleep    2s
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Customer List
     Apply Filter    667
@@ -68,7 +68,7 @@ Check Cancel Customer Registration
 Check registration edit functionality, when account deactivated
     [Documentation]    Checks if deactivated account information can be edited
     [Tags]  manage  mdeactivated  manage4
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
@@ -76,7 +76,7 @@ Check registration edit functionality, when account deactivated
     sleep  3s
     View Company Details
     Company Registration By Department    Activate
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}

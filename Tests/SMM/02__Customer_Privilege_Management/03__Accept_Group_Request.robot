@@ -15,7 +15,7 @@ Resource          ${RESOURCES}${/}Fields${/}Field.robot
 *** Test Cases ***
 Reject group request process
     [Tags]  Accept  reject1
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -48,7 +48,7 @@ Reject group request process
 
 Accept group request process
     [Tags]  Accept  accept2
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s

@@ -9,20 +9,20 @@ Resource          ${DATA}${/}website.robot
 Resource          ${DATA}${/}locators.robot
 Resource          ${DATA}${/}alerts.robot
 
-#*** Variables ***
-#${Test Data File}                       ${DATA}${/}testData.json
-#${Department Key Description File}      ${DATA}${/}KeyDescriptionDepartment.json
-#${Customer Key Description File}        ${DATA}${/}KeyDescriptionCustomer.json
-#${configFile}                           ${DATA}${/}config.json
+*** Variables ***
+${Test Data File}                       ${DATA}${/}testData.json
+${Department Key Description File}      ${DATA}${/}KeyDescriptionDepartment.json
+${Customer Key Description File}        ${DATA}${/}KeyDescriptionCustomer.json
+${configFile}                           ${DATA}${/}config.json
 
 *** Keywords ***
-Switch To
-    [Arguments]    ${Switch To}
-    ${File Name}    Run Keyword If    '${Switch To}'=='Customer'    Set Variable    ${Customer Key Description File}
+BrowserControl.Switch To
+    [Arguments]    ${BrowserControl.Switch To}
+    ${File Name}    Run Keyword If    '${BrowserControl.Switch To}'=='Customer'    Set Variable    ${Customer Key Description File}
     ...    ELSE    Set Variable    ${Department Key Description File}
     ${Key Description Obj}    Load Json File    ${File Name}
     set test variable    ${Key Description}    ${Key Description Obj}
-    Switch Browser    ${Switch To}
+    Switch Browser    ${BrowserControl.Switch To}
 
 #Set Test Variables
 #    [Arguments]    &{Variables}
@@ -40,8 +40,8 @@ Switch To
 #    ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
 #    [Return]    ${Data Obj}
 
-#Finish Testing
-#    Close All Browsers
+Finish Testing
+    Close All Browsers
 
 #Set Global Variables
 #    ${Test Data Obj}    Load Json File    ${Test Data File}
@@ -49,7 +49,7 @@ Switch To
 #    ${Config Obj}    Load Json File    ${configFile}
 #    Set Global Variable    ${CONFIG}    ${Config Obj}
 
-Open Browsers
+Open Browsers For SMM
     #set test variable    ${Key Description}    ${Department Key Description}
     #${browser}  set variable  Chrome
     #${dict}    Create Dictionary    executable_path=${${browser} PATH}

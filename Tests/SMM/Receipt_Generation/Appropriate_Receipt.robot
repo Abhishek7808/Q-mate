@@ -17,7 +17,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 To check the process Appropriate Receipt
     [Documentation]    Fills receipt form and generates new receipt
     [Tags]    receipt
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    Receipt=Receipt 1
     Go To Receipt Generation

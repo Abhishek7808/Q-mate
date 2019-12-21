@@ -14,7 +14,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Approve DI Requests
     [Documentation]    Approves the DI request
     [Tags]  approvecrofin  approvecrofin1
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     Go To CRO List
@@ -29,7 +29,7 @@ Approve DI Requests
     sleep  4s
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Contract Release Order View List Button
     Sleep    5s
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To CRO List
     Click Element    //div[@id='dropdownOpen']/button/i
@@ -44,7 +44,7 @@ Approve DI Requests
 Check CRO request approval process when all the approvals(CRO request & DI) done at 3rd level only
     [Documentation]    Approves a CRO request by forwarding it to Marketing Executive, Dispatch point and expiry date and then to SE
     [Tags]  approvecrofin  approvecrofin2
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Go To CRO List
@@ -61,7 +61,7 @@ Check CRO request approval process when all the approvals(CRO request & DI) done
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Contract Release Order Forward to SE Button
     Wait Until Keyword Succeeds    5s    500ms    click button  btnSE
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Contract Release Order Approve Button
-    Switch To    Verify
+    BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To CRO List
     Sleep    5s
@@ -75,7 +75,7 @@ Check CRO request approval process when all the approvals(CRO request & DI) done
 Reject DI Request
     [Documentation]    Rejects a CRO request with appropriate remarks
     [Tags]  approvecrofin  approvecrofin3
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     Go To CRO List
@@ -93,7 +93,7 @@ Reject DI Request
 Reject CRO Request
     [Documentation]    Rejects a CRO request with appropriate remarks
     [Tags]  approvecrofin  approvecrofin4
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Go To CRO List

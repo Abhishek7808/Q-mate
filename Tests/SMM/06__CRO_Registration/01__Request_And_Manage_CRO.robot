@@ -17,7 +17,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 # TODO: increase product quantity required in CRO 1, CRO 2, CRO 3 and hanece increase amount also
 Check Request CRO process
     [Tags]  requestcro  requestcro1
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2   FI=FI 2    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -51,7 +51,7 @@ Check Request CRO process
 
 View CRO request status
     [Tags]  requestcro  requestcro2
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 1    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -75,7 +75,7 @@ View CRO request status
 
 Check edit functionality when CRO is pending
     [Tags]  requestcro  requestcro3
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -92,7 +92,7 @@ Check edit functionality when CRO is pending
 
 Check that financial instrument available balance should be more than or equal to CRO amount when CRO is approved
     [Tags]  requestcro  requestcro4
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
@@ -117,7 +117,7 @@ Check that financial instrument available balance should be more than or equal t
 
 Check that CRO quantity cannot be greater than PO remaining balance
     [Tags]  requestcro  requestcro5
-    Switch To    Customer
+    BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s

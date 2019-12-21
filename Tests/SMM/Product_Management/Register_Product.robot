@@ -17,7 +17,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Check product registration
     [Tags]    checkproduct  checkproduct1
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables   PD=PD 1  SC=SC 1
     Go To Product List By Department
@@ -29,7 +29,7 @@ Check product registration
 
 To check when Marketing Head can add more price components for a product (One time a day i.e. same proce component can't be added on same date)
     [Tags]    checkproduct  checkproduct2
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables  PD=PD 1  SC=SC 1
     Go To Product List By Department

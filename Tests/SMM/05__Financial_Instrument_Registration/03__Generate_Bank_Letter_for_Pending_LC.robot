@@ -13,7 +13,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Filter and View LC for pending payment, and print Bank letter
     [Documentation]    Generate bank letter/print the letter
     [Tags]  bankletter  bankletter1
-    Switch To    Department
+    BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1
     Go To Financial Instrument List From Department
