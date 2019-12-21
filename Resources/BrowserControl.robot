@@ -17,12 +17,12 @@ ${configFile}                           ${DATA}${/}config.json
 
 *** Keywords ***
 BrowserControl.Switch To
-    [Arguments]    ${BrowserControl.Switch To}
-    ${File Name}    Run Keyword If    '${BrowserControl.Switch To}'=='Customer'    Set Variable    ${Customer Key Description File}
+    [Arguments]    ${Switch To}
+    ${File Name}    Run Keyword If    '${Switch To}'=='Customer'    Set Variable    ${Customer Key Description File}
     ...    ELSE    Set Variable    ${Department Key Description File}
     ${Key Description Obj}    Load Json File    ${File Name}
     set test variable    ${Key Description}    ${Key Description Obj}
-    Switch Browser    ${BrowserControl.Switch To}
+    Switch Browser    ${Switch To}
 
 #Set Test Variables
 #    [Arguments]    &{Variables}

@@ -88,6 +88,10 @@ Read And Evaluate JSON File
     ${File_JSON}  Evaluate And Store JSON File  ${JSON}
     return from keyword  ${File_JSON}
 
+Login From Customer
+    [Arguments]  ${ssoid}
+    Login.Login From Customer With SSOID  ${ssoid}
+
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

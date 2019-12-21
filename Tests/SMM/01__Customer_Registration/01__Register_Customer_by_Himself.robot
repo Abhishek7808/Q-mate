@@ -10,6 +10,7 @@ Library           RequestsLibrary
 #Resource          ../../../Configuration.resource
 #Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
@@ -26,15 +27,12 @@ Check Customer Registration Process
     [Documentation]    Done
     [Tags]  Himself  selfregistration  Himself1
     BrowserControl.Switch To    Customer
-    #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 1"]}"]["Enter PAN"]}
-    #Delete Data of Company    ${Test Data["${CONFIG["Company Customer 2"]}"]["Enter PAN"]}
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     SMM_Keywords.Delete All The Prewritten Data Of SSOID From ERP    ${SSO ID["SSOID"]}
-    Login From Customer    ${SSO ID["SSOID"]}
-    ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
-    run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
-    Sleep    2s
-    Company Registration By Customer    Fresh    Pending
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
+    SMM_Keywords.Select Customer Type  purchaser
+    SMM_Keywords.Create New User Account  customer
+    SMM_Keywords.Company Registration By Customer    Fresh    Pending
     Sleep    3s
 
 Check new branch registration when the company already have branches registered in it
