@@ -1,7 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library           String
-Resource          ${RESOURCES}${/}Fields${/}String.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}String.robot
 
 *** Keywords ***
 Confirm Xpath Type

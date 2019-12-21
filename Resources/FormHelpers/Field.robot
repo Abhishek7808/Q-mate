@@ -1,8 +1,8 @@
 *** Settings ***
-Resource          ${RESOURCES}${/}Fields${/}Input.robot
-Resource          ${RESOURCES}${/}Fields${/}Clear.robot
-Resource          ${RESOURCES}${/}Fields${/}Confirm.robot
-Resource          ${RESOURCES}${/}Fields${/}ConfirmXpath.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Input.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Clear.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Confirm.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}ConfirmXpath.robot
 
 *** Keywords ***
 Input Valid Value

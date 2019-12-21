@@ -1,6 +1,6 @@
 *** Settings ***
-Resource          ../Configuration.resource
-Resource          ${RESOURCES}${/}DeleteData.robot
+Resource          ../../Configuration.resource
+Resource          ${RESOURCES}${/}Delete_Data.robot
 Library           RequestsLibrary
 Library           SeleniumLibrary
 Library           OperatingSystem
@@ -34,5 +34,5 @@ Delete the data of all ssoids
 
 Delete Data Of Given SSOID Or Company
     [Tags]  deletegiven
-    run keyword if  '${COMPANYPAN}' != 'None'  SMM_Keywords.Delete Data Of Company  ${COMPANYPAN}
-    run keyword if  '${SSOIDNAME}' != 'None'  SMM_Keywords.Delete Data Of SSOID  ${SSOIDNAME}
+    run keyword if  '${COMPANYPAN}' != 'None'  Delete_Data.Delete All The Prewritten Data Of Company From ERP  ${COMPANYPAN}
+    run keyword if  '${SSOIDNAME}' != 'None'  Delete_Data.Delete All The Prewritten Data Of SSOID From ERP  ${SSOIDNAME}

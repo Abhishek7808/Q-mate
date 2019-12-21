@@ -15,7 +15,7 @@ Resource          ${RESOURCES}${/}ERP_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Variables ***
@@ -54,7 +54,7 @@ Check the branch registration when user selects branch from an existing register
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 3
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    SMM_Keywords.Create New User Account  customer
+    SMM_Keywords.Select Customer Type  purchaser
     SMM_Keywords.Company Registration By Customer    Existing    Pending
     Sleep    3s
 
@@ -88,47 +88,36 @@ Check the draft branch visibility in 'View Branch' option on registration form
     SMM_Keywords.Company Registration By Customer    New    Draft
     SMM_Keywords.Go To Profile Selection Page
     SMM_Keywords.Create New User Account  customer
-    Input Text    ${Key Description["Enter PAN"]["Locator"]}    QMATE6665Q
-    Set Focus To Element    ${Key Description["Enter PAN"]["Locator"]}
-    Click Element    ${Key Description["Company Type"]["Locator"]}
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Page should contain element    //div[contains(text(),'${Branch["Name"]}')]
+    SMM_Keywords.Check Draft Branch Visibility
 
 Check the reject process of customer registration by departmental user
     [Documentation]    Done
     [Tags]  reject  Himself  himself6
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     BrowserControl.Switch To    Department
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    //div[@id='dropdownOpen']/button
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Select Checkbox    chkViewAll
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Dropdown    plantStatus    Pending
-    Sleep    1s
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    btnApplyFillter
+    #ERP_Keywords.Attempt Login   username=archit.rsmml    password=admin
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}
+    SMM_Keywords.Open Plant List Page
+    SMM_Keywords.Filter Plants By Status   Pending
     sleep  2s
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    click element  //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[@title='View']
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Valid Value    Customer Branch Reject Button
+    SMM_Keywords.View Selected Plant Details  ${Branch["Name"]}
+    SMM_Keywords.Reject Selected Plant
     BrowserControl.Switch To    Customer
-    Go To    http://demoprojects.e-connectsolutions.com/erp-demo/temp/sso.aspx
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    run keyword and ignore error  Click Element    //div[contains(text(),'I want to purchase mineral')]
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    /ERP-DEMO/RSMML/Customer/ViewRegistration
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Page should Contain Element    //span[text()='Rejected']
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Registration
+    SMM_Keywords.Check for Rejected state of Customer Registration
 
 Check the edit process of customer details when customer is not approved by department
     [Tags]  notapproved  Himself  himself7
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    /ERP-DEMO/RSMML/Customer/ViewRegistration
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Registration
     Sleep    2s
     SMM_Keywords.Company Registration By Customer    Fresh    Edit
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    btnUpdateCustDetail
-    #Sleep    5s
+    SMM_Keywords.Check For Updating Customer Details Permissions
 
 Check the approval process of customer registration by departmental user
     [Documentation]    Done
@@ -136,25 +125,18 @@ Check the approval process of customer registration by departmental user
     BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Customer/PlantList
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    uncontrolled    ${Branch["Name"]}
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    //div[@id='dropdownOpen']/button
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Select Checkbox    chkViewAll
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Dropdown    plantStatus    Pending
-    Sleep    2s
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    btnApplyFillter
+    SMM_Keywords.Open Plant List Page
+    SMM_Keywords.Filter Plants By Status  pending
     sleep  2s
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    click element  //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[@title='View']
-    Sleep    2s
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    action-Approve
-    Sleep    5s
+    SMM_Keywords.View Selected Plant Details  ${Branch["Name"]}
+    Sleep  2s
+    SMM_Keywords.Approve Selected Plant
+    Sleep  3s
     BrowserControl.Switch To    Customer
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    run keyword and ignore error  Click Element    //div[contains(text(),'I want to purchase mineral')]
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    /ERP-DEMO/RSMML/Customer/ViewRegistration
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Page should Contain Element    //span[text()='Approved']
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Registration
+    SMM_Keywords.Check for Approved state of Customer Registration
 
 Check the edit process of customer details when customer is approved by department
     [Documentation]    Done
@@ -162,22 +144,19 @@ Check the edit process of customer details when customer is approved by departme
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    run keyword and ignore error  Click Element    //div[contains(text(),'I want to purchase mineral')]
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    /ERP-DEMO/RSMML/Customer/ViewRegistration
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Element should not be visible    btnUpdateCustDetail
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Registration
+    SMM_Keywords.Check For Updating Customer Details Permissions
 
-Check the TCS rate applicable according to customer-wise
-    [Documentation]    Done
-    [Tags]  TCS  Himself  himself10
-    BrowserControl.Switch To    Customer
-    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
-    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
-    run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
-    Sleep    2s
-    Input Select    ${Key Description["User Type"]["Locator"]}    Purchaser
-    Sleep    2s
-    Press Keys    ${Key Description["User Type"]["Locator"]}    TAB
-    Element Should Be Disabled    ${Key Description["TCS Rate"]["Locator"]}
+#Check the TCS rate applicable according to customer-wise
+#    [Documentation]    Done
+#    [Tags]  TCS  Himself  himself10
+#    BrowserControl.Switch To    Customer
+#    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
+#    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
+#    run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
+#    Sleep    2s
+#    Input Select    ${Key Description["User Type"]["Locator"]}    Purchaser
+#    Sleep    2s
+#    Press Keys    ${Key Description["User Type"]["Locator"]}    TAB
+#    Element Should Be Disabled    ${Key Description["TCS Rate"]["Locator"]}

@@ -18,7 +18,7 @@ Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Resource          ${DATA}${/}website.robot
 Resource          ${DATA}${/}locators.robot
@@ -53,9 +53,6 @@ Load Json File
     ${Data}    Get File    ${File Name}
     ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
     [Return]    ${Data Obj}
-
-#Set SMM Test Variables
-
 
 Set Test Variables
     [Arguments]    &{Variables}

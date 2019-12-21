@@ -15,7 +15,7 @@ Select Profile Of Customer
 
 Create New Acccount
     [Arguments]  ${accountType}
-    run keyword if  '${accountType}' == 'customer'  Click Element   ${customer}  ELSE  CLick Element    ${agent}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    run keyword if  '${accountType}' == 'customer'  Click Element   ${customer}  ELSE  CLick Element    ${agent}
 
 Select Branch Of The given Company
     [Arguments]  ${branchName}  ${companyName}

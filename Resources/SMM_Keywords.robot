@@ -2,7 +2,9 @@
 Resource  ${PAGE OBJECTS}/SMM/CustomerLogin.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/ProfileSelection.robot
-#Resource  ${PAGE OBJECTS}/DeleteData.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerNavigation.robot
+Resource  ${PAGE OBJECTS}/SMM/PlantList.robot
+Resource  ${PAGE OBJECTS}/SMM/ViewRegistration.robot
 
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -33,11 +35,40 @@ Select Customer By Name
 
 Company Registration By Customer
     [Arguments]  ${branchType}  ${Mode}
-    CustomerRegistration.Company Registration By Customer  ${branchType}  ${Mode}
+    CustomerRegistration.Fill Customer Registration Form  ${branchType}  ${Mode}
+
+Check For Updating Customer Details Permissions
+    ViewRegistration.Confirm Update Button Is Interactable
 
 View Customer Registration
     CustomerNavigation.Open Customer Registration Form
 
 Check for draft state of Customer Registration
     ViewRegistration.Check For Draft
+
+Check for Approved state of Customer Registration
+    ViewRegistration.Confirm Approval Of Customer
+
+Check for Rejected state of Customer Registration
+    ViewRegistration.Confirm Rejection Of Customer
+
+Check Draft Branch Visibility
+    CustomerRegistration.Check For Draft Branch In The Draft Branches Popup
+
+Open Plant List Page
+    PlantList.Go To Plant List Page
+
+Filter Plants By Status
+    [Arguments]  ${plantStatus}
+    PlantList.Apply Plant Status Filter  ${plantStatus}
+
+View Selected Plant Details
+    [Arguments]  ${branchName}
+    PlantList.View Plant By Branch Name  ${branchName}
+
+Approve Selected Plant
+    PlantList.Approve Plant
+
+Reject Selected Plant
+    PlantList.Reject Plant
 

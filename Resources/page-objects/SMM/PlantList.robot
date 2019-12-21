@@ -1,13 +1,38 @@
-*** Variables ***
-${PLANTLIST_LINK}                    /PlantList
-${ADD_CUSTOMER_BUTTON}               xpath=//button[@id='btnAddCustomer']
+#*** Settings ***
+#Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 
+*** Variables ***
+${PLANTLIST_LINK}                    SMM/Customer/PlantList
+${ADD_CUSTOMER_BUTTON}               xpath=//button[@id='btnAddCustomer']
+${searchBar}                         uncontrolled
+${plantListDD}                       //div[@id='dropdownOpen']/button
+${viewALL}                           chkViewAll
+${plantStatusDD}                     plantStatus
+${apply}                             btnApplyFillter
 
 *** Keywords ***
-Go To ERP Page PlantList Page
-    Go To ERP Page  ${URL.${ENVIRONMENT}}&{SMM}[link]${PLANTLIST_LINK}
-    #http://demoprojects.e-connectsolutions.com/ERP-TEST/SMM/PlantList
+Go To Plant List Page
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${PLANTLIST_LINK}
+
 Go To ERP Page Add
     click button  ${ADD_CUSTOMER_BUTTON}
 
-Fill The Form
+Apply Plant Status Filter
+    [Arguments]  ${plantStatus}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Text    ${searchBar}    ${Branch["Name"]}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    ${plantListDD}
+    sleep  3s
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Dropdown    ${plantStatusDD}   ${plantStatus}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Select Checkbox    ${viewALL}
+    Sleep    1s
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    ${apply}
+
+View Plant By Branch Name
+    [Arguments]  ${branchName}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    click element  //span[contains(text(),'${branchName}')]/../following-sibling::td/i[@title='View']
+
+Approve Plant
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    action-Approve
+
+Reject Plant
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Valid Value    Customer Branch Reject Button

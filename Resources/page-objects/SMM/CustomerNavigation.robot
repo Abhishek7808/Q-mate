@@ -6,9 +6,9 @@ ${viewRegistration}  /ERP-DEMO/RSMML/Customer/ViewRegistration
 
 *** Keywords ***
 Open Customer Registration Form
-    Click Link    ${CitizenServices}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    ${CitizenServices}
     Sleep    2s
-    Click Link    ${viewRegistration}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    ${viewRegistration}
 
 Check For Draft
     Page should Contain Element    ${draftText}

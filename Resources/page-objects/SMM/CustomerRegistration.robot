@@ -1,9 +1,9 @@
 *** Settings ***
 Library           SeleniumLibrary
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 
 *** Keywords ***
-Company Registration By Customer
+Fill Customer Registration Form
     [Arguments]    ${Branch Creation}    ${Mode}
     sleep  2s
     Run Keyword If    '${Branch Creation}'=='New'    Set To Dictionary    ${Key Description["Company Type"]}    Type=Disabled
@@ -66,3 +66,10 @@ Company Registration By Customer
     Run Keyword If    '${Mode}'=='Pending'    Input Valid Value    Customer Details Submit Button
     #Run Keyword If    '${Mode}'=='Draft'  click button  //button[@id='action-Submit']
     Run Keyword If    '${Mode}'=='Draft'    Input Valid Value    Customer Details Update Button
+
+
+Check For Draft Branch In The Draft Branches Popup
+    Input Text    ${Key Description["Enter PAN"]["Locator"]}    QMATE6665Q
+    Set Focus To Element    ${Key Description["Enter PAN"]["Locator"]}
+    Click Element    ${Key Description["Company Type"]["Locator"]}
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Page should contain element    //div[contains(text(),'${Branch["Name"]}')]
