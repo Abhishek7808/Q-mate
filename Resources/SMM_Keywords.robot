@@ -36,8 +36,8 @@ Company Registration By Customer
     CustomerRegistration.Company Registration By Customer  ${branchType}  ${Mode}
 
 View Customer Registration
-    CustomerIndex.Open Customer Registration Form
+    CustomerNavigation.Open Customer Registration Form
 
 Check for draft state of Customer Registration
-    CustomerIndex.Check For Draft
+    ViewRegistration.Check For Draft
 

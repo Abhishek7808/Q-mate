@@ -64,17 +64,16 @@ Check the registration process when customer has partially filled the applicatio
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    run keyword and ignore error  SMM_Keywords.Select Customer Type  purchaser
     SMM_Keywords.Create New User Account  customer
-    Sleep  2s
+    sleep  2s
     SMM_Keywords.Company Registration By Customer    Fresh    Draft
     Sleep  1s
     SMM_Keywords.Go To Profile Selection Page
     sleep  2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Sleep    2s
+    Sleep  2s
     SMM_Keywords.View Customer Registration
-    Sleep    2s
+    Sleep  2s
     SMM_Keywords.Check for draft state of Customer Registration
 
 
@@ -84,12 +83,11 @@ Check the draft branch visibility in 'View Branch' option on registration form
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    ${status}  run keyword and return status  page should contain element  //div[contains(text(),'I want to purchase mineral')]
-    run keyword if  ${status} == ${True}  Click Element    //div[contains(text(),'I want to purchase mineral')]  ELSE  Select Customer
+    SMM_Keywords.Create New User Account  customer
     Sleep    2s
     SMM_Keywords.Company Registration By Customer    New    Draft
     SMM_Keywords.Go To Profile Selection Page
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    SMM_Keywords.Create New User Account  customer
+    SMM_Keywords.Create New User Account  customer
     Input Text    ${Key Description["Enter PAN"]["Locator"]}    QMATE6665Q
     Set Focus To Element    ${Key Description["Enter PAN"]["Locator"]}
     Click Element    ${Key Description["Company Type"]["Locator"]}

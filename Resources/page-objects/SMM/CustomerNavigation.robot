@@ -3,9 +3,7 @@
 *** Variables ***
 ${CitizenServices}   \#CitizenServices
 ${viewRegistration}  /ERP-DEMO/RSMML/Customer/ViewRegistration
-${draftText}    //button/span[contains(text(),'Draft')]
-${submitButton}  btnSubmitCustDetail
-${textPending}  //span[text()='Pending']
+
 *** Keywords ***
 Open Customer Registration Form
     Click Link    ${CitizenServices}
