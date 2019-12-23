@@ -19,8 +19,11 @@ Accept Member Request
 Check For Membership
     Element Should Be Visible    //h2[contains(text(),'Group member')]
 
-Check For Add Member Button
+Check For Absence Of Add Member Button
     Page Should Not Contain Button    addMember
+
+Verify Presence Of Group Admin Rights
+    Page Should Contain Button    addMember
 
 Reject Membership
     [Arguments]  ${branchName}
@@ -28,4 +31,13 @@ Reject Membership
 
 Approve Membership
     [Arguments]  ${branchName}
-    Click Element     //td[contains(text(),'${Branch["Name"]}')]/following-sibling::td/span/i[@title='Approve']
+    Click Element     //td[contains(text(),'${branchName}')]/following-sibling::td/span/i[@title='Approve']
+
+Switch Admin
+    [Arguments]  ${newAdmin}
+    Click Element    //i[@title='Switch Admin']
+    Sleep    2s
+    Select From List By Label    switchAdmin    ${newAdmin}
+    Sleep    2s
+    Click Button    btnSwitchAdmin
+    Sleep    2s

@@ -151,7 +151,7 @@ Verify Member Status
     MemberList.Check For Membership
 
 Verify Absence Of Group Admin Rights
-    MemberList.Check For Add Member Button
+    MemberList.Check For Absence Of Add Member Button
 
 Remove Member From The Group
     [Arguments]  ${branchName}
@@ -160,3 +160,10 @@ Remove Member From The Group
 Approve Member
     [Arguments]  ${branchName}
     MemberList.Approve Membership  ${branchName}
+
+Change Group Admin
+    [Arguments]  ${newAdmin}
+    MemberList.Switch Admin  ${newAdmin}
+
+Verify Presence Of Group Admin Rights
+    MemberList.Check For Presence Of Add Member Button

@@ -62,13 +62,10 @@ Request to join existing group, having same PAN no. as that of customer.
     SMM_Keywords.View Customer Groups
     Sleep    2s
     SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
-    #Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     Sleep    2s
     SMM_Keywords.Send Add Member Request To The Group
     Sleep    2s
     SMM_Keywords.Go To Profile Selection Page
-    #Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
-    #Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 1"]}"]}
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
