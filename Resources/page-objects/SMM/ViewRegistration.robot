@@ -3,6 +3,7 @@
 *** Variables ***
 ${draftText}    //button/span[contains(text(),'Draft')]
 ${submitButton}  btnSubmitCustDetail
+${updateButton}  btnUpdateCustDetail
 ${textPending}  //span[text()='Pending']
 ${approvedText}  //span[text()='Approved']
 ${rejectionText}  //span[text()='Rejected']
@@ -19,5 +20,5 @@ Confirm Approval Of Customer
 Confirm Rejection Of Customer
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Page should Contain Element    ${rejectionText}
 
-Confirm Update Button Is Interactable
-    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    btnUpdateCustDetail
+Confirm That Update Button Is Interactable
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    ${updateButton}

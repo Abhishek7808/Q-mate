@@ -5,6 +5,7 @@ Resource  ${PAGE OBJECTS}/SMM/ProfileSelection.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerNavigation.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantList.robot
 Resource  ${PAGE OBJECTS}/SMM/ViewRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/PlantRegistration.robot
 
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -39,10 +40,10 @@ Company Registration By Customer
 
 Company Registration By Department
     [Arguments]  ${branchType}
-    CustomerRegistration.Fill Customer Registration Form By Department  ${branchType}
+    PlantRegistration.Fill Customer Registration Form By Department  ${branchType}
 
 Check For Updating Customer Details Permissions
-    ViewRegistration.Confirm Update Button Is Interactable
+    ViewRegistration.Confirm That Update Button Is Interactable
 
 View Customer Registration
     CustomerNavigation.Open Customer Registration Form
@@ -63,13 +64,13 @@ Open Plant List Page
     PlantList.Go To Plant List Page
 
 Open Member List
-    CustomerRegistration.View Member List
+    PlantRegistration.View Member List
 
 Open Customer List
-    CustomerRegistration.View Customer List
+    PlantRegistration.View Customer List
 
 Open Plant Details
-    CustomerRegistration.View Plant Details
+    PlantRegistration.View Plant Details
 
 Filter Plants By Status
     [Arguments]  ${plantStatus}
@@ -80,19 +81,22 @@ View Details Of Selected Plant
     PlantList.View Plant By Branch Name  ${branchName}
 
 Approve Selected Plant
-    PlantList.Approve Plant
+    PlantRegistration.Approve Plant
 
 Reject Selected Plant
-    PlantList.Reject Plant
+    PlantRegistration.Reject Plant
+
+Cancel Plant Registration
+    PlantRegistration.Deactivate Plant
 
 Add Customer From Department
     PlantList.Add Customer
 
 Add Member From Department
-    CustomerRegistration.Fill Add Member Form
+    PlantRegistration.Fill Add Member Form
 
 Add Plant Details From Department
-    CustomerRegistration.Fill Plant Details Form By Department
+    PlantRegistration.Fill Plant Details Form By Department
 
 Verify That Customer Has Been Registered
     [Arguments]  ${branchName}
@@ -101,3 +105,7 @@ Verify That Customer Has Been Registered
 Verify That Customer Has Been Approved
     [Arguments]  ${branchName}
     PlantList.Verify Customer Approval  ${branchName}
+
+Verify That Customer Has Been Deactivated
+    [Arguments]  ${branchName}
+    PlantList.Verify Customer Deactivation  ${branchName}

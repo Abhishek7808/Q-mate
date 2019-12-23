@@ -12,12 +12,12 @@ Check the process of User Account Deactivation
     [Documentation]    Deactivates an application submitted by the user
     [Tags]  deactivationuser  Account  Account1
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
+    SMM_Keywords.Open Plant List Page
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 1
-    Go To Customer List
-    SMM_Keywords.Filter Plants By Status    4
+    SMM_Keywords.Filter Plants By Status    Approved
     sleep  1s
     SMM_Keywords.View Details Of Selected Plant
+    SMM_Keywords.Cancel Plant Registration
     Input Valid Value    Customer Details Deactive Button
     Sleep    2s
     Input Valid Value    View Customer List

@@ -25,7 +25,7 @@ To check the edit process of customer details when customer is not approved by d
     SMM_Keywords.Open Plant List Page
     SMM_Keywords.Filter Plants By Status    Draft      #Draft
     sleep  3s
-    SMM_Keywords.View Details Of Selected Plant
+    SMM_Keywords.View Details Of Selected Plant  ${Branch["Name"]}
     SMM_Keywords.Company Registration By Department    Draft
     SMM_Keywords.Open Plant List Page
     SMM_Keywords.Filter Plants By Status    Approved
@@ -40,28 +40,25 @@ To check the edit process of customer details when customer is approved by depar
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
     #Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Wait Until Keyword Succeeds    5s    250ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name   ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Capture Page Screenshot
-    Element Should Not Be Visible    btnUpdateCustDetail
+    SMM_Keywords.Check For Updating Customer Details Permissions
 
 Check Cancel Customer Registration
     [Documentation]    Deactivates an application by Marketing Team Member
     [Tags]  manage  mcancle  manage3
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
+    SMM_Keywords.Open Plant List Page
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1    #jaipur
-    Go To Customer List
     SMM_Keywords.Filter Plants By Status    4
     sleep  3s
-    SMM_Keywords.View Details Of Selected Plant
-    Input Valid Value    Customer Details Deactive Button
+    SMM_Keywords.View Details Of Selected Plant  ${Branch["Name"]}
+    SMM_Keywords.Cancel Plant Registration
     Sleep    2s
     BrowserControl.Switch To    Verify
-    Login From Department    megha.rsmml    admin
-    Go To Customer List
-    SMM_Keywords.Filter Plants By Status    667
-    Wait Until Keyword Succeeds    5s    250ms    Page Should Contain    ${Branch["Name"]}  #,${Company["Company Name"]}
+    #Login From Department    megha.rsmml    admin
+    SMM_Keywords.Verify That Customer Has Been Deactivated  ${Branch["Name"]}
     #&{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Company["Company Name"]} (${Company["Enter PAN"]})
     #Go To Add Purchase Order From Department
     #This needs to be checked The following keyword needs tob efailed for successfull execution
@@ -74,20 +71,15 @@ Check registration edit functionality, when account deactivated
     [Documentation]    Checks if deactivated account information can be edited
     [Tags]  manage  mdeactivated  manage4
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
+    SMM_Keywords.Open Plant List Page
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
-    Go To Customer List
-    SMM_Keywords.Filter Plants By Status    667
+    SMM_Keywords.Filter Plants By Status    Deactivated
     sleep  3s
     SMM_Keywords.View Details Of Selected Plant
     SMM_Keywords.Company Registration By Department    Activate
     BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
-    Go To Customer List
-    Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
-    SMM_Keywords.Filter Plants By Status    4
-    Sleep    2s
-    Page Should Contain Element    //span[contains(text(),'${Branch["Name"]}')]
+    SMM_Keywords.Verify That Customer Has Been Approved   ${Branch["Name"]}
     #One more scenario gets added, here we don't have any button of update or submit, there is only one Active Button
 
 #Check Login process after cancellation of customer registration
