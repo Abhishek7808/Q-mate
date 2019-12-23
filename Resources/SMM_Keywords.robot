@@ -1,13 +1,13 @@
 *** Settings ***
 Resource  ${PAGE OBJECTS}/SMM/CustomerLogin.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerRegistration.robot
-Resource  ${PAGE OBJECTS}/SMM/ProfileSelection.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerProfileSelection.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerNavigation.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantList.robot
-Resource  ${PAGE OBJECTS}/SMM/ViewRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerViewRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantRegistration.robot
-Resource  ${PAGE OBJECTS}/SMM/CustomerGroup.robot
-Resource  ${PAGE OBJECTS}/SMM/MemberList.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerGroups.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
 
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -167,3 +167,6 @@ Change Group Admin
 
 Verify Presence Of Group Admin Rights
     MemberList.Check For Presence Of Add Member Button
+
+Go To Customer Group List Page
+    Group

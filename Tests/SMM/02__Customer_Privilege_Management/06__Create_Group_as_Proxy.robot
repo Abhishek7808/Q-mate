@@ -23,6 +23,7 @@ Check Group Creation
     BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
+    SMM_Keywords.Go To Customer Group List Page
     Go To Add Customer Group By Department
     Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
     Input Valid Value    Customer Group Description    ${Branch["Group Description"]}
