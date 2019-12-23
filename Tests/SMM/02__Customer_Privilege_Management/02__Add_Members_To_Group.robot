@@ -48,5 +48,5 @@ Check that only group admin should have right to add members in a group
     SMM_Keywords.View Customer Groups
     SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Sleep    2s
-    SMM_Keywords.Verify Absence Of Add Member Rights
+    SMM_Keywords.Verify Absence Of Group Admin Rights
 

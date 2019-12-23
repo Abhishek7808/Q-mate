@@ -27,26 +27,18 @@ Reject group request process
     Sleep    2s
     SMM_Keywords.View Customer Groups
     Sleep    2s
-    Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Sleep    2s
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
-    Click Element    //td[contains(text(),'${Branch["Name"]}')]/following-sibling::td/span/i[@title='Reject']
-#    ${status}  run keyword and return status  Click Element    //td[contains(text(),'${Branch["Name"]}')]/following-sibling::td/span/i[@title='Approve']
-#    log  ${status}
-#    run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    Approved button not appeard
-#    Sleep    2s
+    SMM_Keywords.Remove Member From The Group  ${Branch["Name"]}
     SMM_Keywords.Go To Profile Selection Page
-    # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
-    # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     SMM_Keywords.View Customer Groups
     Sleep    2s
-    Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Sleep    2s
-    ${status}  run keyword and return status  Element Should Not Be Visible    //h2[contains(text(),'Group member')]
-    log  ${status}
-    run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    Reject group request process
+    SMM_Keywords.Verify Member Status
 
 Accept group request process
     [Tags]  Accept  accept2
@@ -58,33 +50,25 @@ Accept group request process
     Sleep    2s
     SMM_Keywords.View Customer Groups
     Sleep    2s
-    Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
-    ${status}  run keyword and return status  Click Button    sendAddreq
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
+    SMM_Keywords.Send Add Member Request To The Group
     SMM_Keywords.Go To Profile Selection Page
-    # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
-    # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 1"]}"]}
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     SMM_Keywords.View Customer Groups
     Sleep    2s
-    Click Element   //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
     Sleep    2s
-    ${status}  run keyword and return status  Click Element     //td[contains(text(),'${Branch["Name"]}')]/following-sibling::td/span/i[@title='Approve']
-    log  ${status}
-    run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    approved button not appeared
+    SMM_Keywords.Approve Member  ${Branch["Name"]}
     Sleep    2s
     SMM_Keywords.Go To Profile Selection Page
-    # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
-    # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     SMM_Keywords.View Customer Groups
     Sleep    2s
-    Click Element     //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Sleep    2s
-    ${status}  run keyword and return status  Element Should Be Visible    //h2[contains(text(),'Group member')]
-    log  ${status}
-    run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    Accept group request process
+    SMM_Keywords.Verify Member Status

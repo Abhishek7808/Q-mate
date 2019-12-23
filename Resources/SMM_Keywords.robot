@@ -145,10 +145,18 @@ Verify That Member Is Added To The Group
 
 Add Member To The Group
     [Arguments]  ${memberBranchName}
-    MemberList.Approve Member Request  ${memberBranchName}
+    MemberList.Accept Member Request  ${memberBranchName}
 
 Verify Member Status
     MemberList.Check For Membership
 
-Verify Absence Of Add Member Rights
+Verify Absence Of Group Admin Rights
     MemberList.Check For Add Member Button
+
+Remove Member From The Group
+    [Arguments]  ${branchName}
+    MemberList.Reject Membership  ${branchName}
+
+Approve Member
+    [Arguments]  ${branchName}
+    MemberList.Approve Membership  ${branchName}
