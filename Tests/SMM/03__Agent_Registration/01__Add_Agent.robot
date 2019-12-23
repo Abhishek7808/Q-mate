@@ -36,8 +36,7 @@ Check the agent registration process through agent tab
     Sleep    2s
     SMM_Keywords.View Agent List
     Sleep    2s
-    SMM_Keywords.Check For an Agent On Agent List
-    Element Should Be Visible    //*[contains(text(),'${SSO ID["Name"]}')]
+    SMM_Keywords.Check For an Agent On Agent List Page
 
 Check the agent registration process through PO form
     [Tags]  Addagent  Addagent2
@@ -47,8 +46,8 @@ Check the agent registration process through PO form
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+    SMM_Keywords.View Purchase Order List As A Customer
+    SMM_Keywords.Request Purchase Order By Customer
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[(text()='Request PO')]
     Sleep    2s
     Click Button    btnAddAgentPo

@@ -7,8 +7,10 @@ Resource  ${PAGE OBJECTS}/SMM/PlantList.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerViewRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerGroups.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerAgentList.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
-
+Resource  ${PAGE OBJECTS}/SMM/CustomerPurchaseOrder.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
 
@@ -190,4 +192,11 @@ Add Member To The Group By Department
 View Agent List
     CustomerNavigation.Open Agent List Page
 
-Check For an Agent On Agent List
+Check For an Agent On Agent List Page
+    CustomerAgentList.Verify Presence Of Agent
+
+View Purchase Order List As A Customer
+    CustomerNavigation.Open Purchase Order List Page
+
+Request Purchase Order By Customer
+    

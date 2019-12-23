@@ -23,3 +23,7 @@ Open Group List Page
 Open Agent List Page
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
+
+Open Purchase Order List Page
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
