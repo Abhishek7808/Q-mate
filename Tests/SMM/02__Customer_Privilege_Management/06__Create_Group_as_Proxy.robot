@@ -21,41 +21,26 @@ Check Group Creation
     [Documentation]    Creates a group by department
     [Tags]  groupproxy  groupproxy1
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
+    SMM_Keywords.Open Customer Group List Page
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
-    SMM_Keywords.Go To Customer Group List Page
-    Go To Add Customer Group By Department
-    Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
-    Input Valid Value    Customer Group Description    ${Branch["Group Description"]}
-    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Company["Company Name"]} (${Company["Enter PAN"]})
-    Input Valid Value    Customer Group Enter Customer PAN or Name    ${Val}
-    Input Valid Value    Customer Group Add Button
-    Sleep    3s
+    SMM_Keywords.Add New Customer Group
 
 Check Group Creation, When Already A Group Exists With Same Code/PAN No
     [Documentation]    Checks if a group with same name can be created
     [Tags]  groupproxy  groupproxy2
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
+    SMM_Keywords.Open Customer Group List Page
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    SSO ID=SSOID 3
-    Go To Add Customer Group By Department
-    Input Valid Value    Customer Group Group Name    ${Branch["Group Name"]}
-    Input Valid Value    Customer Group Description    ${Branch["Group Description"]}
-    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Company["Company Name"]} (${Company["Enter PAN"]})
-    Input Valid Value    Customer Group Enter Customer PAN or Name    ${Val}
-    Input Valid Value    Customer Group Add Button
+    SMM_Keywords.Add New Customer Group
     Sleep    3s
-    Alert Should Be Present    Group Name already exist in selected Group .
+    SMM_Keywords.Expect Alert  Group Name already exist in selected Group .
     Sleep    3s
-    Input Valid Value    Customer Group View List Button From Add Group
+    SMM_Keywords.View Customer Group List
     Sleep    2s
-    Input Valid Value    Customer Group Search Text    ${Branch["Group Name"]}
+    SMM_Keywords.Search For Customer Group  ${Branch["Group Name"]}
     Sleep    2s
-    Click Element    //span[contains(text(),'${Branch["Group Name"]}')]/../following-sibling::td/i[@title='View']
-    Sleep    2s
-    Input Valid Value    Customer Group Add Member
+    SMM_Keywords.View Details Of Selected Group  ${Branch["Group Name"]}
     Sleep    2s
     Common_Keywords.Set Test Variables    Branch=Branch Department 4
-    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[@title='Add']
-    Sleep    3s
-    Input Valid Value    Customer Group View List Button
+    SMM_Keywords.Add Member To The Group By Department  ${Branch["Name"]}
+

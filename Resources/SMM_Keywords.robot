@@ -168,5 +168,28 @@ Change Group Admin
 Verify Presence Of Group Admin Rights
     MemberList.Check For Presence Of Add Member Button
 
-Go To Customer Group List Page
-    Group
+Open Customer Group List Page
+    GroupList.Go To Customer Group List Page
+
+Add New Customer Group
+    GroupList.Add New Customer Group By Department
+    GroupRegistration.Fill Group Registration Form By Department
+
+Expect Alert
+    [Arguments]  ${alertText}
+    GroupRegistration.Check For Alert  ${alertText}
+
+View Customer Group List
+    GroupRegistration.Open Customer Group List
+
+Search For Customer Group
+    [Arguments]  ${groupName}
+    GroupList.Search Customer Group  ${groupName}
+
+View Details Of Selected Group
+    [Arguments]  ${groupName}
+    GroupList.Open Group Details  ${groupName}
+
+Add Member To The Group By Department
+    [Arguments]  ${groupName}
+    GroupList.Add Member  ${groupName}
