@@ -6,6 +6,8 @@ Resource  ${PAGE OBJECTS}/SMM/CustomerNavigation.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantList.robot
 Resource  ${PAGE OBJECTS}/SMM/ViewRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerGroup.robot
+Resource  ${PAGE OBJECTS}/SMM/MemberList.robot
 
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -118,3 +120,25 @@ Add Plant By Customer
 
 Fill Plant By Customer
     ViewRegistration.Fill Plant Details By Customer
+
+View Customer Group
+    CustomerNavigation.Open Group List Page
+
+Create New Group
+    CustomerGroup.Create Customer Group
+    CustomerGroup.Fill Customer Group
+
+Check For The Group On The Customer Group Page
+    [Arguments]  ${groupName}
+    CustomerGroup.Verify That Given Group Is Exists On The Page  ${groupName}
+
+Open Memeber List Of The Group
+    [Arguments]  ${groupName}
+    CustomerGroup.View Memeber List Of The Group  ${groupName}
+
+Add Member To The Group
+    MemberList.Send Add Request
+
+Verify That Member Is Added To The Group
+    [Arguments]  ${branchName}
+    MemberList.Check For Member By Branch Name  ${branchName}

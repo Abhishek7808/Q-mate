@@ -185,12 +185,12 @@ Fill CRO
     sleep  4s
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Contract Release Order Button
 
-Fill Group
-    #wait until element is enabled  groupName
-    #input text  //input[@id='groupName']  hello
-    Input Valid Value    Customer Group Group Name    ${Company["Enter PAN"]}
-    Input Valid Value    Customer Group Group Description    ${Branch["Group Description"]}
-    Input Valid Value    Customer Group Button
+#Fill Group
+#    #wait until element is enabled  groupName
+#    #input text  //input[@id='groupName']  hello
+#    Input Valid Value    Customer Group Group Name    ${Company["Enter PAN"]}
+#    Input Valid Value    Customer Group Group Description    ${Branch["Group Description"]}
+#    Input Valid Value    Customer Group Button
 
 #Login From Customer
 #    [Arguments]    ${ssoId}
