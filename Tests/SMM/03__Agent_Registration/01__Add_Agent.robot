@@ -1,16 +1,20 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
-
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
 *** Variables ***
@@ -30,12 +34,10 @@ Check the agent registration process through agent tab
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
+    SMM_Keywords.View Agent List
     Sleep    2s
-    ${status}  run keyword and return status  Element Should Be Visible    //*[contains(text(),'${SSO ID["Name"]}')]
-    log  ${status}
-    run keyword if  ${status} == ${False}  fail  //span[contains(text(),'${SSO ID["Name"]}')] element is not visible
+    SMM_Keywords.Check For an Agent On Agent List
+    Element Should Be Visible    //*[contains(text(),'${SSO ID["Name"]}')]
 
 Check the agent registration process through PO form
     [Tags]  Addagent  Addagent2

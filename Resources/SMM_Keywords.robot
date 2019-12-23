@@ -13,14 +13,7 @@ Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
 
 *** Keywords ***
-#
-#Delete All The Prewritten Data Of Company From ERP
-#    [Arguments]  ${companyPanNo}
-#    DeleteData.Delete Data Of Company  ${companyPanNo}
-#
-#Delete All The Prewritten Data Of SSOID From ERP
-#    [Arguments]  ${ssoID}
-#    DeleteData.Delete Data Of SSOID  ${ssoID}
+
 Go To Profile Selection Page
     Go To  ${profileSelectionPage}
 
@@ -193,3 +186,8 @@ View Details Of Selected Group
 Add Member To The Group By Department
     [Arguments]  ${groupName}
     GroupList.Add Member  ${groupName}
+
+View Agent List
+    CustomerNavigation.Open Agent List Page
+
+Check For an Agent On Agent List
