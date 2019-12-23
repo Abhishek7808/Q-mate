@@ -86,6 +86,9 @@ Approve Plant
 Reject Plant
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Valid Value    Customer Branch Reject Button
 
+Activate Plant
+    Input Valid Value    Customer Details Active Button
+
 Deactivate Plant
     Input Valid Value    Customer Details Deactive Button
 

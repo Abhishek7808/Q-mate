@@ -86,23 +86,23 @@ Fill Agent
     #run keyword and ignore error  Input Valid Value    Add Agent Button
     #run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  Add Agent Button have not appeared
 
-Fill Plants
-    #[Arguments]    ${Key Description}
-    Input Valid Value    Plant Location    ${Plant["Plant Location"]}
-    Input Valid Value    Capacity of Production (in MT)    ${Plant["Capacity of Production (in MT)"]}
-    Input Valid Value    Year of Commissioning    ${Plant["Year of Commissioning"]}
-    Input Valid Value    Production(MT)(Prev. Year)    ${Plant["Production(MT)(Prev. Year)"]}
-    Input Valid Value    Do you Purchase Minerals from Others    ${Plant["Do you Purchase Minerals from Others"]}
-    #Input Valid Value    Ratio of Other:RSMML    ${testData["Plant 2001"]["Ratio of Other:RSMML"]}
-    Input Valid Value    Estimate Yearly Req.(MT)    ${Plant["Estimate Yearly Req.(MT)"]}
-    Input Valid Value    Registration Number    ${Plant["Registration Number"]}
-    Input Valid Value    Approx Transport Charges    ${Plant["Approx Transport Charges"]}
-    Input Valid Value    Plant Capacity    ${Plant["Plant Capacity"]}
-    Input Valid Value    Document Upload    ${Plant["Document Upload"]}
-    Sleep    5s
-    ${Status}    Run Keyword And Return Status    Page Should Contain Button    ${Key Description["Plant Details Save Button"]["Locator"]}
-    Run Keyword If    ${Status}    Input Valid Value    Plant Details Save Button
-    ...    ELSE    Input Valid Value    Plant Details Submit Button
+#Fill Plants
+#    #[Arguments]    ${Key Description}
+#    Input Valid Value    Plant Location    ${Plant["Plant Location"]}
+#    Input Valid Value    Capacity of Production (in MT)    ${Plant["Capacity of Production (in MT)"]}
+#    Input Valid Value    Year of Commissioning    ${Plant["Year of Commissioning"]}
+#    Input Valid Value    Production(MT)(Prev. Year)    ${Plant["Production(MT)(Prev. Year)"]}
+#    Input Valid Value    Do you Purchase Minerals from Others    ${Plant["Do you Purchase Minerals from Others"]}
+#    #Input Valid Value    Ratio of Other:RSMML    ${testData["Plant 2001"]["Ratio of Other:RSMML"]}
+#    Input Valid Value    Estimate Yearly Req.(MT)    ${Plant["Estimate Yearly Req.(MT)"]}
+#    Input Valid Value    Registration Number    ${Plant["Registration Number"]}
+#    Input Valid Value    Approx Transport Charges    ${Plant["Approx Transport Charges"]}
+#    Input Valid Value    Plant Capacity    ${Plant["Plant Capacity"]}
+#    Input Valid Value    Document Upload    ${Plant["Document Upload"]}
+#    Sleep    5s
+#    ${Status}    Run Keyword And Return Status    Page Should Contain Button    ${Key Description["Plant Details Save Button"]["Locator"]}
+#    Run Keyword If    ${Status}    Input Valid Value    Plant Details Save Button
+#    ...    ELSE    Input Valid Value    Plant Details Submit Button
 
 Fill PO
     ${Status}    Run Keyword And Return Status    Should Be Equal    ${PO["Coming Against Auction"]}    Select

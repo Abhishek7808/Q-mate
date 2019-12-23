@@ -89,6 +89,9 @@ Reject Selected Plant
 Cancel Plant Registration
     PlantRegistration.Deactivate Plant
 
+Activate Plant Registration
+    PlantRegistration.Activate Plant
+
 Add Customer From Department
     PlantList.Add Customer
 
@@ -109,3 +112,9 @@ Verify That Customer Has Been Approved
 Verify That Customer Has Been Deactivated
     [Arguments]  ${branchName}
     PlantList.Verify Customer Deactivation  ${branchName}
+
+Add Plant By Customer
+    ViewRegistration.View Plant Details By Customer
+
+Fill Plant By Customer
+    ViewRegistration.Fill Plant Details By Customer
