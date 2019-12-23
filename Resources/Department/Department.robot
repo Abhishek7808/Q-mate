@@ -46,15 +46,15 @@ Login From Department
     Input Password    PasswordForShow    ${Password}
     Click Button    btnLogin
 
-View Customer List
-    Input Valid Value    View Customer List
+#View Customer List
+#    Input Valid Value    View Customer List
 
 Go To Add Product From Department
      Go To    ${LOGIN URL}/SMM/Product/ProductList
 
-Go To Add Customer From Department
-    Go To Customer List
-    Input Valid Value    Add Customer
+#Go To Add Customer From Department
+#    Go To Customer List
+#    Input Valid Value    Add Customer
 
 Go To Add Purchase Order From Department
     Go To Purchase Order List
@@ -63,8 +63,8 @@ Go To Add Purchase Order From Department
 Go To Financial Instrument List From Department
     Go To    ${LOGIN URL}/SMM/Finance/InstrumentList
 
-Go To Customer List
-    Go To    ${LOGIN URL}/SMM/Customer/PlantList
+#Go To Customer List
+#    Go To    ${LOGIN URL}/SMM/Customer/PlantList
 
 Go To Purchase Order List
     Go To    ${LOGIN URL}/SMM/PurchaseOrder
@@ -84,80 +84,80 @@ View Company Details
     # /following-sibling::td/span[@title="Plot 13/14/25 Nagarro Solutions Pvt. Lmt., Jaipur, Rajasthan"]
     # get text  //span[contains(text(),'Plot 13/14/25 Nagarro Solutions Pvt. Lmt., Jaipur,')]
 
-Company Registration By Department
-    [Arguments]    ${Mode}
-    Input Valid Value    User Type    ${Branch["User Type"]}
-    Run Keyword If    '${Branch["User Type"]}'=='Traders'    Input Valid Value    TCS Rate    ${Branch["TCS Rate"]}
-    run keyword and ignore error  Input Valid Value    Enter PAN    ${Company["Enter PAN"]}
-    sleep  1s
-    ${status}  run keyword and return status  page should contain element  dailogPopup
-    run keyword if  ${status} == ${True}  click button  btnCancel
-#    Run Keyword If    '${Mode}'=='New Branch'    Input Valid Value    Create New Branch Button
-#    ...    ELSE IF    '${Mode}'=='New Company'    Wait Until Keyword Succeeds    5s    250ms    Click Element
-#    ...    PlantName-${Branch["Name"]}
-    Input Valid Value    Company Type    ${Company["Company Type"]}
-    Input Valid Value    Company Name    ${Company["Company Name"]}
-    Input Valid Value    Company Pincode    ${Company["Company Pincode"]}
-    Input Valid Value    Company Address Line 1    ${Company["Company Address Line 1"]}
-    Input Valid Value    Company Address Line 2    ${Company["Company Address Line 2"]}
-    Input Valid Value    Company City    ${Company["Company City"]}
-    Input Valid Value    Company State    ${Company["Company State"]}
-    Input Valid Value    Branch Name    ${Branch["Name"]}
-    Input Valid Value    Branch Pincode    ${Branch["Pincode"]}
-    Input Valid Value    Branch State    ${Branch["State"]}
-    Input Valid Value    Branch City    ${Branch["City"]}
-    Input Valid Value    Branch Address Line 1    ${Branch["Address Line 1"]}
-    Input Valid Value    Branch Address Line 2    ${Branch["Address Line 2"]}
-    run keyword and ignore error  Input Valid Value    PAN    ${Company["Enter PAN"]}
-    run keyword and ignore error  Input Valid Value    PANFile    ${Company["Company PANFile"]}
-    ${GSTIN}    Replace String    ${Branch["GSTIN"]}    __PAN__    ${Company["Enter PAN"]}
-    Input Valid Value    GSTIN    ${GSTIN}
-#    Input Valid Value    GSTINFile    ${Branch["GSTINFile"]}
-    Input Valid Value    TIN    ${Branch["TIN"]}
-#    Input Valid Value    TINFile    ${Branch["TINFile"]}
-    Input Valid Value    IBM    ${Branch["IBM"]}
-#    Input Valid Value    IBMFile    ${Branch["IBMFile"]}
-    Input Valid Value    IBM Registration Date    ${Branch["IBM Registration Date"]}
-#   Scroll Element Into View  //button[@id='action-Submit']
+#Company Registration By Department
+#    [Arguments]    ${Mode}
+#    Input Valid Value    User Type    ${Branch["User Type"]}
+#    Run Keyword If    '${Branch["User Type"]}'=='Traders'    Input Valid Value    TCS Rate    ${Branch["TCS Rate"]}
+#    run keyword and ignore error  Input Valid Value    Enter PAN    ${Company["Enter PAN"]}
+#    sleep  1s
+#    ${status}  run keyword and return status  page should contain element  dailogPopup
+#    run keyword if  ${status} == ${True}  click button  btnCancel
+##    Run Keyword If    '${Mode}'=='New Branch'    Input Valid Value    Create New Branch Button
+##    ...    ELSE IF    '${Mode}'=='New Company'    Wait Until Keyword Succeeds    5s    250ms    Click Element
+##    ...    PlantName-${Branch["Name"]}
+#    Input Valid Value    Company Type    ${Company["Company Type"]}
+#    Input Valid Value    Company Name    ${Company["Company Name"]}
+#    Input Valid Value    Company Pincode    ${Company["Company Pincode"]}
+#    Input Valid Value    Company Address Line 1    ${Company["Company Address Line 1"]}
+#    Input Valid Value    Company Address Line 2    ${Company["Company Address Line 2"]}
+#    Input Valid Value    Company City    ${Company["Company City"]}
+#    Input Valid Value    Company State    ${Company["Company State"]}
+#    Input Valid Value    Branch Name    ${Branch["Name"]}
+#    Input Valid Value    Branch Pincode    ${Branch["Pincode"]}
+#    Input Valid Value    Branch State    ${Branch["State"]}
+#    Input Valid Value    Branch City    ${Branch["City"]}
+#    Input Valid Value    Branch Address Line 1    ${Branch["Address Line 1"]}
+#    Input Valid Value    Branch Address Line 2    ${Branch["Address Line 2"]}
+#    run keyword and ignore error  Input Valid Value    PAN    ${Company["Enter PAN"]}
+#    run keyword and ignore error  Input Valid Value    PANFile    ${Company["Company PANFile"]}
+#    ${GSTIN}    Replace String    ${Branch["GSTIN"]}    __PAN__    ${Company["Enter PAN"]}
+#    Input Valid Value    GSTIN    ${GSTIN}
+##    Input Valid Value    GSTINFile    ${Branch["GSTINFile"]}
+#    Input Valid Value    TIN    ${Branch["TIN"]}
+##    Input Valid Value    TINFile    ${Branch["TINFile"]}
+#    Input Valid Value    IBM    ${Branch["IBM"]}
+##    Input Valid Value    IBMFile    ${Branch["IBMFile"]}
+#    Input Valid Value    IBM Registration Date    ${Branch["IBM Registration Date"]}
+##   Scroll Element Into View  //button[@id='action-Submit']
+#
+#    #Run Keyword If    '${Mode}'=='Draft'    Input Valid Value    Customer Details Submit Button From Draft
+#    Wait Until Keyword Succeeds    5s    250ms  Run Keyword If    '${Mode}'=='Draft'  click button  //button[@id='action-Submit']
+#    sleep  5s
+#    Wait Until Keyword Succeeds    5s    250ms  Run Keyword If    '${Mode}'=='Draft'  click button  //button[@id='action-Approve']
+#    #Input Valid Value    Customer Details Approve Button
+#    #Run Keyword If    '${Mode}'=='Draft'    Input Valid Value    Customer Details Approve Button
+#    Run Keyword If    '${Mode}'=='Pending'    Input Valid Value    Customer Details Approve Button
+#    Run Keyword If    '${Mode}'=='New Company'    Input Valid Value    Customer Details Submit Button
+#    Run Keyword If    '${Mode}'=='New Branch'    Input Valid Value    Customer Details Submit Button
+#    Run Keyword If    '${Mode}'=='Existing'    Input Valid Value    Customer Details Update Button
+#    Run Keyword If    '${Mode}'=='Activate'    Input Valid Value    Customer Details Active Button
 
-    #Run Keyword If    '${Mode}'=='Draft'    Input Valid Value    Customer Details Submit Button From Draft
-    Wait Until Keyword Succeeds    5s    250ms  Run Keyword If    '${Mode}'=='Draft'  click button  //button[@id='action-Submit']
-    sleep  5s
-    Wait Until Keyword Succeeds    5s    250ms  Run Keyword If    '${Mode}'=='Draft'  click button  //button[@id='action-Approve']
-    #Input Valid Value    Customer Details Approve Button
-    #Run Keyword If    '${Mode}'=='Draft'    Input Valid Value    Customer Details Approve Button
-    Run Keyword If    '${Mode}'=='Pending'    Input Valid Value    Customer Details Approve Button
-    Run Keyword If    '${Mode}'=='New Company'    Input Valid Value    Customer Details Submit Button
-    Run Keyword If    '${Mode}'=='New Branch'    Input Valid Value    Customer Details Submit Button
-    Run Keyword If    '${Mode}'=='Existing'    Input Valid Value    Customer Details Update Button
-    Run Keyword If    '${Mode}'=='Activate'    Input Valid Value    Customer Details Active Button
+#Member List By Department
+#    Input Valid Value    SSO ID    ${SSO ID["SSOID"]}
+#    Input Valid Value    Your Name    ${SSO ID["Name"]}
+#    Input Valid Value    Your Designation    ${SSO ID["Designation"]}
+#    Input Valid Value    Mobile Number    ${SSO ID["Mobile Number"]}
+#    Input Valid Value    Alternate Mobile Number    ${SSO ID["Alternate Mobile Number"]}
+#    Input Valid Value    Email ID    ${SSO ID["Email ID"]}
+#    Input Valid Value    Fax    ${SSO ID["Fax"]}
+#    Input Valid Value    Member List Submit Button
 
-Member List By Department
-    Input Valid Value    SSO ID    ${SSO ID["SSOID"]}
-    Input Valid Value    Your Name    ${SSO ID["Name"]}
-    Input Valid Value    Your Designation    ${SSO ID["Designation"]}
-    Input Valid Value    Mobile Number    ${SSO ID["Mobile Number"]}
-    Input Valid Value    Alternate Mobile Number    ${SSO ID["Alternate Mobile Number"]}
-    Input Valid Value    Email ID    ${SSO ID["Email ID"]}
-    Input Valid Value    Fax    ${SSO ID["Fax"]}
-    Input Valid Value    Member List Submit Button
-
-Fill Plants By Department
-    #[Arguments]    ${Key Description}
-    wait until page contains element  //*[@id="plantLocation"]
-    Input Valid Value    Plant Location    ${Plant["Plant Location"]}
-    Input Valid Value    Capacity of Production (in MT)    ${Plant["Capacity of Production (in MT)"]}
-    Input Valid Value    Year of Commissioning    ${Plant["Year of Commissioning"]}
-    Input Valid Value    Production(MT)(Prev. Year)    ${Plant["Production(MT)(Prev. Year)"]}
-    Input Valid Value    Do you Purchase Minerals from Others    ${Plant["Do you Purchase Minerals from Others"]}
-    sleep  3s
-    run keyword and ignore error  Input Valid Value    Ratio of Other:RSMML    ${Plant["Ratio of Other:RSMML"]}
-    Input Valid Value    Estimate Yearly Req.(MT)    ${Plant["Estimate Yearly Req.(MT)"]}
-    Input Valid Value    Registration Number    ${Plant["Registration Number"]}
-    Input Valid Value    Approx Transport Charges    ${Plant["Approx Transport Charges"]}
-    Input Valid Value    Plant Capacity    ${Plant["Plant Capacity"]}
-    Input Valid Value    Document Upload    ${Plant["Document Upload"]}
-    Input Valid Value    Plant Details Submit Button
+#Fill Plants By Department
+#    #[Arguments]    ${Key Description}
+#    wait until page contains element  //*[@id="plantLocation"]
+#    Input Valid Value    Plant Location    ${Plant["Plant Location"]}
+#    Input Valid Value    Capacity of Production (in MT)    ${Plant["Capacity of Production (in MT)"]}
+#    Input Valid Value    Year of Commissioning    ${Plant["Year of Commissioning"]}
+#    Input Valid Value    Production(MT)(Prev. Year)    ${Plant["Production(MT)(Prev. Year)"]}
+#    Input Valid Value    Do you Purchase Minerals from Others    ${Plant["Do you Purchase Minerals from Others"]}
+#    sleep  3s
+#    run keyword and ignore error  Input Valid Value    Ratio of Other:RSMML    ${Plant["Ratio of Other:RSMML"]}
+#    Input Valid Value    Estimate Yearly Req.(MT)    ${Plant["Estimate Yearly Req.(MT)"]}
+#    Input Valid Value    Registration Number    ${Plant["Registration Number"]}
+#    Input Valid Value    Approx Transport Charges    ${Plant["Approx Transport Charges"]}
+#    Input Valid Value    Plant Capacity    ${Plant["Plant Capacity"]}
+#    Input Valid Value    Document Upload    ${Plant["Document Upload"]}
+#    Input Valid Value    Plant Details Submit Button
 
 Fill PO By Department
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})

@@ -35,7 +35,11 @@ Select Customer By Name
 
 Company Registration By Customer
     [Arguments]  ${branchType}  ${Mode}
-    CustomerRegistration.Fill Customer Registration Form  ${branchType}  ${Mode}
+    CustomerRegistration.Fill Customer Registration Form By Customer  ${branchType}  ${Mode}
+
+Company Registration By Department
+    [Arguments]  ${branchType}
+    CustomerRegistration.Fill Customer Registration Form By Department  ${branchType}
 
 Check For Updating Customer Details Permissions
     ViewRegistration.Confirm Update Button Is Interactable
@@ -58,11 +62,20 @@ Check Draft Branch Visibility
 Open Plant List Page
     PlantList.Go To Plant List Page
 
+Open Member List
+    CustomerRegistration.View Member List
+
+Open Customer List
+    CustomerRegistration.View Customer List
+
+Open Plant Details
+    CustomerRegistration.View Plant Details
+
 Filter Plants By Status
     [Arguments]  ${plantStatus}
     PlantList.Apply Plant Status Filter  ${plantStatus}
 
-View Selected Plant Details
+View Details Of Selected Plant
     [Arguments]  ${branchName}
     PlantList.View Plant By Branch Name  ${branchName}
 
@@ -72,3 +85,19 @@ Approve Selected Plant
 Reject Selected Plant
     PlantList.Reject Plant
 
+Add Customer From Department
+    PlantList.Add Customer
+
+Add Member From Department
+    CustomerRegistration.Fill Add Member Form
+
+Add Plant Details From Department
+    CustomerRegistration.Fill Plant Details Form By Department
+
+Verify That Customer Has Been Registered
+    [Arguments]  ${branchName}
+    PlantList.Verify Customer Registration  ${branchName}
+
+Verify That Customer Has Been Approved
+    [Arguments]  ${branchName}
+    PlantList.Verify Customer Approval  ${branchName}

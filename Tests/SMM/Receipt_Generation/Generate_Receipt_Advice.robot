@@ -37,7 +37,7 @@ Check Financial instrument after receipt generation
     Common_Keywords.Set Test Variables    FI=FI 1   Company=Company Department 3    Branch=Branch Department 1  Receipt=Receipt 1
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    	111114
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     Input Valid Value    Financial Instrument View List Button
     Go To Receipt Generation
     Input Valid Value    Generate Receipt Create New Button
@@ -49,4 +49,4 @@ Check Financial instrument after receipt generation
     Sleep    5s
     Go To Financial Instrument List From Department
     Input Valid Value    Search Financial Instrument By Number    111114
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant

@@ -19,7 +19,7 @@ Check edit functionality for pending PO
     Login From Department    archit.rsmml    admin
     Go To Purchase Order List
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     Update PO By Department
 
 PO Request Approval Process
@@ -35,7 +35,7 @@ PO Request Approval Process
     Select From List By Value    plantStatus    41
     Click Button    btnApplyFillter
     Sleep    5s
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
     Input Valid Value    Purchase Order Approve Button
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Confirm Approval Button
@@ -64,7 +64,7 @@ PO Request Rejection Process
     Select From List By Value    plantStatus    4
     Click Button    btnApplyFillter
     sleep  3s
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     sleep  2s
     Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
     Input Valid Value    Purchase Order Reject Button
@@ -91,7 +91,7 @@ Check PO cancellation when status is approved or pending
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 3    PO=PO 1
     input text  searchText  ${Branch["Name"]}
     sleep  3s
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
     Input Valid Value    Purchase Order Reject Button
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Reject Remarks    ${PO["Reject Remarks"]}
@@ -104,7 +104,7 @@ Check PO cancellation when status is approved or pending
     Select From List By Value    plantStatus    4
     Click Button    btnApplyFillter
     Sleep    5s
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     #Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
     Input Valid Value    Purchase Order Reject Button
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Reject Remarks    ${PO["Reject Remarks"]}

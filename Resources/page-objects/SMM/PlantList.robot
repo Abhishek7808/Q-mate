@@ -36,3 +36,18 @@ Approve Plant
 
 Reject Plant
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Valid Value    Customer Branch Reject Button
+
+Add Customer
+    Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Valid Value    Add Customer
+
+Verify Customer Registration
+    [Arguments]  ${branchName}
+    Go To Plant List Page
+    Apply Plant Status Filter  Approved
+    Wait Until Keyword Succeeds    5s    250ms    Page Should Contain Element    //span[contains(text(),'${branchName}')]
+
+Verify Customer Approval
+    [Arguments]  ${branchName}
+    Go To Plant List Page
+    Apply Plant Status Filter  Approved
+    Wait Until Keyword Succeeds    5s    250ms    page should contain element  //span[contains(text(),'${branchName}')]/../following-sibling::td/button/span[contains(text(),'Approved')]

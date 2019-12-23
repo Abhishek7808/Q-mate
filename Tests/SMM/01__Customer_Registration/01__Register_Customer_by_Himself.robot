@@ -32,7 +32,7 @@ Check Customer Registration Process
     Delete_Data.Delete All The Prewritten Data Of SSOID From ERP    ${SSO ID["SSOID"]}
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     run keyword and ignore error  SMM_Keywords.Select Customer Type  purchaser
-    SMM_Keywords.Create New User Account  customer
+    run keyword and ignore error  SMM_Keywords.Create New User Account  customer
     SMM_Keywords.Company Registration By Customer    Fresh    Pending
     Sleep    3s
 
@@ -95,12 +95,10 @@ Check the reject process of customer registration by departmental user
     [Tags]  reject  Himself  himself6
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     BrowserControl.Switch To    Department
-    #ERP_Keywords.Attempt Login   username=archit.rsmml    password=admin
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}
     SMM_Keywords.Open Plant List Page
     SMM_Keywords.Filter Plants By Status   Pending
     sleep  2s
-    SMM_Keywords.View Selected Plant Details  ${Branch["Name"]}
+    SMM_Keywords.View Details Of Selected Plant   ${Branch["Name"]}
     SMM_Keywords.Reject Selected Plant
     BrowserControl.Switch To    Customer
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -123,12 +121,11 @@ Check the approval process of customer registration by departmental user
     [Documentation]    Done
     [Tags]  approval  Himself  himself8
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     SMM_Keywords.Open Plant List Page
-    SMM_Keywords.Filter Plants By Status  pending
+    SMM_Keywords.Filter Plants By Status  Pending
     sleep  2s
-    SMM_Keywords.View Selected Plant Details  ${Branch["Name"]}
+    SMM_Keywords.View Details Of Selected Plant   ${Branch["Name"]}
     Sleep  2s
     SMM_Keywords.Approve Selected Plant
     Sleep  3s
@@ -142,7 +139,7 @@ Check the edit process of customer details when customer is approved by departme
     [Documentation]    Done
     [Tags]  customerapproved  Himself  himself9
     BrowserControl.Switch To    Customer
-    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
+    Common_Keywords.Set Test Variables    Company=Company Customer 4    Branch=Branch Customer 3    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     SMM_Keywords.View Customer Registration

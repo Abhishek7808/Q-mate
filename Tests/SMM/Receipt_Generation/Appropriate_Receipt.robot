@@ -28,7 +28,7 @@ To check the process Appropriate Receipt
     #Input Valid Value    Receipt Add Button
     #Input Valid Value    Generate Receipt Submit Button
     Sleep    3s
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     sleep  2s
     click button  btnactionApprove
     sleep  2s

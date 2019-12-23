@@ -1,12 +1,17 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 # robot -d Results Tests/SMM/01__Customer_Registration/03__Manage_Customer_Registration.robot
 
@@ -17,16 +22,16 @@ To check the edit process of customer details when customer is not approved by d
     [Tags]  manage  mnotapproved  manage1
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    Go To Customer List
-    Apply Filter    1      #Draft
+    SMM_Keywords.Open Plant List Page
+    SMM_Keywords.Filter Plants By Status    Draft      #Draft
     sleep  3s
-    View Company Details
-    Company Registration By Department    Draft
-    Go To Customer List
-    Apply Filter    4
+    SMM_Keywords.View Details Of Selected Plant
+    SMM_Keywords.Company Registration By Department    Draft
+    SMM_Keywords.Open Plant List Page
+    SMM_Keywords.Filter Plants By Status    Approved
     sleep  3s
-    page should contain element  //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/button/span[contains(text(),'Approved')]
+    BrowserControl.Switch To    Verify
+    SMM_Keywords.Verify That Customer Has Been Approved   ${Branch["Name"]}
 
 To check the edit process of customer details when customer is approved by department
     [Documentation]    Edits the details of a customer when it has been approved by department
@@ -47,15 +52,15 @@ Check Cancel Customer Registration
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1    #jaipur
     Go To Customer List
-    Apply Filter    4
+    SMM_Keywords.Filter Plants By Status    4
     sleep  3s
-    View Company Details
+    SMM_Keywords.View Details Of Selected Plant
     Input Valid Value    Customer Details Deactive Button
     Sleep    2s
     BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Customer List
-    Apply Filter    667
+    SMM_Keywords.Filter Plants By Status    667
     Wait Until Keyword Succeeds    5s    250ms    Page Should Contain    ${Branch["Name"]}  #,${Company["Company Name"]}
     #&{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Company["Company Name"]} (${Company["Enter PAN"]})
     #Go To Add Purchase Order From Department
@@ -72,15 +77,15 @@ Check registration edit functionality, when account deactivated
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     Go To Customer List
-    Apply Filter    667
+    SMM_Keywords.Filter Plants By Status    667
     sleep  3s
-    View Company Details
-    Company Registration By Department    Activate
+    SMM_Keywords.View Details Of Selected Plant
+    SMM_Keywords.Company Registration By Department    Activate
     BrowserControl.Switch To    Verify
     Login From Department    megha.rsmml    admin
     Go To Customer List
     Input Valid Value    Customer Search By Branch    ${Branch["Name"]}
-    Apply Filter    4
+    SMM_Keywords.Filter Plants By Status    4
     Sleep    2s
     Page Should Contain Element    //span[contains(text(),'${Branch["Name"]}')]
     #One more scenario gets added, here we don't have any button of update or submit, there is only one Active Button
