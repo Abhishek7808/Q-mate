@@ -21,7 +21,7 @@ Check Request CRO process
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2   FI=FI 2    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     #Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
@@ -55,7 +55,7 @@ View CRO request status
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 1    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
@@ -79,7 +79,7 @@ Check edit functionality when CRO is pending
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
@@ -96,7 +96,7 @@ Check that financial instrument available balance should be more than or equal t
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
@@ -121,7 +121,7 @@ Check that CRO quantity cannot be greater than PO remaining balance
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder

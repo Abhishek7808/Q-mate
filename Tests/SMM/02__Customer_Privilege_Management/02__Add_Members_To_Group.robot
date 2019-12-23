@@ -1,15 +1,20 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
 
@@ -20,39 +25,28 @@ Check 'Add Members To Group'
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    btnCreateGroup
-    Fill Group
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
-    ${status}  run keyword and return status  Wait Until Keyword Succeeds    5s    200ms    Click Button    addMember
-    log  ${status}
-    run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    addMember button not appreared
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Groups
+    SMM_Keywords.Create New Group
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 3"]}"]}
-    ${status}  run keyword and return status  Wait Until Keyword Succeeds    5s    200ms    Click Element    //td[contains(text(),'${Branch["Name"]}')]/following-sibling::td/button[@id='addF']
-    log  ${status}
-    run keyword if  ${status} == ${False}  run keyword and continue on failure  fail    addF button not appreared
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[@aria-hidden='true']
+    SMM_Keyworda.Add Member To The Group  ${Branch["Name"]}
     Sleep    2s
     SMM_Keywords.Go To Profile Selection Page
-    # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
-    # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Groups
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Sleep    2s
-    Element Should Be Visible    //h2[contains(text(),'Group member')]
+    SMM_Keywords.Verify Member Status
 
 Check that only group admin should have right to add members in a group
     [Tags]  Addmember  addmember2
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2  #jodhpur
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Groups
+    SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     Sleep    2s
-    Page Should Not Contain Button    addMember
+    SMM_Keywords.Verify Absence Of Add Member Rights
+

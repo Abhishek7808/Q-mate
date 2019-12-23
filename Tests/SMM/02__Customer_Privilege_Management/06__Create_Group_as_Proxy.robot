@@ -1,13 +1,20 @@
 *** Settings ***
-Test Teardown     Go To Base State
 Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}/Common_Keywords.robot
+Test Teardown     Go To Base State
+Library           SeleniumLibrary
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           RequestsLibrary
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
-Library           SeleniumLibrary
-
-
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Check Group Creation

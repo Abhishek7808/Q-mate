@@ -21,7 +21,7 @@ Add Financial Instrument
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
@@ -31,7 +31,7 @@ Add Financial Instrument
     Element Should Be Visible    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
     SMM_Keywords.Go To Profile Selection Page
     Common_Keywords.Set Test Variables    Branch=Branch Customer 1    FI=FI 1
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
     Wait Until Keyword Succeeds    5s    200ms    Click Button    btnAddFiInstrument
@@ -48,7 +48,7 @@ Check the edit process for pending FI
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
@@ -65,7 +65,7 @@ Check that only after Financial Instrument approval, CRO can be generated
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    FI=FI 2   PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
@@ -114,7 +114,7 @@ Check edit functionality for approved FI
     Sleep    2s
     Approve FI
     BrowserControl.Switch To    Customer
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList

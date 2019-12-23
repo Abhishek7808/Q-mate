@@ -1,16 +1,20 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
-
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Reject group request process
@@ -19,10 +23,9 @@ Reject group request process
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
+    SMM_Keywords.View Customer Groups
     Sleep    2s
     Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     Sleep    2s
@@ -36,9 +39,8 @@ Reject group request process
     # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Groups
     Sleep    2s
     Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     Sleep    2s
@@ -52,10 +54,9 @@ Accept group request process
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
+    SMM_Keywords.View Customer Groups
     Sleep    2s
     Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     ${status}  run keyword and return status  Click Button    sendAddreq
@@ -64,10 +65,9 @@ Accept group request process
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 1"]}"]}
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
+    SMM_Keywords.View Customer Groups
     Sleep    2s
     Click Element   //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
@@ -80,9 +80,8 @@ Accept group request process
     # Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
     # Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/GroupList
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Customer Groups
     Sleep    2s
     Click Element     //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     Sleep    2s

@@ -28,7 +28,7 @@ Check the agent registration process through agent tab
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
@@ -43,7 +43,7 @@ Check the agent registration process through PO form
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
@@ -61,7 +61,7 @@ To check the edit functionality of agent details from agent tab when PO pending 
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
@@ -85,7 +85,7 @@ To check the edit functionality of agent details from CRO form when CRO pending
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
@@ -118,7 +118,7 @@ To check the validations applied when agent selected in CRO request form
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
     Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder

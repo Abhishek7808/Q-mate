@@ -19,5 +19,5 @@ Create New Acccount
 
 Select Branch Of The given Company
     [Arguments]  ${branchName}  ${companyName}
-    Click Element    //div[contains(text(),'${branchName}, ${companyName}')]
+    Wait Until Keyword Succeeds    5s    200ms    Click Element    //div[contains(text(),'${branchName}, ${companyName}')]
 

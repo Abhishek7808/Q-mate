@@ -18,4 +18,4 @@ Verify That Given Group Is Exists On The Page
 
 View Memeber List Of The Group
     [Arguments]  ${groupName}
-    Click Element    //span[contains(text(),'${groupName}')]/../following-sibling::td/i[@title='Add']
+    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${groupName}')]/../following-sibling::td/i[@title='Add']

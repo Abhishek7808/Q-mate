@@ -136,9 +136,19 @@ Open Memeber List Of The Group
     [Arguments]  ${groupName}
     CustomerGroup.View Memeber List Of The Group  ${groupName}
 
-Add Member To The Group
+Send Add Member Request To The Group
     MemberList.Send Add Request
 
 Verify That Member Is Added To The Group
     [Arguments]  ${branchName}
     MemberList.Check For Member By Branch Name  ${branchName}
+
+Add Member To The Group
+    [Arguments]  ${memberBranchName}
+    MemberList.Approve Member Request  ${memberBranchName}
+
+Verify Member Status
+    MemberList.Check For Membership
+
+Verify Absence Of Add Member Rights
+    MemberList.Check For Add Member Button

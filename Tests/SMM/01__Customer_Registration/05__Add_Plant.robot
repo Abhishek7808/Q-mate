@@ -40,7 +40,7 @@ Check_Add_Plant_process
 #    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    Plant=Plant 1    PO=PO 2
 #    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
 #    Sleep    2s
-#    Click Element    //div[contains(text(),'${Branch["Name"]}, ${Company["Company Name"]}')]
+#    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
 #    Sleep    2s
 #    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
 #    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList

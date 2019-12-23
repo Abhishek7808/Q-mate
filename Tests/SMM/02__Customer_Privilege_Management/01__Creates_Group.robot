@@ -1,16 +1,20 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-#Library           SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
 
@@ -60,7 +64,7 @@ Request to join existing group, having same PAN no. as that of customer.
     SMM_Keywords.Open Memeber List Of The Group  ${Company["Enter PAN"]}
     #Click Element    //span[contains(text(),'${Company["Enter PAN"]}')]/../following-sibling::td/i[@title='Add']
     Sleep    2s
-    SMM_Keywords.Add Member To The Group
+    SMM_Keywords.Send Add Member Request To The Group
     Sleep    2s
     SMM_Keywords.Go To Profile Selection Page
     #Wait Until Keyword Succeeds    5s    200ms    Mouse Over    //span[contains(text(),'${SSO ID["Name"]}')]
@@ -74,4 +78,3 @@ Request to join existing group, having same PAN no. as that of customer.
     Sleep    2s
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 2"]}"]}
     SMM_Keywords.Verify That Member Is Added To The Group  ${Branch["Name"]}
-  
