@@ -48,7 +48,6 @@ Check the agent registration process through PO form
     Sleep    2s
     SMM_Keywords.View Purchase Order List As A Customer
     SMM_Keywords.Request Purchase Order By Customer
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[(text()='Request PO')]
     Sleep    2s
     Click Button    btnAddAgentPo
     Fill Agent

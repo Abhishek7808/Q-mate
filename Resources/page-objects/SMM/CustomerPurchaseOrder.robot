@@ -1,13 +1,9 @@
 *** Settings ***
-Documentation    Suite description
+
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+
 
 *** Keywords ***
-Provided precondition
-    Setup system under test
+Request Purchase Order
+     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[(text()='Request PO')]

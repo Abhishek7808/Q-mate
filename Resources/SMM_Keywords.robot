@@ -199,4 +199,4 @@ View Purchase Order List As A Customer
     CustomerNavigation.Open Purchase Order List Page
 
 Request Purchase Order By Customer
-    
+    CustomerPurchaseOrder.Request Purchase Order
