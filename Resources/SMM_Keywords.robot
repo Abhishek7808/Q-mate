@@ -193,10 +193,28 @@ View Agent List
     CustomerNavigation.Open Agent List Page
 
 Check For an Agent On Agent List Page
-    CustomerAgentList.Verify Presence Of Agent
+    [Arguments]  ${agentName}
+    CustomerAgentList.Verify Presence Of Agent  ${agentName}
 
 View Purchase Order List As A Customer
     CustomerNavigation.Open Purchase Order List Page
 
 Request Purchase Order By Customer
     CustomerPurchaseOrder.Request Purchase Order
+
+Add Agent Details
+    CustomerPurchaseOrder.Add Agent
+    CustomerPurchaseOrder.Fill Agent Details
+
+Fill Purchase Order Form
+    CustomerPurchaseOrder.Fill Purchase Order Details
+
+View Agent Details
+    CustomerAgentList.Open Agent Details
+
+Edit Agent Details
+    [Arguments]  ${newName}
+    CustomerAgentRegistration.Edit Agent Name  ${newName}
+
+View Purchase Order List By Customer
+    CustomerPOList.Open Purchase Order List

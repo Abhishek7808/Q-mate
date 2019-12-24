@@ -36,7 +36,7 @@ Check the agent registration process through agent tab
     Sleep    2s
     SMM_Keywords.View Agent List
     Sleep    2s
-    SMM_Keywords.Check For an Agent On Agent List Page
+    SMM_Keywords.Check For an Agent On Agent List Page  ${SSO ID["Name"]}
 
 Check the agent registration process through PO form
     [Tags]  Addagent  Addagent2
@@ -49,11 +49,9 @@ Check the agent registration process through PO form
     SMM_Keywords.View Purchase Order List As A Customer
     SMM_Keywords.Request Purchase Order By Customer
     Sleep    2s
-    Click Button    btnAddAgentPo
-    Fill Agent
+    SMM_Keywords.Add Agent Details
     Sleep    5s
-    Fill PO
-    Sleep    2s
+    SMM_Keywords.Fill Purchase Order Form
 
 To check the edit functionality of agent details from agent tab when PO pending or approved
     [Tags]  Addagent  Addagent3
@@ -63,16 +61,12 @@ To check the edit functionality of agent details from agent tab when PO pending 
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${SSO ID["Name"]}')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.View Agent List
+    SMM_Keywords.View Agent Details  ${SSO ID["Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Clear Text Value    agentName
-    Wait Until Keyword Succeeds    5s    200ms    Input Text Value    agentName    ${SSO ID["Name"]} UDAIPUR
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    btnSaveUpdate
+    SMM_Keywords.Edit Agent Details  ${SSO ID["Name"]} UDAIPUR
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+    SMM_Keywords.View Purchase Order List By Customer
     ${Product}    Get Substring    ${PO["Select Product"]}    0    -8
     log to console  ${Product}
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${Product}')]/../following-sibling::td/i[contains(@title,'View')]
@@ -87,8 +81,7 @@ To check the edit functionality of agent details from CRO form when CRO pending
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
+    SMM_Keywords.View Agent List
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${SSO ID["Name"]}')]/../following-sibling::td/i[@title='View']
     Sleep    2s
     Wait Until Keyword Succeeds    5s    200ms    Clear Text Value    agentName

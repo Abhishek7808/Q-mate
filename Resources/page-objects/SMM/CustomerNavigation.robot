@@ -21,8 +21,7 @@ Open Group List Page
     Wait Until Keyword Succeeds    5s    200ms    Click Link    ${groupList}
 
 Open Agent List Page
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CitizenServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Customer/AgentList
+    SMM_Keywords.View Agent List
 
 Open Purchase Order List Page
     Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
