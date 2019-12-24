@@ -9,7 +9,7 @@ Resource  ${PAGE OBJECTS}/SMM/PlantRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerGroups.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerAgentList.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
-Resource  ${PAGE OBJECTS}/SMM/CustomerPurchaseOrder.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerPoRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -200,14 +200,14 @@ View Purchase Order List As A Customer
     CustomerNavigation.Open Purchase Order List Page
 
 Request Purchase Order By Customer
-    CustomerPurchaseOrder.Request Purchase Order
+    CustomerPoList.Request Purchase Order
 
 Add Agent Details
-    CustomerPurchaseOrder.Add Agent
-    CustomerPurchaseOrder.Fill Agent Details
+    CustomerPoRegistration.Add Agent
+    CustomerPoRegistration.Fill Agent Details
 
 Fill Purchase Order Form
-    CustomerPurchaseOrder.Fill Purchase Order Details
+    CustomerPoRegistration.Fill Purchase Order Details
 
 View Agent Details
     CustomerAgentList.Open Agent Details
@@ -217,4 +217,12 @@ Edit Agent Details
     CustomerAgentRegistration.Edit Agent Name  ${newName}
 
 View Purchase Order List By Customer
-    CustomerPOList.Open Purchase Order List
+    CustomerPoList.Open Purchase Order List
+
+Select Purchase Order By Product
+    [Arguments]  ${productName}
+    CustomerPoList.Get Purchase Order Details By Product  ${productName}
+
+Verify Agent Name In Purchase Order
+    [Arguments]  ${agentName}
+    CustomerPoRegistration.
