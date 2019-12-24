@@ -95,11 +95,8 @@ To check the edit functionality of agent details from CRO form when CRO pending
     SMM_Keywords.Select Purchase Order By Product  ${PO["Select Product"]}
     Sleep    2s
     SMM_Keywords.Request CRO From PO Form
-    SMM_Keywords.Select Purchase Order In CRO Form
-    Select From List By index    purchaseOrderId    1
-    Press Key    purchaseOrderId    //09
-    Sleep    2s
-    Element Should Be Visible    //span[contains(text(),'${SSO ID["Name"]}')]
+    SMM_Keywords.Select Purchase Order In CRO Form  ${poNumber}
+    SMM_Keywords.Verify Agent Name In Contract Release Order  ${SSO ID["Name"]}
 
 To check the validations applied when agent selected in CRO request form
     #TODO : waiting for Request CRO button
@@ -110,18 +107,9 @@ To check the validations applied when agent selected in CRO request form
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.View CRO List By Customer
+    SMM_Keywords.Request CRO By Customer
     Sleep    5s
-    ${List Item}    Get List Items    purchaseOrderId
-    ${List Item}    Catenate    ${List Item}
-    ${List Item}    Split String    ${List Item}    ,
-    ${List Item}    Get From List    ${List Item}    1
-    ${List Item}    Split String    ${List Item}    '
-    ${List Item}    Get From List    ${List Item}    1
-    Select From List By Label    purchaseOrderId    ${List Item}
-    Press Key    purchaseOrderId    //09
+    SMM_Keywords.Select Purchase Order In CRO Form
     Sleep    2s
-    ${Count}    Get Element Count    //div[@role='button']
-    Run Keyword If    ${Count}==1    Element Should Be Visible    //span[contains(text(),'${SSO ID["Name"]}')]
+    SMM_Keywords.Verify Agent Name In Contract Release Order  ${SSO ID["Name"]}

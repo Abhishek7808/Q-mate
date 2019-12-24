@@ -22,3 +22,6 @@ Fetch Purchase Order Number
     [Arguments]  ${productName}
     ${PO No}  Get Text    //span[contains(text(),'30% P205 Crushed Rock phosphate')]/../preceding-sibling::td[2]
     [Return]    ${PO No}
+
+Generate Purchase Order
+    Input Valid Value    Add Purchase Order

@@ -56,9 +56,9 @@ Go To Add Product From Department
 #    Go To Customer List
 #    Input Valid Value    Add Customer
 
-Go To Add Purchase Order From Department
-    Go To Purchase Order List
-    Input Valid Value    Add Purchase Order
+#Go To Add Purchase Order From Department
+#    Go To Purchase Order List
+#    Input Valid Value    Add Purchase Order
 
 Go To Financial Instrument List From Department
     Go To    ${LOGIN URL}/SMM/Finance/InstrumentList
@@ -200,25 +200,25 @@ Fill PO By Department
     #Input Valid Value    Add Agent Save Button
     Wait Until Keyword Succeeds    5s    250ms    Input Search Agent    react-select-2-input    ${SSO ID["Name"]}
     Wait Until Keyword Succeeds    5s    250ms    Input Valid Value    Purchase Order Submit Button
-
-Fill Agent By Department
-    Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
-    sleep  2s
-    Input Valid Value    Add Agent Agent Name    ${SSO ID["Name"]}
-    Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}
-    ${Status}    Run Keyword And Return Status    Page Should Contain Element    agentModalPinCode
-    Run Keyword Unless    ${Status}    Input Valid Value    Add Agent Pincode    ${SSO ID["Pincode"]}
-    Input Valid Value    Add Agent City    ${SSO ID["City"]}
-    Input Valid Value    Add Agent State    ${SSO ID["State"]}
-    Input Valid Value    Add Agent Address    ${SSO ID["Address"]}
-    Input Valid Value    Add Agent Mobile Number    ${SSO ID["Mobile Number"]}
-    #Input Valid Value    Add Agent Telephone Number
-    Input Valid Value    Add Agent Alternate Number    ${SSO ID["Alternate Mobile Number"]}
-    Input Valid Value    Add Agent Fax    ${SSO ID["Fax"]}
-    Input Valid Value    Add Agent Email    ${SSO ID["Email ID"]}
-    Input Valid Value    Add Agent Save Button
-    ${message}  Handle Alert
-    run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
+#
+#Fill Agent By Department
+#    Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
+#    sleep  2s
+#    Input Valid Value    Add Agent Agent Name    ${SSO ID["Name"]}
+#    Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}
+#    ${Status}    Run Keyword And Return Status    Page Should Contain Element    agentModalPinCode
+#    Run Keyword Unless    ${Status}    Input Valid Value    Add Agent Pincode    ${SSO ID["Pincode"]}
+#    Input Valid Value    Add Agent City    ${SSO ID["City"]}
+#    Input Valid Value    Add Agent State    ${SSO ID["State"]}
+#    Input Valid Value    Add Agent Address    ${SSO ID["Address"]}
+#    Input Valid Value    Add Agent Mobile Number    ${SSO ID["Mobile Number"]}
+#    #Input Valid Value    Add Agent Telephone Number
+#    Input Valid Value    Add Agent Alternate Number    ${SSO ID["Alternate Mobile Number"]}
+#    Input Valid Value    Add Agent Fax    ${SSO ID["Fax"]}
+#    Input Valid Value    Add Agent Email    ${SSO ID["Email ID"]}
+#    Input Valid Value    Add Agent Save Button
+#    ${message}  Handle Alert
+#    run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
 
 
 Update PO By Department

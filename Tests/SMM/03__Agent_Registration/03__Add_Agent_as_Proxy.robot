@@ -1,56 +1,45 @@
 *** Settings ***
-Test Teardown     Go To Base State
 Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}/Common_Keywords.robot
+Test Teardown     Go To Base State
+Library           SeleniumLibrary
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           RequestsLibrary
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
-Library           SeleniumLibrary
-
-
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 To check the process when department user as proxy add agent from menu
     [Documentation]    Adds an agent (transporter) to a company by department
     [Tags]   Addagentasproxy  Addagentasproxy1
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
+    SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 2
-    Go To Add Purchase Order From Department
-    #Fill To Add Agent
-    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
-    Input Valid Value    Purchase Order Enter Customer PAN or Name    ${Val}
-    #Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Button
-    #Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
-    #Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}
-    #Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Save Button
-    #Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Agent    ${SSO ID["Name"]}
-    Click Button    btnAddAgentPo
-    Fill Agent By Department
+    SMM_Keywords.Add Purchase Order From Department
+    SMM_Keywords.Fill Customer PAN In PO Form  ${Company["Enter PAN"]}  ${Branch["Name"]}
+    SMM_Keywords.Add Agent Details In PO Form
     sleep  3s
-    input text  react-select-2-input  ${SSO ID["Name"]}
-    Press Key    react-select-2-input    \\13
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Submit Button
+    SMM_Keywords.Select Agent In PO Form  ${SSO ID["Name"]}
+    SMM_Keywords.Submit PO Form
 
 To check the process when department user add agent from PO form
     [Documentation]    Adds an agent from PO form
     [Tags]   Addagentasproxy  Addagentasproxy2
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
+    SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 2
-    Go To Add Purchase Order From Department
-    #Fill To Add Agent
-    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
-    Input Valid Value    Purchase Order Enter Customer PAN or Name    ${Val}
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Button
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
-    Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Add Agent Save Button
-    ${message}  Handle Alert
-    run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
-    sleep  4s
-    # Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Agent    ${SSO ID["Name"]}
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Submit Button
+    SMM_Keywords.Add Purchase Order From Department
+    SMM_Keywords.Fill Customer PAN In PO Form  ${Company["Enter PAN"]}  ${Branch["Name"]}
+    SMM_Keywords.Add Agent Details In PO Form
+    SMM_Keywords.Submit PO Form
 
 #To check the process when DU change Agent Details by selecting PO
 #    [Tags]    Skip

@@ -261,3 +261,33 @@ Request CRO From PO Form
     CustomerPoRegistration.Request CRO
 
 Select Purchase Order In CRO Form
+    [Arguments]  ${poNumber}=None
+    CustomerCRoRegistration.Select Purchase Order for CRO  ${poNumber}
+
+Verify Agent Name In Contract Release Order
+    [Arguments]  ${agentName}
+    CustomerCRoRegistration.Check For Agent Name Contract Release Order Form
+
+View CRO List By Customer
+    CustomerCRoList.Open CRO List By Customer
+
+Request CRO By Customer
+    CustomerCRoList.Request CRO
+
+Add Purchase Order From Department
+    PurchaseOrderList.Generate Purchase Order
+
+Fill Company Name In PO Form
+    [Arguments]  ${panNo}  ${branchName}
+    PurchaseOrderRegistration.Enter Customer PAN  ${panNo}  ${branchName}
+
+Add Agent Details In PO Form
+    PurchaseOrderRegistration.Add Agent
+    PurchaseOrderRegistration.Fill Agent REgistration Form
+
+Select Agent In PO Form
+    [Arguments]  ${agentName}
+    PurchaseOrderRegistration.Select Agent From Registered Agents  ${agentName}
+
+Submit PO Form
+    PurchaseOrderRegistration.Submit Form
