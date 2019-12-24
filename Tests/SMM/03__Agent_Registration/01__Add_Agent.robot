@@ -69,7 +69,6 @@ To check the edit functionality of agent details from agent tab when PO pending 
     SMM_Keywords.View Purchase Order List By Customer
     SMM_Keywords.Select Purchase Order By Product  ${PO["Select Product"]}
     SMM_Keywirds.Verify Agent Name In Purchase Order  ${SSO ID["Name"]} UDAIPUR
-    Element Should Be Visible    //span[contains(text(),'${SSO ID["Name"]} UDAIPUR')]
 
 To check the edit functionality of agent details from CRO form when CRO pending
     [Tags]  Addagent  Addagent4
@@ -80,12 +79,14 @@ To check the edit functionality of agent details from CRO form when CRO pending
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     SMM_Keywords.View Agent List
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${SSO ID["Name"]}')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.View Agent Details  ${SSO ID["Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Clear Text Value    agentName
-    Wait Until Keyword Succeeds    5s    200ms    Input Text Value    agentName    ${SSO ID["Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    btnSaveUpdate
+    SMM_Keywords.Edit Agent Details  ${SSO ID["Name"]}
     Sleep    2s
+    BrowserControl.Switch To    Verify
+    SMM_Keywords.Open Purchase Order List By Department
+
+
     ${PO No}  run keyword and ignore error    Approve PO By Product
     BrowserControl.Switch To    Customer
     Sleep    1s

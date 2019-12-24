@@ -255,8 +255,7 @@ Approve PO
 #    [Return]    ${PO No}
 
 Approve PO By Product
-    BrowserControl.Switch To    Verify
-    Sleep    2s
+    #BrowserControl.Switch To    Verify
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/PurchaseOrder
     Sleep    2s
     Click Element    dropdownOpen

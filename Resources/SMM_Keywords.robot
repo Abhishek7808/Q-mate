@@ -225,4 +225,7 @@ Select Purchase Order By Product
 
 Verify Agent Name In Purchase Order
     [Arguments]  ${agentName}
-    CustomerPoRegistration.
+    CustomerPoRegistration.Check For Agent Name In Purchase Order Form  ${agentName}
+
+Open Purchase Order List By Department
+    PurchaseOrderList.Go To Purchase Order List Page

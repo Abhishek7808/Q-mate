@@ -3,10 +3,7 @@
 
 *** Test Cases ***
 
-
 *** Keywords ***
-
-
 Add Agent
     Click Button    btnAddAgentPo
 
@@ -50,3 +47,7 @@ Fill Purchase Order Details
     Press Key    react-select-2-input    \\13
     #Input Valid Value    Purchase Order Agent  ${SSO ID["Name"]}
     Input Valid Value    Purchase Order Submit Button
+
+Check For Agent Name In Purchase Order Form
+    [Arguments]   ${agentName}
+    Element Should Be Visible    //span[contains(text(),'${agentName}')]
