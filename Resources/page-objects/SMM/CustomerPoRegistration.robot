@@ -25,7 +25,7 @@ Fill Agent Details
     ${message}  Handle Alert
     run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
 
-Fill Purchase Order Details
+Fill Purchase Order Form
     ${Status}    Run Keyword And Return Status    Should Be Equal    ${PO["Coming Against Auction"]}    Select
     sleep  2s
     Input Valid Value    Purchase Order Coming Against Auction    ${PO["Coming Against Auction"]}
@@ -57,3 +57,6 @@ Switch To CRO List
 
 Request CRO
     click element  //button[@id='btnRequestCRO']
+
+Check For Approval Of Purchase Order From Customer
+    Page should Contain Element    //button/span[text()='Approved']

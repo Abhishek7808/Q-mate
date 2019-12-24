@@ -11,7 +11,7 @@ Go To Purchase Order List Page
 Apply Purchase Order Filter
     [Arguments]  ${poStatus}
     Click Element    dropdownOpen
-    Select From List By Label    plantStatus    Pending
+    Select From List By Label    plantStatus    ${poStatus}
     Click Button    btnApplyFillter
 
 Open Details Of Purchase Order Selected By Product Name
@@ -25,3 +25,10 @@ Fetch Purchase Order Number
 
 Generate Purchase Order
     Input Valid Value    Add Purchase Order
+
+Open Details Of Purchase Order Selected By Purchase Order Number
+    [Arguments]  ${poNumber}
+    Click Element    //span[contains(text(),'${PO No}')]/../following-sibling::td/i[contains(text(),'visibility')]
+
+#Search Purchase Order By PO Number
+#    [Arguments]  ${poNumber}

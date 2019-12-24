@@ -13,46 +13,37 @@ Resource          ${RESOURCES}${/}Fields${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
-
 *** Test Cases ***
 Request for Purchase Order(PO)
     [Tags]  requestpurchaseorder  rqpo1
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request PO')]
-    Sleep    2s
-    Fill PO
-    Sleep    3s
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Purchase Order List By Customer
+    SMM_Keywords.Generate Purchase Order By Customer
 
 Get notification after PO request approved/rejected
     [Tags]  requestpurchaseorder  rqpo2
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Purchase Order List By Customer
     Sleep  2s
-    ${PO No}  get text  //span[contains(text(),'Pending')]/../../preceding-sibling::td/span[@title='${PO["Select Product"]}']/../preceding-sibling::td[2]
-    #/../preceding-sibling::td[2]
+    SMM_Keywords.Get Purchase Order Number From Pending PO  ${PO["Select Product"]}
+    ${poNumber}  SMM_Keywords.Get Purchase Order Number From Pending PO
     Sleep    3s
     BrowserControl.Switch To    Verify
-    Login From Department    megha.rsmml    admin
-    Approve PO  ${PO No}
+    SMM_Keywords.Approve Pending PO By PO Number  ${poNumber}
     BrowserControl.Switch To    Customer
     Sleep    1s
-    Click Element    dropdownOpen
-    Select From List By Label    status    Approved
-    Click Button    btnApplyFillter
+    SMM_Keywords.Filter Purchase Order List By Status  Approved
+    SMM_Keywords.Search Purchase Order in Purchase Order List By Customer  ${poNumber}
     Sleep    1s
-    input text  searchText  ${PO No}
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${PO No}')]/../following-sibling::td/i[contains(text(),'visibility')]
+    SMM_Keywords.View Purchase Order By PO Number  ${PO No}
     Sleep    3s
-    Page should Contain Element    //button/span[text()='Approved']
+    Verify Approval Of Purchase Order
 
 Check edit functionality when status of PO is approved/rejected.
     [Tags]  requestpurchaseorder  rqpo3

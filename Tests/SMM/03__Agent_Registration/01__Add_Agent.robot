@@ -51,7 +51,7 @@ Check the agent registration process through PO form
     Sleep    2s
     SMM_Keywords.Add Agent Details
     Sleep    5s
-    SMM_Keywords.Fill Purchase Order Form
+    SMM_Keywords.Add Purchase Order Details
 
 To check the edit functionality of agent details from agent tab when PO pending or approved
     [Tags]  Addagent  Addagent3
@@ -86,7 +86,7 @@ To check the edit functionality of agent details from CRO form when CRO pending
     BrowserControl.Switch To    Verify
     SMM_Keywords.Approve Pending Purchase Order  ${PO["Select Product"]}
     sleep  4s
-    SMM_Keywords.Filter Purchase Order By Status  Approved
+    SMM_Keywords.Filter Purchase Order List By Status  Approved
     sleep  3s
     ${poNumber}  SMM_Keywords.Get Purchase Order Number  ${PO["Select Product"]}
     BrowserControl.Switch To    Customer

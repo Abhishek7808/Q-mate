@@ -11,6 +11,16 @@ Resource  ${PAGE OBJECTS}/SMM/CustomerAgentList.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerPoRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerMemberList.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerAgentRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerCRoList.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerCRoRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/PurchaseOrderRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/PurchaseOrderList.robot
+Resource  ${PAGE OBJECTS}/SMM/GroupRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/GroupList.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerPoList.robot
+
+
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
 
@@ -206,8 +216,8 @@ Add Agent Details
     CustomerPoRegistration.Add Agent
     CustomerPoRegistration.Fill Agent Details
 
-Fill Purchase Order Form
-    CustomerPoRegistration.Fill Purchase Order Details
+Add Purchase Order Details
+    CustomerPoRegistration.Fill Purchase Order Form
 
 View Agent Details
     CustomerAgentList.Open Agent Details
@@ -230,7 +240,7 @@ Verify Agent Name In Purchase Order
 Open Purchase Order List By Department
     PurchaseOrderList.Go To Purchase Order List Page
 
-Filter Purchase Order By Status
+Filter Purchase Order List By Status
     [Arguments]  ${poStatus}
     PurchaseOrderList.Apply Purchase Order Filter  ${poStatus}
 
@@ -242,7 +252,7 @@ Approve Pending Purchase Order
     [Arguments]  ${productName}
     Open Purchase Order List By Department
     Sleep  2s
-    Filter Purchase Order By Status  Pending
+    Filter Purchase Order List By Status  Pending
     sleep  3s
     View Purchase Order By Product  ${productName}
     Sleep  3s
@@ -283,7 +293,7 @@ Fill Company Name In PO Form
 
 Add Agent Details In PO Form
     PurchaseOrderRegistration.Add Agent
-    PurchaseOrderRegistration.Fill Agent REgistration Form
+    PurchaseOrderRegistration.Fill Agent Registration Form
 
 Select Agent In PO Form
     [Arguments]  ${agentName}
@@ -291,3 +301,38 @@ Select Agent In PO Form
 
 Submit PO Form
     PurchaseOrderRegistration.Submit Form
+
+Generate Purchase Order By Customer
+    CustomerPoList.Request Purchase Order
+    CustomerPoRegistration.Fill Purchase Order Form
+
+Get Purchase Order Number From Pending PO
+    [Arguments]  ${productName}
+    ${poNumber}  CustomerPoList.Fetch PO Number From Pending PO  ${productName}
+    Return From Keyword  ${poNumber}
+
+Approve Pending PO By PO Number
+    [Arguments]  ${poNumber}
+    Open Purchase Order List By Department
+    Sleep  2s
+    Filter Purchase Order List By Status  Pending
+    sleep  3s
+    View Purchase Order By Purchase Order Number  ${poNumber}
+    Sleep  3s
+    PurchaseOrderRegistration.Approve Purchase Order
+
+View Purchase Order By Purchase Order Number
+    [Arguments]  ${poNumber}
+    PurchaseOrderList.Open Details Of Purchase Order Selected By Purchase Order Number  ${poNumber}
+
+Search For Purchase Order in Purchase Order List By Customer
+    [Arguments]  ${poNumber}
+    CustomerPoList.Search Purchase Order By PO Number
+
+View Purchase Order By PO Number From Customer
+    [Arguments]  ${poNumber}
+    CustomerPoList.Open Purchase Order By PO Number  ${poNumber}
+
+Verify Approval Of Purchase Order
+    CustomerPoRegistration.Check For Approval Of Purchase Order From Customer
+
