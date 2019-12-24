@@ -51,3 +51,9 @@ Fill Purchase Order Details
 Check For Agent Name In Purchase Order Form
     [Arguments]   ${agentName}
     Element Should Be Visible    //span[contains(text(),'${agentName}')]
+
+Switch To CRO List
+    click element  //span[contains(text(),'CRO List')]
+
+Request CRO
+    click element  //button[@id='btnRequestCRO']

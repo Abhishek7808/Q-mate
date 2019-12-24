@@ -246,4 +246,18 @@ Approve Pending Purchase Order
     sleep  3s
     View Purchase Order By Product  ${productName}
     Sleep  3s
-    Approve Purchase Order
+    PurchaseOrderRegistration.Approve Purchase Order
+
+Get Purchase Order Number
+    [Arguments]  ${productName}
+    ${poNumber}  PurchaseOrderList.Fetch Purchase Order Number  ${productName}
+    [Return]    ${poNumber}
+
+View CRO List In Po Form
+    CustomerPoRegistration.Switch To CRO List
+
+Request CRO From PO Form
+    CustomerPoRegistration.Switch To CRO List
+    CustomerPoRegistration.Request CRO
+
+Select Purchase Order In CRO Form

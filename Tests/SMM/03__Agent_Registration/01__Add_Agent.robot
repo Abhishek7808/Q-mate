@@ -84,25 +84,18 @@ To check the edit functionality of agent details from CRO form when CRO pending
     SMM_Keywords.Edit Agent Details  ${SSO ID["Name"]}
     Sleep  2s
     BrowserControl.Switch To    Verify
-    SMM_Keywords.Open Purchase Order List By Department
-    Sleep  2s
-    SMM_Keywords.Filter Purchase Order By Status  Pending
-    sleep  3s
-    SMM_Keywords.View Purchase Order By Product  ${PO["Select Product"]}
-    Sleep  3s
     SMM_Keywords.Approve Pending Purchase Order  ${PO["Select Product"]}
-
-    ${PO No}  run keyword and ignore error    Approve PO By Product
+    sleep  4s
+    SMM_Keywords.Filter Purchase Order By Status  Approved
+    sleep  3s
+    ${poNumber}  SMM_Keywords.Get Purchase Order Number  ${PO["Select Product"]}
     BrowserControl.Switch To    Customer
     Sleep    1s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
-    ${Product}    Get Substring    ${PO["Select Product"]}    0    -8
-    log to console  ${Product}
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${Product}')]/../following-sibling::td/i[contains(@title,'View')]
+    SMM_Keywords.View Purchase Order List By Customer
+    SMM_Keywords.Select Purchase Order By Product  ${PO["Select Product"]}
     Sleep    2s
-    click element  //span[contains(text(),'CRO List')]
-    click element  //button[@id='btnRequestCRO']
+    SMM_Keywords.Request CRO From PO Form
+    SMM_Keywords.Select Purchase Order In CRO Form
     Select From List By index    purchaseOrderId    1
     Press Key    purchaseOrderId    //09
     Sleep    2s
