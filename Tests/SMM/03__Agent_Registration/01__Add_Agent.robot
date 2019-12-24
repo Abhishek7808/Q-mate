@@ -75,17 +75,22 @@ To check the edit functionality of agent details from CRO form when CRO pending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Sleep    2s
+    Sleep  2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Sleep    2s
+    Sleep  2s
     SMM_Keywords.View Agent List
     SMM_Keywords.View Agent Details  ${SSO ID["Name"]}
-    Sleep    2s
+    Sleep  2s
     SMM_Keywords.Edit Agent Details  ${SSO ID["Name"]}
-    Sleep    2s
+    Sleep  2s
     BrowserControl.Switch To    Verify
     SMM_Keywords.Open Purchase Order List By Department
-
+    Sleep  2s
+    SMM_Keywords.Filter Purchase Order By Status  Pending
+    sleep  3s
+    SMM_Keywords.View Purchase Order By Product  ${PO["Select Product"]}
+    Sleep  3s
+    SMM_Keywords.Approve Pending Purchase Order  ${PO["Select Product"]}
 
     ${PO No}  run keyword and ignore error    Approve PO By Product
     BrowserControl.Switch To    Customer

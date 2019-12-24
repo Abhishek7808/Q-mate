@@ -229,3 +229,21 @@ Verify Agent Name In Purchase Order
 
 Open Purchase Order List By Department
     PurchaseOrderList.Go To Purchase Order List Page
+
+Filter Purchase Order By Status
+    [Arguments]  ${poStatus}
+    PurchaseOrderList.Apply Purchase Order Filter  ${poStatus}
+
+View Purchase Order By Product
+    [Arguments]  ${productName}
+    PurchaseOrderList.Open Details Of Purchase Order Selected By Product Name  ${productName}
+
+Approve Pending Purchase Order
+    [Arguments]  ${productName}
+    Open Purchase Order List By Department
+    Sleep  2s
+    Filter Purchase Order By Status  Pending
+    sleep  3s
+    View Purchase Order By Product  ${productName}
+    Sleep  3s
+    Approve Purchase Order

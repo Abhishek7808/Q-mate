@@ -256,14 +256,14 @@ Approve PO
 
 Approve PO By Product
     #BrowserControl.Switch To    Verify
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/PurchaseOrder
-    Sleep    2s
-    Click Element    dropdownOpen
-    Select From List By Label    plantStatus    Pending
-    Click Button    btnApplyFillter
-    Sleep    3s
-    Click Element    //span[contains(text(),'${PO["Select Product"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
-    Sleep    3s
+    #Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/PurchaseOrder
+    #Sleep    2s
+    #Click Element    dropdownOpen
+    #Select From List By Label    plantStatus    Pending
+    #Click Button    btnApplyFillter
+    #Sleep    3s
+    #Click Element    //span[contains(text(),'${PO["Select Product"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
+
     ${Status}    Run Keyword And Return Status    Page Should Not Contain Button    btnactionApprove
     Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms    Click Element    //span[contains(text(),'Company Details')]
     Run Keyword If    ${Status}    Sleep    3s

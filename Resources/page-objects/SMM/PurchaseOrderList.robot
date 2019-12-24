@@ -1,13 +1,19 @@
 *** Settings ***
-Documentation    Suite description
 
-*** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+
+*** Variables ***
+${pageUrl}  SMM/PurchaseOrder
 
 *** Keywords ***
-Provided precondition
-    Setup system under test
+Go To Purchase Order List Page
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
+
+Apply Purchase Order Filter
+    [Arguments]  ${poStatus}
+    Click Element    dropdownOpen
+    Select From List By Label    plantStatus    Pending
+    Click Button    btnApplyFillter
+
+Open Details Of Purchase Order Selected By Product Name
+    [Arguments]  ${productName}
+    Click Element    //span[contains(text(),'${productName}')]/../following-sibling::td/i[contains(text(),'visibility')]
