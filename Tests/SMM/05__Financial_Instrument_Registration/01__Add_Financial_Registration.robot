@@ -67,8 +67,7 @@ Check that only after Financial Instrument approval, CRO can be generated
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+SMM_Keywords.View Purchase Order List By Customer
     Sleep    3s
     Click Element    dropdownOpen
     Select From List By Label    status    Approved

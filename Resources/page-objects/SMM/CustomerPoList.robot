@@ -6,8 +6,7 @@
 
 *** Keywords ***
 Open Purchase Order List
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+SMM_Keywords.View Purchase Order List By Customer
 
 Request Purchase Order
      Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[(text()='Request PO')]

@@ -24,5 +24,4 @@ Open Agent List Page
     SMM_Keywords.View Agent List
 
 Open Purchase Order List Page
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+SMM_Keywords.View Purchase Order List By Customer

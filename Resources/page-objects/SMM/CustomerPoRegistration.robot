@@ -60,3 +60,13 @@ Request CRO
 
 Check For Approval Of Purchase Order From Customer
     Page should Contain Element    //button/span[text()='Approved']
+
+Edit Purchase Order
+    Click Button    btnEditPo
+    Input Text    newPoQuantity    4500
+    Input Text    newPinCode    313002
+    Input Search Agent    react-select-2-input    YUVRAJ SINGH CHAUHAN
+    Click Button    btnSubmitChangeReq
+    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[text()='Update History']
+    Sleep    2s
+    Page Should Contain Element    //td/i[contains(text(),'visibility')]

@@ -53,39 +53,24 @@ Check edit functionality when status of PO is approved/rejected.
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
+    SMM_Keywords.View Purchase Order List By Customer
     Sleep    3s
-    Click Element    dropdownOpen
-    Select From List By Label    status    Approved
-    Click Button    btnApplyFillter
+    SMM_Keywords.Filter Purchase Order List By Status  Approved
     Sleep    1s
-    ${Product}    Get Substring    ${PO["Select Product"]}    0    -8
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${Product}')]/../following-sibling::td/i[contains(text(),'visibility')]
-    Sleep    2s
-    Click Button    btnEditPo
-    Input Text    newPoQuantity    4500
-    Input Text    newPinCode    313002
-    Input Search Agent    react-select-2-input    YUVRAJ SINGH CHAUHAN
-    Click Button    btnSubmitChangeReq
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[text()='Update History']
-    Sleep    2s
-    Page Should Contain Element    //td/i[contains(text(),'visibility')]
+    SMM_Keywords.Select Purchase Order By Product  ${PO["Select Product"]}
+    SMM_Keywords.Edit Purchase Order Details
 
 Check that signed copy of End User Agreement is mandatory for PO approval
     [Tags]  requestpurchaseorder  rqpo4
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request PO')]
-    Sleep    2s
-    Fill PO
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Purchase Order List By Customer
+    SMM_Keywords.Generate Purchase Order By Customer
     Sleep    3s
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request PO')]
     #TODO: couldnot understand the use of code below
+#    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request PO')]
 #    Sleep    2s
 #    Select From List By Label    unit    ...Nagaur(07)
 #    Sleep    2s
@@ -98,10 +83,6 @@ Request for Purchase Order(PO) for auctionable products
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request PO')]
-    Sleep    2s
-    Fill PO
-    Sleep    3s
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Purchase Order List By Customer
+    SMM_Keywords.Generate Purchase Order By Customer

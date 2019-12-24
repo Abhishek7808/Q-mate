@@ -19,7 +19,7 @@ Resource  ${PAGE OBJECTS}/SMM/PurchaseOrderList.robot
 Resource  ${PAGE OBJECTS}/SMM/GroupRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/GroupList.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerPoList.robot
-
+Resource  ${PAGE OBJECTS}/RenewPurchaseOrder.robot
 
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -321,9 +321,22 @@ Approve Pending PO By PO Number
     Sleep  3s
     PurchaseOrderRegistration.Approve Purchase Order
 
+Approve Pending Purchase Order
+    PurchaseOrderRegistration.Approve Purchase Order
+
+Reject Purchase Order By Department
+    PurchaseOrderRegistration.Reject Purchase Order
+
 View Purchase Order By Purchase Order Number
     [Arguments]  ${poNumber}
     PurchaseOrderList.Open Details Of Purchase Order Selected By Purchase Order Number  ${poNumber}
+
+View Purchase Order By Branch Name
+    [Arguments]  ${branchName}
+    PurchaseOrderList.Open Details Of Purchase Order Selected By Branch Name  ${branchName}
+
+Update Details Of Purchase Order
+    PurchaseOrderRegistration.Update PO By Department
 
 Search For Purchase Order in Purchase Order List By Customer
     [Arguments]  ${poNumber}
@@ -336,3 +349,28 @@ View Purchase Order By PO Number From Customer
 Verify Approval Of Purchase Order
     CustomerPoRegistration.Check For Approval Of Purchase Order From Customer
 
+Edit Purchase Order Details
+    CustomerPoRegistration.Edit Purchase Order
+
+Search Purchase Order By Branch Name
+    [Arguments]  ${branchName}
+    PurchaseOrderList.Search For Purchase Order  ${branchName}
+
+Register Purchase Order From Department
+    PurchaseOrderRegistration.Fill Purchase Order Form By Department
+
+Open Renew PO page
+    RenewPurchaseOrder.Go To Renew Po Page
+
+Search For Purchase Order In Renew PO Page
+    [Arguments]  ${branchName}
+    RenewPurchaseOrder.Search For Purchase Order  ${branchName}
+
+Select Purchase Order From Renew PO List
+    [Arguments]  ${branchName}
+    RenewPurchaseOrder.Select Purchase Order  ${branchName}
+
+Renew Purchase Order
+    [Arguments]  ${branchName}
+    RenewPurchaseOrder.Select Purchase Order  ${branchName}
+    RenewPurchaseOrder.Renew Selected Purchase Order

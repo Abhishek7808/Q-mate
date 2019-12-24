@@ -7,8 +7,6 @@ Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-#Resource          ../../../Configuration.resource
-#Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}Delete_Data.robot
 Resource          ${RESOURCES}${/}SMM_Keywords.robot
 Resource          ${RESOURCES}${/}ERP_Keywords.robot

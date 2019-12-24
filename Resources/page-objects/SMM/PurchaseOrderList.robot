@@ -30,5 +30,13 @@ Open Details Of Purchase Order Selected By Purchase Order Number
     [Arguments]  ${poNumber}
     Click Element    //span[contains(text(),'${PO No}')]/../following-sibling::td/i[contains(text(),'visibility')]
 
+Open Details Of Purchase Order Selected By Branch Name
+    [Arguments]  ${branchName}
+    Wait Until Keyword Succeeds    5s    250ms    click element  //span[contains(text(),'${branchName}')]/../following-sibling::td/i[@title='View']
+
+Search For Purchase Order
+    [Arguments]  ${branchName}
+    input text  searchText  ${branchName}
+
 #Search Purchase Order By PO Number
 #    [Arguments]  ${poNumber}

@@ -1,13 +1,20 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           RequestsLibrary
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
-
 
 
 
@@ -16,100 +23,62 @@ Check edit functionality for pending PO
     [Documentation]    Edits the PO form when it is in pending mode
     [Tags]  approvepo  approvepo1
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    Go To Purchase Order List
+    SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
-    SMM_Keywords.View Details Of Selected Plant
-    Update PO By Department
+    SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
+    SMM_Keywords.Update Details Of Purchase Order
 
 PO Request Approval Process
     [Documentation]    Approves PO when submitted by the customer
     [Tags]  approvepo  approvepo2
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    #Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    Purchase Order=PO 1
-    Go To Purchase Order List
-    Click Element    //div[@id='dropdownOpen']/button/i
-    Sleep    1s
-    Select From List By Value    plantStatus    41
-    Click Button    btnApplyFillter
+    SMM_Keywords.Open Purchase Order List By Department
+    SMM_Keywords.Filter Purchase Order List By Status  Pending
     Sleep    5s
-    SMM_Keywords.View Details Of Selected Plant
-    Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
-    Input Valid Value    Purchase Order Approve Button
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Confirm Approval Button
-    Sleep    5s
-    #Apply Filter    4
-    #Page Should Not Contain Element    ${Branch["Name"]},${Company["Company Name"]}
+    SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
+    SMM_Keywords.Approve Pending Purchase Order
     BrowserControl.Switch To    Verify
-    Login From Department    megha.rsmml    admin
-    Go To Purchase Order List
-    Click Element    //div[@id='dropdownOpen']/button/i
-    Sleep    1s
-    Select From List By Value    plantStatus    4
-    Click Button    btnApplyFillter
+    SMM_Keywords.Open Purchase Order List By Department
+    SMM_Keywords.Filter Purchase Order List By Status  Approved
     Sleep    5s
-    Page Should Contain Element    //span[contains(text(),'${Branch["Name"]}')]
+    SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
 
 PO Request Rejection Process
     [Documentation]    Rejects PO when submitted by the customer
     [Tags]  approvepo  approvepo3
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    Go To Purchase Order List
+    SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
-    Click Element    //div[@id='dropdownOpen']/button/i
-    Sleep    1s
-    Select From List By Value    plantStatus    4
-    Click Button    btnApplyFillter
+    SMM_Keywords.Filter Purchase Order List By Status  Approved
     sleep  3s
-    SMM_Keywords.View Details Of Selected Plant
+    SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
     sleep  2s
-    Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
-    Input Valid Value    Purchase Order Reject Button
-    Input Valid Value    Purchase Order Reject Remarks    ${PO["Reject Remarks"]}
-    #Input Valid Value    Purchase Order Reject Edit Request    ${PO["Edit Request"]}
-    Input Valid Value    Purchase Order Reject Remarks Submit Button
+    SMM_Keywords.Reject Purchase Order By Department
     Sleep    3s
     BrowserControl.Switch To    Verify
-    Login From Department    megha.rsmml    admin
-    Go To Purchase Order List
-    Click Element    //div[@id='dropdownOpen']/button/i
-    Sleep    1s
-    Select From List By Value    plantStatus    5
-    Click Button    btnApplyFillter
-    Wait Until Keyword Succeeds    5s    250ms    Page Should Contain Element    //span[contains(text(),'${Branch["Name"]}')]
+    SMM_Keywords.Open Purchase Order List By Department
+    SMM_Keywords.Filter Purchase Order List By Status  Rejected
+    SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
 
 Check PO cancellation when status is approved or pending
     [Tags]  approvepo  approvepo4
     #When PO is in pending state
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    #Needs help from yuvraj
-    Go To Purchase Order List
+    SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 3    PO=PO 1
-    input text  searchText  ${Branch["Name"]}
+    SMM_Keywords.Search Purchase Order By Branch Name   ${Branch["Name"]}
     sleep  3s
-    SMM_Keywords.View Details Of Selected Plant
-    Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
-    Input Valid Value    Purchase Order Reject Button
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Reject Remarks    ${PO["Reject Remarks"]}
-    Input Valid Value    Purchase Order Reject Remarks Submit Button
+    SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
+    SMM_Keywords.Reject Purchase Order By Department
     #When PO is in Approved state
     BrowserControl.Switch To    Department
-    Go To Purchase Order List
-    Click Element    //div[@id='dropdownOpen']/button/i
-    Sleep    1s
-    Select From List By Value    plantStatus    4
-    Click Button    btnApplyFillter
+    SMM_Keywords.Open Purchase Order List By Department
+    SMM_Keywords.Filter Purchase Order List By Status  Approved
     Sleep    5s
-    SMM_Keywords.View Details Of Selected Plant
+    SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
     #Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
-    Input Valid Value    Purchase Order Reject Button
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Reject Remarks    ${PO["Reject Remarks"]}
-    Input Valid Value    Purchase Order Reject Remarks Submit Button
-    Sleep    2s
+    SMM_Keywords.Reject Purchase Order By Department
 
 #Check edit functionality for approved PO
 #    [Tags]    Skip
