@@ -52,3 +52,8 @@ Reject Financial Instrument
 Check For Financial Instrument Is Rejected
     [Arguments]  ${fiNumber}
     Element Should Be Visible    //span[contains(text(),'${fiNumber}')]/../following-sibling::td/button/span[contains(text(),'Rejected')]
+
+Print FI
+    Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
+    Input Valid Value    Financial Instrument Print Button
+    Sleep    5s

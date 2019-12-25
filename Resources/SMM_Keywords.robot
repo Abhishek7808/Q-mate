@@ -437,3 +437,8 @@ Verify Financial Instrument Is Rejected
     [Arguments]  ${fiNumber}
     FinancialInstrument.Search Financial Instrument  ${fiNumber}
     FinancialInstrument.Check For Financial Instrument Is Rejected  ${fiNumber}
+
+Print Financial Instrument
+    [Arguments]  ${fiNumber}
+    FinancialInstrument.Search Financial Instrument  ${fiNumber}
+    FinancialInstrument.Print FI
