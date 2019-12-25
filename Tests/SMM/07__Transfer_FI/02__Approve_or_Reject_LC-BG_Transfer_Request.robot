@@ -17,7 +17,7 @@ Create Financial Instrument
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    SMM_Keywords.View Financial Instrument List By Customer
+    SMM_Keywords.View Financial Instrument List From Customer
     Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
     sleep  5s
     Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'Transfer History')]

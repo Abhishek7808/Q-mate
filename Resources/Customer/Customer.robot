@@ -128,25 +128,25 @@ Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 #
 #    Input Valid Value    Purchase Order Submit Button
 
-Fill FI
-    ${Status}    Run Keyword And Return Status    Should Be Equal    ${FI["Instrument Type"]}    Letter of Credit (LC)
-    Input Valid Value    Financial Instrument Instrument Type    ${FI["Instrument Type"]}
-    Input Valid Value    Financial Instrument Unit Name    ${FI["Unit Name"]}
-    Input Valid Value    Financial Instrument BG/LC Number    ${FI["BG/LC Number"]}
-    Input Valid Value    Financial Instrument LC/BG Date    ${FI["BG/LC Date"]}
-    Input Valid Value    Financial Instrument BG/LC Amount    ${FI["BG/LC Amount"]}
-    Input Valid Value    Financial Instrument Validity Date    ${FI["Validity Date"]}
-    Input Valid Value    Financial Instrument Bank    ${FI["Bank"]}
-    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Presentation Days    ${FI["Presentation Days"]}
-    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Negotiating Bank    ${FI["Negotiating Bank"]}
-    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Negotiating Bank Account Number    ${FI["Negotiating Bank Account Number"]}
-    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument LC Type    ${FI["LC Type"]}
-    Input Valid Value    Financial Instrument File Upload    ${FI["Document Upload"]}
-    Input Valid Value    Financial Instrument Remark    ${FI["Remark"]}
-    Sleep    3s
-    ${Status}    Run Keyword And Return Status    Page Should Not Contain Button    ${Key Description["Financial Instrument Update Button"]["Locator"]}
-    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Submit Button
-    ...    ELSE    Input Valid Value    Financial Instrument Update Button
+#Fill FI
+#    ${Status}    Run Keyword And Return Status    Should Be Equal    ${FI["Instrument Type"]}    Letter of Credit (LC)
+#    Input Valid Value    Financial Instrument Instrument Type    ${FI["Instrument Type"]}
+#    Input Valid Value    Financial Instrument Unit Name    ${FI["Unit Name"]}
+#    Input Valid Value    Financial Instrument BG/LC Number    ${FI["BG/LC Number"]}
+#    Input Valid Value    Financial Instrument LC/BG Date    ${FI["BG/LC Date"]}
+#    Input Valid Value    Financial Instrument BG/LC Amount    ${FI["BG/LC Amount"]}
+#    Input Valid Value    Financial Instrument Validity Date    ${FI["Validity Date"]}
+#    Input Valid Value    Financial Instrument Bank    ${FI["Bank"]}
+#    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Presentation Days    ${FI["Presentation Days"]}
+#    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Negotiating Bank    ${FI["Negotiating Bank"]}
+#    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Negotiating Bank Account Number    ${FI["Negotiating Bank Account Number"]}
+#    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument LC Type    ${FI["LC Type"]}
+#    Input Valid Value    Financial Instrument File Upload    ${FI["Document Upload"]}
+#    Input Valid Value    Financial Instrument Remark    ${FI["Remark"]}
+#    Sleep    3s
+#    ${Status}    Run Keyword And Return Status    Page Should Not Contain Button    ${Key Description["Financial Instrument Update Button"]["Locator"]}
+#    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Submit Button
+#    ...    ELSE    Input Valid Value    Financial Instrument Update Button
 
 Fill CRO
     ${PO No}    Get Selected List Label    purchaseOrderId
@@ -205,22 +205,22 @@ Select Customer
     Click Element    xpath=//div/button//span[text()='Customer']
 
 Approve FI
-    BrowserControl.Switch To    Verify
-    Sleep    2s
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Finance/InstrumentList
-    Sleep    2s
-    Click Element    dropdownOpen
-    Run Keyword If    '${FI["Instrument Type"]}'=='Letter of Credit (LC)'    Select From List By Label    instrumentType    Letter of Credit (LC)
-    ...    ELSE    Select From List By Label    instrumentType    Bank Guarantee (BG)
-    Click Button    btnApply
-    Sleep    3s
-    ${Status}    Run Keyword And Return Status    Page Should Contain Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
-    Run Keyword If    '${Status}'=='False'    Click Button    Next
-    Sleep    2s
-    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
-    Sleep    3s
-    Click Button    action-Approve
-    Sleep    2s
+#    BrowserControl.Switch To    Verify
+#    Sleep    2s
+#    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Finance/InstrumentList
+#    Sleep    2s
+#    Click Element    dropdownOpen
+#    Run Keyword If    '${FI["Instrument Type"]}'=='Letter of Credit (LC)'    Select From List By Label    instrumentType    Letter of Credit (LC)
+#    ...    ELSE    Select From List By Label    instrumentType    Bank Guarantee (BG)
+#    Click Button    btnApply
+#    Sleep    3s
+#    ${Status}    Run Keyword And Return Status    Page Should Contain Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
+#    Run Keyword If    '${Status}'=='False'    Click Button    Next
+#    Sleep    2s
+#    Click Element    //span[contains(text(),'${Branch["Name"]}')]/../following-sibling::td/i[contains(text(),'visibility')]
+#    Sleep    3s
+#    Click Button    action-Approve
+#    Sleep    2s
 
 #Approve PO
 #    [Arguments]  ${PO No}

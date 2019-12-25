@@ -42,7 +42,7 @@ Get notification after PO request approved/rejected
     SMM_Keywords.Approve Pending PO By PO Number  ${poNumber}
     BrowserControl.Switch To    Customer
     Sleep    1s
-    SMM_Keywords.Filter Purchase Order List By Status  Approved
+    SMM_Keywords.Filter Purchase Order List By Status From Customer  Approved
     SMM_Keywords.Search Purchase Order in Purchase Order List By Customer  ${poNumber}
     Sleep    1s
     SMM_Keywords.View Purchase Order By PO Number  ${PO No}
@@ -59,7 +59,7 @@ Check edit functionality when status of PO is approved/rejected.
     Sleep    2s
     SMM_Keywords.View Purchase Order List By Customer
     Sleep    3s
-    SMM_Keywords.Filter Purchase Order List By Status  Approved
+    SMM_Keywords.Filter Purchase Order List By Status From Customer  Approved
     Sleep    1s
     SMM_Keywords.Select Purchase Order By Product  ${PO["Select Product"]}
     SMM_Keywords.Edit Purchase Order Details

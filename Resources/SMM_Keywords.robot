@@ -229,7 +229,7 @@ Edit Agent Details
 View Purchase Order List By Customer
     CustomerPoList.Open Purchase Order List
 
-Select Purchase Order By Product
+Select Purchase Order By Product From Customer
     [Arguments]  ${productName}
     CustomerPoList.Get Purchase Order Details By Product  ${productName}
 
@@ -277,6 +277,10 @@ Select Purchase Order In CRO Form
 Verify Agent Name In Contract Release Order
     [Arguments]  ${agentName}
     CustomerCRoRegistration.Check For Agent Name Contract Release Order Form
+
+Filter Purchase Order List By Status From Customer
+    [Arguments]  ${poStatus}
+    CustomerPoList.Apply Purchase Order Filter  ${poStatus}
 
 View CRO List By Customer
     CustomerCRoList.Open CRO List By Customer
@@ -375,8 +379,39 @@ Renew Purchase Order
     RenewPurchaseOrder.Select Purchase Order  ${branchName}
     RenewPurchaseOrder.Renew Selected Purchase Order
 
-View Financial Instrument List By Customer
+View Financial Instrument List From Customer
     CustomerNavigation.Open Financial Instrument List
 
+Generate Financial Instrument From Customer
+    CustomerFinancialInstrument.Add Financial Instrument
+    CustomerFinancialInstrument.Fill Financial Instrument By Customer
+
 Add Financial Instrument By Customer
-    CustomerFinancialInstrument.
+    CustomerFinancialInstrument.Add Financial Instrument
+
+Fill Financial Instrument Form
+    CustomerFinancialInstrument.Fill Financial Instrument By Customer
+
+View Financial Instrument By FI Number From Customer
+    [Arguments]  ${fiNumber}
+    CustomerFinancialInstrument.Open Financial Instrument By FI Number  ${fiNumber}
+
+Check CRO Form Submission Without Financial Insturment
+    CustomerCRoRegistration.Fill CRO Form Without Financial Insturment
+
+Open Financial Instrument List From Department
+    FinancialInstrument.Go To Financial Instrument List Page
+
+Filter Financial Instruments by Instrument Type From Department
+    [Arguments]  ${instrumentType}
+    FinancialInstrument.Apply Financial Instrument Filter  ${instrumentType}
+
+View Financial Instrument By Branch Name From Department
+    [Arguments]  ${branchName}
+    FinancialInstrument.Open Financial Instrument By Branch Name  ${branchName}
+
+Approve Financial Instrument From Department
+    FinancialInstrument.Approve Financial Instrument
+
+Verify Updation Permissions
+    FinancialInstrument.Check For Presence Of Update Button

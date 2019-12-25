@@ -70,3 +70,4 @@ Edit Purchase Order
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[text()='Update History']
     Sleep    2s
     Page Should Contain Element    //td/i[contains(text(),'visibility')]
+

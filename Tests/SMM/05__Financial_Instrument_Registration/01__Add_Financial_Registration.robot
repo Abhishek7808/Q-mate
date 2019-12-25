@@ -26,22 +26,18 @@ Add Financial Instrument
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    SMM_Keywords.View Financial Instrument List By Customer
+    SMM_Keywords.View Financial Instrument List From Customer
     SMM_Keywords.Generate Financial Instrument
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    btnAddFiInstrument
-    Fill FI
     Sleep    3s
-    Element Should Be Visible    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.View Financial Instrument By FI Number From Customer  ${FI["BG/LC Number"]}
     SMM_Keywords.Go To Profile Selection Page
     Common_Keywords.Set Test Variables    Branch=Branch Customer 1    FI=FI 1
-    Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    SMM_Keywords.View Financial Instrument List By Customer
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    btnAddFiInstrument
-    Fill FI
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Financial Instrument List From Customer
+    SMM_Keywords.Generate Financial Instrument
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    btnAddFiInstrument
     Common_Keywords.Set Test Variables    FI=FI 2
-    Fill FI
+    SMM_Keywords.Generate Financial Instrument
     Sleep    2s
 
 Check the edit process for pending FI
@@ -52,13 +48,10 @@ Check the edit process for pending FI
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    SMM_Keywords.View Financial Instrument List By Customer
-    Sleep    2s
-    Click Element     //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.View Financial Instrument By FI Number  ${FI["BG/LC Number"]}
     Sleep    2s
     Set Test Variable    ${FI}    ${Test Data["${CONFIG["FI 2"]}"]}
-    Fill FI
-    Sleep    2s
+    SMM_Keywords.Fill Financial Instrument Form
 
 Check that only after Financial Instrument approval, CRO can be generated
     [Tags]  Financial  Financial3
@@ -68,43 +61,14 @@ Check that only after Financial Instrument approval, CRO can be generated
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-SMM_Keywords.View Purchase Order List By Customer
+    SMM_Keywords.View Purchase Order List By Customer
     Sleep    3s
-    Click Element    dropdownOpen
-    Select From List By Label    status    Approved
-    Click Button    btnApplyFillter
+    SMM_Keywords.Filter Purchase Order List By Status From Customer  Approved
     Sleep    1s
-    ${Product}    Get Substring    ${PO["Select Product"]}    0    -8
-    log to console  ${Product}
-    sleep  3s
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${Product}')]/../following-sibling::td/i[contains(@title,'View')]
+    SMM_Keywords.Select Purchase Order By Product From Customer  ${PO["Select Product"]}
     Sleep    2s
-    click element  //span[contains(text(),'CRO List')]
-    click element  //button[@id='btnRequestCRO']
-    ${List Item}    Get List Items    purchaseOrderId
-    Log    ${List Item}
-    ${List Item}    Catenate    ${List Item}
-    ${List Item}    Split String    ${List Item}    ,
-    ${List Item}    Get From List    ${List Item}    1
-    Log to console  ${List Item}
-    ${List Item}    Split String    ${List Item}    '
-    ${List Item}    Get From List    ${List Item}    1
-    Log to console  ${List Item}
-    Wait Until Keyword Succeeds    5s    200ms    Select From List By Label    purchaseOrderId    ${List Item}
-    Press Key    purchaseOrderId    //09
-    Sleep    2s
-    Input Valid Value    Contract Release Order Product Quantity Required  12
-    Input Valid Value    Contract Release Order Select Dispatch Point    JHAMARKOTRA
-    Select From List By Label    paymentMode    Credit
-    Simulate Event    paymentMode    blur
-    Select From List By Label    paymentMode    Credit
-    Sleep    3s
-
-    Wait Until Keyword Succeeds    10s    200ms    Select From List By Label    instrumentType    Letter of Credit (LC)
-    Sleep    2s
-    ${Value}    Get List Items    instrument
-    : FOR    ${Val}    IN    @{Value}
-    \    Should Not Be Equal    ${Val}    ${FI["BG/LC Number"]}
+    SMM_Keywords.Request CRO From PO Form
+    SMM_Keywords.Check CRO Form Submission Without Financial Insturment
 
 Check edit functionality for approved FI
     [Tags]  Financial  Financial4
@@ -112,13 +76,16 @@ Check edit functionality for approved FI
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
-    Approve FI
+    BrowserControl.Switch To    Verify
+    SMM_Keywords.Open Financial Instrument List From Department
+    SMM_Keywords.Filter Financial Instruments by Instrument Type From Department  ${FI["Instrument Type"]}
+    SMM_Keywords.View Financial Instrument By Branch Name From Department  ${Branch["Name"]}
+    SMM_Keywords.Approve Financial Instrument From Department
     BrowserControl.Switch To    Customer
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    SMM_Keywords.View Financial Instrument List By Customer
+    SMM_Keywords.View Financial Instrument List From Customer
     Sleep    2s
-    Click Element   //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.View Financial Instrument By FI Number From Customer  ${FI["BG/LC Number"]}
     Sleep    5s
-    ${status}  run keyword and return status  Page Should Not Contain Button    btnUpdate
-    log  ${status}
+    SMM_Keywords.Verify Updation Permissions

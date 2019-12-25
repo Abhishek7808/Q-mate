@@ -98,7 +98,7 @@ Check that financial instrument available balance should be more than or equal t
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    SMM_Keywords.View Financial Instrument List By Customer
+    SMM_Keywords.View Financial Instrument List From Customer
     #Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../following-sibling::td/i[@title='View']
     #Wait Until Keyword Succeeds    5s    200ms    Click Element    span[contains(text(),'Approved')]/../preceding-sibling::span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
     #${text}  Get text    //span[contains(text(),'Approved')]/../../preceding-sibling::td//span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
