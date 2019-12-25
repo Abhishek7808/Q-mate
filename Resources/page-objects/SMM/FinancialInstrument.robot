@@ -31,3 +31,24 @@ Approve Financial Instrument
 Check For Presence Of Update Button
     ${status}  run keyword and return status  Page Should Not Contain Button    btnUpdate
     log  ${status}
+
+Search Financial Instrument
+    [Arguments]  ${fiNumber}
+    Input Valid Value    Search Financial Instrument By Number    ${fiNumber}
+
+Open Financial Instrument By FI Number
+    [Arguments]  ${fiNumber}
+    Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'${fiNumber}')]/../following-sibling::td/i[@title='View']
+
+Check For Approved State Of Financial Instruments
+    [Arguments]  ${fiNumber}
+    Element Should Be Visible    //*[contains(text(),'${fiNumber}')]/../following-sibling::td/button/span[contains(text(),'Approved')]
+
+Reject Financial Instrument
+    Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'Pending')]/../../following-sibling::td/i[@title='View']
+    Input Valid Value    Financial Instrument Reject Button
+    Sleep    2s
+
+Check For Financial Instrument Is Rejected
+    [Arguments]  ${fiNumber}
+    Element Should Be Visible    //span[contains(text(),'${fiNumber}')]/../following-sibling::td/button/span[contains(text(),'Rejected')]

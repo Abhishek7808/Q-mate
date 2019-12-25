@@ -410,8 +410,30 @@ View Financial Instrument By Branch Name From Department
     [Arguments]  ${branchName}
     FinancialInstrument.Open Financial Instrument By Branch Name  ${branchName}
 
+View Financial Instrument By FI Number From Department
+    [Arguments]  ${fiNumber}
+    FinancialInstrument.Open Financial Instrument By FI Number  ${fiNumber}
+
 Approve Financial Instrument From Department
     FinancialInstrument.Approve Financial Instrument
 
 Verify Updation Permissions
     FinancialInstrument.Check For Presence Of Update Button
+
+Search Financial Instrument By FI Number From Department
+    [Arguments]  ${fiNumber}
+    FinancialInstrument.Search Financial Instrument  ${fiNumber}
+
+Verify Approval Of Financial Instruments
+    [Arguments]  ${fiNumber}
+    FinancialInstrument.Check For Approved State Of Financial Instruments  ${fiNumber}
+
+Reject Pending Financial Instrument From Department
+    [Arguments]  ${fiNumber}
+    FinancialInstrument.Search Financial Instrument  ${fiNumber}
+    FinancialInstrument.Reject Financial Instrument
+
+Verify Financial Instrument Is Rejected
+    [Arguments]  ${fiNumber}
+    FinancialInstrument.Search Financial Instrument  ${fiNumber}
+    FinancialInstrument.Check For Financial Instrument Is Rejected  ${fiNumber}
