@@ -102,7 +102,7 @@ Input File
     Log    ${Status}
     Log    ${Status One}
     Run Keyword If    '${Status}' == 'True' and '${Status One}' == 'False'    Choose File    outlined-button-file-${Locator}FileObject    ${RESOURCES}${/}${Value}
-    Run Keyword If    ${Status One}    Choose File    outlined-button-file    ${RESOURCES}${/}${Value}
+    Run Keyword If    ${Status One}    Choose File    outlined-button-file    ${SMM_DATA_FILES}${/}${Value}
     Sleep    ${After Choosing File}
     #Set Focus To Element    ${Locator}
 

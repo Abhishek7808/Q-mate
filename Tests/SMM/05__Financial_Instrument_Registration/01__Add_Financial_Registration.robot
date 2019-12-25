@@ -1,17 +1,20 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
-
 
 
 *** Test Cases ***
@@ -23,8 +26,8 @@ Add Financial Instrument
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    SMM_Keywords.View Financial Instrument List By Customer
+    SMM_Keywords.Generate Financial Instrument
     Wait Until Keyword Succeeds    5s    200ms    Click Button    btnAddFiInstrument
     Fill FI
     Sleep    3s
@@ -32,8 +35,7 @@ Add Financial Instrument
     SMM_Keywords.Go To Profile Selection Page
     Common_Keywords.Set Test Variables    Branch=Branch Customer 1    FI=FI 1
     Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    SMM_Keywords.View Financial Instrument List By Customer
     Wait Until Keyword Succeeds    5s    200ms    Click Button    btnAddFiInstrument
     Fill FI
     Sleep    2s
@@ -50,8 +52,7 @@ Check the edit process for pending FI
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    SMM_Keywords.View Financial Instrument List By Customer
     Sleep    2s
     Click Element     //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
     Sleep    2s
@@ -115,8 +116,7 @@ Check edit functionality for approved FI
     BrowserControl.Switch To    Customer
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    SMM_Keywords.View Financial Instrument List By Customer
     Sleep    2s
     Click Element   //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
     Sleep    5s

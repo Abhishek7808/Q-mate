@@ -30,8 +30,7 @@ To check the Transfer of LC/BG
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    SMM_Keywords.View Financial Instrument List By Customer
     Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
     sleep  5s
     Wait Until Keyword Succeeds    5s    500ms    Click Element    //span[contains(text(),'Transfer History')]
@@ -62,8 +61,7 @@ To check the Transfer of LC/BG
 #    Wait Until Keyword Succeeds    5s    200ms    Click Element    //a[contains(text(),'Profile Selection')]
     SMM_Keywords.Go To Profile Selection Page
     Wait Until Keyword Succeeds    5s    200ms    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    SMM_Keywords.View Financial Instrument List By Customer
     Sleep    2s
     Element Should Be Visible    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
 
@@ -109,8 +107,7 @@ To check that the transfer amount cannot exceed available amount of FI
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/Finance/InstrumentList
+    SMM_Keywords.View Financial Instrument List By Customer
     Sleep    2s
     Click Element    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../../following-sibling::td/i[@title='View']
     Sleep    2s

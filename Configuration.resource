@@ -21,19 +21,21 @@ ${RESULTS_DIR}           Results
 ${PAGE_OBJECTS_DIR}      page-objects
 ${DV_DIR}                DV
 ${SMM_DIR}               SMM
+${SMM_DATA_DIR}          SMM_DATA
 ###################
 #  Path Settings  #
 ###################
-${ROOT}             ${CURDIR}
-${TESTS}            ${CURDIR}${/}${TESTS_DIR}
-${RESOURCES}        ${CURDIR}${/}${RESOURCE_DIR}
-${PLUGINS}          ${CURDIR}${/}${PLUGINS_DIR}
-${LIBRARY}          ${CURDIR}${/}${LIBRARY_DIR}
-${DATA}             ${CURDIR}${/}${DATA_DIR}
-${RESULTS}          ${CURDIR}${/}${RESULTS_DIR}
-${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
-${DV}               ${CURDIR}${/}${RESULTS_DIR}${/}${DV_DIR}
-${SMM}              ${PAGE OBJECTS}${/}${SMM_DIR}
+${ROOT}                         ${CURDIR}
+${TESTS}                        ${CURDIR}${/}${TESTS_DIR}
+${RESOURCES}                    ${CURDIR}${/}${RESOURCE_DIR}
+${PLUGINS}                      ${CURDIR}${/}${PLUGINS_DIR}
+${LIBRARY}                      ${CURDIR}${/}${LIBRARY_DIR}
+${DATA}                         ${CURDIR}${/}${DATA_DIR}
+${RESULTS}                      ${CURDIR}${/}${RESULTS_DIR}
+${PAGE OBJECTS}                 ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
+${DV}                           ${CURDIR}${/}${RESULTS_DIR}${/}${DV_DIR}
+${SMM_PAGE_OBJECTS}             ${PAGE OBJECTS}${/}${SMM_DIR}
+${SMM_DATA_FILES}               ${DATA}${/}${SMM_DATA_DIR}
 
 ######################
 #    File Names      #

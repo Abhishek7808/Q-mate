@@ -4,7 +4,7 @@ Resource  ${PAGE OBJECTS}/SMM/CustomerRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerProfileSelection.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerNavigation.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantList.robot
-Resource  ${PAGE OBJECTS}/SMM/CustomerViewRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerCustomerViewRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerGroups.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerAgentList.robot
@@ -50,19 +50,19 @@ Company Registration By Department
     PlantRegistration.Fill Customer Registration Form By Department  ${branchType}
 
 Check For Updating Customer Details Permissions
-    ViewRegistration.Confirm That Update Button Is Interactable
+    CustomerViewRegistration.Confirm That Update Button Is Interactable
 
 View Customer Registration
     CustomerNavigation.Open Customer Registration Form
 
 Check for draft state of Customer Registration
-    ViewRegistration.Check For Draft
+    CustomerViewRegistration.Check For Draft
 
 Check for Approved state of Customer Registration
-    ViewRegistration.Confirm Approval Of Customer
+    CustomerViewRegistration.Confirm Approval Of Customer
 
 Check for Rejected state of Customer Registration
-    ViewRegistration.Confirm Rejection Of Customer
+    CustomerViewRegistration.Confirm Rejection Of Customer
 
 Check Draft Branch Visibility
     CustomerRegistration.Check For Draft Branch In The Draft Branches Popup
@@ -121,10 +121,10 @@ Verify That Customer Has Been Deactivated
     PlantList.Verify Customer Deactivation  ${branchName}
 
 Add Plant By Customer
-    ViewRegistration.View Plant Details By Customer
+    CustomerViewRegistration.View Plant Details By Customer
 
 Fill Plant By Customer
-    ViewRegistration.Fill Plant Details By Customer
+    CustomerViewRegistration.Fill Plant Details By Customer
 
 View Customer Group
     CustomerNavigation.Open Group List Page
@@ -374,3 +374,9 @@ Renew Purchase Order
     [Arguments]  ${branchName}
     RenewPurchaseOrder.Select Purchase Order  ${branchName}
     RenewPurchaseOrder.Renew Selected Purchase Order
+
+View Financial Instrument List By Customer
+    CustomerNavigation.Open Financial Instrument List
+
+Add Financial Instrument By Customer
+    CustomerFinancialInstrument.
