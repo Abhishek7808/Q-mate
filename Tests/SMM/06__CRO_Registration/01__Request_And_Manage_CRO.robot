@@ -1,17 +1,20 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
-
 
 *** Test Cases ***
 # TODO: increase product quantity required in CRO 1, CRO 2, CRO 3 and hanece increase amount also
@@ -23,31 +26,22 @@ Check Request CRO process
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    #Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
-    Sleep    3s
-    Click Element    dropdownOpen
-    Select From List By Label    status    Approved
-    Click Button    btnApplyFillter
-    Sleep    1s
-    ${Product}    Get Substring    ${PO["Select Product"]}    0    -8
-    log to console  ${Product}
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${Product}')]/../following-sibling::td/i[contains(@title,'View')]
+    SMM_Keywords.View Purchase Order List As A Customer
+    SMM_Keywords.Filter Purchase Order List By Status  Approved
+    SMM_Keywords.Select Purchase Order By Product From Customer  ${PO["Select Product"]}
     Sleep    2s
-    click element  //span[contains(text(),'CRO List')]
-    click element  //button[@id='btnRequestCRO']
-    Fill CRO
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.Request CRO From PO Form
+    SMM_Keywords.Fill CRO From Customer
+    SMM_Keywords.Request CRO From Customer
     Sleep    1s
     Common_Keywords.Set Test Variables    CRO=CRO 2
-    Fill CRO
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.SMM_Keywords.Fill CRO From From Customer
+    SMM_Keywords.Request CRO From Customer
     Sleep    1s
     Common_Keywords.Set Test Variables    CRO=CRO 3
-    Fill CRO
+    SMM_Keywords.Fill CRO From Customer
     sleep  5s
-    Wait Until Keyword Succeeds    5s    200ms    Page should contain element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.Request CRO From Customer
 
 View CRO request status
     [Tags]  requestcro  requestcro2
@@ -57,21 +51,20 @@ View CRO request status
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.View CRO List By Customer
+    SMM_Keywords.Request CRO From Customer
     Sleep    1s
-    Fill CRO
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.Fill CRO From Customer
+    SMM_Keywords.Request CRO From Customer
     Sleep    1s
     Common_Keywords.Set Test Variables    CRO=CRO 2
-    Fill CRO
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.Fill CRO From Customer
+    SMM_Keywords.Request CRO From Customer
     Sleep    1s
     Common_Keywords.Set Test Variables    CRO=CRO 3
-    Fill CRO
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${SSO ID["Name"]}')]/../following-sibling::td/i[@title='View']
-    Wait Until Keyword Succeeds    5s    200ms    Element Should Be Visible    //span[text()='Pending']
+    SMM_Keywords.Fill CRO From Customer
+    SMM_Keywords.View CRO From Customer  ${SSO ID["Name"]}
+    SMM_Keywords.Verify That CRO Is Not Approved
 
 Check edit functionality when CRO is pending
     [Tags]  requestcro  requestcro3
@@ -81,14 +74,11 @@ Check edit functionality when CRO is pending
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${SSO ID["Name"]}')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.View Purchase Order List As A Customer
+    SMM_Keywords.View CRO From Customer  ${SSO ID["Name"]}
     Set Test Variable    ${CRO}    ${Test Data["${CONFIG["CRO 1"]}"]}
     Sleep    1s
-    Fill CRO
-    Wait Until Keyword Succeeds    10s    200ms    Page should contain element    //span[contains(text(),'Request CRO')]
-    Sleep    3s
+    SMM_Keywords.Fill CRO From Customer
 
 Check that financial instrument available balance should be more than or equal to CRO amount when CRO is approved
     [Tags]  requestcro  requestcro4
@@ -99,20 +89,9 @@ Check that financial instrument available balance should be more than or equal t
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     SMM_Keywords.View Financial Instrument List From Customer
-    #Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td//span[contains(text(),'Approved')]/../following-sibling::td/i[@title='View']
-    #Wait Until Keyword Succeeds    5s    200ms    Click Element    span[contains(text(),'Approved')]/../preceding-sibling::span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
-    #${text}  Get text    //span[contains(text(),'Approved')]/../../preceding-sibling::td//span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
-    #/preceding-sibling::span[contains(text(),'${FI["BG/LC Number"]}')]
-    #/../following-sibling::td/i[@title='View']
-    #log to console  ${text} text
-    Wait Until Keyword Succeeds    5s    200ms    Click Element   //span[contains(text(),'Approved')]/../../preceding-sibling::td//span[contains(text(),'${FI["BG/LC Number"]}')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.Open Approved Financial Instrument By FI Number  ${FI["BG/LC Number"]}
     Sleep    5s
-    ${Available Value}    Get Text    //button[@id='btnHourglassEmpty']//div[text()='Available Value']/preceding-sibling::div
-    ${Available Value}  remove string  ${Available Value}  ,
-#    ${Available Value}    Split String    ${Available Value}    ,
-#    ${Available Value}    Catenate    ${Available Value}
-    ${Status}    Evaluate    ${Available Value}>=${CRO["Amount"]}
-    Should Be Equal    '${Status}'    'True'
+    SMM_Keywords.Verify FI Balance Is Greater Than CRO Balance
 
 Check that CRO quantity cannot be greater than PO remaining balance
     [Tags]  requestcro  requestcro5
@@ -122,22 +101,13 @@ Check that CRO quantity cannot be greater than PO remaining balance
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
-    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/ContractReleaseOrder
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request CRO')]
+    SMM_Keywords.View Purchase Order List As A Customer
+    SMM_Keywords.Request CRO From Customer
     Sleep    2s
-    ${List Item}    Get List Items    purchaseOrderId
-    ${List Item}    Catenate    ${List Item}
-    ${List Item}    Split String    ${List Item}    ,
-    ${List Item}    Get From List    ${List Item}    1
-    ${List Item}    Split String    ${List Item}    '
-    ${PO No}    Get From List    ${List Item}    1
-    Wait Until Keyword Succeeds    5s    200ms    Input Select    purchaseOrderId    ${PO No}
-    Wait Until Element Is Visible    availableQuantity
-    ${Amount}    Get Value    availableQuantity
-    ${Amount}    Evaluate    ${Amount}+1
-    Wait Until Keyword Succeeds    5s    200ms    Input Text    productQuantityRequired    ${Amount}
-    Press Key    productQuantityRequired    \\09
-    Sleep    1s
-    ${Available Quantity}    Get Text    availableQuantity
-    Page Should Contain    Enter Qty less than    ${Available Quantity}
+    SMM_Keywords.Select Purchase Order In CRO Form
+    SMM_Keywords.Get PO Remaining Quantity
+    SMM-Keywords.Fill CRO Required Quantity
+
+#
+#    ${Available Quantity}    Get Text    availableQuantity
+#    Page Should Contain    Enter Qty less than    ${Available Quantity}

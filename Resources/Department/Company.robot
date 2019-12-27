@@ -97,16 +97,16 @@ Fill PO By Departmnet
     Input Valid Value    Purchase Order Destination State    ${Purchase Order["Destination State"]}
     Click Button    btnSubmit
 
-Add Product Price
-    Input Valid Value    Effective from    ${testData["Product Add Price"]["Effective from"]}
-    Input Valid Value    Product Rate(per MT)    ${testData["Product Add Price"]["Product Rate(per MT)"]}
-    Input Valid Value    Processing Rate(per MT)    ${testData["Product Add Price"]["Processing Rate(per MT)"]}
+#Add Product Price
+#    Input Valid Value    Effective from    ${testData["Product Add Price"]["Effective from"]}
+#    Input Valid Value    Product Rate(per MT)    ${testData["Product Add Price"]["Product Rate(per MT)"]}
+#    Input Valid Value    Processing Rate(per MT)    ${testData["Product Add Price"]["Processing Rate(per MT)"]}
 
-Add Product Interest Rate
-    Input Valid Value    Effective from    ${testData["Product Add Interest"]["Interest Effective from"]}
-    Input Valid Value    Day From    ${testData["Product Add Interest"]["Day From"]}
-    Input Valid Value    Day To    ${testData["Product Add Interest"]["Day To"]}
-    Input Valid Value    Interest Rate(Per MT)    ${testData["Product Add Interest"]["Interest Rate(Per MT)"]}
+#Add Product Interest Rate
+#    Input Valid Value    Effective from    ${testData["Product Add Interest"]["Interest Effective from"]}
+#    Input Valid Value    Day From    ${testData["Product Add Interest"]["Day From"]}
+#    Input Valid Value    Day To    ${testData["Product Add Interest"]["Day To"]}
+#    Input Valid Value    Interest Rate(Per MT)    ${testData["Product Add Interest"]["Interest Rate(Per MT)"]}
 
 Schedule On
     Input Valid Value    Select Component*    ${SC["Select Component*"]}

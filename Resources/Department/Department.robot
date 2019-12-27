@@ -5,14 +5,14 @@ Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 
 *** Keywords ***
-Go To Differentials Adjustment
-    Go To    ${LOGIN URL}/SMM/Invoice/Adjustment
+#Go To Differentials Adjustment
+#    Go To    ${LOGIN URL}/SMM/Invoice/Adjustment
 
 Go To Product List By Department
     Go To    ${LOGIN URL}/SMM/Product/ProductList
-
-Go To Receipt Generation
-    Go To    ${LOGIN URL}/SMM/Receipt/ReceiptList
+#
+#Go To Receipt Generation
+#    Go To    ${LOGIN URL}/SMM/Receipt/ReceiptList
 
 Go To Renew PO Process
     Go To    ${LOGIN URL}/SMM/PurchaseOrder/RenewPOList
@@ -49,8 +49,8 @@ Login From Department
 #View Customer List
 #    Input Valid Value    View Customer List
 
-Go To Add Product From Department
-     Go To    ${LOGIN URL}/SMM/Product/ProductList
+#Go To Add Product From Department
+#     Go To    ${LOGIN URL}/SMM/Product/ProductList
 
 #Go To Add Customer From Department
 #    Go To Customer List
@@ -250,84 +250,84 @@ View Company Details
 #    log  ${status}
 #    #run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  element is not editable
 
-Generate Receipt By Department
-    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
-    Input Valid Value    Receipt Enter Customer PAN or Name    ${Val}
-    ${status}  run keyword and return status  Input Valid Value    Receipt Company Name    ${Company["Company Name"]}
-    ${status}  run keyword and return status  Input Valid Value    Receipt Branch Name    ${Branch["Name"]}
-    ${status}  run keyword and return status  Input Valid Value    Receipt Pincode    ${Branch["Pincode"]}
-    ${status}  run keyword and return status  Input Valid Value    Receipt City    ${Branch["City"]}
-    ${status}  run keyword and return status  Input Valid Value    Receipt State    ${Branch["State"]}
-    Input Valid Value    Receipt Receipt Against    ${Receipt["Receipt Against"]}
-    #TODO: Bank name can vary
-    Input Valid Value    Receipt Deposited In    ${Receipt["Deposited In"]}
-    Input Valid Value    Receipt Remarks    ${Receipt["Remarks"]}
-    Input Valid Value    Receipt Instrument Type    ${Receipt["Instrument Type"]}
-    Input Valid Value    Receipt Bank    ${Receipt["Bank"]}
-    Input Valid Value    Receipt Instrument No.    ${Receipt["Instrument No."]}
-    Input Valid Value    Receipt Instrument Details Date    ${Receipt["Date"]}
-    Input Valid Value    Receipt Amount    ${Receipt["Amount"]}
-    Input Valid Value    Receipt Add Button
-    Input Valid Value    Generate Receipt Submit Button
+#Generate Receipt By Department
+#    &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
+#    Input Valid Value    Receipt Enter Customer PAN or Name    ${Val}
+#    ${status}  run keyword and return status  Input Valid Value    Receipt Company Name    ${Company["Company Name"]}
+#    ${status}  run keyword and return status  Input Valid Value    Receipt Branch Name    ${Branch["Name"]}
+#    ${status}  run keyword and return status  Input Valid Value    Receipt Pincode    ${Branch["Pincode"]}
+#    ${status}  run keyword and return status  Input Valid Value    Receipt City    ${Branch["City"]}
+#    ${status}  run keyword and return status  Input Valid Value    Receipt State    ${Branch["State"]}
+#    Input Valid Value    Receipt Receipt Against    ${Receipt["Receipt Against"]}
+#    #TODO: Bank name can vary
+#    Input Valid Value    Receipt Deposited In    ${Receipt["Deposited In"]}
+#    Input Valid Value    Receipt Remarks    ${Receipt["Remarks"]}
+#    Input Valid Value    Receipt Instrument Type    ${Receipt["Instrument Type"]}
+#    Input Valid Value    Receipt Bank    ${Receipt["Bank"]}
+#    Input Valid Value    Receipt Instrument No.    ${Receipt["Instrument No."]}
+#    Input Valid Value    Receipt Instrument Details Date    ${Receipt["Date"]}
+#    Input Valid Value    Receipt Amount    ${Receipt["Amount"]}
+#    Input Valid Value    Receipt Add Button
+#    Input Valid Value    Generate Receipt Submit Button
 
-Fill Product By Department
-    Input Valid Value    Product Name    ${PD["Product Name"]}
-    ${status}  run keyword and return status  Input Valid Value    Is Auctionable    ${PD["Is Auctionable"]}
-    log  ${status}
-    Input Valid Value    HSN Code    ${PD["HSN Code"]}
-    ${status}  run keyword and return status  Input Valid Value    Product Description    ${PD["Product Description"]}
-    log  ${status}
-    Input Valid Value    Dispatch Points    ${PD["Dispatch Points"]}
-    Input Valid Value    Free Credit Days    ${PD["Free Credit Days"]}
-    Input Valid Value    Head    ${PD["Head"]}
-    Input Valid Value    Invoice Generation    ${PD["Invoice Generation"]}
-    Input Valid Value    Mineral ID    ${PD["Mineral ID"]}
-    Input Valid Value    Mineral Name    ${PD["Mineral Name"]}
-    Input Valid Value    DMG Mixture ID    ${PD["DMG Mixture ID"]}
-    Input Valid Value    DMG Grade ID    ${PD["DMG Grade ID"]}
-    Input Valid Value    Product Details Submit Button
+#Fill Product By Department
+#    Input Valid Value    Product Name    ${PD["Product Name"]}
+#    ${status}  run keyword and return status  Input Valid Value    Is Auctionable    ${PD["Is Auctionable"]}
+#    log  ${status}
+#    Input Valid Value    HSN Code    ${PD["HSN Code"]}
+#    ${status}  run keyword and return status  Input Valid Value    Product Description    ${PD["Product Description"]}
+#    log  ${status}
+#    Input Valid Value    Dispatch Points    ${PD["Dispatch Points"]}
+#    Input Valid Value    Free Credit Days    ${PD["Free Credit Days"]}
+#    Input Valid Value    Head    ${PD["Head"]}
+#    Input Valid Value    Invoice Generation    ${PD["Invoice Generation"]}
+#    Input Valid Value    Mineral ID    ${PD["Mineral ID"]}
+#    Input Valid Value    Mineral Name    ${PD["Mineral Name"]}
+#    Input Valid Value    DMG Mixture ID    ${PD["DMG Mixture ID"]}
+#    Input Valid Value    DMG Grade ID    ${PD["DMG Grade ID"]}
+#    Input Valid Value    Product Details Submit Button
 
-Fill Schedule By Department
-    Input Valid Value    Select Component    ${SC["Select Component"]}
-    Input Valid Value    Start Date    ${SC["Start From"]}
-    Input Valid Value    End Date    ${SC["End"]}
-    Input Valid Value    Application From    ${SC["Application From"]}
-    Input Valid Value    Schedule Structure    ${SC["Structure"]}
-#    Input Valid Value    Schedule Product   ${SC["Product"]}
-#    Input Valid Value    Schedule Customer    ${SC["Customer"]}
-    Input Valid Value    Schedule Agreement    ${SC["Agreement"]}
-    Input Valid Value    Agreement PO    ${SC["Agreement PO"]}
-    Input Valid Value    Calculation Type    ${SC["Calculation Type"]}
-    Clear Text Value  formula
-    Input Valid Value    Keyword  ${SC["Schedule keyword"]}
-    Input Valid Value    Multiply
-    input text  amountFormula  12
-    Input Valid Value    Priority    ${SC["Priority"]}
-    Input Valid Value    Schedule Save Button
+#Fill Schedule By Department
+#    Input Valid Value    Select Component    ${SC["Select Component"]}
+#    Input Valid Value    Start Date    ${SC["Start From"]}
+#    Input Valid Value    End Date    ${SC["End"]}
+#    Input Valid Value    Application From    ${SC["Application From"]}
+#    Input Valid Value    Schedule Structure    ${SC["Structure"]}
+##    Input Valid Value    Schedule Product   ${SC["Product"]}
+##    Input Valid Value    Schedule Customer    ${SC["Customer"]}
+#    Input Valid Value    Schedule Agreement    ${SC["Agreement"]}
+#    Input Valid Value    Agreement PO    ${SC["Agreement PO"]}
+#    Input Valid Value    Calculation Type    ${SC["Calculation Type"]}
+#    Clear Text Value  formula
+#    Input Valid Value    Keyword  ${SC["Schedule keyword"]}
+#    Input Valid Value    Multiply
+#    input text  amountFormula  12
+#    Input Valid Value    Priority    ${SC["Priority"]}
+#    Input Valid Value    Schedule Save Button
 
-Edit Schedule By Department
-    Input Valid Value    Select Component*    ${SC["Select Component*"]}
-    sleep  1s
-    @{webElements}  Get Webelements  //*[@id="effFromDate"]
-    log  ${webElements}
-    set test variable  ${starDateLocator}  ${webElements}[1]
-    Input Date  ${starDateLocator}  ${SC["Start From"]}
-    #Input Valid Value    End    ${SC["End"]}
-    Input Valid Value    Application From    ${SC["Application From"]}
-    @{webElements}  Get Webelements   //*[contains(text(),'STRUCTURE')]
-    log  ${webElements}
-    set test variable  ${structureFirstLocator}  ${webElements}[1]
-    click element  ${structureFirstLocator}
-    sleep  2s
-    Input Dropdown  //select[@id='structureAdd']  ${SC["Structure"]}
-    #Input Valid Value    Structure    ${SC["Structure"]}
-    Input Valid Value    Calculation Type    ${SC["Calculation Type"]}
-    Clear Text Value  formula
-    Input Valid Value    Keyword  ${SC["Schedule keyword"]}
-    Input Valid Value    Multiply
-    input text  amountFormula  12
-    Input Valid Value    Priority    ${SC["Priority"]}
-    Click Button    btnSaveUpdate
+#Edit Schedule By Department
+#    Input Valid Value    Select Component*    ${SC["Select Component*"]}
+#    sleep  1s
+#    @{webElements}  Get Webelements  //*[@id="effFromDate"]
+#    log  ${webElements}
+#    set test variable  ${starDateLocator}  ${webElements}[1]
+#    Input Date  ${starDateLocator}  ${SC["Start From"]}
+#    #Input Valid Value    End    ${SC["End"]}
+#    Input Valid Value    Application From    ${SC["Application From"]}
+#    @{webElements}  Get Webelements   //*[contains(text(),'STRUCTURE')]
+#    log  ${webElements}
+#    set test variable  ${structureFirstLocator}  ${webElements}[1]
+#    click element  ${structureFirstLocator}
+#    sleep  2s
+#    Input Dropdown  //select[@id='structureAdd']  ${SC["Structure"]}
+#    #Input Valid Value    Structure    ${SC["Structure"]}
+#    Input Valid Value    Calculation Type    ${SC["Calculation Type"]}
+#    Clear Text Value  formula
+#    Input Valid Value    Keyword  ${SC["Schedule keyword"]}
+#    Input Valid Value    Multiply
+#    input text  amountFormula  12
+#    Input Valid Value    Priority    ${SC["Priority"]}
+#    Click Button    btnSaveUpdate
    # Input Valid Value    Schedule Save Button
 
 

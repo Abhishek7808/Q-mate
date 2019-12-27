@@ -90,6 +90,10 @@ Login From Customer
     [Arguments]  ${ssoid}
     CustomerLogin.Login From Customer With SSOID  ${ssoid}
 
+Verify Element Text On The Page
+    [Arguments]  ${text}  ${element}
+    Element Text Should Be    ${element}    ${text}
+
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

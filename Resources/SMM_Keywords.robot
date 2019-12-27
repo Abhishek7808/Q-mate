@@ -266,9 +266,29 @@ Get Purchase Order Number
 View CRO List In Po Form
     CustomerPoRegistration.Switch To CRO List
 
+View CRO From Customer
+    [Arguments]  ${agentName}=None  ${branchName}=None  ${reqQuanity}=None
+    CustomerCRoList.Open CRO Details  ${agentName}  ${branchName}  ${reqQuanity}
+
 Request CRO From PO Form
     CustomerPoRegistration.Switch To CRO List
     CustomerPoRegistration.Request CRO
+
+Fill CRO From Customer
+    CustomerCRoRegistration.Fill CRO Form
+
+Request CRO From Customer
+    CustomerCRoList.Request CRO
+
+Select Purchase Order In CRO Form
+    ${poNumber}  CustomerCRoRegistration.Get Purchase Order Number From Dropdown
+    CustomerCRoRegistration.Select Purchase Order  ${poNumber}
+
+Get PO Remaining Quantity
+    CustomerCRoRegistration.Fetch PO Balance
+
+Fill CRO Required Quantity
+    CustomerCRoRegistration.Input Required Quantity
 
 Select Purchase Order In CRO Form
     [Arguments]  ${poNumber}=None
@@ -285,8 +305,8 @@ Filter Purchase Order List By Status From Customer
 View CRO List By Customer
     CustomerCRoList.Open CRO List By Customer
 
-Request CRO By Customer
-    CustomerCRoList.Request CRO
+Verify That CRO Is Not Approved
+    CustomerCRoRegistration.Check For Pending CRO
 
 Add Purchase Order From Department
     PurchaseOrderList.Generate Purchase Order
@@ -389,7 +409,7 @@ Generate Financial Instrument From Customer
 Add Financial Instrument By Customer
     CustomerFinancialInstrument.Add Financial Instrument
 
-Fill Financial Instrument Form
+Fill Financial Instrument Form By Customer
     CustomerFinancialInstrument.Fill Financial Instrument By Customer
 
 View Financial Instrument By FI Number From Customer
@@ -397,10 +417,13 @@ View Financial Instrument By FI Number From Customer
     CustomerFinancialInstrument.Open Financial Instrument By FI Number  ${fiNumber}
 
 Check CRO Form Submission Without Financial Insturment
-    CustomerCRoRegistration.Fill CRO Form Without Financial Insturment
+    CustomerCRoRegistration.SMM_Keywords.Fill CRO From Customer Form Without Financial Insturment
 
 Open Financial Instrument List From Department
     FinancialInstrument.Go To Financial Instrument List Page
+
+Verify FI Balance Is Greater Than CRO Balance
+    CustomerCRoRegistration.Compare FI Balance And CRO Amount
 
 Filter Financial Instruments by Instrument Type From Department
     [Arguments]  ${instrumentType}
@@ -413,6 +436,10 @@ View Financial Instrument By Branch Name From Department
 View Financial Instrument By FI Number From Department
     [Arguments]  ${fiNumber}
     FinancialInstrument.Open Financial Instrument By FI Number  ${fiNumber}
+
+View Approved Financial Instrument By FI Number From Customer
+    [Arguments]  ${fiNumber}
+    CustomerFinancialInstrument.Open Approved Financial Instrument By FI Number  ${fiNumber}
 
 Approve Financial Instrument From Department
     FinancialInstrument.Approve Financial Instrument
@@ -442,3 +469,142 @@ Print Financial Instrument
     [Arguments]  ${fiNumber}
     FinancialInstrument.Search Financial Instrument  ${fiNumber}
     FinancialInstrument.Print FI
+
+Request Transfer Instument From Customer
+    [Arguments]  ${branchName}  ${amount}=5000
+    CustomerFinancialInstrument.Request Transfer Instument  ${branchName}  ${amount}
+
+View Financial Instrument By FI Number For Selected Branch From Department
+    [Arguments]  ${fiNumber}  ${branchName}
+    FinancialInstrument.Open Financial Instrument By FI Number For Selected Branch  ${fiNumber}  ${branchName}
+
+Approve Financial Instrument Transfer Request From Department
+    [Arguments]  ${branchName}  ${fiAmount}
+    FinancialInstrument.Approve Transfer Request  ${branchName}  ${fiAmount}
+
+Reject Financial Instrument Transfer Request From Department
+    [Arguments]  ${branchName}  ${fiAmount}
+    FinancialInstrument.Reject Transfer Request  ${branchName}  ${fiAmount}
+
+Verify Transfer Instrument Members
+    CustomerFinancialInstrument.Check For Transfer Instrument Group Members
+
+Get Available Amount Value Of Financial Instrument
+    CustomerFinancialInstrument.Get Amount Value
+
+View Financial Instrument From Department
+    [Arguments]  ${branchName}  ${fiNumber}  ${validityDate}
+    FinancialInstrument.Open Financial Instrument From Department
+
+Open Weighbridge Operations Page
+    WeighBridgeOperation.Go To Weighbridge Operations Page
+
+Generate Inward Slip
+    [Arguments]  ${croNumber}
+    WeighBridgeOperation.Fill Inward Slip  ${croNumber}
+
+Generate Outward Slip
+    [Arguments]  ${croNumber}
+    WeighBridgeOperation.Fill Outward Slip  ${croNumber}
+
+Open Loading Advice List From Department
+    LoadingAdvice.Go To Loading Advice List
+
+View Loading Advice From Department
+    [Arguments]  ${branchName}
+    LoadingAdvice.Open Loading Advice
+
+Approve Loading Advice From Department
+    LoadingAdvice.Approve Loading Advice
+
+Open Schedule Page From Department
+    Schedule.Go To Schedule Page
+
+View Schedule By Name
+    [Arguments]  ${scheduleName}
+    Schedule.Open Schedule  ${scheduleName}
+
+Add Formula In Schedule
+    Schedule.Add Formula
+
+Open Invoice Page From Department
+    Invoice.Go To Invoice Page
+
+Print Invoice From Department
+    [Arguments]  ${invoiceNumber}
+    Invoice.Print Invoice  ${invoiceNumber}
+
+Open Differentials Adjustments Page From Department
+    DifferentialsAdjustments.Go To Differentials Adjustments Page
+
+Generate Debit Note
+    [Arguments]  ${croNumber}  ${invoiceNumber}
+    DifferentialsAdjustments.Fill Debit Note Form
+
+Open Product Page From Department
+    Product.Go To Product Page
+
+Fill Product From Department
+    Product.Add Product
+    Product.Fill Product Form
+
+Fill Schedule From Department
+    Schedule.Add Schedule
+    Schedule.Fill Schedule Form
+
+Add Product From Department
+    Product.Add Product
+
+Fill Schedule On Product Page
+    Product.Add Schedule From Product Page
+
+Search Product On Product Page
+    [Arguments]  ${productName}
+    Product.Search Product  ${productName}
+
+Edit Price Component For Product
+    Product.Edit Product Details
+
+Open Receipt List Page From Department
+    Receipt.Go To Receipt List Page From Department
+
+Generate Receipt
+    Receipt.Add New Receipt
+    Receipt.Fill Receipt Form
+
+Approve Reciept From Department
+    [Arguments]  ${branchName}
+    Receipt.View Reciept Details  ${branchName}
+    Receipt.Approve Reciept
+
+View CRO List From Department
+    ContractReleaseOrderList.Go To Contract Release Order List Page
+
+View CRO From Department
+    [Arguments]  ${agentName}=None  ${branchName}=None  ${reqQuanity}=None
+    ContractReleaseOrder.Open CRO  ${agentName}  ${branchName}  ${reqQuanity}
+
+Forward CRO To Marketing Executive From Department
+    ContractReleaseOrder.Forward CRO To ME
+
+Forward CRO To SE From Department
+    ContractReleaseOrder.Forward CRO To SE
+
+Approve CRO From Department
+    ContractReleaseOrder.Approve CRO
+
+Filter CRO List By Status
+    [Arguments]  ${croStatus}
+    ContractReleaseOrderList.Apply Filter By Status  ${croStatus}
+
+Reject CRO From Department
+    ContractReleaseOrder.Reject CRO
+
+Get CRO Number
+    [Arguments]  ${branchName}  ${quantityReq}
+    ${croNumber}  ContractReleaseOrder.Fetch CRO Number  ${branchName}  ${quantityReq}
+    return from keyword  ${croNumber}
+
+Get CRO Remaining Quantity
+    ${quantity}  ContractReleaseOrder.Fetch CRO Remaining Quantity
+    return from keyword  ${quantity}

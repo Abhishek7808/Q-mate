@@ -1,43 +1,34 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
+Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
+Library           String
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
-Resource          ${RESOURCES}${/}Department${/}Company.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
+
 
 
 *** Test Cases ***
 Check the process to Add Product price formula
     [Tags]    addproduct
-#    Set Test Variable    ${Key Description}    ${Department Key Description}
-#    Set Test Variable    ${Schedule}    ${testData["Schedule On"]}
-#    Switch Browser    Department
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables  PD=PD 1  SC=SC 1
-    Go To Add Product From Department
+    SMM_Keywords.Open Product Page From Department
     sleep  1s
-    click button  btnAddProduct
+    SMM_Keywords.Fill Product From Department
     sleep  1s
-    Fill Product By Department
-    Go To Schedule In Product Management From Department
-    click button  addNewSchedule
-    Fill Schedule By Department
-
-#    #Sleep    5s
-#    Schedule On
-#    Sleep    5s
-#    Product Structure
-#    Sleep    5s
-#    Click Button    btnSaveUpdate
-#    [Teardown]    Close All Browsers
+    SMM_Keywords.Open Schedule Page From Department
+    SMM_Keywords.Fill Schedule From Department
 
 To check that user can create a new formula using fields
     [Tags]    checkformula
@@ -45,13 +36,6 @@ To check that user can create a new formula using fields
     Login From Department    archit.rsmml    admin
     #Set Test Variable    ${Key Description}    ${Department Key Description}
     Common_Keywords.Set Test Variables    SC=SC 2  PD=PD 1
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/Product/AddEditProduct
-    Fill Product By Department
-    sleep  5s
-    Click Element    xpath=//span[contains(text(),'Schedules')]
-    Sleep    3s
-    Click Button    btnAddNew
-    sleep  3s
-    Sleep    3s
-    Edit Schedule By Department
-    [Teardown]    Close All Browsers
+    SMM_Keywords.Open Product Page From Department
+    SMM_Keywords.Fill Product From Department
+    SMM_Keywords.Fill Schedule On Product Page

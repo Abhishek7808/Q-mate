@@ -148,42 +148,42 @@ Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 #    Run Keyword If    ${Status}    Input Valid Value    Financial Instrument Submit Button
 #    ...    ELSE    Input Valid Value    Financial Instrument Update Button
 
-Fill CRO
-    ${PO No}    Get Selected List Label    purchaseOrderId
-    ${PO No}    Strip String    ${PO No}
-    ${Status}    Evaluate    '${PO No}'=='${EMPTY}'
-    click element  purchaseOrderId
-    ${List Item}    Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms   Get List Items    purchaseOrderId
-    ${List Item}    Run Keyword If    ${Status}    Catenate    ${List Item}
-    ${List Item}    Run Keyword If    ${Status}    Split String    ${List Item}    ,
-    ${List Item}    Run Keyword If    ${Status}    Get From List    ${List Item}    1
-    ${List Item}    Run Keyword If    ${Status}    Split String    ${List Item}    '
-    ${PO No}    Run Keyword If    ${Status}    Get From List    ${List Item}    1
-    Run Keyword If    ${Status}    Input Valid Value    Contract Release Order Select PO    ${PO No}
-    Input Valid Value    Contract Release Order PO Number    ${PO No}
-    Input Valid Value    Contract Release Order Unit Name    ${PO["Unit Name"]}
-    Input Valid Value    Contract Release Order Product Name    ${PO["Select Product"]}
-    Input Valid Value    Contract Release Order Available Quantity    ${PO["PO Quantity"]}
-    Sleep    3s
-    Input Valid Value    Contract Release Order Product Quantity Required    ${CRO["Product Quantity Required"]}
-    Sleep    0.5s
-    #Input Valid Value    Contract Release Order Number Of Credit Days Required    ${CRO["No. of Credit Days Required"]}
-    #Input Valid Value    Contract Release Order Pincode    ${PO["Destination Pincode"]}
-    #Input Valid Value    Contract Release Order State    ${PO["Destination State"]}
-    #Input Valid Value    Contract Release Order City    ${PO["Destination City"]}
-    Input Valid Value    Contract Release Order Select Dispatch Point    ${CRO["Select Dispatch Point"]}
-    Input Valid Value    Contract Release Order Total Amount    ${CRO["Total Amount"]}
-    Input Valid Value    Contract Release Order Select Payment    ${PO["Preferred Mode of Payment"]}
-    Input Valid Value    Contract Release Order Number Of Credit Days Required    ${CRO["No. of Credit Days Required"]}
-    Input Valid Value    Contract Release Order Select Instrument Type    ${FI["Instrument Type"]}
-    Input Valid Value    Contract Release Order Select Instrument    ${FI["BG/LC Number"]}
-    Input Valid Value    Contract Release Order Agent    ${SSO ID["Name"]}
-    Input Valid Value    Add Instrument Button
-    #Sleep    2s
-    #Press Keys    ${Key Description["Contract Release Order Amount"]["Locator"]}    \\08
-    Input Valid Value    Contract Release Order Amount    ${CRO["Amount"]}
-    sleep  4s
-    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Contract Release Order Button
+#SMM_Keywords.Fill CRO From Customer
+#    ${PO No}    Get Selected List Label    purchaseOrderId
+#    ${PO No}    Strip String    ${PO No}
+#    ${Status}    Evaluate    '${PO No}'=='${EMPTY}'
+#    click element  purchaseOrderId
+#    ${List Item}    Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms   Get List Items    purchaseOrderId
+#    ${List Item}    Run Keyword If    ${Status}    Catenate    ${List Item}
+#    ${List Item}    Run Keyword If    ${Status}    Split String    ${List Item}    ,
+#    ${List Item}    Run Keyword If    ${Status}    Get From List    ${List Item}    1
+#    ${List Item}    Run Keyword If    ${Status}    Split String    ${List Item}    '
+#    ${PO No}    Run Keyword If    ${Status}    Get From List    ${List Item}    1
+#    Run Keyword If    ${Status}    Input Valid Value    Contract Release Order Select PO    ${PO No}
+#    Input Valid Value    Contract Release Order PO Number    ${PO No}
+#    Input Valid Value    Contract Release Order Unit Name    ${PO["Unit Name"]}
+#    Input Valid Value    Contract Release Order Product Name    ${PO["Select Product"]}
+#    Input Valid Value    Contract Release Order Available Quantity    ${PO["PO Quantity"]}
+#    Sleep    3s
+#    Input Valid Value    Contract Release Order Product Quantity Required    ${CRO["Product Quantity Required"]}
+#    Sleep    0.5s
+#    #Input Valid Value    Contract Release Order Number Of Credit Days Required    ${CRO["No. of Credit Days Required"]}
+#    #Input Valid Value    Contract Release Order Pincode    ${PO["Destination Pincode"]}
+#    #Input Valid Value    Contract Release Order State    ${PO["Destination State"]}
+#    #Input Valid Value    Contract Release Order City    ${PO["Destination City"]}
+#    Input Valid Value    Contract Release Order Select Dispatch Point    ${CRO["Select Dispatch Point"]}
+#    Input Valid Value    Contract Release Order Total Amount    ${CRO["Total Amount"]}
+#    Input Valid Value    Contract Release Order Select Payment    ${PO["Preferred Mode of Payment"]}
+#    Input Valid Value    Contract Release Order Number Of Credit Days Required    ${CRO["No. of Credit Days Required"]}
+#    Input Valid Value    Contract Release Order Select Instrument Type    ${FI["Instrument Type"]}
+#    Input Valid Value    Contract Release Order Select Instrument    ${FI["BG/LC Number"]}
+#    Input Valid Value    Contract Release Order Agent    ${SSO ID["Name"]}
+#    Input Valid Value    Add Instrument Button
+#    #Sleep    2s
+#    #Press Keys    ${Key Description["Contract Release Order Amount"]["Locator"]}    \\08
+#    Input Valid Value    Contract Release Order Amount    ${CRO["Amount"]}
+#    sleep  4s
+#    Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Contract Release Order Button
 
 #Fill Group
 #    #wait until element is enabled  groupName
@@ -286,43 +286,43 @@ Approve PO By Product
 
 Fill Inward Slip
     [Arguments]    ${CRO No}
-    BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    Sleep    2s
-    #Common_Keywords.Set Test Variables
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
-    Sleep    2s
+#    BrowserControl.Switch To    Department
+#    Login From Department    archit.rsmml    admin
+#    Sleep    2s
+#    #Common_Keywords.Set Test Variables
+#    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
+#    Sleep    2s
     #Input Text Value    ${Key Description["Search By CRO"]["Locator"]}    ${CRO No}
-    input text  searchByCRO  ${CRO No}${SPACE}
-    Sleep    4s
-    click element   //span[contains(text(),'${CRO No}')]/../following-sibling::td//button
-    #Input Valid Value    Generate In Slip
-    Sleep    2s
-    Input Valid Value    Enter Vehicle Number    ${Dispatch["Enter Vehicle Number"]}
-    Input Valid Value    Select Vehicle Type    ${Dispatch["Select Vehicle Type"]}
-    Input Valid Value    Tare Weight    ${Dispatch["Tare Weight"]}
-    Input Valid Value    Max Capacity    ${Dispatch["Max Capacity"]}
-    Input Valid Value    Driver Name    ${Dispatch["Driver Name"]}
-    Input Valid Value    Driver Mobile    ${Dispatch["Driver Mobile"]}
-    Input Valid Value    In Weight    ${Dispatch["In Weight"]}
-    Input Valid Value    Max Product Capacity    ${CRO["Product Quantity Required"]}
-    Input Valid Value    Lease Id    ${Dispatch["Lease Id"]}
-    Input Valid Value    Select Stock Location    ${Dispatch["Select Stock Location"]}
-    Input Valid Value    Generate In Slip Button
+#    input text  searchByCRO  ${CRO No}${SPACE}
+#    Sleep    4s
+#    click element   //span[contains(text(),'${CRO No}')]/../following-sibling::td//button
+#    #Input Valid Value    Generate In Slip
+#    Sleep    2s
+#    Input Valid Value    Enter Vehicle Number    ${Dispatch["Enter Vehicle Number"]}
+#    Input Valid Value    Select Vehicle Type    ${Dispatch["Select Vehicle Type"]}
+#    Input Valid Value    Tare Weight    ${Dispatch["Tare Weight"]}
+#    Input Valid Value    Max Capacity    ${Dispatch["Max Capacity"]}
+#    Input Valid Value    Driver Name    ${Dispatch["Driver Name"]}
+#    Input Valid Value    Driver Mobile    ${Dispatch["Driver Mobile"]}
+#    Input Valid Value    In Weight    ${Dispatch["In Weight"]}
+#    Input Valid Value    Max Product Capacity    ${CRO["Product Quantity Required"]}
+#    Input Valid Value    Lease Id    ${Dispatch["Lease Id"]}
+#    Input Valid Value    Select Stock Location    ${Dispatch["Select Stock Location"]}
+#    Input Valid Value    Generate In Slip Button
 
 Fill Outward Slip
     [Arguments]    ${CRO No}
-    BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    Sleep    2s
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
-    Sleep    2s
-    Input Valid Value    Tab In Vehicle
-    Sleep    1s
-    Input Text Value    ${Key Description["Search In Vehicle"]["Locator"]}    ${CRO No}${SPACE}
-    Set To Dictionary    ${Key Description["Generate Out Slip"]}    Locator=//SPAN[contains(text(),'${Dispatch["Enter Vehicle Number"]}')]/../following-sibling::td/button
-    Sleep    4s
-    Input Valid Value    Generate Out Slip
-    Sleep    2s
-    Input Valid Value    Gross Weight    ${Dispatch["Gross Weight"]}
-    Input Valid Value    Generate Out Slip Button
+#    BrowserControl.Switch To    Department
+#    Login From Department    archit.rsmml    admin
+#    Sleep    2s
+#    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/WeighBridge/WeighBridgeOperation
+#    Sleep    2s
+#    Input Valid Value    Tab In Vehicle
+#    Sleep    1s
+#    Input Text Value    ${Key Description["Search In Vehicle"]["Locator"]}    ${CRO No}${SPACE}
+#    Set To Dictionary    ${Key Description["Generate Out Slip"]}    Locator=//SPAN[contains(text(),'${Dispatch["Enter Vehicle Number"]}')]/../following-sibling::td/button
+#    Sleep    4s
+#    Input Valid Value    Generate Out Slip
+#    Sleep    2s
+#    Input Valid Value    Gross Weight    ${Dispatch["Gross Weight"]}
+#    Input Valid Value    Generate Out Slip Button

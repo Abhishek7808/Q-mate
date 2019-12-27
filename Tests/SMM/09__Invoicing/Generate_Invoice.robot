@@ -1,12 +1,20 @@
 *** Settings ***
-Library           SeleniumLibrary
 Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}/Common_Keywords.robot
+Test Teardown     Go To Base State
+Library           SeleniumLibrary
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           RequestsLibrary
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
-
 
 *** Test Cases ***
 Invoice Generation (including pending Moisture Rate)
@@ -14,27 +22,18 @@ Invoice Generation (including pending Moisture Rate)
     [Tags]    invoice
     BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
-    Go To Schedule In Product Management From Department
+    SMM_Keywords.Open Schedule Page From Department
     #Click Button    Next
     Sleep    1s
-    Click Element    //span[contains(text(),'Royalty')]/../following-sibling::td/i[@title='View']
+    SMM_Keywords.View Schedule By Name  Royalty
     Sleep    5s
-    Input Valid Value    Product Management Clear Button
-    Select From List By Value    keyword    0
-    Select From List By Value    keyword    6
-    Click Button    btnMultiply
-    Input Text    amountFormula    70
-    Input Text    calculationOrder    1
-    Input Valid Value    Product Management Update Button
+    SMM_Keywords.Add Formula In Schedule
     Sleep    3s
-    Go To Invoice From Department
+    SMM_Keywords.Open Invoice Page From Department
     Sleep    5s
     #Click Button    tabApproved
     Sleep    2s
-    set test variable  ${Invoice Number}  PHOS/1920/194
-    Click Element    //span[contains(text(),'${Invoice Number}')]/../following-sibling::td/i[@title='Print']
-    Sleep    25s
-    ${Moisture Rebate}    Get Text    //span[contains(text(),'${Invoice Number}')]/../following-sibling::td
+    SMM_Keywords.Print Invoice From Department  PHOS/1920/194
 
 #Check Invoice Cancellation process
 #    [Tags]    Skip

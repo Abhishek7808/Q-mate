@@ -108,7 +108,7 @@ To check the validations applied when agent selected in CRO request form
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     SMM_Keywords.View CRO List By Customer
-    SMM_Keywords.Request CRO By Customer
+    SMM_Keywords.Request CRO From Customer
     Sleep    5s
     SMM_Keywords.Select Purchase Order In CRO Form
     Sleep    2s

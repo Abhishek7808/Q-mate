@@ -1,17 +1,19 @@
 *** Settings ***
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}/Common_Keywords.robot
 Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
-#Resource          Field${/}Input.robot\
-#Resource          Field${/}Confirm.robot\
 Library           RequestsLibrary
-Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}browser.robot
+Resource          ${RESOURCES}${/}Delete_Data.robot
+Resource          ${RESOURCES}${/}SMM_Keywords.robot
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
+Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
@@ -25,21 +27,9 @@ ${RETRY INTERVAL}    200ms
 To check the process WeighBridge Manager (WM) generate the loading Advice
     [Tags]    loadingadvice
     BrowserControl.Switch To    Department
-    Login From Department    archit.rsmml    admin
-    Sleep    2s
-    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/LoadingAdvice/LoadingAdviceList
+    SMM_Keywords.Open Loading Advice List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Department 2
-    click element  //span[contains(text(),'${Branch["Name"]}')]/../preceding-sibling::td//input
-#    Open Browser    http://demoprojects.e-connectsolutions.com/ERP-DEMO    chrome
-#    Maximize Browser Window
-#    Input Text    LoginIdForShow    yuvraj.rsmml
-#    Input Text    PasswordForShow    yuvraj
-#    Click Button    btnLogin
-#    Sleep    2s
-#    Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM/LoadingAdvice/LoadingAdviceList
-    Sleep    2s
-#    Wait Until Keyword Succeeds    5s    200ms    Select Checkbox    //td[text()='MESH']/preceding-sibling::td//input
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    btnApproveLoadingAdvice
-    Wait Until Keyword Succeeds    5s    200ms    Click Button    tabApproved
-    Sleep    3s
+    SMM_Keywords.View Loading Advice From Department  ${Branch["Name"]}
+    SMM_Keywords.Approve Loading Advice From Department
+    #Wait Until Keyword Succeeds    5s    200ms    Select Checkbox    //td[text()='MESH']/preceding-sibling::td//input
     #Page Should Contain    //td[text()='MESH']/following-sibling::td[text()='Gypsum Powder Loose']

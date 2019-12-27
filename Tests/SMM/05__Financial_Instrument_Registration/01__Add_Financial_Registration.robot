@@ -27,17 +27,17 @@ Add Financial Instrument
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
     SMM_Keywords.View Financial Instrument List From Customer
-    SMM_Keywords.Generate Financial Instrument
+    SMM_Keywords.Generate Financial Instrument From Customer
     Sleep    3s
     SMM_Keywords.View Financial Instrument By FI Number From Customer  ${FI["BG/LC Number"]}
     SMM_Keywords.Go To Profile Selection Page
     Common_Keywords.Set Test Variables    Branch=Branch Customer 1    FI=FI 1
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     SMM_Keywords.View Financial Instrument List From Customer
-    SMM_Keywords.Generate Financial Instrument
+    SMM_Keywords.Generate Financial Instrument From Customer
     Sleep    2s
     Common_Keywords.Set Test Variables    FI=FI 2
-    SMM_Keywords.Generate Financial Instrument
+    SMM_Keywords.Generate Financial Instrument From Customer
     Sleep    2s
 
 Check the edit process for pending FI
@@ -48,10 +48,10 @@ Check the edit process for pending FI
     Sleep    2s
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     Sleep    2s
-    SMM_Keywords.View Financial Instrument By FI Number  ${FI["BG/LC Number"]}
+    SMM_Keywords.View Financial Instrument By FI Number From Customer  ${FI["BG/LC Number"]}
     Sleep    2s
     Set Test Variable    ${FI}    ${Test Data["${CONFIG["FI 2"]}"]}
-    SMM_Keywords.Fill Financial Instrument Form
+    SMM_Keywords.Fill Financial Instrument Form By Customer
 
 Check that only after Financial Instrument approval, CRO can be generated
     [Tags]  Financial  Financial3
@@ -79,7 +79,7 @@ Check edit functionality for approved FI
     BrowserControl.Switch To    Verify
     SMM_Keywords.Open Financial Instrument List From Department
     SMM_Keywords.Filter Financial Instruments by Instrument Type From Department  ${FI["Instrument Type"]}
-    SMM_Keywords.View Financial Instrument By Branch Name From Department  ${Branch["Name"]}
+    SMM_Keywords.View Financial Instrument From Department  ${Branch["Name"]}  ${FI["BG/LC Number"]}  ${FI["Validity Date"]}
     SMM_Keywords.Approve Financial Instrument From Department
     BrowserControl.Switch To    Customer
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
