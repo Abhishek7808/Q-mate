@@ -21,6 +21,7 @@ To check the process when department user as proxy add agent from menu
     [Documentation]    Adds an agent (transporter) to a company by department
     [Tags]   Addagentasproxy  Addagentasproxy1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 5    SSO ID=SSOID 2
     SMM_Keywords.Add Purchase Order From Department
@@ -34,6 +35,7 @@ To check the process when department user add agent from PO form
     [Documentation]    Adds an agent from PO form
     [Tags]   Addagentasproxy  Addagentasproxy2
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 3    SSO ID=SSOID 2
     SMM_Keywords.Add Purchase Order From Department

@@ -21,6 +21,7 @@ Register PO for auctionable product
     [Documentation]    Regiters PO for an auctionable product having BID number and product price
     [Tags]  registerpo
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    PO=PO 3    SSO ID=SSOID 2
     SMM_KeywordsRegister Purchase Order From Department

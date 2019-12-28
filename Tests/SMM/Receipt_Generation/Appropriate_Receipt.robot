@@ -23,6 +23,7 @@ To check the process Appropriate Receipt
     [Documentation]    Fills receipt form and generates new receipt
     [Tags]    receipt
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    Receipt=Receipt 1
     SMM_Keywords.Open Receipt List Page From Department
     SMM_Keywords.Generate Receipt

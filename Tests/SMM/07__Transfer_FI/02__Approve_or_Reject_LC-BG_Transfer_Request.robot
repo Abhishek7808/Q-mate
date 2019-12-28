@@ -34,6 +34,7 @@ Approve or Reject LC/BG Transfer
     #Approving a Transfer Request
     Create Financial Instrument
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    FI=FI 1
     SMM_Keywords.Open Financial Instrument List From Department
     SMM_Keywords.Search Financial Instrument By FI Number From Department  ${FI["BG/LC Number"]}

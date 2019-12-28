@@ -5,18 +5,18 @@ Library           String
 Library           Collections
 Resource          ../Configuration.resource
 Resource          ${RESOURCES}${/}Department${/}Department.robot
-Resource          ${DATA}${/}website.robot
-Resource          ${DATA}${/}locators.robot
-Resource          ${DATA}${/}alerts.robot
+Resource          ${SMM_DATA_FILES}${/}website.robot
+Resource          ${SMM_DATA_FILES}${/}locators.robot
+Resource          ${SMM_DATA_FILES}${/}alerts.robot
 
 *** Variables ***
-${Test Data File}                       ${DATA}${/}testData.json
-${Department Key Description File}      ${DATA}${/}KeyDescriptionDepartment.json
-${Customer Key Description File}        ${DATA}${/}KeyDescriptionCustomer.json
-${configFile}                           ${DATA}${/}config.json
+${Test Data File}                       ${SMM_DATA_FILES}${/}testData.json
+${Department Key Description File}      ${SMM_DATA_FILES}${/}KeyDescriptionDepartment.json
+${Customer Key Description File}        ${SMM_DATA_FILES}${/}KeyDescriptionCustomer.json
+${configFile}                           ${SMM_DATA_FILES}${/}config.json
 
 *** Keywords ***
-BrowserControl.Switch To
+Switch To
     [Arguments]    ${Switch To}
     ${File Name}    Run Keyword If    '${Switch To}'=='Customer'    Set Variable    ${Customer Key Description File}
     ...    ELSE    Set Variable    ${Department Key Description File}
@@ -57,7 +57,7 @@ Open Browsers For SMM
     Call Method    ${chrome options}   add_argument    headless
     Call Method    ${chrome options}   add_argument    disable-gpu
     ${options}=     Call Method     ${chrome_options}    to_capabilities
-    ${dict}    Create Dictionary    executable_path=${${BROWSER} PATH}  #desired_capabilities=${options}
+    ${dict}    Create Dictionary      #desired_capabilities=${options}
     Create WebDriver  ${BROWSER}  alias=Department  kwargs=${dict}
     #Create Webdriver    driver_name=${BROWSER}    alias=Department    #kwargs=${dict}
     Maximize Browser Window
@@ -74,9 +74,11 @@ Open Browsers For SMM
     #Login From Department    megha.rsmml    admin
 
 Go To Base State
-    Switch Browser    Customer
-    Go To    ${LOGIN URL}/temp/sso.aspx
     Switch Browser    Department
+    ERP_Keywords.Attempt Logout
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM
     Switch Browser    Verify
+    ERP_Keywords.Attempt Logout
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM
+    Switch Browser    Customer
+    Go To    ${LOGIN URL}/temp/sso.aspx

@@ -22,6 +22,7 @@ Filter and View LC for pending payment, and print Bank letter
     [Documentation]    Generate bank letter/print the letter
     [Tags]  bankletter  bankletter1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1
     SMM_Keywords.Open Financial Instrument List From Department
     SMM_Keywords.Search Financial Instrument By FI Number From Department  ${FI["BG/LC Number"]}

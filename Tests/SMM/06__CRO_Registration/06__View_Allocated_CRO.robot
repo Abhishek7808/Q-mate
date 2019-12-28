@@ -21,6 +21,7 @@ View Allocated CRO Status
     [Documentation]    CRO allocated quantity will be visible to weighbridge manager
     [Tags]  croallocated
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     SMM_Keywords.Filter CRO List By Status    Approved

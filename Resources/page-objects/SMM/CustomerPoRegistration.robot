@@ -1,8 +1,6 @@
 *** Settings ***
 
 
-*** Test Cases ***
-
 *** Keywords ***
 Add Agent
     Click Button    btnAddAgentPo

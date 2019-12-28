@@ -22,6 +22,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Check the process to Add Product price formula
     [Tags]    addproduct
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables  PD=PD 1  SC=SC 1
     SMM_Keywords.Open Product Page From Department
     sleep  1s

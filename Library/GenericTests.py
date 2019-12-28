@@ -4,13 +4,13 @@ from robot.api import logger
 from robot.api.deco import keyword
 from robot.libraries.BuiltIn import BuiltIn
 
-error_file = BuiltIn().get_variable_value(r"${ERRORFILE}")
-disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
+#error_file = BuiltIn().get_variable_value(r"${ERRORFILE}")
+#disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
 
 def filter_module_error_url(module_name):
     # """Filter the error list according to the given module and returns a new list """
     module_error_list = []
-    error_list = read_file_return_list(error_file)
+    error_list = read_file_return_list(BuiltIn().get_variable_value(r"${ERRORFILE}"))
     for item in error_list:
         if module_name.lower() == item[0][52:55].lower():
             module_error_list.append(item)
@@ -18,7 +18,7 @@ def filter_module_error_url(module_name):
     return module_error_list
 
 def get_disbursement_list():
-    disbursement_list = read_file_return_list(disbursement_file)
+    disbursement_list = read_file_return_list(BuiltIn().get_variable_value(r"${DV_REPORT}"))
 
 
 

@@ -96,7 +96,7 @@ Perform Permission Tests On Urls
     \   ${errorCheck}  Check Error Occurred  #if page has any other error do not report it
     \   ${result}  run keyword if  ${errorCheck} == None   Check Permissions
     \   run keyword if  ${result} == 4   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
-    Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
+    #Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 
 Check Permissions

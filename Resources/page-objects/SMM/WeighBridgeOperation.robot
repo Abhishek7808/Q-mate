@@ -3,6 +3,7 @@ Documentation    Suite description
 
 *** Variables ***
 ${pageUrl}  SMM/WeighBridge/WeighBridgeOperation
+
 *** Keywords ***
 Go To Weighbridge Operations Page
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}

@@ -1,12 +1,9 @@
 *** Settings ***
 
-
-*** Test Cases ***
-
-
 *** Keywords ***
 Open Purchase Order List
-SMM_Keywords.View Purchase Order List By Customer
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    \#CustomerServices
+    Wait Until Keyword Succeeds    5s    200ms    Click Link    /ERP-DEMO/RSMML/PurchaseOrder
 
 Request Purchase Order
      Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[(text()='Request PO')]
@@ -24,8 +21,6 @@ Get Purchase Order Details By Product
     Wait Until Keyword Succeeds    5s    200ms    Click Element    //*[contains(text(),'${Product}')]/../following-sibling::td/i[contains(@title,'View')]
     Sleep    2s
 
-Request Purchase Order
-    Wait Until Keyword Succeeds    5s    200ms    Click Element    //span[contains(text(),'Request PO')]
 
 Fetch PO Number From Pending PO
     [Arguments]  ${productName}

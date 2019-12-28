@@ -21,6 +21,7 @@ Check the process to Generate Debit Note
     [Documentation]    Generates debit note
     [Tags]    debitnote
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Differentials Adjustments Page From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1  DN=DN 1
     SMM_Keywords.Generate Debit Note  PHOS/1920/194  IN-05/1819/23

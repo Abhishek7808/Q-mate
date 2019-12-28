@@ -21,6 +21,7 @@ Check Group Creation
     [Documentation]    Creates a group by department
     [Tags]  groupproxy  groupproxy1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Customer Group List Page
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
     SMM_Keywords.Add New Customer Group
@@ -29,6 +30,7 @@ Check Group Creation, When Already A Group Exists With Same Code/PAN No
     [Documentation]    Checks if a group with same name can be created
     [Tags]  groupproxy  groupproxy2
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Customer Group List Page
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    SSO ID=SSOID 3
     SMM_Keywords.Add New Customer Group

@@ -1,9 +1,6 @@
 *** Settings ***
 
 
-*** Test Cases ***
-
-
 *** Keywords ***
 Fill Purchase Order Form By Department
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})

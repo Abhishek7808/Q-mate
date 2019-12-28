@@ -23,6 +23,7 @@ Check edit functionality for pending PO
     [Documentation]    Edits the PO form when it is in pending mode
     [Tags]  approvepo  approvepo1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
@@ -33,12 +34,14 @@ PO Request Approval Process
     [Tags]  approvepo  approvepo2
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     SMM_Keywords.Filter Purchase Order List By Status  Pending
     Sleep    5s
     SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
-    SMM_Keywords.Approve Pending Purchase Order
+    SMM_Keywords.Approve Purchase Order From Department
     BrowserControl.Switch To    Verify
+    Login From Department    megha.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     SMM_Keywords.Filter Purchase Order List By Status  Approved
     Sleep    5s
@@ -48,6 +51,7 @@ PO Request Rejection Process
     [Documentation]    Rejects PO when submitted by the customer
     [Tags]  approvepo  approvepo3
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
     SMM_Keywords.Filter Purchase Order List By Status  Approved
@@ -57,6 +61,7 @@ PO Request Rejection Process
     SMM_Keywords.Reject Purchase Order By Department
     Sleep    3s
     BrowserControl.Switch To    Verify
+    Login From Department    megha.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     SMM_Keywords.Filter Purchase Order List By Status  Rejected
     SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
@@ -65,6 +70,7 @@ Check PO cancellation when status is approved or pending
     [Tags]  approvepo  approvepo4
     #When PO is in pending state
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 3    PO=PO 1
     SMM_Keywords.Search Purchase Order By Branch Name   ${Branch["Name"]}
@@ -73,6 +79,7 @@ Check PO cancellation when status is approved or pending
     SMM_Keywords.Reject Purchase Order By Department
     #When PO is in Approved state
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
     SMM_Keywords.Filter Purchase Order List By Status  Approved
     Sleep    5s

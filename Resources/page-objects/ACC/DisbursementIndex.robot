@@ -161,7 +161,7 @@ Add To The Disbusement Test Report
     append to file  ${DV_REPORT}  ${disbursementType}, ${paybillNumber}, ${employeeID}\n
 
 Send Disbursement Test Report To Developers
-    Send Error Email Notification
+    Send Error Email Notification  None  None  data validation
 
 Get Amount Column Number
     [Documentation]  Gives the column number of the 'Net Amount' column

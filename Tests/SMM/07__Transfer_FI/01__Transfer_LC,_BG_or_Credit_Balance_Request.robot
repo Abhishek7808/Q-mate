@@ -33,6 +33,7 @@ To check the Transfer of LC/BG
     Set Test Variable    ${Branch}    ${Test Data["${CONFIG["Branch Customer 1"]}"]}
     SMM_Keywords.Request Transfer Instument From Customer  ${Branch["Name"]}  ${FI["Transfer Amount"]}
     BrowserControl.Switch To    Verify
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Financial Instrument List From Department
     Sleep    1s
     SMM_Keywords.Search Financial Instrument By FI Number From Department  ${FI["BG/LC Number"]}

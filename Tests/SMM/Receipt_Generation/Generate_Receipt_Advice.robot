@@ -18,6 +18,7 @@ Check Receipt Advice Generation
     [Documentation]    Still
     [Tags]    receiptadvice  receiptadvice1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    Receipt=Receipt 1
     SMM_Keywords.Open Receipt List Page From Department
     SMM_Keywords.Generate Receipt
@@ -29,6 +30,7 @@ Check Financial instrument after receipt generation
     [Documentation]    Still
     [Tags]   receiptadvice  receiptadvice2
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    FI=FI 1   Company=Company Department 3    Branch=Branch Department 1  Receipt=Receipt 1
     SMM_Keywords.Open Financial Instrument List From Department
     SMM_Keywords.Search Financial Instrument By FI Number From Department  ${FI["BG/LC Number"]}

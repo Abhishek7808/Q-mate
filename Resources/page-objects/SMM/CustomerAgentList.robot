@@ -1,9 +1,5 @@
 *** Settings ***
 
-
-*** Test Cases ***
-
-
 *** Keywords ***
 Verify Presence Of Agent
     [Arguments]  ${agentName}

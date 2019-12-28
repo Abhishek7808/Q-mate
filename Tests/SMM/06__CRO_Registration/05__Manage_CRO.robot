@@ -22,6 +22,7 @@ Cancel CRO request before inbound Weighment Slip is generated
     [Documentation]    Rejects a CRO request with appropriate remarks
     [Tags]  cancelcro
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     SMM_Keywords.Filter CRO List By Status    Approved

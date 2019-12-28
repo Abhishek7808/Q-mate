@@ -27,6 +27,7 @@ ${RETRY INTERVAL}    200ms
 To check the process WeighBridge Manager (WM) generate the loading Advice
     [Tags]    loadingadvice
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Loading Advice List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Department 2
     SMM_Keywords.View Loading Advice From Department  ${Branch["Name"]}

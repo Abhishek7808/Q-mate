@@ -1,5 +1,6 @@
 *** Settings ***
 Documentation    Suite description
+
 *** Variables ***
 ${pageUrl}  SMM/ContractReleaseOrder
 

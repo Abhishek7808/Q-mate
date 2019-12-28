@@ -1,9 +1,6 @@
 *** Settings ***
 
 
-*** Test Cases ***
-
-
 *** Keywords ***
 Select Purchase Order for CRO
     [Arguments]  ${poNumber}

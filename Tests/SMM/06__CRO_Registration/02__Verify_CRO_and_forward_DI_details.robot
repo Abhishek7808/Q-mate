@@ -21,6 +21,7 @@ Check CRO request approval process
     [Documentation]    Approves CRO request by Forwarding it to ME, Selecting Dispatch Point, Expiry Date, and forwarding it to ME Executive
     [Tags]  croapproval  croapproval1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     SMM_Keywords.View CRO List From Department
     SMM_Keywords.Filter CRO List By Status   Pending
@@ -36,6 +37,7 @@ Check CRO request rejection process
     [Documentation]    Reject a CRO request with a rejection message
     [Tags]  croapproval  croapproval2
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
@@ -46,6 +48,7 @@ Check that CRO validity date cannot exceed the validity of financial instrument
     [Tags]  croapproval  croapproval3
     #This keyword is not to be run as this functionality has not been made so far
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    CRO=CRO 1
     SMM_Keywords.Filter CRO List By Status   Pending

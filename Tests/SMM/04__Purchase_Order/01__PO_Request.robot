@@ -39,6 +39,7 @@ Get notification after PO request approved/rejected
     ${poNumber}  SMM_Keywords.Get Purchase Order Number From Pending PO
     Sleep    3s
     BrowserControl.Switch To    Verify
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.Approve Pending PO By PO Number  ${poNumber}
     BrowserControl.Switch To    Customer
     Sleep    1s

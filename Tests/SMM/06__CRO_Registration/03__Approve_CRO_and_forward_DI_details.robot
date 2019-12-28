@@ -21,6 +21,7 @@ Approve and Forward DI
     [Documentation]    Approves the CRO so forwarded and again forwards it to Sales Executive
     [Tags]  forward  forward1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     SMM_Keywords.View CRO List From Department
     SMM_Keywords.Filter CRO List By Status   Forwarded to ME
@@ -37,6 +38,7 @@ Check CRO request approval process when both the approvals(CRO request & DI) don
     [Documentation]    Approves the pending CRO by forwarding it to ME, Selecting the dispatch point, expiry date and then forwrding to Sales Executive
     [Tags]  forward  forward2
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     SMM_Keywords.View CRO List From Department
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
@@ -46,6 +48,7 @@ View DI request and Reject DI request
     [Documentation]    Views and then rejects the DI request
     [Tags]  forward  forward3
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Department 2    Branch=Branch Department 1    CRO=CRO 1
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
@@ -54,6 +57,7 @@ View CRO request and Reject CRO request
     [Documentation]    Views and then rejects a CRO with an appropriate message
     [Tags]  forward  forward4
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
@@ -61,6 +65,7 @@ View CRO request and Reject CRO request
     SMM_Keywords.View CRO List From Department
     SMM_Keywords.Filter CRO List By Status   Forwarded to ME
     BrowserControl.Switch To    Verify
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.View CRO List From Department  Rejected
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
 

@@ -7,6 +7,7 @@ ${updateButton}  btnUpdateCustDetail
 ${textPending}  //span[text()='Pending']
 ${approvedText}  //span[text()='Approved']
 ${rejectionText}  //span[text()='Rejected']
+
 *** Keywords ***
 Check For Draft
     Page should Contain Element    ${draftText}

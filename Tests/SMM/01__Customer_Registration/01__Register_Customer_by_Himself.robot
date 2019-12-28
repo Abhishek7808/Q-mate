@@ -93,6 +93,7 @@ Check the reject process of customer registration by departmental user
     [Tags]  reject  Himself  himself6
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
     SMM_Keywords.Filter Plants By Status   Pending
     sleep  2s
@@ -119,6 +120,7 @@ Check the approval process of customer registration by departmental user
     [Documentation]    Done
     [Tags]  approval  Himself  himself8
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     SMM_Keywords.Open Plant List Page
     SMM_Keywords.Filter Plants By Status  Pending

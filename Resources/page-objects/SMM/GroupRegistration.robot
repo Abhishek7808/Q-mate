@@ -1,9 +1,6 @@
 *** Settings ***
 
 
-*** Test Cases ***
-
-
 *** Keywords ***
 
 Fill Group Registration Form By Department

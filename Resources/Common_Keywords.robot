@@ -1,18 +1,12 @@
 *** Settings ***
 Resource    ../Configuration.resource
 Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
-Library	    OperatingSystem
-Library	    String
-Library     Collections
-#Resource    BrowserControl.robot
-
-#Test Teardown     Go To Base State
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
 Library           String
 Library           RequestsLibrary
-#Resource          ../../../Configuration.resource
+Library           ${LIBRARY}/Notifications.py
 Resource          ${PAGE OBJECTS}/SMM/CustomerLogin.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
@@ -20,9 +14,16 @@ Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
-Resource          ${DATA}${/}website.robot
-Resource          ${DATA}${/}locators.robot
-Resource          ${DATA}${/}alerts.robot
+Resource          ${SMM_DATA_FILES}${/}website.robot
+Resource          ${SMM_DATA_FILES}${/}locators.robot
+Resource          ${SMM_DATA_FILES}${/}alerts.robot
+
+*** Variables ***
+#Overwrite default configuration
+#${ENVIRONMENT} =  demo
+#${BROWSER} =  firefox
+# login data added into Data/Login_Data.robot
+@{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 
 
 *** Keywords ***
@@ -34,6 +35,17 @@ Begin Basic Testing
     maximize browser window
 
 End Basic Testing
+    close browser
+
+Begin Generic Testing
+    Set Paths
+    Remove Files
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+
+End Generic Testing
+    FOR  ${item}  IN  @{moduleNames}
+    \   Send Error Email Notification  ${item}  ${CONTACTS_JSON}
     close browser
 
 Begin SMM Testing
@@ -94,6 +106,9 @@ Verify Element Text On The Page
     [Arguments]  ${text}  ${element}
     Element Text Should Be    ${element}    ${text}
 
+Login From Department
+    [Arguments]    ${Username}    ${Password}
+    login.Department Login   ${Username}    ${Password}
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

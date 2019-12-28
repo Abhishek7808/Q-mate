@@ -37,3 +37,8 @@ Verify Login Message
 Go To Logout
     go to  ${BASE_URL.${ENVIRONMENT}}/${LOGOUT}
 
+Department Login
+    [Arguments]    ${Username}    ${Password}
+    Input Text    LoginIdForShow    ${Username}
+    Input Password    PasswordForShow    ${Password}
+    Click Button    btnLogin

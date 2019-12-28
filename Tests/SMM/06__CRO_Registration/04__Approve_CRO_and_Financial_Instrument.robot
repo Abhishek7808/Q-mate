@@ -21,6 +21,7 @@ Approve DI Requests
     [Documentation]    Approves the DI request
     [Tags]  approvecrofin  approvecrofin1
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
     SMM_Keywords.View CRO List From Department
     Sleep    1s
@@ -28,6 +29,7 @@ Approve DI Requests
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
     SMM_Keywords.Approve CRO From Department
     BrowserControl.Switch To    Verify
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.View CRO List From Department
     SMM_Keywords.Filter CRO List By Status    Approved
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
@@ -38,6 +40,7 @@ Check CRO request approval process when all the approvals(CRO request & DI) done
     [Documentation]    Approves a CRO request by forwarding it to Marketing Executive, Dispatch point and expiry date and then to SE
     [Tags]  approvecrofin  approvecrofin2
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Sleep    5s
@@ -47,6 +50,7 @@ Check CRO request approval process when all the approvals(CRO request & DI) done
     SMM_Keywords.Forward CRO To SE From Department
     SMM_Keywords.Approve CRO From Department
     BrowserControl.Switch To    Verify
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.View CRO List From Department
     SMM_Keywords.Filter CRO List By Status    Approved
     ${CRO Number 1}  SMM_Keywords.Get CRO Number  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
@@ -56,6 +60,7 @@ Reject DI Request
     [Documentation]    Rejects a CRO request with appropriate remarks
     [Tags]  approvecrofin  approvecrofin3
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 2
     Sleep    5s
@@ -67,6 +72,7 @@ Reject CRO Request
     [Documentation]    Rejects a CRO request with appropriate remarks
     [Tags]  approvecrofin  approvecrofin4
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 3
     Sleep    5s

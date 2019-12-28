@@ -51,7 +51,7 @@ Check group creation, when already a group exists with same code/PAN no
     Page should not contain button    btnCreateGroupPopup
 
 
-Request to join existing group, having same PAN no. as that of customer.
+Request to join existing group, having same PAN no. as that of customer
     [Tags]  group  samePan  group3
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2   #jodhpur

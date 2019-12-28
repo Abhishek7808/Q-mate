@@ -22,6 +22,7 @@ To check the edit process of customer details when customer is not approved by d
     [Tags]  manage  mnotapproved  manage1
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
     SMM_Keywords.Filter Plants By Status    Draft      #Draft
     sleep  3s
@@ -31,6 +32,7 @@ To check the edit process of customer details when customer is not approved by d
     SMM_Keywords.Filter Plants By Status    Approved
     sleep  3s
     BrowserControl.Switch To    Verify
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.Verify That Customer Has Been Approved   ${Branch["Name"]}
 
 To check the edit process of customer details when customer is approved by department
@@ -49,15 +51,16 @@ Check Cancel Customer Registration
     [Documentation]    Deactivates an application by Marketing Team Member
     [Tags]  manage  mcancle  manage3
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1    #jaipur
-    SMM_Keywords.Filter Plants By Status    4
+    SMM_Keywords.Filter Plants By Status    Approved
     sleep  3s
     SMM_Keywords.View Details Of Selected Plant  ${Branch["Name"]}
     SMM_Keywords.Cancel Plant Registration
     Sleep    2s
     BrowserControl.Switch To    Verify
-    #Login From Department    megha.rsmml    admin
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.Verify That Customer Has Been Deactivated  ${Branch["Name"]}
     #&{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Company["Company Name"]} (${Company["Enter PAN"]})
     #Go To Add Purchase Order From Department
@@ -71,14 +74,15 @@ Check registration edit functionality, when account deactivated
     [Documentation]    Checks if deactivated account information can be edited
     [Tags]  manage  mdeactivated  manage4
     BrowserControl.Switch To    Department
+    Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3    SSO ID=SSOID 1
     SMM_Keywords.Filter Plants By Status    Deactivated
     sleep  3s
-    SMM_Keywords.View Details Of Selected Plant
+    SMM_Keywords.View Details Of Selected Plant   ${Branch["Name"]}
     SMM_Keywords.Company Registration By Department    Activate
     BrowserControl.Switch To    Verify
-    Login From Department    megha.rsmml    admin
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.Verify That Customer Has Been Approved   ${Branch["Name"]}
     #One more scenario gets added, here we don't have any button of update or submit, there is only one Active Button
 

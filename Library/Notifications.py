@@ -11,9 +11,9 @@ import base64
 
 import GenericTests
 
-error_file = BuiltIn().get_variable_value("${ERRORFILE}")
-disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
-Beneficiary_report_file = BuiltIn().get_variable_value(r"${CPF_REPORT}")
+#error_file = BuiltIn().get_variable_value("${ERRORFILE}")
+#disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
+#Beneficiary_report_file = BuiltIn().get_variable_value(r"${CPF_REPORT}")
 
 white = "#fff"
 grey = "#f1f1f1"
@@ -197,6 +197,13 @@ def compose_Beneficiary_report_message(beneficiary_list):
     return html_table
 
 
+def format_string(text):
+    text = str(text)
+    text = text.lower()
+    text = text.strip()
+    test_name = text.replace(" ", "")
+    return text
+
 class Notifications:
 
     @keyword
@@ -239,34 +246,34 @@ class Notifications:
         smtp_obj.quit()
 
     @keyword
-    def send_error_email_notification(self, module_name=None, receivers_json=None):
-        #        logger.console(find_receiver(module_name, receivers_json).get('emailid'))
-        error_urls = []
+    def send_error_email_notification(self, module_name=None, receivers_json=None, test_name=None):
+        test_name = format_string(test_name)
         gen_test = GenericTests
         if module_name is not None:
             error_urls = gen_test.filter_module_error_url(module_name)
-        disbursement_list = gen_test.read_file_return_list(disbursement_file)
-        beneficiary_list = gen_test.read_file_return_list(Beneficiary_report_file)
-        # logger.console(error_urls)
+            if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
+                emails_ids = find_receiver(module_name, receivers_json)
+                email_subject = "Audit Report of " + module_name
+                email_message = compose_generic_error_message(module_name, error_urls)
+                self.send_email(emails_ids.get('emailid'), email_subject, email_message)
 
-        # check if error notifications needs to sent
-        if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
-            emails_ids = find_receiver(module_name, receivers_json)
-            email_subject = "Audit Report of " + module_name
-            email_message = compose_generic_error_message(module_name, error_urls)
-            self.send_email(emails_ids.get('emailid'), email_subject, email_message)
+        if test_name == 'datavalidation':
+            disbursement_list = gen_test.read_file_return_list(BuiltIn().get_variable_value(r"${DV_REPORT}"))
+            if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(disbursement_list) != 0:
+                email_message = compose_disbursement_message(disbursement_list)
+                email_subject = "Disbursement Report"
+                emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
+                self.send_email(emails_ids, email_subject, email_message)
 
-        if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(disbursement_list) != 0:
-            email_message = compose_disbursement_message(disbursement_list)
-            email_subject = "Disbursement Report"
-            emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
-            self.send_email(emails_ids, email_subject, email_message)
+        if test_name == 'cpfbeneficiary':
+            beneficiary_list = gen_test.read_file_return_list(BuiltIn().get_variable_value(r"${CPF_REPORT}"))
+            if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(beneficiary_list) != 0:
+                email_message = compose_Beneficiary_report_message(beneficiary_list)
+                email_subject = "Beneficiary Report"
+                emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
+                self.send_email(emails_ids, email_subject, email_message)
 
-        if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(beneficiary_list) != 0:
-            email_message = compose_Beneficiary_report_message(beneficiary_list)
-            email_subject = "Beneficiary Report"
-            emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
-            self.send_email(emails_ids, email_subject, email_message)
+
 
     @keyword
     def send_error_push_notification(self):

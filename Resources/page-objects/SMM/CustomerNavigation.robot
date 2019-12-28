@@ -2,11 +2,12 @@
 
 *** Variables ***
 ${CitizenServices}   \#CitizenServices
-${CustomerViewRegistration}  /ERP-DEMO/RSMML/Customer/CustomerViewRegistration
+${CustomerViewRegistration}  /ERP-DEMO/RSMML/Customer/ViewRegistration
 ${groupList}  /ERP-DEMO/RSMML/Customer/GroupList
 ${agentList}  /ERP-DEMO/RSMML/Customer/AgentList
 ${purchaseOrderList}  /ERP-DEMO/RSMML/PurchaseOrder
 ${financialInstrumentList}  /ERP-DEMO/RSMML/Finance/InstrumentList
+
 *** Keywords ***
 Open Customer Registration Form
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Link    ${CitizenServices}

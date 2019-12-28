@@ -1,13 +1,6 @@
 *** Settings ***
 Documentation    Suite description
 
-*** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
-
 *** Keywords ***
 Forward CRO To ME
     Input Valid Value    Contract Release Order Forward to ME Button

@@ -1032,3 +1032,15 @@
 [1223/103743.083:ERROR:exception_snapshot_win.cc(98)] thread ID 37564 not found in process
 [1223/103743.083:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
 [1223/103743.083:ERROR:exception_snapshot_win.cc(98)] thread ID 39868 not found in process
+[1228/131229.234:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1228/131229.249:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1228/131229.263:ERROR:exception_snapshot_win.cc(98)] thread ID 41828 not found in process
+[1228/131229.249:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1228/131229.263:ERROR:exception_snapshot_win.cc(98)] thread ID 41852 not found in process
+[1228/131229.263:ERROR:exception_snapshot_win.cc(98)] thread ID 41840 not found in process
+[1228/142805.426:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1228/142805.427:ERROR:exception_snapshot_win.cc(98)] thread ID 42304 not found in process
+[1228/142805.484:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1228/142805.485:ERROR:exception_snapshot_win.cc(98)] thread ID 37372 not found in process
+[1228/142805.485:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
+[1228/142805.485:ERROR:exception_snapshot_win.cc(98)] thread ID 42276 not found in process

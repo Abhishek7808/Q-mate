@@ -77,6 +77,7 @@ Check edit functionality for approved FI
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     Sleep    2s
     BrowserControl.Switch To    Verify
+    Common_Keywords.Login From Department    megha.rsmml    admin
     SMM_Keywords.Open Financial Instrument List From Department
     SMM_Keywords.Filter Financial Instruments by Instrument Type From Department  ${FI["Instrument Type"]}
     SMM_Keywords.View Financial Instrument From Department  ${Branch["Name"]}  ${FI["BG/LC Number"]}  ${FI["Validity Date"]}

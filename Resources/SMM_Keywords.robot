@@ -4,7 +4,7 @@ Resource  ${PAGE OBJECTS}/SMM/CustomerRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerProfileSelection.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerNavigation.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantList.robot
-Resource  ${PAGE OBJECTS}/SMM/CustomerCustomerViewRegistration.robot
+Resource  ${PAGE OBJECTS}/SMM/CustomerViewRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/PlantRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerGroups.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerAgentList.robot
@@ -19,7 +19,7 @@ Resource  ${PAGE OBJECTS}/SMM/PurchaseOrderList.robot
 Resource  ${PAGE OBJECTS}/SMM/GroupRegistration.robot
 Resource  ${PAGE OBJECTS}/SMM/GroupList.robot
 Resource  ${PAGE OBJECTS}/SMM/CustomerPoList.robot
-Resource  ${PAGE OBJECTS}/RenewPurchaseOrder.robot
+Resource  ${PAGE OBJECTS}/SMM/RenewPurchaseOrder.robot
 
 *** Variables ***
 ${profileSelectionPage}  http://demoprojects.e-connectsolutions.com/ERP-DEMO/RSMML/Index/ProfileSelection
@@ -31,15 +31,15 @@ Go To Profile Selection Page
 
 Select Customer Type
     [Arguments]  ${profileType}
-    ProfileSelection.Select Profile Of Customer  ${profileType}
+    CustomerProfileSelection.Select Profile Of Customer  ${profileType}
 
 Create New User Account
     [Arguments]  ${accountType}
-    ProfileSelection.Create New Acccount  ${accountType}
+    CustomerProfileSelection.Create New Acccount  ${accountType}
 
 Select Customer By Name
     [Arguments]  ${branchName}  ${companyName}
-    ProfileSelection.Select Branch Of The given Company  ${branchName}  ${companyName}
+    CustomerProfileSelection.Select Branch Of The given Company  ${branchName}  ${companyName}
 
 Company Registration By Customer
     [Arguments]  ${branchType}  ${Mode}
@@ -280,10 +280,6 @@ Fill CRO From Customer
 Request CRO From Customer
     CustomerCRoList.Request CRO
 
-Select Purchase Order In CRO Form
-    ${poNumber}  CustomerCRoRegistration.Get Purchase Order Number From Dropdown
-    CustomerCRoRegistration.Select Purchase Order  ${poNumber}
-
 Get PO Remaining Quantity
     CustomerCRoRegistration.Fetch PO Balance
 
@@ -345,7 +341,7 @@ Approve Pending PO By PO Number
     Sleep  3s
     PurchaseOrderRegistration.Approve Purchase Order
 
-Approve Pending Purchase Order
+Approve Purchase Order From Department
     PurchaseOrderRegistration.Approve Purchase Order
 
 Reject Purchase Order By Department

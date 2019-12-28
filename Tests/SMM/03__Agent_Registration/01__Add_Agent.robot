@@ -84,6 +84,7 @@ To check the edit functionality of agent details from CRO form when CRO pending
     SMM_Keywords.Edit Agent Details  ${SSO ID["Name"]}
     Sleep  2s
     BrowserControl.Switch To    Verify
+    Login From Department    megha.rsmml    admin
     SMM_Keywords.Approve Pending Purchase Order  ${PO["Select Product"]}
     sleep  4s
     SMM_Keywords.Filter Purchase Order List By Status  Approved
