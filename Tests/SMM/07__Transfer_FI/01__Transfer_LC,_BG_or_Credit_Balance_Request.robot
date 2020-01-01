@@ -21,7 +21,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 To check the Transfer of LC/BG
-    [Tags]    transferlcbg  transferlcbg1
+    [Tags]  SMM  transferfi  transferlcbg  checkprocess
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2   PO=PO 1   CRO=CRO 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -51,7 +51,7 @@ To check the Transfer of LC/BG
     SMM_Keywords.View Approved Financial Instrument By FI Number From Customer  ${FI["BG/LC Number"]}
 
 To check that the transfer of FI can only be done within group members.
-    [Tags]    transferlcbg  transferlcbg2
+    [Tags]  SMM  transferfi  transferlcbg  withinmembers
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2   PO=PO 1   CRO=CRO 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -63,7 +63,7 @@ To check that the transfer of FI can only be done within group members.
     SMM_Keywords.Verify Transfer Instrument Members
 
 To check that the transfer amount cannot exceed available amount of FI
-    [Tags]    transferlcbg  transferlcbg3
+    [Tags]  SMM  transferfi  transferlcbg  checkfiamount
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2   PO=PO 1   CRO=CRO 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

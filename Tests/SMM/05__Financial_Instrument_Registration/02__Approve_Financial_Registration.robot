@@ -20,7 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 To check the approval process of FI requests
     [Documentation]    Approves the Financial Instrument submitted by the customer
-    [Tags]  Approvefinancial  Approvefinancial1  apfn1
+    [Tags]  SMM  financialinstrument  approvefi  approvalprocess
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1    SSO ID=SSOID 2
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -36,7 +36,7 @@ To check the approval process of FI requests
 
 Cancel Financial Instruments, not used in any Active CROs
     [Documentation]    Rejects the Financial Instrument submitted by the customer
-    [Tags]  Approvefinancial  Approvefinancial2  apfn2
+    [Tags]  SMM  financialinstrument  approvefi  cancellation
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 2    SSO ID=SSOID 2
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -48,10 +48,10 @@ Cancel Financial Instruments, not used in any Active CROs
     SMM_Keywords.Verify Financial Instrument Is Rejected  ${FI["BG/LC Number"]}
 
 #To check the process when FI is Edit and Update
-#    [Tags]    Skip
+#    [Tags]  SMM  financialinstrument  approvefi    Skip
 #
 #Check cancel financial instruments when shared between the group members
-#    [Tags]    Skip
+#    [Tags]  SMM  financialinstrument  approvefi    Skip
 #
 #Cancel Financial Instruments, used in Active CRO
-#    [Tags]    Skip
+#    [Tags]  SMM  financialinstrument  approvefi    Skip

@@ -24,7 +24,7 @@ ${RETRY INTERVAL}    200ms
 
 Check Customer Registration Process
     [Documentation]    Done
-    [Tags]  Himself  selfregistration  Himself1
+    [Tags]  SMM  customerregistration  selfregistration  customerregistration
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Delete_Data.Delete All The Prewritten Data Of SSOID From ERP    ${SSO ID["SSOID"]}
@@ -36,7 +36,7 @@ Check Customer Registration Process
 
 Check new branch registration when the company already have branches registered in it
     [Documentation]    Done
-    [Tags]  alreadybranches  Himself  himself2
+    [Tags]  SMM  customerregistration  selfregistration  newbranch
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -48,7 +48,7 @@ Check new branch registration when the company already have branches registered 
 
 Check the branch registration when user selects branch from an existing registered branches in a company with diffrent SSOID
     [Documentation]    This is not working when we are using same ssoid
-    [Tags]  userselectsbranch  Himself  himself3
+    [Tags]  SMM  customerregistration  selfregistration  existingbranch
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 3
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -58,7 +58,7 @@ Check the branch registration when user selects branch from an existing register
 
 Check the registration process when customer has partially filled the application
     [Documentation]    Done
-    [Tags]  partially  Himself  himself4
+    [Tags]  SMM  customerregistration  selfregistration  partiallyfilled
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -72,12 +72,14 @@ Check the registration process when customer has partially filled the applicatio
     Sleep  2s
     SMM_Keywords.View Customer Registration
     Sleep  2s
-    SMM_Keywords.Check for draft state of Customer Registration
+    SMM_Keywords.Check For Draft State Of Customer Registration
+    SMM_Keywords.Update Draft From Customer
+    SMM_Keywords.Verify Pending State Of Customer Registration
 
 
 Check the draft branch visibility in 'View Branch' option on registration form
     [Documentation]    Done
-    [Tags]  branchvisibility  Himself  himself5
+    [Tags]  SMM  customerregistration  selfregistration  viewbranch
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -90,7 +92,7 @@ Check the draft branch visibility in 'View Branch' option on registration form
 
 Check the reject process of customer registration by departmental user
     [Documentation]    Done
-    [Tags]  reject  Himself  himself6
+    [Tags]  SMM  customerregistration  selfregistration  rejectregistration
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -106,7 +108,7 @@ Check the reject process of customer registration by departmental user
     SMM_Keywords.Check for Rejected state of Customer Registration
 
 Check the edit process of customer details when customer is not approved by department
-    [Tags]  notapproved  Himself  himself7
+    [Tags]  SMM  customerregistration  selfregistration  editpending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -118,7 +120,7 @@ Check the edit process of customer details when customer is not approved by depa
 
 Check the approval process of customer registration by departmental user
     [Documentation]    Done
-    [Tags]  approval  Himself  himself8
+    [Tags]  SMM  customerregistration  selfregistration  approveregistration
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
@@ -137,7 +139,7 @@ Check the approval process of customer registration by departmental user
 
 Check the edit process of customer details when customer is approved by department
     [Documentation]    Done
-    [Tags]  customerapproved  Himself  himself9
+    [Tags]  SMM  customerregistration  selfregistration  editapproved
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 4    Branch=Branch Customer 3    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -147,7 +149,7 @@ Check the edit process of customer details when customer is approved by departme
 
 #Check the TCS rate applicable according to customer-wise
 #    [Documentation]    Done
-#    [Tags]  TCS  Himself  himself10
+#    [Tags]  SMM  customerregistration    customerregistration  selfregistration TCS  Himself  himself10
 #    BrowserControl.Switch To    Customer
 #    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
 #    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

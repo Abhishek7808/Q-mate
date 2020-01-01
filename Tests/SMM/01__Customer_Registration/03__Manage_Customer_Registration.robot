@@ -19,7 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 To check the edit process of customer details when customer is not approved by department
     [Documentation]    Edits the details of a customer when it has not been approved by department i.e. pending state
-    [Tags]  manage  mnotapproved  manage1
+    [Tags]  SMM  customerregistration  manageregistration  editdetails
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 3
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -37,7 +37,7 @@ To check the edit process of customer details when customer is not approved by d
 
 To check the edit process of customer details when customer is approved by department
     [Documentation]    Edits the details of a customer when it has been approved by department
-    [Tags]  manage  mapproved  manage2
+    [Tags]  SMM  customerregistration  manageregistration  editapproved
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 2    SSO ID=SSOID 3
     #Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1
@@ -49,7 +49,7 @@ To check the edit process of customer details when customer is approved by depar
 
 Check Cancel Customer Registration
     [Documentation]    Deactivates an application by Marketing Team Member
-    [Tags]  manage  mcancle  manage3
+    [Tags]  SMM  customerregistration  manageregistration  cancelregistration
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
@@ -72,7 +72,7 @@ Check Cancel Customer Registration
 
 Check registration edit functionality, when account deactivated
     [Documentation]    Checks if deactivated account information can be edited
-    [Tags]  manage  mdeactivated  manage4
+    [Tags]  SMM  customerregistration  manageregistration  editdeactivated
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
@@ -87,10 +87,10 @@ Check registration edit functionality, when account deactivated
     #One more scenario gets added, here we don't have any button of update or submit, there is only one Active Button
 
 #Check Login process after cancellation of customer registration
-#    [Tags]    Skip
+#    [Tags]  SMM  customerregistration  manageregistration      Skip
 #
 #To check the edit process of customer details when customer registration is cancelled by MTM
-#    [Tags]    Skip
+#    [Tags]  SMM  customerregistration  manageregistration      Skip
 #
 #Check Cancel registration process for pending CROs & due payments
-#    [Tags]    Skip
+#    [Tags]  SMM  customerregistration  manageregistration      Skip

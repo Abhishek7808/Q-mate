@@ -15,7 +15,7 @@ ${SSOIDNAME}   None
 
 Delete the data of all companies
     [Documentation]    Deletes the data of company and SSO ID
-    [Tags]  delete
+    [Tags]  SMM  delete
     [Template]  Delete All The Prewritten Data Of Company From ERP
     QMATE1234D
     QMATE1234C
@@ -23,7 +23,7 @@ Delete the data of all companies
     QMATE5555T
 
 Delete the data of all ssoids
-    [Tags]  delete
+    [Tags]  SMM  delete
     [Template]  Delete All The Prewritten Data Of SSOID From ERP
     archit010
     chauhan.yuvi
@@ -33,6 +33,6 @@ Delete the data of all ssoids
     1863
 
 Delete Data Of Given SSOID Or Company
-    [Tags]  deletegiven
+    [Tags]  SMM  deletegiven
     run keyword if  '${COMPANYPAN}' != 'None'  Delete_Data.Delete All The Prewritten Data Of Company From ERP  ${COMPANYPAN}
     run keyword if  '${SSOIDNAME}' != 'None'  Delete_Data.Delete All The Prewritten Data Of SSOID From ERP  ${SSOIDNAME}

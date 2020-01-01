@@ -20,7 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Cancel CRO request before inbound Weighment Slip is generated
     [Documentation]    Rejects a CRO request with appropriate remarks
-    [Tags]  cancelcro
+    [Tags]  SMM  croregistration  managecro  cancelcro
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
@@ -31,4 +31,4 @@ Cancel CRO request before inbound Weighment Slip is generated
 
 
 #Cancel CRO request after inward Weighment Slip is generated
-#    [Tags]    Skip
+#    [Tags]  SMM  croregistration    Skip

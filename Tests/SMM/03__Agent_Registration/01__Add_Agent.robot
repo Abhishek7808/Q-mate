@@ -27,7 +27,7 @@ ${RETRY INTERVAL}    200ms
 
 *** Test Cases ***
 Check the agent registration process through agent tab
-    [Tags]  Addagent  Addagent1
+    [Tags]  SMM  agentregistration  addagent  registration
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -39,7 +39,7 @@ Check the agent registration process through agent tab
     SMM_Keywords.Check For an Agent On Agent List Page  ${SSO ID["Name"]}
 
 Check the agent registration process through PO form
-    [Tags]  Addagent  Addagent2
+    [Tags]  SMM  agentregistration  addagent  registrationthroughpo
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -54,7 +54,7 @@ Check the agent registration process through PO form
     SMM_Keywords.Add Purchase Order Details
 
 To check the edit functionality of agent details from agent tab when PO pending or approved
-    [Tags]  Addagent  Addagent3
+    [Tags]  SMM  agentregistration  addagent  editdetailspopending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -71,7 +71,7 @@ To check the edit functionality of agent details from agent tab when PO pending 
     SMM_Keywirds.Verify Agent Name In Purchase Order  ${SSO ID["Name"]} UDAIPUR
 
 To check the edit functionality of agent details from CRO form when CRO pending
-    [Tags]  Addagent  Addagent4
+    [Tags]  SMM  agentregistration  addagent  editdetailscropending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -101,7 +101,7 @@ To check the edit functionality of agent details from CRO form when CRO pending
 
 To check the validations applied when agent selected in CRO request form
     #TODO : waiting for Request CRO button
-    [Tags]  Addagent  Addagent5
+    [Tags]  SMM  agentregistration  addagent  validations
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

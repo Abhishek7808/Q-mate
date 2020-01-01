@@ -19,7 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Approve DI Requests
     [Documentation]    Approves the DI request
-    [Tags]  approvecrofin  approvecrofin1
+    [Tags]  SMM  croregistration  approvecro  approverequest
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    CRO=CRO 1
@@ -38,7 +38,7 @@ Approve DI Requests
 
 Check CRO request approval process when all the approvals(CRO request & DI) done at 3rd level only
     [Documentation]    Approves a CRO request by forwarding it to Marketing Executive, Dispatch point and expiry date and then to SE
-    [Tags]  approvecrofin  approvecrofin2
+    [Tags]  SMM  croregistration  approvecro  approvebyME
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
@@ -58,7 +58,7 @@ Check CRO request approval process when all the approvals(CRO request & DI) done
 
 Reject DI Request
     [Documentation]    Rejects a CRO request with appropriate remarks
-    [Tags]  approvecrofin  approvecrofin3
+    [Tags]  SMM  croregistration  approvecro  rejectrequest
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department
@@ -70,7 +70,7 @@ Reject DI Request
 
 Reject CRO Request
     [Documentation]    Rejects a CRO request with appropriate remarks
-    [Tags]  approvecrofin  approvecrofin4
+    [Tags]  SMM  croregistration  approvecro  rejectcrorequest
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department

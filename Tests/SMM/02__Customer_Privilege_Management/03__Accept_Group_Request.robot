@@ -18,7 +18,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Reject group request process
-    [Tags]  Accept  reject1
+    [Tags]  SMM  customerprivilege  grouprequest  reject
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -41,7 +41,7 @@ Reject group request process
     SMM_Keywords.Verify Member Status
 
 Accept group request process
-    [Tags]  Accept  accept2
+    [Tags]  SMM  customerprivilege  grouprequest  accept
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

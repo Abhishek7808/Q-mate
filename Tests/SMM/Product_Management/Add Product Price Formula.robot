@@ -19,8 +19,8 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
 *** Test Cases ***
-Check the process to Add Product price formula
-    [Tags]    addproduct
+Check the process to add product price formula
+    [Tags]  SMM  productmanagement  addproduct  checkprocess
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables  PD=PD 1  SC=SC 1
@@ -32,7 +32,7 @@ Check the process to Add Product price formula
     SMM_Keywords.Fill Schedule From Department
 
 To check that user can create a new formula using fields
-    [Tags]    checkformula
+    [Tags]  SMM  productmanagement  addproduct  newformula
     BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     #Set Test Variable    ${Key Description}    ${Department Key Description}

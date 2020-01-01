@@ -18,9 +18,9 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
 *** Test Cases ***
-Filter and View LC for pending payment, and print Bank letter
+Filter and view LC for pending payment, and print Bank letter
     [Documentation]    Generate bank letter/print the letter
-    [Tags]  bankletter  bankletter1
+    [Tags]  SMM  financialinstrument  generatebankletter  print
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    FI=FI 1
@@ -30,7 +30,7 @@ Filter and View LC for pending payment, and print Bank letter
     SMM_Keywords.Print Financial Instrument  ${FI["BG/LC Number"]}
 
 #To check that the Notification should be sent 5 days before the due payment date of all Financial Instruments for credit payment
-#    [Tags]    Skip
+#    [Tags]  SMM  financialinstrument    Skip
 #
 #To check that on electing the instrument, its related invoice Bank Letter for receiving the payment against LC should be generated and printed through the system
-#    [Tags]    Skip
+#    [Tags]  SMM  financialinstrument    Skip

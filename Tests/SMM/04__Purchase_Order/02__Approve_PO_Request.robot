@@ -21,7 +21,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Check edit functionality for pending PO
     [Documentation]    Edits the PO form when it is in pending mode
-    [Tags]  approvepo  approvepo1
+    [Tags]  SMM  purchaseorder  approvepo  editdetails
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
@@ -29,9 +29,9 @@ Check edit functionality for pending PO
     SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
     SMM_Keywords.Update Details Of Purchase Order
 
-PO Request Approval Process
+Check PO request approval process
     [Documentation]    Approves PO when submitted by the customer
-    [Tags]  approvepo  approvepo2
+    [Tags]  SMM  purchaseorder  approvepo  approvalprocess
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -49,7 +49,7 @@ PO Request Approval Process
 
 PO Request Rejection Process
     [Documentation]    Rejects PO when submitted by the customer
-    [Tags]  approvepo  approvepo3
+    [Tags]  SMM  purchaseorder  approvepo  rejectionprocess
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
@@ -67,7 +67,7 @@ PO Request Rejection Process
     SMM_Keywords.View Purchase Order By Branch Name  ${Branch["Name"]}
 
 Check PO cancellation when status is approved or pending
-    [Tags]  approvepo  approvepo4
+    [Tags]  SMM  purchaseorder  approvepo  cancellation
     #When PO is in pending state
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -88,7 +88,7 @@ Check PO cancellation when status is approved or pending
     SMM_Keywords.Reject Purchase Order By Department
 
 #Check edit functionality for approved PO
-#    [Tags]    Skip
+#    [Tags]  SMM  purchaseorder    Skip
 #
 #Check edit functionality for rejected PO
-#    [Tags]    Skip
+#    [Tags]  SMM  purchaseorder    Skip

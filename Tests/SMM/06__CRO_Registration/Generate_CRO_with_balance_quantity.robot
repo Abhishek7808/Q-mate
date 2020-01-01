@@ -14,4 +14,4 @@ Suite Teardown    Finish Testing
 
 *** Test Cases ***
 #View affected CROs & Generate new CRO with remaining balance
-#    [Tags]    Skip
+#    [Tags]  SMM  croregistration    Skip

@@ -17,7 +17,7 @@ ${Valid Users File}    data/users.csv
 
 *** Test Cases ***
 Invalid Login With Wrong Credentials
-    [Tags]    Skip
+    [Tags]  SMM    Skip
     [Template]    Login With Invalid Credentials Should Fail
     invalid    ${VALID PASSWORD}
     ${VALID USER}    invalid
@@ -25,14 +25,14 @@ Invalid Login With Wrong Credentials
     ${VALID USER}    abc 'OR' 1'='1
 
 Invalid Login With empty Credentials
-    [Tags]    Skip
+    [Tags]  SMM    Skip
     [Template]    Login With Invalid Credentials Should Fail With Alert
     ${EMPTY}    ${VALID PASSWORD}
     ${VALID USER}    ${EMPTY}
     ${EMPTY}    ${EMPTY}
 
 Valid Login
-    [Tags]    Skip
+    [Tags]  SMM    Skip
     ${creds}=    Get File    ${Valid Users File}
     Log    File Content: ${creds}
     @{creds}=    Split To Lines    ${creds}    1

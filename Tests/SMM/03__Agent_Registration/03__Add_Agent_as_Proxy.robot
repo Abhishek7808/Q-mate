@@ -19,7 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 To check the process when department user as proxy add agent from menu
     [Documentation]    Adds an agent (transporter) to a company by department
-    [Tags]   Addagentasproxy  Addagentasproxy1
+    [Tags]  SMM  agentregistration   Addagentasproxy  creation
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
@@ -33,7 +33,7 @@ To check the process when department user as proxy add agent from menu
 
 To check the process when department user add agent from PO form
     [Documentation]    Adds an agent from PO form
-    [Tags]   Addagentasproxy  Addagentasproxy2
+    [Tags]  SMM  agentregistration   Addagentasproxy  registrationthroughpo
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
@@ -44,7 +44,7 @@ To check the process when department user add agent from PO form
     SMM_Keywords.Submit PO Form
 
 #To check the process when DU change Agent Details by selecting PO
-#    [Tags]    Skip
+#    [Tags]  SMM  agentregistration    Skip
 #
 #To check the process when department user change the agent details from menu
-#    [Tags]    Skip
+#    [Tags]  SMM  agentregistration    Skip

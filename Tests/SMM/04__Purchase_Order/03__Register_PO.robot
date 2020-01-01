@@ -19,7 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Register PO for auctionable product
     [Documentation]    Regiters PO for an auctionable product having BID number and product price
-    [Tags]  registerpo
+    [Tags]  SMM  purchaseorder  registerpo  auctionableproduct
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Purchase Order List By Department
@@ -28,7 +28,7 @@ Register PO for auctionable product
     Sleep    2s
 
 #Check edit functionality for general product, when PO registered by Marketing Head
-#    [Tags]    Skip
+#    [Tags]  SMM  purchaseorder    Skip
 #
 #Check edit functionality for auctionable product, when PO registered by Marketing Head
-#    [Tags]    Skip
+#    [Tags]  SMM  purchaseorder    Skip

@@ -11,8 +11,14 @@ ${rejectionText}  //span[text()='Rejected']
 *** Keywords ***
 Check For Draft
     Page should Contain Element    ${draftText}
+
+
+
+Update draft registration
     Click Button    ${submitButton}
     Sleep    5s
+
+Check For Pending State
     Page should Contain Element    ${textPending}
 
 Confirm Approval Of Customer

@@ -55,8 +55,14 @@ Check For Updating Customer Details Permissions
 View Customer Registration
     CustomerNavigation.Open Customer Registration Form
 
-Check for draft state of Customer Registration
+Check For Draft State Of Customer Registration
     CustomerViewRegistration.Check For Draft
+
+Verify Pending State Of Customer Registration
+    CustomerViewRegistration.Check For Pending State
+
+Update Draft From Customer
+    CustomerViewRegistration.Update draft registration
 
 Check for Approved state of Customer Registration
     CustomerViewRegistration.Confirm Approval Of Customer
@@ -292,7 +298,7 @@ Select Purchase Order In CRO Form
 
 Verify Agent Name In Contract Release Order
     [Arguments]  ${agentName}
-    CustomerCRoRegistration.Check For Agent Name Contract Release Order Form
+    CustomerCRoRegistration.Check For Agent Name Contract Release Order Form  ${agentName}
 
 Filter Purchase Order List By Status From Customer
     [Arguments]  ${poStatus}
@@ -604,3 +610,13 @@ Get CRO Number
 Get CRO Remaining Quantity
     ${quantity}  ContractReleaseOrder.Fetch CRO Remaining Quantity
     return from keyword  ${quantity}
+
+Create Financial Instrument
+    BrowserControl.Switch To    Customer
+    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2   SSO ID=SSOID 2    FI=FI 1
+    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
+    Sleep    2s
+    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
+    SMM_Keywords.View Financial Instrument List From Customer
+    SMM_Keywords.View Approved Financial Instrument By FI Number From Customer  ${FI["BG/LC Number"]}
+    SMM_Keywords.Request Transfer Instument From Customer  ${Branch["Name"]}  ${FI["Transfer Amount"]}

@@ -17,9 +17,9 @@ Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
-Check the process to Generate Debit Note
+Check the process to generate debit note
     [Documentation]    Generates debit note
-    [Tags]    debitnote
+    [Tags]  SMM  debitnote  checkprocess
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Differentials Adjustments Page From Department
@@ -27,13 +27,13 @@ Check the process to Generate Debit Note
     SMM_Keywords.Generate Debit Note  PHOS/1920/194  IN-05/1819/23
 
 #Check the process to Cancel Debit Note
-#    [Tags]    Skip
+#    [Tags]  SMM    Skip
 #
 #To check debit note generation in case of interest on delayed payment
-#    [Tags]    Skip
+#    [Tags]  SMM    Skip
 #
 #To check debit note generation in case of Royalty Difference
-#    [Tags]    Skip
+#    [Tags]  SMM    Skip
 #
 #To check when in case of Rate Difference (due to change of rate in back date) /Quantity difference
-#    [Tags]    Skip
+#    [Tags]  SMM    Skip

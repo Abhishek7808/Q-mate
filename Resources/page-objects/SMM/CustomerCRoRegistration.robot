@@ -34,7 +34,7 @@ Input Required Quantity
 
 Check For Agent Name Contract Release Order Form
     [Arguments]  ${agentName}
-    Element Should Be Visible    //span[contains(text(),'${SSO ID["Name"]}')]
+    Element Should Be Visible    //span[contains(text(),'${agentName}')]
 
 Check For Pending CRO
     Wait Until Keyword Succeeds    5s    200ms    Element Should Be Visible    //span[text()='Pending']

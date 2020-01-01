@@ -17,18 +17,18 @@ Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
-Check Group Creation
+Check group creation by department
     [Documentation]    Creates a group by department
-    [Tags]  groupproxy  groupproxy1
+    [Tags]  SMM  customerprivilege  creategroupasproxy  creation
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Customer Group List Page
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 1    SSO ID=SSOID 3
     SMM_Keywords.Add New Customer Group
 
-Check Group Creation, When Already A Group Exists With Same Code/PAN No
+Check group creation, when already a group exists with same Code/PAN No
     [Documentation]    Checks if a group with same name can be created
-    [Tags]  groupproxy  groupproxy2
+    [Tags]  SMM  customerprivilege  creategroupasproxy  groupwithsamename
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Customer Group List Page

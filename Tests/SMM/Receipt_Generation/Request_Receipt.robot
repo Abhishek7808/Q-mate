@@ -8,4 +8,4 @@ Library           SeleniumLibrary
 
 *** Test Cases ***
 #To check the process request receipt
-#    [Tags]    Skip
+#    [Tags]  SMM  receiptgeneration    Skip

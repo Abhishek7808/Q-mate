@@ -17,8 +17,8 @@ ${RETRY TIME}     5s
 ${RETRY INTERVAL}    200ms
 
 *** Test Cases ***
-Check_Add_Plant_process
-    [Tags]  Addplant  Addplant1
+Check add plant process
+    [Tags]  SMM  customerregistration  addplant
     BrowserControl.Switch To    Customer
     #set test variable    ${ssoId}    chauhan.yuvi
     #Delete Data Of SSOID    ${ssoId}
@@ -35,7 +35,7 @@ Check_Add_Plant_process
 
 #TODO: Process is not logical
 #Add_Plant_at_the_time_of_PO_request
-#    [Tags]  Addplant  Addplant2
+#    [Tags]  SMM  customerregistration    Addplant  Addplant2
 #    BrowserControl.Switch To    Customer
 #    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    Plant=Plant 1    PO=PO 2
 #    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

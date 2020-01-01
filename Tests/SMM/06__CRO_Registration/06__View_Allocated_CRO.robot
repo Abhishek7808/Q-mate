@@ -17,9 +17,9 @@ Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
-View Allocated CRO Status
+View allocated CRO Status
     [Documentation]    CRO allocated quantity will be visible to weighbridge manager
-    [Tags]  croallocated
+    [Tags]  SMM  croregistration  allocatedcro  viewallocated
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.View CRO List From Department

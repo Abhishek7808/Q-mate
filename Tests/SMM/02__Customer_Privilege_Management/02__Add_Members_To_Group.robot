@@ -19,8 +19,8 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
 *** Test Cases ***
-Check 'Add Members To Group'
-    [Tags]  Addmember  addmember1
+Check add member to group process
+    [Tags]  SMM  customerprivilege  addmember  addmemberprocess
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -40,7 +40,7 @@ Check 'Add Members To Group'
     SMM_Keywords.Verify Member Status
 
 Check that only group admin should have right to add members in a group
-    [Tags]  Addmember  addmember2
+    [Tags]  SMM  customerprivilege  addmember  adminrights
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2  #jodhpur
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

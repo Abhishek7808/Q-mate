@@ -18,8 +18,8 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 # TODO: increase product quantity required in CRO 1, CRO 2, CRO 3 and hanece increase amount also
-Check Request CRO process
-    [Tags]  requestcro  requestcro1
+Check request CRO process
+    [Tags]  SMM  croregistration  requestcro  request
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2   FI=FI 2    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -44,7 +44,7 @@ Check Request CRO process
     SMM_Keywords.Request CRO From Customer
 
 View CRO request status
-    [Tags]  requestcro  requestcro2
+    [Tags]  SMM  croregistration  requestcro  requeststatus
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 1    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -67,7 +67,7 @@ View CRO request status
     SMM_Keywords.Verify That CRO Is Not Approved
 
 Check edit functionality when CRO is pending
-    [Tags]  requestcro  requestcro3
+    [Tags]  SMM  croregistration  requestcro  editpending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -81,7 +81,7 @@ Check edit functionality when CRO is pending
     SMM_Keywords.Fill CRO From Customer
 
 Check that financial instrument available balance should be more than or equal to CRO amount when CRO is approved
-    [Tags]  requestcro  requestcro4
+    [Tags]  SMM  croregistration  requestcro  checkfibalance
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -94,7 +94,7 @@ Check that financial instrument available balance should be more than or equal t
     SMM_Keywords.Verify FI Balance Is Greater Than CRO Balance
 
 Check that CRO quantity cannot be greater than PO remaining balance
-    [Tags]  requestcro  requestcro5
+    [Tags]  SMM  croregistration  requestcro  checkpobalance
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

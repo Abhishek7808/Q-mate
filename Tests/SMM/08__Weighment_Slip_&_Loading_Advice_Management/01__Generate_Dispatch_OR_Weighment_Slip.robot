@@ -20,7 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 #TODO: Make new CROs for running 2nd, 3rd and 4th test
 To check the process Inward Dispatch Slip to get generated
-    [Tags]    generateslip  generateslip1
+    [Tags]  SMM  weighmentslip  generatedispathslip  insufficientbalance
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
@@ -31,8 +31,8 @@ To check the process Inward Dispatch Slip to get generated
     sleep  2s
     Common_Keywords.Verify Element Text On The Page  //span[@id='message-id']  Insufficient balance
 
-Inward Dispatch Slip Generation
-    [Tags]    generateslip  generateslip2
+Inward dispatch slip generation
+    [Tags]  SMM  weighmentslip  generatedispathslip  farecondition
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
@@ -43,7 +43,7 @@ Inward Dispatch Slip Generation
     Common_Keywords.Verify Element Text On The Page  //span[@id='message-id']    Saved Successfully
 
 To check the process Outward Dispatch Slip cannot be generated
-    [Tags]    generateslip  generateslip3
+    [Tags]  SMM  weighmentslip  generatedispathslip  overweight
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
@@ -52,8 +52,8 @@ To check the process Outward Dispatch Slip cannot be generated
     SMM_Keywords.Generate Outward Slip  PHOS/1920/176
     Common_Keywords.Verify Element Text On The Page  //span[@id='message-id']    Gross Weight can not be greater than Max Capacity
 
-Outward Dispatch Slip Generation
-    [Tags]    generateslip  generateslip4
+Outward dispatch slip generation
+    [Tags]  SMM  weighmentslip  generatedispathslip  farecondition
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2

@@ -19,7 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Invoice Generation (including pending Moisture Rate)
     [Documentation]    Generates invoice from product management (moisture rebate)
-    [Tags]    invoice
+    [Tags]  SMM  invoicing  generateinvoice
     BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Schedule Page From Department
@@ -36,10 +36,10 @@ Invoice Generation (including pending Moisture Rate)
     SMM_Keywords.Print Invoice From Department  PHOS/1920/194
 
 #Check Invoice Cancellation process
-#    [Tags]    Skip
+#    [Tags]  SMM    Skip
 #
 #Check Invoice Generation for auctionable product
-#    [Tags]    Skip
+#    [Tags]  SMM    Skip
 #
 #Check that invoice generation for products with moisture rebate
-#    [Tags]    Skip
+#    [Tags]  SMM    Skip

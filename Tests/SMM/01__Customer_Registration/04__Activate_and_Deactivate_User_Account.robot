@@ -19,7 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 Check the process of User Account Deactivation
     [Documentation]    Deactivates an application submitted by the user
-    [Tags]  deactivationuser  Account  Account1
+    [Tags]  SMM  customerregistration  accounthandeling  deactivation
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
@@ -36,7 +36,7 @@ Check the process of User Account Deactivation
 
 Check the process of User Account Activation
     [Documentation]    Activates an application submitted by the user
-    [Tags]  activationuser  Account  Account2
+    [Tags]  SMM  customerregistration  accounthandeling  activation
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
@@ -51,7 +51,7 @@ Check the process of User Account Activation
 
 Check the process of User Account Activation when requested by MTM
     [Documentation]    Activates an application submitted by the user
-    [Tags]    accountactivation  Account  Account3
+    [Tags]  SMM  customerregistration  accounthandeling  requestedbyMTM
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     SMM_Keywords.Open Plant List Page
@@ -70,4 +70,4 @@ Check the process of User Account Activation when requested by MTM
     SMM_Keywords.Verify That Customer Has Been Approved   ${Branch["Name"]}]
 
 #Check login after customer account deactivation
-#    [Tags]    Skip
+#    [Tags]  SMM  customerregistration  accounthandeling      Skip

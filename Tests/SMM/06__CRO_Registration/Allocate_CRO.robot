@@ -14,4 +14,4 @@ Suite Teardown    Finish Testing
 
 *** Test Cases ***
 #Check CRO Allocation/Scheduling process
-#    [Tags]    Skip
+#    [Tags]  SMM  croregistration    Skip

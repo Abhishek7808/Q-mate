@@ -18,8 +18,8 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 
 *** Test Cases ***
-Request for Purchase Order(PO)
-    [Tags]  requestpurchaseorder  rqpo1
+Request for purchase order(PO)
+    [Tags]  SMM  purchaseorder  requestpurchaseorder  request
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -28,15 +28,14 @@ Request for Purchase Order(PO)
     SMM_Keywords.Generate Purchase Order By Customer
 
 Get notification after PO request approved/rejected
-    [Tags]  requestpurchaseorder  rqpo2
+    [Tags]  SMM  purchaseorder  requestpurchaseorder  notification
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
     SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
     SMM_Keywords.View Purchase Order List By Customer
     Sleep  2s
-    SMM_Keywords.Get Purchase Order Number From Pending PO  ${PO["Select Product"]}
-    ${poNumber}  SMM_Keywords.Get Purchase Order Number From Pending PO
+    ${poNumber}  SMM_Keywords.Get Purchase Order Number From Pending PO  ${PO["Select Product"]}
     Sleep    3s
     BrowserControl.Switch To    Verify
     Common_Keywords.Login From Department    megha.rsmml    admin
@@ -48,10 +47,10 @@ Get notification after PO request approved/rejected
     Sleep    1s
     SMM_Keywords.View Purchase Order By PO Number  ${PO No}
     Sleep    3s
-    Verify Approval Of Purchase Order
+    SMM_Keywords.Verify Approval Of Purchase Order
 
 Check edit functionality when status of PO is approved/rejected.
-    [Tags]  requestpurchaseorder  rqpo3
+    [Tags]  SMM  purchaseorder  requestpurchaseorder  editdetails
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -66,7 +65,7 @@ Check edit functionality when status of PO is approved/rejected.
     SMM_Keywords.Edit Purchase Order Details
 
 Check that signed copy of End User Agreement is mandatory for PO approval
-    [Tags]  requestpurchaseorder  rqpo4
+    [Tags]  SMM  purchaseorder  requestpurchaseorder  enduseragreement
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -84,7 +83,7 @@ Check that signed copy of End User Agreement is mandatory for PO approval
 #    Page Should Contain    Upload File
 
 Request for Purchase Order(PO) for auctionable products
-    [Tags]  requestpurchaseorder  rqpo5
+    [Tags]  SMM  purchaseorder  requestpurchaseorder  auctionable
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

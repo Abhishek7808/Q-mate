@@ -23,7 +23,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 Check Generate/Renew PO process
     [Documentation]    Renew PO by adding new expiry date
-    [Tags]  generatepo
+    [Tags]  SMM  purchaseorder  generatepo
     BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
@@ -34,4 +34,4 @@ Check Generate/Renew PO process
     SMM_Keywords.Select Purchase Order From Renew PO List  ${Branch["Name"]}
 
 #Check Generate PO for multiple pending POs with remaining balance
-#    [Tags]    Skip
+#    [Tags]  SMM  purchaseorder    Skip

@@ -19,7 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Add Financial Instrument
-    [Tags]  Financial  Financial1
+    [Tags]  SMM  financialinstrument  addfinancialinstrument  creation
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -41,7 +41,7 @@ Add Financial Instrument
     Sleep    2s
 
 Check the edit process for pending FI
-    [Tags]  Financial  Financial2
+    [Tags]  SMM  financialinstrument  addfinancialinstrument  editdetailsofpending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -54,7 +54,7 @@ Check the edit process for pending FI
     SMM_Keywords.Fill Financial Instrument Form By Customer
 
 Check that only after Financial Instrument approval, CRO can be generated
-    [Tags]  Financial  Financial3
+    [Tags]  SMM  financialinstrument  addfinancialinstrument  crogeneration
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    FI=FI 2   PO=PO 1
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
@@ -71,7 +71,7 @@ Check that only after Financial Instrument approval, CRO can be generated
     SMM_Keywords.Check CRO Form Submission Without Financial Insturment
 
 Check edit functionality for approved FI
-    [Tags]  Financial  Financial4
+    [Tags]  SMM  financialinstrument  addfinancialinstrument  editdetailsofapproved
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2
     Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}

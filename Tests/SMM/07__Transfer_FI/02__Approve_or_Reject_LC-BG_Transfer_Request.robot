@@ -16,23 +16,13 @@ Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
-*** Keyword ***
-Create Financial Instrument
-    BrowserControl.Switch To    Customer
-    Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2   SSO ID=SSOID 2    FI=FI 1
-    Common_Keywords.Login From Customer    ${SSO ID["SSOID"]}
-    Sleep    2s
-    SMM_Keywords.Select Customer By Name  ${Branch["Name"]}  ${Company["Company Name"]}
-    SMM_Keywords.View Financial Instrument List From Customer
-    SMM_Keywords.View Approved Financial Instrument By FI Number From Customer  ${FI["BG/LC Number"]}
-    SMM_Keywords.Request Transfer Instument From Customer  ${Branch["Name"]}  ${FI["Transfer Amount"]}
 
 *** Test Cases ***
 Approve or Reject LC/BG Transfer
     [Documentation]    Approves / rejects a tranfer of Financial Instrument
-    [Tags]    approvelcbg
+    [Tags]  SMM  transferfi  approvelcbg
     #Approving a Transfer Request
-    Create Financial Instrument
+    SMM_Keywords.Create Financial Instrument
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 3    Branch=Branch Department 2    FI=FI 1
