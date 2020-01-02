@@ -24,7 +24,7 @@ ${RETRY INTERVAL}    200ms
 
 Check Customer Registration Process
     [Documentation]    Done
-    [Tags]  SMM  customerregistration  selfregistration  customerregistration
+    [Tags]  SMM  customerregistration  selfregistration  registrationprocess
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
     Delete_Data.Delete All The Prewritten Data Of SSOID From ERP    ${SSO ID["SSOID"]}
