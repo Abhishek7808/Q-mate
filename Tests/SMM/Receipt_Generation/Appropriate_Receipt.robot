@@ -21,7 +21,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 To check the process Appropriate Receipt
     [Documentation]    Fills receipt form and generates new receipt
-    [Tags]  SMM  receiptgeneration    appropriatereceipt
+    [Tags]  SMM  receiptgeneration  appropriatereceipt
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
     Common_Keywords.Set Test Variables    Company=Company Department 1    Branch=Branch Department 1    Receipt=Receipt 1
