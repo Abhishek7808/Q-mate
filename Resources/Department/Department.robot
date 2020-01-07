@@ -1,7 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary
 Resource          ../../Configuration.resource
-Resource          ${RESOURCES}${/}FormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
 Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 
 *** Keywords ***

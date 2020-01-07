@@ -235,9 +235,15 @@ class Notifications:
         # add in the message body
         msg.attach(MIMEText(email_message, 'html'))
 
+        email_ids = msg['To'].split(",")
+        email_id_error = None
+        for item in email_ids:
+            try:
+                smtp_obj.sendmail(qmate_email, item, msg.as_string())
+            except smtplib.SMTPRecipientsRefused as email_id_error:
+                logger.write("Given email id is not valid")
         # send the message via the server set up earlier.
         #        smtp_obj_response = smtp_obj.send_message(msg.as_string())
-        smtp_obj.sendmail(qmate_email, msg["To"].split(","), msg.as_string())
 
         # check the email response
         #        logger.console(smtp_obj_response)
@@ -255,7 +261,7 @@ class Notifications:
                 emails_ids = find_receiver(module_name, receivers_json)
                 email_subject = "Audit Report of " + module_name
                 email_message = compose_generic_error_message(module_name, error_urls)
-                self.send_email(emails_ids.get('emailid'), email_subject, email_message)
+                self.send_email(emails_ids, email_subject, email_message)
 
         if test_name == 'datavalidation':
             disbursement_list = gen_test.read_file_return_list(BuiltIn().get_variable_value(r"${DV_REPORT}"))

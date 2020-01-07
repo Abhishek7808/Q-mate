@@ -1,0 +1,4 @@
+*** Settings ***
+
+*** Keywords ***
+Clear Type

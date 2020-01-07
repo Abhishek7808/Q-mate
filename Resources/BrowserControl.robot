@@ -53,25 +53,20 @@ Open Browsers For SMM
     #set test variable    ${Key Description}    ${Department Key Description}
     #${browser}  set variable  Chrome
     #${dict}    Create Dictionary    executable_path=${${browser} PATH}
-    ${chrome options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
-    Call Method    ${chrome options}   add_argument    headless
-    Call Method    ${chrome options}   add_argument    disable-gpu
-    ${options}=     Call Method     ${chrome_options}    to_capabilities
-    ${dict}    Create Dictionary      #desired_capabilities=${options}
-    Create WebDriver  ${BROWSER}  alias=Department  kwargs=${dict}
-    #Create Webdriver    driver_name=${BROWSER}    alias=Department    #kwargs=${dict}
+#    ${chrome options} =     Evaluate    sys.modules['selenium.webdriver'].ChromeOptions()    sys, selenium.webdriver
+#    Call Method    ${chrome options}   add_argument     ${HEADLESS}
+#    Call Method    ${chrome options}   add_argument    disable-gpu
+#    ${options}=     Call Method     ${chrome_options}    to_capabilities
+#    ${dict}    Create Dictionary      desired_capabilities=${options}
+    open browser  about:blank  ${BROWSER}  alias=Department  #desired_capabilities=${options}
     Maximize Browser Window
     Go To    ${LOGIN URL}
-    #Login From Department    archit.rsmml    admin
-    Create WebDriver  ${BROWSER}    alias=Customer  kwargs=${dict}
-    #Create Webdriver    driver_name=${BROWSER}    alias=Customer    #kwargs=${dict}
+    open browser  about:blank  ${BROWSER}    alias=Customer  #desired_capabilities=${options}
     Maximize Browser Window
     Go To    ${LOGIN URL}/temp/sso.aspx
-    Create WebDriver  ${BROWSER}    alias=Verify  kwargs=${dict}
-    #Create Webdriver    driver_name=${BROWSER}    alias=Verify    #kwargs=${dict}
+    open browser  about:blank  ${BROWSER}    alias=Verify  #desired_capabilities=${options}
     Maximize Browser Window
     Go To    ${LOGIN URL}
-    #Login From Department    megha.rsmml    admin
 
 Go To Base State
     Switch Browser    Department

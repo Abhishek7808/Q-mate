@@ -1,29 +1,37 @@
 *** Settings ***
+Documentation  ERP Tests
 Resource  ../Configuration.resource
 Resource  ${RESOURCES}/Common_Keywords.robot
-Library   ${LIBRARY}/Notifications.py
 Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
-Resource  ${PAGE OBJECTS}/ModuleNavigation.robot
-Resource  ${PAGE OBJECTS}/HRMS/PostClass.robot
+#Resource  ${COMMONDATA}
 Library   Collections
-Resource  ${PAGE OBJECTS}/TopNavigation.robot
-
-
-*** Settings ***
-Test Teardown     Go To Base State
-Library           SeleniumLibrary
-Library           OperatingSystem
-Library           Collections
-Library           String
-Library           RequestsLibrary
-#Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}Common_Keywords.robot
-Resource          ${RESOURCES}${/}browser.robot
-Resource          ${RESOURCES}${/}Department${/}Department.robot
-Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-Resource          ${RESOURCES}${/}Fields${/}Field.robot
-Resource          ${RESOURCES}${/}Verify${/}Verify.robot
+#*** Settings ***
+#Resource  ../Configuration.resource
+#Resource  ${RESOURCES}/Common_Keywords.robot
+#Library   ${LIBRARY}/Notifications.py
+#Resource  ${RESOURCES}/ERP_Keywords.robot
+#Resource  ${DATA}/Login_Data.robot
+#Resource  ${PAGE OBJECTS}/ModuleNavigation.robot
+#Resource  ${PAGE OBJECTS}/HRMS/PostClass.robot
+#Library   Collections
+#Resource  ${PAGE OBJECTS}/TopNavigation.robot
+#
+#
+#*** Settings ***
+#Test Teardown     Go To Base State
+#Library           SeleniumLibrary
+#Library           OperatingSystem
+#Library           Collections
+#Library           String
+#Library           RequestsLibrary
+##Resource          ../../../Configuration.resource
+#Resource          ${RESOURCES}${/}Common_Keywords.robot
+#Resource          ${RESOURCES}${/}browser.robot
+#Resource          ${RESOURCES}${/}Department${/}Department.robot
+#Resource          ${RESOURCES}${/}Customer${/}Customer.robot
+#Resource          ${RESOURCES}${/}Fields${/}Field.robot
+#Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 #Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
@@ -39,13 +47,40 @@ ${number} =  1
 #${num}  convert to integer  3
 ${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
 ${paybillString}  Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
-
-Paybill No. 1001/20182019 ; Date 30-Mar-2019
-Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
+${configurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
+#Paybill No. 1001/20182019 ; Date 30-Mar-2019
+#Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
 
 *** Test Cases ***
+Testing
+    [Tags]  debug
+#    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/URM/WORKFLOW
+#    sleep  2s
+#    page should contain element  //td[contains(text(),'138')]
+#    #click element  //td[contains(text(),'138')]/following-sibling::td//a[contains(text(),'Actions')]//a[@class='btn btn-primary']
+#    click element  //td[contains(text(),'138')]/following-sibling::td//a[@class='btn btn-primary']
+#    sleep  2s
+#    click element  //a[contains(text(),'Configure')]
+#    #select from list by index  //td[contains(text(),'138')]/following-sibling::td//a[@class='btn btn-primary']  0
+#    sleep  2s
 
-
+     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EmployeePosition/AddEditPosition
+     sleep  3s
+     Wait Until Keyword Succeeds    5s    250ms    click element  //div[@class='btn-group']
+     click element  //label[contains(text(),'AAO')]
+     #Wait Until Keyword Succeeds    5s    250ms    select from list by label  MSDECISION_IMPACT_ON  Salary
+     sleep  4s
+#     ${configJson}  Common_Keywords.Load Json File  ${configurationData}
+#     set test variable  ${postClass}  ${configJson["Post Class"]}
+#     #log to console  ${postClass["Add New Post Class"]["Locator"]}
+#     Wait Until Keyword Succeeds    5s    250ms    click link  ${postClass["Add New Post Class"]["Locator"]}
+#     sleep  2s
+#     input text  ${postClass["Name"]["Locator"]}  ${postClass["Name"]["Value"]}
+##     click element  ${postClass["Class Group"]["Locator"]}
+##     sleep  3s
+#     Wait Until Keyword Succeeds    5s    250ms    select from list by label  ${postClass["Class Group"]["Locator"]}  ${postClass["Class Group"]["Value"]}
+#     input text  ${postClass["Seniority Level"]["Locator"]}  ${postClass["Seniority Level"]["Value"]}
+#     click button  ${postClass["Save"]["Locator"]}
 
 
 

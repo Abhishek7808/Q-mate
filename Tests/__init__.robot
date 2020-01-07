@@ -1,5 +1,6 @@
 #*** Settings ***
-#Resource  ../Resources/Common_Keywords.robot
+#Resource  ../Configuration.resource
+#Resource  ${RESOURCES}/Common_Keywords.robot
 #
-#Suite Setup          Common_Keywords.Begin Web Test
-#Suite Teardown       Common_Keywords.End Web Test
+#Suite Setup          Common_Keywords.Begin Basic Testing
+#Suite Teardown       Common_Keywords.End Basic Testing
