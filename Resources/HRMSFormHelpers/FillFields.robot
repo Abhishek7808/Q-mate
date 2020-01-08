@@ -1,14 +1,15 @@
 *** Settings ***
-Documentation    Suite description
-
+Resource          ${RESOURCES}${/}HRMFormHelpers${/}InputField.robot
+Resource          ${RESOURCES}${/}HRMFormHelpers${/}ClearField.robot
+Resource          ${RESOURCES}${/}HRMFormHelpers${/}ConfirmField.robot
 
 *** Keywords ***
 Input Value Into Field
     [Arguments]  ${key}  ${value}
     ${fieldType}  Get Field Type  ${key}
-    ClearField.Clear ${fieldType}
-    InputField.Input ${fieldType}
-    ConfirmField.Confirm ${fieldType}
+    ClearFields.Clear ${fieldType}  ${value}
+    InputFields.Input ${fieldType}  ${value}
+    ConfirmFields.Confirm ${fieldType}  ${value}
 
 Get Field Type
     [Arguments]  ${Key}
