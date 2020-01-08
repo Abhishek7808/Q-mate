@@ -1,12 +1,8 @@
 *** Settings ***
-Documentation    Suite description
+Resource  ../Configuration.resource
 
 *** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
+
 
 *** Keywords ***
 Provided precondition
