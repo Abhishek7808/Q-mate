@@ -7,10 +7,10 @@ Resource          ${RESOURCES}${/}HRMFormHelpers${/}ConfirmField.robot
 Input Value Into Field
     [Arguments]  ${key}  ${value}
     ${fieldType}  Get Field Type  ${key}
-    ClearFields.Clear ${fieldType}  ${value}
-    InputFields.Input ${fieldType}  ${value}
-    ConfirmFields.Confirm ${fieldType}  ${value}
+    ClearFields.Clear ${fieldType}  ${key["Locator"]}  ${value}
+    InputFields.Input ${fieldType}  ${key["Locator"]}  ${value}
+    ConfirmFields.Confirm ${fieldType}  ${key["Locator"]}  ${value}
 
 Get Field Type
     [Arguments]  ${Key}
-    return from keyword  ${configuration["${key}"]["Type"]}
+    return from keyword  ${Key["Type"]}
