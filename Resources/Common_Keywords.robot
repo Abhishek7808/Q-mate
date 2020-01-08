@@ -1,5 +1,5 @@
 *** Settings ***
-Resource    ../Configuration.resource
+Resource          ../Configuration.resource
 Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Library           SeleniumLibrary
 Library           OperatingSystem
