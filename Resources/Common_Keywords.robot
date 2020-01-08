@@ -19,6 +19,7 @@ Resource          ${SMM_DATA_FILES}${/}locators.robot
 Resource          ${SMM_DATA_FILES}${/}alerts.robot
 
 *** Variables ***
+
 #Overwrite default configuration
 #${ENVIRONMENT} =  demo
 #${BROWSER} =  firefox
