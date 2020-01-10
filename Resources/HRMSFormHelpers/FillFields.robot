@@ -1,7 +1,7 @@
 *** Settings ***
-Resource          ${RESOURCES}${/}HRMFormHelpers${/}InputField.robot
-Resource          ${RESOURCES}${/}HRMFormHelpers${/}ClearField.robot
-Resource          ${RESOURCES}${/}HRMFormHelpers${/}ConfirmField.robot
+Resource          ${RESOURCES}${/}HRMSFormHelpers${/}InputFields.robot
+Resource          ${RESOURCES}${/}HRMSFormHelpers${/}ClearFields.robot
+Resource          ${RESOURCES}${/}HRMSFormHelpers${/}ConfirmFields.robot
 
 *** Keywords ***
 Input Value Into Field
@@ -10,6 +10,7 @@ Input Value Into Field
     ClearFields.Clear ${fieldType}  ${key["Locator"]}  ${value}
     InputFields.Input ${fieldType}  ${key["Locator"]}  ${value}
     ConfirmFields.Confirm ${fieldType}  ${key["Locator"]}  ${value}
+    press key  ${key["Locator"]}  TAB
 
 Get Field Type
     [Arguments]  ${Key}

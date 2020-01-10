@@ -9,6 +9,7 @@ Set Variables
     set test variable  ${disbursementUrl}  HRM/ArrearDisbursement/ArrearDisbursementIndex
     set test variable  ${disburseTableColumnText}  Amount to be Disbursed
     set test variable  ${disbursementTableID}  xpath=//*[@id="EmpSalGrid"]
+    set test variable  ${paybillDetailsColumnHead}  Disbursement Detail
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
@@ -65,12 +66,10 @@ Check Specified Arrear Disbursement Paybill
     ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
     DisbursementIndex.Show Maximum Entries
     sleep  2s
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
-    sleep  1s
-    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
+    DisbursementIndex.Go To Report Page Of Specified Paybill  ${PAYBILLNO}
     @{ReportData}  Get Data Of Report Page
     Switch Tab
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-pencil']
+    DisbursementIndex.Go To Disbursement Page Specified By Paybill  ${PAYBILLNO}
     sleep  2s
     @{disbursementData}  ArrearDisbursementIndex.Get Data Of Arrear Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
     sleep  2s

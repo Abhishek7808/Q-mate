@@ -3,7 +3,6 @@
 ${cycle}  SalaryCycleId
 ${paybillTableID}  //*[@id="classListing"]/div[1]/table
 ${paybillTableRow}     //*[@id="classListing"]/div[1]/table/tbody/tr
-#${disbursementTableID}  xpath=//*[@id="EmpSalGrid"]
 ${reportPageTableID}  xpath=//table[@id='HBA']
 ${showMaxDD}  DDLpageSize
 @{finalList}
@@ -17,7 +16,6 @@ Go To Disbursement Index Page
     ${retryCount}  convert to integer  ${count}
     sleep  2s
     return from keyword  ${retryCount}
-
 
 Open Filters
     NavigationHelper.Select Filter Menu
@@ -69,13 +67,11 @@ Check Specified Paybill
     ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
     DisbursementIndex.Show Maximum Entries
     sleep  2s
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
-    sleep  1s
-    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
+    DisbursementIndex.Go To Report Page Of Specified Paybill  ${PAYBILLNO}
     @{ReportData}  Get Data Of Report Page
     Switch Tab
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-pencil']
     sleep  2s
+    DisbursementIndex.Go To Disbursement Page Specified By Paybill  ${PAYBILLNO}
     @{disbursementData}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
     sleep  2s
     Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
@@ -98,10 +94,17 @@ Go To Report Page
     [Arguments]   ${paybillTableRow}  ${columnNumber}
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/a[2]/i
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/ul/li[1]/a[1]
+    Switch Window  NEW
+
+Go To Report Page Of Specified Paybill
+    [Arguments]  ${PAYBILLNO}
+    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//a[@class='btn btn-sm btn-primary']
+    sleep  1s
+    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//a[contains(text(),'Employee List')]
+    Switch Window  NEW
 
 Get Data Of Report Page
     [Documentation]  Returns the list of salaries of employees listed in report page
-    Switch Tab
     ${errorStatus}  Generic.Check Error Occurred
     ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
     run keyword if  '${errorStatus}' == '1'  fail  Report page of ${disbursementType} showed an error
@@ -126,6 +129,10 @@ Change The Number Into A Formatted Amount
 Go To Disbursement Page
     [Arguments]   ${paybill}  ${columnNumber}
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[${columnNumber}]/div/div/a[1]/i
+
+Go To Disbursement Page Specified By Paybill
+    [Arguments]  ${PAYBILLNO}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//i[@class='fa fa-pencil']
 
 Get Data Of Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
@@ -160,13 +167,9 @@ Add To The Disbusement Test Report
     run keyword and continue on failure  fail  ${disbursementType}: Disbursement Amount Of Employee ID ${employeeID} in Paybill NUmber: ${paybillNumber} didn't match
     append to file  ${DV_REPORT}  ${disbursementType}, ${paybillNumber}, ${employeeID}\n
 
-Send Disbursement Test Report To Developers
-    Send Error Email Notification  None  None  data validation
-
 Get Amount Column Number
     [Documentation]  Gives the column number of the 'Net Amount' column
     [Arguments]  ${tableID}  ${requiredText}
-    #${text2}  set variable  ${requiredText}
     ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableID}/thead/tr/th
     FOR  ${column}  IN RANGE  1  ${NumberOfColumns+1}
     \   ${columnText}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${tableID}  1  ${column}

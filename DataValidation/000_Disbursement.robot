@@ -4,9 +4,8 @@ Resource  ${RESOURCES}/Common_Keywords.robot
 Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${RESOURCES}/DV_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
-Library    SeleniumLibrary
+Library   SeleniumLibrary
 
-Suite Teardown  DisbursementIndex.Send Disbursement Test Report To Developers
 
 *** Variable ***
 ${ENVIRONMENT}    demo

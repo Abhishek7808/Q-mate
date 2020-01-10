@@ -6,6 +6,7 @@ Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 #Resource  ${COMMONDATA}
 Library   Collections
+Resource  ${PAGE OBJECTS}${/}${FA.name}/DisbursementIndex.robot
 #*** Settings ***
 #Resource  ../Configuration.resource
 #Resource  ${RESOURCES}/Common_Keywords.robot
@@ -20,19 +21,18 @@ Library   Collections
 #
 #*** Settings ***
 #Test Teardown     Go To Base State
-#Library           SeleniumLibrary
-#Library           OperatingSystem
-#Library           Collections
-#Library           String
-#Library           RequestsLibrary
-##Resource          ../../../Configuration.resource
-#Resource          ${RESOURCES}${/}Common_Keywords.robot
-#Resource          ${RESOURCES}${/}browser.robot
-#Resource          ${RESOURCES}${/}Department${/}Department.robot
-#Resource          ${RESOURCES}${/}Customer${/}Customer.robot
-#Resource          ${RESOURCES}${/}Fields${/}Field.robot
-#Resource          ${RESOURCES}${/}Verify${/}Verify.robot
-
+Library           SeleniumLibrary
+Library           OperatingSystem
+Library           Collections
+Library           String
+Library           RequestsLibrary
+#Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}${/}Common_Keywords.robot
+Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}Verify${/}Verify.robot
+Resource          ${RESOURCES}${/}SMMFormHelpers${/}Clear.robot
+#Resource          ${RESOURCES}${/}SMMFormHelpers${/}Input.robot
+Resource          ${RESOURCES}${/}HRMSFormHelpers${/}InputFields.robot
 #Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
 
@@ -52,8 +52,34 @@ ${configurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
 #Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
 
 *** Test Cases ***
-Testing
-    [Tags]  debug
+Testing hrms
+    [Tags]  debughrms
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Reimbursement/EntertainmentDeclareIndex
+    click element  modals-bootbox-custom
+    ${configJson}  Common_Keywords.Load Json File  ${configurationData}
+    InputFields.input date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}  ${configJson["Tea Rate Definition"]["Effective Date"]["Value"]}
+    Clear Date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}
+    sleep  2s
+
+Testing xpaths
+    [Tags]  debugxpath
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/salaryDisbursment/SalayDisbursmentIndex
+    sleep  2s
+    DisbursementIndex.Show Maximum Entries
+    sleep  3s
+    click element  //span[contains(text(),'1012/2019-2020')]/../following-sibling::td//i[@class='fa fa-pencil']
+    click element  //span[contains(text(),'1012/2019-2020')]/../following-sibling::td//a[@class='btn btn-sm btn-primary']
+    sleep  1s
+    click element  //span[contains(text(),'1012/2019-2020')]/../following-sibling::td//a[contains(text(),'Employee List')]
+    #${text}  get text  //span[contains(text(),'1001/20182019')]/../child::span[position()=1]
+    click element  //span[contains(text(),'1001/20182019')]/../following-sibling::td//i[@class='fa fa-eye']
+    click element  //span[contains(text(),'1001/20182019')]/../following-sibling::td//a[@class='btn btn-sm btn-primary']
+    sleep  1s
+    click element  //a[contains(text(),'Employee List')]
+    sleep  3s
+    #log to console  ${text}
+
+
 #    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/URM/WORKFLOW
 #    sleep  2s
 #    page should contain element  //td[contains(text(),'138')]
@@ -64,12 +90,12 @@ Testing
 #    #select from list by index  //td[contains(text(),'138')]/following-sibling::td//a[@class='btn btn-primary']  0
 #    sleep  2s
 
-     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EmployeePosition/AddEditPosition
-     sleep  3s
-     Wait Until Keyword Succeeds    5s    250ms    click element  //div[@class='btn-group']
-     click element  //label[contains(text(),'AAO')]
+#     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EmployeePosition/AddEditPosition
+#     sleep  3s
+#     Wait Until Keyword Succeeds    5s    250ms    click element  //div[@class='btn-group']
+#     click element  //label[contains(text(),'AAO')]
      #Wait Until Keyword Succeeds    5s    250ms    select from list by label  MSDECISION_IMPACT_ON  Salary
-     sleep  4s
+#     sleep  4s
 #     ${configJson}  Common_Keywords.Load Json File  ${configurationData}
 #     set test variable  ${postClass}  ${configJson["Post Class"]}
 #     #log to console  ${postClass["Add New Post Class"]["Locator"]}

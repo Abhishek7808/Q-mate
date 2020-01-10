@@ -44,10 +44,10 @@ def get_error_name(error_code):
     return switcher.get(error_code, "No error code found")
 
 
-def find_receiver(module_name, receivers_json):
+def find_receiver(json_key, receivers_json):
     with open(receivers_json, 'r') as f:
         receivers_dict = json.load(f)
-    return receivers_dict.get(module_name)
+    return receivers_dict.get(json_key)
 
 
 def get_generic_table_data(number_of_items, error_urls):
@@ -202,7 +202,7 @@ def format_string(text):
     text = text.lower()
     text = text.strip()
     test_name = text.replace(" ", "")
-    return text
+    return test_name
 
 class Notifications:
 
@@ -252,10 +252,10 @@ class Notifications:
         smtp_obj.quit()
 
     @keyword
-    def send_error_email_notification(self, module_name=None, receivers_json=None, test_name=None):
+    def send_error_email_notification(self, test_name=None, receivers_json=None, module_name=None ):
         test_name = format_string(test_name)
         gen_test = GenericTests
-        if module_name is not None:
+        if test_name == 'generictests':
             error_urls = gen_test.filter_module_error_url(module_name)
             if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
                 emails_ids = find_receiver(module_name, receivers_json)
@@ -268,7 +268,7 @@ class Notifications:
             if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(disbursement_list) != 0:
                 email_message = compose_disbursement_message(disbursement_list)
                 email_subject = "Disbursement Report"
-                emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
+                emails_ids = find_receiver("DISBURSEMENTS", receivers_json)
                 self.send_email(emails_ids, email_subject, email_message)
 
         if test_name == 'cpfbeneficiary':

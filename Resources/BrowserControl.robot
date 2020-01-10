@@ -4,7 +4,6 @@ Library           OperatingSystem
 Library           String
 Library           Collections
 Resource          ../Configuration.resource
-Resource          ${RESOURCES}${/}Department${/}Department.robot
 Resource          ${SMM_DATA_FILES}${/}website.robot
 Resource          ${SMM_DATA_FILES}${/}locators.robot
 Resource          ${SMM_DATA_FILES}${/}alerts.robot

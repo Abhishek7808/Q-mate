@@ -1,6 +1,6 @@
 *** Settings ***
 Resource          ../Configuration.resource
-Library     SeleniumLibrary  plugins=${PLUGINS}/ERP.py
+Library           SeleniumLibrary  plugins=${PLUGINS}/ERP.py
 Library           SeleniumLibrary
 Library           OperatingSystem
 Library           Collections
@@ -10,8 +10,6 @@ Library           ${LIBRARY}/Notifications.py
 Resource          ${PAGE OBJECTS}/SMM/CustomerLogin.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
-Resource          ${RESOURCES}${/}Department${/}Department.robot
-Resource          ${RESOURCES}${/}Customer${/}Customer.robot
 Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Resource          ${SMM_DATA_FILES}${/}website.robot
@@ -25,7 +23,7 @@ Resource          ${SMM_DATA_FILES}${/}alerts.robot
 #${BROWSER} =  firefox
 # login data added into Data/Login_Data.robot
 @{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
-
+${None}  None
 
 *** Keywords ***
 
@@ -38,6 +36,16 @@ Begin Basic Testing
 End Basic Testing
     close browser
 
+Begin DV Testing
+    Set Paths
+    Remove Files
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+
+End DV Testing
+    run keyword if any tests failed  Send Error Email Notification  data validation  ${CONTACTS_JSON}
+    close browser
+
 Begin Generic Testing
     Set Paths
     Remove Files
@@ -46,7 +54,7 @@ Begin Generic Testing
 
 End Generic Testing
     FOR  ${item}  IN  @{moduleNames}
-    \   Send Error Email Notification  ${item}  ${CONTACTS_JSON}
+    \   run keyword if any tests failed  Send Error Email Notification  generic tests  ${CONTACTS_JSON}  ${item}
     close browser
 
 Begin SMM Testing
@@ -110,6 +118,8 @@ Verify Element Text On The Page
 Login From Department
     [Arguments]    ${Username}    ${Password}
     login.Department Login   ${Username}    ${Password}
+
+
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

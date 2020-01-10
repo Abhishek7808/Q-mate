@@ -10,6 +10,7 @@ Set Variables
     set test variable  ${disburseTableColumnText}  ExGratia Amount
     set test variable  ${disbursementTableID}  xpath=//*[@id="EmpSalGrid"]
     set test variable  ${financialYearDD}  FinancialYear
+    set test variable  ${paybillDetailsColumnHead}  Disbursement Detail
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
@@ -20,7 +21,7 @@ Match All Paybills Net Amount With The Report For Given Unit
     DisbursementIndex.Apply Given Financial Year  ${financialYearDD}
     DisbursementIndex.Apply Filters
     sleep  2s
-    run keyword if  ${PAYBILLNO} == None  DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${financialYearDD}
+    run keyword if  ${PAYBILLNO} == None  DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${paybillDetailsColumnHead}  ${financialYearDD}
     run keyword if  ${PAYBILLNO} != None  DisbursementIndex.Check Specified Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
 
 Match All Paybills Net Amounts With Reports For All Units
@@ -35,6 +36,6 @@ Match All Paybills Net Amounts With Reports For All Units
     \   DisbursementIndex.Apply Given Financial Year  ${financialYearDD}
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}   ${financialYearDD}
+    \   DisbursementIndex.Check Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${paybillDetailsColumnHead}  ${financialYearDD}
     \   TopNavigation.Open Preference Unit Page
 

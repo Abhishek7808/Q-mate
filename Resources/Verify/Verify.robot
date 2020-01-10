@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ${RESOURCES}${/}Department${/}Department.robot
+
 
 *** Keywords ***
 Verify Add Customer from Department

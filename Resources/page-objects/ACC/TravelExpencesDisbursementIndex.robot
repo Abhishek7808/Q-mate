@@ -16,7 +16,6 @@ Match All Paybills Net Amount With The Report For Given Unit
     [Arguments]  ${UNITID}  ${retryCount}
     run keyword if  ${UNITID}!= None  TopNavigation.Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-    #DisbursementIndex.Apply Given Cycle Filter
     sleep  2s
     run keyword if  ${PAYBILLNO} == None  Check Travel Expence Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
     run keyword if  ${PAYBILLNO} != None  TravelExpencesDisbursementIndex.Check Specified TravelExpences Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
@@ -29,7 +28,6 @@ Match All Paybills Net Amounts With Reports For All Units
     FOR  ${unit}  IN RANGE  1  ${allUnits}
     \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-#    \   DisbursementIndex.Apply Given Cycle Filter
     \   sleep  2s
     \   Check Travel Expence Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
     \   TopNavigation.Open Preference Unit Page
@@ -50,9 +48,6 @@ Check Travel Expence Paybills
     \    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
     \    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
     \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
-#    \    Open Filters
-#    \    Apply Given Financial Year  ${financialYearDD}
-#    \    Apply Filters
     \    sleep  2s
 
 Check Specified TravelExpences Paybill
@@ -60,13 +55,15 @@ Check Specified TravelExpences Paybill
     ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
     DisbursementIndex.Show Maximum Entries
     sleep  2s
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
-    sleep  1s
-    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
+    DisbursementIndex.Go To Report Page Of Specified Paybill  ${PAYBILLNO}
     @{ReportData}  Get Data Of Report Page
     Switch Tab
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-eye']
-    sleep  2s
+    TravelExpencesDisbursementIndex.Go To Disbursement Page Specified By Paybill  ${PAYBILLNO}
     @{disbursementData}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
     sleep  2s
     Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
+
+Go To Disbursement Page Specified By Paybill
+    [Arguments]  ${PAYBILLNO}
+     click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//i[@class='fa fa-eye']
+

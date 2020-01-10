@@ -16,13 +16,11 @@ Match All Paybills Net Amount With The Report For Given Unit
     [Arguments]  ${UNITID}  ${retryCount}
     run keyword if  ${UNITID}!= None  TopNavigation.Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-    #DisbursementIndex.Open Filters
-    #DisbursementIndex.Apply Given Financial Year
-    #DisbursementIndex.Apply Given Cycle Filter
-    #DisbursementIndex.Apply Filters
     sleep  5s
-    run keyword if  '${PAYBILLNO}' == None  LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
-    run keyword if  '${PAYBILLNO}' != None  LeaveEncashmentDisbursementIndex.Check Specified Leave Encashment Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
+    log to console  ${PAYBILLNO} paybill number
+    ${PAYBILLNO}  convert to string  ${PAYBILLNO}
+    run keyword if  ${PAYBILLNO} == None  LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
+    run keyword if  ${PAYBILLNO} != None  LeaveEncashmentDisbursementIndex.Check Specified Leave Encashment Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
@@ -32,10 +30,6 @@ Match All Paybills Net Amounts With Reports For All Units
     FOR  ${unit}  IN RANGE  1  ${allUnits}
     \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-#    \   DisbursementIndex.Open Filters
-#    \   DisbursementIndex.Apply Given Financial Year
-#    \   DisbursementIndex.Apply Given Cycle Filter
-#    \   DisbursementIndex.Apply Filters
     \   sleep  2s
     \   LeaveEncashmentDisbursementIndex.Check Leave Encashment Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${employeeIdColumn}
     \   TopNavigation.Open Preference Unit Page
@@ -44,12 +38,12 @@ Check Leave Encashment Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}
     ${PaybillTableColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTableID}  Actions
-    #DisbursementIndex.Show Maximum Entries
-    #sleep  2s
+    DisbursementIndex.Show Maximum Entries
+    sleep  2s
     ${allPaybills}  Get Paybill Count
     # TODO: change the Check Paybills range before testing on live ,it should start from 1, remove comments from show max entries
     FOR  ${paybill}  IN RANGE  2  ${allPaybills+1}
-    #\    DisbursementIndex.Show Maximum Entries
+    \    DisbursementIndex.Show Maximum Entries
     \    sleep  2s
     \    ${paybillNumber}  LeaveEncashmentDisbursementIndex.Get Voucher Number  ${paybill}
     \    DisbursementIndex.Go To Report Page  ${paybill}  ${PaybillTableColumnNumber}
@@ -59,26 +53,25 @@ Check Leave Encashment Paybills
     \    @{disbursementData}  LeaveEncashmentDisbursementIndex.Get Data Of Leave Encashment Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
     \    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
     \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
-#    \    Open Filters
-#    \    Apply Given Financial Year  ${financialYearDD}
-#    \    Apply Filters
-#    \    sleep  5s
 
 Check Specified Leave Encashment Paybill
     [Arguments]  ${PAYBILLNO}  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}=3
     ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
-    #DisbursementIndex.Show Maximum Entries
+    DisbursementIndex.Show Maximum Entries
     sleep  2s
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-edit']
+    DisbursementIndex.Go To Report Page Of Specified Paybill  ${PAYBILLNO}
     sleep  1s
-    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/ul/li/a[@title='Click here for Employee List']
     @{ReportData}  Get Data Of Report Page
     Switch Tab
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td/div/div/a/i[@class='fa fa-eye']
-    sleep  2s
-    @{disbursementData}  LeaveEncashmentDisbursementIndex.Get Data Of Leave Encashment Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    LeaveEncashmentDisbursementIndex.Go To Disbursement Page Specified By Paybill  ${PAYBILLNO}
+    page should contain  Leave Encashment Disbursement Process
+    @{disbursementData}  Get Data Of Leave Encashment Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
     sleep  2s
     Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
+
+Go To Disbursement Page Specified By Paybill
+    [Arguments]  ${PAYBILLNO}
+    click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//i[@class='fa fa-eye']
 
 Get Data Of Leave Encashment Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
