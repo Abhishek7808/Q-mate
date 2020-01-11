@@ -33,3 +33,6 @@ Delete The Added Post Class Element
     PostClass.Delete The Post Class Entry
     PostClass.Verify The Deleted Element  ${New_Post_Class_Name}
     #Check Post Class Entry  ${New_Post_Class_Name}
+
+HRMS_Keywords.Verify Tea Rate Entry
+    [Arguments]  ${formField}

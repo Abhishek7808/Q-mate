@@ -29,3 +29,7 @@ Clear Date
 Clear Button
     [Arguments]  ${Locator}
     log  button cleared
+
+clear Link
+    [Arguments]  ${Locator}
+    page should contain link  ${Locator}

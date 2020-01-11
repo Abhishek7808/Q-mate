@@ -55,11 +55,15 @@ ${configurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
 Testing hrms
     [Tags]  debughrms
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Reimbursement/EntertainmentDeclareIndex
-    click element  modals-bootbox-custom
-    ${configJson}  Common_Keywords.Load Json File  ${configurationData}
-    InputFields.input date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}  ${configJson["Tea Rate Definition"]["Effective Date"]["Value"]}
-    Clear Date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}
+    #click element  modals-bootbox-custom
+    ${configData}  Common_Keywords.Load Json File  ${configurationData}
+    set test variable  ${formField}  ${configData["Tea Rate Definition"]}
     sleep  2s
+    page should contain element  //td[contains(text(),"1 ")]/following-sibling::td[contains(text(),'05-Nov-2018')]/following-sibling::td[contains(text(),'Tea Rate')]/following-sibling::td[contains(text(),'100')]
+    #/following-sibling::td//[contains(text(),'05-Nov-2018')]
+#    InputFields.input date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}  ${configJson["Tea Rate Definition"]["Effective Date"]["Value"]}
+#    Clear Date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}
+#    sleep  2s
 
 Testing xpaths
     [Tags]  debugxpath

@@ -17,12 +17,16 @@ Confirm Dropdown-Checkbox
     checkbox should be selected  ${locator2}
 
 Confirm Date
-    [Arguments]    ${Locator}    ${value}
+    [Arguments]  ${Locator}  ${value}
     ${filledDate}  get value  ${Locator}
     ${dateValue}  set variable  ${value["Day"]}-${value["Month"]}-${value["Year"]}
     ${dateValue}  set variable if  ${value["Day"]}<10  0${dateValue}  ELSE  ${dateValue}
     should be equal  ${filledDate}  ${dateValue}
 
 Confirm Button
-    [Arguments]    ${Locator}    ${value}
+    [Arguments]  ${Locator}  ${value}
     log  Button clicked confirmation
+
+Confirm Link
+    [Arguments]  ${Locator}  ${value}
+    page should not contain link  ${Locator}

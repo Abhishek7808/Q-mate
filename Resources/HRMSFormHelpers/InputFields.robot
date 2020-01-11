@@ -28,3 +28,7 @@ Input Date
 Input Button
     [Arguments]  ${Locator}  ${Value}
     click button  ${Locator}
+
+Input Link
+    [Arguments]  ${Locator}  ${Value}
+    click link  ${Locator}
