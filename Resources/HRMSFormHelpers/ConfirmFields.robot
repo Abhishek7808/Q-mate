@@ -4,7 +4,7 @@ Documentation    Suite description
 *** Keywords ***
 Confirm Text Value
     [Arguments]  ${locator}  ${value}
-    ${filledValue}  get text  ${locator}
+    ${filledValue}  get value  ${locator}
     should be equal  ${filledValue}  ${value}
 
 Confirm Dropdown
@@ -17,6 +17,12 @@ Confirm Dropdown-Checkbox
     checkbox should be selected  ${locator2}
 
 Confirm Date
-    [Arguments]    ${Locator}    ${Value}
+    [Arguments]    ${Locator}    ${value}
     ${filledDate}  get value  ${Locator}
-    should be equal  ${filledDate}  ${Value}
+    ${dateValue}  set variable  ${value["Day"]}-${value["Month"]}-${value["Year"]}
+    ${dateValue}  set variable if  ${value["Day"]}<10  0${dateValue}  ELSE  ${dateValue}
+    should be equal  ${filledDate}  ${dateValue}
+
+Confirm Button
+    [Arguments]    ${Locator}    ${value}
+    log  Button clicked confirmation

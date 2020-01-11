@@ -41,7 +41,7 @@
 			"Locator": "rate"
 		},
 		"Save": {
-			"Type": "Save",
+			"Type": "Button",
 			"Locator": "btnSave"
 		}
 	},
@@ -105,7 +105,7 @@
 			"Locator": "ActionPanel_4_4"
 		},
 		"Save": {
-			"Type": "Save",
+			"Type": "Button",
 			"Locator": "btnSave"
 		}
 	},

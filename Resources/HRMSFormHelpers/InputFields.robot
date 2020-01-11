@@ -17,7 +17,7 @@ Input Dropdown-Checkbox
     click element  ${locator2}
 
 Input Date
-    [Arguments]    ${Locator}    ${Value}
+    [Arguments]  ${Locator}  ${Value}
     [Documentation]    Input the given date into date field at the locator.
     ...    Date Format : {"Date": "9", "Month": "Feb", "Year": "1993"}
     Click Element    ${Locator}
@@ -25,5 +25,6 @@ Input Date
     select from list by label  //select[@class='ui-datepicker-month']  ${Value["Month"]}
     click element  //a[contains(text(),'${Value["Day"]}')]
 
-
-
+Input Button
+    [Arguments]  ${Locator}  ${Value}
+    click button  ${Locator}

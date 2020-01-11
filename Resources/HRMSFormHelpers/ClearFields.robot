@@ -9,7 +9,7 @@ Clear Text Value
 
 Clear Dropdown
     [Arguments]  ${locator}
-    select value from list by index  ${locator}  0
+    select from list by index  ${locator}  0
 
 Clear Dropdown-Checkbox
     [Arguments]  ${locator1}  ${locator2}
@@ -25,3 +25,7 @@ Clear Date
     Input Text    ${Locator}    ${EMPTY}
     Execute JavaScript    return window.document.getElementById('${Locator}').readOnly = true
     Sleep    ${After Enable Readonly}
+
+Clear Button
+    [Arguments]  ${Locator}
+    log  button cleared
