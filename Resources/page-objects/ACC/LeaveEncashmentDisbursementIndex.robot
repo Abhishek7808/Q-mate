@@ -82,7 +82,7 @@ Get Data Of Leave Encashment Disbursement Details Page
     FOR  ${row}  IN RANGE  1  ${numberOfRows+1}
     \    sleep  2s
     \    ${textValue}  get table cell  ${disbursementTableID}  ${row+1}  ${columnNumber}
-    \    ${formattedAmount}  DisbursementIndex.Change The Number Into A Formatted Amount  ${textValue}
+    \    ${formattedAmount}  Common_Keywords..Change The Number Into A Formatted Amount  ${textValue}
     \    append to list  ${list}  ${formattedAmount}
     return from keyword  @{list}
 

@@ -12,9 +12,9 @@ Confirm Dropdown
     get selected list label  ${locator}
 
 Confirm Dropdown-Checkbox
-    [Arguments]  ${locator1}  ${locator2}  ${value}
-    click element  ${locator1}
-    checkbox should be selected  ${locator2}
+    [Arguments]  ${locator}  ${value}
+    click element  ${locator["Locator1"]}
+    checkbox should be selected  ${locator["Locator2"]}
 
 Confirm Date
     [Arguments]  ${Locator}  ${value}
@@ -29,4 +29,9 @@ Confirm Button
 
 Confirm Link
     [Arguments]  ${Locator}  ${value}
-    page should not contain link  ${Locator}
+    log  clicked on link
+    #page should not contain link  ${Locator}
+
+Confirm Element
+    [Arguments]  ${Locator}  ${value}
+    log  Element clicked confirmation

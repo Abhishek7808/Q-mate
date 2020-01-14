@@ -27,6 +27,7 @@
 				"Month": "Nov",
 				"Year": "2018"
 			},
+
 			"Type": "Date",
 			"Locator": "EffectiveDate"
 		},
@@ -37,6 +38,43 @@
 		},
 		"Rate": {
 			"Value": "100",
+			"Type": "Text Value",
+			"Locator": "rate"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'1 ')]/following-sibling::td[contains(text(),'Tea Rate')]/following-sibling::td//i[contains(@class,'fa fa-trash-o')]"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		}
+	},
+	"Tea Rate Definition Edit": {
+		"Edit Button": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'1 ')]/following-sibling::td[contains(text(),'Tea Rate')]/following-sibling::td//i[contains(@class,'fa fa-pencil')]"
+		},
+		"Effective Date": {
+			"Value": {
+				"Day": "6",
+				"Month": "Nov",
+				"Year": "2019"
+			},
+			"Type": "Date",
+			"Locator": "EffectiveDate"
+		},
+		"Type": {
+			"Value": "Tea Rate",
+			"Type": "Dropdown",
+			"Locator": "type"
+		},
+		"Rate": {
+			"Value": "105",
 			"Type": "Text Value",
 			"Locator": "rate"
 		},
@@ -278,7 +316,7 @@
 	},
 	"Post Class": {
 		"Add New Post Class": {
-			"Type": "Button",
+			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
 		"Name": {
@@ -296,14 +334,47 @@
 			"Type": "Text Value",
 			"Locator": "SeniorityLevel"
 		},
-        "Save": {
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Delete Post Class": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEPostClass2')]/following-sibling::td//i[@class='fa fa-times']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		}
+	},
+	"Post Class Update": {
+		"Update": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEPostClass')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Name": {
+			"Value": "QMATEPostClass2",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Class Group": {
+			"Value": "Executive",
+			"Type": "Dropdown",
+			"Locator": "CLASS_GROUP_ID"
+		},
+		"Seniority Level": {
+			"Value": "2",
+			"Type": "Text Value",
+			"Locator": "SeniorityLevel"
+		},
+		"Save": {
 			"Type": "Button",
 			"Locator": "btnSave"
 		}
 	},
 	"Enquiry Decision Type": {
 		"Add New": {
-			"Type": "Button",
+			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
 		"Decision Name": {
@@ -318,9 +389,11 @@
 		},
 		"Impact On": {
 			"Value": "Salary",
-            "Type": "Dropdown-Checkbox",
-            "Locator1": "DivDesicion",
-            "Locator2": "//label[contains(text(),'Salary')]"
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator1": "DivDesicion",
+				"Locator2": "//*[@id='parDrView']/div/ul/li[5]/a/label/input"
+			}
 		},
 		"Save": {
 			"Type": "Button",
@@ -632,9 +705,9 @@
 			}
 		},
 		"Save": {
-				"Type": "Button",
-				"Locator": "btnSave"
-			}
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
 	},
 	"Shift Policies": {
 		"Timing Policy": {

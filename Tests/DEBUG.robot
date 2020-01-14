@@ -48,18 +48,34 @@ ${number} =  1
 ${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
 ${paybillString}  Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
 ${configurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
+${jsonFile}  ${DATA}/check.json
 #Paybill No. 1001/20182019 ; Date 30-Mar-2019
 #Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
 
 *** Test Cases ***
+Testing json
+    [Tags]  jsontesting
+    ${json}  Load Json File  ${jsonFile}
+    log to console  ${json["root"]["value"]}
+
 Testing hrms
     [Tags]  debughrms
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Reimbursement/EntertainmentDeclareIndex
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryDecision/AddEditEnquiryDecision
+    sleep  3s
+    click element  DivDesicion
+    sleep  3s
+
+    click element  parDrView
+#    unselect checkbox  //*[@id="DivDesicion"]/div/ul/li[4]/a/label/input
+#    select checkbox  //*[@id="DivDesicion"]/div/ul/li[4]/a/label/input
+    select from list by label  //select[@id='MSDECISION_IMPACT_ON']  Salary
+    #select checkbox
+    sleep  5s
     #click element  modals-bootbox-custom
-    ${configData}  Common_Keywords.Load Json File  ${configurationData}
-    set test variable  ${formField}  ${configData["Tea Rate Definition"]}
-    sleep  2s
-    page should contain element  //td[contains(text(),"1 ")]/following-sibling::td[contains(text(),'05-Nov-2018')]/following-sibling::td[contains(text(),'Tea Rate')]/following-sibling::td[contains(text(),'100')]
+#    ${configData}  Common_Keywords.Load Json File  ${configurationData}
+#    set test variable  ${formField}  ${configData["Tea Rate Definition"]}
+#    sleep  2s
+#    page should contain element  //td[contains(text(),"1 ")]/following-sibling::td[contains(text(),'05-Nov-2018')]/following-sibling::td[contains(text(),'Tea Rate')]/following-sibling::td[contains(text(),'100')]
     #/following-sibling::td//[contains(text(),'05-Nov-2018')]
 #    InputFields.input date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}  ${configJson["Tea Rate Definition"]["Effective Date"]["Value"]}
 #    Clear Date  ${configJson["Tea Rate Definition"]["Effective Date"]["Locator"]}

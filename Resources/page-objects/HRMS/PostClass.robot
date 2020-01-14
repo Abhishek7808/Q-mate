@@ -63,3 +63,7 @@ Verify The Deleted Element
     wait until page contains  Action
     sleep  2s
     page should not contain  ${Name}
+
+Check For The Post Class Entry In The Post Class Table
+    [Arguments]  ${formField}
+    ${status}  run keyword and return status  page should contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]

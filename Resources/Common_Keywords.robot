@@ -24,6 +24,7 @@ Resource          ${SMM_DATA_FILES}${/}alerts.robot
 # login data added into Data/Login_Data.robot
 @{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
+${HRMSconfigurations}  ${DATA}/HRMS_DATA/ConfigurationData.json
 
 *** Keywords ***
 
@@ -83,6 +84,18 @@ Set Test Variables
 End SMM Testing
     BrowserControl.Finish Testing
 
+Begin HRMS Testing
+    Set HRMS Variables
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+
+Set HRMS Variables
+    ${configurationData}  Load Json File  ${HRMSconfigurations}
+    set global variable  ${configData}  ${configurationData}
+
+End HRMS Testing
+    close browser
+
 Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
 
@@ -100,6 +113,13 @@ Evaluate And Store JSON File
     [Arguments]  ${JSON}
     @{urls_list}=    Evaluate     json.loads('''${json}''')    json
     return from keyword  @{urls_list}
+
+Change The Number Into A Formatted Amount
+    [Documentation]  Changes the given salary into a floating point number
+    [Arguments]  ${amount}
+    ${formattedAmount}=  replace string  ${amount}  ,  ${EMPTY}
+    ${formattedAmount}  run keyword if  '${formattedAmount}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedAmount}
+    return from keyword  ${formattedAmount}
 
 Read And Evaluate JSON File
     [Arguments]  ${JSON_File}

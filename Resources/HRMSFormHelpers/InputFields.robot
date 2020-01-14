@@ -11,10 +11,10 @@ Input Dropdown
     select from list by label  ${locator}  ${value}
 
 Input Dropdown-Checkbox
-    [Arguments]  ${locator1}  ${locator2}  ${value}
-    click element  ${locator1}
+    [Arguments]  ${locator}  ${value}
+    click element  ${locator["Locator1"]}
     sleep  2s
-    click element  ${locator2}
+    click element  ${locator["Locator2"]}
 
 Input Date
     [Arguments]  ${Locator}  ${Value}
@@ -32,3 +32,7 @@ Input Button
 Input Link
     [Arguments]  ${Locator}  ${Value}
     click link  ${Locator}
+
+Input Element
+    [Arguments]  ${Locator}  ${Value}
+    click element  ${Locator}

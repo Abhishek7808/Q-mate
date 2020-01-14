@@ -84,6 +84,6 @@ Get Data Of Arrear Disbursement Details Page
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
     \    ${elementValue}  get element attribute  //*[@id="EmpSalGrid"]/tbody/tr[1]/td[${columnNumber}]/input  value
-    \    ${formattedAmount}  DisbursementIndex.Change The Number Into A Formatted Amount  ${elementValue}
+    \    ${formattedAmount}  Common_Keywords.Change The Number Into A Formatted Amount  ${elementValue}
     \    append to list  ${list}  ${formattedAmount}
     return from keyword  @{list}

@@ -114,17 +114,10 @@ Get Data Of Report Page
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
     \    ${amount}  get table cell  ${reportPageTableID}  ${row+1}  ${columnNumber}
-    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${amount}
+    \    ${formattedAmount}  Common_Keywords.Change The Number Into A Formatted Amount  ${amount}
     \    append to list   ${list}   ${formattedAmount}
     close window
     return from keyword  @{list}
-
-Change The Number Into A Formatted Amount
-    [Documentation]  Changes the given salary into a floating point number
-    [Arguments]  ${amount}
-    ${formattedAmount}=  replace string  ${amount}  ,  ${EMPTY}
-    ${formattedAmount}  run keyword if  '${formattedAmount}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedAmount}
-    return from keyword  ${formattedAmount}
 
 Go To Disbursement Page
     [Arguments]   ${paybill}  ${columnNumber}
@@ -146,7 +139,7 @@ Get Data Of Disbursement Details Page
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
     \    sleep  2s
     \    ${amount}  get table cell  ${disbursementTableID}  ${row+1}  ${columnNumber}
-    \    ${formattedAmount}  Change The Number Into A Formatted Amount  ${amount}
+    \    ${formattedAmount}  Common_Keywords.Change The Number Into A Formatted Amount  ${amount}
     \    append to list  ${list}  ${formattedAmount}
     return from keyword  @{list}
 

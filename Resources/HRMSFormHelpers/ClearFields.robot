@@ -12,9 +12,13 @@ Clear Dropdown
     select from list by index  ${locator}  0
 
 Clear Dropdown-Checkbox
-    [Arguments]  ${locator1}  ${locator2}
-    click element  ${locator1}
-    unselect checkbox  ${locator2}
+    [Arguments]  ${locator}
+    click element  ${locator["Locator1"]}
+    sleep  3s
+    #click element  ${locator["Locator2"]}
+    #${status}  run keyword and return status  checkbox should be selected  ${locator["Locator2"]}
+    unselect checkbox  ${locator["Locator2"]}
+    click element  ${locator["Locator1"]}
 
 Clear Date
     [Arguments]    ${Locator}
@@ -30,6 +34,10 @@ Clear Button
     [Arguments]  ${Locator}
     log  button cleared
 
-clear Link
+Clear Link
     [Arguments]  ${Locator}
     page should contain link  ${Locator}
+
+Clear Element
+    [Arguments]  ${Locator}
+    log  element cleared

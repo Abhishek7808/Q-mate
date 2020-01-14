@@ -3,6 +3,8 @@ Resource  ${PAGE OBJECTS}/HRMS/PostClass.robot
 #Resource  ${PAGE OBJECTS}/LeftNavigation.robot
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
 Resource  ./ERP_Keywords.robot
+Resource  ${PAGE OBJECTS}/HRMS/EntertainmentDeclaration.robot
+
 
 *** Keywords ***
 Open Post Class Page
@@ -36,3 +38,16 @@ Delete The Added Post Class Element
 
 HRMS_Keywords.Verify Tea Rate Entry
     [Arguments]  ${formField}
+    EntertainmentDeclaration.Check For The New Entry In Entertainment Declaration Table  ${formField}
+
+Verify Tea Rate Deletion
+    [Arguments]  ${formField}
+    EntertainmentDeclaration.Check For The Deletion In Entertainment Declaration Table  ${formField}
+
+Verify Post Class Creation
+    [Arguments]  ${formField}
+    PostClass.Check For The Post Class Entry In The Post Class Table  ${formField}
+
+Verify Post Class deletion
+    [Arguments]  ${formField}
+    PostClass.Check For The Post Class Entry In The Post Class Table  ${formField}
