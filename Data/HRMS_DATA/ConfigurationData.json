@@ -388,11 +388,12 @@
 			"Locator": "EnquiryType"
 		},
 		"Impact On": {
-			"Value": "Salary",
+			"Value": ["Salary",  "AGI Cumulative"],
 			"Type": "Dropdown-Checkbox",
 			"Locator": {
 				"Locator1": "DivDesicion",
-				"Locator2": "//*[@id='parDrView']/div/ul/li[5]/a/label/input"
+				"Locator2": "//*[@id='parDrView']/div/ul/li[5]/a/label/input",
+				"Locator3": "//*[@id='parDrView']/div/ul/li[4]/a/label/input"
 			}
 		},
 		"Save": {
@@ -416,11 +417,12 @@
 			"Locator": "EnquiryType"
 		},
 		"Impact On": {
-			"Value": "Salary",
+			"Value": " Promotion Non Cumulative  ACP Cumulative",
 			"Type": "Dropdown-Checkbox",
 			"Locator": {
 				"Locator1": "DivDesicion",
-				"Locator2": "//*[@id='parDrView']/div/ul/li[7]/a/label/input"
+				"Locator2": "//*[@id='parDrView']/div/ul/li[7]/a/label/input",
+				"Locator3": "//*[@id='parDrView']/div/ul/li[4]/a/label/input"
 			}
 		},
 		"Save": {
@@ -528,15 +530,25 @@
 		}
 	},
 	"Deputation Department Edit": {
-		"Actions": {
-			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']"
-		},
 		"Edit": {
-			"Type":"Link",
-            "Locator": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]"
+			"Type":"Actions",
+			"Locator": {
+				"Locator1": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]"
+			}
 		},
-      "Name": {
+		"Delete": {
+			"Type":"Actions",
+			"Locator": {
+				"Locator1": "//td[contains(text(),'QMATEDepartment2')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "//td[contains(text(),'QMATEDepartment2')]/following-sibling::td//a[contains(text(),'Delete')]"
+			}
+		},
+        "Ok": {
+            "Type": "Button",
+            "Locator": "//button[contains(text(),'OK')]"
+        },
+        "Name": {
 			"Value": "QMATEDepartment2",
 			"Type": "Text Value",
 			"Locator": "Name"
@@ -573,7 +585,7 @@
 		},
 		"Save": {
 			"Type": "Button",
-			"Locator": "Save"
+			"Locator": "save"
 		}
 
 	},

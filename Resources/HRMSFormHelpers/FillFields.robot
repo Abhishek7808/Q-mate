@@ -7,7 +7,7 @@ Resource          ${RESOURCES}${/}HRMSFormHelpers${/}ConfirmFields.robot
 Input Value Into Field
     [Arguments]  ${key}  ${value}=None
     ${fieldType}  Get Field Type  ${key}
-    Wait Until Keyword Succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  run keyword  ClearFields.Clear ${fieldType}  ${key["Locator"]}
+    Wait Until Keyword Succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  run keyword  ClearFields.Clear ${fieldType}  ${key["Locator"]}  ${value}
     Wait Until Keyword Succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  run keyword  InputFields.Input ${fieldType}  ${key["Locator"]}  ${value}
     run keyword and ignore error  press keys  ${key["Locator"]}  TAB
     Wait Until Keyword Succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  run keyword  ConfirmFields.Confirm ${fieldType}  ${key["Locator"]}  ${value}

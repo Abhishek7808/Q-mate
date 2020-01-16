@@ -23,7 +23,7 @@ User should be able to declare tea rate definition
 
 User should be able to edit tea rate definition
     [Documentation]  Edits the tea rate definition details and save them.
-    [Tags]  tearatedefinition  edit
+    [Tags]  tearatedefinition  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Reimbursement/EntertainmentDeclareIndex
     set test variable  ${formField}  ${configData["Tea Rate Definition Edit"]}
     FillFields.Input Value Into Field  ${formField["Edit Button"]}
@@ -59,7 +59,7 @@ User should be able to add new enquiry decision type
 
 User should be able to edit enquiry decision type
     [Documentation]  Pending because there is an exception on the page
-    [Tags]  enquirydecisiontype  edit
+    [Tags]  enquirydecisiontype  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryDecision
     set test variable  ${formField}  ${configData["Enquiry Decision Type Edit"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -89,7 +89,7 @@ User should be able to delete enquiry decision type
 
 User should be abele to create post class
     [Documentation]  Creates new post class
-    [Tags]  postclass  create
+    [Tags]  postclass  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PostConfig/PostClassIndex
     set test variable  ${formField}  ${configData["Post Class"]}
     FillFields.Input Value Into Field  ${formField["Add New Post Class"]}
@@ -102,7 +102,7 @@ User should be abele to create post class
 
 User should be able to update post class
     [Documentation]  Edits the details of post class
-    [Tags]  postclass  update
+    [Tags]  postclass  updatedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PostConfig/PostClassIndex
     set test variable  ${formField}  ${configData["Post Class Update"]}
     FillFields.Input Value Into Field  ${formField["Update"]}
@@ -141,11 +141,11 @@ User should be able to add new deputation department
 
 User should be able to edit deputation department
     [Documentation]  Edits the deputation department form
-    [Tags]  deputationdepartment  createdata
+    [Tags]  deputationdepartment  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
     set test variable  ${formField}  ${configData["Deputation Department Edit"]}
-    FillFields.Input Value Into Field  ${formField["Actions"]}
     FillFields.Input Value Into Field  ${formField["Edit"]}
+    switch window  NEW
     FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Governing Authorities"]}  ${formField["Governing Authorities"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Address"]}  ${formField["Address"]["Value"]}
@@ -154,7 +154,17 @@ User should be able to edit deputation department
     FillFields.Input Value Into Field  ${formField["State"]}  ${formField["State"]["Value"]}
     FillFields.Input Value Into Field  ${formField["City"]}  ${formField["City"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
-    HRMS_Keywords.Verify Post Class Creation  ${formField}
+    HRMS_Keywords.Verify Deputation Department Updation  ${formField}
+
+User should be able to delete deputation department
+    [Documentation]  Edits the deputation department form
+    [Tags]  deputationdepartment  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
+    set test variable  ${formField}  ${configData["Deputation Department Edit"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    page should contain  Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Deputation Department Deletion  ${formField}
 
 
 

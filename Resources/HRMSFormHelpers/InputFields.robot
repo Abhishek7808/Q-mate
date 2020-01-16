@@ -14,7 +14,9 @@ Input Dropdown-Checkbox
     [Arguments]  ${locator}  ${value}
     click element  ${locator["Locator1"]}
     sleep  2s
-    click element  ${locator["Locator2"]}
+    ${count}  get length  ${value}
+    FOR  ${item}  IN RANGE  2  ${count}+2
+    \   click element  ${locator["Locator${item}"]}
 
 Input Date
     [Arguments]  ${Locator}  ${Value}
@@ -36,3 +38,9 @@ Input Link
 Input Element
     [Arguments]  ${Locator}  ${Value}
     click element  ${Locator}
+
+Input Actions
+    [Arguments]  ${Locator}  ${Value}=None
+    click element  ${Locator["Locator1"]}
+    sleep  2s
+    click element  ${Locator["Locator2"]}

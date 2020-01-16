@@ -5,6 +5,7 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 Resource  ./ERP_Keywords.robot
 Resource  ${PAGE OBJECTS}/HRMS/EntertainmentDeclaration.robot
 Resource  ${PAGE OBJECTS}/HRMS/EnquiryDecision.robot
+Resource  ${PAGE OBJECTS}/HRMS/DeputationDepartment.robot
 
 
 *** Keywords ***
@@ -67,4 +68,12 @@ Verify Enquiry Decision Type Deletion
 
 Verify Deputation Department Creation
     [Arguments]  ${formField}
-    DeputationDepartment.
+    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
+
+Verify Deputation Department Updation
+    [Arguments]  ${formField}
+    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
+
+Verify Deputation Department Deletion
+    [Arguments]  ${formField}
+    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}

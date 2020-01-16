@@ -53,6 +53,18 @@ ${jsonFile}  ${DATA}/check.json
 #Paybill No. :1011/2018-2019 Date : 04-DEC-2019 Pay Group :RIICO Staff (Head Office) ;
 
 *** Test Cases ***
+Testing robot things
+    [Tags]  robotthings
+    ${configJson}  Common_Keywords.Load Json File  ${configurationData}
+    set test variable  ${formField}  ${configJson["Enquiry Decision Type"]}
+    log to console  ${formField["Impact On"]["Value"]}
+    ${items}  set variable  ${formField["Impact On"]["Value"]}
+    log to console  ${items}
+
+    log to console  ${list}
+    ${length}  get length  ${list}
+    log to console  ${length}
+
 Testing json
     [Tags]  jsontesting
     ${json}  Load Json File  ${jsonFile}
@@ -63,6 +75,9 @@ Testing hrms
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
     sleep  3s
     click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]
+    sleep  2s
+    press keys  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]  TAB
+    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]
     #td//a[contains(text(),'Edit')]
     #//a[@class="btn btn-primary btn-sm"]
     sleep  3s

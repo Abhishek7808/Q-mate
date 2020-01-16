@@ -14,7 +14,9 @@ Confirm Dropdown
 Confirm Dropdown-Checkbox
     [Arguments]  ${locator}  ${value}
     click element  ${locator["Locator1"]}
-    checkbox should be selected  ${locator["Locator2"]}
+    ${count}  get length  ${value}
+    FOR  ${item}  IN RANGE  2  ${count}+2
+    \   checkbox should be selected  ${locator["Locator${item}"]}
 
 Confirm Date
     [Arguments]  ${Locator}  ${value}
@@ -35,3 +37,7 @@ Confirm Link
 Confirm Element
     [Arguments]  ${Locator}  ${value}
     log  Element clicked confirmation
+
+Confirm Actions
+    [Arguments]  ${Locator}  ${value}=None
+    log  Action clicked
