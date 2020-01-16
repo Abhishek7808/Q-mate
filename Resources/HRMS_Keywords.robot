@@ -4,6 +4,7 @@ Resource  ${PAGE OBJECTS}/HRMS/PostClass.robot
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
 Resource  ./ERP_Keywords.robot
 Resource  ${PAGE OBJECTS}/HRMS/EntertainmentDeclaration.robot
+Resource  ${PAGE OBJECTS}/HRMS/EnquiryDecision.robot
 
 
 *** Keywords ***
@@ -51,3 +52,19 @@ Verify Post Class Creation
 Verify Post Class deletion
     [Arguments]  ${formField}
     PostClass.Check For The Post Class Entry In The Post Class Table  ${formField}
+
+Verify Enquiry Decision Type Creation
+    [Arguments]  ${formField}
+    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
+
+Verify Enquiry Decision Type Updatation
+    [Arguments]  ${formField}
+    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
+
+Verify Enquiry Decision Type Deletion
+    [Arguments]  ${formField}
+    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
+
+Verify Deputation Department Creation
+    [Arguments]  ${formField}
+    DeputationDepartment.

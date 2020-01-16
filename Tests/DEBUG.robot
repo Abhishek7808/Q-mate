@@ -60,9 +60,11 @@ Testing json
 
 Testing hrms
     [Tags]  debughrms
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryDecision/AddEditEnquiryDecision
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
     sleep  3s
-    click element  DivDesicion
+    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]
+    #td//a[contains(text(),'Edit')]
+    #//a[@class="btn btn-primary btn-sm"]
     sleep  3s
 
     click element  parDrView

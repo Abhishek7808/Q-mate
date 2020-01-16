@@ -400,6 +400,42 @@
 			"Locator": "btnSave"
 		}
 	},
+	"Enquiry Decision Type Edit": {
+		"Edit Button": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEDecision')]/following-sibling::td[contains(text(),'Explanation')]/following-sibling::td[contains(text(),'Salary')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Decision Name": {
+			"Value": "QMATEDecision2",
+			"Type": "Text Value",
+			"Locator": "DECISION_NAME"
+		},
+		"Enquiry Type": {
+			"Value": "Major",
+			"Type": "Dropdown",
+			"Locator": "EnquiryType"
+		},
+		"Impact On": {
+			"Value": "Salary",
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator1": "DivDesicion",
+				"Locator2": "//*[@id='parDrView']/div/ul/li[7]/a/label/input"
+			}
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Delete Button": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEDecision')]/following-sibling::td[contains(text(),'Explanation')]/following-sibling::td[contains(text(),'Salary')]/following-sibling::td//i[@class='fa fa-trash-o']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		}
+	},
 	"Position": {
 		"Add New": {
 			"Type": "Button",
@@ -448,7 +484,7 @@
 	},
 	"Deputation Department": {
 		"Add New": {
-			"Type": "Button",
+			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
 		"Name": {
@@ -472,7 +508,7 @@
 			"Locator": "Email"
 		},
 		"Contact No": {
-			"Value": "029402940294",
+			"Value": "0294029402",
 			"Type": "Text Value",
 			"Locator": "ContactNo"
 		},
@@ -490,6 +526,56 @@
 			"Type": "Button",
 			"Locator": "Save"
 		}
+	},
+	"Deputation Department Edit": {
+		"Actions": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']"
+		},
+		"Edit": {
+			"Type":"Link",
+            "Locator": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]"
+		},
+      "Name": {
+			"Value": "QMATEDepartment2",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Governing Authorities": {
+			"Value": "State Govt.",
+			"Type": "Dropdown",
+			"Locator": "BelongsTo"
+		},
+		"Address": {
+			"Value": "Delhi",
+			"Type": "Text Value",
+			"Locator": "Address"
+		},
+		"Email": {
+			"Value": "QMATE2@gmail.com",
+			"Type": "Text Value",
+			"Locator": "Email"
+		},
+		"Contact No": {
+			"Value": "0294029401",
+			"Type": "Text Value",
+			"Locator": "ContactNo"
+		},
+		"State": {
+			"Value": "DELHI",
+			"Type": "Dropdown",
+			"Locator": "State"
+		},
+		"City": {
+			"Value": "Delhi",
+			"Type": "Dropdown",
+			"Locator": "City"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "Save"
+		}
+
 	},
 	"Self Verification Configuration": {
 		"Raise Self Verification Popup": {

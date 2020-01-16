@@ -139,6 +139,8 @@ Login From Department
     [Arguments]    ${Username}    ${Password}
     login.Department Login   ${Username}    ${Password}
 
+Show Maximum Entries on Page
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  select last dropdown element  DDLpageSize
 
 #Begin Disbursement Testing
 #    Set Paths
