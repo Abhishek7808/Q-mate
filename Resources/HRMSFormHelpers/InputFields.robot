@@ -34,6 +34,7 @@ Input Button
 Input Link
     [Arguments]  ${Locator}  ${Value}
     click link  ${Locator}
+    sleep  4s
 
 Input Element
     [Arguments]  ${Locator}  ${Value}
@@ -44,3 +45,7 @@ Input Actions
     click element  ${Locator["Locator1"]}
     sleep  2s
     click element  ${Locator["Locator2"]}
+
+Input Checkbox
+    [Arguments]  ${Locator}  ${value}=None
+    select checkbox  ${Locator}

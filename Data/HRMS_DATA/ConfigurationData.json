@@ -908,10 +908,18 @@
 			"Locator": "btnSave"
 		}
 	},
-	"Division Edit":{
+	"Edit Division":{
 		"Edit": {
-			"Type": "Link",
+			"Type": "Element",
 			"Locator": "//td[contains(text(),'QMATEdivision')]/following-sibling::td//i[contains(@class,'fa fa-pencil')]"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdivision')]/following-sibling::td//i[contains(@class,'fa fa-times')]"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(@class,'btn btn-primary')]"
 		},
 		"Name":{
 		    "Value":"QMATEdivision2",
@@ -921,6 +929,52 @@
 		"Save": {
 			"Type": "Button",
 			"Locator": "btnSave"
+		}
+	},
+	"Designation":{
+		"Add Designation": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Name":{
+			  "Value":"Risl",
+			  "Type": "Text Value",
+			  "Locator": "NAME"
+		},
+   		 "Post":{
+			   "Value": "Manager (Law)",
+			   "Type": "Dropdown",
+			   "Locator": "PostId"
+		},
+    	"Is Fourth Class":{
+			   "Value": "Selected",
+			   "Type": "Checkbox",
+			   "Locator": "chkclass"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+    },
+	"Edit Designation":{
+		"Edit": {
+			"Type": "Element",
+			"Locator": ""
+		},
+		"Name": {
+			"Value": "Risl",
+			"Type": "Text Value",
+			"Locator": "NAME"
+		},
+		"Post": {
+			"Value": "Manager(LAW)",
+			"Type": "Dropdown",
+			"Locator": "PostId"
+		},
+		"Is Fourth Class": {
+			"Value": "Selected",
+			"Type": "Checkbox",
+			"Locator": "chkclass"
 		}
 	}
 }

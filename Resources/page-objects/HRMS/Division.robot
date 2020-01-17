@@ -1,13 +1,11 @@
 *** Settings ***
 Documentation    Suite description
 
-*** Test Cases ***
-Test title
-    [Tags]    DEBUG
-    Provided precondition
-    When action
-    Then check expectations
-
 *** Keywords ***
-Provided precondition
-    Setup system under test
+Check For Division Entry In Division Table
+    [Arguments]  ${formField}
+    Page should contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]
+
+Check For Division Deletion In Division Table
+    [Arguments]  ${formField}
+    Page should not contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]

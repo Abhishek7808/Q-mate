@@ -216,5 +216,36 @@ User should be able to add new division
     FillFields.Input Value Into Field  ${formField["Add New Division"]}
     FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
-    HRMS_Keywords.Verify Division Entry Creation  ${formField}
+    HRMS_Keywords.Verify Division Entry  ${formField}
 
+User should be able to edit division
+    [Documentation]  Edits the division details
+    [Tags]  division  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
+    set test variable  ${formField}  ${configData["Edit Division"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    HRMS_Keywords.Verify Division Entry  ${formField}
+
+User should be able to delete division
+    [Documentation]  deletes the division from the table
+    [Tags]  division  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
+    set test variable  ${formField}  ${configData["Edit Division"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    page should contain   Do you really want to Delete this Division ??
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Division Deletion  ${formField}
+
+User should be able to add new designation
+    [Documentation]  Adds a new designation
+    [Tags]  designation  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation/AddEditDesignationDetails
+    set test variable  ${formField}  ${configData["Designation"]}
+    #FillFields.Input Value Into Field  ${formField["Add Designation"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Post"]}  ${formField["Post"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Is Fourth Class"]}  ${formField["Is Fourth Class"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    HRMS_Keywords.Verify Designation Entry  ${formField}

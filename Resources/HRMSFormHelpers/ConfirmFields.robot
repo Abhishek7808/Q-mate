@@ -41,3 +41,7 @@ Confirm Element
 Confirm Actions
     [Arguments]  ${Locator}  ${value}=None
     log  Action clicked
+
+Confirm Checkbox
+    [Arguments]  ${Locator}  ${value}=None
+    checkbox should be selected  ${Locator}

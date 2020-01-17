@@ -45,3 +45,7 @@ Clear Element
 Clear Actions
     [Arguments]  ${Locator}  ${value}=None
     log  Actions are ready to be clicked
+
+Clear Checkbox
+    [Arguments]  ${Locator}  ${value}=None
+    unselect checkbox  ${Locator}

@@ -6,7 +6,7 @@ Resource  ./ERP_Keywords.robot
 Resource  ${PAGE OBJECTS}/HRMS/EntertainmentDeclaration.robot
 Resource  ${PAGE OBJECTS}/HRMS/EnquiryDecision.robot
 Resource  ${PAGE OBJECTS}/HRMS/DeputationDepartment.robot
-
+Resource  ${PAGE OBJECTS}/HRMS/Division.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -78,5 +78,13 @@ Verify Deputation Department Deletion
     [Arguments]  ${formField}
     DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
 
-Verify Division Entry Creation
+Verify Division Entry
+    [Arguments]  ${formField}
+    Division.Check For Division Entry In Division Table  ${formField}
+
+Verify Division Deletion
+    [Arguments]  ${formField}
+    Division.Check For Division Deletion In Division Table  ${formField}
+
+HRMS_Keywords.Verify Designation Entry
     [Arguments]  ${formField}
