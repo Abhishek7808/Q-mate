@@ -665,9 +665,15 @@
 				"Locator": "//select[contains(@name,'[1].Is_Active')]"
 			},
 			"Selected Values": {
-				"Value": "SI",
-				"Type": "Dropdown",
-				"Locator": "MS_1__SelectedValue"
+				"Value": ["CPF", "EPF", "PRAN", "GPF"],
+				"Type": "Dropdown-Checkbox",
+				"Locator":{
+					"Locator1": "//td[contains(text(),'Show Other Details')]/following-sibling::td//b[@class='caret']",
+					"Locator2": "//*[@id='MainBody']//tr[2]//ul/li[6]/a/label/input",
+					"Locator3": "//*[@id='MainBody']//tr[2]//ul/li[7]/a/label/input",
+					"Locator4": "//*[@id='MainBody']//tr[2]//ul/li[8]/a/label/input",
+					"Locator5": "//*[@id='MainBody']//tr[2]//ul/li[9]/a/label/input"
+				}
 			}
 		},
 		"Show Net Payable In Words": {
@@ -761,9 +767,14 @@
 				"Locator": "//select[contains(@name,'[9].Is_Active')]"
 			},
 			"Selected Values": {
-				"Value": "Privilege Leave (PL),Quarantine Leave (QL)",
-				"Type": "Dropdown",
-				"Locator": "MS_9__SelectedValue"
+				"Value": ["Privilege Leave (PL)","Quarantine Leave (QL)"," Restricted Holiday Leave (RHL)"],
+				"Type": "Dropdown-Checkbox",
+				"Locator":{
+					"Locator1": "//td[contains(text(),'Show Leave Balances')]/following-sibling::td//b[@class='caret']",
+					"Locator2": "//*[@id='MainBody']//tr[10]/td[4]//ul/li[2]/a/label/input",
+					"Locator3": "//*[@id='MainBody']//tr[10]/td[4]//ul/li[3]/a/label/input",
+					"Locator4": "//*[@id='MainBody']//tr[10]/td[4]//ul/li[4]/a/label/input"
+				}
 			}
 		},
 		"Show LWP Days": {
@@ -797,9 +808,14 @@
 				"Locator": "//select[contains(@name,'[12].Is_Active')]"
 			},
 			"Selected Values": {
-				"Value": "Absentee Details,Progressive Total,Leave Balance(Availed/Balance)",
-				"Type": "Dropdown",
-				"Locator": "MS_12__SelectedValue"
+				"Value": ["Absentee Details","Progressive Total","Leave Balance(Availed/Balance)"],
+				"Type": "Dropdown-Checkbox",
+				"Locator":{
+					"Locator1": "//td[contains(text(),'Show Salary Annexure')]/following-sibling::td//b[@class='caret']",
+					"Locator2": "//*[@id='MainBody']//tr[13]/td[4]//ul/li[2]/a/label/input",
+					"Locator3": "//*[@id='MainBody']//tr[13]/td[4]//ul/li[3]/a/label/input",
+					"Locator4": "//*[@id='MainBody']//tr[13]/td[4]//ul/li[4]/a/label/input"
+				}
 			}
 		},
 		"Save": {

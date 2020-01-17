@@ -72,12 +72,20 @@ Testing json
 
 Testing hrms
     [Tags]  debughrms
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Common/PaySlipConfiguration
     sleep  3s
-    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]
-    sleep  2s
-    press keys  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]  TAB
-    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]
+    select from list by index  //select[@name='[0].SelectedValue']  1
+    sleep  3s
+    click element  //select[contains(@name,'[1].Is_Active')]
+    click element  //td[contains(text(),'Show Other Details')]/following-sibling::td//b[@class='caret']
+    sleep  3s
+    click element  //td[contains(text(),'Show Other Details')]/following-sibling::td//select[contains(@name,'[1].Is_Active')]
+    #/following-sibling::td//*[@id='MainBody']/form//ul/li[2]/a/label/input
+    select from list by value  MS_1__SelectedValue  SI
+#    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]
+#    sleep  2s
+#    press keys  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]  TAB
+#    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]
     #td//a[contains(text(),'Edit')]
     #//a[@class="btn btn-primary btn-sm"]
     sleep  3s

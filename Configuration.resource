@@ -3,10 +3,10 @@
 ##########################
 #  Environment Settings  #
 ##########################
-${ENVIRONMENT}       demo
+${ENVIRONMENT}       test
 ${BROWSER}           chrome
 &{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://rajerp.rajasthan.gov.in
-${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}
+${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}/adminlogin
 
 
 ####################
