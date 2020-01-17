@@ -190,3 +190,31 @@ User should be able to configure pay slip
     FillFields.Input Value Into Field  ${formField["Show Salary Annexure"]["Show/Hide"]}  ${formField["Show Salary Annexure"]["Show/Hide"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Show Salary Annexure"]["Selected Values"]}  ${formField["Show Salary Annexure"]["Selected Values"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
+
+User should be able to configure self verification details
+    [Documentation]  Configures self varification details
+    [Tags]  selfvarification
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EMPSELFVERIFICATION/SelfVerificationConfiguration
+    set test variable  ${formField}  ${configData["Self Verification Configuration"]}
+    FillFields.Input Value Into Field  ${formField["Raise Self Verification Popup"]}  ${formField["Raise Self Verification Popup"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Is Self Verification Mandatory"]}  ${formField["Is Self Verification Mandatory"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Send SMS Notification"]}  ${formField["Send SMS Notification"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Send Email Notification"]}  ${formField["Send Email Notification"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Enable Self Verification of Enrollment Detail"]}  ${formField["Enable Self Verification of Enrollment Detail"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Enable Self Verification of Personal Detail"]}  ${formField["Enable Self Verification of Personal Detail"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Enable Self Verification of Official Detail"]}  ${formField["Enable Self Verification of Official Detail"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Enable Self Verification of Salary Detail"]}  ${formField["Enable Self Verification of Salary Detail"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Enable Self Verification of Other Detail"]}  ${formField["Enable Self Verification of Other Detail"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Enable Self Verification of Nominee Detail"]}  ${formField["Enable Self Verification of Nominee Detail"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+
+User should be able to add new division
+    [Documentation]  Adds a new division
+    [Tags]  division  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
+    set test variable  ${formField}  ${configData["Division"]}
+    FillFields.Input Value Into Field  ${formField["Add New Division"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    HRMS_Keywords.Verify Division Entry Creation  ${formField}
+

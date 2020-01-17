@@ -892,5 +892,35 @@
 				"Locator": "btnSave"
 			}
 		}
+	},
+	"Division":{
+		"Add New Division": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Name":{
+		    "Value":"QMATEdivision",
+		    "Type": "Text Value",
+		    "Locator": "Name"
+        },
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+	},
+	"Division Edit":{
+		"Edit": {
+			"Type": "Link",
+			"Locator": "//td[contains(text(),'QMATEdivision')]/following-sibling::td//i[contains(@class,'fa fa-pencil')]"
+		},
+		"Name":{
+		    "Value":"QMATEdivision2",
+		    "Type": "Text Value",
+		    "Locator": "Name"
+        },
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
 	}
 }

@@ -77,3 +77,6 @@ Verify Deputation Department Updation
 Verify Deputation Department Deletion
     [Arguments]  ${formField}
     DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
+
+Verify Division Entry Creation
+    [Arguments]  ${formField}
