@@ -511,3 +511,18 @@ User should be able to delete Department
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
     HRMS_Keywords.Verify Department Deletion  ${formField["Edit Department"]}
+
+User should be able to add new section details
+    [Documentation]  Adds a new section
+    [Tags]  section  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
+    set test variable  ${formField}  ${configData["Section"]}
+    FillFields.Input Value Into Field  ${formField["Add Section"]}
+    FillFields.Input Value Into Field  ${formField["Department"]}  ${formField["Department"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Code"]}  ${formField["Code"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Order By"]}  ${formField["Order By"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Is Active"]}  ${formField["Is Active"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Section Entry  ${formField}

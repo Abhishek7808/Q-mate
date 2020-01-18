@@ -1437,7 +1437,7 @@
 		},
 		"Edit": {
 			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEpayment')]/following-sibling::td//i[@class='fa fa-pencil']"
+			"Locator": "//td[contains(text(),'QMATEsection')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
 		"Delete": {
 			"Type": "Actions",
@@ -1452,35 +1452,35 @@
 		},
 		"Search box": {
 			"Type": "Text Value",
-			"Value": "QMATEpayment",
+			"Value": "QMATEsection",
 			"Locator": "SearchText"
 		},
 		"Search button": {
 			"Type": "Element",
 			"Locator": "BtnSearchfilter"
 		},
-		"Select Payment Type": {
+		"Select Section": {
 			"Value": "select",
 			"Type": "Checkbox",
-			"Locator": "//td[contains(text(),'QMATEpayment2')]/preceding-sibling::td//input[@class='SelectItem']"
+			"Locator": "//td[contains(text(),'QMATEsection')]/preceding-sibling::td//input[@class='SelectItem']"
 		},
 		"Department":{
-			  "Value":"Risl",
+			  "Value":"QMATEdepartment",
 			  "Type": "Dropdown",
 			  "Locator": "DeptId"
 			},
 		"Name":{
-			  "Value":"Head Office",
+			  "Value":"QMATEsection",
 			  "Type": "Text Value",
 			  "Locator": "NAME"
 			},
 		"Code":{
-			  "Value":"Head Office",
+			  "Value":"0294",
 			  "Type": "Text Value",
 			  "Locator": "Code"
 			},
 		"Order By":{
-			   "Value": "Head Office",
+			   "Value": "QMATE",
 			   "Type": "Text Value",
 			   "Locator": "ORDERBY"
 			},
@@ -1488,55 +1488,96 @@
 			   "Value": "Yes",
 			   "Type": "Dropdown",
 			   "Locator": "IS_ACTIVE"
+			},
+		"Edit Section": {
+			"Department":{
+			  "Value":"QMATEdepartment2",
+			  "Type": "Dropdown",
+			  "Locator": "DeptId"
+			},
+			"Name":{
+				  "Value":"QMATEsection2",
+				  "Type": "Text Value",
+				  "Locator": "NAME"
+				},
+			"Code":{
+				  "Value":"029402",
+				  "Type": "Text Value",
+				  "Locator": "Code"
+				},
+			"Order By":{
+				   "Value": "QMATE2",
+				   "Type": "Text Value",
+				   "Locator": "ORDERBY"
+				},
+			"Is Active":{
+				   "Value": "Yes",
+				   "Type": "Dropdown",
+				   "Locator": "IS_ACTIVE"
+				},
+			"Search box": {
+					"Type": "Text Value",
+					"Value": "QMATEsection2",
+					"Locator": "SearchText"
+				},
+			"Search button": {
+					"Type": "Element",
+					"Locator": "BtnSearchfilter"
+				},
+			"Select Section": {
+					"Value": "select",
+					"Type": "Checkbox",
+					"Locator": "//td[contains(text(),'QMATEsection2')]/preceding-sibling::td//input[@class='SelectItem']"
+				}
 			}
 		},
-		"Department": {
-			"Add": {
-			"Type": "Link",
-			"Locator": "modals-bootbox-custom"
-			},
-			"Edit": {
-				"Type": "Element",
-				"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-pencil']"
-			},
-			"Delete": {
-				"Type": "Element",
-				"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-trash-o']"
-			},
-			"Ok": {
+	"Department": {
+		"Add": {
+		"Type": "Link",
+		"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-trash-o']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEdepartment",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Name": {
+			"Value": "QMATEdepartment",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Save": {
 				"Type": "Button",
-				"Locator": "//button[contains(text(),'OK')]"
+				"Locator": "btnSave"
 			},
-			"Search box": {
-				"Type": "Text Value",
-				"Value": "QMATEdepartment",
-				"Locator": "SearchText"
-			},
-			"Search button": {
-				"Type": "Element",
-				"Locator": "BtnSearchfilter"
-			},
+		"Edit Department": {
 			"Name": {
-				"Value": "QMATEdepartment",
+				"Value": "QMATEdepartment2",
 				"Type": "Text Value",
 				"Locator": "Name"
 			},
-			"Save": {
-					"Type": "Button",
-					"Locator": "btnSave"
-				},
-			"Edit Department": {
-				"Name": {
-					"Value": "QMATEdepartment2",
-					"Type": "Text Value",
-					"Locator": "Name"
-				},
-				"Search box": {
-					"Type": "Text Value",
-					"Value": "QMATEdepartment2",
-					"Locator": "SearchText"
-				}
-
+			"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEdepartment2",
+				"Locator": "SearchText"
 			}
+
 		}
+	}
 }

@@ -14,6 +14,7 @@ Resource  ${PAGE OBJECTS}/HRMS/EmpanelledOfficer.robot
 Resource  ${PAGE OBJECTS}/HRMS/CadreDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/PaymentType.robot
 Resource  ${PAGE OBJECTS}/HRMS/Department.robot
+Resource  ${PAGE OBJECTS}/HRMS/Section.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -189,3 +190,17 @@ Verify Department Deletion
     Department.Search For Department  ${formField}
     sleep  3s
     Department.Check For Department Deletion In Department Table  ${formField}
+
+Verify Section Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    Section.Search For Section  ${formField}
+    sleep  3s
+    Section.Check For Section Entry In Section Table  ${formField}
+
+Verify Department Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    Section.Search For Section  ${formField}
+    sleep  3s
+    Section.Check For Section Deletion In Section Table  ${formField}
