@@ -384,13 +384,16 @@ User should be able to edit new empanelled officer
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryPanelImpanelment/EmpanelledIndex
     set test variable  ${formField}  ${configData["Empanelled Officer"]}
-    FillFields.Input Value Into Field  ${formField["Add New Entry"]}
-    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Contact No."]}  ${formField["Contact No."]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Effective Date"]}  ${formField["Effective Date"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Effective Till Date"]}  ${formField["Effective Till Date"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Department"]}  ${formField["Department"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Designation"]}  ${formField["Designation"]["Value"]}
+    Common_Keywords.Show Maximum Entries on Page
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Empanelled Officer"]["Name"]}  ${formField["Edit Empanelled Officer"]["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Empanelled Officer"]["Contact No."]}  ${formField["Edit Empanelled Officer"]["Contact No."]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Empanelled Officer"]["Effective Date"]}  ${formField["Edit Empanelled Officer"]["Effective Date"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Empanelled Officer"]["Effective Till Date"]}  ${formField["Edit Empanelled Officer"]["Effective Till Date"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Empanelled Officer"]["Department"]}  ${formField["Edit Empanelled Officer"]["Department"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Empanelled Officer"]["Designation"]}  ${formField["Edit Empanelled Officer"]["Designation"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Empanelled Officer Entry  ${formField}

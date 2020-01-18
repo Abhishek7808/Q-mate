@@ -1212,8 +1212,8 @@
 		    }
 		}
 	},
-  "Empanelled Officer": {
-        "Add New Entry": {
+    "Empanelled Officer": {
+		"Add New Entry": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
@@ -1230,7 +1230,7 @@
 			"Type": "Element",
 			"Locator": "//td[contains(text(),'QMATEofficer')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
-        "Name":{
+		"Name":{
 			  "Value": "QMATEofficer",
 			   "Type": "Text Value",
 			   "Locator": "Name"
@@ -1240,7 +1240,7 @@
 			   "Type": "Text Value",
 			   "Locator": "ContactNumber"
 		},
-        "Effective Date": {
+		"Effective Date": {
 				"Value": {
 					"Day": "2",
 					"Month": "Nov",
@@ -1249,7 +1249,7 @@
 				"Type": "Date",
 				"Locator": "EffectiveDate"
 			},
-        "Effective Till Date": {
+		"Effective Till Date": {
 				"Value": {
 					"Day": "2",
 					"Month": "Dec",
@@ -1258,7 +1258,7 @@
 				"Type": "Date",
 				"Locator": "EffectiveTillDate"
 			},
-        "Department":{
+		"Department":{
 			  "Value": "QMATEdepartment",
 			   "Type": "Text Value",
 			   "Locator": "Department"
@@ -1272,45 +1272,82 @@
 			"Type": "Button",
 			"Locator": "btnSave"
 		},
-        "Edit Empanelled Officer": {
-            "Name":{
-                   "Value": "QMATEofficer2",
-                   "Type": "Text Value",
-                   "Locator": "DESCRIPTION"
+		"Edit Empanelled Officer": {
+			"Name":{
+				   "Value": "QMATEofficer2",
+				   "Type": "Text Value",
+				   "Locator": "Name"
 			},
-            "Contact No.":{
-                   "Value": "029429402",
-                   "Type": "Text Value",
-                   "Locator": "ContactNumber"
-            },
-            "Effective Date": {
-                    "Value": {
-                        "Day": "3",
-                        "Month": "Nov",
-                        "Year": "2020"
-                    },
-                    "Type": "Date",
-                    "Locator": "EffectiveDate"
-                },
-            "Effective Till Date": {
-                    "Value": {
-                        "Day": "3",
-                        "Month": "Nov",
-                        "Year": "2021"
-                    },
-                    "Type": "Date",
-                    "Locator": "EffectiveTillDate"
-                },
-            "Department":{
-                  "Value": "QMATEdepartment2",
-                   "Type": "Text Value",
-                   "Locator": "Department"
-                },
-            "Designation":{
-                   "Value": "QMATEdesignation2",
-                   "Type": "Text Value",
-                   "Locator": "Designation"
-            }
-        }
-  }
+			"Contact No.":{
+				   "Value": "029429402",
+				   "Type": "Text Value",
+				   "Locator": "ContactNumber"
+			},
+			"Effective Date": {
+					"Value": {
+						"Day": "3",
+						"Month": "Nov",
+						"Year": "2020"
+					},
+					"Type": "Date",
+					"Locator": "EffectiveDate"
+				},
+			"Effective Till Date": {
+					"Value": {
+						"Day": "3",
+						"Month": "Dec",
+						"Year": "2020"
+					},
+					"Type": "Date",
+					"Locator": "EffectiveTillDate"
+				},
+			"Department":{
+				  "Value": "QMATEdepartment2",
+				   "Type": "Text Value",
+				   "Locator": "Department"
+				},
+			"Designation":{
+				   "Value": "QMATEdesignation2",
+				   "Type": "Text Value",
+				   "Locator": "Designation"
+			}
+		}
+    },
+	"Cadre_Details":{
+		"Add Cadre": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEcadre')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEcadre')]/following-sibling::td//i[@class='fa fa-trash-o']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEcadre",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Name":{
+			  "Value": "QMATEcadre",
+			  "Type": "Text Value",
+			  "Locator": "NAME"
+		},
+		"Order By":{
+			   "Value": "QMATEOffice",
+			   "Type": "Text Value",
+			   "Locator": "ORDERBY"
+		}
+ }
 }
