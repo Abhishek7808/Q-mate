@@ -1323,8 +1323,11 @@
 			"Locator": "//td[contains(text(),'QMATEcadre')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
 		"Delete": {
-			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEcadre')]/following-sibling::td//i[@class='fa fa-trash-o']"
+			"Type": "Actions",
+			"Locator": {
+				"Locator1": "//a[contains(text(),'Actions')]",
+				"Locator2": "//a[@class='ActionLink']"
+			}
 		},
 		"Ok": {
 			"Type": "Button",
@@ -1352,6 +1355,23 @@
 		"Save": {
 			"Type": "Button",
 			"Locator": "btnSave"
+		},
+		"Select Cadre Detail": {
+			"Value": "select",
+			"Type": "Checkbox",
+			"Locator": "//td[contains(text(),'QMATEcadre2')]/preceding-sibling::td//input[@class='SelectItem']"
+		},
+		"Edit Cadre Detail": {
+			"Name":{
+				  "Value": "QMATEcadre2",
+				  "Type": "Text Value",
+				  "Locator": "NAME"
+		},
+		"Order By":{
+				   "Value": "94",
+				   "Type": "Text Value",
+				   "Locator": "ORDERBY"
+		}
 		}
 	}
 }

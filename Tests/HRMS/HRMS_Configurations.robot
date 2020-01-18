@@ -409,3 +409,31 @@ User should be able to add new cadre detail
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Cadre Detail Entry  ${formField}
+
+User should be able to edit cadre detail
+    [Documentation]  Edits cadre details
+    [Tags]  cadredetail  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
+    set test variable  ${formField}  ${configData["Cadre Details"]}
+    Common_Keywords.Show Maximum Entries on Page
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Cadre Detail"]["Name"]}  ${formField["Edit Cadre Detail"]["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Cadre Detail"]["Order By"]}  ${formField["Edit Cadre Detail"]["Order By"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Cadre Detail Entry  ${formField["Edit Cadre Detail"]}
+
+User should be able to delete cadre detail
+    [Documentation]  Deletes cadre detail
+    [Tags]  cadredetail  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
+    set test variable  ${formField}  ${configData["Cadre Details"]}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Select Cadre Detail"]}  ${formField["Select Cadre Detail"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Designation Deletion  ${formField["Edit Cadre Detail"]}

@@ -11,6 +11,8 @@ Resource  ${PAGE OBJECTS}/HRMS/Designation.robot
 Resource  ${PAGE OBJECTS}/HRMS/HospitalEmpanelment.robot
 Resource  ${PAGE OBJECTS}/HRMS/Qualification.robot
 Resource  ${PAGE OBJECTS}/HRMS/EmpanelledOfficer.robot
+Resource  ${PAGE OBJECTS}/HRMS/CadreDetail.robot
+
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
