@@ -13,6 +13,7 @@ Resource  ${PAGE OBJECTS}/HRMS/Qualification.robot
 Resource  ${PAGE OBJECTS}/HRMS/EmpanelledOfficer.robot
 Resource  ${PAGE OBJECTS}/HRMS/CadreDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/PaymentType.robot
+Resource  ${PAGE OBJECTS}/HRMS/Department.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -174,3 +175,17 @@ Verify Payment Type Deletion
     PaymentType.Search For Payment Type  ${formField}
     sleep  3s
     PaymentType.Check For Payment Type Deletion In Payment Type Table  ${formField}
+
+Verify Department Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    Department.Search For Department  ${formField}
+    sleep  3s
+    Department.Check For Department Entry In Department Table  ${formField}
+
+Verify Department Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    Department.Search For Department  ${formField}
+    sleep  3s
+    Department.Check For Department Deletion In Department Table  ${formField}

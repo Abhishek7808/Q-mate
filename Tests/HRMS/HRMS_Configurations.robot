@@ -463,7 +463,7 @@ User should be able to edit Payment Type
     HRMS_Keywords.Verify Payment Type Entry  ${formField["Edit Payment Type"]}
 
 User should be able to delete Payment Type
-    [Documentation]  Deletes Payment Type 
+    [Documentation]  Deletes Payment Type
     [Tags]  PaymentType  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     set test variable  ${formField}  ${configData["Payment Type"]}
@@ -474,3 +474,14 @@ User should be able to delete Payment Type
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
     HRMS_Keywords.Verify Designation Deletion  ${formField["Edit Payment Type"]}
+
+User should be able to add new Department
+    [Documentation]  Adds a new Department
+    [Tags]  department  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
+    set test variable  ${formField}  ${configData["Department"]}
+    FillFields.Input Value Into Field  ${formField["Add"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Department Entry  ${formField}
