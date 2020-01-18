@@ -1381,7 +1381,7 @@
 		},
 		"Edit": {
 			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEcadre')]/following-sibling::td//i[@class='fa fa-pencil']"
+			"Locator": "//td[contains(text(),'QMATEpayment')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
 		"Delete": {
 			"Type": "Actions",
@@ -1396,17 +1396,38 @@
 		},
 		"Search box": {
 			"Type": "Text Value",
-			"Value": "QMATEcadre",
+			"Value": "QMATEpayment",
 			"Locator": "SearchText"
 		},
 		"Search button": {
 			"Type": "Element",
 			"Locator": "BtnSearchfilter"
 		},
+		"Select Payment Type": {
+			"Value": "select",
+			"Type": "Checkbox",
+			"Locator": "//td[contains(text(),'QMATEpayment2')]/preceding-sibling::td//input[@class='SelectItem']"
+		},
 		"Description":{
 			  "Value": "QMATEpayment",
 			  "Type": "Text Value",
 			  "Locator": "DESCRIPTION"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Edit Payment Type": {
+			"Description":{
+			  "Value": "QMATEpayment2",
+			  "Type": "Text Value",
+			  "Locator": "DESCRIPTION"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEpayment2",
+			"Locator": "SearchText"
+		}
 		}
 	}
 }

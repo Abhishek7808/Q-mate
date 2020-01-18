@@ -441,10 +441,36 @@ User should be able to delete cadre detail
 User should be able to add Payment Type
     [Documentation]  Adds a new Payment Type
     [Tags]  PaymentType  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     set test variable  ${formField}  ${configData["Payment Type"]}
     FillFields.Input Value Into Field  ${formField["Add Payment Type"]}
     FillFields.Input Value Into Field  ${formField["Description"]}  ${formField["Description"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Payment Type Entry  ${formField}
+
+User should be able to edit Payment Type
+    [Documentation]  Edits Payment Type details
+    [Tags]  PaymentType  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
+    set test variable  ${formField}  ${configData["Payment Type"]}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Payment Type"]["Description"]}  ${formField["Edit Payment Type"]["Description"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Payment Type Entry  ${formField["Edit Payment Type"]}
+
+User should be able to delete Payment Type
+    [Documentation]  Deletes Payment Type 
+    [Tags]  PaymentType  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
+    set test variable  ${formField}  ${configData["Payment Type"]}
+    FillFields.Input Value Into Field  ${formField["Edit Payment Type"]["Search box"]}  ${formField["Edit Payment Type"]["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Select Payment Type"]}  ${formField["Select Payment Type"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Designation Deletion  ${formField["Edit Payment Type"]}

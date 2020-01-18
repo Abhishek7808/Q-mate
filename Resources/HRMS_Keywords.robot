@@ -168,7 +168,7 @@ Verify Payment Type Entry
     sleep  3s
     PaymentType.Check For Payment Type Entry In Payment Type Table  ${formField}
 
-Verify Cadre Detail Deletion
+Verify Payment Type Deletion
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
     PaymentType.Search For Payment Type  ${formField}
