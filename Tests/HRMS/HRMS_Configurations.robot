@@ -340,6 +340,7 @@ User should be able to add new qualification
     [Tags]  qualification  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/QualificationMaster
     set test variable  ${formField}  ${configData["Qualification"]}
+    FillFields.Input Value Into Field  ${formField["Add New"]}
     FillFields.Input Value Into Field  ${formField["Qualification Name"]}  ${formField["Qualification Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Is professional"]}  ${formField["Is professional"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}

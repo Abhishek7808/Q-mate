@@ -9,7 +9,7 @@ Resource  ${PAGE OBJECTS}/HRMS/DeputationDepartment.robot
 Resource  ${PAGE OBJECTS}/HRMS/Division.robot
 Resource  ${PAGE OBJECTS}/HRMS/Designation.robot
 Resource  ${PAGE OBJECTS}/HRMS/HospitalEmpanelment.robot
-
+Resource  ${PAGE OBJECTS}/HRMS/Qualification.robot
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
@@ -117,3 +117,9 @@ Verify Qualification Entry
     Qualification.Search For Qualification  ${formField}
     sleep  3s
     Qualification.Check For Qualification Entry In Qualification Table  ${formField}
+
+Verify Qualification Deletion
+    [Arguments]  ${formField}
+    Qualification.Search For Qualification  ${formField}
+    sleep  3s
+    Qualification.Check For Qualification Deletion In Qualification Table  ${formField}
