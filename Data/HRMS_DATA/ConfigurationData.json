@@ -1177,10 +1177,14 @@
 				"Value": "Bachelors of QMATE",
 				"Locator": "SearchText"
 			},
-			"Search button": {
+		"Search button": {
 				"Type": "Element",
 				"Locator": "BtnSearchfilter"
-			},
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'Bachelors of QMATE')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
 		"Qualification Name":{
 			  "Value": "Bachelors of QMATE",
 			   "Type": "Text Value",
@@ -1194,6 +1198,119 @@
 		"Save": {
 			"Type": "Button",
 			"Locator": "btnSave"
+		},
+		"Edit Qualification": {
+			"Qualification Name":{
+			  "Value": "Bachelors of QMATE2",
+			   "Type": "Text Value",
+			   "Locator": "DESCRIPTION"
+			},
+			"Is professional":{
+			   "Value": "No",
+			   "Type": "Dropdown",
+			   "Locator": "GROUP1ID"
+		    }
 		}
-	}
+	},
+  "Empanelled Officer": {
+        "Add New Entry": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEofficer",
+				"Locator": "SearchText"
+			},
+		"Search button": {
+				"Type": "Element",
+				"Locator": "BtnSearchfilter"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEofficer')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+        "Name":{
+			  "Value": "QMATEofficer",
+			   "Type": "Text Value",
+			   "Locator": "Name"
+			},
+		"Contact No.":{
+			   "Value": "0294029401",
+			   "Type": "Text Value",
+			   "Locator": "ContactNumber"
+		},
+        "Effective Date": {
+				"Value": {
+					"Day": "2",
+					"Month": "Nov",
+					"Year": "2020"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveDate"
+			},
+        "Effective Till Date": {
+				"Value": {
+					"Day": "2",
+					"Month": "Dec",
+					"Year": "2020"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveTillDate"
+			},
+        "Department":{
+			  "Value": "QMATEdepartment",
+			   "Type": "Text Value",
+			   "Locator": "Department"
+			},
+		"Designation":{
+			   "Value": "QMATEdesignation",
+			   "Type": "Text Value",
+			   "Locator": "Designation"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+        "Edit Empanelled Officer": {
+            "Name":{
+                   "Value": "QMATEofficer2",
+                   "Type": "Text Value",
+                   "Locator": "DESCRIPTION"
+			},
+            "Contact No.":{
+                   "Value": "029429402",
+                   "Type": "Text Value",
+                   "Locator": "ContactNumber"
+            },
+            "Effective Date": {
+                    "Value": {
+                        "Day": "3",
+                        "Month": "Nov",
+                        "Year": "2020"
+                    },
+                    "Type": "Date",
+                    "Locator": "EffectiveDate"
+                },
+            "Effective Till Date": {
+                    "Value": {
+                        "Day": "3",
+                        "Month": "Nov",
+                        "Year": "2021"
+                    },
+                    "Type": "Date",
+                    "Locator": "EffectiveTillDate"
+                },
+            "Department":{
+                  "Value": "QMATEdepartment2",
+                   "Type": "Text Value",
+                   "Locator": "Department"
+                },
+            "Designation":{
+                   "Value": "QMATEdesignation2",
+                   "Type": "Text Value",
+                   "Locator": "Designation"
+            }
+        }
+  }
 }

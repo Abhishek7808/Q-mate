@@ -346,3 +346,51 @@ User should be able to add new qualification
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Qualification Entry  ${formField}
+
+User should be able to edit qualification
+    [Documentation]  edits qualification details
+    [Tags]  qualification  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/QualificationMaster
+    set test variable  ${formField}  ${configData["Qualification"]}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Qualification"]["Qualification Name"]}  ${formField["Edit Qualification"]["Qualification Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Qualification"]["Is professional"]}  ${formField["Edit Qualification"]["Is professional"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Qualification Entry  ${formField}
+
+User should be able to add new empanelled officer
+    [Documentation]  Adds a new empanelled officer
+    [Tags]  empanelledofficer  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryPanelImpanelment/EmpanelledIndex
+    set test variable  ${formField}  ${configData["Empanelled Officer"]}
+    FillFields.Input Value Into Field  ${formField["Add New Entry"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Contact No."]}  ${formField["Contact No."]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Effective Date"]}  ${formField["Effective Date"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Effective Till Date"]}  ${formField["Effective Till Date"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Department"]}  ${formField["Department"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Designation"]}  ${formField["Designation"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Empanelled Officer Entry  ${formField}
+
+User should be able to edit new empanelled officer
+    [Documentation]  Edits empanelled officer details
+    [Tags]  empanelledofficer  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryPanelImpanelment/EmpanelledIndex
+    set test variable  ${formField}  ${configData["Empanelled Officer"]}
+    FillFields.Input Value Into Field  ${formField["Add New Entry"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Contact No."]}  ${formField["Contact No."]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Effective Date"]}  ${formField["Effective Date"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Effective Till Date"]}  ${formField["Effective Till Date"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Department"]}  ${formField["Department"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Designation"]}  ${formField["Designation"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Empanelled Officer Entry  ${formField}

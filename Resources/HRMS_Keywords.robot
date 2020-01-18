@@ -10,6 +10,7 @@ Resource  ${PAGE OBJECTS}/HRMS/Division.robot
 Resource  ${PAGE OBJECTS}/HRMS/Designation.robot
 Resource  ${PAGE OBJECTS}/HRMS/HospitalEmpanelment.robot
 Resource  ${PAGE OBJECTS}/HRMS/Qualification.robot
+Resource  ${PAGE OBJECTS}/HRMS/EmpanelledOfficer.robot
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
@@ -90,18 +91,21 @@ Verify Division Deletion
 
 Verify Designation Entry
     [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
     Designation.Search For Designation  ${formField}
     sleep  3s
     Designation.Check For Designation Entry In Designation Table  ${formField}
 
 Verify Designation Deletion
     [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
     Designation.Search For Designation  ${formField}
     sleep  3s
     Designation.Check For Designation Deletion In Designation Table  ${formField}
 
 Verify Hospital Empanelment Entry
     [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
     HospitalEmpanelment.Search For Hospital Empanelment  ${formField}
     sleep  3s
     HospitalEmpanelment.Check For Hospital Empanelment Entry In Hospital Empanelment Table  ${formField}
@@ -114,12 +118,28 @@ Verify Hospital Empanelment Deletion
 
 Verify Qualification Entry
     [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
     Qualification.Search For Qualification  ${formField}
     sleep  3s
     Qualification.Check For Qualification Entry In Qualification Table  ${formField}
 
 Verify Qualification Deletion
     [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
     Qualification.Search For Qualification  ${formField}
     sleep  3s
     Qualification.Check For Qualification Deletion In Qualification Table  ${formField}
+
+Verify Empanelled Officer Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    EmpanelledOfficer.Search For Empanelled Officer  ${formField}
+    sleep  3s
+    EmpanelledOfficer.Check For Empanelled Officer Entry In Empanelled Officer Table  ${formField}
+
+Verify Empanelled Officer Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    EmpanelledOfficer.Search For Empanelled Officer  ${formField}
+    sleep  3s
+    EmpanelledOfficer.Check For Empanelled Officer Deletion In Empanelled Officer Table  ${formField}
