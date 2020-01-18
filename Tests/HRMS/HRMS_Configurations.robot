@@ -485,3 +485,29 @@ User should be able to add new Department
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Department Entry  ${formField}
+
+User should be able to edit Department
+    [Documentation]  Edits Department details
+    [Tags]  department  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
+    set test variable  ${formField}  ${configData["Department"]}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    sleep  3s
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Department"]["Description"]}  ${formField["Edit Department"]["Description"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Department Entry  ${formField["Edit Department"]}
+
+User should be able to delete Department
+    [Documentation]  Deletes Department
+    [Tags]  Department  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
+    set test variable  ${formField}  ${configData["Department"]}
+    FillFields.Input Value Into Field  ${formField["Edit Department"]["Search box"]}  ${formField["Edit Department"]["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Department Deletion  ${formField["Edit Department"]}

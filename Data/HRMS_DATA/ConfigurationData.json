@@ -1497,11 +1497,11 @@
 			},
 			"Edit": {
 				"Type": "Element",
-				"Locator": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//i[@class='fa fa-pencil']"
+				"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-pencil']"
 			},
 			"Delete": {
 				"Type": "Element",
-				"Locator": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//i[@class='fa fa-trash-o']"
+				"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-trash-o']"
 			},
 			"Ok": {
 				"Type": "Button",
@@ -1509,7 +1509,7 @@
 			},
 			"Search box": {
 				"Type": "Text Value",
-				"Value": "QMATEDepartment",
+				"Value": "QMATEdepartment",
 				"Locator": "SearchText"
 			},
 			"Search button": {
@@ -1527,13 +1527,13 @@
 				},
 			"Edit Department": {
 				"Name": {
-					"Value": "QMATEdepartmen2t",
+					"Value": "QMATEdepartment2",
 					"Type": "Text Value",
 					"Locator": "Name"
 				},
 				"Search box": {
 					"Type": "Text Value",
-					"Value": "QMATEDepartment2",
+					"Value": "QMATEdepartment2",
 					"Locator": "SearchText"
 				}
 
