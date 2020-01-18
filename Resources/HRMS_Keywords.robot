@@ -12,6 +12,7 @@ Resource  ${PAGE OBJECTS}/HRMS/HospitalEmpanelment.robot
 Resource  ${PAGE OBJECTS}/HRMS/Qualification.robot
 Resource  ${PAGE OBJECTS}/HRMS/EmpanelledOfficer.robot
 Resource  ${PAGE OBJECTS}/HRMS/CadreDetail.robot
+Resource  ${PAGE OBJECTS}/HRMS/PaymentType.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -159,3 +160,17 @@ Verify Cadre Detail Deletion
     CadreDetail.Search For Cadre Detail  ${formField}
     sleep  3s
     CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${formField}
+
+Verify Payment Type Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    PaymentType.Search For Payment Type  ${formField}
+    sleep  3s
+    PaymentType.Check For Payment Type Entry In Payment Type Table  ${formField}
+
+Verify Cadre Detail Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    PaymentType.Search For Payment Type  ${formField}
+    sleep  3s
+    PaymentType.Check For Payment Type Deletion In Payment Type Table  ${formField}

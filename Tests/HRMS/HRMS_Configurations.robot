@@ -437,3 +437,14 @@ User should be able to delete cadre detail
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
     HRMS_Keywords.Verify Designation Deletion  ${formField["Edit Cadre Detail"]}
+
+User should be able to add Payment Type
+    [Documentation]  Adds a new Payment Type
+    [Tags]  PaymentType  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
+    set test variable  ${formField}  ${configData["Payment Type"]}
+    FillFields.Input Value Into Field  ${formField["Add Payment Type"]}
+    FillFields.Input Value Into Field  ${formField["Description"]}  ${formField["Description"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Payment Type Entry  ${formField}
