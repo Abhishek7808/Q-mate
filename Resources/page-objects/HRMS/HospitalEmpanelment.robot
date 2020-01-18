@@ -7,10 +7,10 @@ Search For Hospital Empanelment
     input text  SearchText  ${formField["Name"]["Value"]}
     click button  BtnSearchfilter
 
-Check For Hospital Empanelment Entry In Division Table
+Check For Hospital Empanelment Entry In Hospital Empanelment Table
     [Arguments]  ${formField}
     Page should contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]
 
-Check For Hospital Empanelment Deletion In Division Table
+Check For Hospital Empanelment Deletion In Hospital Empanelment Table
     [Arguments]  ${formField}
     Page should not contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]

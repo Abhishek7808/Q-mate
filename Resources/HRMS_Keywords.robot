@@ -92,22 +92,28 @@ Verify Designation Entry
     [Arguments]  ${formField}
     Designation.Search For Designation  ${formField}
     sleep  3s
-    Designation.Check For Designation Entry In Division Table  ${formField}
+    Designation.Check For Designation Entry In Designation Table  ${formField}
 
 Verify Designation Deletion
     [Arguments]  ${formField}
     Designation.Search For Designation  ${formField}
     sleep  3s
-    Designation.Check For Designation Deletion In Division Table  ${formField}
+    Designation.Check For Designation Deletion In Designation Table  ${formField}
 
 Verify Hospital Empanelment Entry
     [Arguments]  ${formField}
     HospitalEmpanelment.Search For Hospital Empanelment  ${formField}
     sleep  3s
-    HospitalEmpanelment.Check For Hospital Empanelment Entry In Division Table  ${formField}
+    HospitalEmpanelment.Check For Hospital Empanelment Entry In Hospital Empanelment Table  ${formField}
 
 Verify Hospital Empanelment Deletion
     [Arguments]  ${formField}
     Designation.Search For Hospital Empanelment  ${formField}
     sleep  3s
-    Designation.Check For Hospital Empanelment Deletion In Division Table  ${formField}
+    Designation.Check For Hospital Empanelment Deletion In Hospital Empanelment Table  ${formField}
+
+Verify Qualification Entry
+    [Arguments]  ${formField}
+    Qualification.Search For Qualification  ${formField}
+    sleep  3s
+    Qualification.Check For Qualification Entry In Qualification Table  ${formField}

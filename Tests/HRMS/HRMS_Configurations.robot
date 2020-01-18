@@ -334,3 +334,14 @@ User should be able to delete hospital empanelment
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
     HRMS_Keywords.Verify Designation Deletion  ${formField}
+
+User should be able to add new qualification
+    [Documentation]  Adds a new qualification
+    [Tags]  qualification  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/QualificationMaster
+    set test variable  ${formField}  ${configData["Qualification"]}
+    FillFields.Input Value Into Field  ${formField["Qualification Name"]}  ${formField["Qualification Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Is professional"]}  ${formField["Is professional"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Qualification Entry  ${formField}

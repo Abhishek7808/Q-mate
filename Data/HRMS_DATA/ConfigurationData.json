@@ -1166,5 +1166,34 @@
 				"Locator": "CATEGORY"
 			}
 		}
+	},
+	"Qualification":{
+		"Add New": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Search box": {
+				"Type": "Text Value",
+				"Value": "Bachelors of QMATE",
+				"Locator": "SearchText"
+			},
+			"Search button": {
+				"Type": "Element",
+				"Locator": "BtnSearchfilter"
+			},
+		"Qualification Name":{
+			  "Value": "Bachelors of QMATE",
+			   "Type": "Text Value",
+			   "Locator": "DESCRIPTION"
+			},
+		"Is professional":{
+			   "Value": "Yes",
+			   "Type": "Dropdown",
+			   "Locator": "GROUP1ID"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
 	}
 }
