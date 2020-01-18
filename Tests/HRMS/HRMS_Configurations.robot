@@ -526,3 +526,35 @@ User should be able to add new section details
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Section Entry  ${formField}
+
+User should be able to add edit section details
+    [Documentation]  Edits section details
+    [Tags]  section  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
+    set test variable  ${formField}  ${configData["Section"]}
+    Common_Keywords.Show Maximum Entries on Page
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Section"]["Department"]}  ${formField["Edit Section"]["Department"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Section"]["Name"]}  ${formField["Edit Section"]["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Section"]["Code"]}  ${formField["Edit Section"]["Code"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Section"]["Order By"]}  ${formField["Edit Section"]["Order By"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Section"]["Is Active"]}  ${formField["Edit Section"]["Is Active"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Section Entry  ${formField["Edit Section"]}
+
+User should be able to delete section
+    [Documentation]  Deletes section
+    [Tags]  section  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
+    set test variable  ${formField}  ${configData["Section"]}
+    Common_Keywords.Show Maximum Entries on Page
+    FillFields.Input Value Into Field  ${formField["Edit Section"]["Search box"]}  ${formField["Edit Section"]["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Select Section"]}  ${formField["Select Section"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Section Deletion  ${formField["Edit Section"]}

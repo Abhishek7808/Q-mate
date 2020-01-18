@@ -1480,7 +1480,7 @@
 			  "Locator": "Code"
 			},
 		"Order By":{
-			   "Value": "QMATE",
+			   "Value": "029",
 			   "Type": "Text Value",
 			   "Locator": "ORDERBY"
 			},
@@ -1489,9 +1489,13 @@
 			   "Type": "Dropdown",
 			   "Locator": "IS_ACTIVE"
 			},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
 		"Edit Section": {
 			"Department":{
-			  "Value":"QMATEdepartment2",
+			  "Value":"QMATEdepartment",
 			  "Type": "Dropdown",
 			  "Locator": "DeptId"
 			},
@@ -1506,7 +1510,7 @@
 				  "Locator": "Code"
 				},
 			"Order By":{
-				   "Value": "QMATE2",
+				   "Value": "024",
 				   "Type": "Text Value",
 				   "Locator": "ORDERBY"
 				},

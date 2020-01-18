@@ -198,7 +198,7 @@ Verify Section Entry
     sleep  3s
     Section.Check For Section Entry In Section Table  ${formField}
 
-Verify Department Deletion
+Verify Section Deletion
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
     Section.Search For Section  ${formField}
