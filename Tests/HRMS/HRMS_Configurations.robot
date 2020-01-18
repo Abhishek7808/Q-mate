@@ -278,3 +278,24 @@ User should be able to delete designation
     FillFields.Input Value Into Field  ${formField["Ok"]}
     wait until page contains   Do you really want to delete selected record(s) ?
     HRMS_Keywords.Verify Designation Deletion  ${formField}
+
+User should be able to add new hospital empanelment
+    [Documentation]  Adds a new hospital empanelment
+    [Tags]  hospitalempanelment  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/HospitalEmpanelment
+    set test variable  ${formField}  ${configData["Hospital Empanelment"]}
+    FillFields.Input Value Into Field  ${formField["Add New"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Type"]}  ${formField["Type"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Is Exempted"]}  ${formField["Is Exempted"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Address"]}  ${formField["Address"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["State"]}  ${formField["State"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["City"]}  ${formField["City"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Contact No"]}  ${formField["Contact No"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Alternate Contact No"]}  ${formField["Alternate Contact No"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Discount Rate"]}  ${formField["Discount Rate"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Last Validate"]}  ${formField["Last Validate"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Category"]}  ${formField["Category"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Hospital Empanelment Entry  ${formField}

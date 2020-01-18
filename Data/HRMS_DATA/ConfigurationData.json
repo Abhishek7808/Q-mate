@@ -1007,70 +1007,160 @@
 		}
 		}
     },
-	"Hospital Empanelment":{
+	"Hospital Empanelment": {
 		"Add New": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
-		"Name":{
-			  "Value":"QMATEhospital",
-			  "Type": "Text Value",
-			  "Locator": "NAME"
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEhospital')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
-		"Type":{
-			   "Value": "Goverment",
-			   "Type": "Dropdown",
-			   "Locator": "Type"
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEhospital')]/following-sibling::td//i[@class='fa fa-trash-o']"
 		},
-		"Is Exempted":{
-			   "Value": "Yes",
-			   "Type": "Dropdown",
-			   "Locator": "IsExempted"
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEhospital",
+			"Locator": "SearchText"
 		},
-		"Address":{
-			  "Value":"QMATEcity",
-			  "Type": "Text Value",
-			  "Locator": "ADDRESS",
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
 		},
-		"State":{
-			   "Value": "Rajasthan",
-			   "Type": "Dropdown",
-			   "Locator": "State_Id",
+		"Name": {
+			"Value": "QMATEhospital",
+			"Type": "Text Value",
+			"Locator": "NAME"
 		},
-		"City":{
-			  "Value":"Jaipur",
-			  "Type": "Text Value",
-			  "Locator": "CITY"
+		"Type": {
+			"Value": "Government",
+			"Type": "Dropdown",
+			"Locator": "Type"
 		},
-		"Contact No":{
-			   "Value": "0294029402",
-			   "Type": "Text Value",
-			   "Locator": "CONTACTNO",
+		"Is Exempted": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "IsExempted"
 		},
-		"Alternate Contact No":{
-			   "Value": "9474565532",
-			   "Type": "Text Value",
-			   "Locator": "CONTACTNO1"
+		"Address": {
+			"Value": "QMATEcity",
+			"Type": "Text Value",
+			"Locator": "ADDRESS"
 		},
-		"Discount Rate":{
-			  "Value":"10%",
-			  "Type": "Text Value",
-			  "Locator": "DISCOUNT_RATE",
+		"State": {
+			"Value": "RAJASTHAN",
+			"Type": "Dropdown",
+			"Locator": "State_Id"
 		},
-		"Last Validate":{
-			  "Value": {
-					"Day": "6",
-					"Month": "Dec",
-					"Year": "2019"
-			  },
-			  "Type":"Date",
-			  "Locator": "LAST_VALIDATE"
+		"City": {
+			"Value": "Jaipur",
+			"Type": "Text Value",
+			"Locator": "CITY"
 		},
-		"Category":{
-			   "Value": "Type",
-			   "Type": "Text Value",
-			   "Locator": "CATEGORY"
+		"Contact No": {
+			"Value": "0294029402",
+			"Type": "Text Value",
+			"Locator": "CONTACTNO"
+		},
+		"Alternate Contact No": {
+			"Value": "9474565532",
+			"Type": "Text Value",
+			"Locator": "CONTACTNO1"
+		},
+		"Discount Rate": {
+			"Value": "10",
+			"Type": "Text Value",
+			"Locator": "DISCOUNT_RATE"
+		},
+		"Last Validate": {
+			"Value": {
+				"Day": "6",
+				"Month": "Dec",
+				"Year": "2019"
+			},
+			"Type": "Date",
+			"Locator": "LAST_VALIDATE"
+		},
+		"Category": {
+			"Value": "QMATEtype",
+			"Type": "Text Value",
+			"Locator": "CATEGORY"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Edit Hospital Empanelment": {
+			"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEhospital2",
+				"Locator": "SearchText"
+			},
+			"Search button": {
+				"Type": "Element",
+				"Locator": "BtnSearchfilter"
+			},
+			"Name": {
+				"Value": "QMATEhospital2",
+				"Type": "Text Value",
+				"Locator": "NAME"
+			},
+			"Type": {
+				"Value": "Private",
+				"Type": "Dropdown",
+				"Locator": "Type"
+			},
+			"Is Exempted": {
+				"Value": "No",
+				"Type": "Dropdown",
+				"Locator": "IsExempted"
+			},
+			"Address": {
+				"Value": "QMATEcity2",
+				"Type": "Text Value",
+				"Locator": "ADDRESS"
+			},
+			"State": {
+				"Value": "GOA",
+				"Type": "Dropdown",
+				"Locator": "State_Id"
+			},
+			"City": {
+				"Value": "QMATEcity2",
+				"Type": "Text Value",
+				"Locator": "CITY"
+			},
+			"Contact No": {
+				"Value": "0294029401",
+				"Type": "Text Value",
+				"Locator": "CONTACTNO"
+			},
+			"Alternate Contact No": {
+				"Value": "0294029400",
+				"Type": "Text Value",
+				"Locator": "CONTACTNO1"
+			},
+			"Discount Rate": {
+				"Value": "20%",
+				"Type": "Text Value",
+				"Locator": "DISCOUNT_RATE"
+			},
+			"Last Validate": {
+				"Value": {
+					"Day": "2",
+					"Month": "Nov",
+					"Year": "2020"
+				},
+				"Type": "Date",
+				"Locator": "LAST_VALIDATE"
+			},
+			"Category": {
+				"Value": "QMATEtype2",
+				"Type": "Text Value",
+				"Locator": "CATEGORY"
+			}
 		}
-    }
-
+	}
 }

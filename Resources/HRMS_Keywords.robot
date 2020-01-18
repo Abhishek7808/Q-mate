@@ -8,6 +8,7 @@ Resource  ${PAGE OBJECTS}/HRMS/EnquiryDecision.robot
 Resource  ${PAGE OBJECTS}/HRMS/DeputationDepartment.robot
 Resource  ${PAGE OBJECTS}/HRMS/Division.robot
 Resource  ${PAGE OBJECTS}/HRMS/Designation.robot
+Resource  ${PAGE OBJECTS}/HRMS/HospitalEmpanelment.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -98,3 +99,15 @@ Verify Designation Deletion
     Designation.Search For Designation  ${formField}
     sleep  3s
     Designation.Check For Designation Deletion In Division Table  ${formField}
+
+Verify Hospital Empanelment Entry
+    [Arguments]  ${formField}
+    HospitalEmpanelment.Search For Hospital Empanelment  ${formField}
+    sleep  3s
+    HospitalEmpanelment.Check For Hospital Empanelment Entry In Division Table  ${formField}
+
+Verify Hospital Empanelment Deletion
+    [Arguments]  ${formField}
+    Designation.Search For Hospital Empanelment  ${formField}
+    sleep  3s
+    Designation.Check For Hospital Empanelment Deletion In Division Table  ${formField}
