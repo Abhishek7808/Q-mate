@@ -243,9 +243,38 @@ User should be able to add new designation
     [Tags]  designation  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation/AddEditDesignationDetails
     set test variable  ${formField}  ${configData["Designation"]}
-    #FillFields.Input Value Into Field  ${formField["Add Designation"]}
     FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Post"]}  ${formField["Post"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Is Fourth Class"]}  ${formField["Is Fourth Class"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
     HRMS_Keywords.Verify Designation Entry  ${formField}
+
+User should be able to edit designation
+    [Documentation]  Edits designation details
+    [Tags]  designation  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation
+    set test variable  ${formField}  ${configData["Designation"]}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Select Designation"]}  ${formField["Select Designation"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Designation"]["Name"]}  ${formField["Edit Designation"]["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Designation"]["Post"]}  ${formField["Edit Designation"]["Post"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Designation"]["Is Fourth Class"]}  ${formField["Edit Designation"]["Is Fourth Class"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Designation Entry  ${formField}
+
+User should be able to delete designation
+    [Documentation]  Deletes designation
+    [Tags]  designation  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation
+    set test variable  ${formField}  ${configData["Designation"]}
+    FillFields.Input Value Into Field  ${formField["Edit Designation"]["Search box"]}  ${formField["Edit Designation"]["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Select Designation"]}  ${formField["Select Designation"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    HRMS_Keywords.Verify Designation Deletion  ${formField}

@@ -47,5 +47,6 @@ Input Actions
     click element  ${Locator["Locator2"]}
 
 Input Checkbox
-    [Arguments]  ${Locator}  ${value}=None
-    select checkbox  ${Locator}
+    [Arguments]  ${Locator}  ${value}
+    log  ${value}
+    run keyword if  '${value}' == 'select'  select checkbox  ${Locator}  ELSE  unselect checkbox  ${Locator}

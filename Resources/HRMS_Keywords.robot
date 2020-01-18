@@ -7,6 +7,7 @@ Resource  ${PAGE OBJECTS}/HRMS/EntertainmentDeclaration.robot
 Resource  ${PAGE OBJECTS}/HRMS/EnquiryDecision.robot
 Resource  ${PAGE OBJECTS}/HRMS/DeputationDepartment.robot
 Resource  ${PAGE OBJECTS}/HRMS/Division.robot
+Resource  ${PAGE OBJECTS}/HRMS/Designation.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -86,5 +87,14 @@ Verify Division Deletion
     [Arguments]  ${formField}
     Division.Check For Division Deletion In Division Table  ${formField}
 
-HRMS_Keywords.Verify Designation Entry
+Verify Designation Entry
     [Arguments]  ${formField}
+    Designation.Search For Designation  ${formField}
+    sleep  3s
+    Designation.Check For Designation Entry In Division Table  ${formField}
+
+Verify Designation Deletion
+    [Arguments]  ${formField}
+    Designation.Search For Designation  ${formField}
+    sleep  3s
+    Designation.Check For Designation Deletion In Division Table  ${formField}

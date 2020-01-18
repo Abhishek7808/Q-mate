@@ -937,44 +937,140 @@
 			"Locator": "modals-bootbox-custom"
 		},
 		"Name":{
-			  "Value":"Risl",
+			  "Value":"QMATEdesignation",
 			  "Type": "Text Value",
 			  "Locator": "NAME"
 		},
-   		 "Post":{
+		"Post":{
 			   "Value": "Manager (Law)",
 			   "Type": "Dropdown",
 			   "Locator": "PostId"
 		},
     	"Is Fourth Class":{
-			   "Value": "Selected",
+			   "Value": "select",
 			   "Type": "Checkbox",
 			   "Locator": "chkclass"
 		},
 		"Save": {
 			"Type": "Button",
 			"Locator": "btnSave"
-		}
-    },
-	"Edit Designation":{
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEdesignation",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "//button[@id='BtnSearchfilter']//i[@class='fa fa-search']"
+		},
+		"Select Designation": {
+			"Value": "select",
+			"Type": "Checkbox",
+			"Locator": "//td[contains(text(),'QMATEdesignation')]/preceding-sibling::td//input[@class='SelectItem']"
+		},
 		"Edit": {
 			"Type": "Element",
-			"Locator": ""
+			"Locator": "//td[contains(text(),'QMATEdesignation')]/following-sibling::td//i[@class='fa fa-pencil']"
+			},
+		"Delete": {
+			"Type": "Actions",
+			"Locator": {
+				"Locator1": "//a[contains(text(),'Actions')]",
+				"Locator2": "//a[@class='ActionLink']"
+			}
 		},
-		"Name": {
-			"Value": "Risl",
-			"Type": "Text Value",
-			"Locator": "NAME"
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(@class,'btn btn-primary')]"
 		},
-		"Post": {
-			"Value": "Manager(LAW)",
-			"Type": "Dropdown",
-			"Locator": "PostId"
-		},
-		"Is Fourth Class": {
-			"Value": "Selected",
-			"Type": "Checkbox",
-			"Locator": "chkclass"
+		"Edit Designation":{
+			"Name": {
+				"Value": "QMATEdesignation2",
+				"Type": "Text Value",
+				"Locator": "NAME"
+			},
+			"Post": {
+				"Value": "A.G.M. (Fin/Inv.)",
+				"Type": "Dropdown",
+				"Locator": "PostId"
+			},
+			"Is Fourth Class": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkclass"
+			},
+			"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEdesignation2",
+				"Locator": "SearchText"
 		}
-	}
+		}
+    },
+	"Hospital Empanelment":{
+		"Add New": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Name":{
+			  "Value":"QMATEhospital",
+			  "Type": "Text Value",
+			  "Locator": "NAME"
+		},
+		"Type":{
+			   "Value": "Goverment",
+			   "Type": "Dropdown",
+			   "Locator": "Type"
+		},
+		"Is Exempted":{
+			   "Value": "Yes",
+			   "Type": "Dropdown",
+			   "Locator": "IsExempted"
+		},
+		"Address":{
+			  "Value":"QMATEcity",
+			  "Type": "Text Value",
+			  "Locator": "ADDRESS",
+		},
+		"State":{
+			   "Value": "Rajasthan",
+			   "Type": "Dropdown",
+			   "Locator": "State_Id",
+		},
+		"City":{
+			  "Value":"Jaipur",
+			  "Type": "Text Value",
+			  "Locator": "CITY"
+		},
+		"Contact No":{
+			   "Value": "0294029402",
+			   "Type": "Text Value",
+			   "Locator": "CONTACTNO",
+		},
+		"Alternate Contact No":{
+			   "Value": "9474565532",
+			   "Type": "Text Value",
+			   "Locator": "CONTACTNO1"
+		},
+		"Discount Rate":{
+			  "Value":"10%",
+			  "Type": "Text Value",
+			  "Locator": "DISCOUNT_RATE",
+		},
+		"Last Validate":{
+			  "Value": {
+					"Day": "6",
+					"Month": "Dec",
+					"Year": "2019"
+			  },
+			  "Type":"Date",
+			  "Locator": "LAST_VALIDATE"
+		},
+		"Category":{
+			   "Value": "Type",
+			   "Type": "Text Value",
+			   "Locator": "CATEGORY"
+		}
+    }
+
 }
