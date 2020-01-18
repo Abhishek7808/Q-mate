@@ -397,3 +397,15 @@ User should be able to edit new empanelled officer
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Empanelled Officer Entry  ${formField}
+
+User should be able to add new cadre detail
+    [Documentation]  Adds a new cadre
+    [Tags]  cadredetail  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
+    set test variable  ${formField}  ${configData["Cadre Details"]}
+    FillFields.Input Value Into Field  ${formField["Add Cadre"]}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Order By"]}  ${formField["Order By"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Cadre Detail Entry  ${formField}

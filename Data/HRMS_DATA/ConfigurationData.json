@@ -1313,7 +1313,7 @@
 			}
 		}
     },
-	"Cadre_Details":{
+	"Cadre Details":{
 		"Add Cadre": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1345,9 +1345,13 @@
 			  "Locator": "NAME"
 		},
 		"Order By":{
-			   "Value": "QMATEOffice",
+			   "Value": "02",
 			   "Type": "Text Value",
 			   "Locator": "ORDERBY"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
 		}
- }
+	}
 }

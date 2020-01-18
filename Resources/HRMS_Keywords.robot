@@ -143,3 +143,17 @@ Verify Empanelled Officer Deletion
     EmpanelledOfficer.Search For Empanelled Officer  ${formField}
     sleep  3s
     EmpanelledOfficer.Check For Empanelled Officer Deletion In Empanelled Officer Table  ${formField}
+
+Verify Cadre Detail Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    CadreDetail.Search For Cadre Detail  ${formField}
+    sleep  3s
+    CadreDetail.Check For Cadre Detail Entry In Cadre Detail Table  ${formField}
+
+Verify Cadre Detail Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    CadreDetail.Search For Cadre Detail  ${formField}
+    sleep  3s
+    CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${formField}
