@@ -275,8 +275,8 @@ User should be able to delete designation
     FillFields.Input Value Into Field  ${formField["Search button"]}
     FillFields.Input Value Into Field  ${formField["Select Designation"]}  ${formField["Select Designation"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Delete"]}
-    FillFields.Input Value Into Field  ${formField["Ok"]}
     wait until page contains   Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
     HRMS_Keywords.Verify Designation Deletion  ${formField}
 
 User should be able to add new hospital empanelment
@@ -299,3 +299,38 @@ User should be able to add new hospital empanelment
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
     HRMS_Keywords.Verify Hospital Empanelment Entry  ${formField}
+
+User should be able to edit hospital empanelment
+    [Documentation]  Edit hospital empanelment
+    [Tags]  hospitalempanelment  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/HospitalEmpanelment
+    set test variable  ${formField}  ${configData["Hospital Empanelment"]}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Name"]}  ${formField["Edit Hospital Empanelment"]["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Type"]}  ${formField["Edit Hospital Empanelment"]["Type"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Is Exempted"]}  ${formField["Edit Hospital Empanelment"]["Is Exempted"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Address"]}  ${formField["Edit Hospital Empanelment"]["Address"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["State"]}  ${formField["Edit Hospital Empanelment"]["State"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["City"]}  ${formField["Edit Hospital Empanelment"]["City"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Contact No"]}  ${formField["Edit Hospital Empanelment"]["Contact No"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Alternate Contact No"]}  ${formField["Edit Hospital Empanelment"]["Alternate Contact No"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Discount Rate"]}  ${formField["Edit Hospital Empanelment"]["Discount Rate"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Last Validate"]}  ${formField["Edit Hospital Empanelment"]["Last Validate"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Category"]}  ${formField["Edit Hospital Empanelment"]["Category"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify Hospital Empanelment Entry  ${formField}
+
+User should be able to delete hospital empanelment
+    [Documentation]  Deletes hospital empanelment
+    [Tags]  hospitalempanelment  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/HospitalEmpanelment
+    set test variable  ${formField}  ${configData["Hospital Empanelment"]}
+    FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Search box"]}  ${formField["Edit Hospital Empanelment"]["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Designation Deletion  ${formField}

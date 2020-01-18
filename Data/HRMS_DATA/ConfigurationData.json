@@ -1020,6 +1020,10 @@
 			"Type": "Element",
 			"Locator": "//td[contains(text(),'QMATEhospital')]/following-sibling::td//i[@class='fa fa-trash-o']"
 		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
 		"Search box": {
 			"Type": "Text Value",
 			"Value": "QMATEhospital",
@@ -1143,7 +1147,7 @@
 				"Locator": "CONTACTNO1"
 			},
 			"Discount Rate": {
-				"Value": "20%",
+				"Value": "20",
 				"Type": "Text Value",
 				"Locator": "DISCOUNT_RATE"
 			},
