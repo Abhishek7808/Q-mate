@@ -204,3 +204,17 @@ Verify Section Deletion
     Section.Search For Section  ${formField}
     sleep  3s
     Section.Check For Section Deletion In Section Table  ${formField}
+
+Verify TA/DA grade Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    TA/DA grade.Search For TA/DA grade  ${formField}
+    sleep  3s
+    TA/DA grade.Check For TA/DA grade Entry In Section Table  ${formField}
+
+Verify TA/DA grade Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    TA/DA grade.Search For TA/DA grade  ${formField}
+    sleep  3s
+    TA/DA grade.Check For TA/DA grade Deletion In Section Table  ${formField}

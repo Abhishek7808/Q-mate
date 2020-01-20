@@ -1583,5 +1583,169 @@
 			}
 
 		}
-	}
+	},
+	"TA DA Grade Dependency":{
+		   "Effective From":{
+				  "Value": {
+						"Day": "6",
+						"Month": "Dec",
+						"Year": "2019"
+				  },
+				  "Type":"Date",
+				  "Locator": "EffectiveFrom"
+		   },
+	"TA/DA Grade depends on":{
+		   "Basic Pay": {
+				 "Value": "Selected",
+				 "Type": "Checkbox",
+				 "Locator": "chkBasicPay"
+		   },
+		   "Pay Scale": {
+				 "Value": "Unselected",
+				 "Type": "Checkbox",
+				 "Locator": "chkPayscale"
+		   },
+			"Level Number": {
+				 "Value": "Unselected",
+				 "Type": "Checkbox",
+				 "Locator": "chkLevelNo"
+			},
+		   "Designation": {
+				  "Value": "Unselected",
+				  "Type": "Checkbox",
+				  "Locator": "chkDesignation"
+		   }
+  },
+  "TA/DA Grade":{
+	   "Add New Grade": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+	   "Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+	   "Revised": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-pencil-square-o']"
+		},
+	   "Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-trash-o']"
+	   },
+	   "Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+	   },
+	   "Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEgrade",
+			"Locator": "SearchText"
+	   },
+	   "Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+	   },
+	   "Grade":{
+			  "Value":"QMATEgrade",
+			  "Type": "Text Value",
+			  "Locator": "Grade"
+	   },
+	   "Effective From":{
+			  "Value": {
+					"Day": "2",
+					"Month": "Dec",
+					"Year": "2019"
+			  },
+			  "Type":"Date",
+			  "Locator": "EffectiveFrom"
+	   },
+	   "Basic Pay Min Range":{
+			  "Value":"QMATErange",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMinRange"
+	   },
+	   "Basic Pay Max Range":{
+			  "Value": "QMATErange",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMaxRange"
+	   },
+	   "Save":{
+			  "Type": "Button",
+			  "Locator": "btnSave"
+	   },
+	   "Edit TA/DA Grade": {
+		   "Grade":{
+			  "Value":"QMATEgrade2",
+			  "Type": "Text Value",
+			  "Locator": "Grade"
+	   },
+	   "Effective From":{
+			  "Value": {
+					"Day": "2",
+					"Month": "Dec",
+					"Year": "2019"
+			  },
+			  "Type":"Date",
+			  "Locator": "EffectiveFrom"
+	   },
+	   "Basic Pay Min Range":{
+			  "Value":"QMATErange2",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMinRange"
+	   },
+	   "Basic Pay Max Range":{
+			  "Value": "QMATErange2",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMaxRange"
+	   		},
+		    "Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEgrade2",
+				"Locator": "SearchText"
+	   		}
+	   }
+  }
+  },
+  "TA/DA Rules":{
+		"Unit":{
+			   "Value": "Head Office",
+			   "Type": "Dropdown",
+			   "Locator": "UNIT_ID"
+		},
+		"Allowance Type":{
+			   "Value": "Yes",
+			   "Type": "Dropdown",
+			   "Locator": "ENTITY_TYPE"
+		},
+		"Effective From":{
+				"Value": {
+					 "Day": "6",
+					 "Month": "Dec",
+					 "Year": "2019"
+				},
+				"Type":"Date",
+				"Locator": "EffectiveFrom"
+		},
+		"Grade":{
+			   "Value": "A Grade",
+			   "Type": "Dropdown",
+			   "Locator": "Grade"
+		},
+		"Rules":{
+			   "Value": "A Grade",
+			   "Type": "Dropdown",
+			   "Locator": "Rule"
+		},
+		"Bill Type":{
+			   "Value": "A Grade",
+			   "Type": "Dropdown",
+			   "Locator": "BillType"
+		},
+		"Save":{
+			  "Value":"",
+			  "Type": "Button",
+			  "Locator": "btnSave"
+		}
+}
 }

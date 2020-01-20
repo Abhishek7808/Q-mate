@@ -558,3 +558,17 @@ User should be able to delete section
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
     HRMS_Keywords.Verify Section Deletion  ${formField["Edit Section"]}
+
+User should be able to add new TA/DA grade
+    [Documentation]  Adds a new TA/DA grade
+    [Tags]  TA/DAgrade  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
+    set test variable  ${formField}  ${configData["TA/DA Grade"]}
+    FillFields.Input Value Into Field  ${formField["Add New Grade"]}
+    FillFields.Input Value Into Field  ${formField["Grade"]}  ${formField["Grade"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Effective From"]}  ${formField["Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Basic Pay Min Range"]}  ${formField["Basic Pay Min Range"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Basic Pay Max Range"]}  ${formField["Basic Pay Max Range"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    wait until page contains element  SearchText
+    HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
