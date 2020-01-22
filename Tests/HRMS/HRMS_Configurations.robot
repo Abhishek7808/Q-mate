@@ -718,7 +718,25 @@ User should be able to edit grade dependancy
     HRMS_Keywords.Verify Grade Dependancy Entry  ${formField}
     sleep  3s
 
-
+User should be able to delete grade dependancy
+    [Documentation]  Deletes grade dependancy
+    [Tags]  gradedependancy  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
+    set test variable  ${formField}  ${configData["Grade Dependency"]}
+    Common_Keywords.Show Maximum Entries on Page
+    ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
+    ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
+    ${date}  split string  ${lastGradeDate}  -
+    ${day}  set variable  ${date}[0]
+    ${month}  set variable  ${date}[1]
+    ${year}  set variable  ${date}[2]
+    set to dictionary  ${formField["Delete"]}  Locator=//td[contains(text(),'${lastGradeDate}')]/following-sibling::td//i[@class='fa fa-trash-o']
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record?
+    #sleep  3s
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify Grade Dependancy Deletion  ${formField}
+    #press keys  //button[@class='btn btn-primary']  ENTER
 
 
 

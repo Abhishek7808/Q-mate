@@ -16,6 +16,7 @@ Resource  ${PAGE OBJECTS}/HRMS/PaymentType.robot
 Resource  ${PAGE OBJECTS}/HRMS/Department.robot
 Resource  ${PAGE OBJECTS}/HRMS/Section.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADAgrade.robot
+Resource  ${PAGE OBJECTS}/HRMS/GradeDependancy.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -223,13 +224,11 @@ Verify TA/DA grade Deletion
 Verify Grade Dependancy Entry
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
-    GradeDependancy.Search For Grade Dependancy  ${formField}
     sleep  3s
-    GradeDependancy.Check For TA/DA grade Entry In TA/DA grade Table  ${formField}
+    GradeDependancy.Check For Grade Dependancy Entry In Grade Dependancy Table  ${formField}
 
 Verify GradeDependancy Deletion
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
-    GradeDependancy.Search For Grade Dependancy  ${formField}
     sleep  3s
     GradeDependancy.Check For Grade Dependancy Deletion In Grade Dependancy Table  ${formField}

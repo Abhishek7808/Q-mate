@@ -1595,7 +1595,11 @@
 		},
 		"Delete": {
 			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-trash-o']"
+			"": ""
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
 		},
 		"Save": {
 			"Type": "Button",
@@ -1632,8 +1636,8 @@
 				"Locator": "chkDesignation"
 			},
 			"Save": {
-			"Type": "Button",
-			"Locator": "btnSave"
+				"Type": "Button",
+				"Locator": "btnSave"
 		}
 		}
 	},
@@ -1776,13 +1780,34 @@
     },
 
   "TA/DA Rules":{
-		"Unit":{
+	  "Unit":{
 			   "Value": "Head Office",
 			   "Type": "Dropdown",
 			   "Locator": "UNIT_ID"
 		},
+	  "Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'Travel')]/following-sibling:://td[contains(text(),'06-Dec-2019')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'Travel')]/following-sibling:://td[contains(text(),'06-Dec-2019')]/following-sibling::td//i[@class='fa fa-trash-o']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEdepartment",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
 		"Allowance Type":{
-			   "Value": "Yes",
+			   "Value": "Travel",
 			   "Type": "Dropdown",
 			   "Locator": "ENTITY_TYPE"
 		},
@@ -1796,17 +1821,17 @@
 				"Locator": "EffectiveFrom"
 		},
 		"Grade":{
-			   "Value": "A Grade",
+			   "Value": "QMATEgrade",
 			   "Type": "Dropdown",
 			   "Locator": "Grade"
 		},
 		"Rules":{
-			   "Value": "A Grade",
+			   "Value": "Active",
 			   "Type": "Dropdown",
 			   "Locator": "Rule"
 		},
 		"Bill Type":{
-			   "Value": "A Grade",
+			   "Value": "Active",
 			   "Type": "Dropdown",
 			   "Locator": "BillType"
 		},
