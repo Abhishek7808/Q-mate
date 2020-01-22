@@ -142,6 +142,12 @@ Login From Department
 Show Maximum Entries on Page
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  select last dropdown element  DDLpageSize
 
+Switch Tab
+    [Documentation]  Switches the robot to the previous tab
+    @{windowTitles}    get window handles
+    ${windowToOpen}=    get from list    ${windowTitles}  -1
+    Select Window    ${windowToOpen}
+
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

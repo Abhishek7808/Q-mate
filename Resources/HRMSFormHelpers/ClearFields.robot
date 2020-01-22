@@ -17,8 +17,9 @@ Clear Dropdown-Checkbox
     sleep  3s
     ${count}  get length  ${value}
     FOR  ${item}  IN RANGE  2  ${count}+2
+    \   set focus to element  ${locator["Locator${item}"]}
     \   unselect checkbox  ${locator["Locator${item}"]}
-    click element  ${locator["Locator1"]}
+    #click element  ${locator["Locator1"]}
 
 Clear Date
     [Arguments]    ${Locator}  ${value}=None

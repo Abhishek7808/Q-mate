@@ -1584,16 +1584,17 @@
 
 		}
 	},
-	"TA DA Grade Dependency":{
-		   "Effective From":{
-				  "Value": {
-						"Day": "6",
-						"Month": "Dec",
-						"Year": "2019"
-				  },
-				  "Type":"Date",
-				  "Locator": "EffectiveFrom"
-		   },
+	"TA DA Grade Dependency": {
+		"Effective From": {
+			"Value": {
+				"Day": "6",
+				"Month": "Dec",
+				"Year": "2019"
+			},
+			"Type": "Date",
+			"Locator": "EffectiveFrom"
+		}
+	},
 	"TA/DA Grade depends on":{
 		   "Basic Pay": {
 				 "Value": "Selected",
@@ -1616,7 +1617,7 @@
 				  "Locator": "chkDesignation"
 		   }
   },
-  "TA/DA Grade":{
+    "TA/DA Grade":{
 	   "Add New Grade": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1625,7 +1626,7 @@
 			"Type": "Element",
 			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
-	   "Revised": {
+	   "Revise": {
 			"Type": "Element",
 			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-pencil-square-o']"
 		},
@@ -1634,8 +1635,8 @@
 			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-trash-o']"
 	   },
 	   "Ok": {
-			"Type": "Button",
-			"Locator": "//button[contains(text(),'OK')]"
+			"Type": "Element",
+			"Locator": "//button[@class='btn btn-primary']"
 	   },
 	   "Search box": {
 			"Type": "Text Value",
@@ -1660,15 +1661,43 @@
 			  "Type":"Date",
 			  "Locator": "EffectiveFrom"
 	   },
+		"Revised Effective From":{
+			  "Value": {
+					"Day": "8",
+					"Month": "Dec",
+					"Year": "2019"
+			  },
+			  "Type":"Date",
+			  "Locator": "EffectiveFrom"
+	   },
 	   "Basic Pay Min Range":{
-			  "Value":"QMATErange",
+			  "Value":"10000",
 			  "Type": "Text Value",
 			  "Locator": "BasicPayMinRange"
 	   },
 	   "Basic Pay Max Range":{
-			  "Value": "QMATErange",
+			  "Value": "20000",
 			  "Type": "Text Value",
 			  "Locator": "BasicPayMaxRange"
+	   },
+	   "Level Number": {
+		   "Value": ["L-1",  "L-2"],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator0": "//b[contains(@class,'caret')]",
+				"": "",
+				"Locator2": "//div[contains(@class,'btn-group open')]//li[3]//label/input",
+				"Locator3": "//div[contains(@class,'btn-group open')]//li[4]//label/input"
+			}
+	   },
+	   "Designaton": {
+		   "Value": ["QMATEdesignaton"],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator0": "//b[contains(@class,'caret')]",
+				"": "",
+				"Locator2": "//div[contains(@class,'btn-group open')]//li[119]//label/input"
+			}
 	   },
 	   "Save":{
 			  "Type": "Button",
@@ -1679,34 +1708,53 @@
 			  "Value":"QMATEgrade2",
 			  "Type": "Text Value",
 			  "Locator": "Grade"
-	   },
-	   "Effective From":{
+	   	   },
+		   "Effective From":{
 			  "Value": {
-					"Day": "2",
+					"Day": "10",
 					"Month": "Dec",
 					"Year": "2019"
 			  },
 			  "Type":"Date",
 			  "Locator": "EffectiveFrom"
-	   },
-	   "Basic Pay Min Range":{
-			  "Value":"QMATErange2",
+	       },
+		   "Basic Pay Min Range":{
+			  "Value":"10000",
 			  "Type": "Text Value",
 			  "Locator": "BasicPayMinRange"
-	   },
-	   "Basic Pay Max Range":{
-			  "Value": "QMATErange2",
+	       },
+	       "Basic Pay Max Range":{
+			  "Value": "15000",
 			  "Type": "Text Value",
 			  "Locator": "BasicPayMaxRange"
-	   		},
-		    "Search box": {
+		   },
+		   "Level Number": {
+			   "Value": ["L-3",  "L-4"],
+				"Type": "Dropdown-Checkbox",
+				"Locator": {
+					"Locator0": "//b[contains(@class,'caret')]",
+					"": "",
+					"Locator2": "//div[contains(@class,'btn-group open')]//li[5]//label/input",
+					"Locator3": "//div[contains(@class,'btn-group open')]//li[6]//label/input"
+				}
+		   },
+		   "Designaton": {
+			   "Value": ["QMATEdesignaton"],
+			   "Type": "Dropdown-Checkbox",
+			   "Locator": {
+					   "Locator0": "//b[contains(@class,'caret')]",
+					   "": "",
+					   "Locator2": "//div[contains(@class,'btn-group open')]//li[119]//label/input"
+			   }
+		   },
+		   "Search box": {
 				"Type": "Text Value",
 				"Value": "QMATEgrade2",
 				"Locator": "SearchText"
-	   		}
+		   }
 	   }
-  }
-  },
+    },
+
   "TA/DA Rules":{
 		"Unit":{
 			   "Value": "Head Office",

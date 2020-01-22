@@ -15,6 +15,7 @@ Resource  ${PAGE OBJECTS}/HRMS/CadreDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/PaymentType.robot
 Resource  ${PAGE OBJECTS}/HRMS/Department.robot
 Resource  ${PAGE OBJECTS}/HRMS/Section.robot
+Resource  ${PAGE OBJECTS}/HRMS/TADAgrade.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -208,13 +209,13 @@ Verify Section Deletion
 Verify TA/DA grade Entry
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
-    TA/DA grade.Search For TA/DA grade  ${formField}
+    TADAgrade.Search For TA/DA grade  ${formField}
     sleep  3s
-    TA/DA grade.Check For TA/DA grade Entry In Section Table  ${formField}
+    TADAgrade.Check For TA/DA grade Entry In TA/DA grade Table  ${formField}
 
 Verify TA/DA grade Deletion
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
-    TA/DA grade.Search For TA/DA grade  ${formField}
+    TADAgrade.Search For TA/DA grade  ${formField}
     sleep  3s
-    TA/DA grade.Check For TA/DA grade Deletion In Section Table  ${formField}
+    TADAgrade.Check For TA/DA grade Deletion In TA/DA grade Table  ${formField}

@@ -4,13 +4,13 @@ Documentation    Suite description
 *** Keywords ***
 Search For TA/DA grade
     [Arguments]  ${formField}
-    input text  SearchText  ${formField["Name"]["Value"]}
+    input text  SearchText  ${formField["Grade"]["Value"]}
     click button  BtnSearchfilter
 
 Check For TA/DA grade Entry In TA/DA grade Table
     [Arguments]  ${formField}
-    Page should contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]
+    Page should contain element  //td[contains(text(),'${formField["Grade"]["Value"]}')]
 
 Check For TA/DA grade Deletion In TA/DA grade Table
     [Arguments]  ${formField}
-    Page should not contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]
+    Page should not contain element  //td[contains(text(),'${formField["Grade"]["Value"]}')]

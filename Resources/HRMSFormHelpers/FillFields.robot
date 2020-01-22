@@ -11,6 +11,7 @@ Input Value Into Field
     Wait Until Keyword Succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  run keyword  InputFields.Input ${fieldType}  ${key["Locator"]}  ${value}
     #run keyword and ignore error  press keys  ${key["Locator"]}  TAB
     Wait Until Keyword Succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  run keyword  ConfirmFields.Confirm ${fieldType}  ${key["Locator"]}  ${value}
+    #run keyword and ignore error  press keys  ${key["Locator"]}  TAB
 
 Get Field Type
     [Arguments]  ${Key}

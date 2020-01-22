@@ -55,15 +55,19 @@ ${jsonFile}  ${DATA}/check.json
 *** Test Cases ***
 Testing robot things
     [Tags]  robotthings
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule/AddedittadaGradeRule?q=8U+3wF0Q7l7jwRbCaXoztTnEofQa2wi8#
     ${configJson}  Common_Keywords.Load Json File  ${configurationData}
-    set test variable  ${formField}  ${configJson["Enquiry Decision Type"]}
-    log to console  ${formField["Impact On"]["Value"]}
-    ${items}  set variable  ${formField["Impact On"]["Value"]}
-    log to console  ${items}
-
-    log to console  ${list}
-    ${length}  get length  ${list}
-    log to console  ${length}
+    set test variable  ${formField}  ${configJson["TA/DA Grade"]}
+    ${webelements}  get webelements  //b[contains(@class,'caret')]
+    set to dictionary  ${formField["Level Number"]["Locator"]["Locator1"]}  Locator1=${webelements}[0]
+    log to console  ${formField["Level Number"]["Locator"]}
+    click element  ${formField["Level Number"]["Locator"]["Locator1"]}
+    sleep  3s
+#    ${items}  set variable  ${formField["Impact On"]["Value"]}
+#    log to console  ${items}
+#    log to console  ${list}
+#    ${length}  get length  ${list}
+#    log to console  ${length}
 
 Testing json
     [Tags]  jsontesting
@@ -72,30 +76,53 @@ Testing json
 
 Testing hrms
     [Tags]  debughrms
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Common/PaySlipConfiguration
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule/AddedittadaGradeRule?q=8U+3wF0Q7l7jwRbCaXoztTnEofQa2wi8#
     sleep  3s
-    select from list by index  //select[@name='[0].SelectedValue']  1
-    sleep  3s
-    click element  //select[contains(@name,'[1].Is_Active')]
-    click element  //td[contains(text(),'Show Other Details')]/following-sibling::td//b[@class='caret']
-    sleep  3s
-    click element  //td[contains(text(),'Show Other Details')]/following-sibling::td//select[contains(@name,'[1].Is_Active')]
+    ${configJson}  Common_Keywords.Load Json File  ${configurationData}
+    set test variable  ${formField}  ${configJson["TA/DA Grade"]}
+#    click element  //b[contains(@class,'caret')][1]
+#    sleep  5s
+#    click element  //b[contains(@class,'caret')][0]
+    ${webelements}  get webelements  //b[contains(@class,'caret')]
+    click element  ${webelements}[1]
+    sleep  2s
+    set focus to element  //div[contains(@class,'btn-group open')]//li[3]//label/input
+#    set focus to element  //div[contains(@class,'btn-group open')]//li[3]//a[1]
+#    select frame  //div[contains(@class,'btn-group open')]//li[3]//a[1]
+    select checkbox  //div[contains(@class,'btn-group open')]//li[3]//label/input
+    click element  //div[contains(@class,'btn-group open')]//li[3]//a[1]
+    sleep  2s
+
+    set focus to element  //div[contains(@class,'btn-group open')]//li[4]//a[1]
+    click element  //div[contains(@class,'btn-group open')]//li[4]//a[1]
+#    sleep  3s
+#    log  ${webelements}
+#    page should contain element  //label[contains(text(),'Level Number')]/following-sibling::select[@id='MSLevelNo']
+#    click element  //label[contains(text(),'Level Number')]/following-sibling::div//b[class="caret"]
+#  click element  //div[@id='MainBody']//div[5]
+#   sleep  2s
+#    select from list by index  //select[@name='[0].SelectedValue']  1
+#    sleep  3s
+#    click element  //select[contains(@name,'[1].Is_Active')]
+#    click element  //td[contains(text(),'Show Other Details')]/following-sibling::td//b[@class='caret']
+#    sleep  3s
+#    click element  //td[contains(text(),'Show Other Details')]/following-sibling::td//select[contains(@name,'[1].Is_Active')]
     #/following-sibling::td//*[@id='MainBody']/form//ul/li[2]/a/label/input
-    select from list by value  MS_1__SelectedValue  SI
+#    select from list by value  MS_1__SelectedValue  SI
 #    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]
 #    sleep  2s
 #    press keys  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class="btn btn-primary btn-sm"]  TAB
 #    click element  //td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]
     #td//a[contains(text(),'Edit')]
     #//a[@class="btn btn-primary btn-sm"]
-    sleep  3s
+  #  sleep  3s
 
-    click element  parDrView
+  #  click element  parDrView
 #    unselect checkbox  //*[@id="DivDesicion"]/div/ul/li[4]/a/label/input
 #    select checkbox  //*[@id="DivDesicion"]/div/ul/li[4]/a/label/input
-    select from list by label  //select[@id='MSDECISION_IMPACT_ON']  Salary
+#   select from list by label  //select[@id='MSDECISION_IMPACT_ON']  Salary
     #select checkbox
-    sleep  5s
+#   sleep  5s
     #click element  modals-bootbox-custom
 #    ${configData}  Common_Keywords.Load Json File  ${configurationData}
 #    set test variable  ${formField}  ${configData["Tea Rate Definition"]}

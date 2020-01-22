@@ -561,14 +561,107 @@ User should be able to delete section
 
 User should be able to add new TA/DA grade
     [Documentation]  Adds a new TA/DA grade
-    [Tags]  TA/DAgrade  createdata
+    [Tags]  TADAgrade  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     set test variable  ${formField}  ${configData["TA/DA Grade"]}
     FillFields.Input Value Into Field  ${formField["Add New Grade"]}
+    switch window  NEW
     FillFields.Input Value Into Field  ${formField["Grade"]}  ${formField["Grade"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Effective From"]}  ${formField["Effective From"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Basic Pay Min Range"]}  ${formField["Basic Pay Min Range"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Basic Pay Max Range"]}  ${formField["Basic Pay Max Range"]["Value"]}
+    ${webelements}  get webelements  ${formField["Level Number"]["Locator"]["Locator0"]}
+    set to dictionary  ${formField["Level Number"]["Locator"]}  Locator1=${webelements}[0]
+    set to dictionary  ${formField["Designaton"]["Locator"]}  Locator1=${webelements}[1]
+    FillFields.Input Value Into Field  ${formField["Level Number"]}  ${formField["Level Number"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Designaton"]}  ${formField["Designaton"]["Value"]}
+    click element  ${formField["Basic Pay Max Range"]["Locator"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
-    wait until page contains element  SearchText
+    Common_Keywords.Switch TAB
+    #wait until page does not contain  New Record Saved Successfully
+    sleep  3s
+    reload page
+    #wait until element is enabled  BtnSearchfilter  10s
     HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
+
+User should be able to edit TA/DA grade
+    [Documentation]  Edits TA/DA grade details
+    [Tags]  TADAgrade  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
+    set test variable  ${formField}  ${configData["TA/DA Grade"]}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    #FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Grade"]}  ${formField["Edit TA/DA Grade"]["Grade"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Effective From"]}  ${formField["Edit TA/DA Grade"]["Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Basic Pay Min Range"]}  ${formField["Edit TA/DA Grade"]["Basic Pay Min Range"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Basic Pay Max Range"]}  ${formField["Edit TA/DA Grade"]["Basic Pay Max Range"]["Value"]}
+    ${webelements}  get webelements  ${formField["Level Number"]["Locator"]["Locator0"]}
+    set to dictionary  ${formField["Edit TA/DA Grade"]["Level Number"]["Locator"]}  Locator1=${webelements}[0]
+    set to dictionary  ${formField["Edit TA/DA Grade"]["Designaton"]["Locator"]}  Locator1=${webelements}[1]
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Level Number"]}  ${formField["Edit TA/DA Grade"]["Level Number"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Designaton"]}  ${formField["Edit TA/DA Grade"]["Designaton"]["Value"]}
+    click element  ${formField["Basic Pay Max Range"]["Locator"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    reload page
+    wait until element is visible  BtnSearchfilter  10s
+    HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
+
+User should be able to delete TA/DA grade
+    [Documentation]  Deletes TA/DA grade
+    [Tags]  TADAgrade  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
+    set test variable  ${formField}  ${configData["TA/DA Grade"]}
+    Common_Keywords.Show Maximum Entries on Page
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    sleep  3s
+    press keys  //button[@class='btn btn-primary']  ENTER
+
+User should be able to revised TA/DA grade
+    [Documentation]  Revises TA/DA grade details
+    [Tags]  TADAgrade  revisedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
+    set test variable  ${formField}  ${configData["TA/DA Grade"]}
+    FillFields.Input Value Into Field  ${formField["Add New Grade"]}
+    switch window  NEW
+    FillFields.Input Value Into Field  ${formField["Grade"]}  ${formField["Grade"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Effective From"]}  ${formField["Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Basic Pay Min Range"]}  ${formField["Basic Pay Min Range"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Basic Pay Max Range"]}  ${formField["Basic Pay Max Range"]["Value"]}
+    ${webelements}  get webelements  ${formField["Level Number"]["Locator"]["Locator0"]}
+    set to dictionary  ${formField["Level Number"]["Locator"]}  Locator1=${webelements}[0]
+    set to dictionary  ${formField["Designaton"]["Locator"]}  Locator1=${webelements}[1]
+    FillFields.Input Value Into Field  ${formField["Level Number"]}  ${formField["Level Number"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Designaton"]}  ${formField["Designaton"]["Value"]}
+    click element  ${formField["Basic Pay Max Range"]["Locator"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    Common_Keywords.Switch TAB
+    #wait until page does not contain  New Record Saved Successfully
+    sleep  3s
+    reload page
+    #wait until element is enabled  BtnSearchfilter  10s
+    HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
+    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Revise"]}
+    switch window  NEW
+    FillFields.Input Value Into Field  ${formField["Revised Effective From"]}  ${formField["Revised Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Basic Pay Min Range"]}  ${formField["Basic Pay Min Range"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Basic Pay Max Range"]}  ${formField["Basic Pay Max Range"]["Value"]}
+    ${webelements}  get webelements  ${formField["Level Number"]["Locator"]["Locator0"]}
+    set to dictionary  ${formField["Edit TA/DA Grade"]["Level Number"]["Locator"]}  Locator1=${webelements}[0]
+    set to dictionary  ${formField["Designaton"]["Locator"]}  Locator1=${webelements}[1]
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Level Number"]}  ${formField["Edit TA/DA Grade"]["Level Number"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Designaton"]}  ${formField["Designaton"]["Value"]}
+    click element  ${formField["Basic Pay Max Range"]["Locator"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    Common_Keywords.Switch TAB
+    sleep  3s
+    reload page
+    wait until element is visible  BtnSearchfilter  10s
+    HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
+
+
