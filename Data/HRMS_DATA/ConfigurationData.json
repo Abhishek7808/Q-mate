@@ -1584,39 +1584,59 @@
 
 		}
 	},
-	"TA DA Grade Dependency": {
+	"Grade Dependency": {
+		"Add New Dependancy": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"": ""
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-trash-o']"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
 		"Effective From": {
 			"Value": {
 				"Day": "6",
 				"Month": "Dec",
-				"Year": "2019"
+				"Year": "2022"
 			},
 			"Type": "Date",
 			"Locator": "EffectiveFrom"
+		},
+		"TA/DA Grade depends on": {
+			"Basic Pay": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkBasicPay"
+			},
+			"Pay Scale": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkPayscale"
+			},
+			"Level Number": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkLevelNo"
+			},
+			"Designation": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkDesignation"
+			},
+			"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
 		}
 	},
-	"TA/DA Grade depends on":{
-		   "Basic Pay": {
-				 "Value": "Selected",
-				 "Type": "Checkbox",
-				 "Locator": "chkBasicPay"
-		   },
-		   "Pay Scale": {
-				 "Value": "Unselected",
-				 "Type": "Checkbox",
-				 "Locator": "chkPayscale"
-		   },
-			"Level Number": {
-				 "Value": "Unselected",
-				 "Type": "Checkbox",
-				 "Locator": "chkLevelNo"
-			},
-		   "Designation": {
-				  "Value": "Unselected",
-				  "Type": "Checkbox",
-				  "Locator": "chkDesignation"
-		   }
-  },
     "TA/DA Grade":{
 	   "Add New Grade": {
 			"Type": "Link",
@@ -1795,5 +1815,6 @@
 			  "Type": "Button",
 			  "Locator": "btnSave"
 		}
-}
+    }
+
 }

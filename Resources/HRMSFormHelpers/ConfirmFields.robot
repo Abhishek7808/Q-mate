@@ -46,5 +46,6 @@ Confirm Actions
     log  Action clicked
 
 Confirm Checkbox
-    [Arguments]  ${Locator}  ${value}=None
-    checkbox should be selected  ${Locator}
+    [Arguments]  ${Locator}  ${value}
+    run keyword if  '${value}' == 'select'  checkbox should be selected  ${Locator}  ELSE  checkbox should not be selected  ${Locator}
+    #checkbox should be selected  ${Locator}

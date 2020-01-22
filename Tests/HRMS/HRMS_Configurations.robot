@@ -578,10 +578,8 @@ User should be able to add new TA/DA grade
     click element  ${formField["Basic Pay Max Range"]["Locator"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     Common_Keywords.Switch TAB
-    #wait until page does not contain  New Record Saved Successfully
     sleep  3s
     reload page
-    #wait until element is enabled  BtnSearchfilter  10s
     HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
 
 User should be able to edit TA/DA grade
@@ -592,7 +590,6 @@ User should be able to edit TA/DA grade
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Search button"]}
     FillFields.Input Value Into Field  ${formField["Edit"]}
-    #FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Grade"]}  ${formField["Edit TA/DA Grade"]["Grade"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Effective From"]}  ${formField["Edit TA/DA Grade"]["Effective From"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Basic Pay Min Range"]}  ${formField["Edit TA/DA Grade"]["Basic Pay Min Range"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Edit TA/DA Grade"]["Basic Pay Max Range"]}  ${formField["Edit TA/DA Grade"]["Basic Pay Max Range"]["Value"]}
@@ -639,10 +636,8 @@ User should be able to revised TA/DA grade
     click element  ${formField["Basic Pay Max Range"]["Locator"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     Common_Keywords.Switch TAB
-    #wait until page does not contain  New Record Saved Successfully
     sleep  3s
     reload page
-    #wait until element is enabled  BtnSearchfilter  10s
     HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Search button"]}
@@ -664,4 +659,77 @@ User should be able to revised TA/DA grade
     wait until element is visible  BtnSearchfilter  10s
     HRMS_Keywords.Verify TA/DA grade Entry  ${formField}
 
+User should be able to add new grade dependancy
+    [Documentation]  Creates new grade dependancy
+    [Tags]  gradedependancy  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
+    set test variable  ${formField}  ${configData["Grade Dependency"]}
+    Common_Keywords.Show Maximum Entries on Page
+    ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
+    ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
+    log to console  ${lastGradeDate}
+    ${date}  split string  ${lastGradeDate}  -
+    ${day}  set variable  ${date}[0]
+    ${month}  set variable  ${date}[1]
+    ${year}  set variable  ${date}[2]
+    log to console  ${day}-${month}-${year}
+    ${intday}  convert to integer  ${day}
+    ${day}  run keyword if  ${intday}<10  remove string  ${day}  0  ELSE  set variable  ${day}
+    ${day}  convert to integer  ${day}
+    ${day}  set variable  ${day+1}
+    FillFields.Input Value Into Field  ${formField["Add New Dependancy"]}
+    set to dictionary  ${formField["Effective From"]["Value"]}  Day=${day}  Month=${month}  Year=${year}
+    FillFields.Input Value Into Field  ${formField["Effective From"]}  ${formField["Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Basic Pay"]}  ${formField["TA/DA Grade depends on"]["Basic Pay"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Pay Scale"]}  ${formField["TA/DA Grade depends on"]["Pay Scale"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Level Number"]}  ${formField["TA/DA Grade depends on"]["Level Number"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Designation"]}  ${formField["TA/DA Grade depends on"]["Designation"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Save"]}
+    HRMS_Keywords.Verify Grade Dependancy Entry  ${formField}
+    sleep  3s
 
+User should be able to edit grade dependancy
+    [Documentation]  Edits grade dependancy
+    [Tags]  gradedependancy  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
+    set test variable  ${formField}  ${configData["Grade Dependency"]}
+    Common_Keywords.Show Maximum Entries on Page
+    ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
+    ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
+    log to console  ${lastGradeDate}
+    ${date}  split string  ${lastGradeDate}  -
+    ${day}  set variable  ${date}[0]
+    ${month}  set variable  ${date}[1]
+    ${year}  set variable  ${date}[2]
+    log to console  ${day}-${month}-${year}
+    ${intday}  convert to integer  ${day}
+    ${day}  run keyword if  ${intday}<10  remove string  ${day}  0  ELSE  set variable  ${day}
+    ${day}  convert to integer  ${day}
+    ${day}  set variable  ${day+1}
+    set to dictionary  ${formField["Effective From"]["Value"]}  Day=${day}  Month=${month}  Year=${year}
+    set to dictionary  ${formField["Edit"]}  Locator=//td[contains(text(),'${lastGradeDate}')]/following-sibling::td//i[@class='fa fa-pencil']
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Effective From"]}  ${formField["Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Basic Pay"]}  ${formField["TA/DA Grade depends on"]["Basic Pay"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Pay Scale"]}  ${formField["TA/DA Grade depends on"]["Pay Scale"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Level Number"]}  ${formField["TA/DA Grade depends on"]["Level Number"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Designation"]}  ${formField["TA/DA Grade depends on"]["Designation"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["TA/DA Grade depends on"]["Save"]}
+    HRMS_Keywords.Verify Grade Dependancy Entry  ${formField}
+    sleep  3s
+
+
+
+
+
+#    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+#    FillFields.Input Value Into Field  ${formField["Search button"]}
+#    FillFields.Input Value Into Field  ${formField["Edit"]}
+#    FillFields.Input Value Into Field  ${formField["Edit Section"]["Department"]}  ${formField["Edit Section"]["Department"]["Value"]}
+#    FillFields.Input Value Into Field  ${formField["Edit Section"]["Name"]}  ${formField["Edit Section"]["Name"]["Value"]}
+#    FillFields.Input Value Into Field  ${formField["Edit Section"]["Code"]}  ${formField["Edit Section"]["Code"]["Value"]}
+#    FillFields.Input Value Into Field  ${formField["Edit Section"]["Order By"]}  ${formField["Edit Section"]["Order By"]["Value"]}
+#    FillFields.Input Value Into Field  ${formField["Edit Section"]["Is Active"]}  ${formField["Edit Section"]["Is Active"]["Value"]}
+#    FillFields.Input Value Into Field  ${formField["Save"]}
+#    wait until page contains element  SearchText
+#    HRMS_Keywords.Verify Section Entry  ${formField["Edit Section"]}

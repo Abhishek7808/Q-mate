@@ -219,3 +219,17 @@ Verify TA/DA grade Deletion
     TADAgrade.Search For TA/DA grade  ${formField}
     sleep  3s
     TADAgrade.Check For TA/DA grade Deletion In TA/DA grade Table  ${formField}
+
+Verify Grade Dependancy Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    GradeDependancy.Search For Grade Dependancy  ${formField}
+    sleep  3s
+    GradeDependancy.Check For TA/DA grade Entry In TA/DA grade Table  ${formField}
+
+Verify GradeDependancy Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    GradeDependancy.Search For Grade Dependancy  ${formField}
+    sleep  3s
+    GradeDependancy.Check For Grade Dependancy Deletion In Grade Dependancy Table  ${formField}

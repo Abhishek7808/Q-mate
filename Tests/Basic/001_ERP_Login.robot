@@ -5,7 +5,6 @@ Resource  ${RESOURCES}/ERP_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
 
-
 #Suite Setup  Common_Keywords.Begin Web Test
 #Suite Teardown  Common_Keywords.End Web Test
 
