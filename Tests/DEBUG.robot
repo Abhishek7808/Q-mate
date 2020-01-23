@@ -76,25 +76,28 @@ Testing json
 
 Testing hrms
     [Tags]  debughrms
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule/AddedittadaGradeRule?q=8U+3wF0Q7l7jwRbCaXoztTnEofQa2wi8#
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule/AddEdittadarule?q=ZsKXgGWRPNSw00uRWjC431GGisfj0UAO
     sleep  3s
     ${configJson}  Common_Keywords.Load Json File  ${configurationData}
-    set test variable  ${formField}  ${configJson["TA/DA Grade"]}
+    set test variable  ${formField}  ${configJson["TA/DA Rule"]}
+    click element  //div[@id='Travel']//b[@class='caret']
+    select checkbox  //*[@id="Travel"]//ul/li[2]/a/label/input
+    sleep  3s
 #    click element  //b[contains(@class,'caret')][1]
 #    sleep  5s
 #    click element  //b[contains(@class,'caret')][0]
-    ${webelements}  get webelements  //b[contains(@class,'caret')]
-    click element  ${webelements}[1]
-    sleep  2s
-    set focus to element  //div[contains(@class,'btn-group open')]//li[3]//label/input
+#    ${webelements}  get webelements  //b[contains(@class,'caret')]
+#    click element  ${webelements}[1]
+#    sleep  2s
+#    set focus to element  //div[contains(@class,'btn-group open')]//li[3]//label/input
 #    set focus to element  //div[contains(@class,'btn-group open')]//li[3]//a[1]
 #    select frame  //div[contains(@class,'btn-group open')]//li[3]//a[1]
-    select checkbox  //div[contains(@class,'btn-group open')]//li[3]//label/input
-    click element  //div[contains(@class,'btn-group open')]//li[3]//a[1]
-    sleep  2s
-
-    set focus to element  //div[contains(@class,'btn-group open')]//li[4]//a[1]
-    click element  //div[contains(@class,'btn-group open')]//li[4]//a[1]
+#    select checkbox  //div[contains(@class,'btn-group open')]//li[3]//label/input
+#    click element  //div[contains(@class,'btn-group open')]//li[3]//a[1]
+#    sleep  2s
+#
+#    set focus to element  //div[contains(@class,'btn-group open')]//li[4]//a[1]
+#    click element  //div[contains(@class,'btn-group open')]//li[4]//a[1]
 #    sleep  3s
 #    log  ${webelements}
 #    page should contain element  //label[contains(text(),'Level Number')]/following-sibling::select[@id='MSLevelNo']

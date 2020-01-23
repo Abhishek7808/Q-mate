@@ -237,13 +237,13 @@ Verify GradeDependancy Deletion
 Verify TA/DA Rule Entry
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
-    TADARule.Search For TA/DA Rule  ${formField}
+    #TADARule.Search For TA/DA Rule  ${formField}
     sleep  3s
     TADARule.Check For TA/DA Rule Entry In TA/DA Rule Table  ${formField}
 
 Verify TA/DA Rule Deletion
     [Arguments]  ${formField}
     Common_Keywords.Show Maximum Entries on Page
-    TADARule.Search For TA/DA Rule  ${formField}
+    #TADARule.Search For TA/DA Rule  ${formField}
     sleep  3s
     TADARule.Check For TA/DA Rule Deletion In TA/DA Rule Table  ${formField}

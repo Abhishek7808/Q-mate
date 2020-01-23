@@ -1779,91 +1779,162 @@
 	   }
     },
 
-  "TA/DA Rule":{
+  "TA/DA Rule": {
 	  "Add New": {
-			"Type": "Link",
-			"Locator": "modals-bootbox-custom"
-		},
-	  "Unit":{
-			   "Value": "Head Office",
-			   "Type": "Dropdown",
-			   "Locator": "UNIT_ID"
-		},
+		  "Type": "Link",
+		  "Locator": "modals-bootbox-custom"
+	  },
+	  "Unit": {
+		  "Value": "Head Office",
+		  "Type": "Dropdown",
+		  "Locator": "UNIT_ID"
+	  },
 	  "Edit": {
-			"Type": "Element",
-			"Locator": "//td[contains(text(),'Travel')]/following-sibling:://td[contains(text(),'06-Dec-2019')]/following-sibling::td//i[@class='fa fa-pencil']"
-		},
-		"Delete": {
-			"Type": "Element",
-			"Locator": "//td[contains(text(),'Travel')]/following-sibling:://td[contains(text(),'06-Dec-2019')]/following-sibling::td//i[@class='fa fa-trash-o']"
-		},
-		"Ok": {
-			"Type": "Button",
-			"Locator": "//button[contains(text(),'OK')]"
-		},
-		"Search box": {
-			"Type": "Text Value",
-			"Value": "QMATEdepartment",
-			"Locator": "SearchText"
-		},
-		"Search button": {
-			"Type": "Element",
-			"Locator": "BtnSearchfilter"
-		},
-		"Allowance Type":{
-			   "Value": "Travel",
-			   "Type": "Dropdown",
-			   "Locator": "ENTITY_TYPE"
-		},
-		"Effective From":{
-				"Value": {
-					 "Day": "1",
-					 "Month": "Jan",
-					 "Year": "2020"
-				},
-				"Type":"Date",
-				"Locator": "EFFECTIVE_DATE"
-		},
-		"Grade":{
-			   "Value": "QMATEgrade",
-			   "Type": "Dropdown",
-			   "Locator": "Grade"
-		},
-		"Rule":{
-			   "Value": "Active",
-			   "Type": "Dropdown",
-			   "Locator": "Rule"
-		},
-	    "Travel Mode": {
-			"Value": "Bus",
-			"Type": "Dropdown",
-			"Locator": "TravelMode"
-		},
-	    "Travel Class": {
-			"Value": "Bus",
-			"Type": "Dropdown",
-			"Locator": "TravelMode"
-		},
-	    "Mileage Allowance": {
-				"Type": "Text Value",
-				"Value": "500",
-				"Locator": "HRMS_TOUR_BILL_ELIGIBILITY_MILEAGE_ALLOWANCE"
-		   },
-	   "City": {
-			"Value": "Bari",
-			"Type": "Dropdown",
-			"Locator": "TourEligDetailCity"
-		},
-	    "Amount": {
-				"Type": "Text Value",
-				"Value": "500",
-				"Locator": "TourEligDetailAmount"
-		   },
-		"Save":{
-			  "Value":"",
-			  "Type": "Button",
-			  "Locator": "btnSave"
-		}
-    }
+		  "Type": "Element",
+		  "Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td[contains(text(),'01-Jan-2020')]/following-sibling::td//i[@class='fa fa-pencil']"
+	  },
+	  "Delete": {
+		  "Type": "Element",
+		  "Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td[contains(text(),'02-Jan-2020')]/following-sibling::td//i[@class='fa fa-trash-o']"
+	  },
+	  "Ok": {
+		  "Type": "Button",
+		  "Locator": "//button[contains(text(),'OK')]"
+	  },
+	  "Search box": {
+		  "Type": "Text Value",
+		  "Value": "QMATEgrade",
+		  "Locator": "SearchText"
+	  },
+	  "Search button": {
+		  "Type": "Element",
+		  "Locator": "BtnSearchfilter"
+	  },
+	  "Allowance Type": {
+		  "Value": "Travel",
+		  "Type": "Dropdown",
+		  "Locator": "ENTITY_TYPE"
+	  },
+	  "Effective From": {
+		  "Value": {
+			  "Day": "1",
+			  "Month": "Jan",
+			  "Year": "2020"
+		  },
+		  "Type": "Date",
+		  "Locator": "EFFECTIVE_DATE"
+	  },
+	  "Grade": {
+		  "Value": "QMATEgrade",
+		  "Type": "Dropdown",
+		  "Locator": "Grade"
+	  },
+	  "Rule": {
+		  "Value": "Active",
+		  "Type": "Dropdown",
+		  "Locator": "Rule"
+	  },
+	  "Travel Mode": {
+		  "Value": "Bus",
+		  "Type": "Dropdown",
+		  "Locator": "TravelMode"
+	  },
+	  "Travel Class": {
+		  "Value": [
+			  "Silver Line",
+			  "Volvo"
+		  ],
+		  "Type": "Dropdown-Checkbox",
+		  "Locator": {
+			  "Locator1": "//div[@id='Travel']//b[@class='caret']",
+			  "Locator2": "//*[@id='Travel']//ul/li[2]/a/label/input",
+			  "Locator3": "//*[@id='Travel']//ul/li[3]/a/label/input"
+		  }
+	  },
+	  "Mileage Allowance": {
+		  "Type": "Text Value",
+		  "Value": "500",
+		  "Locator": "HRMS_TOUR_BILL_ELIGIBILITY_MILEAGE_ALLOWANCE"
+	  },
+	  "City": {
+		  "Value": "Bari",
+		  "Type": "Dropdown",
+		  "Locator": "TourEligDetailCity"
+	  },
+	  "Amount": {
+		  "Type": "Text Value",
+		  "Value": "500",
+		  "Locator": "TourEligDetailAmount"
+	  },
+	  "Save": {
+		  "Value": "",
+		  "Type": "Button",
+		  "Locator": "btnSave"
+	  },
+	  "Edit TA/DA Rule": {
+		  "Unit": {
+			  "Value": "Ajmer",
+			  "Type": "Dropdown",
+			  "Locator": "UNIT_ID"
+		  },
+		  "Allowance Type": {
+			  "Value": "Travel",
+			  "Type": "Dropdown",
+			  "Locator": "ENTITY_TYPE"
+		  },
+		  "Effective From": {
+			  "Value": {
+				  "Day": "2",
+				  "Month": "Jan",
+				  "Year": "2020"
+			  },
+			  "Type": "Date",
+			  "Locator": "EFFECTIVE_DATE"
+		  },
+		  "Grade": {
+			  "Value": "QMATEgrade",
+			  "Type": "Dropdown",
+			  "Locator": "Grade"
+		  },
+		  "Rule": {
+			  "Value": "Active",
+			  "Type": "Dropdown",
+			  "Locator": "Rule"
+		  },
+		  "Travel Mode": {
+			  "Value": "Flight",
+			  "Type": "Dropdown",
+			  "Locator": "TravelMode"
+		  },
+		  "Travel Class": {
+			  "Value": [
+				  "First Class",
+				  "Economy"
+			  ],
+			  "Type": "Dropdown-Checkbox",
+			  "Locator": {
+				  "Locator1": "//div[@id='Travel']//b[@class='caret']",
+				  "Locator2": "//*[@id='Travel']//ul/li[2]/a/label/input",
+				  "Locator3": "//*[@id='Travel']//ul/li[3]/a/label/input"
+			  }
+		  },
+			  "Mileage Allowance": {
+				  "Type": "Text Value",
+				  "Value": "5000",
+				  "Locator": "HRMS_TOUR_BILL_ELIGIBILITY_MILEAGE_ALLOWANCE"
+			  },
+			  "City": {
+				  "Value": "Banera",
+				  "Type": "Dropdown",
+				  "Locator": "TourEligDetailCity"
+			  },
+			  "Amount": {
+				  "Type": "Text Value",
+				  "Value": "7000",
+				  "Locator": "TourEligDetailAmount"
+			  }
+		  }
+	  }
+  }
 
-}
+

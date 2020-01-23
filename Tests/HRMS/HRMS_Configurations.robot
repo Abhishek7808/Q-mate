@@ -737,7 +737,7 @@ User should be able to delete grade dependancy
     HRMS_Keywords.Verify Grade Dependancy Deletion  ${formField}
 
 User should be able to add new TA/DA rule
-    [Documentation]  Adds a new TA/DA rule
+    [Documentation]  Adds a new TA/DA rule, This test needs grade dependancy test to be executed.
     [Tags]  TADArule  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
     set test variable  ${formField}  ${configData["TA/DA Rule"]}
@@ -756,6 +756,42 @@ User should be able to add new TA/DA rule
     sleep  3s
     reload page
     HRMS_Keywords.Verify TA/DA Rule Entry  ${formField}
+
+User should be able to add Edit TA/DA rule
+    [Documentation]  Edits a new TA/DA rule, This test needs grade dependancy test to be executed.
+    [Tags]  TADArule  editdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
+    set test variable  ${formField}  ${configData["TA/DA Rule"]}
+    FillFields.Input Value Into Field  ${formField["Edit"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Unit"]}  ${formField["Edit TA/DA Rule"]["Unit"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Allowance Type"]}  ${formField["Edit TA/DA Rule"]["Allowance Type"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Effective From"]}  ${formField["Edit TA/DA Rule"]["Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Grade"]}  ${formField["Edit TA/DA Rule"]["Grade"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Rule"]}  ${formField["Edit TA/DA Rule"]["Rule"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Travel Mode"]}  ${formField["Edit TA/DA Rule"]["Travel Mode"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Travel Class"]}  ${formField["Edit TA/DA Rule"]["Travel Class"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Mileage Allowance"]}  ${formField["Edit TA/DA Rule"]["Mileage Allowance"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["City"]}  ${formField["Edit TA/DA Rule"]["City"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit TA/DA Rule"]["Amount"]}  ${formField["Edit TA/DA Rule"]["Amount"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    sleep  3s
+    reload page
+    HRMS_Keywords.Verify TA/DA Rule Entry  ${formField["Edit TA/DA Rule"]}
+
+User should be able to delete TA/DA rule
+    [Documentation]  Deletes TA/DA rule
+    [Tags]  TADArule  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
+    set test variable  ${formField}  ${configData["TA/DA Rule"]}
+    Common_Keywords.Show Maximum Entries on Page
+#    FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
+#    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    sleep  3s
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Verify TA/DA Rule Deletion  ${formField["Edit TA/DA Rule"]}
+
 
 
 
