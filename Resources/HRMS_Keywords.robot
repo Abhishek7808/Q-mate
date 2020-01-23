@@ -16,7 +16,8 @@ Resource  ${PAGE OBJECTS}/HRMS/PaymentType.robot
 Resource  ${PAGE OBJECTS}/HRMS/Department.robot
 Resource  ${PAGE OBJECTS}/HRMS/Section.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADAgrade.robot
-Resource  ${PAGE OBJECTS}/HRMS/GradeDependancy.robot
+Resource  ${PAGE OBJECTS}/HRMS/TADARule.robot
+
 
 *** Keywords ***
 Open Post Class Page
@@ -232,3 +233,17 @@ Verify GradeDependancy Deletion
     Common_Keywords.Show Maximum Entries on Page
     sleep  3s
     GradeDependancy.Check For Grade Dependancy Deletion In Grade Dependancy Table  ${formField}
+
+Verify TA/DA Rule Entry
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    TADARule.Search For TA/DA Rule  ${formField}
+    sleep  3s
+    TADARule.Check For TA/DA Rule Entry In TA/DA Rule Table  ${formField}
+
+Verify TA/DA Rule Deletion
+    [Arguments]  ${formField}
+    Common_Keywords.Show Maximum Entries on Page
+    TADARule.Search For TA/DA Rule  ${formField}
+    sleep  3s
+    TADARule.Check For TA/DA Rule Deletion In TA/DA Rule Table  ${formField}

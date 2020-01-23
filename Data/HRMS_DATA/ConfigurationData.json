@@ -1779,7 +1779,11 @@
 	   }
     },
 
-  "TA/DA Rules":{
+  "TA/DA Rule":{
+	  "Add New": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
 	  "Unit":{
 			   "Value": "Head Office",
 			   "Type": "Dropdown",
@@ -1813,28 +1817,48 @@
 		},
 		"Effective From":{
 				"Value": {
-					 "Day": "6",
-					 "Month": "Dec",
-					 "Year": "2019"
+					 "Day": "1",
+					 "Month": "Jan",
+					 "Year": "2020"
 				},
 				"Type":"Date",
-				"Locator": "EffectiveFrom"
+				"Locator": "EFFECTIVE_DATE"
 		},
 		"Grade":{
 			   "Value": "QMATEgrade",
 			   "Type": "Dropdown",
 			   "Locator": "Grade"
 		},
-		"Rules":{
+		"Rule":{
 			   "Value": "Active",
 			   "Type": "Dropdown",
 			   "Locator": "Rule"
 		},
-		"Bill Type":{
-			   "Value": "Active",
-			   "Type": "Dropdown",
-			   "Locator": "BillType"
+	    "Travel Mode": {
+			"Value": "Bus",
+			"Type": "Dropdown",
+			"Locator": "TravelMode"
 		},
+	    "Travel Class": {
+			"Value": "Bus",
+			"Type": "Dropdown",
+			"Locator": "TravelMode"
+		},
+	    "Mileage Allowance": {
+				"Type": "Text Value",
+				"Value": "500",
+				"Locator": "HRMS_TOUR_BILL_ELIGIBILITY_MILEAGE_ALLOWANCE"
+		   },
+	   "City": {
+			"Value": "Bari",
+			"Type": "Dropdown",
+			"Locator": "TourEligDetailCity"
+		},
+	    "Amount": {
+				"Type": "Text Value",
+				"Value": "500",
+				"Locator": "TourEligDetailAmount"
+		   },
 		"Save":{
 			  "Value":"",
 			  "Type": "Button",

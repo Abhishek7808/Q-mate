@@ -733,10 +733,29 @@ User should be able to delete grade dependancy
     set to dictionary  ${formField["Delete"]}  Locator=//td[contains(text(),'${lastGradeDate}')]/following-sibling::td//i[@class='fa fa-trash-o']
     FillFields.Input Value Into Field  ${formField["Delete"]}
     wait until page contains   Do you really want to delete selected record?
-    #sleep  3s
     FillFields.Input Value Into Field  ${formField["Ok"]}
     HRMS_Keywords.Verify Grade Dependancy Deletion  ${formField}
-    #press keys  //button[@class='btn btn-primary']  ENTER
+
+User should be able to add new TA/DA rule
+    [Documentation]  Adds a new TA/DA rule
+    [Tags]  TADArule  createdata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
+    set test variable  ${formField}  ${configData["TA/DA Rule"]}
+    FillFields.Input Value Into Field  ${formField["Add New"]}
+    FillFields.Input Value Into Field  ${formField["Unit"]}  ${formField["Unit"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Allowance Type"]}  ${formField["Allowance Type"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Effective From"]}  ${formField["Effective From"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Grade"]}  ${formField["Grade"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Rule"]}  ${formField["Rule"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Travel Mode"]}  ${formField["Travel Mode"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Travel Class"]}  ${formField["Travel Class"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Mileage Allowance"]}  ${formField["Mileage Allowance"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["City"]}  ${formField["City"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Amount"]}  ${formField["Amount"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+    sleep  3s
+    reload page
+    HRMS_Keywords.Verify TA/DA Rule Entry  ${formField}
 
 
 
