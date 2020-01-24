@@ -21,13 +21,29 @@
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
+		"Edit Button": {
+			"Type": "Element",
+			"Locator": "td//i[@class='fa fa-pencil']"
+		},
+		"Filter": {
+			"Type": "Button",
+			"Locator": "//button[@class='btn btn-default']"
+		},
+		"Filter Type": {
+			"Type": "Dropdown",
+			"Value": "Tea Rate",
+			"Locator": "Type_ID"
+		},
+		"Apply Filter": {
+			"Type": "Button",
+			"Locator": "btnformfilter"
+		},
 		"Effective Date": {
 			"Value": {
 				"Day": "5",
 				"Month": "Nov",
 				"Year": "2018"
 			},
-
 			"Type": "Date",
 			"Locator": "EffectiveDate"
 		},
@@ -37,7 +53,7 @@
 			"Locator": "type"
 		},
 		"Rate": {
-			"Value": "100",
+			"Value": "100.00",
 			"Type": "Text Value",
 			"Locator": "rate"
 		},
@@ -45,42 +61,47 @@
 			"Type": "Button",
 			"Locator": "btnSave"
 		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "Tea Rate",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "//button[@id='BtnSearchfilter']//i[@class='fa fa-search']"
+		},
 		"Delete": {
 			"Type": "Element",
-			"Locator": "//td[contains(text(),'1 ')]/following-sibling::td[contains(text(),'Tea Rate')]/following-sibling::td//i[contains(@class,'fa fa-trash-o')]"
+			"Locator": "td//i[contains(@class,'fa fa-trash-o')]"
 		},
 		"Ok": {
 			"Type": "Button",
 			"Locator": "//button[contains(text(),'OK')]"
-		}
-	},
-	"Tea Rate Definition Edit": {
-		"Edit Button": {
-			"Type": "Element",
-			"Locator": "//td[contains(text(),'1 ')]/following-sibling::td[contains(text(),'Tea Rate')]/following-sibling::td//i[contains(@class,'fa fa-pencil')]"
 		},
-		"Effective Date": {
-			"Value": {
-				"Day": "6",
-				"Month": "Nov",
-				"Year": "2019"
+		"Edit Tea Rate Definition": {
+			"Effective Date": {
+				"Value": {
+					"Day": "6",
+					"Month": "Nov",
+					"Year": "2019"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveDate"
 			},
-			"Type": "Date",
-			"Locator": "EffectiveDate"
-		},
-		"Type": {
-			"Value": "Tea Rate",
-			"Type": "Dropdown",
-			"Locator": "type"
-		},
-		"Rate": {
-			"Value": "105",
-			"Type": "Text Value",
-			"Locator": "rate"
-		},
-		"Save": {
-			"Type": "Button",
-			"Locator": "btnSave"
+			"Type": {
+				"Value": "Tea Rate",
+				"Type": "Dropdown",
+				"Locator": "type"
+			},
+			"Rate": {
+				"Value": "105",
+				"Type": "Text Value",
+				"Locator": "rate"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
 		}
 	},
 	"Budget": {
@@ -319,6 +340,28 @@
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEPostClass",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Filter": {
+			"Type": "Button",
+			"Locator": "//button[@class='btn btn-default']"
+		},
+		"Filter Type": {
+			"Type": "Dropdown",
+			"Value": "Worksmen",
+			"Locator": "ClassGroup"
+		},
+		"Apply Filter": {
+			"Type": "Button",
+			"Locator": "btnformfilter"
+		},
 		"Name": {
 			"Value": "QMATEPostClass",
 			"Type": "Text Value",
@@ -345,37 +388,41 @@
 		"Ok": {
 			"Type": "Button",
 			"Locator": "//button[contains(text(),'OK')]"
-		}
-	},
-	"Post Class Update": {
+		},
 		"Update": {
 			"Type": "Element",
 			"Locator": "//td[contains(text(),'QMATEPostClass')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
-		"Name": {
-			"Value": "QMATEPostClass2",
-			"Type": "Text Value",
-			"Locator": "Name"
-		},
-		"Class Group": {
-			"Value": "Executive",
-			"Type": "Dropdown",
-			"Locator": "CLASS_GROUP_ID"
-		},
-		"Seniority Level": {
-			"Value": "2",
-			"Type": "Text Value",
-			"Locator": "SeniorityLevel"
-		},
-		"Save": {
-			"Type": "Button",
-			"Locator": "btnSave"
+		"Update Post Class": {
+			"Name": {
+				"Value": "QMATEPostClass2",
+				"Type": "Text Value",
+				"Locator": "Name"
+			},
+			"Class Group": {
+				"Value": "Executive",
+				"Type": "Dropdown",
+				"Locator": "CLASS_GROUP_ID"
+			},
+			"Seniority Level": {
+				"Value": "2",
+				"Type": "Text Value",
+				"Locator": "SeniorityLevel"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
 		}
 	},
 	"Enquiry Decision Type": {
 		"Add New": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
+		},
+		"Edit Button": {
+			"Type": "Element",
+			"Locator": "td//i[@class='fa fa-pencil']"
 		},
 		"Decision Name": {
 			"Value": "QMATEDecision",
@@ -388,7 +435,10 @@
 			"Locator": "EnquiryType"
 		},
 		"Impact On": {
-			"Value": ["Salary",  "AGI Cumulative"],
+			"Value": [
+				"Salary",
+				"AGI Cumulative"
+			],
 			"Type": "Dropdown-Checkbox",
 			"Locator": {
 				"Locator1": "DivDesicion",
@@ -399,43 +449,53 @@
 		"Save": {
 			"Type": "Button",
 			"Locator": "btnSave"
-		}
-	},
-	"Enquiry Decision Type Edit": {
-		"Edit Button": {
-			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEDecision')]/following-sibling::td[contains(text(),'Explanation')]/following-sibling::td[contains(text(),'Salary')]/following-sibling::td//i[@class='fa fa-pencil']"
 		},
-		"Decision Name": {
-			"Value": "QMATEDecision2",
+		"Search box": {
 			"Type": "Text Value",
-			"Locator": "DECISION_NAME"
+			"Value": "QMATEdecision",
+			"Locator": "SearchText"
 		},
-		"Enquiry Type": {
-			"Value": "Major",
-			"Type": "Dropdown",
-			"Locator": "EnquiryType"
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
 		},
-		"Impact On": {
-			"Value": " Promotion Non Cumulative  ACP Cumulative",
-			"Type": "Dropdown-Checkbox",
-			"Locator": {
-				"Locator1": "DivDesicion",
-				"Locator2": "//*[@id='parDrView']/div/ul/li[7]/a/label/input",
-				"Locator3": "//*[@id='parDrView']/div/ul/li[4]/a/label/input"
-			}
-		},
-		"Save": {
-			"Type": "Button",
-			"Locator": "btnSave"
+		"Action Checkbox": {
+			"Type": "Checkbox",
+			"Value": "select",
+			"Locator": "//td[contains(text(),'QMATEDecision')]/preceding-sibling::td//input"
 		},
 		"Delete Button": {
 			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEDecision')]/following-sibling::td[contains(text(),'Explanation')]/following-sibling::td[contains(text(),'Salary')]/following-sibling::td//i[@class='fa fa-trash-o']"
+			"Locator": "td//i[@class='fa fa-trash-o']"
 		},
 		"Ok": {
 			"Type": "Button",
 			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Edit Enquiry Decision Type": {
+			"Decision Name": {
+				"Value": "QMATEDecision2",
+				"Type": "Text Value",
+				"Locator": "DECISION_NAME"
+			},
+			"Enquiry Type": {
+				"Value": "Major",
+				"Type": "Dropdown",
+				"Locator": "EnquiryType"
+			},
+			"Impact On": {
+				"Value": [" Promotion Non Cumulative"," ACP Cumulative"],
+				"Type": "Dropdown-Checkbox",
+				"Locator": {
+					"Locator1": "DivDesicion",
+					"Locator2": "//*[@id='parDrView']/div/ul/li[7]/a/label/input",
+					"Locator3": "//*[@id='parDrView']/div/ul/li[4]/a/label/input"
+				}
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
 		}
 	},
 	"Position": {
@@ -490,7 +550,7 @@
 			"Locator": "modals-bootbox-custom"
 		},
 		"Name": {
-			"Value": "QMATEDepartment",
+			"Value": "QMATEDeputationDepartment",
 			"Type": "Text Value",
 			"Locator": "Name"
 		},
@@ -526,22 +586,22 @@
 		},
 		"Save": {
 			"Type": "Button",
-			"Locator": "Save"
+			"Locator": "//button[@id='save']"
 		}
 	},
 	"Deputation Department Edit": {
 		"Edit": {
 			"Type":"Actions",
 			"Locator": {
-				"Locator1": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
-				"Locator2": "//td[contains(text(),'QMATEDepartment')]/following-sibling::td//a[contains(text(),'Edit')]"
+				"Locator1": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[contains(text(),'Edit')]"
 			}
 		},
 		"Delete": {
 			"Type":"Actions",
 			"Locator": {
-				"Locator1": "//td[contains(text(),'QMATEDepartment2')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
-				"Locator2": "//td[contains(text(),'QMATEDepartment2')]/following-sibling::td//a[contains(text(),'Delete')]"
+				"Locator1": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[contains(text(),'Delete')]"
 			}
 		},
         "Ok": {
@@ -549,7 +609,7 @@
             "Locator": "//button[contains(text(),'OK')]"
         },
         "Name": {
-			"Value": "QMATEDepartment2",
+			"Value": "QMATEDeputationDepartment",
 			"Type": "Text Value",
 			"Locator": "Name"
 		},
@@ -1462,7 +1522,7 @@
 		"Select Section": {
 			"Value": "select",
 			"Type": "Checkbox",
-			"Locator": "//td[contains(text(),'QMATEsection')]/preceding-sibling::td//input[@class='SelectItem']"
+			"Locator": "//td[contains(text(),'QMATEsection2')]/preceding-sibling::td//input[@class='SelectItem']"
 		},
 		"Department":{
 			  "Value":"QMATEdepartment",
@@ -1495,7 +1555,7 @@
 		},
 		"Edit Section": {
 			"Department":{
-			  "Value":"QMATEdepartment",
+			  "Value":"QMATEdepartment2",
 			  "Type": "Dropdown",
 			  "Locator": "DeptId"
 			},
@@ -1546,7 +1606,7 @@
 		},
 		"Delete": {
 			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-trash-o']"
+			"Locator": "//td[contains(text(),'QMATEdepartment2')]/following-sibling::td//i[@class='fa fa-trash-o']"
 		},
 		"Ok": {
 			"Type": "Button",

@@ -16,40 +16,99 @@ Resource  ${PAGE OBJECTS}/HRMS/PaymentType.robot
 Resource  ${PAGE OBJECTS}/HRMS/Department.robot
 Resource  ${PAGE OBJECTS}/HRMS/Section.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADAgrade.robot
+Resource  ${PAGE OBJECTS}/HRMS/GradeDependancy.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADARule.robot
-
 
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
 
-Add New Class
-    PostClass.Click Add New Post Class
-    
-Fill Post Class Details
-    [Arguments]  ${Post_Class_Name}  ${Seniority_Level}  ${Class_Group}
-    PostClass.Fill Post Class Name  ${Post_Class_Name}
-    PostClass.Select Class Group  ${Class_Group}
-    PostClass.Fill Seniority Level  ${Seniority_Level}
-    
-Check Post Class Entry
-    [Arguments]  ${Post_Class_Name}
-    PostClass.Check Post Class Is Added  ${Post_Class_Name}
-
-Update The Added Post Class Element
-    [Arguments]  ${New_Post_Class_Name}  ${Seniority_Level}  ${Class_Group}
-    PostClass.Get Number of Rows of Post Class Table
-    PostClass.Update The Post Class Entry  ${New_Post_Class_Name}  ${Seniority_Level}  ${Class_Group}
-    Check Post Class Entry  ${New_Post_Class_Name}
-
-Delete The Added Post Class Element
-    [Arguments]  ${New_Post_Class_Name}
-    PostClass.Get Number of Rows of Post Class Table
-    PostClass.Delete The Post Class Entry
-    PostClass.Verify The Deleted Element  ${New_Post_Class_Name}
+#Add New Class
+#    PostClass.Click Add New Post Class
+#
+#Fill Post Class Details
+#    [Arguments]  ${Post_Class_Name}  ${Seniority_Level}  ${Class_Group}
+#    PostClass.Fill Post Class Name  ${Post_Class_Name}
+#    PostClass.Select Class Group  ${Class_Group}
+#    PostClass.Fill Seniority Level  ${Seniority_Level}
+#
+#Check Post Class Entry
+#    [Arguments]  ${Post_Class_Name}
+#    PostClass.Check Post Class Is Added  ${Post_Class_Name}
+#
+#Update The Added Post Class Element
+#    [Arguments]  ${New_Post_Class_Name}  ${Seniority_Level}  ${Class_Group}
+#    PostClass.Get Number of Rows of Post Class Table
+#    PostClass.Update The Post Class Entry  ${New_Post_Class_Name}  ${Seniority_Level}  ${Class_Group}
+#    Check Post Class Entry  ${New_Post_Class_Name}
+#
+#Delete The Added Post Class Element
+#    [Arguments]  ${New_Post_Class_Name}
+#    PostClass.Get Number of Rows of Post Class Table
+#    PostClass.Delete The Post Class Entry
+#    PostClass.Verify The Deleted Element  ${New_Post_Class_Name}
     #Check Post Class Entry  ${New_Post_Class_Name}
 
-HRMS_Keywords.Verify Tea Rate Entry
+Add New Post Class
+    [Arguments]  ${formField}
+    PostClass.Click Add New Post Class Button  ${formField}
+    PostClass.Fill Post Class Details  ${formField}
+    PostClass.Submit Details  ${formField}
+
+Filter Post Classes By Class Group
+    [Arguments]  ${formField}  ${value}
+    PostClass.Click On Filter Button  ${formField}
+    PostClass.Select Type In Dropdown  ${formField}  ${value}
+    PostClass.Apply Filter  ${formField}
+
+Search Post Class By Name
+    [Arguments]  ${formField}  ${value}
+    PostClass.Search Post Class  ${formField}  ${value}
+
+Update Post Class Details
+    [Arguments]  ${formField}
+    PostClass.Click On Update Button  ${formField}
+    PostClass.Fill Post Class Details  ${formField["Update Post Class"]}
+    PostClass.Submit Details  ${formField}
+
+Delete Post Class
+    [Arguments]  ${formField}
+    PostClass.Click On Delete Button  ${formField}
+    PostClass.Confirm Delete Entry Popup Appeared
+    PostClass.Delete Selected Entry  ${formField}
+
+Open Entertainment Declaration Page
+    EntertainmentDeclaration.Go To Entertainment Declaration Page
+
+Declare Tea Rate Definition
+    [Arguments]  ${formField}
+    EntertainmentDeclaration.Click On Declare Button  ${formField}
+    EntertainmentDeclaration.Fill Entertainment Declaration Details  ${formField}
+    EntertainmentDeclaration.Submit Details  ${formField}
+
+Search Tea Rate Definition
+    [Arguments]  ${formField}
+    EntertainmentDeclaration.Search Tea Rate Definition In Entertainment Declaration Table  ${formField}
+
+Apply Tea Rate Filter
+    [Arguments]  ${formField}
+    EntertainmentDeclaration.Click On Filter  ${formField}
+    EntertainmentDeclaration.Select Type In Dropdown  ${formField}
+    EntertainmentDeclaration.Apply Filter  ${formField}
+
+Edit Tea Rate Definition
+    [Arguments]  ${formField}
+    EntertainmentDeclaration.Click On Edit Button  ${formField}
+    EntertainmentDeclaration.Fill Entertainment Declaration Details  ${formField["Edit Tea Rate Definition"]}
+    EntertainmentDeclaration.Submit Details  ${formField}
+
+Delete Tea Rate Definition
+    [Arguments]  ${formField}
+    EntertainmentDeclaration.Click On Delete Button  ${formField}
+    EntertainmentDeclaration.Confirm Delete Entry Popup Appeared
+    EntertainmentDeclaration.Delete Selected Entry  ${formField}
+
+Verify Tea Rate Entry
     [Arguments]  ${formField}
     EntertainmentDeclaration.Check For The New Entry In Entertainment Declaration Table  ${formField}
 
@@ -65,13 +124,39 @@ Verify Post Class deletion
     [Arguments]  ${formField}
     PostClass.Check For The Post Class Entry In The Post Class Table  ${formField}
 
+Open Enquiry Decision Page
+    EnquiryDecision.Go To Enquiry Decision Page
+
+Add New Enquiry Decision Type
+    [Arguments]  ${formField}
+    EnquiryDecision.Click On Add New Button  ${formField}
+    EnquiryDecision.Fill Enquiry Decision Details  ${formField}
+    EnquiryDecision.Submit Details  ${formField}
+
 Verify Enquiry Decision Type Creation
     [Arguments]  ${formField}
     EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
 
+Edit Enquiry Decision Type
+    [Arguments]  ${formField}
+    EnquiryDecision.Click On Edit Button  ${formField}
+    EnquiryDecision.Fill Enquiry Decision Details  ${formField["Edit Enquiry Decision Type"]}
+    EnquiryDecision.Submit Details  ${formField}
+
 Verify Enquiry Decision Type Updatation
     [Arguments]  ${formField}
     EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
+
+Select Enquiry Decision Type
+    [Arguments]  ${formField}
+    EnquiryDecision.Search Enquiry Decision  ${formField}
+    EnquiryDecision.Select Enquiry Decision Checkbox  ${formField}
+
+Delete Enquiry Decision Type
+    [Arguments]  ${formField}
+    EnquiryDecision.Click On Delete Button  ${formField}
+    EnquiryDecision.Confirm Delete Entry Popup Appeared
+    EnquiryDecision.Delete Selected Entry  ${formField}
 
 Verify Enquiry Decision Type Deletion
     [Arguments]  ${formField}

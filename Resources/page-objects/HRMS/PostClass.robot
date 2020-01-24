@@ -64,6 +64,52 @@ Verify The Deleted Element
     sleep  2s
     page should not contain  ${Name}
 
+Click Add New Post Class Button
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Add New Post Class"]}
+
+Click On Filter Button
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Filter"]}
+
+Select Type In Dropdown
+    [Arguments]  ${formField}  ${value}
+    FillFields.Input Value Into Field  ${formField["Filter Type"]}  ${value}
+
+Apply Filter
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Apply Filter"]}
+
+Search Post Class
+    [Arguments]  ${formField}   ${value}
+    FillFields.Input Value Into Field  ${formField["Search box"]}   ${value}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+
+Click On Update Button
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Update"]}
+
+Fill Post Class Details
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Class Group"]}  ${formField["Class Group"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Seniority Level"]}  ${formField["Seniority Level"]["Value"]}
+
+Submit Details
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Save"]}
+
+Click On Delete Button
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Delete Post Class"]}
+
+Confirm Delete Entry Popup Appeared
+    page should contain   Do you really want to Delete this Post Class ??
+
+Delete Selected Entry
+    [Arguments]  ${formField}
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+
 Check For The Post Class Entry In The Post Class Table
     [Arguments]  ${formField}
     ${status}  run keyword and return status  page should contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]

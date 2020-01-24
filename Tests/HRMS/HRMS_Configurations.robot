@@ -11,121 +11,94 @@ ${HRMSconfigurations}  ${DATA}/HRMS_DATA/ConfigurationData.json
 *** Test Cases ***
 User should be able to declare tea rate definition
     [Documentation]  Fills the tea rate definition form and save it.
-    [Tags]  tearatedefinition  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Reimbursement/EntertainmentDeclareIndex
+    [Tags]  HRMS  tearatedefinition  createdata
+    HRMS_Keywords.Open Entertainment Declaration Page
     set test variable  ${formField}  ${configData["Tea Rate Definition"]}
-    FillFields.Input Value Into Field  ${formField["Declare"]}
-    FillFields.Input Value Into Field  ${formField["Effective Date"]}  ${formField["Effective Date"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Type"]}  ${formField["Type"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Rate"]}  ${formField["Rate"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Save"]}
+    HRMS_Keywords.Declare Tea Rate Definition  ${formField}
     HRMS_Keywords.Verify Tea Rate Entry  ${formField}
 
 User should be able to edit tea rate definition
     [Documentation]  Edits the tea rate definition details and save them.
-    [Tags]  tearatedefinition  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Reimbursement/EntertainmentDeclareIndex
-    set test variable  ${formField}  ${configData["Tea Rate Definition Edit"]}
-    FillFields.Input Value Into Field  ${formField["Edit Button"]}
-    FillFields.Input Value Into Field  ${formField["Effective Date"]}  ${formField["Effective Date"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Type"]}  ${formField["Type"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Rate"]}  ${formField["Rate"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Save"]}
-    HRMS_Keywords.Verify Tea Rate Entry  ${formField}
+    [Tags]  HRMS  tearatedefinition  editdata
+    HRMS_Keywords.Open Entertainment Declaration Page
+    set test variable  ${formField}  ${configData["Tea Rate Definition"]}
+    Common_Keywords.Show Maximum Entries on Page
+    HRMS_Keywords.Search Tea Rate Definition  ${formField}
+    HRMS_Keywords.Edit Tea Rate Definition  ${formField}
+    HRMS_Keywords.Verify Tea Rate Entry  ${formField["Edit Tea Rate Definition"]}
 
 User should be able to delete tea rate definition
     [Documentation]  Deletes the tea rate definition entry from the table.
-    [Tags]  tearatedefinition  delete
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Reimbursement/EntertainmentDeclareIndex
-    set test variable  ${formField}  ${configData["Tea Rate Definition Edit"]}
-    FillFields.Input Value Into Field  ${formField["Delete"]}
-    page should contain  Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  ${formField["Ok"]}
-    reload page
-    HRMS_Keywords.Verify Tea Rate Deletion  ${formField}
+    [Tags]  HRMS  tearatedefinition  deletedata
+    HRMS_Keywords.Open Entertainment Declaration Page
+    set test variable  ${formField}  ${configData["Tea Rate Definition"]}
+    Common_Keywords.Show Maximum Entries on Page
+    HRMS_Keywords.Apply Tea Rate Filter  ${formField}
+    HRMS_Keywords.Delete Tea Rate Definition  ${formField}
+    HRMS_Keywords.Verify Tea Rate Deletion  ${formField["Edit Tea Rate Definition"]}
 
 User should be able to add new enquiry decision type
     [Documentation]  Fills the enquiry decision type form and save it.
-    [Tags]  enquirydecisiontype  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryDecision
+    [Tags]  HRMS  enquirydecisiontype  createdata
+    HRMS_Keywords.Open Enquiry Decision Page
     set test variable  ${formField}  ${configData["Enquiry Decision Type"]}
-    FillFields.Input Value Into Field  ${formField["Add New"]}
-    FillFields.Input Value Into Field  ${formField["Decision Name"]}  ${formField["Decision Name"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Enquiry Type"]}  ${formField["Enquiry Type"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Impact On"]}  ${formField["Impact On"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Save"]}
+    HRMS_Keywords.Add New Enquiry Decision Type  ${formField}
     HRMS_Keywords.Verify Enquiry Decision Type Creation  ${formField}
-    sleep  5s
 
 User should be able to edit enquiry decision type
     [Documentation]  Pending because there is an exception on the page
-    [Tags]  enquirydecisiontype  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryDecision
-    set test variable  ${formField}  ${configData["Enquiry Decision Type Edit"]}
+    [Tags]  HRMS  enquirydecisiontype  editdata
+    HRMS_Keywords.Open Enquiry Decision Page
+    set test variable  ${formField}  ${configData["Enquiry Decision Type"]}
     Common_Keywords.Show Maximum Entries on Page
-    sleep  4s
-    FillFields.Input Value Into Field  ${formField["Edit Button"]}
-    FillFields.Input Value Into Field  ${formField["Decision Name"]}  ${formField["Decision Name"]["Value"]}
-    sleep  5s
-    FillFields.Input Value Into Field  ${formField["Enquiry Type"]}  ${formField["Enquiry Type"]["Value"]}
-    sleep  5s
-    FillFields.Input Value Into Field  ${formField["Impact On"]}  ${formField["Impact On"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Save"]}
+    HRMS_Keywords.Select Enquiry Decision Type  ${formField}
+    HRMS_Keywords.Edit Enquiry Decision Type  ${formField}
     HRMS_Keywords.Verify Enquiry Decision Type Updatation  ${formField}
-    sleep  5s
 
 User should be able to delete enquiry decision type
     [Documentation]  Deletes the enquiry decision type entry from the table.
-    [Tags]  enquirydecisiontype  delete
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryDecision
-    set test variable  ${formField}  ${configData["Enquiry Decision Type Edit"]}
+    [Tags]  HRMS  enquirydecisiontype  deletedata
+    HRMS_Keywords.Open Enquiry Decision Page
+    set test variable  ${formField}  ${configData["Enquiry Decision Type"]}
     Common_Keywords.Show Maximum Entries on Page
     sleep  4s
-    FillFields.Input Value Into Field  ${formField["Delete Button"]}
-    page should contain  Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Select Enquiry Decision Type  ${formField}
+    HRMS_Keywords.Delete Enquiry Decision Type  ${formField}
     HRMS_Keywords.Verify Enquiry Decision Type Deletion  ${formField}
-    sleep  5s
 
 User should be abele to create post class
     [Documentation]  Creates new post class
-    [Tags]  postclass  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PostConfig/PostClassIndex
+    [Tags]  HRMS  postclass  createdata
+    HRMS_Keywords.Open Post Class Page
     set test variable  ${formField}  ${configData["Post Class"]}
-    FillFields.Input Value Into Field  ${formField["Add New Post Class"]}
-    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Class Group"]}  ${formField["Class Group"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Seniority Level"]}  ${formField["Seniority Level"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Save"]}
+    HRMS_Keywords.Add New Post Class  ${formField}
     HRMS_Keywords.Verify Post Class Creation  ${formField}
     sleep  5s
 
 User should be able to update post class
     [Documentation]  Edits the details of post class
-    [Tags]  postclass  updatedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PostConfig/PostClassIndex
-    set test variable  ${formField}  ${configData["Post Class Update"]}
-    FillFields.Input Value Into Field  ${formField["Update"]}
-    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Class Group"]}  ${formField["Class Group"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Seniority Level"]}  ${formField["Seniority Level"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Save"]}
+    [Tags]  HRMS  postclass  editdata
+    HRMS_Keywords.Open Post Class Page
+    set test variable  ${formField}  ${configData["Post Class"]}
+    HRMS_Keywords.Filter Post Classes By Class Group  ${formField}  ${formField["Class Group"]["Value"]}
+    HRMS_Keywords.Search Post Class By Name  ${formField}  ${formField["Name"]["Value"]}
+    HRMS_Keywords.Update Post Class Details  ${formField}
     HRMS_Keywords.Verify Post Class Creation  ${formField}
 
 User should be able to delete post class
     [Documentation]  deletes the post class.
-    [Tags]  postclass  delete
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PostConfig/PostClassIndex
+    [Tags]  HRMS  postclass  deletedata
+    HRMS_Keywords.Open Post Class Page
     set test variable  ${formField}  ${configData["Post Class"]}
-    FillFields.Input Value Into Field  ${formField["Delete Post Class"]}
-    sleep  2s
-    FillFields.Input Value Into Field  ${formField["Ok"]}
+    HRMS_Keywords.Filter Post Classes By Class Group  ${formField}  ${formField["Update Post Class"]["Class Group"]["Value"]}
+    HRMS_Keywords.Search Post Class By Name  ${formField}  ${formField["Update Post Class"]["Name"]["Value"]}
+    HRMS_Keywords.Delete Post Class  ${formField}
     HRMS_Keywords.Verify Post Class deletion  ${formField}
     sleep  5s
 
 User should be able to add new deputation department
     [Documentation]  Fills the deputation department form
-    [Tags]  deputationdepartment  createdata
+    [Tags]  HRMS  deputationdepartment  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
     set test variable  ${formField}  ${configData["Deputation Department"]}
     FillFields.Input Value Into Field  ${formField["Add New"]}
@@ -141,7 +114,7 @@ User should be able to add new deputation department
 
 User should be able to edit deputation department
     [Documentation]  Edits the deputation department form
-    [Tags]  deputationdepartment  editdata
+    [Tags]  HRMS  deputationdepartment  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
     set test variable  ${formField}  ${configData["Deputation Department Edit"]}
     FillFields.Input Value Into Field  ${formField["Edit"]}
@@ -158,7 +131,7 @@ User should be able to edit deputation department
 
 User should be able to delete deputation department
     [Documentation]  Edits the deputation department form
-    [Tags]  deputationdepartment  deletedata
+    [Tags]  HRMS  deputationdepartment  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/DeputationDepartment
     set test variable  ${formField}  ${configData["Deputation Department Edit"]}
     FillFields.Input Value Into Field  ${formField["Delete"]}
@@ -168,7 +141,7 @@ User should be able to delete deputation department
 
 User should be able to configure pay slip
     [Documentation]  Configures different details for pay slip
-    [Tags]  payslipconfiguration
+    [Tags]  HRMS  payslipconfiguration
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Common/PaySlipConfiguration
     set test variable  ${formField}  ${configData["Pay Slip Configuration"]}
     FillFields.Input Value Into Field  ${formField["Page/View Name"]["Selected Values"]}  ${formField["Page/View Name"]["Selected Values"]["Value"]}
@@ -193,7 +166,7 @@ User should be able to configure pay slip
 
 User should be able to configure self verification details
     [Documentation]  Configures self varification details
-    [Tags]  selfvarification
+    [Tags]  HRMS  selfvarification
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EMPSELFVERIFICATION/SelfVerificationConfiguration
     set test variable  ${formField}  ${configData["Self Verification Configuration"]}
     FillFields.Input Value Into Field  ${formField["Raise Self Verification Popup"]}  ${formField["Raise Self Verification Popup"]["Value"]}
@@ -210,37 +183,40 @@ User should be able to configure self verification details
 
 User should be able to add new division
     [Documentation]  Adds a new division
-    [Tags]  division  createdata
+    [Tags]  HRMS  division  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
     set test variable  ${formField}  ${configData["Division"]}
     FillFields.Input Value Into Field  ${formField["Add New Division"]}
     FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
+    reload page
     HRMS_Keywords.Verify Division Entry  ${formField}
 
 User should be able to edit division
     [Documentation]  Edits the division details
-    [Tags]  division  editdata
+    [Tags]  HRMS  division  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
     set test variable  ${formField}  ${configData["Edit Division"]}
     FillFields.Input Value Into Field  ${formField["Edit"]}
     FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
+    reload page
     HRMS_Keywords.Verify Division Entry  ${formField}
 
 User should be able to delete division
     [Documentation]  deletes the division from the table
-    [Tags]  division  deletedata
+    [Tags]  HRMS  division  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
     set test variable  ${formField}  ${configData["Edit Division"]}
     FillFields.Input Value Into Field  ${formField["Delete"]}
     page should contain   Do you really want to Delete this Division ??
     FillFields.Input Value Into Field  ${formField["Ok"]}
+    reload page
     HRMS_Keywords.Verify Division Deletion  ${formField}
 
 User should be able to add new designation
     [Documentation]  Adds a new designation
-    [Tags]  designation  createdata
+    [Tags]  HRMS  designation  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation/AddEditDesignationDetails
     set test variable  ${formField}  ${configData["Designation"]}
     FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
@@ -248,11 +224,12 @@ User should be able to add new designation
     FillFields.Input Value Into Field  ${formField["Is Fourth Class"]}  ${formField["Is Fourth Class"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Designation Entry  ${formField}
 
 User should be able to edit designation
     [Documentation]  Edits designation details
-    [Tags]  designation  editdata
+    [Tags]  HRMS  designation  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation
     set test variable  ${formField}  ${configData["Designation"]}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
@@ -264,11 +241,12 @@ User should be able to edit designation
     FillFields.Input Value Into Field  ${formField["Edit Designation"]["Is Fourth Class"]}  ${formField["Edit Designation"]["Is Fourth Class"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Designation Entry  ${formField}
 
 User should be able to delete designation
     [Documentation]  Deletes designation
-    [Tags]  designation  deletedata
+    [Tags]  HRMS  designation  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation
     set test variable  ${formField}  ${configData["Designation"]}
     FillFields.Input Value Into Field  ${formField["Edit Designation"]["Search box"]}  ${formField["Edit Designation"]["Search box"]["Value"]}
@@ -277,11 +255,12 @@ User should be able to delete designation
     FillFields.Input Value Into Field  ${formField["Delete"]}
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
+    reload page
     HRMS_Keywords.Verify Designation Deletion  ${formField}
 
 User should be able to add new hospital empanelment
     [Documentation]  Adds a new hospital empanelment
-    [Tags]  hospitalempanelment  createdata
+    [Tags]  HRMS  hospitalempanelment  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/HospitalEmpanelment
     set test variable  ${formField}  ${configData["Hospital Empanelment"]}
     FillFields.Input Value Into Field  ${formField["Add New"]}
@@ -298,11 +277,12 @@ User should be able to add new hospital empanelment
     FillFields.Input Value Into Field  ${formField["Category"]}  ${formField["Category"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Hospital Empanelment Entry  ${formField}
 
 User should be able to edit hospital empanelment
     [Documentation]  Edit hospital empanelment
-    [Tags]  hospitalempanelment  editdata
+    [Tags]  HRMS  hospitalempanelment  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/HospitalEmpanelment
     set test variable  ${formField}  ${configData["Hospital Empanelment"]}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
@@ -321,11 +301,12 @@ User should be able to edit hospital empanelment
     FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Category"]}  ${formField["Edit Hospital Empanelment"]["Category"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Hospital Empanelment Entry  ${formField}
 
 User should be able to delete hospital empanelment
     [Documentation]  Deletes hospital empanelment
-    [Tags]  hospitalempanelment  deletedata
+    [Tags]  HRMS  hospitalempanelment  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/HospitalEmpanelment
     set test variable  ${formField}  ${configData["Hospital Empanelment"]}
     FillFields.Input Value Into Field  ${formField["Edit Hospital Empanelment"]["Search box"]}  ${formField["Edit Hospital Empanelment"]["Search box"]["Value"]}
@@ -333,11 +314,12 @@ User should be able to delete hospital empanelment
     FillFields.Input Value Into Field  ${formField["Delete"]}
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
+    reload page
     HRMS_Keywords.Verify Designation Deletion  ${formField}
 
 User should be able to add new qualification
     [Documentation]  Adds a new qualification
-    [Tags]  qualification  createdata
+    [Tags]  HRMS  qualification  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/QualificationMaster
     set test variable  ${formField}  ${configData["Qualification"]}
     FillFields.Input Value Into Field  ${formField["Add New"]}
@@ -345,11 +327,12 @@ User should be able to add new qualification
     FillFields.Input Value Into Field  ${formField["Is professional"]}  ${formField["Is professional"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Qualification Entry  ${formField}
 
 User should be able to edit qualification
     [Documentation]  edits qualification details
-    [Tags]  qualification  editdata
+    [Tags]  HRMS  qualification  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/QualificationMaster
     set test variable  ${formField}  ${configData["Qualification"]}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
@@ -359,11 +342,12 @@ User should be able to edit qualification
     FillFields.Input Value Into Field  ${formField["Edit Qualification"]["Is professional"]}  ${formField["Edit Qualification"]["Is professional"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Qualification Entry  ${formField}
 
 User should be able to add new empanelled officer
     [Documentation]  Adds a new empanelled officer
-    [Tags]  empanelledofficer  createdata
+    [Tags]  HRMS  empanelledofficer  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryPanelImpanelment/EmpanelledIndex
     set test variable  ${formField}  ${configData["Empanelled Officer"]}
@@ -376,11 +360,12 @@ User should be able to add new empanelled officer
     FillFields.Input Value Into Field  ${formField["Designation"]}  ${formField["Designation"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Empanelled Officer Entry  ${formField}
 
 User should be able to edit new empanelled officer
     [Documentation]  Edits empanelled officer details
-    [Tags]  empanelledofficer  editdata
+    [Tags]  HRMS  empanelledofficer  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/EnquiryPanelImpanelment/EmpanelledIndex
     set test variable  ${formField}  ${configData["Empanelled Officer"]}
@@ -396,11 +381,12 @@ User should be able to edit new empanelled officer
     FillFields.Input Value Into Field  ${formField["Edit Empanelled Officer"]["Designation"]}  ${formField["Edit Empanelled Officer"]["Designation"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Empanelled Officer Entry  ${formField}
 
 User should be able to add new cadre detail
     [Documentation]  Adds a new cadre
-    [Tags]  cadredetail  createdata
+    [Tags]  HRMS  cadredetail  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
     set test variable  ${formField}  ${configData["Cadre Details"]}
     FillFields.Input Value Into Field  ${formField["Add Cadre"]}
@@ -408,11 +394,12 @@ User should be able to add new cadre detail
     FillFields.Input Value Into Field  ${formField["Order By"]}  ${formField["Order By"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Cadre Detail Entry  ${formField}
 
 User should be able to edit cadre detail
     [Documentation]  Edits cadre details
-    [Tags]  cadredetail  editdata
+    [Tags]  HRMS  cadredetail  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
     set test variable  ${formField}  ${configData["Cadre Details"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -423,11 +410,12 @@ User should be able to edit cadre detail
     FillFields.Input Value Into Field  ${formField["Edit Cadre Detail"]["Order By"]}  ${formField["Edit Cadre Detail"]["Order By"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Cadre Detail Entry  ${formField["Edit Cadre Detail"]}
 
 User should be able to delete cadre detail
     [Documentation]  Deletes cadre detail
-    [Tags]  cadredetail  deletedata
+    [Tags]  HRMS  cadredetail  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
     set test variable  ${formField}  ${configData["Cadre Details"]}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
@@ -436,22 +424,24 @@ User should be able to delete cadre detail
     FillFields.Input Value Into Field  ${formField["Delete"]}
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
+    reload page
     HRMS_Keywords.Verify Designation Deletion  ${formField["Edit Cadre Detail"]}
 
 User should be able to add Payment Type
     [Documentation]  Adds a new Payment Type
-    [Tags]  PaymentType  createdata
+    [Tags]  HRMS  PaymentType  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     set test variable  ${formField}  ${configData["Payment Type"]}
     FillFields.Input Value Into Field  ${formField["Add Payment Type"]}
     FillFields.Input Value Into Field  ${formField["Description"]}  ${formField["Description"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Payment Type Entry  ${formField}
 
 User should be able to edit Payment Type
     [Documentation]  Edits Payment Type details
-    [Tags]  PaymentType  editdata
+    [Tags]  HRMS  PaymentType  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     set test variable  ${formField}  ${configData["Payment Type"]}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
@@ -460,11 +450,12 @@ User should be able to edit Payment Type
     FillFields.Input Value Into Field  ${formField["Edit Payment Type"]["Description"]}  ${formField["Edit Payment Type"]["Description"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Payment Type Entry  ${formField["Edit Payment Type"]}
 
 User should be able to delete Payment Type
     [Documentation]  Deletes Payment Type
-    [Tags]  PaymentType  deletedata
+    [Tags]  HRMS  PaymentType  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     set test variable  ${formField}  ${configData["Payment Type"]}
     FillFields.Input Value Into Field  ${formField["Edit Payment Type"]["Search box"]}  ${formField["Edit Payment Type"]["Search box"]["Value"]}
@@ -473,48 +464,39 @@ User should be able to delete Payment Type
     FillFields.Input Value Into Field  ${formField["Delete"]}
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
-    HRMS_Keywords.Verify Designation Deletion  ${formField["Edit Payment Type"]}
+    reload page
+    HRMS_Keywords.Verify Payment Type Deletion  ${formField["Edit Payment Type"]}
 
 User should be able to add new Department
     [Documentation]  Adds a new Department
-    [Tags]  department  createdata
+    [Tags]  HRMS  department  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
     set test variable  ${formField}  ${configData["Department"]}
     FillFields.Input Value Into Field  ${formField["Add"]}
     FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Department Entry  ${formField}
 
 User should be able to edit Department
     [Documentation]  Edits Department details
-    [Tags]  department  editdata
+    [Tags]  HRMS  department  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
     set test variable  ${formField}  ${configData["Department"]}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Search button"]}
     sleep  3s
     FillFields.Input Value Into Field  ${formField["Edit"]}
-    FillFields.Input Value Into Field  ${formField["Edit Department"]["Description"]}  ${formField["Edit Department"]["Description"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Edit Department"]["Name"]}  ${formField["Edit Department"]["Name"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Department Entry  ${formField["Edit Department"]}
-
-User should be able to delete Department
-    [Documentation]  Deletes Department
-    [Tags]  Department  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
-    set test variable  ${formField}  ${configData["Department"]}
-    FillFields.Input Value Into Field  ${formField["Edit Department"]["Search box"]}  ${formField["Edit Department"]["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Search button"]}
-    FillFields.Input Value Into Field  ${formField["Delete"]}
-    wait until page contains   Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  ${formField["Ok"]}
-    HRMS_Keywords.Verify Department Deletion  ${formField["Edit Department"]}
 
 User should be able to add new section details
     [Documentation]  Adds a new section
-    [Tags]  section  createdata
+    [Tags]  HRMS  section  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
     set test variable  ${formField}  ${configData["Section"]}
     FillFields.Input Value Into Field  ${formField["Add Section"]}
@@ -525,11 +507,12 @@ User should be able to add new section details
     FillFields.Input Value Into Field  ${formField["Is Active"]}  ${formField["Is Active"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Section Entry  ${formField}
 
 User should be able to add edit section details
     [Documentation]  Edits section details
-    [Tags]  section  editdata
+    [Tags]  HRMS  section  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
     set test variable  ${formField}  ${configData["Section"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -543,11 +526,12 @@ User should be able to add edit section details
     FillFields.Input Value Into Field  ${formField["Edit Section"]["Is Active"]}  ${formField["Edit Section"]["Is Active"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Save"]}
     wait until page contains element  SearchText
+    reload page
     HRMS_Keywords.Verify Section Entry  ${formField["Edit Section"]}
 
 User should be able to delete section
     [Documentation]  Deletes section
-    [Tags]  section  deletedata
+    [Tags]  HRMS  section  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
     set test variable  ${formField}  ${configData["Section"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -557,11 +541,25 @@ User should be able to delete section
     FillFields.Input Value Into Field  ${formField["Delete"]}
     wait until page contains   Do you really want to delete selected record(s) ?
     FillFields.Input Value Into Field  ${formField["Ok"]}
+    reload page
     HRMS_Keywords.Verify Section Deletion  ${formField["Edit Section"]}
+
+User should be able to delete Department
+    [Documentation]  Deletes Department
+    [Tags]  HRMS  Department  deletedata
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
+    set test variable  ${formField}  ${configData["Department"]}
+    FillFields.Input Value Into Field  ${formField["Edit Department"]["Search box"]}  ${formField["Edit Department"]["Search box"]["Value"]}
+    FillFields.Input Value Into Field  ${formField["Search button"]}
+    FillFields.Input Value Into Field  ${formField["Delete"]}
+    wait until page contains   Are you Sure to Delete this Record?
+    FillFields.Input Value Into Field  ${formField["Ok"]}
+    reload page
+    HRMS_Keywords.Verify Department Deletion  ${formField["Edit Department"]}
 
 User should be able to add new TA/DA grade
     [Documentation]  Adds a new TA/DA grade
-    [Tags]  TADAgrade  createdata
+    [Tags]  HRMS  TADAgrade  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     set test variable  ${formField}  ${configData["TA/DA Grade"]}
     FillFields.Input Value Into Field  ${formField["Add New Grade"]}
@@ -584,7 +582,7 @@ User should be able to add new TA/DA grade
 
 User should be able to edit TA/DA grade
     [Documentation]  Edits TA/DA grade details
-    [Tags]  TADAgrade  editdata
+    [Tags]  HRMS  TADAgrade  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     set test variable  ${formField}  ${configData["TA/DA Grade"]}
     FillFields.Input Value Into Field  ${formField["Search box"]}  ${formField["Search box"]["Value"]}
@@ -606,7 +604,7 @@ User should be able to edit TA/DA grade
 
 User should be able to delete TA/DA grade
     [Documentation]  Deletes TA/DA grade
-    [Tags]  TADAgrade  deletedata
+    [Tags]  HRMS  TADAgrade  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     set test variable  ${formField}  ${configData["TA/DA Grade"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -619,7 +617,7 @@ User should be able to delete TA/DA grade
 
 User should be able to revised TA/DA grade
     [Documentation]  Revises TA/DA grade details
-    [Tags]  TADAgrade  revisedata
+    [Tags]  HRMS  TADAgrade  revisedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     set test variable  ${formField}  ${configData["TA/DA Grade"]}
     FillFields.Input Value Into Field  ${formField["Add New Grade"]}
@@ -661,7 +659,7 @@ User should be able to revised TA/DA grade
 
 User should be able to add new grade dependancy
     [Documentation]  Creates new grade dependancy
-    [Tags]  gradedependancy  createdata
+    [Tags]  HRMS  gradedependancy  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
     set test variable  ${formField}  ${configData["Grade Dependency"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -690,7 +688,7 @@ User should be able to add new grade dependancy
 
 User should be able to edit grade dependancy
     [Documentation]  Edits grade dependancy
-    [Tags]  gradedependancy  editdata
+    [Tags]  HRMS  gradedependancy  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
     set test variable  ${formField}  ${configData["Grade Dependency"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -720,7 +718,7 @@ User should be able to edit grade dependancy
 
 User should be able to delete grade dependancy
     [Documentation]  Deletes grade dependancy
-    [Tags]  gradedependancy  deletedata
+    [Tags]  HRMS  gradedependancy  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
     set test variable  ${formField}  ${configData["Grade Dependency"]}
     Common_Keywords.Show Maximum Entries on Page
@@ -738,7 +736,7 @@ User should be able to delete grade dependancy
 
 User should be able to add new TA/DA rule
     [Documentation]  Adds a new TA/DA rule, This test needs grade dependancy test to be executed.
-    [Tags]  TADArule  createdata
+    [Tags]  HRMS  TADArule  createdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
     set test variable  ${formField}  ${configData["TA/DA Rule"]}
     FillFields.Input Value Into Field  ${formField["Add New"]}
@@ -759,7 +757,7 @@ User should be able to add new TA/DA rule
 
 User should be able to add Edit TA/DA rule
     [Documentation]  Edits a new TA/DA rule, This test needs grade dependancy test to be executed.
-    [Tags]  TADArule  editdata
+    [Tags]  HRMS  TADArule  editdata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
     set test variable  ${formField}  ${configData["TA/DA Rule"]}
     FillFields.Input Value Into Field  ${formField["Edit"]}
@@ -780,7 +778,7 @@ User should be able to add Edit TA/DA rule
 
 User should be able to delete TA/DA rule
     [Documentation]  Deletes TA/DA rule
-    [Tags]  TADArule  deletedata
+    [Tags]  HRMS  TADArule  deletedata
     Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
     set test variable  ${formField}  ${configData["TA/DA Rule"]}
     Common_Keywords.Show Maximum Entries on Page

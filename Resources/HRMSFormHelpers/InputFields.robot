@@ -30,6 +30,7 @@ Input Date
 
 Input Button
     [Arguments]  ${Locator}  ${Value}
+    wait until element is enabled  ${Locator}
     click button  ${Locator}
 
 Input Link
