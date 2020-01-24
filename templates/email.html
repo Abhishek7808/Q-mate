@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title>Results Dropdown</title>
+{#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />#}
+{#<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
+{#<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>#}
+{#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>#}
+{#    <script src = "//code.jquery.com/jquery-3.0.0.min.js"></script> <!-- add jquery library-->#}
+
+<meta name="viewport" content="width = device-width, initial-scale = 1">
+<link rel="stylesheet"
+      href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+<script type="text/javascript"
+        src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+</script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/themes/flick/jquery-ui.min.css" />
+
+{#  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>#}
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+  <script>
+  $(function() {
+    var items = [ 'anubhav.verma@e-connectsolutions.com', 'abhishek.hingar@e-connectsolutions.com', 'bhuvnesh.jain@e-connectsolutions.com', 'vipul.jain@e-connectsolutions.com', 'shubham.bansal@e-connectsolutions.com', 'devanshu.paliwal@e-connectsolutions.com', 'shoaeb.khan@e-connectsolutions.com', 'divaksh.jain@e-connectsolutions.com', 'rahul.jain@e-connectsolutions.com', 'nitesh.garg@e-connectsolutions.com' ];
+
+    function split( val ) {
+      return val.split( /,\s*/ );
+    }
+    function extractLast( term ) {
+      return split( term ).pop();
+    }
+
+    $( ".validate" )
+      .autocomplete({
+        minLength: 0,
+        source: function( request, response ) {
+          response( $.ui.autocomplete.filter(
+            items, extractLast( request.term ) ) );
+        },
+        focus: function() {
+          return false;
+        },
+        select: function( event, ui ) {
+          var terms = split( this.value );
+          // remove the current input
+          terms.pop();
+          // add the selected item
+          terms.push( ui.item.value );
+          // add placeholder to get the comma-and-space at the end
+          terms.push( "" );
+          this.value = terms.join( ", " );
+          return false;
+        }
+      });
+  });
+  </script>
+
+
+</head>
+<body class="container">
+<div class="row">
+    <form class="col s12" method="POST" action="/rajerp/api/emails">
+        <div class="row">
+            <fieldset>
+
+                <!-- Form Name -->
+                <legend>Email configuration</legend>
+
+                <div class="input-field col s12">
+                    <input id="unit_id" name="hrm" type="text" class="validate" value="{{ email_dict["HRM"] }}" required/>
+                    <label for="unit_id">HRM</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="unit_id" name="acc" type="text" class="validate" value="{{ email_dict["ACC"] }}" required/>
+                    <label for="unit_id">ACC</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="unit_id" name="cpf" type="text" class="validate" value="{{ email_dict["CPF"] }}" required/>
+                    <label for="unit_id">CPF</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="unit_id" name="smm" type="text" class="validate" value="{{ email_dict["SMM"] }}" required/>
+                    <label for="unit_id">SMM</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="unit_id" name="urm" type="text" class="validate" value="{{ email_dict["URM"] }}" required/>
+                    <label for="unit_id">URM</label>
+                </div>
+
+                <div class="input-field col s12">
+                    <input id="unit_id" name="disbursement" type="text" class="validate" value="{{ email_dict["DISBURSEMENT"] }}" required/>
+                    <label for="unit_id">Disbursement</label>
+                </div>
+
+                <input type="hidden" name="mode" value="email"/>
+
+                <input id="saveForm" class="btn btn-primary my-1" type="submit" name="submit" value="Submit"/>
+
+            </fieldset>
+        </div>
+    </form>
+</div>
+</body>
+</html>

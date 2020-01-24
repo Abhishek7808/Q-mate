@@ -1,3 +1,8 @@
-Results
+robot/Results
+robot/.idea
+robot/Tests/DEBUG.robot
+log
+__pycache__
+rajerpenv
+reports
 .idea
-DEBUG.robot

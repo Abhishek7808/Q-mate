@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Results Dropdown</title>
+    {#    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha256-L/W5Wfqfa0sdBNIKN9cG6QA5F2qx4qICmU2VgLruv9Y=" crossorigin="anonymous" />#}
+    {#<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>#}
+    {#<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>#}
+    {#<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>#}
+    {#    <script src = "//code.jquery.com/jquery-3.0.0.min.js"></script> <!-- add jquery library-->#}
+
+    <meta name="viewport" content="width = device-width, initial-scale = 1">
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+    <script type="text/javascript"
+            src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.full.js"></script>
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.css">
+
+    <style type="text/css">
+        /**
+         * Basic styles
+         */
+        body {
+            overflow-x: hidden;
+            overflow-y: scroll;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
+
+        ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        :focus {
+            outline: none;
+        }
+
+        :disabled {
+            background-color: transparent;
+        }
+
+        /**
+         * Multiple Select2
+         */
+        .select2-container--material {
+            width: 100% !important;
+            /**
+             * Textbox
+             */
+            /**
+             * Dropdown
+             */
+            /**
+             * Options
+             */
+            /**
+             * Focused textbox
+             */
+            /**
+             * Disabled textbox
+             */
+        }
+
+        .select2-container--material ::-webkit-input-placeholder {
+            color: inherit;
+        }
+
+        .select2-container--material :-ms-input-placeholder {
+            color: inherit;
+        }
+
+        .select2-container--material ::-ms-input-placeholder {
+            color: inherit;
+        }
+
+        .select2-container--material ::placeholder {
+            color: inherit;
+        }
+
+        .select2-container--material .select2-selection {
+            /* @extend input */
+            overflow: visible;
+            font: inherit;
+            touch-action: manipulation;
+            margin: 0;
+            line-height: inherit;
+            border-radius: 0;
+            box-sizing: inherit;
+            /* @extend .form-control */
+            display: block;
+            width: 100%;
+            color: #55595c;
+            background-clip: padding-box;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+        {#padding: .5rem 0 .6rem;#} font-size: 1rem;
+            line-height: 1.5;
+            background-color: transparent;
+            background-image: none;
+            border-radius: 0;
+            margin-top: .2rem;
+            margin-bottom: 1rem;
+            /* @extend input[type=text] */
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            border-radius: 0;
+            outline: 0;
+            width: 100%;
+            font-size: 1rem;
+            box-shadow: none;
+            transition: all .3s;
+            min-height: 2.1rem;
+        }
+
+        .select2-container--material .select2-selection .select2-selection__rendered {
+            padding-left: 0;
+        }
+
+        .select2-container--material .select2-selection--single .select2-selection__rendered {
+            float: left;
+        }
+
+        .select2-container--material .select2-selection--single .select2-selection__arrow {
+            float: right;
+        }
+
+        .select2-container--material .select2-selection--multiple {
+            /**
+             * Multiple selected options
+             */
+            /**
+             * Multiple selected option clear button
+             */
+        }
+
+        .select2-container--material .select2-selection--multiple .select2-selection__rendered {
+            width: 100%;
+        }
+
+        .select2-container--material .select2-selection--multiple .select2-selection__rendered li {
+            list-style: none;
+        }
+
+        .select2-container--material .select2-selection--multiple .select2-selection__choice {
+            /* @extend .mdl-chip */
+            height: 32px;
+            line-height: 32px;
+            padding: 0 12px;
+            border: 0;
+            border-radius: 16px;
+            background-color: #dedede;
+            display: inline-block;
+            color: rgba(0, 0, 0, 0.87);
+            margin: 2px 0;
+            font-size: 0;
+            white-space: nowrap;
+            /* @extend .mdl-chip__text */
+            font-size: 13px;
+            vertical-align: middle;
+            display: inline-block;
+            float: left;
+            margin-right: 8px;
+            margin-bottom: 4px;
+        }
+
+        .select2-container--material .select2-selection--multiple .select2-selection__choice__remove {
+            /* Hide default content */
+            font-size: 0;
+            opacity: 0.38;
+            cursor: pointer;
+            float: right;
+            margin-top: 4px;
+            margin-right: -6px;
+            margin-left: 6px;
+            transition: opacity;
+        }
+
+        .select2-container--material .select2-selection--multiple .select2-selection__choice__remove::before {
+            content: "cancel";
+            /* @extend .material-icons */
+            font-family: 'Material Icons';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 24px;
+            line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
+            display: inline-block;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+            color: #000;
+        }
+
+        .select2-container--material .select2-selection--multiple .select2-selection__choice__remove:hover {
+            opacity: 0.54;
+        }
+
+        .select2-container--material .select2-search--inline .select2-search__field {
+            width: 100%;
+            margin-top: 0;
+            /* Match input[type=text] */
+            height: 34px;
+            line-height: 1;
+        }
+
+        .select2-container--material .select2-dropdown {
+            border: 0;
+        }
+
+        .select2-container--material .select2-dropdown .select2-search__field {
+            min-height: 2.1rem;
+            margin-bottom: 16px;
+            border: 0;
+            border-bottom: 1px solid #ccc;
+            transition: all .3s;
+        }
+
+        .select2-container--material .select2-dropdown .select2-search__field:focus {
+            border-bottom: 1px solid #26a69a;
+            box-shadow: 0 1px 0 0 #26a69a;
+        }
+
+
+        .select2-container--material .select2-results__options {
+            /* @extend .zf-shadow-depth* */
+            box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+            /* @extend .dropdown-content */
+            background-color: #fff;
+            margin: 0;
+            min-width: 100px;
+            max-height: 650px;
+            overflow-y: auto;
+            z-index: 999;
+            will-change: width, height;
+            /* @extend .dropdown-content inline styles */
+        }
+
+        .select2-container--material .select2-results__option {
+            /* @extend .dropdown-content li */
+            cursor: pointer;
+            clear: both;
+            color: rgba(0, 0, 0, 0.87);
+            line-height: 1.5rem;
+            text-align: left;
+            text-transform: none;
+            /* @extend .dropdown-content li>a, .dropdown-content li>span */
+            font-size: 1.2rem;
+            display: block;
+            padding: 1rem;
+            /**
+             * Disabled options
+             */
+            /**
+             * Selected option
+             */
+            /**
+             * Active/hovered option
+             */
+        }
+
+        .select2-container--material .select2-results__option[aria-disabled=true] {
+            /* @extend .select-dropdown li.disabled */
+            color: rgba(0, 0, 0, 0.3);
+            background-color: transparent !important;
+            cursor: context-menu;
+            /* @extend .disabled */
+            cursor: not-allowed;
+        }
+
+        .select2-container--material .select2-results__option[aria-selected=true] {
+            /* @extend .dropdown-content li:active, .dropdow-content li:hover */
+            color: #26a69a;
+            background-color: #eee;
+        }
+
+        .select2-container--material .select2-results__option--highlighted[aria-selected] {
+            background-color: #ddd;
+        }
+
+        .select2-container--material.select2-container--focus .select2-selection {
+            /* @extend input[type=text]:focus */
+            border-bottom: 1px solid #26a69a;
+            box-shadow: 0 1px 0 0 #26a69a;
+        }
+
+        .select2-container--material.select2-container--disabled .select2-selection {
+            /* @extend .select-wrapper input.select-dropdown:disabled */
+            color: rgba(0, 0, 0, 0.3);
+            cursor: default;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+        }
+
+        .select2-container--material.select2-container--disabled.select2-container--focus .select2-selection {
+            box-shadow: none;
+        }
+
+    </style>
+
+    <script>
+        $(document).ready(function () {
+            $('.simple_dropdown').material_select();
+        });
+    </script>
+
+    <script type="text/javascript">
+        function setForm(value) {
+
+            if (value == 'viewreport') {
+                document.getElementById('viewreport').style = 'display:block;';
+                document.getElementById('runtestcase').style = 'display:none;';
+                document.getElementById('rundatavalidation').style = 'display:none;';
+            } else if (value == 'runtestcase') {
+                document.getElementById('viewreport').style = 'display:none;';
+                document.getElementById('rundatavalidation').style = 'display:none;';
+                document.getElementById('runtestcase').style = 'display:block;';
+            } else {
+                document.getElementById('viewreport').style = 'display:none;';
+                document.getElementById('rundatavalidation').style = 'display:block;';
+                document.getElementById('runtestcase').style = 'display:none;';
+            }
+
+        }
+
+    </script>
+
+
+</head>
+<body class="container" style="width: 80%;">
+<h4>E-प्रशासन Bot</h4>
+<ul class="collapsible popout" data-collapsible="accordion">
+    <li>
+        <div class="collapsible-header">
+            <i class="material-icons">bug_report</i>View Reports
+        </div>
+        <div class="collapsible-body">
+            <div class="row" style="margin: 10px;">
+                <div class="input-field col s6">
+                    <form id="viewreport">
+                        <fieldset>
+                            <!-- Form Name -->
+                            <legend>Test Reports</legend>
+                            <select name="test_report" class="simple_dropdown" id="test_dropdown">
+                                <option selected disabled>Date...</option>
+                                {% set new_report = [] %}
+                                {% for report in test_reports %}
+                                    {% if report[-27:-21] == "report" %}
+                                        {{ new_report.append(report) }}
+                                    {% endif %}
+                                {% endfor %}
+                                {% for report in new_report %}
+                                    {% set report_name = report[34:-28] %}
+                                    {% set date_time = report[-20:-5] %}
+                                    {% set date = date_time[:8] %}
+                                    {% set day = date[-2:] %}
+                                    {% set month = date[-4:-2] %}
+                                    {% set year = date[-8:-4] %}
+                                    {% set standard_date = day+"-"+month+"-"+year %}
+                                    {% set time= date_time[9:16] %}
+                                    {% set hour = time[:2] %}
+                                    {% set minute = time[2:4] %}
+                                    {% set second = time[4:] %}
+                                    {% set standard_time = hour+":"+minute+":"+second %}
+                                    {% set report_url  = report[20:] %}
+                                    <option value="/rajerp{{ report_url }}">{{ report_name }} {{ standard_date }} - {{ standard_time }}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" id="view_test_report" class="btn btn-primary my-1" value="View">
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="input-field col s6">
+                    <form id="viewreport">
+                        <fieldset>
+                            <!-- Form Name -->
+                            <legend>Task Reports</legend>
+                            <select name="task_report" class="simple_dropdown" id="task_dropdown">
+                                <option selected disabled>Date...</option>
+                                {% set new_report = [] %}
+                                {% for report in task_reports %}
+                                    {% if report[-27:-21] == "report" %}
+                                        {{ new_report.append(report) }}
+                                    {% endif %}
+                                {% endfor %}
+                                {% for report in new_report %}
+                                    {% set report_name = report[34:-28] %}
+                                    {% set date_time = report[-20:-5] %}
+                                    {% set date = date_time[:8] %}
+                                    {% set day = date[-2:] %}
+                                    {% set month = date[-4:-2] %}
+                                    {% set year = date[-8:-4] %}
+                                    {% set standard_date = day+"-"+month+"-"+year %}
+                                    {% set time= date_time[9:16] %}
+                                    {% set hour = time[:2] %}
+                                    {% set minute = time[2:4] %}
+                                    {% set second = time[4:] %}
+                                    {% set standard_time = hour+":"+minute+":"+second %}
+                                    {% set report_url  = report[20:] %}
+                                    <option value="/rajerp{{ report_url }}">{{ report_name }} {{ standard_date }} - {{ standard_time }}</option>
+                                {% endfor %}
+                            </select>
+                            <input type="submit" id="view_task_report" class="btn btn-primary my-1" value="View">
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </li>
+
+    <li>
+        <div class="collapsible-header">
+            <i class="material-icons">adb</i>Test Automation
+        </div>
+        <div class="collapsible-body">
+
+            <div class="row" style="margin: 10px;">
+
+                <form method="GET" action="/rajerp/api/tests" id="runtestcase">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Run Test Suite</legend>
+
+                        <!-- Multiple Radios (inline) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="environment">Environment</label>
+                            <div class="col-md-4">
+                                <input type="radio" name="environment" id="environment-0" value="test"
+                                       checked="checked">
+                                <label for="environment-0">Test</label>
+                                <input type="radio" name="environment" id="environment-1" value="demo">
+                                <label for="environment-1">Demo</label>
+                                <input type="radio" name="environment" id="environment-2" value="live">
+                                <label for="environment-2">Live</label>
+                            </div>
+                        </div>
+                        <!-- Multiple Radios (inline) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="notifications">Send Notifications</label>
+                            <div class="col-md-4">
+                                <input type="radio" name="notifications" id="notifications-0" value="True"
+                                       checked="checked">
+                                <label class="radio-inline" for="notifications-0">Yes</label>
+                                <input type="radio" name="notifications" id="notifications-1" value="False">
+                                <label class="radio-inline" for="notifications-1">No</label>
+                            </div>
+                        </div>
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="reportname">Report Name</label>
+                            <div class="col-md-4">
+                                <input id="reportname" name="reportname" type="text" placeholder="Enter name for bug report" class="form-control input-md">
+                            </div>
+                        </div>
+
+                        <!-- Select Multiple -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="testtags">Select Suites</label>
+                            <div class="col-md-4">
+                                <select id="testtags" name="testtags" class="js-select2" multiple>
+                                    <option value=" ">All</option>
+                                    <option value="login">Login/Navigation Tests</option>
+                                    <option value="generictests">Generic Tests</option>
+                                    <option value="smm">SMM</option>
+                                    <option value="cpf">CPF</option>
+                                    <option value="hrms">HRMS</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="mode" value="headlesschrome">
+                        <input type="submit" class="btn btn-primary my-1" id="submittests123" value="Run">
+
+                    </fieldset>
+                </form>
+            </div>
+
+        </div>
+    </li>
+
+    <li>
+        <div class="collapsible-header">
+            <i class="material-icons">android</i>Robotic Process Automation
+        </div>
+        <div class="collapsible-body">
+            <div class="row" style="margin: 10px;">
+
+                <form method="GET" action="/rajerp/api/dv/manual" id="rundatavalidation">
+                    <fieldset>
+
+                        <!-- Form Name -->
+                        <legend>Validate Data</legend>
+                        <!-- Multiple Radios (inline) -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="notifications">Send Notifications</label>
+                            <div class="col-md-4">
+                                <input type="radio" name="notifications" id="notifications-3" value="True"
+                                       checked="checked">
+                                <label class="radio-inline" for="notifications-3">Yes</label>
+                                <input type="radio" name="notifications" id="notifications-4" value="False">
+                                <label class="radio-inline" for="notifications-4">No</label>
+                            </div>
+                        </div>
+
+
+                        <!-- Text input-->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="reportname">Report Name</label>
+                            <div class="col-md-4">
+                                <input id="reportname" name="reportname" type="text" placeholder="Enter name for task report" class="form-control input-md">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input-field col s4">
+                                <select name="financial_year" class="simple_dropdown">
+                                    <option value="20172018">2017-2018</option>
+                                    <option value="20182019" selected>2018-2019</option>
+                                    <option value="20192020">2019-2020</option>
+                                </select>
+                                <label for="financial_year">Financial Year</label>
+
+                            </div>
+
+                            <div class="input-field col s4">
+                                <input id="unit_id" name="unit_id" type="number" class="validate" required/>
+                                <label for="unit_id">Unit ID</label>
+                            </div>
+
+                            <div class="input-field col s4">
+                                <input id="cycle_id" name="cycle_id" type="number" class="validate" required/>
+                                <label for="cycle_id">Cycle ID</label>
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>Select Organization</label>
+                            <select class="simple_dropdown" name="organization_id" id="organization_id">
+                                <option disabled selected>Select One</option>
+                                <optgroup label="Testing">
+                                    <option value="A">RajERP - Demo</option>
+                                    <option value="B">RajERP - Test</option>
+                                    <option value="C">RajERP - Live</option>
+                                </optgroup>
+
+                                <optgroup label="Production">
+                                    <option value="180" data-icon="/rajerp/reports/logos/auk.jpeg" class="circle">
+                                        AUK
+                                    </option>
+                                    <option value="181" data-icon="/rajerp/reports/logos/avvnl.gif"
+                                            class="circle">AVVNL
+                                    </option>
+                                    <option value="197" data-icon="/rajerp/reports/logos/jdvnl.jpeg"
+                                            class="circle">JDVNL
+                                    </option>
+                                    <option value="67" data-icon="/rajerp/reports/logos/jmrc.jpeg" class="circle">
+                                        JMRC
+                                    </option>
+                                    <option value="182" data-icon="/rajerp/reports/logos/jvvnl.png"
+                                            class="circle">JVVNL
+                                    </option>
+                                    <option value="119" data-icon="/rajerp/reports/logos/rcdf.png" class="circle">
+                                        RCDF
+                                    </option>
+                                    <option value="1" data-icon="/rajerp/reports/logos/risl.jpeg" class="circle">
+                                        RISL
+                                    </option>
+                                    <option value="104" data-icon="/rajerp/reports/logos/rsmml.jpeg"
+                                            class="circle">RSMML
+                                    </option>
+                                    <option value="198" data-icon="/rajerp/reports/logos/rvpn.jpeg"
+                                            class="circle">RVPN
+                                    </option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+
+                        <!-- Select Multiple -->
+                        <div class="form-group">
+                            <label class="col-md-4 control-label" for="dv_tags">Select Multiple</label>
+                            <div class="col-md-4">
+                                <select id="dv_tags" name="disbursement_type" class="js-select2 required" multiple required>
+                                    <option value="">All</option>
+                                    <option value="Salary">Salary</option>
+                                    <option value="Arrear">Arrear</option>
+                                    <option value="Bonus">Bonus</option>
+                                    <option value="Travel Expenses">Travel Expenses</option>
+                                    <option value="Honorarium">Honorarium</option>
+                                    <option value="Ex-Gratia">Ex-Gratia</option>
+                                    <option value="Leave Encashment">Leave Encashment</option>
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" name="mode" value="headlesschrome">
+                        <input type="hidden" name="environment" id="environment">
+                        <input type="submit" class="btn btn-primary my-1" id="runvalidation" value="Run">
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </li>
+</ul>
+
+
+<script type="text/javascript">
+    "use strict";
+
+    $(document).ready(function domReady() {
+        $(".js-select2").select2({
+            placeholder: "Select Suites",
+            theme: "material"
+        });
+    });
+
+    $(function () {
+        $('#organization_id').change(function () {
+            var selectedVal = $('#organization_id').val();
+            var x;
+            if (selectedVal === "A") {
+                x = "demo";
+            } else if (selectedVal === "B") {
+                x = "test";
+            } else {
+                x = "live";
+            }
+            $('#environment').val(x);
+        }).change(); // Trigger the event
+    });
+
+
+    $('#view_test_report').click(function () { // on submit button click
+        var urldata = $('#test_dropdown :selected').val(); // get the selected  option value
+        window.open(urldata) // open a new window. here you need to change the url according to your wish.
+    });
+
+    $('#view_task_report').click(function () { // on submit button click
+        var urldata = $('#task_dropdown :selected').val(); // get the selected  option value
+        window.open(urldata) // open a new window. here you need to change the url according to your wish.
+    });
+
+</script>
+
+</body>
+</html>
