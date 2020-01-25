@@ -131,8 +131,8 @@ User should be able to configure pay slip
     [Documentation]  Configures different details for pay slip.
     [Tags]  HRMS  payslipconfiguration
     HRMS_Keywords.Open Pay Slip Configuration Page
-
     set test variable  ${formField}  ${configData["Pay Slip Configuration"]}
+    HRMS_Keywords.Configure Pay Slip Details  ${formField}
     FillFields.Input Value Into Field  ${formField["Page/View Name"]["Selected Values"]}  ${formField["Page/View Name"]["Selected Values"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Show Other Details"]["Show/Hide"]}  ${formField["Show Other Details"]["Show/Hide"]["Value"]}
     FillFields.Input Value Into Field  ${formField["Show Other Details"]["Selected Values"]}  ${formField["Show Other Details"]["Selected Values"]["Value"]}

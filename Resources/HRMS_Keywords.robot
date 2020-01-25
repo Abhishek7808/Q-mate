@@ -211,6 +211,22 @@ Verify Deputation Department Deletion
 Open Pay Slip Configuration Page
     PaySlipConfiguration.Go To pay Slip Configuration Page
 
+Configure Pay Slip Details
+    [Arguments]  ${formField}
+    PaySlipConfiguration.Configure Page/View Name  ${formField}
+    PaySlipConfiguration.Configure Show Other Details  ${formField}
+    PaySlipConfiguration.Configure Show Net Payable In Words  ${formField}
+    PaySlipConfiguration.Configure Show DDO Details  ${formField}
+    PaySlipConfiguration.Configure Show Birthday Message  ${formField}
+    PaySlipConfiguration.Configure Show PF Balance  ${formField}
+    PaySlipConfiguration.Configure Show Net Payable Rounded Off  ${formField}
+    PaySlipConfiguration.Configure Show Gross Salary with Employer Contribution  ${formField}
+    PaySlipConfiguration.Configure Show Loan Details  ${formField}
+    PaySlipConfiguration.Configure Show Leave Balances  ${formField}
+    PaySlipConfiguration.Configure Show LWP Days  ${formField}
+    PaySlipConfiguration.Configure Language  ${formField}
+    PaySlipConfiguration.Configure Show Salary Annexure  ${formField}
+
 Verify Division Entry
     [Arguments]  ${formField}
     Division.Check For Division Entry In Division Table  ${formField}
