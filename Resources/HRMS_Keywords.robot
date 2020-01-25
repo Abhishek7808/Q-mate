@@ -162,6 +162,40 @@ Verify Enquiry Decision Type Deletion
     [Arguments]  ${formField}
     EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
 
+Open Deputation Department Page
+    DeputationDepartment.Go To Deputation Department Page
+
+Add New Deputation Department
+    [Arguments]  ${formField}
+    DeputationDepartment.Click On Add New Button  ${formField}
+    DeputationDepartment.Fill Deputation Department Details  ${formField}
+    DeputationDepartment.Submit Details  ${formField}
+
+Filter Deputation Departments
+    [Arguments]  ${formField}  ${value}=${formField}
+    DeputationDepartment.Open Deputation Department Filters  ${formField}
+    DeputationDepartment.Select Governing Authorities Filter  ${formField}  ${value["Governing Authorities"]["Value"]}
+    DeputationDepartment.Select State Filter  ${formField}  ${value["State"]["Value"]}
+    DeputationDepartment.Select City Filter  ${formField}  ${value["City"]["Value"]}
+    DeputationDepartment.Apply Filters  ${formField}
+
+Edit Deputation Department Details
+    [Arguments]  ${formField}
+    DeputationDepartment.Click On Edit Button  ${formField}
+    switch window  NEW
+    DeputationDepartment.Fill Deputation Department Details  ${formField["Edit Deputation Department"]}
+    DeputationDepartment.Submit Details  ${formField}
+
+Search Deputaion Department
+    [Arguments]  ${formField}  ${value}
+    DeputationDepartment.Search Deputaion Department In Deputation Department table  ${formField}  ${value}
+
+Delete Deputation Department
+    [Arguments]  ${formField}  ${entity}
+    DeputationDepartment.Click On Delete Button  ${formField}  ${entity}
+    DeputationDepartment.Confirm Delete Entry Popup Appeared
+    DeputationDepartment.Delete Selected Entry  ${formField}
+
 Verify Deputation Department Creation
     [Arguments]  ${formField}
     DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
@@ -173,6 +207,9 @@ Verify Deputation Department Updation
 Verify Deputation Department Deletion
     [Arguments]  ${formField}
     DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
+
+Open Pay Slip Configuration Page
+    PaySlipConfiguration.Go To pay Slip Configuration Page
 
 Verify Division Entry
     [Arguments]  ${formField}

@@ -549,6 +549,57 @@
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
+		"Edit": {
+			"Type":"Actions",
+			"Locator": {
+				"Locator1": "td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "td//a[contains(text(),'Edit')]"
+			}
+		},
+		"Delete": {
+			"Type":"Actions",
+			"Locator": {
+				"Locator1": "td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "td//a[contains(text(),'Delete')]"
+			}
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEPostClass",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+        "Ok": {
+            "Type": "Button",
+            "Locator": "//button[contains(text(),'OK')]"
+        },
+		"Filter Button": {
+			"Type": "Button",
+			"Locator1": "//button[@class='btn btn-default']",
+			"Locator2": "//i[@class='fa fa-filter']"
+		},
+		"Governing Authorities Filter": {
+			"Value": "Central Govt.",
+			"Type": "Dropdown",
+			"Locator": "EmpBelongsTo"
+		},
+		"State Filter": {
+			"Value": "RAJASTHAN",
+			"Type": "Dropdown",
+			"Locator": "State"
+		},
+		"City Filter": {
+			"Value": "Jaipur",
+			"Type": "Dropdown",
+			"Locator": "City"
+		},
+		"Apply Filter Button": {
+			"Type": "Button",
+			"Locator": "btnformfilter"
+		},
 		"Name": {
 			"Value": "QMATEDeputationDepartment",
 			"Type": "Text Value",
@@ -587,67 +638,63 @@
 		"Save": {
 			"Type": "Button",
 			"Locator": "//button[@id='save']"
-		}
-	},
-	"Deputation Department Edit": {
-		"Edit": {
-			"Type":"Actions",
-			"Locator": {
-				"Locator1": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
-				"Locator2": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[contains(text(),'Edit')]"
+		},
+		"Edit Deputation Department": {
+			"Governing Authorities Filter": {
+				"Value": "Central Govt.",
+				"Type": "Dropdown",
+				"Locator": "EmpBelongsTo"
+			},
+			"State Filter": {
+				"Value": "RAJASTHAN",
+				"Type": "Dropdown",
+				"Locator": "State"
+			},
+			"City Filter": {
+				"Value": "Jaipur",
+				"Type": "Dropdown",
+				"Locator": "City"
+			},
+			"Name": {
+				"Value": "QMATEDeputationDepartment2",
+				"Type": "Text Value",
+				"Locator": "Name"
+			},
+			"Governing Authorities": {
+				"Value": "State Govt.",
+				"Type": "Dropdown",
+				"Locator": "BelongsTo"
+			},
+			"Address": {
+				"Value": "Delhi",
+				"Type": "Text Value",
+				"Locator": "Address"
+			},
+			"Email": {
+				"Value": "QMATE2@gmail.com",
+				"Type": "Text Value",
+				"Locator": "Email"
+			},
+			"Contact No": {
+				"Value": "0294029401",
+				"Type": "Text Value",
+				"Locator": "ContactNo"
+			},
+			"State": {
+				"Value": "DELHI",
+				"Type": "Dropdown",
+				"Locator": "State"
+			},
+			"City": {
+				"Value": "Delhi",
+				"Type": "Dropdown",
+				"Locator": "City"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "save"
 			}
-		},
-		"Delete": {
-			"Type":"Actions",
-			"Locator": {
-				"Locator1": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[@class='btn btn-primary btn-sm']",
-				"Locator2": "//td[contains(text(),'QMATEDeputationDepartment')]/following-sibling::td//a[contains(text(),'Delete')]"
-			}
-		},
-        "Ok": {
-            "Type": "Button",
-            "Locator": "//button[contains(text(),'OK')]"
-        },
-        "Name": {
-			"Value": "QMATEDeputationDepartment",
-			"Type": "Text Value",
-			"Locator": "Name"
-		},
-		"Governing Authorities": {
-			"Value": "State Govt.",
-			"Type": "Dropdown",
-			"Locator": "BelongsTo"
-		},
-		"Address": {
-			"Value": "Delhi",
-			"Type": "Text Value",
-			"Locator": "Address"
-		},
-		"Email": {
-			"Value": "QMATE2@gmail.com",
-			"Type": "Text Value",
-			"Locator": "Email"
-		},
-		"Contact No": {
-			"Value": "0294029401",
-			"Type": "Text Value",
-			"Locator": "ContactNo"
-		},
-		"State": {
-			"Value": "DELHI",
-			"Type": "Dropdown",
-			"Locator": "State"
-		},
-		"City": {
-			"Value": "Delhi",
-			"Type": "Dropdown",
-			"Locator": "City"
-		},
-		"Save": {
-			"Type": "Button",
-			"Locator": "save"
 		}
-
 	},
 	"Self Verification Configuration": {
 		"Raise Self Verification Popup": {

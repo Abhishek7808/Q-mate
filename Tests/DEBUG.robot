@@ -76,12 +76,17 @@ Testing json
 
 Testing hrms
     [Tags]  debughrms
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule/AddEdittadarule?q=ZsKXgGWRPNSw00uRWjC431GGisfj0UAO
+    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Import/Employee?q=0PUDgenDzde8dWoX1DNXkQ==
     sleep  3s
-    ${configJson}  Common_Keywords.Load Json File  ${configurationData}
-    set test variable  ${formField}  ${configJson["TA/DA Rule"]}
-    click element  //div[@id='Travel']//b[@class='caret']
-    select checkbox  //*[@id="Travel"]//ul/li[2]/a/label/input
+    choose file  //input[@id='FileUpload1']  ${SMM_DATA_FILES}${/}PANFile.png
+    sleep  5s
+#    wait until element is enabled  //input[@id='FileUpload1']
+#    page should contain button  //input[@id='FileUpload1']
+#    click button  //input[@id='FileUpload1']
+#    ${configJson}  Common_Keywords.Load Json File  ${configurationData}
+#    set test variable  ${formField}  ${configJson["TA/DA Rule"]}
+#    click element  //div[@id='Travel']//b[@class='caret']
+#    select checkbox  //*[@id="Travel"]//ul/li[2]/a/label/input
     sleep  3s
 #    click element  //b[contains(@class,'caret')][1]
 #    sleep  5s
