@@ -18,6 +18,7 @@ Resource  ${PAGE OBJECTS}/HRMS/Section.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADAgrade.robot
 Resource  ${PAGE OBJECTS}/HRMS/GradeDependancy.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADARule.robot
+Resource  ${PAGE OBJECTS}/HRMS/PaySlipConfiguration.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -226,6 +227,10 @@ Configure Pay Slip Details
     PaySlipConfiguration.Configure Show LWP Days  ${formField}
     PaySlipConfiguration.Configure Language  ${formField}
     PaySlipConfiguration.Configure Show Salary Annexure  ${formField}
+
+Save Pay Slip Configurations
+    [Arguments]  ${formField}
+    PaySlipConfiguration.Save Configurations  ${formField}
 
 Verify Division Entry
     [Arguments]  ${formField}
