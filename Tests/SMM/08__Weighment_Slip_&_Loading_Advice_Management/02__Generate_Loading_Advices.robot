@@ -25,6 +25,7 @@ ${RETRY INTERVAL}    200ms
 
 *** Test Cases ***
 To check the process WeighBridge Manager (WM) generate the loading Advice
+    [Documentation]  Generates the loading advice.
     [Tags]  SMM  weighmentslip  generateloadingadvice
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin

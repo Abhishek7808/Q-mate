@@ -23,7 +23,7 @@ ${RETRY INTERVAL}    200ms
 *** Test Cases ***
 
 Check Customer Registration Process
-    [Documentation]    Done
+    [Documentation]  Fills and saves details of customer registration form
     [Tags]  SMM  customerregistration  selfregistration  registrationprocess
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
@@ -35,7 +35,7 @@ Check Customer Registration Process
     Sleep    3s
 
 Check new branch registration when the company already have branches registered in it
-    [Documentation]    Done
+    [Documentation]  Registers a new branch into a company which already have other branches registered in it
     [Tags]  SMM  customerregistration  selfregistration  newbranch
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2
@@ -47,7 +47,7 @@ Check new branch registration when the company already have branches registered 
     Sleep    3s
 
 Check the branch registration when user selects branch from an existing registered branches in a company with diffrent SSOID
-    [Documentation]    This is not working when we are using same ssoid
+    [Documentation]   Registers a branch into a company which already have branch woth same name. This is not working when we are using same ssoid
     [Tags]  SMM  customerregistration  selfregistration  existingbranch
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 3
@@ -57,7 +57,7 @@ Check the branch registration when user selects branch from an existing register
     Sleep    3s
 
 Check the registration process when customer has partially filled the application
-    [Documentation]    Done
+    [Documentation]   Completes a registration which has left partially filled.
     [Tags]  SMM  customerregistration  selfregistration  partiallyfilled
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
@@ -78,7 +78,7 @@ Check the registration process when customer has partially filled the applicatio
 
 
 Check the draft branch visibility in 'View Branch' option on registration form
-    [Documentation]    Done
+    [Documentation]  Checks that draft branches are listed when user enters company PAN during branch registration.
     [Tags]  SMM  customerregistration  selfregistration  viewbranch
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2
@@ -91,7 +91,7 @@ Check the draft branch visibility in 'View Branch' option on registration form
     SMM_Keywords.Check Draft Branch Visibility
 
 Check the reject process of customer registration by departmental user
-    [Documentation]    Done
+    [Documentation]  Rejects a customer registration by admin.
     [Tags]  SMM  customerregistration  selfregistration  rejectregistration
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 6    SSO ID=SSOID 2
     BrowserControl.Switch To    Department
@@ -108,6 +108,7 @@ Check the reject process of customer registration by departmental user
     SMM_Keywords.Check for Rejected state of Customer Registration
 
 Check the edit process of customer details when customer is not approved by department
+    [Documentation]  Edits the details of customer when customer registration is not approved by admin.
     [Tags]  SMM  customerregistration  selfregistration  editpending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
@@ -119,7 +120,7 @@ Check the edit process of customer details when customer is not approved by depa
     SMM_Keywords.Check For Updating Customer Details Permissions
 
 Check the approval process of customer registration by departmental user
-    [Documentation]    Done
+    [Documentation]  Approves a customer registration by admin.
     [Tags]  SMM  customerregistration  selfregistration  approveregistration
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -138,7 +139,7 @@ Check the approval process of customer registration by departmental user
     SMM_Keywords.Check for Approved state of Customer Registration
 
 Check the edit process of customer details when customer is approved by department
-    [Documentation]    Done
+    [Documentation]  Edits the details of customer when customer registration is approved by admin.
     [Tags]  SMM  customerregistration  selfregistration  editapproved
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 4    Branch=Branch Customer 3    SSO ID=SSOID 2

@@ -19,6 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Add Financial Instrument
+    [Documentation]  Fills details in add financial instrument form.
     [Tags]  SMM  financialinstrument  addfinancialinstrument  creation
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
@@ -41,6 +42,7 @@ Add Financial Instrument
     Sleep    2s
 
 Check the edit process for pending FI
+    [Documentation]  Edits financial instrument details when financial instrument is pending from admin.
     [Tags]  SMM  financialinstrument  addfinancialinstrument  editdetailsofpending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 1
@@ -54,6 +56,7 @@ Check the edit process for pending FI
     SMM_Keywords.Fill Financial Instrument Form By Customer
 
 Check that only after Financial Instrument approval, CRO can be generated
+    [Documentation]  Requests CRO without financial instrument approval.
     [Tags]  SMM  financialinstrument  addfinancialinstrument  crogeneration
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    FI=FI 2   PO=PO 1
@@ -71,6 +74,7 @@ Check that only after Financial Instrument approval, CRO can be generated
     SMM_Keywords.Check CRO Form Submission Without Financial Insturment
 
 Check edit functionality for approved FI
+    [Documentation]  Edit details of financial instrument when it is approved by admin.
     [Tags]  SMM  financialinstrument  addfinancialinstrument  editdetailsofapproved
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2    FI=FI 2

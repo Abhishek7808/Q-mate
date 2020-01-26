@@ -20,6 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Check group creation
+    [Documentation]  Creates a customer group.
     [Tags]  SMM  customerprivilege  creategroups  creation
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
@@ -38,6 +39,7 @@ Check group creation
     SMM_Keywords.Check For The Group On The Customer Group Page  ${Company["Enter PAN"]}
 
 Check group creation, when already a group exists with same code/PAN no
+    [Documentation]  Creates a group with a name that has already been used by another group.
     [Tags]  SMM  customerprivilege  creategroups  groupwithsamename
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2  #jodhpur
@@ -52,6 +54,7 @@ Check group creation, when already a group exists with same code/PAN no
 
 
 Request to join existing group, having same PAN no. as that of customer
+    [Documentation]  Checks that a member can request to join a group which have same PAN number.
     [Tags]  SMM  customerprivilege  creategroups  joingroup
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2   #jodhpur

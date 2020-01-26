@@ -19,6 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Request for purchase order(PO)
+    [Documentation]  Opens purchase order list through customer login and reuests for purchase order.
     [Tags]  SMM  purchaseorder  requestpurchaseorder  request
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
@@ -28,6 +29,7 @@ Request for purchase order(PO)
     SMM_Keywords.Generate Purchase Order By Customer
 
 Get notification after PO request approved/rejected
+    [Documentation]  Checks for approved tag on listed purchase order.
     [Tags]  SMM  purchaseorder  requestpurchaseorder  notification
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
@@ -50,6 +52,7 @@ Get notification after PO request approved/rejected
     SMM_Keywords.Verify Approval Of Purchase Order
 
 Check edit functionality when status of PO is approved/rejected.
+    [Documentation]  Edits purchase order details when it is approved by admin.
     [Tags]  SMM  purchaseorder  requestpurchaseorder  editdetails
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
@@ -65,6 +68,7 @@ Check edit functionality when status of PO is approved/rejected.
     SMM_Keywords.Edit Purchase Order Details
 
 Check that signed copy of End User Agreement is mandatory for PO approval
+    [Documentation]  Request purchase order without uploading end user agreement copy.
     [Tags]  SMM  purchaseorder  requestpurchaseorder  enduseragreement
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 2
@@ -83,6 +87,7 @@ Check that signed copy of End User Agreement is mandatory for PO approval
 #    Page Should Contain    Upload File
 
 Request for Purchase Order(PO) for auctionable products
+    [Documentation]  Fill purchase order registration form for auctionable products.
     [Tags]  SMM  purchaseorder  requestpurchaseorder  auctionable
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 3

@@ -18,6 +18,7 @@ ${RETRY INTERVAL}    200ms
 
 *** Test Cases ***
 Check add plant process
+    [Documentation]  Adds a plant into customer registration.
     [Tags]  SMM  customerregistration  addplant
     BrowserControl.Switch To    Customer
     #set test variable    ${ssoId}    chauhan.yuvi

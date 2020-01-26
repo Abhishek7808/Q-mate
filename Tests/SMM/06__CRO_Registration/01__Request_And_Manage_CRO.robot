@@ -19,6 +19,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 # TODO: increase product quantity required in CRO 1, CRO 2, CRO 3 and hanece increase amount also
 Check request CRO process
+    [Documentation]  Requests Contract release order from customer.
     [Tags]  SMM  croregistration  requestcro  request
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2   FI=FI 2    PO=PO 1    CRO=CRO 1
@@ -44,6 +45,7 @@ Check request CRO process
     SMM_Keywords.Request CRO From Customer
 
 View CRO request status
+    [Documentation]  Requests CRO and checks its status. i.e. it is approved or pending.
     [Tags]  SMM  croregistration  requestcro  requeststatus
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 1    PO=PO 1    CRO=CRO 1
@@ -67,6 +69,7 @@ View CRO request status
     SMM_Keywords.Verify That CRO Is Not Approved
 
 Check edit functionality when CRO is pending
+    [Documentation]  Edit CRO details when it is not approved by admin.
     [Tags]  SMM  croregistration  requestcro  editpending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1
@@ -81,6 +84,7 @@ Check edit functionality when CRO is pending
     SMM_Keywords.Fill CRO From Customer
 
 Check that financial instrument available balance should be more than or equal to CRO amount when CRO is approved
+    [Documentation]  Open financial instrument and compare its balance with CRO balance.
     [Tags]  SMM  croregistration  requestcro  checkfibalance
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 2
@@ -94,6 +98,7 @@ Check that financial instrument available balance should be more than or equal t
     SMM_Keywords.Verify FI Balance Is Greater Than CRO Balance
 
 Check that CRO quantity cannot be greater than PO remaining balance
+    [Documentation]  Opens CRO regitration and get PO remaining balance.
     [Tags]  SMM  croregistration  requestcro  checkpobalance
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 1    SSO ID=SSOID 1    FI=FI 2    PO=PO 1    CRO=CRO 1

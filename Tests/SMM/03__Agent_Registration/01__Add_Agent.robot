@@ -27,6 +27,7 @@ ${RETRY INTERVAL}    200ms
 
 *** Test Cases ***
 Check the agent registration process through agent tab
+    [Documentation]  Opens Agent list page and checks for an agent.
     [Tags]  SMM  agentregistration  addagent  registration
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
@@ -39,6 +40,7 @@ Check the agent registration process through agent tab
     SMM_Keywords.Check For an Agent On Agent List Page  ${SSO ID["Name"]}
 
 Check the agent registration process through PO form
+    [Documentation]  Registers an agent through purchase order regstration form.
     [Tags]  SMM  agentregistration  addagent  registrationthroughpo
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 3    SSO ID=SSOID 2    PO=PO 1
@@ -54,6 +56,7 @@ Check the agent registration process through PO form
     SMM_Keywords.Add Purchase Order Details
 
 To check the edit functionality of agent details from agent tab when PO pending or approved
+    [Documentation]  Edits agent details.
     [Tags]  SMM  agentregistration  addagent  editdetailspopending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
@@ -71,6 +74,7 @@ To check the edit functionality of agent details from agent tab when PO pending 
     SMM_Keywirds.Verify Agent Name In Purchase Order  ${SSO ID["Name"]} UDAIPUR
 
 To check the edit functionality of agent details from CRO form when CRO pending
+    [Documentation]  Edits agent details when CRO is pending.
     [Tags]  SMM  agentregistration  addagent  editdetailscropending
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2    PO=PO 1
@@ -101,6 +105,7 @@ To check the edit functionality of agent details from CRO form when CRO pending
 
 To check the validations applied when agent selected in CRO request form
     #TODO : waiting for Request CRO button
+    [Documentation]  Search for agent name in CRO registration form.
     [Tags]  SMM  agentregistration  addagent  validations
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 1    Branch=Branch Customer 2    SSO ID=SSOID 1    PO=PO 1

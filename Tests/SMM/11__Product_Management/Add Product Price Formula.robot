@@ -20,6 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Check the process to add product price formula
+    [Documentation]  Adds product price formula.
     [Tags]  SMM  productmanagement  addproduct  checkprocess
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -32,6 +33,7 @@ Check the process to add product price formula
     SMM_Keywords.Fill Schedule From Department
 
 To check that user can create a new formula using fields
+    [Documentation]  Creates product price formula.
     [Tags]  SMM  productmanagement  addproduct  newformula
     BrowserControl.Switch To    Department
     Login From Department    archit.rsmml    admin

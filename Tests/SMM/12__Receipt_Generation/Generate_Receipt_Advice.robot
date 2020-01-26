@@ -18,7 +18,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Check Receipt Advice Generation
-    [Documentation]    Still
+    [Documentation]    Generates reciept advice.
     [Tags]  SMM  receiptgeneration  generatereceiptadvice  checkprocess
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -30,7 +30,7 @@ Check Receipt Advice Generation
 #    [Tags]  SMM  receiptgeneration    Skip
 
 Check Financial instrument after receipt generation
-    [Documentation]    Still
+    [Documentation]    Opens financial instrument after reciept generation.
     [Tags]  SMM  receiptgeneration   generatereceiptadvice  checkfi
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
