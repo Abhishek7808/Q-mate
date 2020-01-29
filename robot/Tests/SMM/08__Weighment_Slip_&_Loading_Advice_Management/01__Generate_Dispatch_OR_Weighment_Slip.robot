@@ -20,6 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 *** Test Cases ***
 #TODO: Make new CROs for running 2nd, 3rd and 4th test
 To check the process Inward Dispatch Slip to get generated
+    [Documentation]  Generates inward dispatch slip with insufficient balance.
     [Tags]  SMM  weighmentslip  generatedispathslip  insufficientbalance
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -32,6 +33,7 @@ To check the process Inward Dispatch Slip to get generated
     Common_Keywords.Verify Element Text On The Page  //span[@id='message-id']  Insufficient balance
 
 Inward dispatch slip generation
+    [Documentation]  Generates inward disatch slip.
     [Tags]  SMM  weighmentslip  generatedispathslip  farecondition
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -43,6 +45,7 @@ Inward dispatch slip generation
     Common_Keywords.Verify Element Text On The Page  //span[@id='message-id']    Saved Successfully
 
 To check the process Outward Dispatch Slip cannot be generated
+    [Documentation]  Generates outward dispatch slip when gross weight is greater than Max Capacity.
     [Tags]  SMM  weighmentslip  generatedispathslip  overweight
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin
@@ -53,6 +56,7 @@ To check the process Outward Dispatch Slip cannot be generated
     Common_Keywords.Verify Element Text On The Page  //span[@id='message-id']    Gross Weight can not be greater than Max Capacity
 
 Outward dispatch slip generation
+    [Documentation]  Generates Outward dispatch slip.
     [Tags]  SMM  weighmentslip  generatedispathslip  farecondition
     BrowserControl.Switch To    Department
     Common_Keywords.Login From Department    archit.rsmml    admin

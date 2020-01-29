@@ -20,6 +20,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Check add member to group process
+    [Documentation]  Adds a member to the group.
     [Tags]  SMM  customerprivilege  addmember  addmemberprocess
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2  #Gurgaon
@@ -40,6 +41,7 @@ Check add member to group process
     SMM_Keywords.Verify Member Status
 
 Check that only group admin should have right to add members in a group
+    [Documentation]  Checks that non admin dont have admin rights.
     [Tags]  SMM  customerprivilege  addmember  adminrights
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 2    SSO ID=SSOID 2  #jodhpur

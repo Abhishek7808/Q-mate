@@ -18,6 +18,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 
 *** Test Cases ***
 Give admin rights to member in a group
+    [Documentation]  Give admin rights to another group member.
     [Tags]  SMM  customerprivilege  managegroup  changeadmin
     BrowserControl.Switch To    Customer
     Common_Keywords.Set Test Variables    Company=Company Customer 2    Branch=Branch Customer 1    SSO ID=SSOID 2
