@@ -339,7 +339,11 @@
 
 </head>
 <body class="container" style="width: 80%;">
-<h4>E-प्रशासन Bot</h4>
+
+      <div class = "card-panel">
+         <h4>E-प्रशासन Bot</h4> <p class = "truncate"><a href="email">Email Configuration</a> | <a href="logout">Logout</a> </p>
+      </div>
+
 <ul class="collapsible popout" data-collapsible="accordion">
     <li>
         <div class="collapsible-header">
@@ -352,8 +356,8 @@
                         <fieldset>
                             <!-- Form Name -->
                             <legend>Test Reports</legend>
-                            <select name="test_report" class="simple_dropdown" id="test_dropdown">
-                                <option selected disabled>Date...</option>
+                            <select name="test_report" class="simple_dropdown validate" id="test_dropdown" required>
+                                <option value="" selected disabled>Select Report</option>
                                 {% set new_report = [] %}
                                 {% for report in test_reports %}
                                     {% if report[-27:-21] == "report" %}
@@ -386,8 +390,8 @@
                         <fieldset>
                             <!-- Form Name -->
                             <legend>Task Reports</legend>
-                            <select name="task_report" class="simple_dropdown" id="task_dropdown">
-                                <option selected disabled>Date...</option>
+                            <select name="task_report" class="simple_dropdown validate" id="task_dropdown" required>
+                                <option value="" selected disabled>Select Report</option>
                                 {% set new_report = [] %}
                                 {% for report in task_reports %}
                                     {% if report[-27:-21] == "report" %}
@@ -428,7 +432,7 @@
 
             <div class="row" style="margin: 10px;">
 
-                <form method="GET" action="/rajerp/api/tests" id="runtestcase">
+                <form method="POST" action="/rajerp/api/tests" id="runtestcase">
                     <fieldset>
 
                         <!-- Form Name -->

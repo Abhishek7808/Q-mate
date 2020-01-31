@@ -70,7 +70,7 @@ def run_dv():
         if request.method == "GET":
             print("Notifications : " + request.args.get('notifications'))
             print("Environment : " + request.args.get('environment'))
-            print("Login for" + request.args.get('organization_id'))
+        #    print("Login for " + request.args.get('organization_id'))
             print("Disbursement Type : " + request.args.get('disbursement_type'))
             print("FINANCIAL_YEAR : " + request.args.get('financial_year'))
             print("CYCLE_ID:" + request.args.get('cycle_id'))
@@ -84,10 +84,8 @@ def run_dv():
                     # do something that takes a long time
                     print("Running robot script...")
                     return run('/home/divaksh/rajerp/robot/DataValidation',
-                               variable=["BROWSER:" + request.args.get('mode'),
-                                         "SEND_EMAIL_NOTIFICATIONS" + request.args.get(
-                                             'notifications'), "LOGIN:" + request.args.get(
-                                       'organization_id'), "UNIT_ID:" + request.args.get('unit_id'),
+                               variable=["BROWSER:" + request.args.get('mode'), "ENVIRONMENT:" + request.args.get('environment'),
+                                         "SEND_EMAIL_NOTIFICATIONS:" + request.args.get('notifications'), "LOGIN:" + request.args.get('organization_id'), "UNIT_ID:" + request.args.get('unit_id'),
                                          "CYCLE_ID:" + request.args.get(
                                              'cycle_id'), "FINANCIAL_YEAR:" + request.args.get('financial_year')],
                                include=[request.args.get('disbursement_type')], exclude="debug",
@@ -110,30 +108,30 @@ def run_dv():
 def run_test_case():
     error = ''
     try:
-        if request.method == "GET":
-            print(request.args.get('environment'))
-            print(request.args.get('notifications'))
-            print(request.args.get('testtags'))
-            print(request.args.get('reportname'))
+        if request.method == "POST":
+            print(request.form.get('environment'))
+            print(request.form.get('notifications'))
+            print(request.form.get('testtags'))
+            print(request.form.get('reportname'))
             print("Time is written below")
-            calculated_time = str(calculate_time(request.args.get('testtags')))
-            form_submitted = request.args.get('mode')
+            calculated_time = str(calculate_time(request.form.get('testtags')))
+            form_submitted = request.form.get('mode')
             if form_submitted != "None":
                 @copy_current_request_context
                 def do_work():
                     # do something that takes a long time
                     return run('/home/divaksh/rajerp/robot/Tests',
-                               variable=["'ENVIRONMENT:" + request.args.get('environment') + "'",
+                               variable=["'ENVIRONMENT:" + request.form.get('environment') + "'",
                                          "BROWSER:" + form_submitted],
-                               include=[request.args.get('testtags')], exclude="debug",
+                               include=[request.form.get('testtags')], exclude="debug",
                                outputdir='/home/divaksh/rajerp/reports/test/',
-                               report=request.args.get('reportname') + "-report",
+                               report=request.form.get('reportname') + "-report",
                                splitlog=True,
                                timestampoutputs=True)
 
                 thread = threading.Thread(target=do_work)
                 thread.start()
-                return '''<h1>The request successfully sent, please come back after ''' + calculated_time + ''' minutes for reports.</h1>'''
+                return '''<h1>The request successfully sent, please come back after ''' + calculated_time + ''' minutes for reports. <a href="/rajerp">Go Back!!</a></h1>'''
             else:
                 error = '''<h1>Invalid inputs. Try Again'''
 
@@ -156,8 +154,8 @@ def run_robot_data_validation():
 
 def run_robot_test_cases(content):
     print("Running robot script...")
-    return run('/home/divaksh/rajerp/robot/Tests', include=[request.args.get('environment')],
-               outputdir='/home/divaksh/rajerp/reports/test/', report=[request.args.get('environment')], splitlog=True,
+    return run('/home/divaksh/rajerp/robot/Tests', include=[request.form.get('environment')],
+               outputdir='/home/divaksh/rajerp/reports/test/', report=[request.form.get('environment')], splitlog=True,
                timestampoutputs=True)
 
 
@@ -180,11 +178,11 @@ def set_emails():
                 # print(request.form.get('urm'))
                 content = dict(
                     {'HRM': request.form.get('hrm'), 'ACC': request.form.get('acc'), 'SMM': request.form.get('smm'),
-                     'CPF': request.form.get('cpf'), 'DISBURSEMENT': request.form.get('disbursement')})
+                     'CPF': request.form.get('cpf'), 'URM': request.form.get('urm'), 'DISBURSEMENT': request.form.get('disbursement')})
                 print(content)
                 with open('/home/divaksh/rajerp/robot/Data/Receivers.json', 'w') as json_file:
                     json.dump(content, json_file)
-                return '''<h1>The configuration successfully saved</h1>'''
+                return '''<h1>The configuration successfully saved. <a href="/rajerp/email">Go Back!!</a></h1>'''
             else:
                 error = '''<h1>Invalid inputs. Try Again'''
 
@@ -221,7 +219,7 @@ def decode_json():
     return request.get_json(force=True, silent=True)
 
 
-@app.route('/index/', methods=['GET', 'POST'])
+@app.route('/rajerp/', methods=['GET', 'POST'])
 def render_static_index():
     if g.user:
         test_reports = glob.glob("/home/divaksh/rajerp/reports/test/*.html")
@@ -230,7 +228,7 @@ def render_static_index():
     return redirect(url_for('do_login'))
 
 
-@app.route('/email/', methods=['GET', 'POST'])
+@app.route('/rajerp/email/', methods=['GET', 'POST'])
 def render_static_email():
     if g.user:
         with open('/home/divaksh/rajerp/robot/Data/Receivers.json', 'r') as receivers_json:
@@ -255,10 +253,10 @@ def before_request():
         g.user = session['user']
 
 
-@app.route('/logout')
+@app.route('/rajerp/logout')
 def do_logout():
     session.pop('user', None)
-    return 'Successfully logged out'
+    return '<h1>Successfully logged out. <a href="/rajerp">Login Back!!</a></h1></h1>'
 
 
 # @app.route('/<string:page_name>/'){% if ( (foo == 'foo' or bar == 'bar') and

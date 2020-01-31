@@ -59,7 +59,7 @@ Check Salary Paybills
     \    close window
     \    DisbursementIndex.Switch Tab
     \    Open Filters
-    \    Apply Given Financial Year  ${financialYearDD}
+    \    Apply Given Financial Year
     \    Apply Filters
     \    sleep  2s
 

@@ -4,10 +4,9 @@
 #  Environment Settings  #
 ##########################
 ${ENVIRONMENT}       demo
-${BROWSER}           chrome
+${BROWSER}           headlesschrome
 &{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://rajerp.rajasthan.gov.in
-${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}
-
+${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}/adminlogin
 
 ####################
 #  Directory Names #
@@ -22,6 +21,7 @@ ${PAGE_OBJECTS_DIR}      page-objects
 ${DV_DIR}                DV
 ${SMM_DIR}               SMM
 ${SMM_DATA_DIR}          SMM_DATA
+
 ###################
 #  Path Settings  #
 ###################
@@ -77,7 +77,7 @@ ${SEND_EMAIL_NOTIFICATIONS}  True
 ####################
 ${DELAY}          0
 ${RETRY TIME}     10s
-${RETRY INTERVAL}    400ms
+${RETRY INTERVAL}    2s
 
 
 ########################

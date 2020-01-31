@@ -97,6 +97,3 @@ Run Generic Tests From Other User
     Attempt Logout
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
-
-
-

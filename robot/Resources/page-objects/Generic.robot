@@ -58,7 +58,7 @@ Open ERP Page
 Open ERP Page Without Permission
     [Documentation]  Opens the ERP page with citizen credentials
     [Arguments]  ${pageUrl}
-    ${userType}  set variable  citizen
+    ${userType}  run keyword if  '${ENVIRONMENT}' == 'demo' or '${ENVIRONMENT}' == 'test'  set variable  citizen  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  citizen_live
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
 
 Check Page Error

@@ -1,5 +1,8 @@
+*** Settings ***
+Documentation    Add, edit and delete post class. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-post-class/
+
 *** Variables ***
-${PostClass_URL} =  /PostConfig/PostClassIndex
+${PostClass_URL} =  HRM/PostConfig/PostClassIndex
 ${Table_URL} =  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']
 ${Add_New} =  id=modals-bootbox-custom
 ${Name_Entry} =  xpath=//input[@id='Name']
@@ -12,7 +15,7 @@ ${OK_Button} =  //button[contains(text(),'OK')]
 
 *** Keywords ***
 Go To ERP Page Post Class Page
-     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}${PostClass_URL}
+     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click Add New Post Class
      wait until page contains  Post Class
@@ -63,3 +66,53 @@ Verify The Deleted Element
     wait until page contains  Action
     sleep  2s
     page should not contain  ${Name}
+
+Click Add New Post Class Button
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Add New Post Class"]}
+
+Click On Filter Button
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Filter"]}
+
+Select Type In Dropdown
+    [Arguments]  ${dataDictionary}  ${value}
+    FillFields.Input Value Into Field  ${dataDictionary["Filter Type"]}  ${value}
+
+Apply Filter
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Apply Filter"]}
+
+Search Post Class
+    [Arguments]  ${dataDictionary}   ${value}
+    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}   ${value}
+    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
+
+Click On Update Button
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Update"]}
+
+Fill Post Class Details
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Class Group"]}  ${dataDictionary["Class Group"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Seniority Level"]}  ${dataDictionary["Seniority Level"]["Value"]}
+
+Submit Details
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
+
+Click On Delete Button
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Delete Post Class"]}
+
+Confirm Delete Entry Popup Appeared
+    page should contain   Do you really want to Delete this Post Class ??
+
+Delete Selected Entry
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
+
+Check For The Post Class Entry In The Post Class Table
+    [Arguments]  ${dataDictionary}
+    ${status}  run keyword and return status  page should contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]

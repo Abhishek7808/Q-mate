@@ -24,7 +24,8 @@ Resource          ${SMM_DATA_FILES}${/}alerts.robot
 # login data added into Data/Login_Data.robot
 @{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
-
+${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
+${urlsJson}   ${DATA}/URLs.json
 *** Keywords ***
 
 Begin Basic Testing
@@ -83,6 +84,20 @@ Set Test Variables
 End SMM Testing
     BrowserControl.Finish Testing
 
+Begin HRMS Testing
+    Set HRMS Variables
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+
+Set HRMS Variables
+    ${configurationData}  Load Json File  ${hrmsConfigurationData}
+    set global variable  ${configData}  ${configurationData}
+    ${urlsDict}  Load Json File  ${urlsJson}
+    set global variable  ${urlsDict}  ${urlsDict}
+
+End HRMS Testing
+    close browser
+
 Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
 
@@ -100,6 +115,13 @@ Evaluate And Store JSON File
     [Arguments]  ${JSON}
     @{urls_list}=    Evaluate     json.loads('''${json}''')    json
     return from keyword  @{urls_list}
+
+Change The Number Into A Formatted Amount
+    [Documentation]  Changes the given salary into a floating point number
+    [Arguments]  ${amount}
+    ${formattedAmount}=  replace string  ${amount}  ,  ${EMPTY}
+    ${formattedAmount}  run keyword if  '${formattedAmount}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedAmount}
+    return from keyword  ${formattedAmount}
 
 Read And Evaluate JSON File
     [Arguments]  ${JSON_File}
@@ -119,6 +141,18 @@ Login From Department
     [Arguments]    ${Username}    ${Password}
     login.Department Login   ${Username}    ${Password}
 
+Show Maximum Entries on Page
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  select last dropdown element  DDLpageSize
+
+Switch Tab
+    [Documentation]  Switches the robot to the previous tab
+    @{windowTitles}    get window handles
+    ${windowToOpen}=    get from list    ${windowTitles}  -1
+    Select Window    ${windowToOpen}
+
+Set Test Data
+    [Arguments]  ${dataJson}
+    set test variable  ${datadictionary}  ${dataJson}
 
 #Begin Disbursement Testing
 #    Set Paths
