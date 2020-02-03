@@ -29,7 +29,7 @@ def create_false_error_json(url, error_code):
     return base64.b64encode(json_content.encode('utf-8')).decode("utf-8")  # Converted bytes to string python 3
 
 
-def get_error_name(error_code):
+def get_error_details(error_code):
     # """ Takes error code as an argument and returns an error name corresponding to that code"""
     # self.error_dict = {"1": "error(A)", "2": "error(B)", "3": "error(c)"}
     error_messages = BuiltIn().get_variable_value("${ERROR_DETAILS}")
@@ -43,6 +43,9 @@ def get_error_name(error_code):
     }
     return switcher.get(error_code, "No error code found")
 
+#def get_error_priority(error_type):
+
+
 
 def find_receiver(json_key, receivers_json):
     with open(receivers_json, 'r') as f:
@@ -55,17 +58,21 @@ def get_generic_table_data(number_of_items, error_urls):
     table_data = ""
     count = 1
     for x in range(number_of_items):
+        error_type = get_error_details(error_urls[x][1]).split(",")[0]
+        error_priority = get_error_details(error_urls[x][1]).split(",")[1]
         if count % 2 != 0:
             table_data += '<tr>' + set_table_cell(str(count), white) + \
                           set_table_cell('<a href="' + error_urls[x][0] + '">' + error_urls[x][0] + '</a>', white) + \
-                          set_table_cell(get_error_name(error_urls[x][1]), white) + \
+                          set_table_cell(error_type, white) + \
+                          set_table_cell(error_priority, white) + \
                           set_table_cell('<a href="' + notify_false_error_link(error_urls[x][0],
                                                                                error_urls[x][1]) + '">Notify</a>',
                                          white) + '</tr>'
         else:
             table_data += '<tr>' + set_table_cell(str(count), grey) + \
                           set_table_cell('<a href="' + error_urls[x][0] + '">' + error_urls[x][0] + '</a>', grey) + \
-                          set_table_cell(get_error_name(error_urls[x][1]), grey) + \
+                          set_table_cell(error_type, grey) + \
+                          set_table_cell(error_priority, grey) + \
                           set_table_cell('<a href="' + notify_false_error_link(error_urls[x][0],
                                                                                error_urls[x][1]) + '">Notify</a>',
                                          grey) + '</tr>'
@@ -146,6 +153,7 @@ def compose_generic_error_message(module_name, error_urls):
                         <th bgcolor="#d1d1d1"> Sr. No. </th>
                         <th bgcolor="#d1d1d1"> URL </th>
                         <th bgcolor="#d1d1d1"> Issue </th>
+                        <th bgcolor="#d1d1d1"> Priority </th>
                         <th bgcolor="#d1d1d1"> False Positive </th>
                     </tr>""" + get_generic_table_data(number_of_items, error_urls) + """</table>
                 </body>

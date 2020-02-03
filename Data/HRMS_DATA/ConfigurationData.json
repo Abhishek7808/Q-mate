@@ -17,6 +17,7 @@
 		}
 	},
 	"Tea Rate Definition": {
+		"URL": "HRM/Reimbursement/EntertainmentDeclareIndex",
 		"Declare": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -336,6 +337,7 @@
 		}
 	},
 	"Post Class": {
+		"URL": "HRM/PostConfig/PostClassIndex",
 		"Add New Post Class": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -416,6 +418,7 @@
 		}
 	},
 	"Enquiry Decision Type": {
+		"URL": "HRM/EnquiryDecision",
 		"Add New": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -545,6 +548,7 @@
 		}
 	},
 	"Deputation Department": {
+		"URL": "HRM/DeputationDepartment",
 		"Add New": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -697,6 +701,7 @@
 		}
 	},
 	"Self Verification Configuration": {
+		"URL": "HRM/EMPSELFVERIFICATION/SelfVerificationConfiguration",
 		"Raise Self Verification Popup": {
 			"Value": "Yes",
 			"Type": "Dropdown",
@@ -753,6 +758,7 @@
 		}
 	},
 	"Pay Slip Configuration": {
+		"URL": "HRM/Common/PaySlipConfiguration",
 		"Page/View Name": {
 			"Show/Hide": {
 				"Value": "Yes",
@@ -1001,6 +1007,7 @@
 		}
 	},
 	"Division":{
+		"URL": "HRM/division",
 		"Add New Division": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"

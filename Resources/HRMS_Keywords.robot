@@ -19,6 +19,7 @@ Resource  ${PAGE OBJECTS}/HRMS/TADAgrade.robot
 Resource  ${PAGE OBJECTS}/HRMS/GradeDependancy.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADARule.robot
 Resource  ${PAGE OBJECTS}/HRMS/PaySlipConfiguration.robot
+Resource  ${PAGE OBJECTS}/HRMS/SelfVarification.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -51,342 +52,363 @@ Open Post Class Page
     #Check Post Class Entry  ${New_Post_Class_Name}
 
 Add New Post Class
-    [Arguments]  ${formField}
-    PostClass.Click Add New Post Class Button  ${formField}
-    PostClass.Fill Post Class Details  ${formField}
-    PostClass.Submit Details  ${formField}
+    [Arguments]  ${dataDictionary}
+    PostClass.Click Add New Post Class Button  ${dataDictionary}
+    PostClass.Fill Post Class Details  ${dataDictionary}
+    PostClass.Submit Details  ${dataDictionary}
 
 Filter Post Classes By Class Group
-    [Arguments]  ${formField}  ${value}
-    PostClass.Click On Filter Button  ${formField}
-    PostClass.Select Type In Dropdown  ${formField}  ${value}
-    PostClass.Apply Filter  ${formField}
+    [Arguments]  ${dataDictionary}  ${value}
+    PostClass.Click On Filter Button  ${dataDictionary}
+    PostClass.Select Type In Dropdown  ${dataDictionary}  ${value}
+    PostClass.Apply Filter  ${dataDictionary}
 
 Search Post Class By Name
-    [Arguments]  ${formField}  ${value}
-    PostClass.Search Post Class  ${formField}  ${value}
+    [Arguments]  ${dataDictionary}  ${value}
+    PostClass.Search Post Class  ${dataDictionary}  ${value}
 
 Update Post Class Details
-    [Arguments]  ${formField}
-    PostClass.Click On Update Button  ${formField}
-    PostClass.Fill Post Class Details  ${formField["Update Post Class"]}
-    PostClass.Submit Details  ${formField}
+    [Arguments]  ${dataDictionary}
+    PostClass.Click On Update Button  ${dataDictionary}
+    PostClass.Fill Post Class Details  ${dataDictionary["Update Post Class"]}
+    PostClass.Submit Details  ${dataDictionary}
 
 Delete Post Class
-    [Arguments]  ${formField}
-    PostClass.Click On Delete Button  ${formField}
+    [Arguments]  ${dataDictionary}
+    PostClass.Click On Delete Button  ${dataDictionary}
     PostClass.Confirm Delete Entry Popup Appeared
-    PostClass.Delete Selected Entry  ${formField}
+    PostClass.Delete Selected Entry  ${dataDictionary}
 
 Open Entertainment Declaration Page
     EntertainmentDeclaration.Go To Entertainment Declaration Page
 
 Declare Tea Rate Definition
-    [Arguments]  ${formField}
-    EntertainmentDeclaration.Click On Declare Button  ${formField}
-    EntertainmentDeclaration.Fill Entertainment Declaration Details  ${formField}
-    EntertainmentDeclaration.Submit Details  ${formField}
+    [Arguments]  ${dataDictionary}
+    EntertainmentDeclaration.Click On Declare Button  ${dataDictionary}
+    EntertainmentDeclaration.Fill Entertainment Declaration Details  ${dataDictionary}
+    EntertainmentDeclaration.Submit Details  ${dataDictionary}
 
 Search Tea Rate Definition
-    [Arguments]  ${formField}
-    EntertainmentDeclaration.Search Tea Rate Definition In Entertainment Declaration Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    EntertainmentDeclaration.Search Tea Rate Definition In Entertainment Declaration Table  ${dataDictionary}
 
 Apply Tea Rate Filter
-    [Arguments]  ${formField}
-    EntertainmentDeclaration.Click On Filter  ${formField}
-    EntertainmentDeclaration.Select Type In Dropdown  ${formField}
-    EntertainmentDeclaration.Apply Filter  ${formField}
+    [Arguments]  ${dataDictionary}
+    EntertainmentDeclaration.Click On Filter  ${dataDictionary}
+    EntertainmentDeclaration.Select Type In Dropdown  ${dataDictionary}
+    EntertainmentDeclaration.Apply Filter  ${dataDictionary}
 
 Edit Tea Rate Definition
-    [Arguments]  ${formField}
-    EntertainmentDeclaration.Click On Edit Button  ${formField}
-    EntertainmentDeclaration.Fill Entertainment Declaration Details  ${formField["Edit Tea Rate Definition"]}
-    EntertainmentDeclaration.Submit Details  ${formField}
+    [Arguments]  ${dataDictionary}
+    EntertainmentDeclaration.Click On Edit Button  ${dataDictionary}
+    EntertainmentDeclaration.Fill Entertainment Declaration Details  ${dataDictionary["Edit Tea Rate Definition"]}
+    EntertainmentDeclaration.Submit Details  ${dataDictionary}
 
 Delete Tea Rate Definition
-    [Arguments]  ${formField}
-    EntertainmentDeclaration.Click On Delete Button  ${formField}
+    [Arguments]  ${dataDictionary}
+    EntertainmentDeclaration.Click On Delete Button  ${dataDictionary}
     EntertainmentDeclaration.Confirm Delete Entry Popup Appeared
-    EntertainmentDeclaration.Delete Selected Entry  ${formField}
+    EntertainmentDeclaration.Delete Selected Entry  ${dataDictionary}
 
 Verify Tea Rate Entry
-    [Arguments]  ${formField}
-    EntertainmentDeclaration.Check For The New Entry In Entertainment Declaration Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    EntertainmentDeclaration.Check For The New Entry In Entertainment Declaration Table  ${dataDictionary}
 
 Verify Tea Rate Deletion
-    [Arguments]  ${formField}
-    EntertainmentDeclaration.Check For The Deletion In Entertainment Declaration Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    EntertainmentDeclaration.Check For The Deletion In Entertainment Declaration Table  ${dataDictionary}
 
 Verify Post Class Creation
-    [Arguments]  ${formField}
-    PostClass.Check For The Post Class Entry In The Post Class Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    PostClass.Check For The Post Class Entry In The Post Class Table  ${dataDictionary}
 
 Verify Post Class deletion
-    [Arguments]  ${formField}
-    PostClass.Check For The Post Class Entry In The Post Class Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    PostClass.Check For The Post Class Entry In The Post Class Table  ${dataDictionary}
 
 Open Enquiry Decision Page
     EnquiryDecision.Go To Enquiry Decision Page
 
 Add New Enquiry Decision Type
-    [Arguments]  ${formField}
-    EnquiryDecision.Click On Add New Button  ${formField}
-    EnquiryDecision.Fill Enquiry Decision Details  ${formField}
-    EnquiryDecision.Submit Details  ${formField}
+    [Arguments]  ${dataDictionary}
+    EnquiryDecision.Click On Add New Button  ${dataDictionary}
+    EnquiryDecision.Fill Enquiry Decision Details  ${dataDictionary}
+    EnquiryDecision.Submit Details  ${dataDictionary}
 
 Verify Enquiry Decision Type Creation
-    [Arguments]  ${formField}
-    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${dataDictionary}
 
 Edit Enquiry Decision Type
-    [Arguments]  ${formField}
-    EnquiryDecision.Click On Edit Button  ${formField}
-    EnquiryDecision.Fill Enquiry Decision Details  ${formField["Edit Enquiry Decision Type"]}
-    EnquiryDecision.Submit Details  ${formField}
+    [Arguments]  ${dataDictionary}
+    EnquiryDecision.Click On Edit Button  ${dataDictionary}
+    EnquiryDecision.Fill Enquiry Decision Details  ${dataDictionary["Edit Enquiry Decision Type"]}
+    EnquiryDecision.Submit Details  ${dataDictionary}
 
 Verify Enquiry Decision Type Updatation
-    [Arguments]  ${formField}
-    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${dataDictionary}
 
 Select Enquiry Decision Type
-    [Arguments]  ${formField}
-    EnquiryDecision.Search Enquiry Decision  ${formField}
-    EnquiryDecision.Select Enquiry Decision Checkbox  ${formField}
+    [Arguments]  ${dataDictionary}
+    EnquiryDecision.Search Enquiry Decision  ${dataDictionary}
+    EnquiryDecision.Select Enquiry Decision Checkbox  ${dataDictionary}
 
 Delete Enquiry Decision Type
-    [Arguments]  ${formField}
-    EnquiryDecision.Click On Delete Button  ${formField}
+    [Arguments]  ${dataDictionary}
+    EnquiryDecision.Click On Delete Button  ${dataDictionary}
     EnquiryDecision.Confirm Delete Entry Popup Appeared
-    EnquiryDecision.Delete Selected Entry  ${formField}
+    EnquiryDecision.Delete Selected Entry  ${dataDictionary}
 
 Verify Enquiry Decision Type Deletion
-    [Arguments]  ${formField}
-    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    EnquiryDecision.Check For The Enquiry Decision Entry in Enquiry Decision Table  ${dataDictionary}
 
 Open Deputation Department Page
     DeputationDepartment.Go To Deputation Department Page
 
 Add New Deputation Department
-    [Arguments]  ${formField}
-    DeputationDepartment.Click On Add New Button  ${formField}
-    DeputationDepartment.Fill Deputation Department Details  ${formField}
-    DeputationDepartment.Submit Details  ${formField}
+    [Arguments]  ${dataDictionary}
+    DeputationDepartment.Click On Add New Button  ${dataDictionary}
+    DeputationDepartment.Fill Deputation Department Details  ${dataDictionary}
+    DeputationDepartment.Submit Details  ${dataDictionary}
 
 Filter Deputation Departments
-    [Arguments]  ${formField}  ${value}=${formField}
-    DeputationDepartment.Open Deputation Department Filters  ${formField}
-    DeputationDepartment.Select Governing Authorities Filter  ${formField}  ${value["Governing Authorities"]["Value"]}
-    DeputationDepartment.Select State Filter  ${formField}  ${value["State"]["Value"]}
-    DeputationDepartment.Select City Filter  ${formField}  ${value["City"]["Value"]}
-    DeputationDepartment.Apply Filters  ${formField}
+    [Arguments]  ${dataDictionary}  ${value}=${dataDictionary}
+    DeputationDepartment.Open Deputation Department Filters  ${dataDictionary}
+    DeputationDepartment.Select Governing Authorities Filter  ${dataDictionary}  ${value["Governing Authorities"]["Value"]}
+    DeputationDepartment.Select State Filter  ${dataDictionary}  ${value["State"]["Value"]}
+    DeputationDepartment.Select City Filter  ${dataDictionary}  ${value["City"]["Value"]}
+    DeputationDepartment.Apply Filters  ${dataDictionary}
 
 Edit Deputation Department Details
-    [Arguments]  ${formField}
-    DeputationDepartment.Click On Edit Button  ${formField}
+    [Arguments]  ${dataDictionary}
+    DeputationDepartment.Click On Edit Button  ${dataDictionary}
     switch window  NEW
-    DeputationDepartment.Fill Deputation Department Details  ${formField["Edit Deputation Department"]}
-    DeputationDepartment.Submit Details  ${formField}
+    DeputationDepartment.Fill Deputation Department Details  ${dataDictionary["Edit Deputation Department"]}
+    DeputationDepartment.Submit Details  ${dataDictionary}
 
 Search Deputaion Department
-    [Arguments]  ${formField}  ${value}
-    DeputationDepartment.Search Deputaion Department In Deputation Department table  ${formField}  ${value}
+    [Arguments]  ${dataDictionary}  ${value}
+    DeputationDepartment.Search Deputaion Department In Deputation Department table  ${dataDictionary}  ${value}
 
 Delete Deputation Department
-    [Arguments]  ${formField}  ${entity}
-    DeputationDepartment.Click On Delete Button  ${formField}  ${entity}
+    [Arguments]  ${dataDictionary}  ${entity}
+    DeputationDepartment.Click On Delete Button  ${dataDictionary}  ${entity}
     DeputationDepartment.Confirm Delete Entry Popup Appeared
-    DeputationDepartment.Delete Selected Entry  ${formField}
+    DeputationDepartment.Delete Selected Entry  ${dataDictionary}
 
 Verify Deputation Department Creation
-    [Arguments]  ${formField}
-    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${dataDictionary}
 
 Verify Deputation Department Updation
-    [Arguments]  ${formField}
-    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${dataDictionary}
 
 Verify Deputation Department Deletion
-    [Arguments]  ${formField}
-    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    DeputationDepartment.Check For The Deputation Department Entry in Enquiry Decision Table  ${dataDictionary}
 
 Open Pay Slip Configuration Page
     PaySlipConfiguration.Go To pay Slip Configuration Page
 
 Configure Pay Slip Details
-    [Arguments]  ${formField}
-    PaySlipConfiguration.Configure Page/View Name  ${formField}
-    PaySlipConfiguration.Configure Show Other Details  ${formField}
-    PaySlipConfiguration.Configure Show Net Payable In Words  ${formField}
-    PaySlipConfiguration.Configure Show DDO Details  ${formField}
-    PaySlipConfiguration.Configure Show Birthday Message  ${formField}
-    PaySlipConfiguration.Configure Show PF Balance  ${formField}
-    PaySlipConfiguration.Configure Show Net Payable Rounded Off  ${formField}
-    PaySlipConfiguration.Configure Show Gross Salary with Employer Contribution  ${formField}
-    PaySlipConfiguration.Configure Show Loan Details  ${formField}
-    PaySlipConfiguration.Configure Show Leave Balances  ${formField}
-    PaySlipConfiguration.Configure Show LWP Days  ${formField}
-    PaySlipConfiguration.Configure Language  ${formField}
-    PaySlipConfiguration.Configure Show Salary Annexure  ${formField}
+    [Arguments]  ${dataDictionary}
+    PaySlipConfiguration.Configure Page/View Name  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Other Details  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Net Payable In Words  ${dataDictionary}
+    PaySlipConfiguration.Configure Show DDO Details  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Birthday Message  ${dataDictionary}
+    PaySlipConfiguration.Configure Show PF Balance  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Net Payable Rounded Off  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Gross Salary with Employer Contribution  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Loan Details  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Leave Balances  ${dataDictionary}
+    PaySlipConfiguration.Configure Show LWP Days  ${dataDictionary}
+    PaySlipConfiguration.Configure Language  ${dataDictionary}
+    PaySlipConfiguration.Configure Show Salary Annexure  ${dataDictionary}
 
 Save Pay Slip Configurations
-    [Arguments]  ${formField}
-    PaySlipConfiguration.Save Configurations  ${formField}
+    [Arguments]  ${dataDictionary}
+    PaySlipConfiguration.Save Configurations  ${dataDictionary}
+
+Open Self Verification Configuration Page
+    SelfVerification.Go To Self Verification Configuration Page
+
+Configure Self Varification Details
+    [Arguments]  ${dataDictionary}
+    SelfVerification.Configure Self Varication Popup  ${dataDictionary}
+    SelfVerification.Configure Self Varication Mandatory  ${dataDictionary}
+    SelfVerification.Configure Send SMS Notification  ${dataDictionary}
+    SelfVerification.Configure Send Email Notification  ${dataDictionary}
+    SelfVerification.Configure Self Verification of Enrollment Detail  ${dataDictionary}
+    SelfVerification.Configure Self Verification of Personal Detail  ${dataDictionary}
+    SelfVerification.Configure Self Verification of Official Detail  ${dataDictionary}
+    SelfVerification.Configure Self Verification of Salary Detail  ${dataDictionary}
+    SelfVerification.Configure Self Verification of Other Detail  ${dataDictionary}
+    SelfVerification.Configure Self Verification of Nominee Detail  ${dataDictionary}
+
+Save Self Varification Detatils
+    [Arguments]  ${dataDictionary}
+    SelfVerification.Click On Save Button  ${dataDictionary}
+
 
 Verify Division Entry
-    [Arguments]  ${formField}
-    Division.Check For Division Entry In Division Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    Division.Check For Division Entry In Division Table  ${dataDictionary}
 
 Verify Division Deletion
-    [Arguments]  ${formField}
-    Division.Check For Division Deletion In Division Table  ${formField}
+    [Arguments]  ${dataDictionary}
+    Division.Check For Division Deletion In Division Table  ${dataDictionary}
 
 Verify Designation Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Designation.Search For Designation  ${formField}
+    Designation.Search For Designation  ${dataDictionary}
     sleep  3s
-    Designation.Check For Designation Entry In Designation Table  ${formField}
+    Designation.Check For Designation Entry In Designation Table  ${dataDictionary}
 
 Verify Designation Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Designation.Search For Designation  ${formField}
+    Designation.Search For Designation  ${dataDictionary}
     sleep  3s
-    Designation.Check For Designation Deletion In Designation Table  ${formField}
+    Designation.Check For Designation Deletion In Designation Table  ${dataDictionary}
 
 Verify Hospital Empanelment Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    HospitalEmpanelment.Search For Hospital Empanelment  ${formField}
+    HospitalEmpanelment.Search For Hospital Empanelment  ${dataDictionary}
     sleep  3s
-    HospitalEmpanelment.Check For Hospital Empanelment Entry In Hospital Empanelment Table  ${formField}
+    HospitalEmpanelment.Check For Hospital Empanelment Entry In Hospital Empanelment Table  ${dataDictionary}
 
 Verify Hospital Empanelment Deletion
-    [Arguments]  ${formField}
-    Designation.Search For Hospital Empanelment  ${formField}
+    [Arguments]  ${dataDictionary}
+    Designation.Search For Hospital Empanelment  ${dataDictionary}
     sleep  3s
-    Designation.Check For Hospital Empanelment Deletion In Hospital Empanelment Table  ${formField}
+    Designation.Check For Hospital Empanelment Deletion In Hospital Empanelment Table  ${dataDictionary}
 
 Verify Qualification Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Qualification.Search For Qualification  ${formField}
+    Qualification.Search For Qualification  ${dataDictionary}
     sleep  3s
-    Qualification.Check For Qualification Entry In Qualification Table  ${formField}
+    Qualification.Check For Qualification Entry In Qualification Table  ${dataDictionary}
 
 Verify Qualification Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Qualification.Search For Qualification  ${formField}
+    Qualification.Search For Qualification  ${dataDictionary}
     sleep  3s
-    Qualification.Check For Qualification Deletion In Qualification Table  ${formField}
+    Qualification.Check For Qualification Deletion In Qualification Table  ${dataDictionary}
 
 Verify Empanelled Officer Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    EmpanelledOfficer.Search For Empanelled Officer  ${formField}
+    EmpanelledOfficer.Search For Empanelled Officer  ${dataDictionary}
     sleep  3s
-    EmpanelledOfficer.Check For Empanelled Officer Entry In Empanelled Officer Table  ${formField}
+    EmpanelledOfficer.Check For Empanelled Officer Entry In Empanelled Officer Table  ${dataDictionary}
 
 Verify Empanelled Officer Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    EmpanelledOfficer.Search For Empanelled Officer  ${formField}
+    EmpanelledOfficer.Search For Empanelled Officer  ${dataDictionary}
     sleep  3s
-    EmpanelledOfficer.Check For Empanelled Officer Deletion In Empanelled Officer Table  ${formField}
+    EmpanelledOfficer.Check For Empanelled Officer Deletion In Empanelled Officer Table  ${dataDictionary}
 
 Verify Cadre Detail Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    CadreDetail.Search For Cadre Detail  ${formField}
+    CadreDetail.Search For Cadre Detail  ${dataDictionary}
     sleep  3s
-    CadreDetail.Check For Cadre Detail Entry In Cadre Detail Table  ${formField}
+    CadreDetail.Check For Cadre Detail Entry In Cadre Detail Table  ${dataDictionary}
 
 Verify Cadre Detail Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    CadreDetail.Search For Cadre Detail  ${formField}
+    CadreDetail.Search For Cadre Detail  ${dataDictionary}
     sleep  3s
-    CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${formField}
+    CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${dataDictionary}
 
 Verify Payment Type Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    PaymentType.Search For Payment Type  ${formField}
+    PaymentType.Search For Payment Type  ${dataDictionary}
     sleep  3s
-    PaymentType.Check For Payment Type Entry In Payment Type Table  ${formField}
+    PaymentType.Check For Payment Type Entry In Payment Type Table  ${dataDictionary}
 
 Verify Payment Type Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    PaymentType.Search For Payment Type  ${formField}
+    PaymentType.Search For Payment Type  ${dataDictionary}
     sleep  3s
-    PaymentType.Check For Payment Type Deletion In Payment Type Table  ${formField}
+    PaymentType.Check For Payment Type Deletion In Payment Type Table  ${dataDictionary}
 
 Verify Department Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Department.Search For Department  ${formField}
+    Department.Search For Department  ${dataDictionary}
     sleep  3s
-    Department.Check For Department Entry In Department Table  ${formField}
+    Department.Check For Department Entry In Department Table  ${dataDictionary}
 
 Verify Department Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Department.Search For Department  ${formField}
+    Department.Search For Department  ${dataDictionary}
     sleep  3s
-    Department.Check For Department Deletion In Department Table  ${formField}
+    Department.Check For Department Deletion In Department Table  ${dataDictionary}
 
 Verify Section Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Section.Search For Section  ${formField}
+    Section.Search For Section  ${dataDictionary}
     sleep  3s
-    Section.Check For Section Entry In Section Table  ${formField}
+    Section.Check For Section Entry In Section Table  ${dataDictionary}
 
 Verify Section Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    Section.Search For Section  ${formField}
+    Section.Search For Section  ${dataDictionary}
     sleep  3s
-    Section.Check For Section Deletion In Section Table  ${formField}
+    Section.Check For Section Deletion In Section Table  ${dataDictionary}
 
 Verify TA/DA grade Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    TADAgrade.Search For TA/DA grade  ${formField}
+    TADAgrade.Search For TA/DA grade  ${dataDictionary}
     sleep  3s
-    TADAgrade.Check For TA/DA grade Entry In TA/DA grade Table  ${formField}
+    TADAgrade.Check For TA/DA grade Entry In TA/DA grade Table  ${dataDictionary}
 
 Verify TA/DA grade Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    TADAgrade.Search For TA/DA grade  ${formField}
+    TADAgrade.Search For TA/DA grade  ${dataDictionary}
     sleep  3s
-    TADAgrade.Check For TA/DA grade Deletion In TA/DA grade Table  ${formField}
+    TADAgrade.Check For TA/DA grade Deletion In TA/DA grade Table  ${dataDictionary}
 
 Verify Grade Dependancy Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
     sleep  3s
-    GradeDependancy.Check For Grade Dependancy Entry In Grade Dependancy Table  ${formField}
+    GradeDependancy.Check For Grade Dependancy Entry In Grade Dependancy Table  ${dataDictionary}
 
 Verify GradeDependancy Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
     sleep  3s
-    GradeDependancy.Check For Grade Dependancy Deletion In Grade Dependancy Table  ${formField}
+    GradeDependancy.Check For Grade Dependancy Deletion In Grade Dependancy Table  ${dataDictionary}
 
 Verify TA/DA Rule Entry
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    #TADARule.Search For TA/DA Rule  ${formField}
+    #TADARule.Search For TA/DA Rule  ${dataDictionary}
     sleep  3s
-    TADARule.Check For TA/DA Rule Entry In TA/DA Rule Table  ${formField}
+    TADARule.Check For TA/DA Rule Entry In TA/DA Rule Table  ${dataDictionary}
 
 Verify TA/DA Rule Deletion
-    [Arguments]  ${formField}
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Show Maximum Entries on Page
-    #TADARule.Search For TA/DA Rule  ${formField}
+    #TADARule.Search For TA/DA Rule  ${dataDictionary}
     sleep  3s
-    TADARule.Check For TA/DA Rule Deletion In TA/DA Rule Table  ${formField}
+    TADARule.Check For TA/DA Rule Deletion In TA/DA Rule Table  ${dataDictionary}

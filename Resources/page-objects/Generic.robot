@@ -20,7 +20,7 @@ Get All Module Urls
 Perform All Critical Generic Tests On Urls
     [Documentation]  Performs all tests on the urls of given module
     [Arguments]  ${moduleName}  @{moduleUrls}
-    create file  ${ERRORFILE}
+    #create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page  ${url}
     \   ${result}  Check Page Error
@@ -90,7 +90,7 @@ Check Resource Not Found
 Perform Permission Tests On Urls
     [Documentation]  Performs permission tests on the urls of given module
     [Arguments]  ${moduleName}  @{moduleUrls}
-    create file  ${ERRORFILE}
+    #create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
     \   Open ERP Page Without Permission  ${url}
     \   ${errorCheck}  Check Error Occurred  #if page has any other error do not report it

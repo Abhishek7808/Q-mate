@@ -24,8 +24,8 @@ Resource          ${SMM_DATA_FILES}${/}alerts.robot
 # login data added into Data/Login_Data.robot
 @{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
-${HRMSconfigurations}  ${DATA}/HRMS_DATA/ConfigurationData.json
-
+${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
+${urlsJson}   ${DATA}/URLs.json
 *** Keywords ***
 
 Begin Basic Testing
@@ -49,6 +49,7 @@ End DV Testing
 
 Begin Generic Testing
     Set Paths
+    create file  ${ERRORFILE}
     Remove Files
     open browser  about:blank  ${BROWSER}
     maximize browser window
@@ -76,6 +77,10 @@ Load Json File
     ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
     [Return]    ${Data Obj}
 
+Set DV Test Count
+    set global variable  ${retryCount}    0
+    ${retryCount}  convert to integer  ${retryCount}
+
 Set Test Variables
     [Arguments]    &{Variables}
     : FOR    ${Var}    IN    @{Variables.keys()}
@@ -90,8 +95,10 @@ Begin HRMS Testing
     maximize browser window
 
 Set HRMS Variables
-    ${configurationData}  Load Json File  ${HRMSconfigurations}
+    ${configurationData}  Load Json File  ${hrmsConfigurationData}
     set global variable  ${configData}  ${configurationData}
+    ${urlsDict}  Load Json File  ${urlsJson}
+    set global variable  ${urlsDict}  ${urlsDict}
 
 End HRMS Testing
     close browser
@@ -147,6 +154,10 @@ Switch Tab
     @{windowTitles}    get window handles
     ${windowToOpen}=    get from list    ${windowTitles}  -1
     Select Window    ${windowToOpen}
+
+Set Test Data
+    [Arguments]  ${dataJson}
+    set test variable  ${datadictionary}  ${dataJson}
 
 #Begin Disbursement Testing
 #    Set Paths

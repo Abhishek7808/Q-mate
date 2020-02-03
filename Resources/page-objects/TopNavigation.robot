@@ -43,44 +43,43 @@ Open Unit Dropdown In Preference Modal
 
 Get Unit Count In Preference Modal
     [Documentation]  Returns the number of elements from the unit dropdown
-#   Open Unit Dropdown In Preference Modal
     ${count}  get element count  ${UNIT PERFERENCE DROPDOWN LIST ITEM}
     return from keyword  ${count}
 
 Select Unit In Preference Modal
     [Documentation]  Selects the given unit from the unit dropdown
-    [Arguments]  ${i}  ${retryCount}
+    [Arguments]  ${unit}
     Open Preference Unit Page
-    ${num}  convert to string  ${i}
+    ${num}  convert to string  ${unit}
     select from list by index  id=Pre_Unit  ${num}
     sleep  2s
     Apply Pereference
-    ${retryCount}  set variable  ${retryCount+1}
-    ${status}  Check Preference Is Selected Or Not
-    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal  ${i}  ${retryCount}
-    run keyword if  ${retryCount} ==3  fail  Filter is not apllied
+    ${retryCount}  set variable  ${retryCount}+1            # """ Increases retrycount by 1 """
+    ${status}  Check Preference Is Selected Or Not          # """ Status is set as true when preference is selected successfully """
+    # """ If preference selection is not done due to any reason then this keyword will be called recursively until the ${retrycount} variable
+    # gets the value 3 """
+    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal  ${unit}  ${retryCount}
+    run keyword if  ${retryCount} ==3  fail  Failed to select the preference
     ${retryCount}  convert to integer  1
 
 Check Preference Is Selected Or Not
-    ${status}  run keyword and return status  wait until page contains  OK
+    [Documentation]  Verifies that preference is selected or not.
+    ${status}  run keyword and return status  wait until page contains  OK          # """ If 'OK' text appears on the screen it means preference is selected"""
     return from keyword  ${status}
+
 Select Unit In Preference Modal By ID
     [Documentation]  Selects the unit by unit id from the unit dropdown
-    [Arguments]  ${UNITID}  ${retryCount}
-    Open Preference Unit Page
-    select from list by value  id=Pre_Unit  ${unitID}
-    Apply Pereference
-    ${retryCount}  set variable  ${retryCount+1}
+    open preference unit page
+    select from list by value  id=Pre_Unit  ${UNITID}
+    apply pereference
+    ${retryCount}  set variable  ${retryCount}+1                                                  #increases retry count by 1
     ${status}  Check Preference Is Selected Or Not
     run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
-    run keyword if  ${retryCount} ==3  fail  Filter is not apllied
-    ${retryCount}  convert to integer  1
-
+    run keyword if  ${retryCount} ==3  fail   preference is not selected
 
 Apply Pereference
-    [Documentation]  Applies the selectd preference
+    [Documentation]  Applies the selectd preference.
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click button  ${APPLY PERFERENCE BUTTON}
-
 
 Click On Logout Link
     click element  ${LOGOUT_LINK}

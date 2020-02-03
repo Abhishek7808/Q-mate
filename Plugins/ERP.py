@@ -63,3 +63,22 @@ class ERP(LibraryComponent):
         dropdown.click()
         options = dropdown.find_elements_by_tag_name('option')
         options[len(options) - 1].click()
+
+    @keyword
+    def read_table_data(self, table_id, row_number, column_number):
+        # Reduces time by 90%
+        tbl = self.driver.find_element_by_xpath(table_id)
+        rows = tbl.find_elements_by_tag_name("tr")
+        cols = rows[int(row_number)].find_elements_by_tag_name("td")
+        cell = cols[int(column_number)]
+        return cell
+
+    @keyword
+    def get_table_column_number(self, table_id, header_text):
+        tbl = self.driver.find_element_by_xpath(table_id)
+        headers = tbl.find_elements_by_tag_name("th")
+        for item in headers:
+            #logger.console(item.text)
+            if item.is_enabled():
+                if item.text == header_text:
+                    return headers.index(item)

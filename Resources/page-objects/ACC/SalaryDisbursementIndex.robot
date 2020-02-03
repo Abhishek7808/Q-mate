@@ -1,92 +1,87 @@
 *** Keywords ***
 
 Go To Salary Disbursement Index Page And Set Variables
+    [Documentation]  Opens Disbursement url as according to the test and calls 'set variables' keyword.
     SalaryDisbursementIndex.Set Variables
-    ${retryCount}  DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-    return from keyword  ${retryCount}
+    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
 
 Set Variables
+    [Documentation]  Sets variables according to the test.
+    # """ Each disbursement have its own variables to set up before the testing"""
     set test variable  ${disbursementUrl}  HRM/salaryDisbursment/SalayDisbursmentIndex
-    set test variable  ${disburseTableColumnText}  Net Amount
+    set test variable  ${disburseTableColumnHead}  Net Amount            # """ It is set for fetching disbursement amount"""
     set test variable  ${disbursementTableID}  //*[@id="EmpSalGrid"]
-    set test variable  ${paybillDetailsColumnHead}  PayBill Detail
+    set test variable  ${paybillDetailsColumnHead}  PayBill Detail       # """ It is set for fetching paybill Number from Paybill """
+    set test variable  ${employeeIdColumn}          3            # """ It is set for fetching employee id from disbursement data table """
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
-    [Arguments]  ${UNITID}  ${retryCount}
-    run keyword if  ${UNITID}!= None  TopNavigation.Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
+    run keyword if  ${UNITID}!= None  TopNavigation.Select Unit In Preference Modal By ID
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     DisbursementIndex.Open Filters
-    DisbursementIndex.Apply Given Financial Year
-    DisbursementIndex.Apply Given Cycle Filter
+    DisbursementIndex.Select Given Financial Year
+    DisbursementIndex.Select Given Cycle Filter
     DisbursementIndex.Apply Filters
     sleep  5s
-    run keyword if  ${PAYBILLNO} == None  SalaryDisbursementIndex.Check Salary Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${paybillDetailsColumnHead}
-    run keyword if  ${PAYBILLNO} != None  SalaryDisbursementIndex.Check Specified Salary Paybill  ${PAYBILLNO}  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}
+    run keyword if  ${PAYBILLNO} == None  SalaryDisbursementIndex.Check Salary Paybills
+    run keyword if  ${PAYBILLNO} != None  SalaryDisbursementIndex.Check Specified Salary Paybill
 
 Match All Paybills Net Amounts With Reports For All Units
     [Documentation]  Matches the Salaries in disburement page and report page for all units
-    [Arguments]  ${retryCount}
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
     FOR  ${unit}  IN RANGE  1  ${allUnits}
-    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${retryCount}
+    \   TopNavigation.Select Unit In Preference Modal  ${unit}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     \   DisbursementIndex.Open Filters
-    \   DisbursementIndex.Apply Given Financial Year
-    \   DisbursementIndex.Apply Given Cycle Filter
+    \   DisbursementIndex.Select Given Financial Year
+    \   DisbursementIndex.Select Given Cycle Filter
     \   DisbursementIndex.Apply Filters
     \   sleep  2s
-    \   SalaryDisbursementIndex.Check Salary Paybills  ${disbursementUrl}  ${disburseTableColumnText}  ${disbursementTableID}  ${paybillDetailsColumnHead}
+    \   SalaryDisbursementIndex.Check Salary Paybills
     \   TopNavigation.Open Preference Unit Page
 
 Check Salary Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
-    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${paybillDetailsColumnHead}=Disbursement Detail  ${employeeIdColumn}=3
     ${allPaybills}  DisbursementIndex.Get Paybill Count
-    ${PaybillTableColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTableID}  Actions
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
-    \    DisbursementIndex.Show Maximum Entries
+    \    Common_Keywords.Show Maximum Entries on Page
     \    sleep  2s
     \    ${paybillNumber}  SalaryDisbursementIndex.Get Salary Paybill Number  ${paybill}  ${paybillDetailsColumnHead}
-    \    DisbursementIndex.Go To Report Page  ${paybill}  ${PaybillTableColumnNumber}
+    \    DisbursementIndex.Go To Report Page  ${paybillNumber}
     \    @{ReportData}  DisbursementIndex.Get Data Of Report Page
-    \    DisbursementIndex.Switch Tab
-    \    DisbursementIndex.Go To Disbursement Page  ${paybill}  ${PaybillTableColumnNumber}
+    \    Common_Keywords.Switch Tab
+    \    DisbursementIndex.Go To Disbursement Details Page  ${paybillNumber}
     \    switch window  NEW
-    \    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    \    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${disburseTableColumnHead}  ${disbursementTableID}
     \    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
     \    close window
-    \    DisbursementIndex.Switch Tab
-    \    Open Filters
-    \    Apply Given Financial Year  ${financialYearDD}
-    \    Apply Filters
-    \    sleep  2s
+    \    Common_Keywords.Switch Tab
+#    \    Open Filters
+#    \    Select Given Financial Year
+#    \    Apply Filters
+#    \    sleep  2s
 
 Check Specified Salary Paybill
-    [Arguments]  ${PAYBILLNO}  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}=3
-    ${PaybillTableColumnNumber}  Get Amount Column Number  ${paybillTableID}  Actions
-    DisbursementIndex.Show Maximum Entries
+    [Documentation]  Checks paybill of given number.
+    ${PaybillTableColumnNumber}  Get Table Column Number  ${paybillTableID}  Actions
+    Common_Keywords.Show Maximum Entries on Page
     sleep  2s
-    DisbursementIndex.Go To Report Page Of Specified Paybill  ${PAYBILLNO}
-    @{ReportData}  Get Data Of Report Page
-    DisbursementIndex.Switch Tab
-    sleep  5s
-    SalaryDisbursementIndex.Go To Disbursement Page Specified By Paybill  ${PAYBILLNO}
+    DisbursementIndex.Go To Report Page  ${PAYBILLNO}
+    @{ReportData}  DisbursementIndex.Get Data Of Report Page
+    Common_Keywords.Switch Tab
+    sleep  2s
+    DisbursementIndex.Go To Disbursement Details Page  ${PAYBILLNO}
     switch window  NEW
-    @{disbursementData}  Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${disburseTableColumnHead}  ${disbursementTableID}
     sleep  2s
-    Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
-
-Go To Disbursement Page Specified By Paybill
-    [Arguments]  ${PAYBILLNO}
-     click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//i[@class='fa fa-pencil']
+    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
 
 Get Salary Paybill Number
     [Documentation]  Returns the paybill number from the paybill table
     [Arguments]  ${paybillTableRow}   ${paybillDetailsColumnHead}
-    ${columnNumber}  Get Amount Column Number  ${paybillTableID}  ${paybillDetailsColumnHead}
-    ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber}
+    ${columnNumber}  Get Table Column Number  ${paybillTableID}  ${paybillDetailsColumnHead}
+    ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber+1}
     ${paybillDetailSet1}  Split String From Right  ${payBillDetails}   Paybill No. :
     ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  0  14
     return from keyword  ${paybillNumber}

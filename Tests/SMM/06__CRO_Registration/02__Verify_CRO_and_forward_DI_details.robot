@@ -54,4 +54,3 @@ Check that CRO validity date cannot exceed the validity of financial instrument
     SMM_Keywords.Filter CRO List By Status   Pending
     SMM_Keywords.View CRO From Department  ${Branch["Name"]}  ${CRO["Product Quantity Required"]}
     SMM_Keywords.Forward CRO To Marketing Executive From Department
-

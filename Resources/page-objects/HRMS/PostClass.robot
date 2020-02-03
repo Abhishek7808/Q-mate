@@ -1,5 +1,8 @@
+*** Settings ***
+Documentation    Add, edit and delete post class. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-post-class/
+
 *** Variables ***
-${PostClass_URL} =  /PostConfig/PostClassIndex
+${PostClass_URL} =  HRM/PostConfig/PostClassIndex
 ${Table_URL} =  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']
 ${Add_New} =  id=modals-bootbox-custom
 ${Name_Entry} =  xpath=//input[@id='Name']
@@ -12,7 +15,7 @@ ${OK_Button} =  //button[contains(text(),'OK')]
 
 *** Keywords ***
 Go To ERP Page Post Class Page
-     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}${PostClass_URL}
+     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click Add New Post Class
      wait until page contains  Post Class
@@ -65,51 +68,51 @@ Verify The Deleted Element
     page should not contain  ${Name}
 
 Click Add New Post Class Button
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Add New Post Class"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Add New Post Class"]}
 
 Click On Filter Button
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Filter"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Filter"]}
 
 Select Type In Dropdown
-    [Arguments]  ${formField}  ${value}
-    FillFields.Input Value Into Field  ${formField["Filter Type"]}  ${value}
+    [Arguments]  ${dataDictionary}  ${value}
+    FillFields.Input Value Into Field  ${dataDictionary["Filter Type"]}  ${value}
 
 Apply Filter
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Apply Filter"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Apply Filter"]}
 
 Search Post Class
-    [Arguments]  ${formField}   ${value}
-    FillFields.Input Value Into Field  ${formField["Search box"]}   ${value}
-    FillFields.Input Value Into Field  ${formField["Search button"]}
+    [Arguments]  ${dataDictionary}   ${value}
+    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}   ${value}
+    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
 
 Click On Update Button
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Update"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Update"]}
 
 Fill Post Class Details
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Name"]}  ${formField["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Class Group"]}  ${formField["Class Group"]["Value"]}
-    FillFields.Input Value Into Field  ${formField["Seniority Level"]}  ${formField["Seniority Level"]["Value"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Class Group"]}  ${dataDictionary["Class Group"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Seniority Level"]}  ${dataDictionary["Seniority Level"]["Value"]}
 
 Submit Details
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Save"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
 
 Click On Delete Button
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Delete Post Class"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Delete Post Class"]}
 
 Confirm Delete Entry Popup Appeared
     page should contain   Do you really want to Delete this Post Class ??
 
 Delete Selected Entry
-    [Arguments]  ${formField}
-    FillFields.Input Value Into Field  ${formField["Ok"]}
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
 
 Check For The Post Class Entry In The Post Class Table
-    [Arguments]  ${formField}
-    ${status}  run keyword and return status  page should contain element  //td[contains(text(),'${formField["Name"]["Value"]}')]
+    [Arguments]  ${dataDictionary}
+    ${status}  run keyword and return status  page should contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]

@@ -12,70 +12,60 @@ Resource  ${PAGE OBJECTS}${/}${FA.name}/BonusDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/LeaveEncashmentDisbursementIndex.robot
 Resource  ${PAGE OBJECTS}/NavigationHelper.robot
 
-*** Variables ***
-${unitName}  None
-${disbursementUrl}  None
-
 *** Keywords ***
+
 Match Salary Disbursed Amount With The Report For All Units
-    ${retryCount}  SalaryDisbursementIndex.Go To Salary Disbursement Index Page And Set Variables
-    SalaryDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    SalaryDisbursementIndex.Go To Salary Disbursement Index Page And Set Variables
+    SalaryDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Salary Disbursed Amount With The Report For A Unit
-    [Arguments]   ${unitID}
-    ${retryCount}  SalaryDisbursementIndex.Go To Salary Disbursement Index Page And Set Variables
-    SalaryDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    SalaryDisbursementIndex.Go To Salary Disbursement Index Page And Set Variables
+    SalaryDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit
 
 Match Travel Expences Disbursed Amount With The Report For All Units
-    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Expences Disbursement Index Page And Set Variables
-    TravelExpencesDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    TravelExpencesDisbursementIndex.Go To Travel Expences Disbursement Index Page And Set Variables
+    TravelExpencesDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Travel Expences Disbursed Amount With The Report For A Unit
-    [Arguments]  ${unitID}
-    ${retryCount}  TravelExpencesDisbursementIndex.Go To Travel Expences Disbursement Index Page And Set Variables
-    TravelExpencesDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    TravelExpencesDisbursementIndex.Go To Travel Expences Disbursement Index Page And Set Variables
+    TravelExpencesDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit
 
 Match Bonus Disbursed Amount With The Report For All Units
-    ${retryCount}  BonusDisbursementIndex.Go To Bonus Disbursement Index Page And Set Variables
-    BonusDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    BonusDisbursementIndex.Go To Bonus Disbursement Index Page And Set Variables
+    BonusDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Bonus Disbursed Amount With The Report For A Unit
-    [Arguments]  ${unitID}
-    ${retryCount}  BonusDisbursementIndex.Go To Bonus Disbursement Index Page And Set Variables
-    BonusDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    BonusDisbursementIndex.Go To Bonus Disbursement Index Page And Set Variables
+    BonusDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit
 
 Match Honorarium Disbursed Amount With The Report For All Units
-    ${retryCount}  HonorariumDisbursementIndex.Go To Honorarium Disbursement Index Page And Set Variables
-    HonorariumDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    HonorariumDisbursementIndex.Go To Honorarium Disbursement Index Page And Set Variables
+    HonorariumDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Honorarium Disbursed Amount With The Report For A Unit
-    [Arguments]  ${unitID}
-    ${retryCount}  HonorariumDisbursementIndex.Go To Honorarium Disbursement Index Page And Set Variables
-    HonorariumDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    HonorariumDisbursementIndex.Go To Honorarium Disbursement Index Page And Set Variables
+    HonorariumDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit
 
 Match Exgratia Disbursed Amount With The Report For All Units
-    ${retryCount}  ExgratiaDisbursementIndex.Go To Exgratia Disbursement Index Page And Set Variables
-    ExgratiaDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    ExgratiaDisbursementIndex.Go To Exgratia Disbursement Index Page And Set Variables
+    ExgratiaDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Exgratia Disbursed Amount With The Report For A Unit
-    [Arguments]  ${unitID}
-    ${retryCount}  ExgratiaDisbursementIndex.Go To Exgratia Disbursement Index Page And Set Variables
-    ExgratiaDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    ExgratiaDisbursementIndex.Go To Exgratia Disbursement Index Page And Set Variables
+    ExgratiaDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit
 
 Match Arrear Disbursed Amount With The Report For All Units
-    ${retryCount}  ArrearDisbursementIndex.Go To Arrear Disbursement Index Page And Set Variables
-    ArrearDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    ArrearDisbursementIndex.Go To Arrear Disbursement Index Page And Set Variables
+    ArrearDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Arrear Disbursed Amount With The Report For A Unit
-    [Arguments]  ${unitID}
-    ${retryCount}  ArrearDisbursementIndex.Go To Arrear Disbursement Index Page And Set Variables
-    ArrearDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    ArrearDisbursementIndex.Go To Arrear Disbursement Index Page And Set Variables
+    ArrearDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit
 
 Match Leave Encashment Disbursed Amount With The Report For All Units
-    ${retryCount}  LeaveEncashmentDisbursementIndex.Go To Leave Encashment Disbursement Index Page And Set Variables
-    LeaveEncashmentDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units  ${retryCount}
+    LeaveEncashmentDisbursementIndex.Go To Leave Encashment Disbursement Index Page And Set Variables
+    LeaveEncashmentDisbursementIndex.Match All Paybills Net Amounts With Reports For All Units
 
 Match Leave Encashment Disbursed Amount With The Report For A Unit
-    [Arguments]  ${unitID}
-    ${retryCount}  LeaveEncashmentDisbursementIndex.Go To Leave Encashment Disbursement Index Page And Set Variables
-    LeaveEncashmentDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit  ${UNITID}  ${retryCount}
+    LeaveEncashmentDisbursementIndex.Go To Leave Encashment Disbursement Index Page And Set Variables
+    LeaveEncashmentDisbursementIndex.Match All Paybills Net Amount With The Report For Given Unit
