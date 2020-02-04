@@ -43,7 +43,8 @@ Apply Last Cycle Filter
 Check Paybills
     [Documentation]  Checks the available paybill at the disbursement page
     [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${paybillDetailsColumnHead}=Disbursement Detail  ${financialYearDD}=Finyear  ${employeeIdColumn}=3
-    ${allPaybills}  Get Paybill Count
+    Wait Until Keyword Succeeds    15    200ms    Common_Keywords.Show Maximum Entries on Page
+    ${allPaybills}  DisbursementIndex.Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    Common_Keywords.Show Maximum Entries on Page
     \    sleep  2s
@@ -76,6 +77,7 @@ Check Specified Paybill
 
 Get Paybill Count
     [Documentation]  Returns the number of rows in the given paybill table. i.e. returns total number of paybills available.
+    wait until element is visible  ${paybillTableID}  10s
     ${rowsCount}  get element count  ${paybillTableRow}
     return from keyword  ${rowsCount}
 

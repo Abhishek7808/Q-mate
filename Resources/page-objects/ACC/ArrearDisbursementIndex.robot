@@ -41,6 +41,7 @@ Match All Paybills Net Amounts With Reports For All Units
 
 Check Arrear Disbursement Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
+    Wait Until Keyword Succeeds    15    200ms    Common_Keywords.Show Maximum Entries on Page
     ${allPaybills}  DisbursementIndex.Get Paybill Count
     #${PaybillTableColumnNumber}  DisbursementIndex.Get Amount Column Number  ${paybillTableID}  Actions
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}

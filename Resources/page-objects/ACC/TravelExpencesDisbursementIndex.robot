@@ -35,6 +35,7 @@ Match All Paybills Net Amounts With Reports For All Units
 
 Check Travel Expence Paybills
     [Documentation]  Checks the available paybill at the travel expences disbursement page
+    Wait Until Keyword Succeeds    15    200ms    Common_Keywords.Show Maximum Entries on Page
     ${allPaybills}  DisbursementIndex.Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    Common_Keywords.Show Maximum Entries on Page           # """ To get all the paybills at once"""
