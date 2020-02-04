@@ -12,7 +12,7 @@ Set Variables
     set test variable  ${disburseTableColumnHead}  Net Amount            # """ It is set for fetching disbursement amount"""
     set test variable  ${disbursementTableID}  //*[@id="EmpSalGrid"]
     set test variable  ${paybillDetailsColumnHead}  PayBill Detail       # """ It is set for fetching paybill Number from Paybill """
-    set test variable  ${employeeIdColumn}          3            # """ It is set for fetching employee id from disbursement data table """
+    set test variable  ${employeeIdColumn}          4            # """ It is set for fetching employee id from disbursement data table """
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit

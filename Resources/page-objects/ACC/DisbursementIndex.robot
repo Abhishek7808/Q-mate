@@ -32,6 +32,7 @@ Select Given Cycle Filter
     [Documentation]  Opens cycle dropdown and selects given cycle.
     sleep  2s
     # """ If cycle id is not given then last cycle will be selected."""
+    wait until element is enabled  //select[@id='SalaryCycleId']
     run keyword if  ${CYCLEID} != None  select from list by value  ${cycle}  ${CYCLEID}  ELSE  select last dropdown element  ${cycle}
 
 Apply Last Cycle Filter
@@ -77,7 +78,7 @@ Check Specified Paybill
 
 Get Paybill Count
     [Documentation]  Returns the number of rows in the given paybill table. i.e. returns total number of paybills available.
-    wait until element is visible  ${paybillTableID}  10s
+    wait until element is enabled  ${paybillTableID}  10s
     ${rowsCount}  get element count  ${paybillTableRow}
     return from keyword  ${rowsCount}
 
