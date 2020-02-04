@@ -147,7 +147,8 @@ Login From Department
     login.Department Login   ${Username}    ${Password}
 
 Show Maximum Entries on Page
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  select last dropdown element  DDLpageSize
+    ${status}  run keyword and return status  page should contain element  DDLpageSize
+    run keyword if  ${status} == ${True}  wait until keyword succeeds  15s  ${RETRY INTERVAL}  select last dropdown element  DDLpageSize
 
 Switch Tab
     [Documentation]  Switches the robot to the previous tab

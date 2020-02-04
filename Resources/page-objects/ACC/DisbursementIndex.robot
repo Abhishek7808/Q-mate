@@ -78,7 +78,10 @@ Check Specified Paybill
 
 Get Paybill Count
     [Documentation]  Returns the number of rows in the given paybill table. i.e. returns total number of paybills available.
-    wait until element is enabled  ${paybillTableID}  10s
+    #wait until element is enabled  ${paybillTableID}  10s
+#    ${status}  run keyword and return status  page should contain element  ${paybillTableID}  10s
+#    run keyword if  ${status} == ${True}  Common_Keywords.Show Maximum Entries on Page
+#    ${status}  run keyword and return status  wait until element is enabled  ${paybillTableID}  10s
     ${rowsCount}  get element count  ${paybillTableRow}
     return from keyword  ${rowsCount}
 

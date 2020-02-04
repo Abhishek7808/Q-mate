@@ -43,7 +43,7 @@ Match All Paybills Net Amounts With Reports For All Units
 
 Check Salary Paybills
     [Documentation]  Checks the available paybill at the salary disbursement page
-    Wait Until Keyword Succeeds    15    200ms    Common_Keywords.Show Maximum Entries on Page
+    Common_Keywords.Show Maximum Entries on Page
     ${allPaybills}  DisbursementIndex.Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
     \    Common_Keywords.Show Maximum Entries on Page
@@ -81,8 +81,9 @@ Check Specified Salary Paybill
 Get Salary Paybill Number
     [Documentation]  Returns the paybill number from the paybill table
     [Arguments]  ${paybillTableRow}   ${paybillDetailsColumnHead}
+    wait until page contains element  ${paybillTableID}
     ${columnNumber}  Get Table Column Number  ${paybillTableID}  ${paybillDetailsColumnHead}
     ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber+1}
-    ${paybillDetailSet1}  Split String From Right  ${payBillDetails}   Paybill No. :
+    ${paybillDetailSet1}  Split String From Right  ${payBillDetails}   Paybill No.:
     ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  0  14
     return from keyword  ${paybillNumber}
