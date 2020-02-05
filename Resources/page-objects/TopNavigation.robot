@@ -58,7 +58,7 @@ Select Unit In Preference Modal
     ${status}  Check Preference Is Selected Or Not          # """ Status is set as true when preference is selected successfully """
     # """ If preference selection is not done due to any reason then this keyword will be called recursively until the ${retrycount} variable
     # gets the value 3 """
-    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal  ${unit}  ${retryCount}
+    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal
     run keyword if  ${retryCount} ==3  fail  Failed to select the preference
     ${retryCount}  convert to integer  1
 
@@ -74,7 +74,7 @@ Select Unit In Preference Modal By ID
     apply pereference
     ${retryCount}  set variable  ${retryCount}+1                                                  #increases retry count by 1
     ${status}  Check Preference Is Selected Or Not
-    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal By ID  ${UNITID}  ${retryCount}
+    run keyword if  ${status} == False and ${retryCount} !=3  Select Unit In Preference Modal By ID
     run keyword if  ${retryCount} ==3  fail   preference is not selected
 
 Apply Pereference

@@ -17,16 +17,20 @@ Go To Disbursement Index Page
 Open Filters
     [Documentation]  Opens Filter menu on the page.
     NavigationHelper.Select Filter Menu
+    ${status}  run keyword and return status  wait until element is visible  //select[@id='Finyear']
+    run keyword if  ${status} == ${False}  NavigationHelper.Select Filter Menu
 
 Apply Filters
     [Documentation]  Applies filters.
     NavigationHelper.Apply Filter
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  100
 
 Select Given Financial Year
     [Documentation]  Opens financial year dropdown and selects financial year.
     [Arguments]  ${financialYearDD}=Finyear                         # By default financial year dropdown locator is set as Finyear because
                                                                     # in most of the disbursement pages its id is given Finyear.
     select from list by value  ${financialYearDD}  ${FINANCIALYEAR}
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  100
 
 Select Given Cycle Filter
     [Documentation]  Opens cycle dropdown and selects given cycle.
@@ -34,6 +38,8 @@ Select Given Cycle Filter
     # """ If cycle id is not given then last cycle will be selected."""
     wait until element is enabled  //select[@id='SalaryCycleId']
     run keyword if  ${CYCLEID} != None  select from list by value  ${cycle}  ${CYCLEID}  ELSE  select last dropdown element  ${cycle}
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  100
+
 
 Apply Last Cycle Filter
     [Documentation]  Opens filter menu in salary disbursement page and applies the last salary cycle filter
@@ -47,6 +53,7 @@ Check Paybills
     Wait Until Keyword Succeeds    15    200ms    Common_Keywords.Show Maximum Entries on Page
     ${allPaybills}  DisbursementIndex.Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
+    \    log to console  paybill no.${paybill}...
     \    Common_Keywords.Show Maximum Entries on Page
     \    sleep  2s
     \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}  ${paybillDetailsColumnHead}

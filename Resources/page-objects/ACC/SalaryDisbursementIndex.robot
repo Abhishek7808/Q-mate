@@ -85,5 +85,5 @@ Get Salary Paybill Number
     ${columnNumber}  Get Table Column Number  ${paybillTableID}  ${paybillDetailsColumnHead}
     ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber+1}
     ${paybillDetailSet1}  Split String From Right  ${payBillDetails}   Paybill No.:
-    ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  0  14
+    ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  0  15
     return from keyword  ${paybillNumber}
