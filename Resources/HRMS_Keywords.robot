@@ -253,6 +253,20 @@ Save Self Varification Detatils
     [Arguments]  ${dataDictionary}
     SelfVerification.Click On Save Button  ${dataDictionary}
 
+Open Division Page
+    Division.Go To Division Page
+
+Add New Division
+    [Arguments]  ${dataDictionary}
+    Division.Click On Add New Button  ${dataDictionary}
+    Division.Fill Division Form  ${dataDictionary}
+    Division.Save Details  ${dataDictionary}
+
+Edit Division Details
+    [Arguments]  ${dataDictionary}
+    Division.Click On Edit Button  ${dataDictionary}
+    Division.Fill Division Form  ${dataDictionary}
+    Division.Save Details  ${dataDictionary}
 
 Verify Division Entry
     [Arguments]  ${dataDictionary}

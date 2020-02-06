@@ -123,7 +123,7 @@ User should able to delete deputation department
     HRMS_Keywords.Open Deputation Department Page
     HRMS_Keywords.Filter Deputation Departments  ${dataDictionary}  ${dataDictionary["Edit Deputation Department"]}
     HRMS_Keywords.Search Deputaion Department  ${dataDictionary}  ${dataDictionary["Edit Deputation Department"]["Name"]["Value"]}
-    HRMS_Keywords.Delete Deputation Department  ${datCommon_Keywords.Set Test Data  ${configData["Deputation Department"]}aDictionary}  ${dataDictionary["Edit Deputation Department"]["Name"]["Value"]}
+    HRMS_Keywords.Delete Deputation Department  ${dataDictionary}
     reload page
     HRMS_Keywords.Verify Deputation Department Deletion  ${dataDictionary}
 
@@ -146,29 +146,25 @@ User should able to configure self verification details
 User should able to add new division
     [Documentation]  Fills the add new division form and submits it. Verifies its entry in the division table.
     [Tags]  HRMS  division  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
+    HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Division"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add New Division"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
+    HRMS_Keywords.Add New Division  ${dataDictionary}
     reload page
     HRMS_Keywords.Verify Division Entry  ${dataDictionary}
 
 User should able to edit division
     [Documentation]  Edits the division details and saves them. Verifies its updation in the division table.
     [Tags]  HRMS  division  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
+    HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Edit Division"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
+    HRMS_Keywords.Edit Division Details  ${dataDictionary}
     reload page
     HRMS_Keywords.Verify Division Entry  ${dataDictionary}
 
 User should able to delete division
     [Documentation]  deletes the division from the division table. Verifies its deletion in the division table.
     [Tags]  HRMS  division  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/division
+    HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Edit Division"]}
     FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
     page should contain   Do you really want to Delete this Division ??

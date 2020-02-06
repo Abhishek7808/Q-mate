@@ -149,7 +149,7 @@ Login From Department
 Show Maximum Entries on Page
     ${status}  run keyword and return status  page should contain element  DDLpageSize
     run keyword if  ${status} == ${True}  wait until keyword succeeds  15s  ${RETRY INTERVAL}  select last dropdown element  DDLpageSize
-    wait until element is not visible  //div[@id='LoadingImage']//div//img  100
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
 
 Switch Tab
     [Documentation]  Switches the robot to the previous tab

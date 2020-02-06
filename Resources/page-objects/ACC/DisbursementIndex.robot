@@ -23,14 +23,14 @@ Open Filters
 Apply Filters
     [Documentation]  Applies filters.
     NavigationHelper.Apply Filter
-    wait until element is not visible  //div[@id='LoadingImage']//div//img  100
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
 
 Select Given Financial Year
     [Documentation]  Opens financial year dropdown and selects financial year.
     [Arguments]  ${financialYearDD}=Finyear                         # By default financial year dropdown locator is set as Finyear because
                                                                     # in most of the disbursement pages its id is given Finyear.
     select from list by value  ${financialYearDD}  ${FINANCIALYEAR}
-    wait until element is not visible  //div[@id='LoadingImage']//div//img  100
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
 
 Select Given Cycle Filter
     [Documentation]  Opens cycle dropdown and selects given cycle.
@@ -38,7 +38,7 @@ Select Given Cycle Filter
     # """ If cycle id is not given then last cycle will be selected."""
     wait until element is enabled  //select[@id='SalaryCycleId']
     run keyword if  ${CYCLEID} != None  select from list by value  ${cycle}  ${CYCLEID}  ELSE  select last dropdown element  ${cycle}
-    wait until element is not visible  //div[@id='LoadingImage']//div//img  100
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
 
 
 Apply Last Cycle Filter
