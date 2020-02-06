@@ -31,6 +31,7 @@ Match All Paybills Net Amounts With Reports For All Units
     TopNavigation.Open Preference Unit Page
     ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
     FOR  ${unit}  IN RANGE  1  ${allUnits}
+    \   log to console  unit number ${unit}
     \   TopNavigation.Select Unit In Preference Modal  ${unit}
     \   DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
     \   DisbursementIndex.Open Filters
