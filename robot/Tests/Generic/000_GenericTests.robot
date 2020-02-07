@@ -32,12 +32,12 @@ All ERP module pages should be working for admin user
       ${SMM.name}
       ${CPF.name}
       ${MM.name}
-      ${WPM.name}
-      ${AMS.name}
+#      ${WPM.name}
+#      ${AMS.name}
       ${GPF.name}
-      ${TLM.name}
-      ${IMS.name}
-      ${LDM.name}
+#      ${TLM.name}
+#      ${IMS.name}
+#      ${LDM.name}
 
 All ERP pages should not be accessed without persmissions
     [Documentation]  Tests if access validator not properly implimented on the page
@@ -49,9 +49,9 @@ All ERP pages should not be accessed without persmissions
       ${SMM.name}
       ${CPF.name}
       ${MM.name}
-      ${WPM.name}
-      ${AMS.name}
+#      ${WPM.name}
+#      ${AMS.name}
       ${GPF.name}
-      ${TLM.name}
-      ${IMS.name}
-      ${LDM.name}
+#      ${TLM.name}
+#      ${IMS.name}
+#      ${LDM.name}
