@@ -2048,7 +2048,28 @@
 				  "Locator": "TourEligDetailAmount"
 			  }
 		  }
-	  }
+	  },
+      "EntertainmentDeclaration": {
+			"Effective Date": {
+				"Value": {
+					"Day": "5",
+					"Month": "Nov",
+					"Year": "2018"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveDate"
+			},
+			"Type": {
+				"Value": "Tea Rate",
+				"Type": "Dropdown",
+				"Locator": "type"
+			},
+			"Rate": {
+				"Value": "100.00",
+				"Type": "Text Value",
+				"Locator": "rate"
+			}
+	}
   }
 
 

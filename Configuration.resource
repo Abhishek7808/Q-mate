@@ -113,6 +113,51 @@ ${RETRY INTERVAL}    2s
 ...  link_title=xpath=//a[@title='CPF']
 ...  dashboard_title=CPF:Dashboard
 
+&{TLM}
+...  name=TLM
+...  link=/TLM
+...  link_title=xpath=//a[@title='']
+...  dashboard_title=''
+
+&{MM}
+...  name=MM
+...  link=/MM
+...  link_title=//a[@title='MM & Procurement']
+...  dashboard_title=MM & Procurement
+
+&{IMS}
+...  name=IMS
+...  link=/IMS
+...  link_title=//a[@title='']
+...  dashboard_title=''
+
+&{LDM}
+...  name=LDM
+...  link=/LDM
+...  link_title=//a[@title='']
+...  dashboard_title=''
+
+&{WPM}
+...  name=WPM
+...  link=/WPM
+...  link_title=//a[@title='Work & Project Mgmt.']
+...  dashboard_title=MM & Procurement
+
+&{AMS}
+...  name=AMS
+...  link=/AMS
+...  link_title=//a[@title='Asset Management']
+...  dashboard_title=Asset Management
+
+&{GPF}
+...  name=GPF
+...  link=/GPF
+...  link_title=//a[@title='General Provident Fund']
+...  dashboard_title=Asset Management
+
+
+
+
 
 ########################
 #    Organizations     #

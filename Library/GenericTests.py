@@ -12,7 +12,7 @@ def filter_module_error_url(module_name):
     module_error_list = []
     error_list = read_file_return_list(BuiltIn().get_variable_value(r"${ERRORFILE}"))
     for item in error_list:
-        if module_name.lower() == item[0][52:55].lower():
+        if module_name.lower() in item[0].lower():
             module_error_list.append(item)
     # logger.console("hi")
     return module_error_list

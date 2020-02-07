@@ -48,6 +48,7 @@ def get_error_details(error_code):
 
 
 def find_receiver(json_key, receivers_json):
+    logger.console(json_key)
     with open(receivers_json, 'r') as f:
         receivers_dict = json.load(f)
     return receivers_dict.get(json_key)
@@ -247,7 +248,7 @@ class Notifications:
         email_id_error = None
         for item in email_ids:
             try:
-                smtp_obj.sendmail(qmate_email, item, msg.as_string())
+                smtp_obj.sendmail(qmate_email, item.strip(), msg.as_string())
             except smtplib.SMTPRecipientsRefused as email_id_error:
                 logger.write("Given email id is not valid")
         # send the message via the server set up earlier.

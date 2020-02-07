@@ -166,6 +166,7 @@ User should able to delete division
     [Tags]  HRMS  division  deletedata
     HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Edit Division"]}
+
     FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
     page should contain   Do you really want to Delete this Division ??
     FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
@@ -175,7 +176,7 @@ User should able to delete division
 User should able to add new designation
     [Documentation]  Fills the add new designation form and submits it. Verifies its entry in the designation table.
     [Tags]  HRMS  designation  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation/AddEditDesignationDetails
+    HRMS_Keywords.Open Designation Page
     Common_Keywords.Set Test Data  ${configData["Designation"]}
     FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Post"]}  ${dataDictionary["Post"]["Value"]}
