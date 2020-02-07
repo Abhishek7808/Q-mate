@@ -178,7 +178,10 @@ def set_emails():
                 # print(request.form.get('urm'))
                 content = dict(
                     {'HRM': request.form.get('hrm'), 'ACC': request.form.get('acc'), 'SMM': request.form.get('smm'),
-                     'CPF': request.form.get('cpf'), 'URM': request.form.get('urm'), 'DISBURSEMENT': request.form.get('disbursement')})
+                     'CPF': request.form.get('cpf'), 'URM': request.form.get('urm'), 'GPF': request.form.get('gpf'),
+                     'MM': request.form.get('mm'), 'WPM': request.form.get('wpm'), 'AMS': request.form.get('ams'),
+                     'TLM': request.form.get('tlm'), 'IMS': request.form.get('ims'), 'LDM': request.form.get('ldm'),
+                     'DISBURSEMENT': request.form.get('disbursement')})
                 print(content)
                 with open('/home/divaksh/rajerp/robot/Data/Receivers.json', 'w') as json_file:
                     json.dump(content, json_file)

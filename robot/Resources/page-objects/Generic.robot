@@ -53,11 +53,14 @@ Get Urls List Of Fatal Errors
 Open ERP Page
     [Documentation]  Opens the ERP page of given url
     [Arguments]  ${pageUrl}
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
+    [Timeout]  120s
+    ${userType}  run keyword if  '${ENVIRONMENT}' == 'demo' or '${ENVIRONMENT}' == 'test'  set variable  admin  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  admin_live
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
 
 Open ERP Page Without Permission
     [Documentation]  Opens the ERP page with citizen credentials
     [Arguments]  ${pageUrl}
+    [Timeout]  120s
     ${userType}  run keyword if  '${ENVIRONMENT}' == 'demo' or '${ENVIRONMENT}' == 'test'  set variable  citizen  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  citizen_live
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
 
