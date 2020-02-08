@@ -20,6 +20,8 @@ Resource  ${PAGE OBJECTS}/HRMS/GradeDependancy.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADARule.robot
 Resource  ${PAGE OBJECTS}/HRMS/PaySlipConfiguration.robot
 Resource  ${PAGE OBJECTS}/HRMS/SelfVarification.robot
+Resource  ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
+Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 
 *** Keywords ***
 Open Post Class Page
@@ -426,3 +428,22 @@ Verify TA/DA Rule Deletion
     #TADARule.Search For TA/DA Rule  ${dataDictionary}
     sleep  3s
     TADARule.Check For TA/DA Rule Deletion In TA/DA Rule Table  ${dataDictionary}
+
+Open Salary Cycle Page
+    SalaryCycle.Go To Salary Cycle Page
+
+Add Salary Cycle
+    [Arguments]  ${dataDictionary}
+    SalaryCycle.Click On Add Button
+    SalaryCycle.Fill Salary Cycle Form  ${dataDictionary}
+    SalaryCycle.Submit Details
+
+Open Manual Attendance Page
+    ManualAttendance.Go To Manual Attendance Page
+
+Set Filters
+    [Arguments]  ${dataDictionary}
+    ManualAttendance.Click On Mark Attendance Button
+    ManualAttendance.Select Financial Year  ${dataDictionary}
+    ManualAttendance.Select Month  ${dataDictionary}
+    ManualAttendance.Apply Filters

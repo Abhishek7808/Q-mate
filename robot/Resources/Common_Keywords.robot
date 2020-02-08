@@ -25,7 +25,9 @@ Resource          ${SMM_DATA_FILES}${/}alerts.robot
 @{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
 ${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
+${hrmsAutomationData}  ${DATA}/HRMS_DATA/HrmsData.json
 ${urlsJson}   ${DATA}/URLs.json
+${financialYear}
 *** Keywords ***
 
 Begin Basic Testing
@@ -90,11 +92,12 @@ End SMM Testing
     BrowserControl.Finish Testing
 
 Begin HRMS Testing
-    Set HRMS Variables
+    Set HRMS Variables  ${hrmsConfigurationData}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 Set HRMS Variables
+    [Arguments]  ${hrmsConfigurationData}
     ${configurationData}  Load Json File  ${hrmsConfigurationData}
     set global variable  ${configData}  ${configurationData}
     ${urlsDict}  Load Json File  ${urlsJson}
@@ -102,6 +105,14 @@ Set HRMS Variables
 
 End HRMS Testing
     close browser
+
+Begin HRMS Automation
+    Set HRMS Variables  ${hrmsAutomationData}
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+
+End HRMS Automation
+    Close Browser
 
 Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
@@ -160,6 +171,29 @@ Switch Tab
 Set Test Data
     [Arguments]  ${dataJson}
     set test variable  ${datadictionary}  ${dataJson}
+
+Get Current Financial Year
+    ${currentDate}  get current date
+    ${dateDictionary}  split string  ${currentDate}  -
+    ${currentMonth}  convert to integer  ${dateDictionary}[1]
+    ${currentYear}  convert to integer  ${dateDictionary}[0]
+    ${nextYear}  set variable  ${currentYear+1}
+    ${previousYear}  set variable  ${currentYear-1}
+    run keyword if  ${currentMonth}>4  set test variable  ${financialYear}  ${currentYear}${nextYear}  ELSE  set test variable  ${financialYear}  ${previousYear}${currentYear}
+    return from keyword  ${financialYear}
+
+Get Current Month
+    ${currentDate}  get current date
+    ${month}  convert date  ${currentDate}  result_format= %B
+    ${month}  strip string  ${month}
+    return from keyword  ${month}
+
+Get Current Year
+    ${currentDate}  get current date
+    ${year}  convert date  ${currentDate}  result_format= %Y
+    ${year}  strip string  ${year}
+    return from keyword  ${year}
+
 
 #Begin Disbursement Testing
 #    Set Paths
