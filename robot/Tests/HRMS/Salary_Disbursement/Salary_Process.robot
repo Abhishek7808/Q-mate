@@ -7,6 +7,10 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 Library           ${LIBRARY}/Addendums.py
 Library           DateTime
 
+*** Variables ***
+${FINANCIALYEAR1}  20162017           #20172018
+${SALARYCYCLEID}  None          #58
+
 *** Test Cases ***
 Create Salary Cycle
     [Documentation]  Fills details in Salary Cycle form and submits it.
