@@ -53,7 +53,7 @@ Input Checkbox
     log  ${value}
     run keyword if  '${value}' == 'select'  select checkbox  ${Locator}  ELSE  unselect checkbox  ${Locator}
 
-Input Search Select Dropdown
+Input SearchSelectDropdown
     [Arguments]  ${Locator}  ${value}
     click element  ${Locator["Locator1"]}
     input text  ${Locator["Locator2"]}  ${value}

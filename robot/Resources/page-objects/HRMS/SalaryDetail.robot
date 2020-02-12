@@ -5,6 +5,10 @@ ${processSalary}  //a[@id='btnSave']
 ${lock}  //a[contains(text(),'Lock')]
 ${lockConfirm}  //button[contains(text(),'OK')]
 ${finalProcess}  //input[@id='btnSave']
+${employeeStatus}  Status
+${filterButton}  //i[contains(@class,'fa fa-filter')]
+${applyFilterButton}  btnformfilter
+
 *** Keywords ***
 Go To Salary Detail Page
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
@@ -32,8 +36,19 @@ Process Salary
     switch window  NEW
     click element  ${finalProcess}
 
+Open Filters
+    click element  ${filterButton}
+
+Apply Filters
+    click element  ${applyFilterButton}
+
+Select Status
+    [Arguments]  ${status}
+    select from list by label  ${employeeStatus}  ${status}
+
 Select Employee
-    select checkbox  //tr[1]//td[1]//input[1]
+    FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
+    \   select checkbox  //tr[${employee}]//td[1]//input[1]
 
 Click On Lock
     sleep  2s

@@ -13,7 +13,10 @@ ${SALARYCYCLEID}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
 ${PAYGROUP}  RIICO Staff (Head Office)
 ${PAYMENTUNIT}  HEAD OFFICE
-
+${DESIGNATION}  None
+${DIVISION}  None
+${ISGAZETTED}  None
+@{DISBURSEMENT_PAYGROUPS}  ABUROAD (Abu Road)  Ajmer Staff (Ajmer)
 *** Test Cases ***
 
 Create Salary Cycle
@@ -39,7 +42,7 @@ Process And Lock Salary
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
     HRMS_Keywords.Set Salary Process Criteria  ${dataDictionary}
-    HRMS_Keywords.Lock Salary
+    HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
 
 Add Paybill
     [Documentation]  Adds Paybill.

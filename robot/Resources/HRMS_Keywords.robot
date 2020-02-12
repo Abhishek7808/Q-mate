@@ -448,6 +448,9 @@ Set Mark Attendance Criteria
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     HRMS_Keywords.Select Pay Group  ${dataDictionary}
+    HRMS_Keywords.Select Designation  ${dataDictionary}
+    HRMS_Keywords.Select Division  ${dataDictionary}
+    HRMS_Keywords.Select Is Gazetted  ${dataDictionary}
     ManualAttendance.Apply Criteria
 
 Submit Marked Attendance
@@ -484,12 +487,22 @@ Set Salary Process Criteria
     sleep  3s
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
+    HRMS_Keywords.Select Designation  ${dataDictionary}
+    HRMS_Keywords.Select Division  ${dataDictionary}
     SalaryDetail.Click On Process button
     SalaryDetail.Process Salary
     Common_Keywords.Switch Tab
 
 Lock Salary
+    [Arguments]  ${dataDictionary}
     Common_Keywords.Switch Tab
+    SalaryDetail.Open Filters
+    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+    sleep  2s
+    HRMS_Keywords.Select Month  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}
+    SalaryDetail.Select Status  Salary Processed
+    SalaryDetail.Apply Filters
     SalaryDetail.Select Employee
     SalaryDetail.Click On Action Button
     SalaryDetail.Click On Lock
@@ -528,4 +541,23 @@ Select Pay Group
 Select Payment unit
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Payment Unit"]}  ${PAYMENTUNIT}
+
+Select Designation
+    [Arguments]  ${dataDictionary}
+    Run keyword if  '${DESIGNATION}' != None  FillFields.Input Value Into Field  ${dataDictionary["Designation"]}  ${DESIGNATION}
+
+Select Division
+    [Arguments]  ${dataDictionary}
+    Run keyword if  '${DIVISION}' != None  FillFields.Input Value Into Field  ${dataDictionary["Division"]}  ${DIVISION}
+
+Select Is Gazetted
+    [Arguments]  ${dataDictionary}
+    Run keyword if  '${ISGAZETTED}' != None  FillFields.Input Value Into Field  ${dataDictionary["Is Gazetted"]}  ${ISGAZETTED}
+
+Select Multi Paygroups
+    [Arguments]  ${Locator}  @{payGroupList}
+    click element  ${Locator}
+    FOR  ${item}  In  @{payGroupList}
+    \   click element  //label[contains(text(),'${item}')]
+
 
