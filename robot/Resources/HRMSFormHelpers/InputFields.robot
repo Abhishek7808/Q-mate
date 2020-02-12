@@ -52,3 +52,9 @@ Input Checkbox
     [Arguments]  ${Locator}  ${value}
     log  ${value}
     run keyword if  '${value}' == 'select'  select checkbox  ${Locator}  ELSE  unselect checkbox  ${Locator}
+
+Input Search Select Dropdown
+    [Arguments]  ${Locator}  ${value}
+    click element  ${Locator["Locator1"]}
+    input text  ${Locator["Locator2"]}  ${value}
+    press keys  ${Locator["Locator2"]}  ENTER

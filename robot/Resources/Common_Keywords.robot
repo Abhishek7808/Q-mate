@@ -15,7 +15,7 @@ Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Resource          ${SMM_DATA_FILES}${/}website.robot
 Resource          ${SMM_DATA_FILES}${/}locators.robot
 Resource          ${SMM_DATA_FILES}${/}alerts.robot
-
+Resource          ${DATA}${/}Login_Data.robot
 *** Variables ***
 
 #Overwrite default configuration
@@ -33,6 +33,7 @@ ${financialYear}
 Begin Basic Testing
     Set Paths
     Remove Files
+    Set Basic Tests Variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
@@ -65,6 +66,18 @@ Begin SMM Testing
     Set Global Variables
     BrowserControl.Open Browsers For SMM
     #Set SMM Test Variables
+
+Set Basic Tests Variables
+    &{ADMIN_USER}  set variable if  '${ENVIRONMENT}' == 'production'  &{ADMIN_USER_LIVE}  &{ADMIN_USER}
+    &{NON_ADMIN_USER}  set variable if  '${ENVIRONMENT}' == 'production'  &{NON_ADMIN_USER_LIVE}  &{NON_ADMIN_USER}
+    ${invalid_username}  Generate random string
+    set to dictionary  ${INVALID_USER}  username=${invalid_username}
+    ${username}  Generate random string
+    set to dictionary  ${INVALID_PASSWORD}  username=${username}
+    set global variable  &{ADMIN_USER}
+    set global variable  &{NON_ADMIN_USER}
+    set global variable  &{INVALID_USER}
+    set global variable  &{INVALID_PASSWORD}
 
 Set Global Variables
     ${Test Data Obj}    Load Json File    ${Test Data File}

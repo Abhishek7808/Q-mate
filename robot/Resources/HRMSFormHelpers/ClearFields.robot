@@ -50,3 +50,9 @@ Clear Actions
 Clear Checkbox
     [Arguments]  ${Locator}  ${value}=None
     unselect checkbox  ${Locator}
+
+Clear SearchSelectDropdown
+    [Arguments]  ${Locator}  ${value}
+    click element  ${Locator["Locator1"]}
+    input text  ${Locator["Locator2"]}  Select
+    press keys  ${Locator["Locator2"]}  ENTER

@@ -22,7 +22,8 @@ Resource  ${PAGE OBJECTS}/HRMS/PaySlipConfiguration.robot
 Resource  ${PAGE OBJECTS}/HRMS/SelfVarification.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
-
+Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
+Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
@@ -441,9 +442,90 @@ Add Salary Cycle
 Open Manual Attendance Page
     ManualAttendance.Go To Manual Attendance Page
 
-Set Filters
+Set Mark Attendance Criteria
     [Arguments]  ${dataDictionary}
     ManualAttendance.Click On Mark Attendance Button
-    ManualAttendance.Select Financial Year  ${dataDictionary}
-    ManualAttendance.Select Month  ${dataDictionary}
+    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+    HRMS_Keywords.Select Month  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}
+    ManualAttendance.Apply Criteria
+
+Submit Marked Attendance
+    ManualAttendance.Select Employees
+    ManualAttendance.Click On Submit Button
+    ManualAttendance.Verify Submit Popup
+    ManualAttendance.Click On Ok Button
+
+Verify Marked Attendance
+    [Arguments]  ${dataDictionary}
+    ManualAttendance.Open Filters
+    sleep  2s
+    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+    sleep  2s
+    HRMS_Keywords.Select Month  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}
     ManualAttendance.Apply Filters
+    sleep  2s
+    ManualAttendance.Click On Actions Button
+    ManualAttendance.Verify Attendance
+
+Approve Marked Attendance
+    ManualAttendance.Click On Actions Button
+    ManualAttendance.Choose Approve
+
+Open Salary Detail Page
+    SalaryDetail.Go To Salary Detail Page
+
+Set Salary Process Criteria
+    [Arguments]  ${dataDictionary}
+    SalaryDetail.Click On Action Button
+    sleep  4s
+    SalaryDetail.Click On Process
+    sleep  3s
+    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+    HRMS_Keywords.Select Month  ${dataDictionary}
+    SalaryDetail.Click On Process button
+    SalaryDetail.Process Salary
+    Common_Keywords.Switch Tab
+
+Lock Salary
+    Common_Keywords.Switch Tab
+    SalaryDetail.Select Employee
+    SalaryDetail.Click On Action Button
+    SalaryDetail.Click On Lock
+    SalaryDetail.Lock Salary
+
+Open Salary Paybill Page
+    SalaryPaybill.Go To Salary Paybill Page
+
+Add Salary Paybill
+    [Arguments]  ${dataDictionary}
+    SalaryPaybill.Click On Add Paybill button
+    SalaryPaybill.Fill Salary Paybill Form  ${dataDictionary}
+    SalaryPaybill.Submit Details
+
+Select Financial Year
+    [Documentation]  Selects Financial Year in Mark Attendance Filter.
+    [Arguments]  ${dataDictionary}
+    ${currentFinancialYear}  Common_Keywords.Get Current Financial Year
+    ${financialYear}  set variable if  ${FINANCIALYEAR1} == None  ${currentFinancialYear}  ${FINANCIALYEAR1}          ###""" If User does not gives Financial Year then current financial year will be selected"""
+    set global variable  ${financialYear}
+    select from list by value  ${dataDictionary["Financial_Year"]["Locator"]}  ${financialYear}
+    sleep  2s
+
+Select Month
+    [Documentation]  Selects Salary Cycle Month in Mark Attendance Filter
+    [Arguments]  ${dataDictionary}
+    ${salaryCycleName}  SalaryCycle.Get Current Salary Cycle
+    set global variable  ${salaryCycleName}
+    run keyword if  ${SALARYCYCLEID} != None  select from list by value  ${dataDictionary["Month"]["Locator"]}  ${SALARYCYCLEID}        ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
+    run keyword if  ${SALARYCYCLEID} == None  FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
+
+Select Pay Group
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Pay Group"]}  ${PAYGROUP}
+
+Select Payment unit
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Payment Unit"]}  ${PAYMENTUNIT}
+

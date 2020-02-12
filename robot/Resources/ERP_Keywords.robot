@@ -41,6 +41,7 @@ Test Mutiple Login Failed Scenarios
 Test Mutiple Login Successful Scenarios
     [Documentation]  Tests the login functionality with right credentials
     [Arguments]  ${Credentials}
+    ERP_Keywords.Open the Login Page
     ${status}  run keyword and return status  Login.Verify Page Loaded
     run keyword unless  ${status}  Login.Go To Logout
     Attempt Login   ${Credentials}

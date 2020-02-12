@@ -10,9 +10,7 @@ ${UNIT PERFERENCE DROPDOWN}  xpath=//ul[contains(@class,'select2-results')]
 ${UNIT PERFERENCE DROPDOWN LIST ITEM}  //*[@id='Pre_Unit']//option
 ${UNIT PERFERENCE DROPDOWN INPUT BOX}  //*[@id="select2-drop"]/div/input
 ${APPLY PERFERENCE BUTTON}  //*[@id="SAVE_OPTION"]
-
-
-
+${LOGOUT_TEXT_LIVE}  Rajasthan Single Sign On
 
 *** Keywords ***
 Open Dashboard From Logo
@@ -85,7 +83,8 @@ Click On Logout Link
     click element  ${LOGOUT_LINK}
 
 Verify Login Page Is Loaded
-    wait until page contains  ${LOGOUT_TEXT}
+    ${LOGOUT_TEXT}  set variable if  '${ENVIRONMENT}' == 'production'  ${LOGOUT_TEXT_LIVE}  ${LOGOUT_TEXT}
+    page should contain  ${LOGOUT_TEXT}
 
 Go Back To Home
     click element  ${HOME_LINK}

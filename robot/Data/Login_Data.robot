@@ -6,6 +6,8 @@
 
 &{NONADMIN_USER}  username=40052  password=admin  ExpectedResponseMessage=Dashboard
 &{ADMIN_USER}  username=econnect  password=admin  ExpectedResponseMessage=Dashboard
+&{NONADMIN_USER_LIVE}  username=rajerp.4914  password=Q-mate@0294  ExpectedResponseMessage=Dashboard
+&{ADMIN_USER_LIVE}  username=qmate.rajerp  password=Q-mate@0294  ExpectedResponseMessage=Dashboard
 &{CITIZEN_USER}  username=41014  password=admin  ExpectedResponseMessage=Dashboard
 
 

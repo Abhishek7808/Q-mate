@@ -49,3 +49,7 @@ Confirm Checkbox
     [Arguments]  ${Locator}  ${value}
     run keyword if  '${value}' == 'select'  checkbox should be selected  ${Locator}  ELSE  checkbox should not be selected  ${Locator}
     #checkbox should be selected  ${Locator}
+
+Confirm SearchSelectDropdown
+    [Arguments]  ${Locator}  ${value}
+    log  Option Selected

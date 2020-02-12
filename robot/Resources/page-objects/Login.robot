@@ -13,7 +13,7 @@ ${LOGOUT}                       Utility/Logout
 
 *** Keywords ***
 Navigate To Page
-    Go To  ${BASE_URL.${ENVIRONMENT}}
+    Go To  ${LOGIN_URL}
 
 Verify Page Loaded
      Page Should Contain Element  ${LOGIN_TEXT_HEADER}
