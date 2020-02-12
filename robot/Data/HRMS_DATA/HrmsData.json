@@ -81,6 +81,21 @@
                   "Locator2": "//*[@id='select2-drop']/div/input"
             }
       },
+      "Designation": {
+            "Value": "",
+            "Type": "Dropdown",
+            "Locator":"//select[@id='ddlDesigId']"
+      },
+      "Division": {
+            "Value": "",
+            "Type":"Dropdown",
+            "Locator": "DIVISION"
+      },
+      "Is Gazetted": {
+            "Value": "",
+            "Type": "Dropdown",
+            "Locator": "//select[@id='GAZETTED']"
+      },
       "Filters": {
         "Financial_Year": {
             "Type": "Dropdown",
@@ -211,79 +226,9 @@
       "Value": "",
       "Type": "Button",
       "Locator": "'btn btn-default"
-    },
-    "Search Filter": {
-      "Financial Year ": {
-        "Value": "20192020",
-        "Type": "Dropdown",
-        "Locator": "FinYear"
-      },
-      "Salary Cycle": {
-        "Value": "128",
-        "Type": "Dropdown",
-        "Locator": "SalaryCycleID"
-      },
-      "Employee Sub Unit": {
-        "Value": "Select all ",
-        "Type": "DropdownCheckBox",
-        "Locator1": "//button[contains(text(),'None selected')]",
-        "Locator2": "//div[contains(@class,'btn-group open')]//li[contains(@class,'multiselect-item multiselect-all')]//input"
-      },
-      "Designation": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator1": "s2id_DesigId",
-        "Locator2": "//div[@id='select2-drop']//input[@class='select2-input']"
-      },
-      "Section": {
-        "Value": "128",
-        "Type": "Dropdown",
-        "Locator": "SectionId"
-      },
-      "Is Gazetted": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator": "IsGazetted"
-      },
-      "Employee Unit": {
-        "Value": "Select all ",
-        "Type": "DropdownCheckBox",
-        "Locator1": "//button[contains(text(),'Head Office')]",
-        "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
-      },
-      "Pay Group": {
-        "Value": "",
-        "Type": "SearchSelectDropdown",
-        "Locator1": "s2id_PB_GROUP_ID",
-        "Locator2": "//div[@id='select2-drop']//input[@class='select2-input']"
-      },
-      "Division": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator": "divisionid"
-      },
-      "Status": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator": "Status"
-      },
-      "Sort By": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator": "SortBy"
-      },
-      "Apply filter": {
-        "Value": "",
-        "Type": "Button",
-        "Locator": "btnformfilter"
-      },
-      "Reset": {
-        "Value": "",
-        "Type": "Button",
-        "Locator": "btnformfilter"
-      }
     }
   },
+
   "Salary Diffrence": {
   "Salary Difference": {
     "Value": "",
@@ -396,7 +341,80 @@
         "Value": "",
         "Type": "Button",
         "Locator": "btnCancel"
+      },
+      "Filters": {
+      "Financial_Year": {
+        "Value": "20192020",
+        "Type": "Dropdown",
+        "Locator": "FinYear"
+      },
+      "Month": {
+        "Value": "128",
+        "Type": "Dropdown",
+        "Locator": "SalaryCycleID"
+      },
+      "Employee Sub Unit": {
+        "Value": "Select all ",
+        "Type": "DropdownCheckBox",
+        "Locator1": "//button[contains(text(),'None selected')]",
+        "Locator2": "//div[contains(@class,'btn-group open')]//li[contains(@class,'multiselect-item multiselect-all')]//input"
+      },
+      "Designation": {
+        "Value": "",
+        "Type": "Dropdown",
+        "Locator1": "s2id_DesigId",
+        "Locator2": "//div[@id='select2-drop']//input[@class='select2-input']"
+      },
+      "Section": {
+        "Value": "128",
+        "Type": "Dropdown",
+        "Locator": "SectionId"
+      },
+      "Is Gazetted": {
+        "Value": "",
+        "Type": "Dropdown",
+        "Locator": "IsGazetted"
+      },
+      "Employee Unit": {
+        "Value": "Select all ",
+        "Type": "DropdownCheckBox",
+        "Locator1": "//button[contains(text(),'Head Office')]",
+        "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+      },
+      "Pay Group": {
+        "Value": "",
+        "Type": "SearchSelectDropdown",
+        "Locator": {
+            "Locator1": "s2id_PB_GROUP_ID",
+            "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
+      "Division": {
+        "Value": "",
+        "Type": "Dropdown",
+        "Locator": "divisionid"
+      },
+      "Status": {
+        "Value": "",
+        "Type": "Dropdown",
+        "Locator": "Status"
+      },
+      "Sort By": {
+        "Value": "",
+        "Type": "Dropdown",
+        "Locator": "SortBy"
+      },
+      "Apply filter": {
+        "Value": "",
+        "Type": "Button",
+        "Locator": "btnformfilter"
+      },
+      "Reset": {
+        "Value": "",
+        "Type": "Button",
+        "Locator": "btnformfilter"
       }
+    }
     },
 
     "Salary Detail Lock": {
