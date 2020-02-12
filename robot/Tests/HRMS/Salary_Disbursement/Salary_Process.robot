@@ -47,3 +47,11 @@ Add Paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
+
+
+Add Disbursment
+    [Documentation]  Adds Disbusment.
+    [Tags]  Salary  AddDisbusment  createdata
+    Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
+    HRMS_Keywords.Open Salary Paybill Page
+    HRMS_Keywords.Add Salary Paybill  ${dataDictionary}

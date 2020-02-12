@@ -1152,7 +1152,137 @@
       "Type": "Button",
       "Locator": "btnSaveSalary"
     }
+  },
+
+  "Salary Disbursement Process": {
+    "URL" : "HRM/SalayDisbursment/SalayDisbursmentIndex",
+    "Back To List": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btn btn-primary BackToList"
+    },
+    "Financial_Year ": {
+      "Value": "20192020",
+      "Type": "Dropdown",
+      "Locator": "FinYear"
+    },
+    "Month": {
+      "Value": "",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_SalCycleId",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Disbursement_Date": {
+      "Value": {
+        "Day": "14",
+        "Month": "feb",
+        "Year": "2020"
+      },
+      "Type": "Date",
+      "Locator": "BillDate"
+    },
+    "Payment Unit": {
+      "Value": "Head Office",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_UnitId",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      },
+      "Pay Group": {
+        "Value": "",
+        "Type": "Dropdown",
+        "Locator": ""
+      },
+      "Paybill No (Text and locator issue)": {
+        "Value": "",
+        "Type": "Text-value",
+        "Locator": ""
+      },
+      "Remarks": {
+        "Value": "",
+        "Type": "Text-value",
+        "Locator": "HRMS_SALARY_DISBURSMENT_MASTER_REMARKS"
+      },
+      "Payment Detail": {
+        "Credit_Date": {
+          "Value": {
+            "Day": "15",
+            "Month": "feb",
+            "Year": "2020"
+          },
+          "Type": "Date",
+          "Locator": "CreditDate"
+        },
+        "Payment_Mode": {
+          "Value": "2",
+          "Type": "Dropdown",
+          "Locator": "PaymentMode"
+        },
+        "Company Bank": {
+          "Value": "",
+          "Type": "SearchSelectDropdown",
+          "Locator1": "s2id_CompanyBank",
+          "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+        },
+        "Ledger": {
+          "Value": "",
+          "Type": "Dropdown",
+          "Locator": "AccountLedger"
+        }
+      },
+      "Notify Employees": {
+        "Notify Employee by SMS": {
+          "Value": "Select",
+          "Type": "Checkbox",
+          "Locator": "chkNotifyEmpSMS"
+        },
+        "Notify Employee by  Email": {
+          "Value": "Select",
+          "Type": "Checkbox",
+          "Locator": "chkNotifyEmpEmail"
+        }
+      },
+      "Include Employee": {
+        "Designation": {
+          "Value": "4",
+          "Type": "Dropdown",
+          "Locator1": "s2id_DesignationId",
+          "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+        },
+        "Employee Unit": {
+          "Value": "",
+          "Type": "DropdownCheckBox",
+          "Locator1": "s2id_CompanyBank",
+          "Locator2": "//div[contains(@class,'btn-group open')]//li[contains(@class,'multiselect-item multiselect-all')]//input"
+        },
+        "Is Gazetted": {
+          "Value": "Y",
+          "Type": "Dropdown",
+          "Locator1": "s2id_CompanyBank"
+        }
+      },
+      "Show Child Unit Employee": {
+        "Value": "Select",
+        "Type": "Checkbox",
+        "Locator": "ShowChildUnit"
+      },
+      "Apply Filter": {
+        "Value": "",
+        "Type": "Button",
+        "Locator": "'Apply Filter"
+      },
+      "Save": {
+        "Value": "",
+        "Type": "Button",
+        "Locator": "btnSave"
+      },
+      "Cancel": {
+        "Value": "",
+        "Type": "Button",
+        "Locator": "btnCancel"
+      }
+    }
   }
 }
-
-
