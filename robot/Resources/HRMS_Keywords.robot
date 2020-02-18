@@ -24,6 +24,7 @@ Resource  ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
+Resource  ${PAGE OBJECTS}/HRMS/SalaryDisbursment.robot
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
@@ -555,9 +556,26 @@ Select Is Gazetted
     Run keyword if  '${ISGAZETTED}' != None  FillFields.Input Value Into Field  ${dataDictionary["Is Gazetted"]}  ${ISGAZETTED}
 
 Select Multi Paygroups
-    [Arguments]  ${Locator}  @{payGroupList}
+    [Arguments]  ${Locator}
     click element  ${Locator}
-    FOR  ${item}  In  @{payGroupList}
+    FOR  ${item}  In  @{DISBURSEMENT_PAYGROUPS}
     \   click element  //label[contains(text(),'${item}')]
 
 
+Select Multi Paybills
+    [Arguments]  ${Locator}
+    click element  ${Locator}
+    Sleep  2s
+    FOR  ${item}  In  @{DISBURSEMENT_PAYBILLS}
+    \   select checkbox  //div[@class='btn-group open']//label[@class='checkbox'][contains(text(),'${item}')]
+    Sleep  2s
+
+Open Salary Disbursment Page
+    SalaryDisbursment.Go To Salary Disbursment Page
+
+Add Disbursment button
+    [Arguments]  ${dataDictionary}
+    SalaryDisbursment.Click On Add Disbursment button
+    sleep  3s
+    SalaryDisbursment.Fill Salary Disbursment Form  ${dataDictionary}
+    SalaryDisbursment.Submit Details

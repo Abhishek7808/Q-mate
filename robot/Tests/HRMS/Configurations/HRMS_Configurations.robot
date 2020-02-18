@@ -1,5 +1,5 @@
 *** Settings ***
-Resource          ../../Configuration.resource
+Resource          ../../../Configuration.resource
 Resource          ${RESOURCES}${/}HRMSFormHelpers${/}FillFields.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}/ERP_Keywords.robot
@@ -134,6 +134,13 @@ User should able to configure pay slip
     HRMS_Keywords.Open Pay Slip Configuration Page
     HRMS_Keywords.Configure Pay Slip Details  ${dataDictionary}
     HRMS_Keywords.Save Pay Slip Configurations  ${dataDictionary}
+    sleep   2s
+    Go To ERP Page   http://demoprojects.e-connectsolutions.com/ERP-TEST/HRM/PayrollProcess/Index
+    sleep   5s
+    Click Element   //*[@id="classListing"]/div[2]/table/tbody/tr[1]/td[12]/div[2]/a
+    sleep   2s
+    Click Element   //*[@id="lnkMultipleSalarySlip_11387709"]
+    sleep   2s
 
 User should able to configure self verification details
     [Documentation]  Configures the self varification details.

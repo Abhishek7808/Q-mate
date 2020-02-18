@@ -1,210 +1,213 @@
 {
   "Salary_Cycle": {
-      "URL": "HRM/SalaryCycle",
-      "Description": {
-          "Value": "",
-          "Type": "Text Value",
-          "Locator": "DESCRIPTION"
+    "URL": "HRM/SalaryCycle",
+    "Description": {
+      "Value": "",
+      "Type": "Text Value",
+      "Locator": "DESCRIPTION"
+    },
+    "Financial_Year": {
+      "Value": "20192020",
+      "Type": "Dropdown",
+      "Locator": "FINYEAR"
+    },
+    "Type": {
+      "Value": "Salary",
+      "Type": "Dropdown",
+      "Locator": "TYPE"
+    },
+    "Start_Date": {
+      "Value": {
+        "Day": "05",
+        "Month": "feb",
+        "Year": "2020"
       },
-      "Financial_Year":{
-          "Value": "20192020",
-          "Type": "Dropdown",
-           "Locator": "FINYEAR"
+      "Type": "Date",
+      "Locator": "START_DATE"
+    },
+    "End_Date": {
+      "Value": {
+        "Day": "05",
+        "Month": "feb",
+        "Year": "2020"
       },
-      "Type":{
-          "Value": "Salary",
-          "Type": "Dropdown",
-           "Locator": "TYPE"
-      },
-      "Start_Date":{
-           "Value": {
-              "Day": "05",
-              "Month": "feb",
-              "Year": "2020"
-           },
-           "Type":"Date",
-           "Locator": "START_DATE"
-      },
-      "End_Date":{
-           "Value": {
-              "Day": "05",
-              "Month": "feb",
-              "Year": "2020"},
-           "Type":"Date",
-           "Locator": "END_DATE"
-      },
-      "DDO Heads": {
-          "Value": "",
-          "Type": "DropdownCheckBox",
-          "Locator1": "//button[@class='multiselect dropdown-toggle btn btn-default']",
-          "Locator2": "//label[contains(text(),'Select all')]"
-      },
-      "Visible": {
-          "Value": "",
-          "Type": "Text Value",
-          "Locator": "VISIBLE"
-      },
-      "Save": {
-          "Value": "",
-          "Type": "Button",
-          "Locator": "btnSave"
-      },
-      "Cancel": {
-          "Value": "",
-          "Type": "Button",
-          "Locator": "btnCancel"
-      }
+      "Type": "Date",
+      "Locator": "END_DATE"
+    },
+    "DDO Heads": {
+      "Value": "",
+      "Type": "DropdownCheckBox",
+      "Locator1": "//button[@class='multiselect dropdown-toggle btn btn-default']",
+      "Locator2": "//label[contains(text(),'Select all')]"
+    },
+    "Visible": {
+      "Value": "",
+      "Type": "Text Value",
+      "Locator": "VISIBLE"
+    },
+    "Save": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnSave"
+    },
+    "Cancel": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnCancel"
+    }
   },
   "Mark_Attendance": {
-      "URL": "HRM/ManualAttendance",
-      "Financial_Year":{
-            "Value": "",
-            "Type": "Dropdown",
-            "Locator": "//select[@id='ddlFinyear']"
+    "URL": "HRM/ManualAttendance",
+    "Financial_Year": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='ddlFinyear']"
+    },
+    "Month": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='ddlSalaryCycleId']"
+    },
+    "Employee Unit": {
+      "Value": "Select all ",
+      "Type": "SearchSelectDropdown",
+      "Locator1": "//div[@id='s2id_UnitFilter']//div",
+      "Locator2": "//*[@id='select2-drop']/div/input"
+    },
+    "Pay Group": {
+      "Value": "",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "//div[@id='s2id_ddlPB_GROUP_ID']//div",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Designation": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='ddlDesigId']"
+    },
+    "Division": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "DIVISION"
+    },
+    "Is Gazetted": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='GAZETTED']"
+    },
+    "Filters": {
+      "Financial_Year": {
+        "Type": "Dropdown",
+        "Value": "20192020",
+        "Locator": "ddlFinyearFilter"
       },
       "Month": {
-            "Value": "",
-            "Type": "Dropdown",
-            "Locator": "//select[@id='ddlSalaryCycleId']"
-      },
-      "Employee Unit": {
-            "Value": "Select all ",
-            "Type": "SearchSelectDropdown",
-            "Locator1": "//div[@id='s2id_UnitFilter']//div",
-            "Locator2": "//*[@id='select2-drop']/div/input"
+        "Type": "Dropdown",
+        "Value": "Fabruary 2020",
+        "Locator": "ddlSalaryCycleIdFilter"
       },
       "Pay Group": {
-            "Value": "",
-            "Type": "SearchSelectDropdown",
-            "Locator": {
-                  "Locator1": "//div[@id='s2id_ddlPB_GROUP_ID']//div",
-                  "Locator2": "//*[@id='select2-drop']/div/input"
-            }
-      },
-      "Designation": {
-            "Value": "",
-            "Type": "Dropdown",
-            "Locator":"//select[@id='ddlDesigId']"
-      },
-      "Division": {
-            "Value": "",
-            "Type":"Dropdown",
-            "Locator": "DIVISION"
-      },
-      "Is Gazetted": {
-            "Value": "",
-            "Type": "Dropdown",
-            "Locator": "//select[@id='GAZETTED']"
-      },
-      "Filters": {
-        "Financial_Year": {
-            "Type": "Dropdown",
-            "Value": "20192020",
-            "Locator": "ddlFinyearFilter"
-        },
-        "Month": {
-            "Type": "Dropdown",
-            "Value": "Fabruary 2020",
-            "Locator": "ddlSalaryCycleIdFilter"
-        },
-        "Pay Group": {
-            "Type": "SearchSelectDropdown",
-            "Value": "RIICO STAFF (Head Office)",
-            "Locator": {
-                "Locator1": "//div[@id='s2id_ddlPbGroupFilter']",
-                "Locator2": "//*[@id='select2-drop']/div/input"
-            }
+        "Type": "SearchSelectDropdown",
+        "Value": "RIICO STAFF (Head Office)",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_ddlPbGroupFilter']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
         }
       }
+    }
   },
   "Salary_Paybill": {
     "URL": "HRM/SalaryPaybill",
     "Salary Difference": {
       "Value": "",
       "Type": "Button",
-      "Locator": "SalDiff"},
+      "Locator": "SalDiff"
+    },
     "Back To List": {
       "Value": "",
       "Type": "Button",
-      "Locator": "'btn btn-primary BackToList"},
+      "Locator": "'btn btn-primary BackToList"
+    },
     "Save": {
       "Value": "",
       "Type": "Button",
-      "Locator": "btnSave"},
+      "Locator": "btnSave"
+    },
     "Financial_Year": {
-        "Value": "20192020",
-        "Type": "Dropdown",
-        "Locator": "FinYear"
-      },
-      "Month": {
-        "Value": "128",
-        "Type": "Dropdown",
-        "Locator": "SalaryCycleID"
-      },
-      "Pay Group": {
-        "Value": "",
-        "Type": "SearchSelectDropdown",
-        "Locator": {
-            "Locator1": "s2id_PbGroupID",
-            "Locator2": "//*[@id='select2-drop']/div/input"
-        }
-      },
-      "Bill Date": {
-        "Value": {
-          "Day": "05",
-          "Month": "fab",
-          "Year": "2020"
-        },
-        "Type": "Date",
-        "Locator": "BILL_DATE"
-      },
-      "Payment Unit": {
-        "Value": "Head Office",
-        "Type": "SearchSelectDropdown",
-        "Locator": {
-            "Locator1": "s2id_UnitId",
-            "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
-        }
-
-      },
-      "Manual Bill No": {
-        "Value": "1243",
-        "Type": "Text-value",
-        "Locator": "txtManualBillNo"
-      },
-      "Payslip Unit": {
-        "Value": "Head Office",
-        "Type": "SearchSelectDropdown",
-        "Locator": {
-            "Locator1": "s2id_PayUnitId",
-            "Locator2": "//*[@id='select2-drop']/div/input"
-        }
-
-      },
-      "Remarks": {
-        "Value": "",
-        "Type": "Text-value",
-        "Locator": "txtremarks"
+      "Value": "20192020",
+      "Type": "Dropdown",
+      "Locator": "FinYear"
+    },
+    "Month": {
+      "Value": "128",
+      "Type": "Dropdown",
+      "Locator": "SalaryCycleID"
+    },
+    "Pay Group": {
+      "Value": "",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_PbGroupID",
+        "Locator2": "//*[@id='select2-drop']/div/input"
       }
     },
-
-      "Employee to include in Paybills": {
-        "Employee Unit": {
-          "Value": "Select all ",
-          "Type": "DropdownCheckBox",
-          "Locator1": "//button[contains(text(),'Head Office')]",
-          "Locator2":"//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"},
-        "Division": {
-          "Value": "",
-          "Type": "DropdownCheckBox",
-          "Locator1": "//div[@class='btn-group open']//button[@class='multiselect dropdown-toggle btn btn-default'][contains(text(),'None selected')]",
-          "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"},
-        "View": {
-          "Value": "",
-          "Type": "Button",
-          "Locator": "btnView"}
+    "Bill Date": {
+      "Value": {
+        "Day": "05",
+        "Month": "fab",
+        "Year": "2020"
       },
-
+      "Type": "Date",
+      "Locator": "BILL_DATE"
+    },
+    "Payment Unit": {
+      "Value": "Head Office",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_UnitId",
+        "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+      }
+    },
+    "Manual Bill No": {
+      "Value": "1243",
+      "Type": "Text-value",
+      "Locator": "txtManualBillNo"
+    },
+    "Payslip Unit": {
+      "Value": "Head Office",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_PayUnitId",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Remarks": {
+      "Value": "",
+      "Type": "Text-value",
+      "Locator": "txtremarks"
+    }
+  },
+  "Employee to include in Paybills": {
+    "Employee Unit": {
+      "Value": "Select all ",
+      "Type": "DropdownCheckBox",
+      "Locator1": "//button[contains(text(),'Head Office')]",
+      "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+    },
+    "Division": {
+      "Value": "",
+      "Type": "DropdownCheckBox",
+      "Locator1": "//div[@class='btn-group open']//button[@class='multiselect dropdown-toggle btn btn-default'][contains(text(),'None selected')]",
+      "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+    },
+    "View": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnView"
+    }
+  },
   "Salary_Detail": {
     "URL": "HRM/PayrollProcess/Index#",
     "Search by Employee details": {
@@ -228,121 +231,119 @@
       "Locator": "'btn btn-default"
     }
   },
-
   "Salary Diffrence": {
-  "Salary Difference": {
-    "Value": "",
-    "Type": "Button",
-    "Locator": "SalDiff"
+    "Salary Difference": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "SalDiff"
+    },
+    "Financial Year ": {
+      "Value": "20192020",
+      "Type": "Dropdown",
+      "Locator": "PrevFinyear"
+    },
+    "Salary Cycle": {
+      "Value": "128",
+      "Type": "Dropdown",
+      "Locator": "PrevSalaryCycleId"
+    },
+    "Financial Year Compare": {
+      "Value": "20192020",
+      "Type": "Dropdown",
+      "Locator": "CurrFinyear"
+    },
+    "Salary Cycle Compare": {
+      "Value": "128",
+      "Type": "Dropdown",
+      "Locator": "CurrSalaryCycleId"
+    },
+    "Unit": {
+      "Value": "128",
+      "Type": "Dropdown",
+      "Locator": "UnitId"
+    },
+    "Pay Bill No.": {
+      "Value": "128",
+      "Type": "Dropdown",
+      "Locator": "PayBillId"
+    },
+    "Report Type ": {
+      "Value": "128",
+      "Type": "Dropdown",
+      "Locator": "PayBillId"
+    },
+    "View": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "'btnView"
+    },
+    "Reset": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnReset"
+    }
   },
-  "Financial Year ": {
-    "Value": "20192020",
-    "Type": "Dropdown",
-    "Locator": "PrevFinyear"
-  },
-  "Salary Cycle": {
-    "Value": "128",
-    "Type": "Dropdown",
-    "Locator": "PrevSalaryCycleId"
-  },
-  "Financial Year Compare": {
-    "Value": "20192020",
-    "Type": "Dropdown",
-    "Locator": "CurrFinyear"
-  },
-  "Salary Cycle Compare": {
-    "Value": "128",
-    "Type": "Dropdown",
-    "Locator": "CurrSalaryCycleId"
-  },
-  "Unit": {
-    "Value": "128",
-    "Type": "Dropdown",
-    "Locator": "UnitId"
-  },
-  "Pay Bill No.": {
-    "Value": "128",
-    "Type": "Dropdown",
-    "Locator": "PayBillId"
-  },
-  "Report Type ": {
-    "Value": "128",
-    "Type": "Dropdown",
-    "Locator": "PayBillId"
-  },
-  "View": {
-    "Value": "",
-    "Type": "Button",
-    "Locator": "'btnView"
-  },
-  "Reset": {
-    "Value": "",
-    "Type": "Button",
-    "Locator": "btnReset"
-  }
-},
-
   "Salary_Detail_Process": {
-      "URL": "HRM/PayrollProcess/Index#",
-      "Action": {
-        "Value": "Process",
-        "Type": "Dropdown",
-        "Locator": "btn-group-xs pull-right open"
-      },
-      "Financial_Year": {
-        "Value": "20192020",
-        "Type": "Dropdown",
-        "Locator": "ddlFinyear"
-      },
-      "Month": {
-        "Value": "128",
-        "Type": "Dropdown",
-        "Locator": "ddlSalaryCycleId"
-      },
-      "Employee Sub Unit": {
-        "Value": "Select all ",
-        "Type": "DropdownCheckBox",
-        "Locator1": "divsSubUnit",
-        "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
-      },
-      "Employee Unit": {
-        "Value": "Select all ",
-        "Type": "DropdownCheckBox",
-        "Locator1": "divunit",
-        "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
-      },
-      "Pay Group": {
-        "Value": "",
-        "Type": "SearchSelectDropdown",
-        "Locator1": "s2id_ddlPB_GROUP_ID",
-        "Locator2": "//div[@id='select2-drop']//input[@class='select2-input']"
-      },
-      "Designation": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator": "ddlDesigId"
-      },
-      "Division": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator": "DIVISION"
-      },
-      "Post": {
-        "Value": "",
-        "Type": "Dropdown",
-        "Locator": "ddlPostId"
-      },
-      "Process": {
-        "Value": "",
-        "Type": "Button",
-        "Locator": "btnSave"
-      },
-      "Cancel": {
-        "Value": "",
-        "Type": "Button",
-        "Locator": "btnCancel"
-      },
-      "Filters": {
+    "URL": "HRM/PayrollProcess/Index#",
+    "Action": {
+      "Value": "Process",
+      "Type": "Dropdown",
+      "Locator": "btn-group-xs pull-right open"
+    },
+    "Financial_Year": {
+      "Value": "20192020",
+      "Type": "Dropdown",
+      "Locator": "ddlFinyear"
+    },
+    "Month": {
+      "Value": "128",
+      "Type": "Dropdown",
+      "Locator": "ddlSalaryCycleId"
+    },
+    "Employee Sub Unit": {
+      "Value": "Select all ",
+      "Type": "DropdownCheckBox",
+      "Locator1": "divsSubUnit",
+      "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+    },
+    "Employee Unit": {
+      "Value": "Select all ",
+      "Type": "DropdownCheckBox",
+      "Locator1": "divunit",
+      "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+    },
+    "Pay Group": {
+      "Value": "",
+      "Type": "SearchSelectDropdown",
+      "Locator1": "s2id_ddlPB_GROUP_ID",
+      "Locator2": "//div[@id='select2-drop']//input[@class='select2-input']"
+    },
+    "Designation": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "ddlDesigId"
+    },
+    "Division": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "DIVISION"
+    },
+    "Post": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "ddlPostId"
+    },
+    "Process": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnSave"
+    },
+    "Cancel": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnCancel"
+    },
+    "Filters": {
       "Financial_Year": {
         "Value": "20192020",
         "Type": "Dropdown",
@@ -385,8 +386,8 @@
         "Value": "",
         "Type": "SearchSelectDropdown",
         "Locator": {
-            "Locator1": "s2id_PB_GROUP_ID",
-            "Locator2": "//*[@id='select2-drop']/div/input"
+          "Locator1": "s2id_PB_GROUP_ID",
+          "Locator2": "//*[@id='select2-drop']/div/input"
         }
       },
       "Division": {
@@ -415,20 +416,14 @@
         "Locator": "btnformfilter"
       }
     }
-    },
-
-    "Salary Detail Lock": {
-      "Action": {
-        "Value": "Lock",
-        "Type": "Dropdown",
-        "Locator": "btn-group-xs pull-right open"
-      }
-    },
-
-
-
-
-
+  },
+  "Salary Detail Lock": {
+    "Action": {
+      "Value": "Lock",
+      "Type": "Dropdown",
+      "Locator": "btn-group-xs pull-right open"
+    }
+  },
   "Employee Entry": {
     "Employee Code ": {
       "Value": "Qmate1234",
@@ -718,7 +713,6 @@
       "Locator": "btn btn-danger"
     }
   },
-
   "Deputation Detail": {
     "Deputation Order No": {
       "Value": "Qmate1234",
@@ -1171,31 +1165,31 @@
       "Locator": "btnSaveSalary"
     }
   },
-
   "Salary Disbursement Process": {
-    "URL" : "HRM/SalayDisbursment/SalayDisbursmentIndex",
+    "URL": "HRM/salaryDisbursment/SalayDisbursmentIndex",
+
     "Back To List": {
       "Value": "",
       "Type": "Button",
       "Locator": "btn btn-primary BackToList"
     },
-    "Financial_Year ": {
-      "Value": "20192020",
+    "Financial_Year": {
+      "Value": "20172018",
       "Type": "Dropdown",
-      "Locator": "FinYear"
+      "Locator": "//select[@id='Finyear']"
     },
     "Month": {
-      "Value": "",
+      "Value": "april 2017",
       "Type": "SearchSelectDropdown",
       "Locator": {
         "Locator1": "s2id_SalCycleId",
         "Locator2": "//*[@id='select2-drop']/div/input"
       }
     },
-    "Disbursement_Date": {
+    "Disbursment_Date": {
       "Value": {
-        "Day": "14",
-        "Month": "feb",
+        "Day": "13",
+        "Month": "Feb",
         "Year": "2020"
       },
       "Type": "Date",
@@ -1207,100 +1201,100 @@
       "Locator": {
         "Locator1": "s2id_UnitId",
         "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Pay Group": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": ""
+    },
+    "Paybill No (Text and locator issue)": {
+      "Value": "",
+      "Type": "Text-value",
+      "Locator": ""
+    },
+    "Remarks": {
+      "Value": "done",
+      "Type": "Text Value",
+      "Locator": "HRMS_SALARY_DISBURSMENT_MASTER_REMARKS"
+    },
+    "Payment Detail": {
+      "Credit_Date": {
+        "Value": {
+          "Day": "16",
+          "Month": "Feb",
+          "Year": "2020"
+        },
+        "Type": "Date",
+        "Locator": "CreditDate"
       },
-      "Pay Group": {
+      "Payment_Mode": {
+        "Value": "Online",
+        "Type": "Dropdown",
+        "Locator": "PaymentMode"
+      },
+      "Company Bank": {
+        "Value": "",
+        "Type": "SearchSelectDropdown",
+        "Locator1": "s2id_CompanyBank",
+        "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+      },
+      "Ledger": {
         "Value": "",
         "Type": "Dropdown",
-        "Locator": ""
-      },
-      "Paybill No (Text and locator issue)": {
-        "Value": "",
-        "Type": "Text-value",
-        "Locator": ""
-      },
-      "Remarks": {
-        "Value": "",
-        "Type": "Text-value",
-        "Locator": "HRMS_SALARY_DISBURSMENT_MASTER_REMARKS"
-      },
-      "Payment Detail": {
-        "Credit_Date": {
-          "Value": {
-            "Day": "15",
-            "Month": "feb",
-            "Year": "2020"
-          },
-          "Type": "Date",
-          "Locator": "CreditDate"
-        },
-        "Payment_Mode": {
-          "Value": "2",
-          "Type": "Dropdown",
-          "Locator": "PaymentMode"
-        },
-        "Company Bank": {
-          "Value": "",
-          "Type": "SearchSelectDropdown",
-          "Locator1": "s2id_CompanyBank",
-          "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
-        },
-        "Ledger": {
-          "Value": "",
-          "Type": "Dropdown",
-          "Locator": "AccountLedger"
-        }
-      },
-      "Notify Employees": {
-        "Notify Employee by SMS": {
-          "Value": "Select",
-          "Type": "Checkbox",
-          "Locator": "chkNotifyEmpSMS"
-        },
-        "Notify Employee by  Email": {
-          "Value": "Select",
-          "Type": "Checkbox",
-          "Locator": "chkNotifyEmpEmail"
-        }
-      },
-      "Include Employee": {
-        "Designation": {
-          "Value": "4",
-          "Type": "Dropdown",
-          "Locator1": "s2id_DesignationId",
-          "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
-        },
-        "Employee Unit": {
-          "Value": "",
-          "Type": "DropdownCheckBox",
-          "Locator1": "s2id_CompanyBank",
-          "Locator2": "//div[contains(@class,'btn-group open')]//li[contains(@class,'multiselect-item multiselect-all')]//input"
-        },
-        "Is Gazetted": {
-          "Value": "Y",
-          "Type": "Dropdown",
-          "Locator1": "s2id_CompanyBank"
-        }
-      },
-      "Show Child Unit Employee": {
+        "Locator": "AccountLedger"
+      }
+    },
+    "Notify Employees": {
+      "Notify Employee by SMS": {
         "Value": "Select",
         "Type": "Checkbox",
-        "Locator": "ShowChildUnit"
+        "Locator": "chkNotifyEmpSMS"
       },
-      "Apply Filter": {
-        "Value": "",
-        "Type": "Button",
-        "Locator": "'Apply Filter"
-      },
-      "Save": {
-        "Value": "",
-        "Type": "Button",
-        "Locator": "btnSave"
-      },
-      "Cancel": {
-        "Value": "",
-        "Type": "Button",
-        "Locator": "btnCancel"
+      "Notify Employee by  Email": {
+        "Value": "Select",
+        "Type": "Checkbox",
+        "Locator": "chkNotifyEmpEmail"
       }
+    },
+    "Include Employee": {
+      "Designation": {
+        "Value": "4",
+        "Type": "Dropdown",
+        "Locator1": "s2id_DesignationId",
+        "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+      },
+      "Employee Unit": {
+        "Value": "",
+        "Type": "DropdownCheckBox",
+        "Locator1": "s2id_CompanyBank",
+        "Locator2": "//div[contains(@class,'btn-group open')]//li[contains(@class,'multiselect-item multiselect-all')]//input"
+      },
+      "Is Gazetted": {
+        "Value": "Y",
+        "Type": "Dropdown",
+        "Locator1": "s2id_CompanyBank"
+      }
+    },
+    "Show Child Unit Employee": {
+      "Value": "Select",
+      "Type": "Checkbox",
+      "Locator": "ShowChildUnit"
+    },
+    "Apply Filter": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "'Apply Filter"
+    },
+    "Save": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnSave"
+    },
+    "Cancel": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btnCancel"
     }
   }
 }

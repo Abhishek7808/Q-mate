@@ -16,7 +16,8 @@ ${PAYMENTUNIT}  HEAD OFFICE
 ${DESIGNATION}  None
 ${DIVISION}  None
 ${ISGAZETTED}  None
-@{DISBURSEMENT_PAYGROUPS}  ABUROAD (Abu Road)  Ajmer Staff (Ajmer)
+@{DISBURSEMENT_PAYGROUPS}    Select all
+@{DISBURSEMENT_PAYBILLS}    Select all
 *** Test Cases ***
 
 Create Salary Cycle
@@ -53,8 +54,10 @@ Add Paybill
 
 
 Add Disbursment
-    [Documentation]  Adds Disbusment.
-    [Tags]  Salary  AddDisbusment  createdata
+    [Documentation]  Adds Disbursment
+    [Tags]  Salary  AddDisbursment  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
-    HRMS_Keywords.Open Salary Paybill Page
-    HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
+    HRMS_Keywords.Open Salary Disbursment Page
+    sleep   3s
+    HRMS_Keywords.Add Disbursment button  ${dataDictionary}
+    sleep  15s
