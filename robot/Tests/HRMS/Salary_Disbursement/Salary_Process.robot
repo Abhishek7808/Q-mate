@@ -52,8 +52,6 @@ Add Paybill
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
 
-
-
 Add Disbursment
     [Documentation]  Adds Disbursment
     [Tags]  Salary  AddDisbursment  createdata
