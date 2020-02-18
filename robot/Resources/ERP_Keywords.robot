@@ -90,11 +90,17 @@ Test FA
 Run Generic Tests From Admin
     [Documentation]
     [Arguments]  ${moduleName}
+    ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}
+    run keyword if  ${status} == ${True}  append to list  ${moduleNames}  ${moduleName}
+    set global variable  @{moduleNames}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
 
 Run Generic Tests From Other User
     [Arguments]  ${moduleName}
     Attempt Logout
+    ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}
+    run keyword if  ${status} == ${True}  append to list  ${moduleNames}  ${moduleName}
+    set global variable  @{moduleNames}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
