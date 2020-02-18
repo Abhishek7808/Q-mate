@@ -51,7 +51,7 @@ Add Paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
-<<<<<<< HEAD
+
 
 
 Add Disbursment
@@ -62,7 +62,7 @@ Add Disbursment
     sleep   3s
     HRMS_Keywords.Add Disbursment button  ${dataDictionary}
     sleep  15s
-=======
+
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
     #HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
 
@@ -72,4 +72,4 @@ Approve Paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
->>>>>>> 82e74f3f07244e93d76e34550a7aab2adf9b4bea
+
