@@ -11,7 +11,7 @@ Library           DateTime
 ${FINANCIALYEAR1}  20192020           #20172018
 ${SALARYCYCLEID}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
-${PAYGROUP}  RIICO Staff (Head Office)
+${PAYGROUP}  RISL Staff
 ${PAYMENTUNIT}  HEAD OFFICE
 ${DESIGNATION}  None
 ${DIVISION}  None
@@ -41,12 +41,21 @@ Process And Lock Salary
     [Tags]  Salary  salaryprocess  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
-    HRMS_Keywords.Set Salary Process Criteria  ${dataDictionary}
+    HRMS_Keywords.Process Salary  ${dataDictionary}
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
 
 Add Paybill
     [Documentation]  Adds Paybill.
     [Tags]  Salary  Addpaybill  createdata
+    Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
+    HRMS_Keywords.Open Salary Paybill Page
+    HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
+    HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
+    #HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
+
+Approve Paybill
+    [Documentation]  Approves Paybill.
+    [Tags]  Salary  approvepaybill  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}

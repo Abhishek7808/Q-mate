@@ -42,12 +42,11 @@ Open Filters
 Apply Filters
     click element  ${applyFilterButton}
 
-Select Status
-    [Arguments]  ${status}
-    select from list by label  ${employeeStatus}  ${status}
-
 Select Employee
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
     FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
+    \   #page should contain element  //span[contains(text(),'Withheld')]
+    \   #click element  //span[contains(text(),'Withheld')]/preceding-sibling::input
     \   select checkbox  //tr[${employee}]//td[1]//input[1]
 
 Click On Lock

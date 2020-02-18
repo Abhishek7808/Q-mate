@@ -5,7 +5,7 @@
 ##########################
 ${ENVIRONMENT}       demo
 ${BROWSER}           headlesschrome
-&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://rajerp.rajasthan.gov.in
+&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://rajerp.rajasthan.gov.in  stg=http://103.203.137.148/STG_TEST
 ${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}/adminlogin
 
 ####################

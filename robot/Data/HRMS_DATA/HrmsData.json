@@ -145,7 +145,7 @@
         "Value": "",
         "Type": "SearchSelectDropdown",
         "Locator": {
-            "Locator1": "s2id_PbGroupID",
+            "Locator1": "//div[@id='s2id_PayGroupIdIndex']//div",
             "Locator2": "//*[@id='select2-drop']/div/input"
         }
       },
@@ -346,12 +346,12 @@
       "Financial_Year": {
         "Value": "20192020",
         "Type": "Dropdown",
-        "Locator": "FinYear"
+        "Locator": "//select[@id='Finyear']"
       },
       "Month": {
         "Value": "128",
         "Type": "Dropdown",
-        "Locator": "SalaryCycleID"
+        "Locator": "//select[@id='SalaryCycleId']"
       },
       "Employee Sub Unit": {
         "Value": "Select all ",
