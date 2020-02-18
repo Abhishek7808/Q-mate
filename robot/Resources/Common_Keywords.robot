@@ -7,6 +7,7 @@ Library           Collections
 Library           String
 Library           RequestsLibrary
 Library           ${LIBRARY}/Notifications.py
+Library           ${LIBRARY}/Sheets.py
 Resource          ${PAGE OBJECTS}/SMM/CustomerLogin.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
@@ -16,13 +17,14 @@ Resource          ${SMM_DATA_FILES}${/}website.robot
 Resource          ${SMM_DATA_FILES}${/}locators.robot
 Resource          ${SMM_DATA_FILES}${/}alerts.robot
 Resource          ${DATA}${/}Login_Data.robot
+
 *** Variables ***
 
 #Overwrite default configuration
 #${ENVIRONMENT} =  demo
 #${BROWSER} =  firefox
 # login data added into Data/Login_Data.robot
-@{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
+#@{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
 ${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
 ${hrmsAutomationData}  ${DATA}/HRMS_DATA/HrmsData.json
@@ -53,6 +55,8 @@ End DV Testing
 Begin Generic Testing
     Set Paths
     create file  ${ERRORFILE}
+    @{moduleNames}  create list
+    set global variable  @{moduleNames}
     Remove Files
     open browser  about:blank  ${BROWSER}
     maximize browser window
@@ -60,6 +64,7 @@ Begin Generic Testing
 End Generic Testing
     FOR  ${item}  IN  @{moduleNames}
     \   run keyword if any tests failed  Send Error Email Notification  generic tests  ${CONTACTS_JSON}  ${item}
+    \   Update Error Data On Sheets  ${item}
     close browser
 
 Begin SMM Testing
