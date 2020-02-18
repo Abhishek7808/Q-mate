@@ -24,13 +24,7 @@ Resource  ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
-<<<<<<< HEAD
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDisbursment.robot
-=======
-
-*** Variables ***
-${employeeStatus}  status
->>>>>>> 82e74f3f07244e93d76e34550a7aab2adf9b4bea
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
@@ -476,7 +470,6 @@ Verify Marked Attendance
     HRMS_Keywords.Select Pay Group  ${dataDictionary}
     ManualAttendance.Apply Filters
     sleep  2s
-    Common_Keywords.Show Maximum Entries On Page
     ManualAttendance.Click On Actions Button
     ManualAttendance.Verify Attendance
 
@@ -487,7 +480,7 @@ Approve Marked Attendance
 Open Salary Detail Page
     SalaryDetail.Go To Salary Detail Page
 
-Process Salary
+Set Salary Process Criteria
     [Arguments]  ${dataDictionary}
     SalaryDetail.Click On Action Button
     sleep  4s
@@ -505,14 +498,12 @@ Lock Salary
     [Arguments]  ${dataDictionary}
     Common_Keywords.Switch Tab
     SalaryDetail.Open Filters
-    sleep  2s
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary}
     HRMS_Keywords.Select Pay Group  ${dataDictionary}
-    HRMS_Keywords.Select Status  Withheld
+    SalaryDetail.Select Status  Salary Processed
     SalaryDetail.Apply Filters
-    Common_Keywords.Show Maximum Entries On Page
     SalaryDetail.Select Employee
     SalaryDetail.Click On Action Button
     SalaryDetail.Click On Lock
@@ -554,33 +545,15 @@ Select Payment unit
 
 Select Designation
     [Arguments]  ${dataDictionary}
-    Run keyword if  '${DESIGNATION}' != 'None'  FillFields.Input Value Into Field  ${dataDictionary["Designation"]}  ${DESIGNATION}
+    Run keyword if  '${DESIGNATION}' != None  FillFields.Input Value Into Field  ${dataDictionary["Designation"]}  ${DESIGNATION}
 
 Select Division
     [Arguments]  ${dataDictionary}
-    Run keyword if  '${DIVISION}' != 'None'  FillFields.Input Value Into Field  ${dataDictionary["Division"]}  ${DIVISION}
-
-Select Status
-    [Arguments]  ${status}
-    select from list by label  ${employeeStatus}  ${status}
+    Run keyword if  '${DIVISION}' != None  FillFields.Input Value Into Field  ${dataDictionary["Division"]}  ${DIVISION}
 
 Select Is Gazetted
     [Arguments]  ${dataDictionary}
-    Run keyword if  '${ISGAZETTED}' != 'None'  FillFields.Input Value Into Field  ${dataDictionary["Is Gazetted"]}  ${ISGAZETTED}
-
-Approve Salary Paybill
-    [Arguments]  ${dataDictionary}
-    SalaryPaybill.Go To Approve Salary Paybill Page
-    SalaryPaybill.Open Filters
-    HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}
-    HRMS_Keywords.Select Status  Pending
-    SalaryPaybill.Apply Filters
-    SalaryPaybill.Get Latest Paybill Number
-    SalaryPaybill.Search Paybill
-    SalaryPaybill.Verify Paybill
-    SalaryPaybill.Approve Paybill
-    #SalaryDetail.Select Status  Withheld
+    Run keyword if  '${ISGAZETTED}' != None  FillFields.Input Value Into Field  ${dataDictionary["Is Gazetted"]}  ${ISGAZETTED}
 
 Select Multi Paygroups
     [Arguments]  ${Locator}

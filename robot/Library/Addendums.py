@@ -12,10 +12,3 @@ def count_current_month_days():
     month_data = monthrange(int(year), int(month))
     return month_data[1]
 
-def get_current_time():
-    time = str(datetime.datetime.now())
-    time = time.split('.')[0]
-    return  time
-
-# @keyword
-# def get_maximum(list)
