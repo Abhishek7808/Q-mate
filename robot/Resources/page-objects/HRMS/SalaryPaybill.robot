@@ -5,9 +5,9 @@ ${paybillFilters}  //button[@class='btn btn-default']
 ${applyPaybillFilter}  //button[@id='btnformfilter']
 ${paybilltable}  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']
 ${searchBox}  //input[@id='SearchText']
-${actionButton}  //a[contains(@class,'btn btn-primary drpWorkflowAction')]
+${approvalButton}  a[contains(@class,'btn btn-primary drpWorkflowAction')]
 ${verifyText}  //a[contains(text(),'Verify and Forward for Approval')]
-${approveText}  //a[contains(text(),'Verify and Forward for Approval')]
+${approveText}  //a[contains(text(),'Approve')]
 @{paybillNumbers}
 *** Keywords ***
 Go To Salary Paybill Page
@@ -23,7 +23,8 @@ Fill Salary Paybill Form
     [Arguments]  ${dataDictionary}
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${PAYGROUP}
+    #HRMS_Keywords.Select Employee Location  ${dataDictionary}
     #FillFields.Input Value Into Field  ${dataDictionary["Bill Date"]}  ${dataDictionary["Bill Date"]["Value"]}
     HRMS_Keywords.Select Payment unit  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Payslip Unit"]}  ${dataDictionary["Payslip Unit"]["Value"]}
@@ -32,6 +33,12 @@ Submit Details
     click element  ${savePaybill}
 
 Open Filters
+    ${status}  run keyword and return status  wait until page contains  Search Filter
+    run keyword if  ${status} == ${FALSE}  Open Filters
+    click element  ${paybillFilters}
+
+Open Approve Paybill Filters
+    wait until page contains  ${paybillFilters}  15s
     click element  ${paybillFilters}
 
 Apply Filters
@@ -49,6 +56,10 @@ Get Latest Paybill Number
     ${lastIndex}  set variable  ${listLength-1}
     log to console  ${paybillNumbers}[${lastIndex}]
     set global variable  ${latestPaybillCreated}  ${paybillNumbers}[${lastIndex}]
+
+#    remove from list  ${DISBURSEMENT_PAYBILLS}  0
+#    append to list  ${DISBURSEMENT_PAYBILLS}  ${latestPaybillCreated}
+#    set global variable  ${DISBURSEMENT_PAYBILLS}
     return from keyword  ${paybillNumbers}[0]
 
 Get Salary Paybill Number
@@ -60,13 +71,29 @@ Get Salary Paybill Number
 
 Search Paybill
     input text  ${searchBox}  ${latestPaybillCreated}
+    click element  //button[@id='BtnSearchfilter']
 
 Verify Paybill
-    click element  ${actionButton}
-    wait until element is visible  ${verifyText}
+    #click element  //td[contains(text(),'Pending')]/following-sibling::${approvalButton}
+    click element  //${approvalButton}
+    ${status}  run keyword and return status  wait until element is visible  ${verifyText}
+    run keyword if  ${status} == ${FALSE}  SalaryPaybill.Verify Paybill
     click element  ${verifyText}
+    sleep  3s
+    wait until page contains  Do you really want to Verify and Forward for Approval selected record(s) ?
+    click element  //button[contains(text(),'OK')]
 
 Approve Paybill
-    click element  ${actionButton}
+    #click element  //td[contains(text(),'Verified')]/following-sibling::${approvalButton}
+    click element  //${approvalButton}
     wait until element is visible  ${approveText}
     click element  ${approveText}
+    sleep  3s
+    click element  //input[@id='CheckSchedule']
+    input text  //textarea[@id='Remarks']  syska LED, LIGHT years ahead
+    #wait until page contains  Do you really want to Forward For Approval selected record(s) ?
+    click element  //input[@id='btnSave']
+
+Select Status
+    [Arguments]  ${status}
+    select from list by label  //select[@id='status']  ${status}

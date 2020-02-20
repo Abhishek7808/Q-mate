@@ -82,6 +82,14 @@
         "Locator2": "//*[@id='select2-drop']/div/input"
       }
     },
+    "Employee Location": {
+      "Value": "",
+      "Type": "SearchSelectDropDown",
+      "Locator": {
+        "Locator1": "//div[@id='s2id_UnitFilter']",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
     "Designation": {
       "Value": "",
       "Type": "Dropdown",
@@ -115,6 +123,14 @@
           "Locator1": "//div[@id='s2id_ddlPbGroupFilter']",
           "Locator2": "//*[@id='select2-drop']/div/input"
         }
+      },
+      "Employee Location": {
+        "Value": "",
+        "Type": "SearchSelectDropDown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_ddlUnitFilter']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
       }
     }
   },
@@ -136,7 +152,6 @@
       "Locator": "btnSave"
     },
     "Financial_Year": {
-<<<<<<< HEAD
       "Value": "20192020",
       "Type": "Dropdown",
       "Locator": "FinYear"
@@ -152,11 +167,9 @@
       "Locator": {
         "Locator1": "s2id_PbGroupID",
         "Locator2": "//*[@id='select2-drop']/div/input"
-=======
-        "Value": "20192020",
-        "Type": "Dropdown",
-        "Locator": "FinYear"
-      },
+      }
+    },
+    "Filter": {
       "Month": {
         "Value": "128",
         "Type": "Dropdown",
@@ -166,48 +179,23 @@
         "Value": "",
         "Type": "SearchSelectDropdown",
         "Locator": {
-            "Locator1": "//div[@id='s2id_PayGroupIdIndex']//div",
-            "Locator2": "//*[@id='select2-drop']/div/input"
+          "Locator1": "//div[@id='s2id_PayGroupIdIndex']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
         }
-      },
-      "Bill Date": {
-        "Value": {
-          "Day": "05",
-          "Month": "fab",
-          "Year": "2020"
-        },
-        "Type": "Date",
-        "Locator": "BILL_DATE"
       },
       "Payment Unit": {
-        "Value": "Head Office",
+         "Value": "",
         "Type": "SearchSelectDropdown",
         "Locator": {
-            "Locator1": "s2id_UnitId",
-            "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+          "Locator1": "//div[@id='s2id_UnitIds']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
         }
-
-      },
-      "Manual Bill No": {
-        "Value": "1243",
-        "Type": "Text-value",
-        "Locator": "txtManualBillNo"
-      },
-      "Payslip Unit": {
-        "Value": "Head Office",
-        "Type": "SearchSelectDropdown",
-        "Locator": {
-            "Locator1": "s2id_PayUnitId",
-            "Locator2": "//*[@id='select2-drop']/div/input"
-        }
-
-      },
-      "Remarks": {
-        "Value": "",
-        "Type": "Text-value",
-        "Locator": "txtremarks"
->>>>>>> 82e74f3f07244e93d76e34550a7aab2adf9b4bea
       }
+    },
+    "Financial Year": {
+      "Value": "20192020",
+      "Type": "Dropdown",
+      "Locator": "FinYear"
     },
     "Bill Date": {
       "Value": {
@@ -243,14 +231,50 @@
       "Value": "",
       "Type": "Text-value",
       "Locator": "txtremarks"
-    }
-  },
-  "Employee to include in Paybills": {
+    },
+    "Bill Date": {
+      "Value": {
+        "Day": "05",
+        "Month": "fab",
+        "Year": "2020"
+      },
+      "Type": "Date",
+      "Locator": "BILL_DATE"
+    },
+    "Payment Unit": {
+      "Value": "Head Office",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_UnitId",
+        "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+      }
+    },
+    "Manual Bill No": {
+      "Value": "1243",
+      "Type": "Text-value",
+      "Locator": "txtManualBillNo"
+    },
+    "Payslip Unit": {
+      "Value": "Head Office",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_PayUnitId",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Remarks": {
+      "Value": "",
+      "Type": "Text-value",
+      "Locator": "txtremarks"
+    },
     "Employee Unit": {
       "Value": "Select all ",
-      "Type": "DropdownCheckBox",
-      "Locator1": "//button[contains(text(),'Head Office')]",
-      "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+      "Type": "Dropdown-CheckBox",
+      "Locator": {
+        "Locator1": "//div[@class='btn-group open']",
+        "Locator2": "//*[@id='MainBody']/form//ul/li[1]//input"
+      }
+
     },
     "Division": {
       "Value": "",
@@ -362,17 +386,22 @@
       "Locator1": "divsSubUnit",
       "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
     },
-    "Employee Unit": {
+    "Employee Location": {
       "Value": "Select all ",
-      "Type": "DropdownCheckBox",
-      "Locator1": "divunit",
-      "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+      "Type": "Dropdown-CheckBox",
+      "Locator": {
+           "Locator1": "//div[@id='divunit']//div[@class='btn-group']",
+           "Locator2": "//*[@id='divunit']/div/ul/li[1]/div/input"
+      }
     },
     "Pay Group": {
       "Value": "",
       "Type": "SearchSelectDropdown",
-      "Locator1": "s2id_ddlPB_GROUP_ID",
-      "Locator2": "//div[@id='select2-drop']//input[@class='select2-input']"
+      "Locator": {
+          "Locator1": "//div[@id='s2id_ddlPB_GROUP_ID']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+
     },
     "Designation": {
       "Value": "",
@@ -432,11 +461,14 @@
         "Type": "Dropdown",
         "Locator": "IsGazetted"
       },
-      "Employee Unit": {
+      "Employee Location": {
         "Value": "Select all ",
-        "Type": "DropdownCheckBox",
-        "Locator1": "//button[contains(text(),'Head Office')]",
-        "Locator2": "//div[@class='btn-group open']//li[@class='multiselect-item multiselect-all']//input"
+        "Type": "Dropdown-CheckBox",
+        "Locator": {
+           "Locator1": "//div[@id='fdivunit']",
+           "Locator2": "//*[@id='fdivunit']/div/ul/li[1]/div/input"
+        }
+
       },
       "Pay Group": {
         "Value": "",
@@ -1223,7 +1255,6 @@
   },
   "Salary Disbursement Process": {
     "URL": "HRM/salaryDisbursment/SalayDisbursmentIndex",
-
     "Back To List": {
       "Value": "",
       "Type": "Button",
@@ -1238,7 +1269,7 @@
       "Value": "april 2017",
       "Type": "SearchSelectDropdown",
       "Locator": {
-        "Locator1": "s2id_SalCycleId",
+        "Locator1": "//div[@id='s2id_SalaryCycle']",
         "Locator2": "//*[@id='select2-drop']/div/input"
       }
     },
@@ -1251,18 +1282,30 @@
       "Type": "Date",
       "Locator": "BillDate"
     },
+    "Credit Date": {
+      "Value": {
+        "Day": "1",
+        "Month": "",
+        "Year": ""
+      },
+      "Type": "Date",
+      "Locator": "CreditDate"
+    },
     "Payment Unit": {
       "Value": "Head Office",
       "Type": "SearchSelectDropdown",
       "Locator": {
-        "Locator1": "s2id_UnitId",
+        "Locator1": "s2id_AccUnitId",
         "Locator2": "//*[@id='select2-drop']/div/input"
       }
     },
     "Pay Group": {
       "Value": "",
-      "Type": "Dropdown",
-      "Locator": ""
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "s2id_PayGroupId",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
     },
     "Paybill No (Text and locator issue)": {
       "Value": "",
@@ -1284,16 +1327,26 @@
         "Type": "Date",
         "Locator": "CreditDate"
       },
+      "Payment Location": {
+        "Value": "",
+        "Type": "SearchSelectDropdown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_UnitId']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
       "Payment_Mode": {
-        "Value": "Online",
+        "Value": "NEFT RTGS",
         "Type": "Dropdown",
         "Locator": "PaymentMode"
       },
-      "Company Bank": {
+      "Company_Bank": {
         "Value": "",
         "Type": "SearchSelectDropdown",
-        "Locator1": "s2id_CompanyBank",
-        "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+        "Locator": {
+          "Locator1": "s2id_CompanyBank",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
       },
       "Ledger": {
         "Value": "",
@@ -1313,24 +1366,24 @@
         "Locator": "chkNotifyEmpEmail"
       }
     },
-    "Include Employee": {
-      "Designation": {
-        "Value": "4",
-        "Type": "Dropdown",
-        "Locator1": "s2id_DesignationId",
-        "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
-      },
-      "Employee Unit": {
-        "Value": "",
-        "Type": "DropdownCheckBox",
-        "Locator1": "s2id_CompanyBank",
-        "Locator2": "//div[contains(@class,'btn-group open')]//li[contains(@class,'multiselect-item multiselect-all')]//input"
-      },
-      "Is Gazetted": {
-        "Value": "Y",
-        "Type": "Dropdown",
-        "Locator1": "s2id_CompanyBank"
+    "Designation": {
+      "Value": "4",
+      "Type": "Dropdown",
+      "Locator1": "s2id_DesignationId",
+      "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+    },
+    "Employee Unit": {
+      "Value": "",
+      "Type": "Dropdown-CheckBox",
+      "Locator": {
+        "Locator1": "//div[@class='btn-group open']",
+        "Locator2": "//*[@id='SalaryPayment']/div/div/div/div[2]/div[2]/div/div/div[2]//ul/li[1]//input"
       }
+    },
+    "Is Gazetted": {
+      "Value": "Y",
+      "Type": "Dropdown",
+      "Locator1": "s2id_CompanyBank"
     },
     "Show Child Unit Employee": {
       "Value": "Select",
@@ -1351,6 +1404,24 @@
       "Value": "",
       "Type": "Button",
       "Locator": "btnCancel"
+    },
+    "Filters": {
+      "Pay Group": {
+        "Value": "",
+        "Type": "SearchSelectDropdown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_PbGroupID']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
+      "Payment Location": {
+        "Value": "",
+        "Type": "SearchSelectDropdown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_UnitIds']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      }
     }
   }
 }

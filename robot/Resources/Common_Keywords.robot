@@ -212,7 +212,11 @@ Get Current Year
     ${year}  strip string  ${year}
     return from keyword  ${year}
 
-
+Get Current Day
+    ${currentDate}  get current date
+    ${year}  convert date  ${currentDate}  result_format= %d
+    ${year}  strip string  ${year}
+    return from keyword  ${year}
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

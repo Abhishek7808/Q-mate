@@ -45,8 +45,9 @@ Apply Criteria
     switch window  NEW
 
 Select Employees
-    FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
-    \   select checkbox  ${employeeTable}/tbody/tr[${employee}]/td[1]/input
+    select checkbox  //input[@id='chk_all']
+#    FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
+#    \   select checkbox  ${employeeTable}/tbody/tr[${employee}]/td[1]/input
 
 Click On Submit Button
     click element  //input[@id='btnsave']
@@ -76,7 +77,7 @@ Apply Filters
     click element  ${applyFilters}
 
 Click On Actions Button
-    click element  //td[contains(text(),'${PAYGROUP}')]/following-sibling::td[contains(text(),'Submitted')]/following-sibling::td${actionButton}
+    click element  //td[contains(text(),'Submitted')]/following-sibling::td${actionButton}
 
 Verify Attendance
     wait until element is visible  ${verify}

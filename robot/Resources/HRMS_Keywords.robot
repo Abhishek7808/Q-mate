@@ -24,13 +24,13 @@ Resource  ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
-<<<<<<< HEAD
+
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDisbursment.robot
-=======
+
 
 *** Variables ***
-${employeeStatus}  status
->>>>>>> 82e74f3f07244e93d76e34550a7aab2adf9b4bea
+${employeeStatus}  Status
+
 *** Keywords ***
 Open Post Class Page
     PostClass.Go To ERP Page Post Class Page
@@ -454,7 +454,8 @@ Set Mark Attendance Criteria
     ManualAttendance.Click On Mark Attendance Button
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}
+    HRMS_Keywords.Select Employee Location  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  Select all
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
     HRMS_Keywords.Select Is Gazetted  ${dataDictionary}
@@ -473,10 +474,12 @@ Verify Marked Attendance
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  Select all
+    HRMS_Keywords.Select Employee Location  ${dataDictionary}
     ManualAttendance.Apply Filters
     sleep  2s
     Common_Keywords.Show Maximum Entries On Page
+    sleep  3s
     ManualAttendance.Click On Actions Button
     ManualAttendance.Verify Attendance
 
@@ -495,25 +498,30 @@ Process Salary
     sleep  3s
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
+    SalaryDetail.Select Employee Location  ${dataDictionary}
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  -Select One-
     SalaryDetail.Click On Process button
+    SalaryDetail.Select All Employees
     SalaryDetail.Process Salary
-    Common_Keywords.Switch Tab
+    #Common_Keywords.Switch Tab
 
 Lock Salary
     [Arguments]  ${dataDictionary}
-    Common_Keywords.Switch Tab
+    #Common_Keywords.Switch Tab
+    Open Salary Detail Page
     SalaryDetail.Open Filters
     sleep  2s
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}
+    SalaryDetail.Select Employee Location  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  -Select One-
     HRMS_Keywords.Select Status  Withheld
     SalaryDetail.Apply Filters
     Common_Keywords.Show Maximum Entries On Page
-    SalaryDetail.Select Employee
+    SalaryDetail.Select Employees  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']//thead//tr//th//input
     SalaryDetail.Click On Action Button
     SalaryDetail.Click On Lock
     SalaryDetail.Lock Salary
@@ -539,14 +547,19 @@ Select Financial Year
 Select Month
     [Documentation]  Selects Salary Cycle Month in Mark Attendance Filter
     [Arguments]  ${dataDictionary}
-    ${salaryCycleName}  SalaryCycle.Get Current Salary Cycle
+    ${salaryCycleName}  run keyword if  '${SALARYCYCLENAME}' == 'None'  SalaryCycle.Get Current Salary Cycle  ELSE  set variable  ${SALARYCYCLENAME}
     set global variable  ${salaryCycleName}
-    run keyword if  ${SALARYCYCLEID} != None  select from list by value  ${dataDictionary["Month"]["Locator"]}  ${SALARYCYCLEID}        ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
-    run keyword if  ${SALARYCYCLEID} == None  FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
+    FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
+#    run keyword if  ${SALARYCYCLEID} != None  select from list by value  ${dataDictionary["Month"]["Locator"]}  ${SALARYCYCLEID}        ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
+#    run keyword if  ${SALARYCYCLEID} == None  FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
+
+Select Employee Location
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field   ${dataDictionary["Employee Location"]}  ${EMPLOYEELOCATION}
 
 Select Pay Group
-    [Arguments]  ${dataDictionary}
-    FillFields.Input Value Into Field  ${dataDictionary["Pay Group"]}  ${PAYGROUP}
+    [Arguments]  ${dataDictionary}  ${payGroupName}
+    FillFields.Input Value Into Field  ${dataDictionary["Pay Group"]}  ${payGroupName}
 
 Select Payment unit
     [Arguments]  ${dataDictionary}
@@ -572,13 +585,22 @@ Approve Salary Paybill
     [Arguments]  ${dataDictionary}
     SalaryPaybill.Go To Approve Salary Paybill Page
     SalaryPaybill.Open Filters
-    HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}
-    HRMS_Keywords.Select Status  Pending
+    HRMS_Keywords.Select Month  ${dataDictionary["Filter"]}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
+    HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
+    SalaryPaybill.Select Status  Pending
     SalaryPaybill.Apply Filters
     SalaryPaybill.Get Latest Paybill Number
     SalaryPaybill.Search Paybill
+    sleep  3s
     SalaryPaybill.Verify Paybill
+    sleep  5s
+    reload page
+    SalaryPaybill.Open Filters
+    sleep  3s
+    SalaryPaybill.Select Status  Verified and Forwarded for Approval
+    SalaryPaybill.Apply Filters
+    sleep  5s
     SalaryPaybill.Approve Paybill
     #SalaryDetail.Select Status  Withheld
 
@@ -588,17 +610,31 @@ Select Multi Paygroups
     FOR  ${item}  In  @{DISBURSEMENT_PAYGROUPS}
     \   click element  //label[contains(text(),'${item}')]
 
-
 Select Multi Paybills
     [Arguments]  ${Locator}
     click element  ${Locator}
     Sleep  2s
-    FOR  ${item}  In  @{DISBURSEMENT_PAYBILLS}
-    \   select checkbox  //div[@class='btn-group open']//label[@class='checkbox'][contains(text(),'${item}')]
-    Sleep  2s
+    input text  //*[@id="SalaryPayments"]/div[2]/div[2]/div/ul/li[1]/div/input  ${latestPaybillCreated}
+    select checkbox  //*[@id="SalaryPayments"]/div[2]/div[2]/div/ul/li[2]/a/label/input
+    ${status}  run keyword and return status  checkbox should be selected  //*[@id="SalaryPayments"]/div[2]/div[2]/div/ul/li[2]/a/label/input
+    run keyword if  ${status} == ${False}  Select Multi Paybills  ${Locator}
+    capture page screenshot
+    #Execute JavaScript  document.getElementById("PaybillIds").checked = true
+    #click element  //*[@id="SalaryPayments"]/div[2]/div[2]/div/ul/li[2]/a/label/input
+    sleep  5s
+#    FOR  ${item}  In  @{DISBURSEMENT_PAYBILLS}
+#    \   select checkbox  //label[contains(text(),'${item}')]
+#    Sleep  2s
 
 Open Salary Disbursment Page
     SalaryDisbursment.Go To Salary Disbursment Page
+
+Add Disbursement
+    [Arguments]  ${dataDictionary}
+    SalaryDisbursment.Click On Pending Paybills button
+    SalaryDisbursment.Fill Pending Paybills Form  ${dataDictionary}
+    SalaryDisbursment.Fill Salary Disbursment Form  ${dataDictionary}
+    SalaryDisbursment.Submit Details
 
 Add Disbursment button
     [Arguments]  ${dataDictionary}
@@ -606,3 +642,22 @@ Add Disbursment button
     sleep  3s
     SalaryDisbursment.Fill Salary Disbursment Form  ${dataDictionary}
     SalaryDisbursment.Submit Details
+
+Select Date
+     [Arguments]  ${Disbursment}  ${currentDate}  ${currentMonth}  ${currentYear}
+     Click Element    ${Disbursment}
+     Select From List By label  //select[@class='ui-datepicker-year']   ${currentYear}
+     Select From List By label  //select[@class='ui-datepicker-month']   ${currentMonth}
+     page should contain element  //a[contains(text(),'${currentDate}')]
+     page should contain element  //td[contains(@class,'ui-datepicker-today')]/child::a[contains(text(),'${currentDate}')]
+     Click element     //td[contains(@class,'ui-datepicker-today')]/child::a[contains(text(),'${currentDate}')]
+     sleep  2s
+
+Approve Salary Disbursement
+    [Arguments]  ${dataDictionary}
+    SalaryDisbursment.Go To Salary Disbursment Page
+    SalaryDisbursment.Open Filters
+    SalaryDisbursment.Select Filters
+    SalaryDisbursment.Apply Filters
+    SalaryDisbursment.Verify Disbursement
+    SalaryDisbursment.Approve Disbursement
