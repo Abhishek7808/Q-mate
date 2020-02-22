@@ -33,7 +33,6 @@ Click On Process button
     click element  ${processSalary}
 
 Process Salary
-    switch window  NEW
     click element  ${finalProcess}
     wait until page contains  No data available in table  50s
     sleep  10s
@@ -68,9 +67,9 @@ Select Employee Location
     [Arguments]  ${dataDictionary}
     click element  ${dataDictionary["Employee Location"]["Locator"]["Locator1"]}
     sleep  2s
-    @{locators}  get webelements  //label[contains(text(),'Select all')]
+    @{locators}  get webelements  //label[contains(text(),'${EMPLOYEELOCATION}')]
     FOR  ${locator}  IN  @{locators}
-    \   run keyword and continue on failure  click element  ${locator}
+    \   run keyword and ignore error  click element  ${locator}
     press keys  ${dataDictionary["Employee Location"]["Locator"]["Locator1"]}  TAB
 #    ${listLength}  get length   ${locators}
 #    click element  ${locators}[${listLength-2}]

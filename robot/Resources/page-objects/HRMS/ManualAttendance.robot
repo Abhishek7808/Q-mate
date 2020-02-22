@@ -21,6 +21,7 @@ Click On Mark Attendance Button
     [Documentation]  Clicks on Mark Attendance button and opens Mark Attendance filter.
     Click element  ${markAttendance}
     sleep  2s
+    wait until page contains  Financial Year
 
 #Select Financial Year
 #    [Documentation]  Selects Financial Year in Mark Attendance Filter.
@@ -42,9 +43,10 @@ Click On Mark Attendance Button
 Apply Criteria
     [Documentation]  Clicks on Apply Filter Button.
     click element  ${process}
-    switch window  NEW
+
 
 Select Employees
+    switch window  NEW
     select checkbox  //input[@id='chk_all']
 #    FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
 #    \   select checkbox  ${employeeTable}/tbody/tr[${employee}]/td[1]/input
@@ -61,6 +63,7 @@ Click On Ok Button
     sleep  4s
 
 Open Filters
+    wait until page contains element  ${openFilters}  50s
     click element  ${openFilters}
 
 Select Financial Year Filter
@@ -77,7 +80,8 @@ Apply Filters
     click element  ${applyFilters}
 
 Click On Actions Button
-    click element  //td[contains(text(),'Submitted')]/following-sibling::td${actionButton}
+    [Arguments]  ${status}
+    click element  //td[contains(text(),'${status}')]/following-sibling::td${actionButton}
 
 Verify Attendance
     wait until element is visible  ${verify}
@@ -94,3 +98,7 @@ Choose Approve
     wait until element is enabled  ${confirmApprove}
     sleep  2s
     click element  ${confirmApprove}
+
+Select Status
+    [Arguments]  ${status}
+    select from list by label  //select[@id='Status']  ${status}

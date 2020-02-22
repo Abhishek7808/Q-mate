@@ -390,7 +390,7 @@
       "Value": "Select all ",
       "Type": "Dropdown-CheckBox",
       "Locator": {
-           "Locator1": "//div[@id='divunit']//div[@class='btn-group']",
+           "Locator1": "//div[@id='divunit']",
            "Locator2": "//*[@id='divunit']/div/ul/li[1]/div/input"
       }
     },

@@ -24,9 +24,7 @@ Resource  ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
-
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDisbursment.robot
-
 
 *** Variables ***
 ${employeeStatus}  Status
@@ -450,6 +448,7 @@ Open Manual Attendance Page
     ManualAttendance.Go To Manual Attendance Page
 
 Set Mark Attendance Criteria
+    [Documentation]  Applies filters for listing of employees.
     [Arguments]  ${dataDictionary}
     ManualAttendance.Click On Mark Attendance Button
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
@@ -460,8 +459,22 @@ Set Mark Attendance Criteria
     HRMS_Keywords.Select Division  ${dataDictionary}
     HRMS_Keywords.Select Is Gazetted  ${dataDictionary}
     ManualAttendance.Apply Criteria
+    sleep  2s
+
+Apply Filters For Marked Attendance
+    ManualAttendance.Open Filters
+    sleep  2s
+    HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
+    sleep  2s
+    HRMS_Keywords.Select Month  ${dataDictionary["Filters"]}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  Select all
+    HRMS_Keywords.Select Employee Location  ${dataDictionary["Filters"]}
+    ManualAttendance.Select Status  Submitted
+    ManualAttendance.Apply Filters
+    sleep  2s
 
 Submit Marked Attendance
+    [Documentation]
     ManualAttendance.Select Employees
     ManualAttendance.Click On Submit Button
     ManualAttendance.Verify Submit Popup
@@ -469,22 +482,18 @@ Submit Marked Attendance
 
 Verify Marked Attendance
     [Arguments]  ${dataDictionary}
-    ManualAttendance.Open Filters
-    sleep  2s
-    HRMS_Keywords.Select Financial Year  ${dataDictionary}
-    sleep  2s
-    HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  Select all
-    HRMS_Keywords.Select Employee Location  ${dataDictionary}
-    ManualAttendance.Apply Filters
-    sleep  2s
     Common_Keywords.Show Maximum Entries On Page
     sleep  3s
-    ManualAttendance.Click On Actions Button
+    ManualAttendance.Click On Actions Button  Submitted
     ManualAttendance.Verify Attendance
 
 Approve Marked Attendance
-    ManualAttendance.Click On Actions Button
+    ManualAttendance.Open Filters
+    sleep  2s
+    ManualAttendance.Select Status  Verified
+    ManualAttendance.Apply Filters
+    Common_Keywords.Show Maximum Entries On Page
+    ManualAttendance.Click On Actions Button  Verified
     ManualAttendance.Choose Approve
 
 Open Salary Detail Page

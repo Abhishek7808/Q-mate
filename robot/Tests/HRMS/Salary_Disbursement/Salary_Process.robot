@@ -5,7 +5,7 @@ Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}/ERP_Keywords.robot
 Resource          ${RESOURCES}/HRMS_Keywords.robot
 Library           ${LIBRARY}/Addendums.py
-Library           ${LIBRARY}/checkbox.js
+#Library          ${LIBRARY}/checkbox.js
 Library           DateTime
 
 *** Variables ***
@@ -20,12 +20,12 @@ ${ISGAZETTED}  None
 @{DISBURSEMENT_PAYGROUPS}    Select all
 @{DISBURSEMENT_PAYBILLS}    1021/2019-2020
 ${latestPaybillCreated}  1021/2019-2020
-${EMPLOYEELOCATION}  Select all
+${EMPLOYEELOCATION}  ......SE(M&P), Bharatpur
 
 *** Test Cases ***
 
 Create Salary Cycle
-    [Documentation]  Fills details in Salary Cycle form and submits it.
+    [Documentation]  Fills details in Salary Cycle form and submits it. Creates Salary cycle of current month and year.
     [Tags]  Salary  SalaryCycle  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Cycle"]}
     HRMS_Keywords.Open Salary Cycle Page
@@ -38,6 +38,7 @@ Mark Attendance Of Employees
     HRMS_Keywords.Open Manual Attendance Page
     HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}
     HRMS_Keywords.Submit Marked Attendance
+    HRMS_Keywords.Apply Filters For Marked Attendance
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}
     HRMS_Keywords.Approve Marked Attendance
 
@@ -46,7 +47,7 @@ Process And Lock Salary
     [Tags]  Salary  salaryprocess  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
-    #HRMS_Keywords.Process Salary  ${dataDictionary}
+    HRMS_Keywords.Process Salary  ${dataDictionary}
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
 
 Add Paybill
@@ -54,7 +55,7 @@ Add Paybill
     [Tags]  Salary  Addpaybill  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
-    #HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
+    HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 #Approve Paybill
@@ -64,14 +65,19 @@ Add Paybill
 #    HRMS_Keywords.Open Salary Paybill Page
 #    HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
 
-Add Disbursment
+Disburse Paybill
     [Documentation]  Adds Disbursment
     [Tags]  Salary  AddDisbursement  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
     HRMS_Keywords.Open Salary Disbursment Page
     sleep   3s
-    #HRMS_Keywords.Add Disbursement  ${dataDictionary}
+    HRMS_Keywords.Add Disbursement  ${dataDictionary}
     HRMS_Keywords.Approve Salary Disbursement  ${dataDictionary}
+
+
+
+
+
     #HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
     #HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
 
