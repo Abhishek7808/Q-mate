@@ -39,7 +39,7 @@ Process Salary
 
 Open Filters
     click element  ${filterButton}
-    ${status}  run keyword and return status  page should contain  Search Filter
+    ${status}  run keyword and return status  wait until element is visible  //div[@class='SearchFilterHeading']
     run keyword if  ${status} == ${FALSE}  SalaryDetail.Open Filters
 
 Apply Filters

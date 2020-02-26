@@ -5,7 +5,6 @@ Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}/ERP_Keywords.robot
 Resource          ${RESOURCES}/HRMS_Keywords.robot
 Library           ${LIBRARY}/Addendums.py
-#Library          ${LIBRARY}/checkbox.js
 Library           DateTime
 
 *** Variables ***
@@ -14,13 +13,14 @@ ${SALARYCYCLENAME}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
 ${PAYGROUP}  None
 ${PAYMENTUNIT}  select all
+${PAYSLIPUNIT}  head office
 ${DESIGNATION}  None
 ${DIVISION}  None
 ${ISGAZETTED}  None
 @{DISBURSEMENT_PAYGROUPS}    Select all
 @{DISBURSEMENT_PAYBILLS}    1021/2019-2020
 ${latestPaybillCreated}  1021/2019-2020
-${EMPLOYEELOCATION}  ......SE(M&P), Bharatpur
+${EMPLOYEELOCATION}  None
 
 *** Test Cases ***
 
@@ -56,14 +56,8 @@ Add Paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
+    HRMS_Keywords.Set Filters For Paybill
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
-
-#Approve Paybill
-#    [Documentation]  Approves Paybill.
-#    [Tags]  Salary  approvepaybill  createdata
-#    Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
-#    HRMS_Keywords.Open Salary Paybill Page
-#    HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
 
 Disburse Paybill
     [Documentation]  Adds Disbursment
@@ -74,12 +68,6 @@ Disburse Paybill
     HRMS_Keywords.Add Disbursement  ${dataDictionary}
     HRMS_Keywords.Approve Salary Disbursement  ${dataDictionary}
 
-
-
-
-
-    #HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
-    #HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
 
 
 

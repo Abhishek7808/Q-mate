@@ -267,7 +267,7 @@ Open Division Page
 Add New Division
     [Arguments]  ${dataDictionary}
     Division.Click On Add New Button  ${dataDictionary}
-    Division.Fill Division Form  ${dataDictionary}
+#Approve Salary Paybill    Division.Fill Division Form  ${dataDictionary}
     Division.Save Details  ${dataDictionary}
 
 Edit Division Details
@@ -593,25 +593,26 @@ Select Is Gazetted
 Approve Salary Paybill
     [Arguments]  ${dataDictionary}
     SalaryPaybill.Go To Approve Salary Paybill Page
-    SalaryPaybill.Open Filters
-    HRMS_Keywords.Select Month  ${dataDictionary["Filter"]}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
-    HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
-    SalaryPaybill.Select Status  Pending
-    SalaryPaybill.Apply Filters
+    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     SalaryPaybill.Get Latest Paybill Number
     SalaryPaybill.Search Paybill
     sleep  3s
     SalaryPaybill.Verify Paybill
     sleep  5s
     reload page
-    SalaryPaybill.Open Filters
-    sleep  3s
-    SalaryPaybill.Select Status  Verified and Forwarded for Approval
-    SalaryPaybill.Apply Filters
+    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     sleep  5s
     SalaryPaybill.Approve Paybill
     #SalaryDetail.Select Status  Withheld
+
+Set Filters For Paybill
+    [Arguments]  ${dataDictionary}
+    SalaryPaybill.Open Filters
+    HRMS_Keywords.Select Month  ${dataDictionary["Filter"]}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
+    HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
+    SalaryPaybill.Select Status  Pending
+    SalaryPaybill.Apply Filters
 
 Select Multi Paygroups
     [Arguments]  ${Locator}
@@ -668,5 +669,6 @@ Approve Salary Disbursement
     SalaryDisbursment.Open Filters
     SalaryDisbursment.Select Filters
     SalaryDisbursment.Apply Filters
+    sleep  4s
     SalaryDisbursment.Verify Disbursement
     SalaryDisbursment.Approve Disbursement

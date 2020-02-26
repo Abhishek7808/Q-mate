@@ -73,9 +73,11 @@ Select Filters
     select from list by value  //select[@id='Finyear']  ${finYear}
     select from list by label  //select[@id='SalaryCycleId']  ${SALARYCYCLENAME}
     HRMS_Keywords.Select Pay Group   ${dataDictionary["Filters"]}  ${PAYGROUP}
-    FillFields.Input Value Into Field  ${dataDictionary["Filters"]["Payment Location"]}  ${PAYMENTUNIT}
+    FillFields.Input Value Into Field  ${dataDictionary["Filters"]["Payment Location"]}  Select All
 
 Apply Filters
+    wait until element is enabled  //button[contains(text(),'Apply Filter')]
+    set focus to element  //button[contains(text(),'Apply Filter')]
     click element  //button[contains(text(),'Apply Filter')]
 
 Verify Disbursement

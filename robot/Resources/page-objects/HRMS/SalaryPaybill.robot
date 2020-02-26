@@ -23,11 +23,19 @@ Fill Salary Paybill Form
     [Arguments]  ${dataDictionary}
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
+    SalaryPaybill.Unselect Employee Location
     HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${PAYGROUP}
+    sleep  5s
     #HRMS_Keywords.Select Employee Location  ${dataDictionary}
     #FillFields.Input Value Into Field  ${dataDictionary["Bill Date"]}  ${dataDictionary["Bill Date"]["Value"]}
     HRMS_Keywords.Select Payment unit  ${dataDictionary}
-    FillFields.Input Value Into Field  ${dataDictionary["Payslip Unit"]}  ${dataDictionary["Payslip Unit"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Payslip Unit"]}  ${PAYSLIPUNIT}
+
+Unselect Employee Location
+    set focus to element  //body[contains(@class,'breakpoint-768 pace-done')]/div[@id='containerfluid']/div[@id='content']/div[@id='MainBody']/form[contains(@class,'form-horizontal')]/div[contains(@class,'layout-app')]/div[contains(@class,'col-md-12')]/div[contains(@class,'col-separator box col-separator-first col-unscrollable')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app hasNiceScroll')]/div[contains(@class,'widget-body innerAll inner-2x')]/div[contains(@class,'row')]/div[1]/div[1]
+    click element  //body[contains(@class,'breakpoint-768 pace-done')]/div[@id='containerfluid']/div[@id='content']/div[@id='MainBody']/form[contains(@class,'form-horizontal')]/div[contains(@class,'layout-app')]/div[contains(@class,'col-md-12')]/div[contains(@class,'col-separator box col-separator-first col-unscrollable')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app hasNiceScroll')]/div[contains(@class,'widget-body innerAll inner-2x')]/div[contains(@class,'row')]/div[1]/div[1]
+    click element  //label[contains(text(),'Select all')]
+    click element  //label[contains(text(),'Select all')]
 
 Submit Details
     click element  ${savePaybill}

@@ -279,7 +279,11 @@ def print_paths():
 #     form = LoginForm()
 #     return render_template('login.html', title='Sign In', form=form)
 
+@app.route('/rajerp/notify')
+def do_notify():
+    return render_template('notify.html')
 
 if __name__ == "__main__":
     # app.debug = True
     app.run(host='0.0.0.0')
+

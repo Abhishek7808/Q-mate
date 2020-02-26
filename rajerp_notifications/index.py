@@ -1,0 +1,1 @@
+print("Location: https://divaksh.me/")

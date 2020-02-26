@@ -1,3 +1,4 @@
+import json
 import gspread
 from oauth2client.service_account import ServiceAccountCredentials
 from robot.api.deco import keyword
@@ -8,7 +9,7 @@ import Notifications
 import Addendums
 
 # use creds to create a client to interact with the Google Drive API
-scope = ['https://spreadsheets.google.com/feeds','https://www.googleapis.com/auth/drive']
+scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 creds = ServiceAccountCredentials.from_json_keyfile_name('robot/Data/Client_secret.json', scope)
 client = gspread.authorize(creds)
 
