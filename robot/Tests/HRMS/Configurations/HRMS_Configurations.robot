@@ -135,12 +135,12 @@ User should able to configure pay slip
     HRMS_Keywords.Configure Pay Slip Details  ${dataDictionary}
     HRMS_Keywords.Save Pay Slip Configurations  ${dataDictionary}
     sleep   2s
-    Go To ERP Page   http://demoprojects.e-connectsolutions.com/ERP-TEST/HRM/PayrollProcess/Index
-    sleep   5s
-    Click Element   //*[@id="classListing"]/div[2]/table/tbody/tr[1]/td[12]/div[2]/a
-    sleep   2s
-    Click Element   //*[@id="lnkMultipleSalarySlip_11387709"]
-    sleep   2s
+#    Go To ERP Page   http://demoprojects.e-connectsolutions.com/ERP-TEST/HRM/PayrollProcess/Index
+#    sleep   5s
+#    Click Element   //*[@id="classListing"]/div[2]/table/tbody/tr[1]/td[12]/div[2]/a
+#    sleep   2s
+#    Click Element   //*[@id="lnkMultipleSalarySlip_11387709"]
+#    sleep   2s
 
 User should able to configure self verification details
     [Documentation]  Configures the self varification details.
@@ -173,7 +173,7 @@ User should able to delete division
     [Tags]  HRMS  division  deletedata
     HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Edit Division"]}
-
+    HRMS_Keywords.Search Division
     FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
     page should contain   Do you really want to Delete this Division ??
     FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
@@ -805,4 +805,5 @@ User should able to delete TA/DA rule
 #    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Is Active"]}  ${dataDictionary["Edit Section"]["Is Active"]["Value"]}
 #    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
 #    wait until page contains element  SearchText
+
 #    HRMS_Keywords.Verify Section Entry  ${dataDictionary["Edit Section"]}
