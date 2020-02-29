@@ -267,29 +267,66 @@ Open Division Page
 Add New Division
     [Arguments]  ${dataDictionary}
     Division.Click On Add New Button  ${dataDictionary}
-#Approve Salary Paybill    Division.Fill Division Form  ${dataDictionary}
+    Division.Fill Division Form  ${dataDictionary}
     Division.Save Details  ${dataDictionary}
+
+Search Division
+    [Arguments]  ${dataDictionary}  ${value}
+    Division.Input Division Name Into Search Box  ${dataDictionary}  ${value}
+    Division.Click Search Button  ${dataDictionary}
 
 Edit Division Details
     [Arguments]  ${dataDictionary}
     Division.Click On Edit Button  ${dataDictionary}
-    Division.Fill Division Form  ${dataDictionary}
+    Division.Fill Division Form  ${dataDictionary["Edit Division"]}
     Division.Save Details  ${dataDictionary}
 
 Verify Division Entry
     [Arguments]  ${dataDictionary}
     Division.Check For Division Entry In Division Table  ${dataDictionary}
 
+Delete Division
+    [Arguments]  ${dataDictionary}
+    Division.Delete Division Entry  ${dataDictionary}
+
 Verify Division Deletion
     [Arguments]  ${dataDictionary}
     Division.Check For Division Deletion In Division Table  ${dataDictionary}
 
-Verify Designation Entry
+Open Designation Page
+    Designation.Go To Designation Page
+
+Add New Designation
     [Arguments]  ${dataDictionary}
+    Designation.Click On Add New Designation Button  ${dataDictionary["Add Designation"]}
+    Designation.Fill Designation Form  ${dataDictionary}
+    Designation.Save Details  ${dataDictionary}
+
+Search Designation Name
+    [Arguments]  ${dataDictionary}  ${value}
+    Designation.Input Designation Name Into Search Box  ${dataDictionary}  ${value}
+    Designation.Click On Search Button  ${dataDictionary}
+
+Select Designation From The Table
+    [Arguments]  ${dataDictionary}  ${desingnationName}
+    Designation.Select Designation Checkbox  ${dataDictionary}  ${desingnationName}
+
+Edit Designation
+    [Arguments]  ${dataDictionary}
+    Designation.Click On Edit Button  ${dataDictionary}
+    Designation.Edit Designation Details  ${dataDictionary}
+    Designation.Save Details  ${dataDictionary}
+
+Delete Designation
+    [Arguments]  ${dataDictionary}
+    Designation.Delete Designation Entry  ${dataDictionary}
+
+Verify Designation Entry
+    [Arguments]  ${dataDictionary}  ${value}
     Common_Keywords.Show Maximum Entries on Page
     Designation.Search For Designation  ${dataDictionary}
     sleep  3s
-    Designation.Check For Designation Entry In Designation Table  ${dataDictionary}
+    Designation.Check For Designation Entry In Designation Table  ${value}
 
 Verify Designation Deletion
     [Arguments]  ${dataDictionary}
@@ -297,6 +334,15 @@ Verify Designation Deletion
     Designation.Search For Designation  ${dataDictionary}
     sleep  3s
     Designation.Check For Designation Deletion In Designation Table  ${dataDictionary}
+
+Open Hospital Empanelment Page
+    HospitalEmpanelment.Go To Hospital Empanelment Page
+
+Add New Hospital Empanelment
+    [Arguments]  ${dataDictionary}
+    HospitalEmpanelment.Click On Add New Button  ${dataDictionary}
+    HospitalEmpanelment.Fill Hospital Empanelment Details  ${dataDictionary}
+    HospitalEmpanelment.Save Details  ${dataDictionary}
 
 Verify Hospital Empanelment Entry
     [Arguments]  ${dataDictionary}
@@ -603,7 +649,7 @@ Approve Salary Paybill
     HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     sleep  5s
     SalaryPaybill.Approve Paybill
-    #SalaryDetail.Select Status  Withheld
+    #SalaryDetail.Select Status  WithheldEdit Division Details
 
 Set Filters For Paybill
     [Arguments]  ${dataDictionary}

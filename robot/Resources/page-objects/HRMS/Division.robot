@@ -29,3 +29,18 @@ Check For Division Entry In Division Table
 Check For Division Deletion In Division Table
     [Arguments]  ${dataDictionary}
     Page should not contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]
+
+Input Division Name Into Search Box
+    [Arguments]  ${dataDictionary}  ${value}
+    FillFields.Input Value Into Field  ${dataDictionary["Search"]["Search Bar"]}  ${value}
+
+Click Search Button
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Search"]["Search Button"]}
+
+Delete Division Entry
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
+    page should contain   Do you really want to Delete this Division ??
+    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
+    reload page

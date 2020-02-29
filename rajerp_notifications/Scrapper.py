@@ -223,7 +223,7 @@ if 9 < int(current_time) < 19:
             req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
             print(req.status_code, req.reason)
             # $response = sendMessage();
-            print("\n");
+            print("\n")
             ERPdown = "RajERP is down"
             print(ERPdown)
             open("D:\Q-mate\\rajerp_notifications\erpdown.log").write(ERPdown)

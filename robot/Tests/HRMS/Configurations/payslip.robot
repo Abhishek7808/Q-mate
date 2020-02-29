@@ -25,14 +25,14 @@ User should able to configure pay slip
     sleep  4s
 
    Open Browser  ${Server}  ${Browser}
-  Wait Until page Contains  Login
-  input text     LoginIdForShow  econnect
-  input password    PasswordForShow  admin
-  Click element      ${Login_button}
-  sleep   3s
-    Go to   ${SalarySlip}
-    sleep   5s
-    Click Element     ${Action}
-    sleep   2s
-    Select From List By Value   //*[@id="lnkMultipleSalarySlip_11387709"]
-    sleep   2s
+   Wait Until page Contains  Login
+   input text     LoginIdForShow  econnect
+   input password    PasswordForShow  admin
+   Click element      ${Login_button}
+   sleep   3s
+   Go to   ${SalarySlip}
+   sleep   5s
+   Click Element     ${Action}
+   sleep   2s
+   Select From List By Value   //*[@id="lnkMultipleSalarySlip_11387709"]
+   sleep   2s

@@ -163,7 +163,8 @@ User should able to edit division
     [Documentation]  Edits the division details and saves them. Verifies its updation in the division table.
     [Tags]  HRMS  division  editdata
     HRMS_Keywords.Open Division Page
-    Common_Keywords.Set Test Data  ${configData["Edit Division"]}
+    Common_Keywords.Set Test Data  ${configData["Division"]}
+    HRMS_Keywords.Search Division  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
     HRMS_Keywords.Edit Division Details  ${dataDictionary}
     reload page
     HRMS_Keywords.Verify Division Entry  ${dataDictionary}
@@ -172,12 +173,9 @@ User should able to delete division
     [Documentation]  deletes the division from the division table. Verifies its deletion in the division table.
     [Tags]  HRMS  division  deletedata
     HRMS_Keywords.Open Division Page
-    Common_Keywords.Set Test Data  ${configData["Edit Division"]}
-
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    page should contain   Do you really want to Delete this Division ??
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
-    reload page
+    Common_Keywords.Set Test Data  ${configData["Division"]}
+    HRMS_Keywords.Search Division  ${dataDictionary}  ${dataDictionary["Edit Division"]["Name"]["Value"]}
+    HRMS_Keywords.Delete Division  ${dataDictionary}
     HRMS_Keywords.Verify Division Deletion  ${dataDictionary}
 
 User should able to add new designation
@@ -185,65 +183,34 @@ User should able to add new designation
     [Tags]  HRMS  designation  createdata
     HRMS_Keywords.Open Designation Page
     Common_Keywords.Set Test Data  ${configData["Designation"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Post"]}  ${dataDictionary["Post"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Is Fourth Class"]}  ${dataDictionary["Is Fourth Class"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Designation Entry  ${dataDictionary}
+    HRMS_Keywords.Add New Designation  ${dataDictionary}
+    HRMS_Keywords.Verify Designation Entry  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
 
 User should able to edit designation
     [Documentation]  Edits the designation details and saves it. Verifies its updation in the designation table.
     [Tags]  HRMS  designation  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation
+    HRMS_Keywords.Open Designation Page
     Common_Keywords.Set Test Data  ${configData["Designation"]}
-    FillFields.Input Value Into Field  ${dataDdataDictionaryictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Select Designation"]}  ${dataDictionary["Select Designation"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Designation"]["Name"]}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Designation"]["Post"]}  ${dataDictionary["Edit Designation"]["Post"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Designation"]["Is Fourth Class"]}  ${dataDictionary["Edit Designation"]["Is Fourth Class"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Designation Entry  ${dataDictionary}
+    HRMS_Keywords.Search Designation Name  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
+    HRMS_Keywords.Edit Designation  ${dataDictionary}
+    HRMS_Keywords.Verify Designation Entry  ${dataDictionary}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
 
 User should able to delete designation
     [Documentation]  Deletes the designation from the designation table. Verifies its deletion from the designation table.
     [Tags]  HRMS  designation  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Designation
+    HRMS_Keywords.Open Designation Page
     Common_Keywords.Set Test Data  ${configData["Designation"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Designation"]["Search box"]}  ${dataDictionary["Edit Designation"]["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Select Designation"]}  ${dataDictionary["Select Designation"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
-    reload page
+    HRMS_Keywords.Search Designation Name  ${dataDictionary}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
+    HRMS_Keywords.Select Designation From The Table  ${dataDictionary}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
+    HRMS_Keywords.Delete Designation  ${dataDictionary}
     HRMS_Keywords.Verify Designation Deletion  ${dataDictionary}
 
 User should able to add new hospital empanelment
     [Documentation]  Fills the add new hospital empanelment form and submits it. Verifies its entry in the hospital empanelment table.
     [Tags]  HRMS  hospitalempanelment  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/HospitalEmpanelment
     Common_Keywords.Set Test Data  ${configData["Hospital Empanelment"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add New"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Type"]}  ${dataDictionary["Type"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Is Exempted"]}  ${dataDictionary["Is Exempted"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Address"]}  ${dataDictionary["Address"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["State"]}  ${dataDictionary["State"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["City"]}  ${dataDictionary["City"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Contact No"]}  ${dataDictionary["Contact No"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Alternate Contact No"]}  ${dataDictionary["Alternate Contact No"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Discount Rate"]}  ${dataDictionary["Discount Rate"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Last Validate"]}  ${dataDictionary["Last Validate"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Category"]}  ${dataDictionary["Category"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
+    HRMS_Keywords.Open Hospital Empanelment Page
+    HRMS_Keywords.Add New Hospital Empanelment  ${dataDictionary}
     HRMS_Keywords.Verify Hospital Empanelment Entry  ${dataDictionary}
 
 User should able to edit hospital empanelment
