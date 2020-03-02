@@ -217,6 +217,7 @@ Get Current Day
     ${year}  convert date  ${currentDate}  result_format= %d
     ${year}  strip string  ${year}
     return from keyword  ${year}
+
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

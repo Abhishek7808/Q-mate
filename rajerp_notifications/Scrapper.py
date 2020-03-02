@@ -5,7 +5,10 @@ from pathlib import Path
 import requests
 import json
 import time
+
+from flask import copy_current_request_context
 from robot import run
+import threading
 
 # Run service during the office hours only
 current_time = datetime.datetime.now().strftime("%H")
@@ -65,7 +68,7 @@ if 9 < int(current_time) < 19:
         # Reading old time and date
         update_old = open("D:\Q-mate\\rajerp_notifications\\rajerp_update.txt", "r");
         update_old1 = update_old.read()
-        print("start"+update_old.read()+"here")
+        print("start" + update_old.read() + "here")
         print(update_old1)
         # Old time
         published_old1 = update_old1[0:62]
@@ -93,8 +96,8 @@ if 9 < int(current_time) < 19:
         updated_text = "Raj ERP just got better! updates arrived at RSDC on " + foolproofTime(updated_new)
         print(updated_text)
         print('</br>')
-        open("D:\Q-mate\\rajerp_notifications\\rajerp_published.txt","w").write(published_text)
-        file = open("D:\Q-mate\\rajerp_notifications\\rajerp_updated.txt","w")
+        open("D:\Q-mate\\rajerp_notifications\\rajerp_published.txt", "w").write(published_text)
+        file = open("D:\Q-mate\\rajerp_notifications\\rajerp_updated.txt", "w")
         file.write(updated_text)
         file.close()
 
@@ -196,16 +199,21 @@ if 9 < int(current_time) < 19:
                 req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
                 print(req.status_code, req.reason)
                 time.sleep(2)
-                run('D:\\Q-mate\\robot\\Tests', variable=["ENVIRONMENT:production", "BROWSER:headlesschrome"],
-                    include=["login", "generictests"], exclude="debug", outputdir='D:\\Q-mate\\robot\\Results', splitlog=True,
-                    timestampoutputs=True)
 
+
+                def run_scripts():
+                    exec(open("D:\\Q-mate\\rajerp_notifications\\Run_robot.py").read())
+
+
+                thread = threading.Thread(target=run_scripts)
+                thread.start()
+                print("Thread is Working")
                 # $response = sendMessage();
                 print("\n");
 
             print('Strings do not match.')
             # if there is a differece in old and new time update the file
-            update_old = open("D:\Q-mate\\rajerp_notifications\\rajerp_update.txt","w").write(update_new)
+            update_old = open("D:\Q-mate\\rajerp_notifications\\rajerp_update.txt", "w").write(update_new)
 
     else:
         if not Path('D:\Q-mate\\rajerp_notifications\erpdown.log').is_file():
