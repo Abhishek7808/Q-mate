@@ -1,17 +1,3 @@
-# <!DOCTYPE html>
-# <html lang="en">
-# <head>
-
-from html.parser import HTMLParser
-import os
-
-if os.environ['HTTPS'] is None or os.environ['HTTPS'] == "off":
-    redirect = 'https://'.os.environ['HTTP_HOST'].os.environ['REQUEST_URI']
-    print('HTTP/1.1 301 Moved Permanently')
-    print('Location: '. redirect)
-    exit()
-
-HTMLParser.feed("""?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -53,10 +39,10 @@ HTMLParser.feed("""?>
 		<img src="/rajerp/update/rajerp-logo.png" class="rounded mx-auto d-block" alt="Raj ERP">
 	</div>
 <div class="col-sm text-center" style="margin-top: 20px;">
-<?php
-echo '<h5>Get updates from Raj ERP that matter to you</h5>'  ;
-echo '</br>';
-?>
+
+<h5>Get updates from Raj ERP that matter to you</h5>
+</br>
+
 </div>
 <div class="col-sm text-center">
 <div class="onesignal-customlink-container"></div>
@@ -64,4 +50,4 @@ echo '</br>';
   </div>
     </div>
   </body>
-</html>""")
+</html>

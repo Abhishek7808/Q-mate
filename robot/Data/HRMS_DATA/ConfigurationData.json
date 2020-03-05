@@ -1295,6 +1295,7 @@
 		}
 	},
 	"Qualification":{
+		"URL": "HRM/QualificationMaster",
 		"Add New": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1340,6 +1341,7 @@
 		}
 	},
     "Empanelled Officer": {
+		"URL": "HRM/EnquiryPanelImpanelment/EmpanelledIndex",
 		"Add New Entry": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"

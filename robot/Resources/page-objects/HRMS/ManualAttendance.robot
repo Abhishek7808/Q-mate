@@ -51,6 +51,10 @@ Select Employees
 #    FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
 #    \   select checkbox  ${employeeTable}/tbody/tr[${employee}]/td[1]/input
 
+Select First Employee
+    switch window  NEW
+    Select checkbox  //tr[1]//td[1]//input[1]
+
 Click On Submit Button
     click element  //input[@id='btnsave']
 

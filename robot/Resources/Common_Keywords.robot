@@ -27,7 +27,7 @@ Resource          ${DATA}${/}Login_Data.robot
 #@{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
 ${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
-${hrmsAutomationData}  ${DATA}/HRMS_DATA/HrmsData.json
+${hrmsSalaryData}  ${DATA}/HRMS_DATA/HrmsData.json
 ${urlsJson}   ${DATA}/URLs.json
 ${financialYear}
 *** Keywords ***
@@ -125,12 +125,24 @@ End HRMS Testing
     close browser
 
 Begin HRMS Automation
-    Set HRMS Variables  ${hrmsAutomationData}
+    Set HRMS Variables  ${hrmsSalaryData}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 End HRMS Automation
-    Close Browser
+    close browser
+
+Begin Salary Testing
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+    Set Salary Variables  ${hrmsSalaryData}
+
+END Salary Testing
+    close browser
+
+Set Salary Variables
+    [Arguments]  ${hrmsSalaryData}
+    Set HRMS Variables  ${hrmsSalaryData}
 
 Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys

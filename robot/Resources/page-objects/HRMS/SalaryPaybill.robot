@@ -24,6 +24,8 @@ Fill Salary Paybill Form
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     SalaryPaybill.Unselect Employee Location
+    ${PAYGROUP}  set variable if  ${TEST_PAYGROUP}  ==  None  ${PAYGROUP}  ${TEST_PAYGROUP}
+    set variable global  ${PAYGROUP}
     HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${PAYGROUP}
     sleep  5s
     #HRMS_Keywords.Select Employee Location  ${dataDictionary}
@@ -98,7 +100,7 @@ Approve Paybill
     click element  ${approveText}
     sleep  3s
     click element  //input[@id='CheckSchedule']
-    input text  //textarea[@id='Remarks']  syska LED, LIGHT years ahead
+    input text  //textarea[@id='Remarks']  xyz
     #wait until page contains  Do you really want to Forward For Approval selected record(s) ?
     click element  //input[@id='btnSave']
 

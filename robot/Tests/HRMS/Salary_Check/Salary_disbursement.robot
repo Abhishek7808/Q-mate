@@ -8,6 +8,7 @@ Library           ${LIBRARY}/Addendums.py
 Library           DateTime
 
 *** Variables ***
+${TEST_PAYGROUP}  None
 ${FINANCIALYEAR1}  20192020           #20172018
 ${SALARYCYCLENAME}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
@@ -23,26 +24,20 @@ ${latestPaybillCreated}  1021/2019-2020
 ${EMPLOYEELOCATION}  None
 
 *** Test Cases ***
+#Salary Cycle should be created
+#    [Tags]  salarycheck  Salarycyclecheck
 
-Create Salary Cycle
-    [Documentation]  Fills details in Salary Cycle form and submits it. Creates Salary cycle of current month and year.
-    [Tags]  Salary  SalaryCycle  createdata
-    Common_Keywords.Set Test Data  ${configData["Salary_Cycle"]}
-    HRMS_Keywords.Open Salary Cycle Page
-    HRMS_Keywords.Add Salary Cycle  ${dataDictionary}
-
-Mark Attendance Of Employees
-    [Documentation]  Fills details in Mark Attendance form and submits it.
-    [Tags]  Salary  markAttendance  createdata
+Attendance Of The Employee Should Marked
+    [Tags]  salarycheck  markattendancecheck
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
     HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}
-    HRMS_Keywords.Submit Marked Attendance
+    HRMS_Keywords.Mark Attendance Of One Employee  ${dataDictionary}
     HRMS_Keywords.Apply Filters For Marked Attendance
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}
     HRMS_Keywords.Approve Marked Attendance
 
-Process And Lock Salary
+Salary Of The Employee Should Processed and Locked
     [Documentation]  Processes Salary.
     [Tags]  Salary  salaryprocess  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
@@ -50,7 +45,7 @@ Process And Lock Salary
     HRMS_Keywords.Process Salary  ${dataDictionary}
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
 
-Add Paybill
+Salary Paybill Should ADD
     [Documentation]  Adds Paybill.
     [Tags]  Salary  Addpaybill  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
@@ -59,7 +54,7 @@ Add Paybill
     HRMS_Keywords.Set Filters For Paybill
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
-Disburse Paybill
+Salary Paybill Should Disburse
     [Documentation]  Adds Disbursment
     [Tags]  Salary  AddDisbursement  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
@@ -67,7 +62,3 @@ Disburse Paybill
     sleep   3s
     HRMS_Keywords.Add Disbursement  ${dataDictionary}
     HRMS_Keywords.Approve Salary Disbursement  ${dataDictionary}
-
-
-
-

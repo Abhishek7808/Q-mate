@@ -31,9 +31,9 @@ All ERP module pages should be working for admin user
        ${UM.name}
        ${SMM.name}
        ${CPF.name}
-#      ${GPF.name}
-#      ${MM.name}
-#      ${WPM.name}
+       ${GPF.name}
+       ${MM.name}
+       ${WPM.name}
 #      ${AMS.name}
 #      ${TLM.name}
 #      ${IMS.name}
@@ -48,9 +48,9 @@ All ERP pages should not be accessed without persmissions
        ${UM.name}
        ${SMM.name}
        ${CPF.name}
-#      ${GPF.name}
-#      ${MM.name}
-#      ${WPM.name}
+       ${GPF.name}
+       ${MM.name}
+       ${WPM.name}
 #      ${AMS.name}
 #      ${TLM.name}
 #      ${IMS.name}
