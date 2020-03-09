@@ -24,8 +24,8 @@ Fill Salary Paybill Form
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     SalaryPaybill.Unselect Employee Location
-    ${PAYGROUP}  set variable if  ${TEST_PAYGROUP}  ==  None  ${PAYGROUP}  ${TEST_PAYGROUP}
-    set variable global  ${PAYGROUP}
+    ${PAYGROUP}  set variable if  ${TEST_PAYGROUP} == None  ${PAYGROUP}  ${TEST_PAYGROUP}
+    set global variable  ${PAYGROUP}
     HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${PAYGROUP}
     sleep  5s
     #HRMS_Keywords.Select Employee Location  ${dataDictionary}
@@ -44,7 +44,7 @@ Submit Details
 
 Open Filters
     ${status}  run keyword and return status  wait until page contains  Search Filter
-    run keyword if  ${status} == ${FALSE}  Open Filters
+    run keyword if  ${status} == ${FALSE}  SalaryPaybill.Open Filters
     click element  ${paybillFilters}
 
 Open Approve Paybill Filters

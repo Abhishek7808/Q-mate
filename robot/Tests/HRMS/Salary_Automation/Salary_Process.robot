@@ -12,8 +12,8 @@ ${TEST_PAYGROUP}  None
 ${FINANCIALYEAR1}  20192020           #20172018
 ${SALARYCYCLENAME}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
-${PAYGROUP}  None
-${PAYMENTUNIT}  select all
+${PAYGROUP}
+${PAYMENTUNIT}  Bharatpur Zone
 ${PAYSLIPUNIT}  head office
 ${DESIGNATION}  None
 ${DIVISION}  None
@@ -57,7 +57,7 @@ Add Paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
-    HRMS_Keywords.Set Filters For Paybill
+    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 Disburse Paybill
