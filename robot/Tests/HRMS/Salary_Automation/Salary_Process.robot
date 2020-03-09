@@ -2,9 +2,9 @@
 Resource          ../../../Configuration.resource
 Resource          ${RESOURCES}${/}HRMSFormHelpers${/}FillFields.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
-Resource          ${RESOURCES}/ERP_Keywords.robot
-Resource          ${RESOURCES}/HRMS_Keywords.robot
-Library           ${LIBRARY}/Addendums.py
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}HRMS_Keywords.robot
+Library           ${LIBRARY}${/}Addendums.py
 Library           DateTime
 
 *** Variables ***
@@ -21,7 +21,7 @@ ${ISGAZETTED}  None
 @{DISBURSEMENT_PAYGROUPS}    Select all
 @{DISBURSEMENT_PAYBILLS}    1021/2019-2020
 ${latestPaybillCreated}  1021/2019-2020
-${EMPLOYEELOCATION}  None
+${EMPLOYEELOCATION}  select all
 
 *** Test Cases ***
 
@@ -68,6 +68,8 @@ Disburse Paybill
     sleep   3s
     HRMS_Keywords.Add Disbursement  ${dataDictionary}
     HRMS_Keywords.Approve Salary Disbursement  ${dataDictionary}
+    HRMS_Keywords.Create Voucher  ${dataDictionary}
+
 
 
 

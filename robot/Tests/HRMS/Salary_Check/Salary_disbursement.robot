@@ -21,7 +21,7 @@ ${ISGAZETTED}  None
 @{DISBURSEMENT_PAYGROUPS}    Select all
 @{DISBURSEMENT_PAYBILLS}    1021/2019-2020
 ${latestPaybillCreated}  1021/2019-2020
-${EMPLOYEELOCATION}  None
+${EMPLOYEELOCATION}  select all
 
 *** Test Cases ***
 #Salary Cycle should be created
@@ -39,7 +39,7 @@ Attendance Of The Employee Should Marked
 
 Salary Of The Employee Should Processed and Locked
     [Documentation]  Processes Salary.
-    [Tags]  Salary  salaryprocess  createdata
+    [Tags]  Salary  salaryprocesscheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
     HRMS_Keywords.Process Salary  ${dataDictionary}
@@ -47,7 +47,7 @@ Salary Of The Employee Should Processed and Locked
 
 Salary Paybill Should ADD
     [Documentation]  Adds Paybill.
-    [Tags]  Salary  Addpaybill  createdata
+    [Tags]  Salary  Addpaybillcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
@@ -56,9 +56,10 @@ Salary Paybill Should ADD
 
 Salary Paybill Should Disburse
     [Documentation]  Adds Disbursment
-    [Tags]  Salary  AddDisbursement  createdata
+    [Tags]  Salary  AddDisbursementcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
     HRMS_Keywords.Open Salary Disbursment Page
     sleep   3s
     HRMS_Keywords.Add Disbursement  ${dataDictionary}
     HRMS_Keywords.Approve Salary Disbursement  ${dataDictionary}
+    HRMS_Keywords.Create Voucher  ${dataDictionary}

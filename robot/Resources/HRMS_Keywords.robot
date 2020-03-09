@@ -546,7 +546,7 @@ Set Mark Attendance Criteria
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     HRMS_Keywords.Select Employee Location  ${dataDictionary}
-    run keyword if  ${TEST_PAYGROUP} == None  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
+    run keyword if  '${TEST_PAYGROUP}' == 'None'  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
     HRMS_Keywords.Select Is Gazetted  ${dataDictionary}
@@ -559,7 +559,7 @@ Apply Filters For Marked Attendance
     HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary["Filters"]}
-    run keyword if  ${TEST_PAYGROUP} == None  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
+    run keyword if  '${TEST_PAYGROUP}' == 'None'  HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  ${TEST_PAYGROUP}
     HRMS_Keywords.Select Employee Location  ${dataDictionary["Filters"]}
     ManualAttendance.Select Status  Submitted
     ManualAttendance.Apply Filters
@@ -602,7 +602,7 @@ Process Salary
     SalaryDetail.Select Employee Location  ${dataDictionary}
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
-    run keyword if  ${TEST_PAYGROUP} == None  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
+    run keyword if  '${TEST_PAYGROUP}' == 'None'  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
     SalaryDetail.Click On Process button
     SalaryDetail.Select All Employees
     SalaryDetail.Process Salary
@@ -656,7 +656,6 @@ Select Month
 
 Select Employee Location
     [Arguments]  ${dataDictionary}
-    #set variable if  ${EMPLOYEELOCATION} == 'None'
     FillFields.Input Value Into Field   ${dataDictionary["Employee Location"]}  ${EMPLOYEELOCATION}
 
 Select Pay Group
@@ -766,6 +765,16 @@ Approve Salary Disbursement
     SalaryDisbursment.Verify Disbursement
     SalaryDisbursment.Approve Disbursement
 
+Create Voucher
+    [Arguments]  ${dataDictionary}
+    SalaryDisbursment.Open Filters
+    SalaryDisbursment.Select Filters
+    SalaryDisbursment.Select Status  Approved
+    SalaryDisbursment.Click On Actions Button
+    SalaryDisbursment.Select Voucher
+    SalaryDisbursment.Save Voucher
+
+
 #Set Mark Attendance Criteria For One Employee
 #    [Arguments]  ${dataDictionary}
 #    ManualAttendance.Click On Mark Attendance Button
@@ -787,4 +796,3 @@ Mark Attendance Of One Employee
     ManualAttendance.Verify Submit Popup
     ManualAttendance.Click On Ok Button
 
-Apply Filters For Marked Attendance

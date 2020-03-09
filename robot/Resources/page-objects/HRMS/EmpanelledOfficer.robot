@@ -4,6 +4,7 @@ Documentation     Create, edit and delete empanelled officer. For more info visi
 
 *** Keywords ***
 Go To Empanelled Officer Page
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/HRM/QualificationMaster
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click On Add New Button

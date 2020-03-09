@@ -252,7 +252,6 @@ User should able to edit qualification
     HRMS_Keywords.Edit Qualification  ${dataDictionary}  ${dataDictionary["Qualification Name"]["Value"]}
     HRMS_Keywords.Verify Qualification Entry  ${dataDictionary["Edit Qualification"]["Qualification Name"]["Value"]}
 
-
 ####################
 # Empanelled Cases #
 ####################
@@ -261,7 +260,7 @@ User should able to add new empanelled officer
     [Tags]  HRMS  empanelledofficer  createdata
     Common_Keywords.Set Test Data  ${configData["Empanelled Officer"]}
     HRMS_Keywords.Open Empanelled Officer Page
-    HRMS_Keywords.Add New Empanelled Officer
+    HRMS_Keywords.Add New Empanelled Officer  ${dataDictionary}
     HRMS_Keywords.Verify Empanelled Officer Entry  ${dataDictionary}
 
 User should able to edit new empanelled officer
@@ -269,7 +268,7 @@ User should able to edit new empanelled officer
     [Tags]  HRMS  empanelledofficer  editdata
     Common_Keywords.Set Test Data  ${configData["Empanelled Officer"]}
     HRMS_Keywords.Open Empanelled Officer Page
-    HRMS_Keywords.Search Empanelled Officer  ${dataDictionary["Name"]["Value"]}
+    #HRMS_Keywords.Search Empanelled Officer  ${dataDictionary["Name"]["Value"]}
     Common_Keywords.Show Maximum Entries on Page
     FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
@@ -476,7 +475,6 @@ User should able to delete Department
     FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
     reload page
     HRMS_Keywords.Verify Department Deletion  ${dataDictionary["Edit Department"]}
-
 
 #################################
 #  ALL TA/DA Grade tests cases  #

@@ -2,6 +2,9 @@
 Documentation    Add, edit and delete qualifications. for more info visit http://support.e-connectsolutions.com/erp/how-to/qualification-configuration/
 
 *** Keywords ***
+Go To Qualification Page
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
+
 Search For Qualification
     [Arguments]  ${value}
     wait until page contains element  SearchText
@@ -16,9 +19,6 @@ Check For Qualification Entry In Qualification Table
 Check For Qualification Deletion In Qualification Table
     [Arguments]  ${dataDictionary}
     Page should not contain element  //td[contains(text(),'${dataDictionary["Qualification Name"]["Value"]}')]
-
-Go To Qualification Page
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click On Add New Button
     [Arguments]  ${dataDictionary}

@@ -96,3 +96,17 @@ Approve Disbursement
     sleep  3s
     wait until page contains  Do you really want to Approve selected record(s) ?
     click element  //button[contains(text(),'OK')]
+
+Select Status
+    select from list by label  //select[@id='Status']  Approved
+
+Click On Actions Button
+    click element  //a[contains(@class,'btn btn-sm btn-primary')]
+    sleep  2s
+
+Select Voucher
+    click element  //a[contains(text(),'Voucher')]
+
+Save Voucher
+    wait until element is enabled  //input[@id='btnSave']  15s
+    click element  //input[@id='btnSave']
