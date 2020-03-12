@@ -261,28 +261,16 @@ User should able to add new empanelled officer
     Common_Keywords.Set Test Data  ${configData["Empanelled Officer"]}
     HRMS_Keywords.Open Empanelled Officer Page
     HRMS_Keywords.Add New Empanelled Officer  ${dataDictionary}
-    HRMS_Keywords.Verify Empanelled Officer Entry  ${dataDictionary}
+    HRMS_Keywords.Verify Empanelled Officer Entry  ${dataDictionary["Name"]["Value"]}
 
 User should able to edit new empanelled officer
     [Documentation]  Edits the empanelled officer details and saves them. Verifies its updation in the empanelled officer table.
     [Tags]  HRMS  empanelledofficer  editdata
     Common_Keywords.Set Test Data  ${configData["Empanelled Officer"]}
     HRMS_Keywords.Open Empanelled Officer Page
-    #HRMS_Keywords.Search Empanelled Officer  ${dataDictionary["Name"]["Value"]}
-    Common_Keywords.Show Maximum Entries on Page
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Empanelled Officer"]["Name"]}  ${dataDictionary["Edit Empanelled Officer"]["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Empanelled Officer"]["Contact No."]}  ${dataDictionary["Edit Empanelled Officer"]["Contact No."]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Empanelled Officer"]["Effective Date"]}  ${dataDictionary["Edit Empanelled Officer"]["Effective Date"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Empanelled Officer"]["Effective Till Date"]}  ${dataDictionary["Edit Empanelled Officer"]["Effective Till Date"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Empanelled Officer"]["Department"]}  ${dataDictionary["Edit Empanelled Officer"]["Department"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Empanelled Officer"]["Designation"]}  ${dataDictionary["Edit Empanelled Officer"]["Designation"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Empanelled Officer Entry  ${dataDictionary}
+    HRMS_Keywords.Search Empanelled Officer  ${dataDictionary["Name"]["Value"]}
+    HRMS_Keywords.Edit Empanelled Officer  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
+    HRMS_Keywords.Verify Empanelled Officer Entry  ${dataDictionary["Edit Empanelled Officer"]["Name"]["Value"]}
 
 ####################
 # Cadre Test Cases #

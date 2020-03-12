@@ -414,15 +414,22 @@ Add New Empanelled Officer
     EmpanelledOfficer.Fill Empanelled Officer Details  ${dataDictionary}
     EmpanelledOfficer.Save Details  ${dataDictionary}
 
+Edit Empanelled Officer
+    [Arguments]  ${dataDictionary}  ${officerName}
+    EmpanelledOfficer.Click On Edit Button  ${officerName}
+    EmpanelledOfficer.Fill Empanelled Officer Details  ${dataDictionary["Edit Empanelled Officer"]}
+    EmpanelledOfficer.Save Details  ${dataDictionary}
+
 Search Empanelled Officer
     [Arguments]  ${value}
+    Common_Keywords.Show Maximum Entries on Page
     EmpanelledOfficer.Search For Empanelled Officer  ${value}
 
 Verify Empanelled Officer Entry
-    [Arguments]  ${dataDictionary}
-    EmpanelledOfficer.Search For Empanelled Officer  ${dataDictionary}
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    EmpanelledOfficer.Check For Empanelled Officer Entry In Empanelled Officer Table  ${dataDictionary}
+    EmpanelledOfficer.Search For Empanelled Officer  ${value}
+    EmpanelledOfficer.Check For Empanelled Officer Entry In Empanelled Officer Table  ${value}
 
 Verify Empanelled Officer Deletion
     [Arguments]  ${dataDictionary}

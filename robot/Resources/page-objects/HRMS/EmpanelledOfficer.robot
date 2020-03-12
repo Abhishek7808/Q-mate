@@ -11,6 +11,10 @@ Click On Add New Button
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Add New Entry"]}
 
+Click On Edit Button
+    [Arguments]  ${value}
+    click element  //td[contains(text(),'${value}')]/following-sibling::td//i[@class='fa fa-pencil']
+
 Fill Empanelled Officer Details
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
@@ -25,15 +29,14 @@ Save Details
     FillFields.Input Value Into Field  ${dataDictionary["Save"]}
 
 Search For Empanelled Officer
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${value}
     wait until page contains element  SearchText
-    reload page
-    input text  SearchText  ${dataDictionary["Name"]["Value"]}
+    input text  SearchText  ${value}
     click button  BtnSearchfilter
 
 Check For Empanelled Officer Entry In Empanelled Officer Table
-    [Arguments]  ${dataDictionary}
-    Page should contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]
+    [Arguments]  ${value}
+    Page should contain element  //td[contains(text(),'${value}')]
 
 Check For Empanelled Officer Deletion In Empanelled Officer Table
     [Arguments]  ${dataDictionary}
