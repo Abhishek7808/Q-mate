@@ -2,15 +2,38 @@
 Documentation    Add, edit and delete sections. For more info visit http://support.e-connectsolutions.com/erp/how-to/section-details-configuration/
 
 *** Keywords ***
-Search For Section
+Go To Section Page
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
+
+Click On Add New Button
     [Arguments]  ${dataDictionary}
-    input text  SearchText  ${dataDictionary["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Add Section"]}
+
+Click On Edit Button
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
+
+Fill Section Details
+    [Arguments]  ${dataDictionary}
+    #FillFields.Input Value Into Field  ${dataDictionary["Department"]}  ${dataDictionary["Department"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Code"]}  ${dataDictionary["Code"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Order By"]}  ${dataDictionary["Order By"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Is Active"]}  ${dataDictionary["Is Active"]["Value"]}
+
+Save Details
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
+
+Search For Section
+    [Arguments]  ${sectionName}
+    input text  SearchText  ${sectionName}
     click button  BtnSearchfilter
 
 Check For Section Entry In Section Table
-    [Arguments]  ${dataDictionary}
-    Page should contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]
+    [Arguments]  ${sectionName}
+    Page should contain element  //td[contains(text(),'${sectionName}')]
 
 Check For Section Deletion In Section Table
-    [Arguments]  ${dataDictionary}
-    Page should not contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]
+    [Arguments]  ${sectionName}
+    Page should not contain element  //td[contains(text(),'${sectionName}')]

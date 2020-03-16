@@ -2,15 +2,33 @@
 Documentation    Create, edit and delete Department, for more info visit http://support.e-connectsolutions.com/erp/how-to/configure-department/
 
 *** Keywords ***
-Search For Department
+Go To Department Page
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
+
+Click On Add New Department Button
     [Arguments]  ${dataDictionary}
-    input text  SearchText  ${dataDictionary["Name"]["Value"]}
+    FillFields.Input Value Into Field  ${dataDictionary["Add"]}
+
+Click On Edit Button
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
+Fill Department Details
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
+
+Save Details
+     [Arguments]  ${dataDictionary}
+     FillFields.Input Value Into Field  ${dataDictionary["Save"]}
+
+Search For Department
+    [Arguments]  ${value}
+    input text  SearchText  ${value}
     click button  BtnSearchfilter
 
 Check For Department Entry In Department Table
-    [Arguments]  ${dataDictionary}
-    Page should contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]
+    [Arguments]  ${value}
+    Page should contain element  //td[contains(text(),'${value}')]
 
 Check For Department Deletion In Department Table
-    [Arguments]  ${dataDictionary}
-    Page should not contain element  //td[contains(text(),'${dataDictionary["Name"]["Value"]}')]
+    [Arguments]  ${value}
+    Page should not contain element  //td[contains(text(),'${value}')]

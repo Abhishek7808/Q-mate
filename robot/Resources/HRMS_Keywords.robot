@@ -394,7 +394,7 @@ Search Qualification
 Verify Qualification Entry
     [Arguments]  ${value}
     Qualification.Search For Qualification  ${value}
-    sleep  3s
+    sleep   3s
     Common_Keywords.Show Maximum Entries on Page
     Qualification.Check For Qualification Entry In Qualification Table  ${value}
 
@@ -438,26 +438,74 @@ Verify Empanelled Officer Deletion
     sleep  3s
     EmpanelledOfficer.Check For Empanelled Officer Deletion In Empanelled Officer Table  ${dataDictionary}
 
-Verify Cadre Detail Entry
+Open Cadre Detail Page
+    CadreDetail.Go To Cadre Detail Page
+
+Add New Cadre
     [Arguments]  ${dataDictionary}
+    CadreDetail.Click On Add New Cadre Button  ${dataDictionary}
+    CadreDetail.Fill Cadre Details  ${dataDictionary}
+    CadreDetail.Save Details  ${dataDictionary}
+
+Edit Cadre Details
+    [Arguments]  ${dataDictionary}
+    CadreDetail.Click On Edit Button  ${dataDictionary}
+    CadreDetail.Fill Cadre Details  ${dataDictionary["Edit Cadre Detail"]}
+    CadreDetail.Save Details  ${dataDictionary}
+
+Delete Cadre Entry
+    [Arguments]  ${dataDictionary}  ${value}
+    CadreDetail.Select Cadre  ${value}
+    CadreDetail.Delete Cadre  ${dataDictionary}
+
+Search For Cadre Entry
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    CadreDetail.Search For Cadre Detail  ${dataDictionary}
+    CadreDetail.Search For Cadre Detail  ${value}
+
+Verify Cadre Detail Entry
+    [Arguments]  ${value}
+    HRMS_Keywords.Search For Cadre Entry  ${value}
     sleep  3s
-    CadreDetail.Check For Cadre Detail Entry In Cadre Detail Table  ${dataDictionary}
+    CadreDetail.Check For Cadre Detail Entry In Cadre Detail Table  ${value}
 
 Verify Cadre Detail Deletion
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    CadreDetail.Search For Cadre Detail  ${dataDictionary}
+    CadreDetail.Search For Cadre Detail  ${value}
     sleep  3s
-    CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${dataDictionary}
+    CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${value}
+
+Open Payment Type Page
+    PaymentType.Go To Payment Type Page
+
+Add Payment Type
+    [Arguments]  ${dataDictionary}
+    PaymentType.Click On Add Payment Type Button  ${dataDictionary}
+    PaymentType.Fill Payment Type Details  ${dataDictionary}
+    PaymentType.Save Details  ${dataDictionary}
+
+Search Payment Type
+    [Arguments]  ${value}
+    Common_Keywords.Show Maximum Entries on Page
+    PaymentType.Search For Payment Type  ${value}
+
+Edit Payment Type
+    [Arguments]  ${dataDictionary}
+    PaymentType.Click On Edit Button  ${dataDictionary}
+    PaymentType.Fill Payment Type Details  ${dataDictionary["Edit Payment Type"]}
+    PaymentType.Save Details  ${dataDictionary}
+
+Delete Payment Type Entry
+    [Arguments]  ${dataDictionary}  ${value}
+    PaymentType.Select Payment Type  ${value}
+    PaymentType.Delete Payment Type  ${dataDictionary}
 
 Verify Payment Type Entry
-    [Arguments]  ${dataDictionary}
-    Common_Keywords.Show Maximum Entries on Page
-    PaymentType.Search For Payment Type  ${dataDictionary}
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Payment Type  ${value}
     sleep  3s
-    PaymentType.Check For Payment Type Entry In Payment Type Table  ${dataDictionary}
+    PaymentType.Check For Payment Type Entry In Payment Type Table  ${value}
 
 Verify Payment Type Deletion
     [Arguments]  ${dataDictionary}
@@ -466,12 +514,31 @@ Verify Payment Type Deletion
     sleep  3s
     PaymentType.Check For Payment Type Deletion In Payment Type Table  ${dataDictionary}
 
-Verify Department Entry
+Open Department Page
+    Department.Go To Department Page
+
+Add New Department
     [Arguments]  ${dataDictionary}
+    Department.Click On Add New Department Button  ${dataDictionary}
+    Department.Fill Department Details  ${dataDictionary}
+    Department.Save Details  ${dataDictionary}
+
+Edit Department Entry
+    [Arguments]  ${dataDictionary}
+    Department.Click On Edit Button  ${dataDictionary}
+    Department.Fill Department Details  ${dataDictionary["Edit Department"]}
+    Department.Save Details  ${dataDictionary}
+
+Search Department Entry
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    Department.Search For Department  ${dataDictionary}
+    Department.Search For Department  ${value}
+
+Verify Department Entry
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Department Entry  ${value}
     sleep  3s
-    Department.Check For Department Entry In Department Table  ${dataDictionary}
+    Department.Check For Department Entry In Department Table  ${value}
 
 Verify Department Deletion
     [Arguments]  ${dataDictionary}
@@ -480,19 +547,37 @@ Verify Department Deletion
     sleep  3s
     Department.Check For Department Deletion In Department Table  ${dataDictionary}
 
-Verify Section Entry
+Open Section Page
+    Section.Go To Section Page
+
+Add New Section
     [Arguments]  ${dataDictionary}
+    Section.Click On Add New Button  ${dataDictionary}
+    Section.Fill Section Details  ${dataDictionary}
+    Section.Save Details  ${dataDictionary}
+
+Edit Section Details
+    [Arguments]  ${dataDictionary}
+    Section.Click On Edit Button  ${dataDictionary}
+    Section.Fill Section Details  ${dataDictionary["Edit Section"]}
+    Section.Save Details  ${dataDictionary}
+
+Search Section Entry
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    Section.Search For Section  ${dataDictionary}
+    Section.Search For Section  ${value}
+
+Verify Section Entry
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Section Entry  ${value}
     sleep  3s
-    Section.Check For Section Entry In Section Table  ${dataDictionary}
+    Section.Check For Section Entry In Section Table  ${value}
 
 Verify Section Deletion
-    [Arguments]  ${dataDictionary}
-    Common_Keywords.Show Maximum Entries on Page
-    Section.Search For Section  ${dataDictionary}
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Section Entry  ${value}
     sleep  3s
-    Section.Check For Section Deletion In Section Table  ${dataDictionary}
+    Section.Check For Section Deletion In Section Table  ${value}
 
 Verify TA/DA grade Entry
     [Arguments]  ${dataDictionary}

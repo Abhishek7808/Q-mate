@@ -1443,6 +1443,7 @@
 		}
     },
 	"Cadre Details":{
+		"URL": "HRM/Cader",
 		"Add Cadre": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1504,6 +1505,7 @@
 		}
 	},
 	"Payment Type": {
+		"URL": "HRM/PaymentType",
 		"Add Payment Type": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1560,6 +1562,7 @@
 		}
 	},
 	"Section":{
+		"URL": "HRM/Section",
 		"Add Section": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1665,6 +1668,7 @@
 			}
 		},
 	"Department": {
+		"URL": "HRM/Department",
 		"Add": {
 		"Type": "Link",
 		"Locator": "modals-bootbox-custom"

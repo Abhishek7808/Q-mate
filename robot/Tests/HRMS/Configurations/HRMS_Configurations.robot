@@ -263,7 +263,7 @@ User should able to add new empanelled officer
     HRMS_Keywords.Add New Empanelled Officer  ${dataDictionary}
     HRMS_Keywords.Verify Empanelled Officer Entry  ${dataDictionary["Name"]["Value"]}
 
-User should able to edit new empanelled officer
+User should able to edit new empanelled officer         ###"""Not working because searching functionality is not working"""
     [Documentation]  Edits the empanelled officer details and saves them. Verifies its updation in the empanelled officer table.
     [Tags]  HRMS  empanelledofficer  editdata
     Common_Keywords.Set Test Data  ${configData["Empanelled Officer"]}
@@ -278,46 +278,28 @@ User should able to edit new empanelled officer
 User should able to add new cadre detail
     [Documentation]  Fills the add new cadre detail form and submits it. Verifies its entry in the cadre detail table. For more info visit http://support.e-connectsolutions.com/erp/how-to/cadre-configuration/
     [Tags]  HRMS  cadredetail  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
     Common_Keywords.Set Test Data  ${configData["Cadre Details"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add Cadre"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Order By"]}  ${dataDictionary["Order By"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Cadre Detail Entry  ${dataDictionary}
+    HRMS_Keywords.Open Cadre Detail Page
+    HRMS_Keywords.Add New Cadre  ${dataDictionary}
+    HRMS_Keywords.Verify Cadre Detail Entry  ${dataDictionary["Name"]["Value"]}
 
 User should able to edit cadre detail
     [Documentation]  Edits the cadre details and saves them. verifies its updation in the cadre detail table. For more info visit http://support.e-connectsolutions.com/erp/how-to/cadre-configuration/
     [Tags]  HRMS  cadredetail  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
     Common_Keywords.Set Test Data  ${configData["Cadre Details"]}
-    Common_Keywords.Show Maximum Entries on Page
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Cadre Detail"]["Name"]}  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Cadre Detail"]["Order By"]}  ${dataDictionary["Edit Cadre Detail"]["Order By"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Cadre Detail Entry  ${dataDictionary["Edit Cadre Detail"]}
+    HRMS_Keywords.Open Cadre Detail Page
+    HRMS_Keywords.Search For Cadre Entry  ${dataDictionary["Name"]["Value"]}
+    HRMS_Keywords.Edit Cadre Details  ${dataDictionary}
+    HRMS_Keywords.Verify Cadre Detail Entry  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
 
 User should able to delete cadre detail
     [Documentation]  Deletes the cadre detail from the cadre detail table. Verifies its deletion in the cadre detail table. For more info visit http://support.e-connectsolutions.com/erp/how-to/cadre-configuration/
     [Tags]  HRMS  cadredetail  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Cader
     Common_Keywords.Set Test Data  ${configData["Cadre Details"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Select Cadre Detail"]}  ${dataDictionary["Select Cadre Detail"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
-    reload page
-    HRMS_Keywords.Verify Designation Deletion  ${dataDictionary["Edit Cadre Detail"]}
-
+    HRMS_Keywords.Open Cadre Detail Page
+    HRMS_Keywords.Search For Cadre Entry  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
+    HRMS_Keywords.Delete Cadre Entry  ${dataDictionary}  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
+    HRMS_Keywords.Verify Designation Deletion  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
 
 ############################
 # Payment Type Tests Cases #
@@ -325,41 +307,27 @@ User should able to delete cadre detail
 User should able to add Payment Type
     [Documentation]  Fills the add new Payment Type form and submits it. Verifies its entry in the Payment Type table. For more info visit http://support.e-connectsolutions.com/erp/how-to/payment-type-configuration/
     [Tags]  HRMS  PaymentType  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     Common_Keywords.Set Test Data  ${configData["Payment Type"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add Payment Type"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Description"]}  ${dataDictionary["Description"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Payment Type Entry  ${dataDictionary}
+    HRMS_Keywords.Open Payment Type Page
+    HRMS_Keywords.Add Payment Type  ${dataDictionary}
+    HRMS_Keywords.Verify Payment Type Entry  ${dataDictionary["Description"]["Value"]}
 
 User should able to edit Payment Type
     [Documentation]  Edits the Payment Type details and saves them. verifies its updation in the Payment Type table. For more info visit http://support.e-connectsolutions.com/erp/how-to/payment-type-configuration/
     [Tags]  HRMS  PaymentType  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     Common_Keywords.Set Test Data  ${configData["Payment Type"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Payment Type"]["Description"]}  ${dataDictionary["Edit Payment Type"]["Description"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Payment Type Entry  ${dataDictionary["Edit Payment Type"]}
+    HRMS_Keywords.Open Payment Type Page
+    HRMS_Keywords.Search Payment Type  ${dataDictionary["Description"]["Value"]}
+    HRMS_Keywords.Edit Payment Type  ${dataDictionary}
+    HRMS_Keywords.Verify Payment Type Entry  ${dataDictionary["Edit Payment Type"]["Description"]["Value"]}
 
 User should able to delete Payment Type
     [Documentation]  Deletes the Payment Type from the Payment Type table. Verifies its deletion in the Payment Type table. For more info visit http://support.e-connectsolutions.com/erp/how-to/payment-type-configuration/
     [Tags]  HRMS  PaymentType  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/PaymentType
     Common_Keywords.Set Test Data  ${configData["Payment Type"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Payment Type"]["Search box"]}  ${dataDictionary["Edit Payment Type"]["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Select Payment Type"]}  ${dataDictionary["Select Payment Type"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
-    reload page
+    HRMS_Keywords.Open Payment Type Page
+    HRMS_Keywords.Search Payment Type  ${dataDictionary["Edit Payment Type"]["Description"]["Value"]}
+    HRMS_Keywords.Delete Payment Type Entry  ${dataDictionary}  ${dataDictionary["Edit Payment Type"]["Description"]["Value"]}
     HRMS_Keywords.Verify Payment Type Deletion  ${dataDictionary["Edit Payment Type"]}
 
 #########################
@@ -368,29 +336,19 @@ User should able to delete Payment Type
 User should able to add new Department
     [Documentation]  Fills the add Department form and submits it. Verifies its entry in the Department table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-department/
     [Tags]  HRMS  department  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
     Common_Keywords.Set Test Data  ${configData["Department"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Department Entry  ${dataDictionary}
+    HRMS_Keywords.Open Department Page
+    HRMS_Keywords.Add New Department  ${dataDictionary}
+    HRMS_Keywords.Verify Department Entry  ${dataDictionary["Name"]["Value"]}
 
 User should able to edit Department
     [Documentation]  Edits the Department details and saves them. verifies its updation in the Department table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-department/
     [Tags]  HRMS  department  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
     Common_Keywords.Set Test Data  ${configData["Department"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    sleep  3s
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Department"]["Name"]}  ${dataDictionary["Edit Department"]["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Department Entry  ${dataDictionary["Edit Department"]}
+    HRMS_Keywords.Open Department Page
+    HRMS_Keywords.Search Department Entry  ${dataDictionary["Name"]["Value"]}
+    HRMS_Keywords.Edit Department Entry  ${dataDictionary}
+    HRMS_Keywords.Verify Department Entry  ${dataDictionary["Edit Department"]["Name"]["Value"]}
 
 ########################
 # Section Tests Cases #
@@ -400,37 +358,19 @@ User should able to edit Department
 User should able to add new section details
     [Documentation]  Fills the add new section form and submits it. Verifies its entry in the section details table.  For more info visit http://support.e-connectsolutions.com/erp/how-to/section-details-configuration/
     [Tags]  HRMS  section  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
     Common_Keywords.Set Test Data  ${configData["Section"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add Section"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Department"]}  ${dataDictionary["Department"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Code"]}  ${dataDictionary["Code"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Order By"]}  ${dataDictionary["Order By"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Is Active"]}  ${dataDictionary["Is Active"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Section Entry  ${dataDictionary}
+    HRMS_Keywords.Open Section Page
+    HRMS_Keywords.Add New Section  ${dataDictionary}
+    HRMS_Keywords.Verify Section Entry  ${dataDictionary["Name"]["Value"]}
 
 User should able to add edit section details
     [Documentation]  Edits the section details and saves them. verifies its updation in the section details table.  For more info visit http://support.e-connectsolutions.com/erp/how-to/section-details-configuration/
     [Tags]  HRMS  section  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
     Common_Keywords.Set Test Data  ${configData["Section"]}
-    Common_Keywords.Show Maximum Entries on Page
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Department"]}  ${dataDictionary["Edit Section"]["Department"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Name"]}  ${dataDictionary["Edit Section"]["Name"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Code"]}  ${dataDictionary["Edit Section"]["Code"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Order By"]}  ${dataDictionary["Edit Section"]["Order By"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Is Active"]}  ${dataDictionary["Edit Section"]["Is Active"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    wait until page contains element  SearchText
-    reload page
-    HRMS_Keywords.Verify Section Entry  ${dataDictionary["Edit Section"]}
+    HRMS_Keywords.Open Section Page
+    HRMS_Keywords.Search Section Entry  ${dataDictionary["Name"]["Value"]}
+    HRMS_Keywords.Edit Section Details  ${dataDictionary}
+    HRMS_Keywords.Verify Section Entry  ${dataDictionary["Edit Section"]["Name"]["Value"]}
 
 User should able to delete section
     [Documentation]  Deletes the section from the section details table. Verifies its deletion in the section details table.  For more info visit http://support.e-connectsolutions.com/erp/how-to/section-details-configuration/
