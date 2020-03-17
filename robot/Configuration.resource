@@ -48,7 +48,7 @@ ${TEST_URLS_JSON_NAME}      TestUrls.json
 ${CONTACTS_JSON_NAME}       Receivers.json
 ${COMMON_DATA_NAME}         Common_Data.robot
 ${CREDENTIALS_FILE_NAME}    Credentials.json
-
+${EMPLOYEE_FILE_NAME}         EmployeeCode.txt
 
 ######################
 #   File Locations   #
@@ -61,7 +61,7 @@ ${TEST_URLS}          ${DATA}${/}${TEST_URLS_JSON_NAME}
 ${CONTACTS_JSON}      ${DATA}${/}${CONTACTS_JSON_NAME}
 ${COMMON_DATA}        ${DATA}${/}${COMMON_DATA_NAME}
 ${CREDENTIALS_FILE}   ${DATA}${/}${CREDENTIALS_FILE_NAME}
-
+${EMPLOYEE_FILE}        ${DATA}${/}${EMPLOYEE_FILE_NAME}
 
 ####################
 #  Email Settings  #

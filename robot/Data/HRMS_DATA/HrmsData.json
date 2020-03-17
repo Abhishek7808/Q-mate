@@ -1406,6 +1406,14 @@
       "Locator": "btnCancel"
     },
     "Filters": {
+      "Financial_Year": {
+        "Type": "dropdown",
+        "Locator": "//select[@id='Finyear']"
+      },
+      "Month": {
+        "Type": "dropdown",
+        "Locator": "//select[@id='SalaryCycleId']"
+      },
       "Pay Group": {
         "Value": "",
         "Type": "SearchSelectDropdown",

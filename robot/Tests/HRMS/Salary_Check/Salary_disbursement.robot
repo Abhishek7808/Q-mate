@@ -8,12 +8,11 @@ Library           ${LIBRARY}/Addendums.py
 Library           DateTime
 
 *** Variables ***
-${TEST_PAYGROUP}  None
-${FINANCIALYEAR1}  20192020           #20172018
-${SALARYCYCLENAME}  None          #58
+${SALARYFINANCIALYEAR}  20192020           #20172018
+${SALARYCYCLE}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
-${PAYGROUP}  None
-${PAYMENTUNIT}  select all
+${PAYGROUP}  select
+${PAYMENTUNIT}  Bharatpur Zone
 ${PAYSLIPUNIT}  head office
 ${DESIGNATION}  None
 ${DIVISION}  None
@@ -21,7 +20,7 @@ ${ISGAZETTED}  None
 @{DISBURSEMENT_PAYGROUPS}    Select all
 @{DISBURSEMENT_PAYBILLS}    1021/2019-2020
 ${latestPaybillCreated}  1021/2019-2020
-${EMPLOYEELOCATION}  select all
+${EMPLOYEELOCATION}  Select all
 
 *** Test Cases ***
 #Salary Cycle should be created
@@ -31,32 +30,35 @@ Attendance Of The Employee Should Marked
     [Tags]  salarycheck  markattendancecheck
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
-    HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}
+    HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}  ${PAYGROUP}
     HRMS_Keywords.Mark Attendance Of One Employee  ${dataDictionary}
-    HRMS_Keywords.Apply Filters For Marked Attendance
+    HRMS_Keywords.Apply Filters For Marked Attendance  ${PAYGROUP}
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}
     HRMS_Keywords.Approve Marked Attendance
 
 Salary Of The Employee Should Processed and Locked
     [Documentation]  Processes Salary.
-    [Tags]  Salary  salaryprocesscheck  createdata
+    [Tags]  salarycheck  salaryprocesscheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
-    HRMS_Keywords.Process Salary  ${dataDictionary}
-    HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
+    HRMS_Keywords.Process Salary  ${dataDictionary}  ${PAYGROUP}
+    HRMS_Keywords.View Salary Slip  ${dataDictionary["Filters"]}
+    HRMS_Keywords.Open Salary Detail Page
+    HRMS_Keywords.Search Employee
+    HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}  ${PAYGROUP}
 
 Salary Paybill Should ADD
     [Documentation]  Adds Paybill.
-    [Tags]  Salary  Addpaybillcheck  createdata
+    [Tags]  salarycheck  Addpaybillcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
-    HRMS_Keywords.Set Filters For Paybill
+    #HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 Salary Paybill Should Disburse
     [Documentation]  Adds Disbursment
-    [Tags]  Salary  AddDisbursementcheck  createdata
+    [Tags]  salarycheck  AddDisbursementcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
     HRMS_Keywords.Open Salary Disbursment Page
     sleep   3s

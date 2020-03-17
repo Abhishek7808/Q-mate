@@ -633,12 +633,12 @@ Open Manual Attendance Page
 
 Set Mark Attendance Criteria
     [Documentation]  Applies filters for listing of employees.
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${payGroup}=select all
     ManualAttendance.Click On Mark Attendance Button
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     HRMS_Keywords.Select Employee Location  ${dataDictionary}
-    run keyword if  '${TEST_PAYGROUP}' == 'None'  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
     HRMS_Keywords.Select Is Gazetted  ${dataDictionary}
@@ -646,12 +646,13 @@ Set Mark Attendance Criteria
     sleep  2s
 
 Apply Filters For Marked Attendance
+    [Arguments]  ${payGroup}=select all
     ManualAttendance.Open Filters
     sleep  2s
     HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary["Filters"]}
-    run keyword if  '${TEST_PAYGROUP}' == 'None'  HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  ${TEST_PAYGROUP}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  ${payGroup}
     HRMS_Keywords.Select Employee Location  ${dataDictionary["Filters"]}
     ManualAttendance.Select Status  Submitted
     ManualAttendance.Apply Filters
@@ -684,7 +685,7 @@ Open Salary Detail Page
     SalaryDetail.Go To Salary Detail Page
 
 Process Salary
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${payGroup}=Select One
     SalaryDetail.Click On Action Button
     sleep  4s
     SalaryDetail.Click On Process
@@ -694,15 +695,22 @@ Process Salary
     SalaryDetail.Select Employee Location  ${dataDictionary}
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
-    run keyword if  '${TEST_PAYGROUP}' == 'None'  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     SalaryDetail.Click On Process button
     SalaryDetail.Select All Employees
     SalaryDetail.Process Salary
     #Common_Keywords.Switch Tab
 
-Lock Salary
+#Open Salary Slip
+#    HRMS_Keywords.Search Employee
+#    SalaryDetail.Click On Actions Button
+#    SalaryDetail.Open Salary Slip
+#    switch window  NEW
+#    SalaryDetail.Verify Salary Slip
+
+
+View Salary Slip
     [Arguments]  ${dataDictionary}
-    #Common_Keywords.Switch Tab
     Open Salary Detail Page
     SalaryDetail.Open Filters
     sleep  2s
@@ -710,7 +718,33 @@ Lock Salary
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary}
     SalaryDetail.Select Employee Location  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  -Select One-
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
+    HRMS_Keywords.Select Status  Withheld
+    SalaryDetail.Apply Filters
+    HRMS_Keywords.Search Employee
+    SalaryDetail.Click On Actions Button
+    SalaryDetail.Open Salary Slip
+    switch window  NEW
+    SalaryDetail.Verify Salary Slip
+    #Switch Window  OLD
+    #Common_keywords.Switch Tab
+
+Search Employee
+    SalaryDetail.Enter Employee Code In Search Box
+    SalaryDetail.Click On Search Button
+
+
+Lock Salary
+    [Arguments]  ${dataDictionary}  ${payGroup}=Select One
+    #Common_Keywords.Switch Tab
+    #Open Salary Detail Page
+    SalaryDetail.Open Filters
+    sleep  2s
+    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+    sleep  2s
+    HRMS_Keywords.Select Month  ${dataDictionary}
+    SalaryDetail.Select Employee Location  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     HRMS_Keywords.Select Status  Withheld
     SalaryDetail.Apply Filters
     Common_Keywords.Show Maximum Entries On Page
@@ -729,10 +763,10 @@ Add Salary Paybill
     SalaryPaybill.Submit Details
 
 Select Financial Year
-    [Documentation]  Selects Financial Year in Mark Attendance Filter.
+    [Documentation]  Selects Financial Year in Mark Attendance Filter. Fills current financial year if not specified by user.
     [Arguments]  ${dataDictionary}
-    ${currentFinancialYear}  Common_Keywords.Get Current Financial Year
-    ${financialYear}  set variable if  ${FINANCIALYEAR1} == None  ${currentFinancialYear}  ${FINANCIALYEAR1}          ###""" If User does not gives Financial Year then current financial year will be selected"""
+    #${currentFinancialYear}  Common_Keywords.Get Current Financial Year
+    ${financialYear}  set variable if  ${SALARYFINANCIALYEAR} == None  ${currentFinancialYear}  ${SALARYFINANCIALYEAR}          ###""" If User does not gives Financial Year then current financial year will be selected"""
     set global variable  ${financialYear}
     select from list by value  ${dataDictionary["Financial_Year"]["Locator"]}  ${financialYear}
     sleep  2s
@@ -740,7 +774,7 @@ Select Financial Year
 Select Month
     [Documentation]  Selects Salary Cycle Month in Mark Attendance Filter
     [Arguments]  ${dataDictionary}
-    ${salaryCycleName}  run keyword if  '${SALARYCYCLENAME}' == 'None'  SalaryCycle.Get Current Salary Cycle  ELSE  set variable  ${SALARYCYCLENAME}
+    ${salaryCycleName}  set variable if  '${SALARYCYCLE}' == 'None'  ${currentSalaryCycleName}  ${SALARYCYCLE}
     set global variable  ${salaryCycleName}
     FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
 #    run keyword if  ${SALARYCYCLEID} != None  select from list by value  ${dataDictionary["Month"]["Locator"]}  ${SALARYCYCLEID}        ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
@@ -777,25 +811,25 @@ Select Is Gazetted
 Approve Salary Paybill
     [Arguments]  ${dataDictionary}
     SalaryPaybill.Go To Approve Salary Paybill Page
-    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
+    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Pending
     SalaryPaybill.Get Latest Paybill Number
     SalaryPaybill.Search Paybill
     sleep  3s
     SalaryPaybill.Verify Paybill
     sleep  5s
     reload page
-    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
+    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Verified and Forwarded for Approval
     sleep  5s
     SalaryPaybill.Approve Paybill
     #SalaryDetail.Select Status  WithheldEdit Division Details
 
 Set Filters For Paybill
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${status}
     SalaryPaybill.Open Filters
     HRMS_Keywords.Select Month  ${dataDictionary["Filter"]}
     HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
     HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
-    SalaryPaybill.Select Status  Pending
+    SalaryPaybill.Select Status  ${status}
     SalaryPaybill.Apply Filters
 
 Select Multi Paygroups
@@ -851,18 +885,25 @@ Approve Salary Disbursement
     [Arguments]  ${dataDictionary}
     SalaryDisbursment.Go To Salary Disbursment Page
     SalaryDisbursment.Open Filters
-    SalaryDisbursment.Select Filters
+    SalaryDisbursment.Select Filters  Pending
     SalaryDisbursment.Apply Filters
     sleep  4s
     SalaryDisbursment.Verify Disbursement
+    SalaryDisbursment.Open Filters
+    SalaryDisbursment.Select Filters  Verified
+    SalaryDisbursment.Apply Filters
+    sleep  4s
     SalaryDisbursment.Approve Disbursement
 
 Create Voucher
     [Arguments]  ${dataDictionary}
     SalaryDisbursment.Open Filters
-    SalaryDisbursment.Select Filters
-    SalaryDisbursment.Select Status  Approved
+    SalaryDisbursment.Select Filters  Approved
+    #SalaryDisbursment.Select Status  Approved
+    SalaryDisbursment.Apply Filters
+    sleep  3s
     SalaryDisbursment.Click On Actions Button
+    sleep  3s
     SalaryDisbursment.Select Voucher
     SalaryDisbursment.Save Voucher
 
@@ -884,6 +925,7 @@ Create Voucher
 Mark Attendance Of One Employee
     [Arguments]  ${dataDictionary}
     ManualAttendance.Select First Employee
+    ManualAttendance.Load Employee Code
     ManualAttendance.Click On Submit Button
     ManualAttendance.Verify Submit Popup
     ManualAttendance.Click On Ok Button

@@ -64,16 +64,20 @@ Disburse Details
     Click element     //a[@id='btnDisburse']
 
 Open Filters
+    sleep  4s
     click element  //button[@id='btnFilter']
     ${status}  run keyword and return status  wait until page contains  Search Filter
     run keyword if  ${status} == ${FALSE}  SalaryDisbursment.Open Filters
 
 Select Filters
-    ${finYear}  Common_Keywords.Get Current Financial Year
-    select from list by value  //select[@id='Finyear']  ${finYear}
-    select from list by label  //select[@id='SalaryCycleId']  ${SALARYCYCLENAME}
+    [Arguments]  ${status}
+#    ${finYear}  Common_Keywords.Get Current Financial Year
+#    select from list by value  //select[@id='Finyear']  ${finYear}
+    HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
+    HRMS_Keywords.Select Month   ${dataDictionary["Filters"]}
     HRMS_Keywords.Select Pay Group   ${dataDictionary["Filters"]}  ${PAYGROUP}
     FillFields.Input Value Into Field  ${dataDictionary["Filters"]["Payment Location"]}  Select All
+    SalaryDisbursment.Select Status  ${status}
 
 Apply Filters
     wait until element is enabled  //button[contains(text(),'Apply Filter')]
@@ -98,14 +102,16 @@ Approve Disbursement
     click element  //button[contains(text(),'OK')]
 
 Select Status
-    select from list by label  //select[@id='Status']  Approved
+    [Arguments]  ${status}
+    select from list by label  //select[@id='Status']  ${status}
 
 Click On Actions Button
-    click element  //a[contains(@class,'btn btn-sm btn-primary')]
+    page should contain element  //span[contains(text(),'Voucher Not Generated')]
+    click element  //span[contains(text(),'Voucher Not Generated')]/../following-sibling::td//a[contains(@class,'btn btn-sm btn-primary')]
     sleep  2s
 
 Select Voucher
-    click element  //a[contains(text(),'Voucher')]
+    click element  //span[contains(text(),'Voucher Not Generated')]/../following-sibling::td//a[contains(text(),'Voucher')]
 
 Save Voucher
     wait until element is enabled  //input[@id='btnSave']  15s

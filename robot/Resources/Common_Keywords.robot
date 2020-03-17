@@ -9,6 +9,7 @@ Library           RequestsLibrary
 Library           ${LIBRARY}/Notifications.py
 Library           ${LIBRARY}/Sheets.py
 Resource          ${PAGE OBJECTS}/SMM/CustomerLogin.robot
+Resource          ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
 Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
@@ -17,7 +18,8 @@ Resource          ${SMM_DATA_FILES}${/}website.robot
 Resource          ${SMM_DATA_FILES}${/}locators.robot
 Resource          ${SMM_DATA_FILES}${/}alerts.robot
 Resource          ${DATA}${/}Login_Data.robot
-
+Library           ${LIBRARY}${/}Addendums.py
+Library           DateTime
 *** Variables ***
 
 #Overwrite default configuration
@@ -125,25 +127,37 @@ Set HRMS Variables
 End HRMS Testing
     close browser
 
-Begin HRMS Automation
+Begin Salary Automation
     Set HRMS Variables  ${hrmsSalaryData}
+    Set Salary Variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
-End HRMS Automation
+End Salary Automation
     close browser
 
 Begin Salary Testing
     open browser  about:blank  ${BROWSER}
     maximize browser window
-    Set Salary Variables  ${hrmsSalaryData}
+    Set HRMS Variables  ${hrmsSalaryData}
+    Set Salary Variables
 
 END Salary Testing
     close browser
 
+Create Employee File
+    create file  ${EMPLOYEE_FILE}
+    #set global variable  ${employees}
+
 Set Salary Variables
-    [Arguments]  ${hrmsSalaryData}
-    Set HRMS Variables  ${hrmsSalaryData}
+    ${currentFinancialYear}  Common_Keywords.Get Current Financial Year        ###""" Returns Current Financial Year """
+    ${currentSalaryCycleName}  SalaryCycle.Get Current Salary Cycle            ###""" Returns Current Salary Cycle """
+    ${currentMonth}  Common_Keywords.Get Current Month                  ###""" Returns Current Month """
+    ${currentYear}  Common_Keywords.Get Current Year                    ###""" Returns Current Year """
+    set global variable  ${currentFinancialYear}
+    set global variable  ${currentSalaryCycleName}
+    set global variable  ${currentMonth}
+    set global variable  ${currentYear}
 
 Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
@@ -197,7 +211,7 @@ Switch Tab
     [Documentation]  Switches the robot to the previous tab
     @{windowTitles}    get window handles
     ${windowToOpen}=    get from list    ${windowTitles}  -1
-    Select Window    ${windowToOpen}
+    Switch Window    ${windowToOpen}
 
 Set Test Data
     [Arguments]  ${dataJson}
@@ -210,7 +224,7 @@ Get Current Financial Year
     ${currentYear}  convert to integer  ${dateDictionary}[0]
     ${nextYear}  set variable  ${currentYear+1}
     ${previousYear}  set variable  ${currentYear-1}
-    run keyword if  ${currentMonth}>4  set test variable  ${financialYear}  ${currentYear}${nextYear}  ELSE  set test variable  ${financialYear}  ${previousYear}${currentYear}
+    run keyword if  ${currentMonth}>4  set global variable  ${financialYear}  ${currentYear}${nextYear}  ELSE  set global variable  ${financialYear}  ${previousYear}${currentYear}
     return from keyword  ${financialYear}
 
 Get Current Month

@@ -9,8 +9,8 @@ Library           DateTime
 
 *** Variables ***
 ${TEST_PAYGROUP}  None
-${FINANCIALYEAR1}  20192020           #20172018
-${SALARYCYCLENAME}  None          #58
+${SALARYFINANCIALYEAR}  20192020           #20172018
+${SALARYCYCLE}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
 ${PAYGROUP}
 ${PAYMENTUNIT}  Bharatpur Zone
@@ -21,7 +21,7 @@ ${ISGAZETTED}  None
 @{DISBURSEMENT_PAYGROUPS}    Select all
 @{DISBURSEMENT_PAYBILLS}    1021/2019-2020
 ${latestPaybillCreated}  1021/2019-2020
-${EMPLOYEELOCATION}  select all
+${EMPLOYEELOCATION}  Select all
 
 *** Test Cases ***
 
@@ -49,6 +49,7 @@ Process And Lock Salary
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
     HRMS_Keywords.Process Salary  ${dataDictionary}
+    HRMS_Keywords.Open Salary Detail Page
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
 
 Add Paybill
@@ -57,7 +58,7 @@ Add Paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
-    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
+    #HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 Disburse Paybill

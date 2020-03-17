@@ -55,6 +55,12 @@ Select First Employee
     switch window  NEW
     Select checkbox  //tr[1]//td[1]//input[1]
 
+Load Employee Code
+    ${employeeCode}  get text  //tr[1]//td[3]
+    log  ${employeeCode}
+    Common_Keywords.Create Employee File
+    append to file  ${EMPLOYEE_FILE}  ${employeeCode}
+
 Click On Submit Button
     click element  //input[@id='btnsave']
 
@@ -67,7 +73,7 @@ Click On Ok Button
     sleep  4s
 
 Open Filters
-    wait until page contains element  ${openFilters}  50s
+    wait until element is enabled  ${openFilters}  50s
     click element  ${openFilters}
 
 Select Financial Year Filter
