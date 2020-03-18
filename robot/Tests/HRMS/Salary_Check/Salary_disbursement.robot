@@ -26,7 +26,7 @@ ${EMPLOYEELOCATION}  Select all
 #Salary Cycle should be created
 #    [Tags]  salarycheck  Salarycyclecheck
 
-Attendance Of The Employee Should Marked
+Admin should able to mark attendance of the employees
     [Tags]  salarycheck  markattendancecheck
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
@@ -36,7 +36,7 @@ Attendance Of The Employee Should Marked
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}
     HRMS_Keywords.Approve Marked Attendance
 
-Salary Of The Employee Should Processed and Locked
+Admin should able to process and lock his salary of the employee
     [Documentation]  Processes Salary.
     [Tags]  salarycheck  salaryprocesscheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
@@ -47,7 +47,7 @@ Salary Of The Employee Should Processed and Locked
     HRMS_Keywords.Search Employee
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}  ${PAYGROUP}
 
-Salary Paybill Should ADD
+Admin should able to add salary paybill
     [Documentation]  Adds Paybill.
     [Tags]  salarycheck  Addpaybillcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
@@ -56,7 +56,7 @@ Salary Paybill Should ADD
     #HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
-Salary Paybill Should Disburse
+Admin should able to add salary disbursement
     [Documentation]  Adds Disbursment
     [Tags]  salarycheck  AddDisbursementcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}

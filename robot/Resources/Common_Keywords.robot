@@ -30,6 +30,7 @@ Library           DateTime
 ${None}  None
 ${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
 ${hrmsSalaryData}  ${DATA}/HRMS_DATA/HrmsData.json
+${accData}  ${DATA}/ACC_DATA/AccData.json
 ${urlsJson}   ${DATA}/URLs.json
 ${financialYear}
 *** Keywords ***
@@ -123,7 +124,6 @@ Set HRMS Variables
     ${urlsDict}  Load Json File  ${urlsJson}
     set global variable  ${urlsDict}  ${urlsDict}
 
-
 End HRMS Testing
     close browser
 
@@ -144,6 +144,16 @@ Begin Salary Testing
 
 END Salary Testing
     close browser
+
+Begin ACC Testing
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+    Set ACC Variables  ${accData}
+
+Set ACC Variables
+    [Arguments]  ${accData}
+    ${configurationData}  Load Json File  ${accData}
+    set global variable  ${configData}  ${configurationData}
 
 Create Employee File
     create file  ${EMPLOYEE_FILE}
@@ -170,7 +180,6 @@ Read JSON File
     [Arguments]  ${JSON_File}
     ${JSON}=  Get file  ${JSON_File}
     return from keyword  ${JSON}
-    log
 
 Evaluate And Store JSON File
     [Arguments]  ${JSON}
@@ -218,6 +227,7 @@ Set Test Data
     set test variable  ${datadictionary}  ${dataJson}
 
 Get Current Financial Year
+    [Documentation]  Returns current financial year.
     ${currentDate}  get current date
     ${dateDictionary}  split string  ${currentDate}  -
     ${currentMonth}  convert to integer  ${dateDictionary}[1]
@@ -228,12 +238,14 @@ Get Current Financial Year
     return from keyword  ${financialYear}
 
 Get Current Month
+    [Documentation]  Returns current month.
     ${currentDate}  get current date
     ${month}  convert date  ${currentDate}  result_format= %B
     ${month}  strip string  ${month}
     return from keyword  ${month}
 
 Get Current Year
+    [Documentation]
     ${currentDate}  get current date
     ${year}  convert date  ${currentDate}  result_format= %Y
     ${year}  strip string  ${year}

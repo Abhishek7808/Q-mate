@@ -375,9 +375,10 @@ User should able to add edit section details
 User should able to delete section
     [Documentation]  Deletes the section from the section details table. Verifies its deletion in the section details table.  For more info visit http://support.e-connectsolutions.com/erp/how-to/section-details-configuration/
     [Tags]  HRMS  section  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Section
     Common_Keywords.Set Test Data  ${configData["Section"]}
-    Common_Keywords.Show Maximum Entries on Page
+    HRMS_Keywords.Open Section Page
+    HRMS_Keywords.Search Section ENtry  ${dataDictionary["Edit Section"]["Name"]["Value"]}
+
     FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Search box"]}  ${dataDictionary["Edit Section"]["Search box"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
     FillFields.Input Value Into Field  ${dataDictionary["Select Section"]}  ${dataDictionary["Select Section"]["Value"]}

@@ -1,0 +1,40 @@
+{
+  "Add_Party_Deduction": {
+    "Employee_Name": {
+      "Value": "",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "//div[@id='select2-drop-mask']",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Deduction_type": {
+      "Value": "LIC",
+      "Type": "Dropdown",
+      "Locator": "//*[@id='select2-drop']/div/input"
+    },
+    "Start_Date":{
+      "Value":{
+        "Day": "16",
+        "Month": "Feb",
+        "Year": "2020"
+      },
+      "Type": "Date",
+      "Locator": "//input[@id='START_DATE']"
+    },
+    "End_Date":{
+      "Value":{
+        "Day": "16",
+        "Month": "Feb",
+        "Year": "2020"
+      },
+      "Type": "Date",
+      "Locator": "//input[@id='END_DATE']"
+    },
+    "Amount": {
+      "Value": "500",
+      "Type": "Dropdown",
+      "Locator": "//input[@id='AMOUNT']"
+    }
+  }
+}
