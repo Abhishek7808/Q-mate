@@ -1,6 +1,5 @@
-*** Keywords ***
-First keyword
-    Do something
+*** Settings ***
 
-Second keyword
-    Do more
+*** Keywords ***
+Open Third Party Deduction Page
+    ThirdPartyDeduction.Go To Third Party Deduction Page
