@@ -1,6 +1,6 @@
 *** Settings ***
 Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}HRMSFormHelpers${/}FillFields.robot
+Resource          ${RESOURCES}${/}NewUiFormHelpers${/}FillFields.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}/ERP_Keywords.robot
 Resource          ${RESOURCES}/HRMS_Keywords.robot

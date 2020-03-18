@@ -1,17 +1,18 @@
 {
-  "Add_Party_Deduction": {
+  "Third_Party_Deduction": {
+    "URL": "HRM/ThirdPartyDeduction",
     "Employee_Name": {
       "Value": "",
       "Type": "SearchSelectDropdown",
       "Locator": {
-        "Locator1": "//div[@id='select2-drop-mask']",
+        "Locator1": "//a[@class='select2-choice']//div//b",
         "Locator2": "//*[@id='select2-drop']/div/input"
       }
     },
     "Deduction_type": {
       "Value": "LIC",
       "Type": "Dropdown",
-      "Locator": "//*[@id='select2-drop']/div/input"
+      "Locator": "//select[@id='PAYMENT_TYPE']"
     },
     "Start_Date":{
       "Value":{
@@ -33,7 +34,7 @@
     },
     "Amount": {
       "Value": "500",
-      "Type": "Dropdown",
+      "Type": "Text Value",
       "Locator": "//input[@id='AMOUNT']"
     }
   }

@@ -23,7 +23,7 @@ Fill Salary Cycle Form
     FillFields.Input Value Into Field  ${dataDictionary["Description"]}  ${currentSalaryCycleName}
     select from list by value  ${dataDictionary["Financial_Year"]["Locator"]}  ${currentFinancialYear}
     FillFields.Input Value Into Field  ${dataDictionary["Type"]}  ${dataDictionary["Type"]["Value"]}
-    set to dictionary  ${dataDictionary["Start_Date"]["Value"]}  Day=1  Month=${currentMonth[0:3]}  Year=${currentYear}  ### """ Values are filled dynamically"""
+    set to dictionary  ${dataDictionary["Start_Date"]["Value"]}  Day=1  Month=${currentMonth[0:3]}  Year=${currentYear}  ### """ Values are filled dynamically into data dictionary"""
     FillFields.Input Value Into Field  ${dataDictionary["Start_Date"]}  ${dataDictionary["Start_Date"]["Value"]}
     ${lastDayOfMonth}  Count Current Month days  ###"""Keyword is defined in Addendums.py file """
     set to dictionary  ${dataDictionary["End_Date"]["Value"]}  Day=${lastDayOfMonth}  Month=${currentMonth[0:3]}  Year=${currentYear}

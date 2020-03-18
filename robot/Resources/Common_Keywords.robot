@@ -12,7 +12,7 @@ Resource          ${PAGE OBJECTS}/SMM/CustomerLogin.robot
 Resource          ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Resource          ${SMM_DATA_FILES}${/}website.robot
 Resource          ${SMM_DATA_FILES}${/}locators.robot
@@ -140,7 +140,7 @@ Begin Salary Testing
     open browser  about:blank  ${BROWSER}
     maximize browser window
     Set HRMS Variables  ${hrmsSalaryData}
-    Set Salary Variables
+    Set Date Time Variables
 
 END Salary Testing
     close browser
@@ -149,17 +149,21 @@ Begin ACC Testing
     open browser  about:blank  ${BROWSER}
     maximize browser window
     Set ACC Variables  ${accData}
+    Set Date Time Variables
 
 Set ACC Variables
     [Arguments]  ${accData}
     ${configurationData}  Load Json File  ${accData}
     set global variable  ${configData}  ${configurationData}
 
+END ACC Testing
+    close browser
+
 Create Employee File
     create file  ${EMPLOYEE_FILE}
     #set global variable  ${employees}
 
-Set Salary Variables
+Set Date Time Variables
     ${currentFinancialYear}  Common_Keywords.Get Current Financial Year        ###""" Returns Current Financial Year """
     ${currentSalaryCycleName}  SalaryCycle.Get Current Salary Cycle            ###""" Returns Current Salary Cycle """
     ${currentMonth}  Common_Keywords.Get Current Month                  ###""" Returns Current Month """

@@ -1,8 +1,8 @@
 *** Settings ***
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}Input.robot
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}Clear.robot
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}Confirm.robot
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}ConfirmXpath.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Input.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Clear.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Confirm.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}ConfirmXpath.robot
 
 *** Keywords ***
 Input Valid Value

@@ -1,6 +1,6 @@
 *** Settings ***
 Library           SeleniumLibrary
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Field.robot
 
 *** Keywords ***
 Create Customer Group
