@@ -37,5 +37,83 @@
       "Type": "Text Value",
       "Locator": "//input[@id='AMOUNT']"
     }
+  },
+  "Mark_Attendance": {
+    "URL": "HRM/ManualAttendance",
+    "Financial_Year": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='ddlFinyear']"
+    },
+    "Month": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='ddlSalaryCycleId']"
+    },
+    "Employee Unit": {
+      "Value": "Select all ",
+      "Type": "SearchSelectDropdown",
+      "Locator1": "//div[@id='s2id_UnitFilter']//div",
+      "Locator2": "//*[@id='select2-drop']/div/input"
+    },
+    "Pay Group": {
+      "Value": "",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "//div[@id='s2id_ddlPB_GROUP_ID']//div",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Employee Location": {
+      "Value": "",
+      "Type": "SearchSelectDropDown",
+      "Locator": {
+        "Locator1": "//div[@id='s2id_UnitFilter']",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Designation": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='ddlDesigId']"
+    },
+    "Division": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "DIVISION"
+    },
+    "Is Gazetted": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='GAZETTED']"
+    },
+    "Filters": {
+      "Financial_Year": {
+        "Type": "Dropdown",
+        "Value": "20192020",
+        "Locator": "ddlFinyearFilter"
+      },
+      "Month": {
+        "Type": "Dropdown",
+        "Value": "Fabruary 2020",
+        "Locator": "ddlSalaryCycleIdFilter"
+      },
+      "Pay Group": {
+        "Type": "SearchSelectDropdown",
+        "Value": "RIICO STAFF (Head Office)",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_ddlPbGroupFilter']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
+      "Employee Location": {
+        "Value": "",
+        "Type": "SearchSelectDropDown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_ddlUnitFilter']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      }
+    }
   }
 }

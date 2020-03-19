@@ -61,6 +61,15 @@ Load Employee Code
     Common_Keywords.Create Employee File
     append to file  ${EMPLOYEE_FILE}  ${employeeCode}
 
+Search Employee
+    [Arguments]  ${employeeCode}
+    switch window  NEW
+    input text  //div[@class='col-md-8']//input[@class='form-control']  ${employeeCode}
+
+Select Given Employee
+    [Arguments]  ${employeeCode}
+    select checkbox  //input[@class='SelectItem']
+
 Click On Submit Button
     click element  //input[@id='btnsave']
 
@@ -90,8 +99,8 @@ Apply Filters
     click element  ${applyFilters}
 
 Click On Actions Button
-    [Arguments]  ${status}
-    click element  //td[contains(text(),'${status}')]/following-sibling::td${actionButton}
+    [Arguments]  ${status}  ${payGroup}
+    click element  //td[contains(text(),'${payGroup}')]/following-sibling::td[contains(text(),'${status}')]/following-sibling::td${actionButton}
 
 Verify Attendance
     wait until element is visible  ${verify}

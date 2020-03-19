@@ -666,19 +666,20 @@ Submit Marked Attendance
     ManualAttendance.Click On Ok Button
 
 Verify Marked Attendance
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${payGroup}
     Common_Keywords.Show Maximum Entries On Page
     sleep  3s
-    ManualAttendance.Click On Actions Button  Submitted
+    ManualAttendance.Click On Actions Button  Submitted  ${payGroup}
     ManualAttendance.Verify Attendance
 
 Approve Marked Attendance
+    [Arguments]  ${payGroup}
     ManualAttendance.Open Filters
     sleep  2s
     ManualAttendance.Select Status  Verified
     ManualAttendance.Apply Filters
     Common_Keywords.Show Maximum Entries On Page
-    ManualAttendance.Click On Actions Button  Verified
+    ManualAttendance.Click On Actions Button  Verified  ${payGroup}
     ManualAttendance.Choose Approve
 
 Open Salary Detail Page
@@ -835,7 +836,7 @@ Set Filters For Paybill
 Select Multi Paygroups
     [Arguments]  ${Locator}
     click element  ${Locator}
-    FOR  ${item}  In  @{DISBURSEMENT_PAYGROUPS}
+    FOR  ${item}  IN  @{DISBURSEMENT_PAYGROUPS}
     \   click element  //label[contains(text(),'${item}')]
 
 Select Multi Paybills
@@ -930,3 +931,11 @@ Mark Attendance Of One Employee
     ManualAttendance.Verify Submit Popup
     ManualAttendance.Click On Ok Button
 
+Mark Attendance Of Given Employee
+    [Arguments]  ${EmployeeCode}
+    ManualAttendance.Search Employee  ${EmployeeCode}
+    ManualAttendance.Select Given Employee  ${EmployeeCode}
+    ManualAttendance.Load Employee Code
+    ManualAttendance.Click On Submit Button
+    ManualAttendance.Verify Submit Popup
+    ManualAttendance.Click On Ok Button
