@@ -115,5 +115,66 @@
         }
       }
     }
+  },
+  "Add_Liability_Payment": {
+        "URL": "HRM/ThirdPartyDeduction/Index_DisursPayment",
+        "Financial_Year": {
+            "Value": "",
+            "Type": "Dropdown",
+            "Locator": "//select[@id='Finyear']"
+        },
+        "Disbursement_From_Date":{
+            "Value":{
+                "Day": "16",
+                "Month": "Feb",
+                "Year": "2020"
+            },
+            "Type": "Date",
+            "Locator": "//input[@id='BILL_DATE_FROM']"
+        },
+        "Disbursement_To_Date":{
+            "Value":{
+                "Day": "16",
+                "Month": "Feb",
+                "Year": "2020"
+            },
+            "Type": "Date",
+            "Locator": "//input[@id='BILL_DATE_TO']"
+        },
+        "Disbursement_Type": {
+		   "Value": ["Salary"],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator1": "//label[contains(text(),'Disbursement Type')]/following-sibling::div//b[@class='caret']",
+				"Locator2": "//label[contains(@class,'checkbox')][contains(text(),'Salary')]"
+			}
+	   },
+        "Salary_Period": {
+            "Value": "500",
+            "Type": "Dropdown",
+            "Locator": "//select[@id='SalCycleId']"
+        },
+        "Liability_Type": {
+            "Value": "LIC",
+            "Type": "Dropdown",
+            "Locator": "//select[@id='LiabilityType']"
+        },
+        "Payment_Date":{
+            "Value":{
+                "Day": "16",
+                "Month": "Feb",
+                "Year": "2020"
+            },
+            "Type": "Date",
+            "Locator": "//input[@id='PaymentDate']"
+        },
+        "Payment_Location": {
+            "Value": "--Select One--",
+            "Type": "SearchSelectDropdown",
+            "Locator": {
+              "Locator1": "//a[@class='select2-choice']//div//b",
+              "Locator2": "//*[@id='select2-drop']/div/input"
+            }
+        }
   }
 }

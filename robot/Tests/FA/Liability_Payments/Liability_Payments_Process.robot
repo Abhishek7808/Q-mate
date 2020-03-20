@@ -43,5 +43,13 @@ Admin should able to disburse the salary of the selected employee.
     HRMS_Keywords.Apply Filters For Marked Attendance  ${PAYGROUP}
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}  ${PAYGROUP}
     HRMS_Keywords.Approve Marked Attendance  ${PAYGROUP}
-    run  robot -d results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg --variable PAYGROUP:"${PAYGROUP}" -i salaryprocesscheck -i Addpaybillcheck -i AddDisbursementcheck robot/Tests
+    run  robot -d robot/results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --variable LOGIN:${LOGIN} --variable PAYGROUP:"${PAYGROUP}" -i salaryprocesscheck -i Addpaybillcheck -i AddDisbursementcheck robot/Tests
 
+Admin should able to add Liability payments
+    [Documentation]  Adds Liability payments details for an employee.
+    [Tags]  acc  liabilitypayments  addLiability
+    Common_Keywords.Set Test Data  ${configData["Add_Liability_Payment"]}
+    ACC_Keywords.Open Liability Payments Page
+    ACC_Keywords.Add Liability Payment  ${dataDictionary}  ${EMPLOYEECODE}
+
+Admin should able to edit draft entries
