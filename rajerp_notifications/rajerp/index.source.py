@@ -1,12 +1,17 @@
+# <!DOCTYPE html>
+# <html lang="en">
+# <head>
+
 from html.parser import HTMLParser
 import os
+
 if os.environ['HTTPS'] is None or os.environ['HTTPS'] == "off":
     redirect = 'https://'.os.environ['HTTP_HOST'].os.environ['REQUEST_URI']
     print('HTTP/1.1 301 Moved Permanently')
     print('Location: '. redirect)
     exit()
 
-HTMLParser.feed(""""?>
+HTMLParser.feed("""?>
 <!DOCTYPE html>
 <html>
   <head>

@@ -1,18 +1,19 @@
 *** Settings ***
 Resource          ../../../Configuration.resource
-Resource          ${RESOURCES}${/}HRMSFormHelpers${/}FillFields.robot
+Resource          ${RESOURCES}${/}NewUiFormHelpers${/}FillFields.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
-Resource          ${RESOURCES}/ERP_Keywords.robot
-Resource          ${RESOURCES}/HRMS_Keywords.robot
-Library           ${LIBRARY}/Addendums.py
+Resource          ${RESOURCES}${/}ERP_Keywords.robot
+Resource          ${RESOURCES}${/}HRMS_Keywords.robot
+Library           ${LIBRARY}${/}Addendums.py
 Library           DateTime
 
 *** Variables ***
-${FINANCIALYEAR1}  20192020           #20172018
-${SALARYCYCLENAME}  None          #58
+${TEST_PAYGROUP}  None
+${SALARYFINANCIALYEAR}  20192020           #20172018
+${SALARYCYCLE}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
-${PAYGROUP}  None
-${PAYMENTUNIT}  select all
+${PAYGROUP}
+${PAYMENTUNIT}  Bharatpur Zone
 ${PAYSLIPUNIT}  head office
 ${DESIGNATION}  None
 ${DIVISION}  None
@@ -20,23 +21,23 @@ ${ISGAZETTED}  None
 @{DISBURSEMENT_PAYGROUPS}    Select all
 @{DISBURSEMENT_PAYBILLS}    1021/2019-2020
 ${latestPaybillCreated}  1021/2019-2020
-${EMPLOYEELOCATION}  None
+${EMPLOYEELOCATION}  Select all
 
 *** Test Cases ***
 
 Create Salary Cycle
     [Documentation]  Fills details in Salary Cycle form and submits it. Creates Salary cycle of current month and year.
-    [Tags]  Salary  SalaryCycle  createdata
+    [Tags]  Salary  SalaryCycle  createdata  salarycheck
     Common_Keywords.Set Test Data  ${configData["Salary_Cycle"]}
     HRMS_Keywords.Open Salary Cycle Page
-    HRMS_Keywords.Add Salary Cycle  ${dataDictionary}
+    HRMS_Keywords.Add Salary Cycle  ${dataDictionary}           ###""" Adds salary cycle of the current month and year """###
 
 Mark Attendance Of Employees
     [Documentation]  Fills details in Mark Attendance form and submits it.
     [Tags]  Salary  markAttendance  createdata
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
-    HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}
+    HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}       ###""" This will not select paygroup
     HRMS_Keywords.Submit Marked Attendance
     HRMS_Keywords.Apply Filters For Marked Attendance
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}
@@ -48,6 +49,7 @@ Process And Lock Salary
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
     HRMS_Keywords.Process Salary  ${dataDictionary}
+    HRMS_Keywords.Open Salary Detail Page
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
 
 Add Paybill
@@ -56,7 +58,7 @@ Add Paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
-    HRMS_Keywords.Set Filters For Paybill
+    #HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 Disburse Paybill
@@ -67,6 +69,8 @@ Disburse Paybill
     sleep   3s
     HRMS_Keywords.Add Disbursement  ${dataDictionary}
     HRMS_Keywords.Approve Salary Disbursement  ${dataDictionary}
+    HRMS_Keywords.Create Voucher  ${dataDictionary}
+
 
 
 

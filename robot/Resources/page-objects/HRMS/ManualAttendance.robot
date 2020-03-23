@@ -51,6 +51,25 @@ Select Employees
 #    FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
 #    \   select checkbox  ${employeeTable}/tbody/tr[${employee}]/td[1]/input
 
+Select First Employee
+    switch window  NEW
+    Select checkbox  //tr[1]//td[1]//input[1]
+
+Load Employee Code
+    ${employeeCode}  get text  //tr[1]//td[3]
+    log  ${employeeCode}
+    Common_Keywords.Create Employee File
+    append to file  ${EMPLOYEE_FILE}  ${employeeCode}
+
+Search Employee
+    [Arguments]  ${employeeCode}
+    switch window  NEW
+    input text  //div[@class='col-md-8']//input[@class='form-control']  ${employeeCode}
+
+Select Given Employee
+    [Arguments]  ${employeeCode}
+    select checkbox  //input[@class='SelectItem']
+
 Click On Submit Button
     click element  //input[@id='btnsave']
 
@@ -63,7 +82,7 @@ Click On Ok Button
     sleep  4s
 
 Open Filters
-    wait until page contains element  ${openFilters}  50s
+    wait until element is enabled  ${openFilters}  50s
     click element  ${openFilters}
 
 Select Financial Year Filter
@@ -80,8 +99,8 @@ Apply Filters
     click element  ${applyFilters}
 
 Click On Actions Button
-    [Arguments]  ${status}
-    click element  //td[contains(text(),'${status}')]/following-sibling::td${actionButton}
+    [Arguments]  ${status}  ${payGroup}
+    click element  //td[contains(text(),'${payGroup}')]/following-sibling::td[contains(text(),'${status}')]/following-sibling::td${actionButton}
 
 Verify Attendance
     wait until element is visible  ${verify}

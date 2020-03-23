@@ -1,7 +1,7 @@
 *** Settings ***
-Resource          ${RESOURCES}${/}HRMSFormHelpers${/}InputFields.robot
-Resource          ${RESOURCES}${/}HRMSFormHelpers${/}ClearFields.robot
-Resource          ${RESOURCES}${/}HRMSFormHelpers${/}ConfirmFields.robot
+Resource          ${RESOURCES}${/}NewUiFormHelpers${/}InputFields.robot
+Resource          ${RESOURCES}${/}NewUiFormHelpers${/}ClearFields.robot
+Resource          ${RESOURCES}${/}NewUiFormHelpers${/}ConfirmFields.robot
 
 *** Keywords ***
 Input Value Into Field

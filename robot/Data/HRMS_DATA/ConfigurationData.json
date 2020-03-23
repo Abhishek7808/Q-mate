@@ -1006,26 +1006,35 @@
 			}
 		}
 	},
-	"Division":{
+	"Division": {
 		"URL": "HRM/division",
 		"Add New Division": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
 		},
-		"Name":{
-		    "Value":"QMATEdivision",
-		    "Type": "Text Value",
-		    "Locator": "Name"
-        },
+		"Edit": {
+				"Type": "Element",
+				"Locator": "//td[contains(text(),'QMATEdivision')]/following-sibling::td//i[contains(@class,'fa fa-pencil')]"
+			},
+		"Name": {
+			"Value": "QMATEdivision",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
 		"Save": {
 			"Type": "Button",
 			"Locator": "btnSave"
-		}
-	},
-	"Edit Division":{
-		"Edit": {
-			"Type": "Element",
-			"Locator": "//td[contains(text(),'QMATEdivision')]/following-sibling::td//i[contains(@class,'fa fa-pencil')]"
+		},
+		"Search": {
+			"Search Bar": {
+				"Type": "Text Value",
+				"Value": "",
+				"Locator": "SearchText"
+			},
+			"Search Button": {
+				"Type": "Button",
+				"Locator": "BtnSearchfilter"
+			}
 		},
 		"Delete": {
 			"Type": "Element",
@@ -1035,14 +1044,17 @@
 			"Type": "Button",
 			"Locator": "//button[contains(@class,'btn btn-primary')]"
 		},
-		"Name":{
-		    "Value":"QMATEdivision2",
-		    "Type": "Text Value",
-		    "Locator": "Name"
-        },
-		"Save": {
-			"Type": "Button",
-			"Locator": "btnSave"
+
+		"Edit Division": {
+			"Name": {
+				"Value": "QMATEdivision2",
+				"Type": "Text Value",
+				"Locator": "Name"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
 		}
 	},
 	"Designation":{
@@ -1122,6 +1134,7 @@
 		}
     },
 	"Hospital Empanelment": {
+		"URL": "HRM/HospitalEmpanelment",
 		"Add New": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1282,6 +1295,7 @@
 		}
 	},
 	"Qualification":{
+		"URL": "HRM/QualificationMaster",
 		"Add New": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1327,6 +1341,7 @@
 		}
 	},
     "Empanelled Officer": {
+		"URL": "HRM/EnquiryPanelImpanelment/EmpanelledIndex",
 		"Add New Entry": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1428,6 +1443,7 @@
 		}
     },
 	"Cadre Details":{
+		"URL": "HRM/Cader",
 		"Add Cadre": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1489,6 +1505,7 @@
 		}
 	},
 	"Payment Type": {
+		"URL": "HRM/PaymentType",
 		"Add Payment Type": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1545,6 +1562,7 @@
 		}
 	},
 	"Section":{
+		"URL": "HRM/Section",
 		"Add Section": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1650,6 +1668,7 @@
 			}
 		},
 	"Department": {
+		"URL": "HRM/Department",
 		"Add": {
 		"Type": "Link",
 		"Locator": "modals-bootbox-custom"

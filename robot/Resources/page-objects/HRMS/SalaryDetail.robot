@@ -86,12 +86,9 @@ Select All Employees
     \   EXIT FOR LOOP IF  ${status} == ${FALSE}
     \   ${status}  Click On Next Button
 
-
-
 Click On Next Button
 #    ${nextLocator}  get webelements  //li[@class='next disabled']
 #    page should not contain  ${nextLocator}[0]
-
     click element  //a[contains(text(),'Next')]
     ${nextStatus}  run keyword and return status  page should not contain element  //li[@class='next disabled']
     return from keyword  ${nextStatus}
@@ -100,3 +97,28 @@ Select Employees
     [Arguments]  ${checkboxLocator}
     unselect checkbox  ${checkboxLocator}
     select checkbox  ${checkboxLocator}
+
+Click On Actions Button
+    #${employeeCode}  Get File  ${EMPLOYEE_FILE}
+    #click element  //span[contains(text(),'${employeeCode}')]/following-sibling::td//[contains(text(),'Actions')]
+    wait until page contains element  //th[contains(text(),'S.No.')]
+    sleep  2s
+    click element  //div[contains(@class,'btn-group-xs pull-right input-group')]//a[contains(@class,'btn btn-primary')][contains(text(),'Actions')]
+
+Open Salary Slip
+    sleep  5s
+    #click element  //span[contains(text(),'${employeeCode}')]/following-sibling::a[@id='lnkMultipleSalarySlip_724902']
+    click element  //div[contains(@class,'btn-group-xs pull-right input-group open')]//ul[contains(@class,'dropdown-menu pull-right')]
+
+Verify Salary Slip
+    ${employeeCode}  Get File  ${EMPLOYEE_FILE}
+    page should contain  ${employeeCode}
+
+Enter Employee Code In Search Box
+    ${employeeCode}  Get File  ${EMPLOYEE_FILE}
+    input text  //input[@id='SearchText']  ${employeeCode}
+
+Click On Search Button
+    click element  //button[@id='BtnSearchfilter']//i[contains(@class,'fa fa-search')]
+    sleep  7s
+    #wait until page contains element  //th[contains(text(),'S.No.')]  15s

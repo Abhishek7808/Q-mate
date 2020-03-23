@@ -1,3 +1,5 @@
+#!/home/divaksh/rajerp/rajerpenv/bin python3
+
 import datetime
 from urllib.request import urlopen
 from bs4 import BeautifulSoup
@@ -6,6 +8,7 @@ import requests
 import json
 import time
 from robot import run
+import threading
 
 # Run service during the office hours only
 current_time = datetime.datetime.now().strftime("%H")
@@ -63,9 +66,9 @@ if 9 < int(current_time) < 19:
         print('</br>')
 
         # Reading old time and date
-        update_old = open("D:\Q-mate\\rajerp_notifications\\rajerp_update.txt", "r");
+        update_old = open("D:\\Q-mate\\rajerp_notifications\\rajerp_update.txt", "r");
         update_old1 = update_old.read()
-        print("start"+update_old.read()+"here")
+        print("start" + update_old.read() + "here")
         print(update_old1)
         # Old time
         published_old1 = update_old1[0:62]
@@ -93,16 +96,15 @@ if 9 < int(current_time) < 19:
         updated_text = "Raj ERP just got better! updates arrived at RSDC on " + foolproofTime(updated_new)
         print(updated_text)
         print('</br>')
-        open("D:\Q-mate\\rajerp_notifications\\rajerp_published.txt","w").write(published_text)
-        file = open("D:\Q-mate\\rajerp_notifications\\rajerp_updated.txt","w")
+        open("D:\\Q-mate\\rajerp_notifications\\rajerp_published.txt", "w").write(published_text)
+        file = open("D:\\Q-mate\\rajerp_notifications\\rajerp_updated.txt", "w")
         file.write(updated_text)
-        file.close()
 
         # Checking the old and new time differece
         if update_new == update_old:
             # Again up notification
-            if Path('D:\Q-mate\\rajerp_notifications\erpdown.log').is_file():
-                if not Path('D:\Q-mate\\rajerp_notifications\erpdown.log').is_file():
+            if Path('D:\\Q-mate\\rajerp_notifications\\erpdown.log').is_file():
+                if not Path('D:\\Q-mate\\rajerp_notifications\\erpup.log').is_file():
                     header = {"Content-Type": "application/json; charset=utf-8",
                               "Authorization": "Basic NGM0ZmJhMWMtNGI4MC00MWE5LWEyZDYtNjk5YzI5Y2QyOWQz"}
 
@@ -121,7 +123,7 @@ if 9 < int(current_time) < 19:
                     print("\n");
                     ERPup = "RajERP is Up";
                     print(ERPup)
-                    file = open("D:\Q-mate\\rajerp_notifications\erpup.log")
+                    file = open("D:\\Q-mate\\rajerp_notifications\\erpup.log")
                     file.write(ERPup)
                 else:
                     print('</br>')
@@ -187,7 +189,7 @@ if 9 < int(current_time) < 19:
 
                 payload = {"app_id": "5eb5a37e-b458-11e3-ac11-000c2940e62c",
                            "included_segments": ["All"],
-                           "contents": {"en": open("D:\Q-mate\\rajerp_notifications\\rajerp_updated.txt").read()},
+                           "contents": {"en": open("D:\\Q-mate\\rajerp_notifications\\rajerp_updated.txt").read()},
                            "heading": {"en": "RajERP Updated"},
                            "fields": {"app_id": "eada2698-ce33-411e-b001-d488b2999608",
                                       "data": {"foo": "bar"}},
@@ -195,20 +197,38 @@ if 9 < int(current_time) < 19:
 
                 req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
                 print(req.status_code, req.reason)
-                time.sleep(2)
-                run('D:\\Q-mate\\robot\\Tests', variable=["ENVIRONMENT:production", "BROWSER:headlesschrome"],
-                    include=["login", "generictests"], exclude="debug", outputdir='D:\\Q-mate\\robot\\Results', splitlog=True,
-                    timestampoutputs=True)
 
+                # #Execute robot case in tread
+                # def run_test_scripts():
+                #     # run('/home/divaksh/rajerp/robot/Tests',
+                #     #     variable=["ENVIRONMENT:production", "BROWSER:headlesschrome"],
+                #     #     include=["generictests"], exclude=["debug"],
+                #     #     outputdir='/home/divaksh/rajerp/reports/test/',
+                #     #     splitlog=True, timestampoutputs=True)
+                #     # exec(open("D:\\Q-mate\\rajerp_notifications/generic.py").read())
+                #
+                #
+                # thread = threading.Thread(target=run_test_scripts)
+                # thread.start()
+                # print("Thread is Working")
                 # $response = sendMessage();
-                print("\n");
+                print("\n")
 
-            print('Strings do not match.')
-            # if there is a differece in old and new time update the file
-            update_old = open("D:\Q-mate\\rajerp_notifications\\rajerp_update.txt","w").write(update_new)
+                print('Strings do not match.')
+                # if there is a differece in old and new time update the file
+                update_old = open("D:\\Q-mate\\rajerp_notifications\\rajerp_update.txt", "w").write(update_new)
+
+                # Delay between update and robot run
+                time.sleep(1200)
+
+                run('D:\\Q-mate\\robot\\Tests',
+                    variable=["ENVIRONMENT:production", "BROWSER:headlesschrome"],
+                    include=["generictests"], exclude=["debug"],
+                    outputdir='D:\\Q-mate\\robot\\test\\',
+                    splitlog=True, timestampoutputs=True)
 
     else:
-        if not Path('D:\Q-mate\\rajerp_notifications\erpdown.log').is_file():
+        if not Path('D:\\Q-mate\\rajerp_notifications\\erpdown.log').is_file():
             header = {"Content-Type": "application/json; charset=utf-8",
                       "Authorization": "Basic NGM0ZmJhMWMtNGI4MC00MWE5LWEyZDYtNjk5YzI5Y2QyOWQz"}
 
@@ -223,10 +243,10 @@ if 9 < int(current_time) < 19:
             req = requests.post("https://onesignal.com/api/v1/notifications", headers=header, data=json.dumps(payload))
             print(req.status_code, req.reason)
             # $response = sendMessage();
-            print("\n");
+            print("\n")
             ERPdown = "RajERP is down"
             print(ERPdown)
-            open("D:\Q-mate\\rajerp_notifications\erpdown.log").write(ERPdown)
+            open("D:\\Q-mate\\rajerp_notifications\\erpdown.log").write(ERPdown)
 
         else:
             print('</br>')
@@ -234,5 +254,3 @@ if 9 < int(current_time) < 19:
 
 else:
     print('Service is offline')
-
-# Run service during the office hours only

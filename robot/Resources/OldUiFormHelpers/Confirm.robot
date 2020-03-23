@@ -1,7 +1,7 @@
 *** Settings ***
 Library           SeleniumLibrary
 Library           String
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}String.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}String.robot
 
 *** Keywords ***
 Confirm Type

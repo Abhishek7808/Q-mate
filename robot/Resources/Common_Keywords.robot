@@ -9,15 +9,17 @@ Library           RequestsLibrary
 Library           ${LIBRARY}/Notifications.py
 Library           ${LIBRARY}/Sheets.py
 Resource          ${PAGE OBJECTS}/SMM/CustomerLogin.robot
+Resource          ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}${/}BrowserControl.robot
-Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
+Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Field.robot
 Resource          ${RESOURCES}${/}Verify${/}Verify.robot
 Resource          ${SMM_DATA_FILES}${/}website.robot
 Resource          ${SMM_DATA_FILES}${/}locators.robot
 Resource          ${SMM_DATA_FILES}${/}alerts.robot
 Resource          ${DATA}${/}Login_Data.robot
-
+Library           ${LIBRARY}${/}Addendums.py
+Library           DateTime
 *** Variables ***
 
 #Overwrite default configuration
@@ -27,7 +29,8 @@ Resource          ${DATA}${/}Login_Data.robot
 #@{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
 ${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
-${hrmsAutomationData}  ${DATA}/HRMS_DATA/HrmsData.json
+${hrmsSalaryData}  ${DATA}/HRMS_DATA/HrmsData.json
+${accData}  ${DATA}/ACC_DATA/AccData.json
 ${urlsJson}   ${DATA}/URLs.json
 ${financialYear}
 *** Keywords ***
@@ -124,13 +127,51 @@ Set HRMS Variables
 End HRMS Testing
     close browser
 
-Begin HRMS Automation
-    Set HRMS Variables  ${hrmsAutomationData}
+Begin Salary Automation
+    Set HRMS Variables  ${hrmsSalaryData}
+    Set Salary Variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
-End HRMS Automation
-    Close Browser
+End Salary Automation
+    close browser
+
+Begin Salary Testing
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+    Set HRMS Variables  ${hrmsSalaryData}
+    Set Date Time Variables
+
+END Salary Testing
+    close browser
+
+Begin ACC Testing
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+    Set ACC Variables  ${accData}
+    Set Date Time Variables
+
+Set ACC Variables
+    [Arguments]  ${accData}
+    ${configurationData}  Load Json File  ${accData}
+    set global variable  ${configData}  ${configurationData}
+
+END ACC Testing
+    close browser
+
+Create Employee File
+    create file  ${EMPLOYEE_FILE}
+    #set global variable  ${employees}
+
+Set Date Time Variables
+    ${currentFinancialYear}  Common_Keywords.Get Current Financial Year        ###""" Returns Current Financial Year """
+    ${currentSalaryCycleName}  SalaryCycle.Get Current Salary Cycle            ###""" Returns Current Salary Cycle """
+    ${currentMonth}  Common_Keywords.Get Current Month                  ###""" Returns Current Month """
+    ${currentYear}  Common_Keywords.Get Current Year                    ###""" Returns Current Year """
+    set global variable  ${currentFinancialYear}
+    set global variable  ${currentSalaryCycleName}
+    set global variable  ${currentMonth}
+    set global variable  ${currentYear}
 
 Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
@@ -143,7 +184,6 @@ Read JSON File
     [Arguments]  ${JSON_File}
     ${JSON}=  Get file  ${JSON_File}
     return from keyword  ${JSON}
-    log
 
 Evaluate And Store JSON File
     [Arguments]  ${JSON}
@@ -184,29 +224,32 @@ Switch Tab
     [Documentation]  Switches the robot to the previous tab
     @{windowTitles}    get window handles
     ${windowToOpen}=    get from list    ${windowTitles}  -1
-    Select Window    ${windowToOpen}
+    Switch Window    ${windowToOpen}
 
 Set Test Data
     [Arguments]  ${dataJson}
     set test variable  ${datadictionary}  ${dataJson}
 
 Get Current Financial Year
+    [Documentation]  Returns current financial year.
     ${currentDate}  get current date
     ${dateDictionary}  split string  ${currentDate}  -
     ${currentMonth}  convert to integer  ${dateDictionary}[1]
     ${currentYear}  convert to integer  ${dateDictionary}[0]
     ${nextYear}  set variable  ${currentYear+1}
     ${previousYear}  set variable  ${currentYear-1}
-    run keyword if  ${currentMonth}>4  set test variable  ${financialYear}  ${currentYear}${nextYear}  ELSE  set test variable  ${financialYear}  ${previousYear}${currentYear}
+    run keyword if  ${currentMonth}>4  set global variable  ${financialYear}  ${currentYear}${nextYear}  ELSE  set global variable  ${financialYear}  ${previousYear}${currentYear}
     return from keyword  ${financialYear}
 
 Get Current Month
+    [Documentation]  Returns current month.
     ${currentDate}  get current date
     ${month}  convert date  ${currentDate}  result_format= %B
     ${month}  strip string  ${month}
     return from keyword  ${month}
 
 Get Current Year
+    [Documentation]
     ${currentDate}  get current date
     ${year}  convert date  ${currentDate}  result_format= %Y
     ${year}  strip string  ${year}
@@ -217,6 +260,7 @@ Get Current Day
     ${year}  convert date  ${currentDate}  result_format= %d
     ${year}  strip string  ${year}
     return from keyword  ${year}
+
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files

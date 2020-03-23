@@ -267,29 +267,66 @@ Open Division Page
 Add New Division
     [Arguments]  ${dataDictionary}
     Division.Click On Add New Button  ${dataDictionary}
-#Approve Salary Paybill    Division.Fill Division Form  ${dataDictionary}
+    Division.Fill Division Form  ${dataDictionary}
     Division.Save Details  ${dataDictionary}
+
+Search Division
+    [Arguments]  ${dataDictionary}  ${value}
+    Division.Input Division Name Into Search Box  ${dataDictionary}  ${value}
+    Division.Click Search Button  ${dataDictionary}
 
 Edit Division Details
     [Arguments]  ${dataDictionary}
     Division.Click On Edit Button  ${dataDictionary}
-    Division.Fill Division Form  ${dataDictionary}
+    Division.Fill Division Form  ${dataDictionary["Edit Division"]}
     Division.Save Details  ${dataDictionary}
 
 Verify Division Entry
     [Arguments]  ${dataDictionary}
     Division.Check For Division Entry In Division Table  ${dataDictionary}
 
+Delete Division
+    [Arguments]  ${dataDictionary}
+    Division.Delete Division Entry  ${dataDictionary}
+
 Verify Division Deletion
     [Arguments]  ${dataDictionary}
     Division.Check For Division Deletion In Division Table  ${dataDictionary}
 
-Verify Designation Entry
+Open Designation Page
+    Designation.Go To Designation Page
+
+Add New Designation
     [Arguments]  ${dataDictionary}
+    Designation.Click On Add New Designation Button  ${dataDictionary["Add Designation"]}
+    Designation.Fill Designation Form  ${dataDictionary}
+    Designation.Save Details  ${dataDictionary}
+
+Search Designation Name
+    [Arguments]  ${dataDictionary}  ${value}
+    Designation.Input Designation Name Into Search Box  ${dataDictionary}  ${value}
+    Designation.Click On Search Button  ${dataDictionary}
+
+Select Designation From The Table
+    [Arguments]  ${dataDictionary}  ${desingnationName}
+    Designation.Select Designation Checkbox  ${dataDictionary}  ${desingnationName}
+
+Edit Designation
+    [Arguments]  ${dataDictionary}
+    Designation.Click On Edit Button  ${dataDictionary}
+    Designation.Edit Designation Details  ${dataDictionary}
+    Designation.Save Details  ${dataDictionary}
+
+Delete Designation
+    [Arguments]  ${dataDictionary}
+    Designation.Delete Designation Entry  ${dataDictionary}
+
+Verify Designation Entry
+    [Arguments]  ${dataDictionary}  ${value}
     Common_Keywords.Show Maximum Entries on Page
     Designation.Search For Designation  ${dataDictionary}
     sleep  3s
-    Designation.Check For Designation Entry In Designation Table  ${dataDictionary}
+    Designation.Check For Designation Entry In Designation Table  ${value}
 
 Verify Designation Deletion
     [Arguments]  ${dataDictionary}
@@ -298,25 +335,68 @@ Verify Designation Deletion
     sleep  3s
     Designation.Check For Designation Deletion In Designation Table  ${dataDictionary}
 
-Verify Hospital Empanelment Entry
+Open Hospital Empanelment Page
+    HospitalEmpanelment.Go To Hospital Empanelment Page
+
+Add New Hospital Empanelment
     [Arguments]  ${dataDictionary}
+    HospitalEmpanelment.Click On Add New Button  ${dataDictionary}
+    HospitalEmpanelment.Fill Hospital Empanelment Details  ${dataDictionary}
+    HospitalEmpanelment.Save Details  ${dataDictionary}
+
+Search Hospital Empanelment
+    [Arguments]  ${value}
+    HospitalEmpanelment.Search For Hospital Empanelment  ${value}
+
+Edit Hospital Empanelment
+    [Arguments]  ${dataDictionary}
+    HospitalEmpanelment.Click On Edit Button  ${dataDictionary}
+    HospitalEmpanelment.Edit Hospital Empanelment Details  ${dataDictionary}
+    HospitalEmpanelment.Save Details  ${dataDictionary}
+
+Delete Hospital Empanelment
+    [Arguments]  ${value}
+    HospitalEmpanelment.Select Hospital Empanement  ${value}
+    HospitalEmpanelment.Delete Entry
+
+Verify Hospital Empanelment Entry
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    HospitalEmpanelment.Search For Hospital Empanelment  ${dataDictionary}
+    HospitalEmpanelment.Search For Hospital Empanelment  ${value}
     sleep  3s
-    HospitalEmpanelment.Check For Hospital Empanelment Entry In Hospital Empanelment Table  ${dataDictionary}
+    HospitalEmpanelment.Check For Hospital Empanelment Entry In Hospital Empanelment Table  ${value}
 
 Verify Hospital Empanelment Deletion
-    [Arguments]  ${dataDictionary}
-    Designation.Search For Hospital Empanelment  ${dataDictionary}
+    [Arguments]  ${value}
+    HospitalEmpanelment.Search For Hospital Empanelment  ${value}
     sleep  3s
-    Designation.Check For Hospital Empanelment Deletion In Hospital Empanelment Table  ${dataDictionary}
+    HospitalEmpanelment.Check For Hospital Empanelment Deletion In Hospital Empanelment Table  ${value}
+
+Open Qualification Page
+    Qualification.Go To Qualification Page
+
+Add New Qualification
+    [Arguments]  ${dataDictionary}
+    Qualification.Click On Add New Button  ${dataDictionary}
+    Qualification.Fill Qualification Details  ${dataDictionary}
+    Qualification.Save Details  ${dataDictionary}
+
+Edit Qualification
+    [Arguments]  ${dataDictionary}  ${qualificationName}
+    Qualification.Click On Edit Button  ${qualificationName}
+    Qualification.Edit Qualification Details  ${dataDictionary}
+    Qualification.Save Details  ${dataDictionary}
+
+Search Qualification
+    [Arguments]  ${value}
+    Qualification.Search For Qualification  ${value}
 
 Verify Qualification Entry
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${value}
+    Qualification.Search For Qualification  ${value}
+    sleep   3s
     Common_Keywords.Show Maximum Entries on Page
-    Qualification.Search For Qualification  ${dataDictionary}
-    sleep  3s
-    Qualification.Check For Qualification Entry In Qualification Table  ${dataDictionary}
+    Qualification.Check For Qualification Entry In Qualification Table  ${value}
 
 Verify Qualification Deletion
     [Arguments]  ${dataDictionary}
@@ -325,12 +405,31 @@ Verify Qualification Deletion
     sleep  3s
     Qualification.Check For Qualification Deletion In Qualification Table  ${dataDictionary}
 
-Verify Empanelled Officer Entry
+Open Empanelled Officer Page
+    EmpanelledOfficer.Go To Empanelled Officer Page
+
+Add New Empanelled Officer
     [Arguments]  ${dataDictionary}
+    EmpanelledOfficer.Click On Add New Button  ${dataDictionary}
+    EmpanelledOfficer.Fill Empanelled Officer Details  ${dataDictionary}
+    EmpanelledOfficer.Save Details  ${dataDictionary}
+
+Edit Empanelled Officer
+    [Arguments]  ${dataDictionary}  ${officerName}
+    EmpanelledOfficer.Click On Edit Button  ${officerName}
+    EmpanelledOfficer.Fill Empanelled Officer Details  ${dataDictionary["Edit Empanelled Officer"]}
+    EmpanelledOfficer.Save Details  ${dataDictionary}
+
+Search Empanelled Officer
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    EmpanelledOfficer.Search For Empanelled Officer  ${dataDictionary}
-    sleep  3s
-    EmpanelledOfficer.Check For Empanelled Officer Entry In Empanelled Officer Table  ${dataDictionary}
+    EmpanelledOfficer.Search For Empanelled Officer  ${value}
+
+Verify Empanelled Officer Entry
+    [Arguments]  ${value}
+    Common_Keywords.Show Maximum Entries on Page
+    EmpanelledOfficer.Search For Empanelled Officer  ${value}
+    EmpanelledOfficer.Check For Empanelled Officer Entry In Empanelled Officer Table  ${value}
 
 Verify Empanelled Officer Deletion
     [Arguments]  ${dataDictionary}
@@ -339,26 +438,74 @@ Verify Empanelled Officer Deletion
     sleep  3s
     EmpanelledOfficer.Check For Empanelled Officer Deletion In Empanelled Officer Table  ${dataDictionary}
 
-Verify Cadre Detail Entry
+Open Cadre Detail Page
+    CadreDetail.Go To Cadre Detail Page
+
+Add New Cadre
     [Arguments]  ${dataDictionary}
+    CadreDetail.Click On Add New Cadre Button  ${dataDictionary}
+    CadreDetail.Fill Cadre Details  ${dataDictionary}
+    CadreDetail.Save Details  ${dataDictionary}
+
+Edit Cadre Details
+    [Arguments]  ${dataDictionary}
+    CadreDetail.Click On Edit Button  ${dataDictionary}
+    CadreDetail.Fill Cadre Details  ${dataDictionary["Edit Cadre Detail"]}
+    CadreDetail.Save Details  ${dataDictionary}
+
+Delete Cadre Entry
+    [Arguments]  ${dataDictionary}  ${value}
+    CadreDetail.Select Cadre  ${value}
+    CadreDetail.Delete Cadre  ${dataDictionary}
+
+Search For Cadre Entry
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    CadreDetail.Search For Cadre Detail  ${dataDictionary}
+    CadreDetail.Search For Cadre Detail  ${value}
+
+Verify Cadre Detail Entry
+    [Arguments]  ${value}
+    HRMS_Keywords.Search For Cadre Entry  ${value}
     sleep  3s
-    CadreDetail.Check For Cadre Detail Entry In Cadre Detail Table  ${dataDictionary}
+    CadreDetail.Check For Cadre Detail Entry In Cadre Detail Table  ${value}
 
 Verify Cadre Detail Deletion
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    CadreDetail.Search For Cadre Detail  ${dataDictionary}
+    CadreDetail.Search For Cadre Detail  ${value}
     sleep  3s
-    CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${dataDictionary}
+    CadreDetail.Check For Cadre Detail Deletion In Cadre Detail Table  ${value}
+
+Open Payment Type Page
+    PaymentType.Go To Payment Type Page
+
+Add Payment Type
+    [Arguments]  ${dataDictionary}
+    PaymentType.Click On Add Payment Type Button  ${dataDictionary}
+    PaymentType.Fill Payment Type Details  ${dataDictionary}
+    PaymentType.Save Details  ${dataDictionary}
+
+Search Payment Type
+    [Arguments]  ${value}
+    Common_Keywords.Show Maximum Entries on Page
+    PaymentType.Search For Payment Type  ${value}
+
+Edit Payment Type
+    [Arguments]  ${dataDictionary}
+    PaymentType.Click On Edit Button  ${dataDictionary}
+    PaymentType.Fill Payment Type Details  ${dataDictionary["Edit Payment Type"]}
+    PaymentType.Save Details  ${dataDictionary}
+
+Delete Payment Type Entry
+    [Arguments]  ${dataDictionary}  ${value}
+    PaymentType.Select Payment Type  ${value}
+    PaymentType.Delete Payment Type  ${dataDictionary}
 
 Verify Payment Type Entry
-    [Arguments]  ${dataDictionary}
-    Common_Keywords.Show Maximum Entries on Page
-    PaymentType.Search For Payment Type  ${dataDictionary}
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Payment Type  ${value}
     sleep  3s
-    PaymentType.Check For Payment Type Entry In Payment Type Table  ${dataDictionary}
+    PaymentType.Check For Payment Type Entry In Payment Type Table  ${value}
 
 Verify Payment Type Deletion
     [Arguments]  ${dataDictionary}
@@ -367,12 +514,31 @@ Verify Payment Type Deletion
     sleep  3s
     PaymentType.Check For Payment Type Deletion In Payment Type Table  ${dataDictionary}
 
-Verify Department Entry
+Open Department Page
+    Department.Go To Department Page
+
+Add New Department
     [Arguments]  ${dataDictionary}
+    Department.Click On Add New Department Button  ${dataDictionary}
+    Department.Fill Department Details  ${dataDictionary}
+    Department.Save Details  ${dataDictionary}
+
+Edit Department Entry
+    [Arguments]  ${dataDictionary}
+    Department.Click On Edit Button  ${dataDictionary}
+    Department.Fill Department Details  ${dataDictionary["Edit Department"]}
+    Department.Save Details  ${dataDictionary}
+
+Search Department Entry
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    Department.Search For Department  ${dataDictionary}
+    Department.Search For Department  ${value}
+
+Verify Department Entry
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Department Entry  ${value}
     sleep  3s
-    Department.Check For Department Entry In Department Table  ${dataDictionary}
+    Department.Check For Department Entry In Department Table  ${value}
 
 Verify Department Deletion
     [Arguments]  ${dataDictionary}
@@ -381,19 +547,37 @@ Verify Department Deletion
     sleep  3s
     Department.Check For Department Deletion In Department Table  ${dataDictionary}
 
-Verify Section Entry
+Open Section Page
+    Section.Go To Section Page
+
+Add New Section
     [Arguments]  ${dataDictionary}
+    Section.Click On Add New Button  ${dataDictionary}
+    Section.Fill Section Details  ${dataDictionary}
+    Section.Save Details  ${dataDictionary}
+
+Edit Section Details
+    [Arguments]  ${dataDictionary}
+    Section.Click On Edit Button  ${dataDictionary}
+    Section.Fill Section Details  ${dataDictionary["Edit Section"]}
+    Section.Save Details  ${dataDictionary}
+
+Search Section Entry
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    Section.Search For Section  ${dataDictionary}
+    Section.Search For Section  ${value}
+
+Verify Section Entry
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Section Entry  ${value}
     sleep  3s
-    Section.Check For Section Entry In Section Table  ${dataDictionary}
+    Section.Check For Section Entry In Section Table  ${value}
 
 Verify Section Deletion
-    [Arguments]  ${dataDictionary}
-    Common_Keywords.Show Maximum Entries on Page
-    Section.Search For Section  ${dataDictionary}
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Section Entry  ${value}
     sleep  3s
-    Section.Check For Section Deletion In Section Table  ${dataDictionary}
+    Section.Check For Section Deletion In Section Table  ${value}
 
 Verify TA/DA grade Entry
     [Arguments]  ${dataDictionary}
@@ -449,12 +633,12 @@ Open Manual Attendance Page
 
 Set Mark Attendance Criteria
     [Documentation]  Applies filters for listing of employees.
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${payGroup}=select all
     ManualAttendance.Click On Mark Attendance Button
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     HRMS_Keywords.Select Employee Location  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  Select all
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
     HRMS_Keywords.Select Is Gazetted  ${dataDictionary}
@@ -462,12 +646,13 @@ Set Mark Attendance Criteria
     sleep  2s
 
 Apply Filters For Marked Attendance
+    [Arguments]  ${payGroup}=select all
     ManualAttendance.Open Filters
     sleep  2s
     HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary["Filters"]}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  Select all
+    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  ${payGroup}
     HRMS_Keywords.Select Employee Location  ${dataDictionary["Filters"]}
     ManualAttendance.Select Status  Submitted
     ManualAttendance.Apply Filters
@@ -481,26 +666,27 @@ Submit Marked Attendance
     ManualAttendance.Click On Ok Button
 
 Verify Marked Attendance
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${payGroup}
     Common_Keywords.Show Maximum Entries On Page
     sleep  3s
-    ManualAttendance.Click On Actions Button  Submitted
+    ManualAttendance.Click On Actions Button  Submitted  ${payGroup}
     ManualAttendance.Verify Attendance
 
 Approve Marked Attendance
+    [Arguments]  ${payGroup}
     ManualAttendance.Open Filters
     sleep  2s
     ManualAttendance.Select Status  Verified
     ManualAttendance.Apply Filters
     Common_Keywords.Show Maximum Entries On Page
-    ManualAttendance.Click On Actions Button  Verified
+    ManualAttendance.Click On Actions Button  Verified  ${payGroup}
     ManualAttendance.Choose Approve
 
 Open Salary Detail Page
     SalaryDetail.Go To Salary Detail Page
 
 Process Salary
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${payGroup}=Select One
     SalaryDetail.Click On Action Button
     sleep  4s
     SalaryDetail.Click On Process
@@ -510,15 +696,22 @@ Process Salary
     SalaryDetail.Select Employee Location  ${dataDictionary}
     HRMS_Keywords.Select Designation  ${dataDictionary}
     HRMS_Keywords.Select Division  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  -Select One-
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     SalaryDetail.Click On Process button
     SalaryDetail.Select All Employees
     SalaryDetail.Process Salary
     #Common_Keywords.Switch Tab
 
-Lock Salary
+#Open Salary Slip
+#    HRMS_Keywords.Search Employee
+#    SalaryDetail.Click On Actions Button
+#    SalaryDetail.Open Salary Slip
+#    switch window  NEW
+#    SalaryDetail.Verify Salary Slip
+
+
+View Salary Slip
     [Arguments]  ${dataDictionary}
-    #Common_Keywords.Switch Tab
     Open Salary Detail Page
     SalaryDetail.Open Filters
     sleep  2s
@@ -526,7 +719,33 @@ Lock Salary
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary}
     SalaryDetail.Select Employee Location  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  -Select One-
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
+    HRMS_Keywords.Select Status  Withheld
+    SalaryDetail.Apply Filters
+    HRMS_Keywords.Search Employee
+    SalaryDetail.Click On Actions Button
+    SalaryDetail.Open Salary Slip
+    switch window  NEW
+    SalaryDetail.Verify Salary Slip
+    #Switch Window  OLD
+    #Common_keywords.Switch Tab
+
+Search Employee
+    SalaryDetail.Enter Employee Code In Search Box
+    SalaryDetail.Click On Search Button
+
+
+Lock Salary
+    [Arguments]  ${dataDictionary}  ${payGroup}=Select One
+    #Common_Keywords.Switch Tab
+    #Open Salary Detail Page
+    SalaryDetail.Open Filters
+    sleep  2s
+    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+    sleep  2s
+    HRMS_Keywords.Select Month  ${dataDictionary}
+    SalaryDetail.Select Employee Location  ${dataDictionary}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     HRMS_Keywords.Select Status  Withheld
     SalaryDetail.Apply Filters
     Common_Keywords.Show Maximum Entries On Page
@@ -545,10 +764,10 @@ Add Salary Paybill
     SalaryPaybill.Submit Details
 
 Select Financial Year
-    [Documentation]  Selects Financial Year in Mark Attendance Filter.
+    [Documentation]  Selects Financial Year in Mark Attendance Filter. Fills current financial year if not specified by user.
     [Arguments]  ${dataDictionary}
-    ${currentFinancialYear}  Common_Keywords.Get Current Financial Year
-    ${financialYear}  set variable if  ${FINANCIALYEAR1} == None  ${currentFinancialYear}  ${FINANCIALYEAR1}          ###""" If User does not gives Financial Year then current financial year will be selected"""
+    #${currentFinancialYear}  Common_Keywords.Get Current Financial Year
+    ${financialYear}  set variable if  ${SALARYFINANCIALYEAR} == None  ${currentFinancialYear}  ${SALARYFINANCIALYEAR}          ###""" If User does not gives Financial Year then current financial year will be selected"""
     set global variable  ${financialYear}
     select from list by value  ${dataDictionary["Financial_Year"]["Locator"]}  ${financialYear}
     sleep  2s
@@ -556,7 +775,7 @@ Select Financial Year
 Select Month
     [Documentation]  Selects Salary Cycle Month in Mark Attendance Filter
     [Arguments]  ${dataDictionary}
-    ${salaryCycleName}  run keyword if  '${SALARYCYCLENAME}' == 'None'  SalaryCycle.Get Current Salary Cycle  ELSE  set variable  ${SALARYCYCLENAME}
+    ${salaryCycleName}  set variable if  '${SALARYCYCLE}' == 'None'  ${currentSalaryCycleName}  ${SALARYCYCLE}
     set global variable  ${salaryCycleName}
     FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
 #    run keyword if  ${SALARYCYCLEID} != None  select from list by value  ${dataDictionary["Month"]["Locator"]}  ${SALARYCYCLEID}        ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
@@ -593,31 +812,31 @@ Select Is Gazetted
 Approve Salary Paybill
     [Arguments]  ${dataDictionary}
     SalaryPaybill.Go To Approve Salary Paybill Page
-    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
+    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Pending
     SalaryPaybill.Get Latest Paybill Number
     SalaryPaybill.Search Paybill
     sleep  3s
     SalaryPaybill.Verify Paybill
     sleep  5s
     reload page
-    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
+    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Verified and Forwarded for Approval
     sleep  5s
     SalaryPaybill.Approve Paybill
-    #SalaryDetail.Select Status  Withheld
+    #SalaryDetail.Select Status  WithheldEdit Division Details
 
 Set Filters For Paybill
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${dataDictionary}  ${status}
     SalaryPaybill.Open Filters
     HRMS_Keywords.Select Month  ${dataDictionary["Filter"]}
     HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
     HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
-    SalaryPaybill.Select Status  Pending
+    SalaryPaybill.Select Status  ${status}
     SalaryPaybill.Apply Filters
 
 Select Multi Paygroups
     [Arguments]  ${Locator}
     click element  ${Locator}
-    FOR  ${item}  In  @{DISBURSEMENT_PAYGROUPS}
+    FOR  ${item}  IN  @{DISBURSEMENT_PAYGROUPS}
     \   click element  //label[contains(text(),'${item}')]
 
 Select Multi Paybills
@@ -667,8 +886,56 @@ Approve Salary Disbursement
     [Arguments]  ${dataDictionary}
     SalaryDisbursment.Go To Salary Disbursment Page
     SalaryDisbursment.Open Filters
-    SalaryDisbursment.Select Filters
+    SalaryDisbursment.Select Filters  Pending
     SalaryDisbursment.Apply Filters
     sleep  4s
     SalaryDisbursment.Verify Disbursement
+    SalaryDisbursment.Open Filters
+    SalaryDisbursment.Select Filters  Verified
+    SalaryDisbursment.Apply Filters
+    sleep  4s
     SalaryDisbursment.Approve Disbursement
+
+Create Voucher
+    [Arguments]  ${dataDictionary}
+    SalaryDisbursment.Open Filters
+    SalaryDisbursment.Select Filters  Approved
+    #SalaryDisbursment.Select Status  Approved
+    SalaryDisbursment.Apply Filters
+    sleep  3s
+    SalaryDisbursment.Click On Actions Button
+    sleep  3s
+    SalaryDisbursment.Select Voucher
+    SalaryDisbursment.Save Voucher
+
+
+#Set Mark Attendance Criteria For One Employee
+#    [Arguments]  ${dataDictionary}
+#    ManualAttendance.Click On Mark Attendance Button
+#    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+#    HRMS_Keywords.Select Month  ${dataDictionary}
+#    HRMS_Keywords.Select Employee Location  ${dataDictionary}
+#    run keyword if  ${TEST_PAYGROUP} == None  HRMS_Keywords.Select Pay Group  ${dataDictionary}  select all  ELSE  HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${TEST_PAYGROUP}
+#    HRMS_Keywords.Select Pay Group  ${dataDictionary}
+#    HRMS_Keywords.Select Designation  ${dataDictionary}
+#    HRMS_Keywords.Select Division  ${dataDictionary}
+#    HRMS_Keywords.Select Is Gazetted  ${dataDictionary}
+#    ManualAttendance.Apply Criteria
+#    sleep  2s
+
+Mark Attendance Of One Employee
+    [Arguments]  ${dataDictionary}
+    ManualAttendance.Select First Employee
+    ManualAttendance.Load Employee Code
+    ManualAttendance.Click On Submit Button
+    ManualAttendance.Verify Submit Popup
+    ManualAttendance.Click On Ok Button
+
+Mark Attendance Of Given Employee
+    [Arguments]  ${EmployeeCode}
+    ManualAttendance.Search Employee  ${EmployeeCode}
+    ManualAttendance.Select Given Employee  ${EmployeeCode}
+    ManualAttendance.Load Employee Code
+    ManualAttendance.Click On Submit Button
+    ManualAttendance.Verify Submit Popup
+    ManualAttendance.Click On Ok Button

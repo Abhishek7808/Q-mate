@@ -24,6 +24,8 @@ Fill Salary Paybill Form
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     SalaryPaybill.Unselect Employee Location
+#    ${PAYGROUP}  set variable if  ${TEST_PAYGROUP} == None  ${PAYGROUP}  ${TEST_PAYGROUP}
+#    set global variable  ${PAYGROUP}
     HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${PAYGROUP}
     sleep  5s
     #HRMS_Keywords.Select Employee Location  ${dataDictionary}
@@ -42,7 +44,7 @@ Submit Details
 
 Open Filters
     ${status}  run keyword and return status  wait until page contains  Search Filter
-    run keyword if  ${status} == ${FALSE}  Open Filters
+    run keyword if  ${status} == ${FALSE}  SalaryPaybill.Open Filters
     click element  ${paybillFilters}
 
 Open Approve Paybill Filters
@@ -88,8 +90,10 @@ Verify Paybill
     run keyword if  ${status} == ${FALSE}  SalaryPaybill.Verify Paybill
     click element  ${verifyText}
     sleep  3s
-    wait until page contains  Do you really want to Verify and Forward for Approval selected record(s) ?
-    click element  //button[contains(text(),'OK')]
+    #wait until page contains  Do you really want to Verify and Forward for Approval selected record(s) ?
+    click element  //input[@id='CheckSchedule']
+    input text  //textarea[@id='Remarks']  xyz
+    click element  //input[@id='btnSave']
 
 Approve Paybill
     #click element  //td[contains(text(),'Verified')]/following-sibling::${approvalButton}
@@ -98,7 +102,7 @@ Approve Paybill
     click element  ${approveText}
     sleep  3s
     click element  //input[@id='CheckSchedule']
-    input text  //textarea[@id='Remarks']  syska LED, LIGHT years ahead
+    input text  //textarea[@id='Remarks']  xyz
     #wait until page contains  Do you really want to Forward For Approval selected record(s) ?
     click element  //input[@id='btnSave']
 

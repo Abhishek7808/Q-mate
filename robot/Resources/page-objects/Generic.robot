@@ -22,7 +22,7 @@ Perform All Critical Generic Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
     #create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
-    \   Open ERP Page  ${url}
+    \   Run Keyword And Continue On Failure  Open ERP Page  ${url}
     \   ${result}  Check Page Error
     \   run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
     #Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
@@ -53,16 +53,18 @@ Get Urls List Of Fatal Errors
 Open ERP Page
     [Documentation]  Opens the ERP page of given url
     [Arguments]  ${pageUrl}
-    [Timeout]  120s
+    [Timeout]  120
     ${userType}  run keyword if  '${ENVIRONMENT}' == 'demo' or '${ENVIRONMENT}' == 'test'  set variable  admin  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  admin_live
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
+    #wait until page contains element  //a[@class='fa fa-home fa-3x']  20s
 
 Open ERP Page Without Permission
     [Documentation]  Opens the ERP page with citizen credentials
     [Arguments]  ${pageUrl}
-    [Timeout]  120s
+    [Timeout]  120
     ${userType}  run keyword if  '${ENVIRONMENT}' == 'demo' or '${ENVIRONMENT}' == 'test'  set variable  citizen  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  citizen_live
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
+    #wait until page contains element  //a[@class='fa fa-home fa-3x']  20s
 
 Check Page Error
     [Documentation]  Checks for the different errors and return error code
@@ -95,14 +97,15 @@ Perform Permission Tests On Urls
     [Arguments]  ${moduleName}  @{moduleUrls}
     #create file  ${ERRORFILE}
     :FOR  ${url}  IN  @{moduleUrls}
-    \   Open ERP Page Without Permission  ${url}
+    \   Run Keyword And Continue On Failure  Open ERP Page Without Permission  ${url}
     \   ${errorCheck}  Check Error Occurred  #if page has any other error do not report it
     \   ${result}  run keyword if  ${errorCheck} == None   Check Permissions
     \   run keyword if  ${result} == 4   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
     #Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
-
 Check Permissions
     [Documentation]  Checks that user have permission to view the page or not
-    ${permissionStatus}  run keyword and return status  page should contain  Sorry! You are not authorized to view this page
-    return from keyword if  '${permissionStatus}' == '${False}'  4
+    ${permissionStatus1}  run keyword and return status  page should contain  not authorized            ###"""Checks that page contains text "not authorized"
+    ${permissionStatus2}  run keyword if  '${permissionStatus1}' == '${False}'  run keyword and return status  page should contain  not Authorized            ###"""Checks that page contains text "not Authorized"
+    ${status}  set variable if  '${permissionStatus1}' == '${False}' and '${permissionStatus2}' == '${False}'  4
+    return from keyword  ${status}

@@ -1,5 +1,5 @@
 #*** Settings ***
-#Resource          ${RESOURCES}${/}SMMFormHelpers${/}Field.robot
+#Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Field.robot
 
 *** Variables ***
 ${PLANTLIST_LINK}                    SMM/Customer/PlantList
