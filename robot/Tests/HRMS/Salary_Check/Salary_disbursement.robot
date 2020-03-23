@@ -32,8 +32,9 @@ Admin should able to mark attendance of the employees
     HRMS_Keywords.Open Manual Attendance Page
     HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}  ${PAYGROUP}
     HRMS_Keywords.Mark Attendance Of One Employee  ${dataDictionary}
-    HRMS_Keywords.Apply Filters For Marked Attendance  ${PAYGROUP}
+    HRMS_Keywords.Apply Filters For Marked Attendance  Submitted  ${PAYGROUP}
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}  ${PAYGROUP}
+    HRMS_Keywords.Apply Filters For Marked Attendance  Verified  ${PAYGROUP}
     HRMS_Keywords.Approve Marked Attendance  ${PAYGROUP}
 
 Admin should able to process and lock his salary of the employee

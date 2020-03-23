@@ -84,6 +84,8 @@ Click On Ok Button
 Open Filters
     wait until element is enabled  ${openFilters}  50s
     click element  ${openFilters}
+    ${status}  run keyword and return status  wait until element is enabled  //div[@class='SearchFilterHeading']
+    run keyword if  ${status} == ${FALSE}  ManualAttendance.Open Filters
 
 Select Financial Year Filter
     select from list by value  ${financialYearFilter}  ${financialYear}

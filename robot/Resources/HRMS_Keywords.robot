@@ -646,7 +646,7 @@ Set Mark Attendance Criteria
     sleep  2s
 
 Apply Filters For Marked Attendance
-    [Arguments]  ${payGroup}=select all
+    [Arguments]  ${status}  ${payGroup}=select all
     ManualAttendance.Open Filters
     sleep  2s
     HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
@@ -654,7 +654,7 @@ Apply Filters For Marked Attendance
     HRMS_Keywords.Select Month  ${dataDictionary["Filters"]}
     HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  ${payGroup}
     HRMS_Keywords.Select Employee Location  ${dataDictionary["Filters"]}
-    ManualAttendance.Select Status  Submitted
+    ManualAttendance.Select Status  ${status}
     ManualAttendance.Apply Filters
     sleep  2s
 
@@ -674,10 +674,10 @@ Verify Marked Attendance
 
 Approve Marked Attendance
     [Arguments]  ${payGroup}
-    ManualAttendance.Open Filters
-    sleep  2s
-    ManualAttendance.Select Status  Verified
-    ManualAttendance.Apply Filters
+#    ManualAttendance.Open Filters
+#    sleep  2s
+#    ManualAttendance.Select Status  Verified
+#    ManualAttendance.Apply Filters
     Common_Keywords.Show Maximum Entries On Page
     ManualAttendance.Click On Actions Button  Verified  ${payGroup}
     ManualAttendance.Choose Approve
@@ -733,7 +733,6 @@ View Salary Slip
 Search Employee
     SalaryDetail.Enter Employee Code In Search Box
     SalaryDetail.Click On Search Button
-
 
 Lock Salary
     [Arguments]  ${dataDictionary}  ${payGroup}=Select One

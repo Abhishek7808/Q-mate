@@ -44,6 +44,7 @@ Open Filters
 
 Apply Filters
     click element  ${applyFilterButton}
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  150
 
 Select Employee
     wait until element is not visible  //div[@id='LoadingImage']//div//img  300

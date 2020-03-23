@@ -169,7 +169,7 @@
             "Locator": "//input[@id='PaymentDate']"
         },
         "Payment_Location": {
-            "Value": "--Select One--",
+            "Value": "Bharatpur Zone",
             "Type": "SearchSelectDropdown",
             "Locator": {
               "Locator1": "//a[@class='select2-choice']//div//b",

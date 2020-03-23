@@ -114,5 +114,6 @@ Select Voucher
     click element  //span[contains(text(),'Voucher Not Generated')]/../following-sibling::td//a[contains(text(),'Voucher')]
 
 Save Voucher
+    wait until element is not visible  //div[@id='divModel']//div//img  150s
     wait until element is enabled  //input[@id='btnSave']  15s
     click element  //input[@id='btnSave']

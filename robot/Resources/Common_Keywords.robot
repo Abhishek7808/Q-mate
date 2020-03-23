@@ -129,7 +129,7 @@ End HRMS Testing
 
 Begin Salary Automation
     Set HRMS Variables  ${hrmsSalaryData}
-    Set Salary Variables
+    Set Date Time Variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
