@@ -261,6 +261,10 @@ Get Current Day
     ${year}  strip string  ${year}
     return from keyword  ${year}
 
+Update Error Sheet
+    #Update LandingPage Error
+    run keyword if any tests failed  Update LandingPage Error
+
 #Begin Disbursement Testing
 #    Set Paths
 #    Remove Files
