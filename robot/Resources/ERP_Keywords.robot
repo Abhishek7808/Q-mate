@@ -5,7 +5,7 @@ Resource  ${PAGE OBJECTS}/Generic.robot
 Resource  ${PAGE OBJECTS}/Login.robot
 Resource  ${PAGE OBJECTS}/TopNavigation.robot
 Resource  ${PAGE OBJECTS}/ModuleNavigation.robot
-
+Resource  ${PAGE OBJECTS}/Dashboard.robot
 *** Keywords ***
 Open the Login Page
     [Documentation]  Opens the login page and verified it is loaded or not
@@ -104,3 +104,10 @@ Run Generic Tests From Other User
     set global variable  @{moduleNames}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
+
+Open Dashboard
+    Dashboard.Go To Dashboard
+
+Verify Dashboard Is Loaded
+    Dashboard.Check For Dashboard Text On The Page
+    Dashboard.Check For Page URL

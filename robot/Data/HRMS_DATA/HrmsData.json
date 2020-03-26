@@ -1431,5 +1431,41 @@
         }
       }
     }
+  },
+  "Leave_Encashment_Admin": {
+      "URL": "HRM/LeaveEncashment?q=8U+3wF0Q7l7KAX/XmkJC7w==",
+      "Employee_Name": {
+          "Type": "Text-Value",
+          "Locator": "//input[@id='EMPLOYEE']"
+      },
+      "Leave_Type": {
+          "Value": "Privilege Leave",
+          "Type": "Dropdown",
+          "Locator": "//select[@id='ATTENDANCE_TYPE_ID']"
+      },
+      "Leave_Days": {
+          "Value": "10",
+          "Type": "Text-Value",
+          "Locator": "//input[@id='LEAVE_DAYS_APPLIED']"
+      }
+  },
+  "Encash_Proposal": {
+      "URL": "HRM/LeaveEncashmentProposal",
+      "Location": {
+          "Value": "",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "//div[@id='s2id_UnitId']",
+            "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
+      "Pay_Group": {
+          "Value": "",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "//div[@id='s2id_PbGroupID']",
+            "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      }
   }
 }

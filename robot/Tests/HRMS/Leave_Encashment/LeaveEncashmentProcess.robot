@@ -1,0 +1,40 @@
+*** Settings ***
+Documentation    Suite description
+Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}${/}Common_Keywords.robot
+Resource          ${RESOURCES}/ERP_Keywords.robot
+Resource          ${RESOURCES}/HRMS_Keywords.robot
+#Resource          ${RESOURCES}/Leave_encash.robot
+
+
+*** Variables ***
+${EMPLOYEEID}  jvvnl.28981
+
+
+*** Test Cases ***
+Employee should able to apply leaves
+    [Tags]    LeaveEncash
+    HRMS_Keywords.Open Manage User Page
+    HRMS_Keywords.Impersonate into employee ID  ${EMPLOYEEID}
+    HRMS_Keywords.Encash Privilege Leave
+
+Admin should able to apply leave encashment
+    [Documentation]  Fills leave encashment form from admin side.
+    Common_Keywords.Set Test Data  ${configData["Leave_Encashment_Admin"]}
+    HRMS_Keywords.Open Leave Encashment Page
+    HRMS_Keywords.Add Leave Encashment  ${dataDictionary}  ${EMPLOYEENAME}
+    HRMS_Keywords.Open Leave Encashment Page
+    HRMS_Keywords.Verify Leave Encashment Entry
+
+Admin should able to add leave encashment proposal
+    [Documentation]  Fills leave encashment proposal details
+    Common_Keywords.Set Test Data  ${configData["Encash_Proposal"]}
+    HRMS_Keywords.Open Leave Encashment Proposal Page
+    HRMS_Keywords.Add Leave Encashment Proposal  ${dataDictionary}  ${PAYGROUP}  ${EMPLOYEELOCATION}
+
+Admin should able to approve leave encashment proposal
+    [Documentation]  Approves proposal and issues order.
+    HRMS_Keywords.Open Leave Encashment Proposal Approval Page
+    HRMS_Keywords.Select Leave Encashment Filters  ${EMPLOYEELOATION}
+    HRMS_Keywords.Issue Order For Leave Encashment Proposal
+

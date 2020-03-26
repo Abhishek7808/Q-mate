@@ -25,7 +25,10 @@ Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDisbursment.robot
-
+Resource  ${PAGE OBJECTS}/HRMS/ManageUser.robot
+Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
+Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentAdmin.robot
+Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPropsal.robot
 *** Variables ***
 ${employeeStatus}  Status
 
@@ -938,3 +941,61 @@ Mark Attendance Of Given Employee
     ManualAttendance.Click On Submit Button
     ManualAttendance.Verify Submit Popup
     ManualAttendance.Click On Ok Button
+
+Open Manage User Page
+    LeaveEncashment.Go To Manage User Page
+
+Impersonate into employee ID
+    [Arguments]  ${EmployeeCode}
+    ManageUser.Search Employee  ${EmployeeCode}
+#    Leave_encash.Open Filters
+#    Leave_encash.Apply Filters
+    #Leave_encash.Select Employee
+    ManageUser.Impersonate Employee
+
+Encash Privilege Leave
+    LeaveEncashmentEmployee.Go To Employee Privilege Leave Encashment Page
+    LeaveEncashmentEmployee.Click On Add Leave Encashment Button
+    LeaveEncashmentEmployee.Submit Leave Encashment Application
+
+Open Leave Encashment Page
+    LeaveEncashmentAdmin.Go To Leave Encashment Page
+
+Add Leave Encashment
+    [Arguments]  ${dataDictionary}  ${EMPLOYEENAME}
+    LeaveEncashmentAdmin.Click On Add Leave Encashment
+    LeaveEncashmentAdmin.Fill Leave Encashment Details  ${dataDictionary}  ${EMPLOYEENAME}
+    LeaveEncashmentAdmin.Submit Details
+
+Verify Leave Encashment Entry
+    [Arguments]  ${EMPLOYEENAME}
+    LeaveEncashmentAdmin.Verify Leave Encashment Entry In Table  ${EMPLOYEENAME}
+
+Open Leave Encashment Proposal Page
+    LeaveEncashmentPropsal.Go To Leave Encashment Proposal Page
+
+Add Leave Encashment Proposal
+    [Arguments]  ${dataDictionary}  ${PAYGROUP}  ${EMPLOYEELOCATION}
+    LeaveEncashmentPropsal.Click On Add Button
+    LeaveEncashmentPropsal.Fill Proposal Details  ${dataDictionary}  ${PAYGROUP}  ${EMPLOYEELOCATION}
+    LeaveEncashmentPropsal.Submit Details
+
+Open Leave Encashment Proposal Approval Page
+    ApproveLeaveEncashmentProposal.Go To Leave Encashment Proposal Approval Page
+
+Select Leave Encashment Filters
+    [Arguments]  ${EMPLOYEELOATION}
+    ApproveLeaveEncashmentProposal.Open Filters
+    ApproveLeaveEncashmentProposal.Select Employee Location  ${EMPLOYEELOATION}
+    ApproveLeaveEncashmentProposal.Apply Filters
+
+View Leave Encashment Proposal
+    [Arguments]  ${EMPLOYEENAME}
+    ApproveLeaveEncashmentProposal.Search Employee  ${EMPLOYEENAME}
+    ApproveLeaveEncashmentProposal.Click On View Button  ${EMPLOYEENAME}
+
+Issue Order For Leave Encashment Proposal
+    ApproveLeaveEncashmentProposal.Click On Action Button
+    ApproveLeaveEncashmentProposal.Approve Proposal
+    ApproveLeaveEncashmentProposal.Click On Action Button
+    ApproveLeaveEncashmentProposal.Issue Order
