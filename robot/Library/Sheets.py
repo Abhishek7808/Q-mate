@@ -10,7 +10,7 @@ import Addendums
 
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('robot/Data/Client_secret.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('/home/divaksh/rajerp/robot/Data/Client_secret.json', scope)
 client = gspread.authorize(creds)
 
 # Find a workbook by name and open the first sheet
