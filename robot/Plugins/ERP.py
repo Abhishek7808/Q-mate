@@ -43,9 +43,12 @@ class ERP(LibraryComponent):
         except NoSuchElementException:
             try:
                 # special precaution for the production login page, if gets redirected to sso page.
-                self.driver.find_element_by_id("cpBody_btn_LDAPLogin")
-                logger.console(self.driver.find_element_by_id("cpBody_btn_LDAPLogin"))
-                is_sso_page = True
+                current_url = self.driver.current_url
+                if "signin" in current_url:
+                    is_sso_page = True
+                #self.driver.find_element_by_id("cpBody_btn_LDAPLogin")
+                #logger.console(self.driver.find_element_by_id("cpBody_btn_LDAPLogin"))
+
             except NoSuchElementException:
                 pass
 
@@ -53,6 +56,7 @@ class ERP(LibraryComponent):
             login_user(user_type)
             self.driver.get(url)
         elif is_sso_page:
+            #self.go_to_erp_page(self, url, user_type=BuiltIn().get_variable_value("${LOGIN}"))
             self.driver.get(BuiltIn().get_variable_value("${LOGIN_URL}"))
             login_user(user_type)
             self.driver.get(url)

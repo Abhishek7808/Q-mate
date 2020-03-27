@@ -262,8 +262,8 @@ Get Current Day
     return from keyword  ${year}
 
 Update Error Sheet
-    #Update LandingPage Error
-    run keyword if any tests failed  Update LandingPage Error
+    Update LandingPage Error
+    #run keyword if any tests failed  Update LandingPage Error
 
 #Begin Disbursement Testing
 #    Set Paths

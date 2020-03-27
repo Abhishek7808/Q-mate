@@ -108,6 +108,10 @@ Run Generic Tests From Other User
 Open Dashboard
     Dashboard.Go To Dashboard
 
+Verify Landing Page Is Loaded
+    ${status}  run keyword and return status  ERP_Keywords.Verify Dashboard Is Loaded
+    run keyword if  ${status} == ${False}  Common_Keywords.Update Error Sheet
+
 Verify Dashboard Is Loaded
     Dashboard.Check For Dashboard Text On The Page
     Dashboard.Check For Page URL
