@@ -18,6 +18,7 @@ Attempt Login
     ${username}  get from dictionary  ${Credentials}  username
     ${password}  get from dictionary  ${Credentials}  password
     Login.Fill Username  ${username}
+    sleep  1s
     Login.Fill Password  ${password}
     Login.Submit The Form
 

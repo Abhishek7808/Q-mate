@@ -1,6 +1,6 @@
 *** Keywords ***
 Go To Dashboard
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/Dashboard
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/Dashboard  admin_live
 
 Check For Dashboard Text On The Page
     page should contain element  //span[contains(text(),'Dashboard')]

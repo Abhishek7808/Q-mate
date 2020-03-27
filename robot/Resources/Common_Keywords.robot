@@ -261,6 +261,10 @@ Get Current Day
     ${year}  strip string  ${year}
     return from keyword  ${year}
 
+Set Login Variable
+    [Arguments]  ${user_credentials}
+    set global variable   ${LOGIN}  ${user_credentials}
+
 Update Error Sheet
     Update LandingPage Error
     #run keyword if any tests failed  Update LandingPage Error
