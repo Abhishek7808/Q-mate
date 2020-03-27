@@ -15,7 +15,7 @@ client = gspread.authorize(creds)
 
 # Find a workbook by name and open the first sheet
 # Make sure you use the right name here.
-sheet = client.open("Q-mate ERP Tracker").worksheet("Generic_Tests_Results")
+sheet = client.open("Q-mate ERP Tracker").worksheet("Error_Records")
 
 # Extract and print all of the values
 # list_of_hashes = sheet.get_all_records()
@@ -84,10 +84,10 @@ def update_error_data_on_sheets(module_name):
 
     starting_column = cloumn_index.get(module_name)
     row_number = get_last_row_number(starting_column)
-    logger.console(row_number)
+    #logger.console(row_number)
 
     serial_number = get_last_serial_number(starting_column)
-    logger.console(serial_number)
+    #logger.console(serial_number)
 
     update_sheet(row_number, starting_column, serial_number)
     update_sheet(row_number, starting_column+1, time)
@@ -103,15 +103,19 @@ def update_error_data_on_sheets(module_name):
 @keyword
 def update_landingPage_error():
     time = Addendums.get_current_time()
+    date_time = time.split()
+    date = date_time[0]
+    time = date_time[1]
     starting_column = cloumn_index.get("landingPage")
     row_number = get_last_row_number(starting_column)
-    logger.console(row_number)
+    #logger.console(row_number)
 
     serial_number = get_last_serial_number(starting_column)
-    logger.console(serial_number)
+    #logger.console(serial_number)
 
     update_sheet(row_number, starting_column, serial_number)
-    update_sheet(row_number, starting_column+1, time)
+    update_sheet(row_number, starting_column+1, date)
+    update_sheet(row_number, starting_column+2, time)
 
 # @keyword
 # def write_data_on_splited_sheet(serial_number, row_number, column_index):
