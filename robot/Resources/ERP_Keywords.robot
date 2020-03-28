@@ -89,15 +89,16 @@ Test FA
     #Go To ERP Page Home
 
 Run Generic Tests From Admin
-    [Documentation]
+    [Documentation]  runs generic tests, uses admin id for login.
     [Arguments]  ${moduleName}
-    ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}
+    ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}          ###"""Adds module into the List if it is not in the list .
     run keyword if  ${status} == ${True}  append to list  ${moduleNames}  ${moduleName}
     set global variable  @{moduleNames}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
 
 Run Generic Tests From Other User
+    [Documentation]  runs generic tests, uses non admin id for login.
     [Arguments]  ${moduleName}
     Attempt Logout
     ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}
@@ -107,12 +108,15 @@ Run Generic Tests From Other User
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
 
 Open Dashboard
+    [Documentation]  Opens Dashboard.
     Dashboard.Go To Dashboard
 
 Verify Landing Page Is Loaded
+    [Documentation]  Checks if landing page is loaded, if not then updtes the error.
     ${status}  run keyword and return status  ERP_Keywords.Verify Dashboard Is Loaded
     run keyword if  ${status} == ${False}  Common_Keywords.Update Error Sheet
 
 Verify Dashboard Is Loaded
+    [Documentation]  checks for dashboard text and verifies the url is correct.
     Dashboard.Check For Dashboard Text On The Page
     Dashboard.Check For Page URL

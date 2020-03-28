@@ -13,6 +13,7 @@ ${EMPLOYEEID}  jvvnl.28981
 
 *** Test Cases ***
 Employee should able to apply leave encashment
+    [Documentation]  Imperosnates an employee.
     [Tags]  HRMS  LeaveEncash
     HRMS_Keywords.Open Manage User Page
     HRMS_Keywords.Impersonate into employee ID  ${EMPLOYEEID}

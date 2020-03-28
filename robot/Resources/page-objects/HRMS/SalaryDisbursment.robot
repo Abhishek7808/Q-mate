@@ -6,12 +6,15 @@ ${PendingPaybills}   Xpath=//a[@class='btn btn-primary OpenDialog']
 ${PaybillNo}  Xpath=//input[@class='SelectItemss']
 *** Keywords ***
 Go To Salary Disbursment Page
+    [Documentation]  Opens salary disbursement page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click On Add Disbursment button
+    [Documentation]  Clicks on add disbursement button.
     click element  ${AddDisbursment}
 
 Fill Salary Disbursment Form
+    [Documentation]  Fills details in salary disbursement form.
     [Arguments]  ${dataDictionary}
     ${currentMonth}  Common_Keywords.Get Current Month                  ###""" Returns Current Month """
     ${currentYear}  Common_Keywords.Get Current Year
@@ -38,15 +41,16 @@ Fill Salary Disbursment Form
     sleep  3s
     select from list by index  AccountLedger  1
 
-    #HRMS_Keywords.Select Employee Location  ${dataDictionary}
-
 Submit Details
+    [Documentation]  Clicks on submit button.
     Click element     //input[@id='btnSave']
 
 Click On Pending Paybills button
+    [Documentation]  Clicks on panding paybill button.
     click element   ${PendingPaybills}
 
 Fill Pending Paybills Form
+    [Documentation]  Fills details in pending paybill form.
     [Arguments]  ${dataDictionary}
     HRMS_Keywords.Select Financial_Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
@@ -61,15 +65,18 @@ Fill Pending Paybills Form
     click element  //a[@id='btnDisburse']
 
 Disburse Details
+    [Documentation]  Clicks on disburse button.
     Click element     //a[@id='btnDisburse']
 
 Open Filters
+    [Documentation]  Opens filter.
     sleep  4s
     click element  //button[@id='btnFilter']
     ${status}  run keyword and return status  wait until page contains  Search Filter
     run keyword if  ${status} == ${FALSE}  SalaryDisbursment.Open Filters
 
 Select Filters
+    [Documentation]  Selects values in filters.
     [Arguments]  ${status}
 #    ${finYear}  Common_Keywords.Get Current Financial Year
 #    select from list by value  //select[@id='Finyear']  ${finYear}
@@ -80,11 +87,13 @@ Select Filters
     SalaryDisbursment.Select Status  ${status}
 
 Apply Filters
+    [Documentation]  Clicks on apply filter button.
     wait until element is enabled  //button[contains(text(),'Apply Filter')]
     set focus to element  //button[contains(text(),'Apply Filter')]
     click element  //button[contains(text(),'Apply Filter')]
 
 Verify Disbursement
+    [Documentation]
     wait until page contains element  //th[contains(text(),'Disbursement Detail')]  50s
     click element  //a[@class='btn btn-primary drpWorkflowAction']
     sleep  2s
