@@ -6,8 +6,6 @@ Resource  ${RESOURCES}/ERP_Keywords.robot
 
 #Suite Teardown  Common_Keywords.Update Error Sheet
 #Suite Setup  Common_Keywords.Set Login Variable  admin_live
-*** Variables ***
-
 
 *** Test Cases ***
 Admin should able to access the landing page

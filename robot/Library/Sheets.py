@@ -10,7 +10,9 @@ import Addendums
 
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name('/home/divaksh/rajerp/robot/', scope)
+
+creds = ServiceAccountCredentials.from_json_keyfile_name('/home/divaksh/rajerp/robot/Client_secret.json', scope)
+
 client = gspread.authorize(creds)
 
 # Find a workbook by name and open the first sheet
@@ -113,7 +115,11 @@ def update_landingPage_error():
     row_number = get_last_row_number(sheet, starting_column)
     serial_number = get_last_serial_number(sheet, starting_column)
 
+    report_counter = open("/home/divaksh/rajerp/cron/landing_test.txt").read()
+    report_link = "https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime_reports/report-" + datetime.datetime.now().strftime("%d%m%Y-%H") + str("%02d"%(int(report_counter)*5))+".html"
+
     update_sheet(sheet,  row_number, starting_column, serial_number)
     update_sheet(sheet, row_number, starting_column+1, date)
     update_sheet(sheet, row_number, starting_column+2, time)
+    update_sheet(sheet, row_number, starting_column+3, report_link)
 

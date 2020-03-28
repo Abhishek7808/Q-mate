@@ -283,13 +283,16 @@ def print_paths():
 def do_notify():
     return render_template('notify.html')
 
+
 @app.route('/rajerp/notify')
 def do_update():
     return render_template('notify.html')
 
+
 @app.route('/rajerp/notify')
 def do_down():
     return render_template('notify.html')
+
 
 if __name__ == "__main__":
     # app.debug = True
