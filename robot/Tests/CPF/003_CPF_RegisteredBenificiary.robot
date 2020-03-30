@@ -19,7 +19,7 @@ ${pageUrl}  CPF/RegisteredBenificiary
 
 # login data added into Data/Login_Data.robot
 ${wrongEmployeeID}  05385
-${beneficiaryTable}  //*[@id="classListing"]
+
 &{employeeIdDict}
 
 *** Keywords ***
@@ -28,17 +28,12 @@ ${beneficiaryTable}  //*[@id="classListing"]
 
 *** Test Cases ***
 Benificiary details of each employee should be displayed
+    [Documentation]  Checks for employees ledger in registered beneficiary table.
     [Tags]  Beneficiary
-    Go To ERP Page  http://rajerp.rajasthan.gov.in/Utility/PerformSwithcUser?q=UdPCBYkedDKLgHzXPnh2wg==  risl
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
+    CPF_Keywords.Open Registered Benificiary Page
     #Select Most Number Of Elements In Page  DDLpageSize
-    select from list by value  DDLpageSize  10
-    FOR  ${item}  IN RANGE  1  6
-    \   ${organisatioName}  Apply Organisation Filter  ${item}
-    \   ${tableRows}  get element count  ${beneficiaryTable}/div/table/tbody/tr
-    \   log to console  ${tableRows} table rows
-    \   Check For Errors In Registered Benificiary Table  ${tableRows}  ${organisatioName}
-    Send CPF Test Report To Developers
+    Common_Keywords.Show Maximum Entries on Page
+    CPF_Keywords.Check Registered Benificiary
 
 
 

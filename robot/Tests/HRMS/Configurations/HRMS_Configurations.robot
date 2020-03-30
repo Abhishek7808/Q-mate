@@ -134,11 +134,7 @@ User should able to configure pay slip
     HRMS_Keywords.Open Pay Slip Configuration Page
     HRMS_Keywords.Configure Pay Slip Details  ${dataDictionary}
     HRMS_Keywords.Save Pay Slip Configurations  ${dataDictionary}
-<<<<<<< HEAD
-    sleep   2s
-=======
-#    sleep   2s
->>>>>>> c1d372f12ad24d79adc7ea35861d34c24ca4c87d
+
 #    Go To ERP Page   http://demoprojects.e-connectsolutions.com/ERP-TEST/HRM/PayrollProcess/Index
 #    sleep   5s
 #    Click Element   //*[@id="classListing"]/div[2]/table/tbody/tr[1]/td[12]/div[2]/a
@@ -177,18 +173,9 @@ User should able to delete division
     [Documentation]  deletes the division from the division table. Verifies its deletion in the division table.
     [Tags]  HRMS  division  deletedata
     HRMS_Keywords.Open Division Page
-<<<<<<< HEAD
-    Common_Keywords.Set Test Data  ${configData["Edit Division"]}
-    HRMS_Keywords.Search Division
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    page should contain   Do you really want to Delete this Division ??
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
-    reload page
-=======
     Common_Keywords.Set Test Data  ${configData["Division"]}
     HRMS_Keywords.Search Division  ${dataDictionary}  ${dataDictionary["Edit Division"]["Name"]["Value"]}
     HRMS_Keywords.Delete Division  ${dataDictionary}
->>>>>>> c1d372f12ad24d79adc7ea35861d34c24ca4c87d
     HRMS_Keywords.Verify Division Deletion  ${dataDictionary}
 
 User should able to add new designation

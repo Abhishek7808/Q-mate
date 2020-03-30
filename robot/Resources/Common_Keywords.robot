@@ -36,49 +36,57 @@ ${financialYear}
 *** Keywords ***
 
 Begin Basic Testing
-    Set Paths
-    Remove Files
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for basic test cases.
+    Set Paths               ###""" Sets paths for using custom libraries.
+    Remove Files            ###""" Previously created files are deleted before the new ones are created.
     Set Basic Tests Variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 End Basic Testing
+    [Documentation]  closes browser.
     close browser
 
 Begin DV Testing
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for data validation scripts.
     Set Paths
     Remove Files
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 End DV Testing
-    run keyword if any tests failed  Send Error Email Notification  data validation  ${CONTACTS_JSON}
-    close browser
+    [Documentation]  Sends data validation error report email and closes browser.
+    run keyword if any tests failed  Send Error Email Notification  data validation  ${CONTACTS_JSON}           ###""" This keyword is defined in robot/Library/Notifications.py
+    close browser                                                                                               ###""" ${CONTACTS_JSON} can be found in Configurations.resource file
 
 Begin Generic Testing
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for generic test cases.
     Set Paths
     create file  ${ERRORFILE}
-    @{moduleNames}  create list
+    @{moduleNames}  create list             ###""" This list is used to send error emails modulewise.
     set global variable  @{moduleNames}
     Remove Files
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 End Generic Testing
+    [Documentation]  Sends error report email for generic test cases and updates the same on google sheet.
     FOR  ${item}  IN  @{moduleNames}
     \   run keyword if any tests failed  Send Error Email Notification  generic tests  ${CONTACTS_JSON}  ${item}
     \   Update Error Data On Sheets  ${item}
     close browser
 
 Begin SMM Testing
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for SMM test cases.
     Set Global Variables
     BrowserControl.Open Browsers For SMM
     #Set SMM Test Variables
 
 Set Basic Tests Variables
+    [Documentation]  Sets variables for basic test cases.
     &{ADMIN_USER}  set variable if  '${ENVIRONMENT}' == 'production'  &{ADMIN_USER_LIVE}  &{ADMIN_USER}
     &{NON_ADMIN_USER}  set variable if  '${ENVIRONMENT}' == 'production'  &{NON_ADMIN_USER_LIVE}  &{NON_ADMIN_USER}
-    ${invalid_username}  Generate random string
+    ${invalid_username}  Generate random string             ###""" Generates randome string everytime test case runs
     set to dictionary  ${INVALID_USER}  username=${invalid_username}
     ${username}  Generate random string
     set to dictionary  ${INVALID_PASSWORD}  username=${username}
@@ -88,36 +96,42 @@ Set Basic Tests Variables
     set global variable  &{INVALID_PASSWORD}
 
 Set Global Variables
+    [Documentation]  Sets json files to use.
     ${Test Data Obj}    Load Json File    ${Test Data File}
     Set Global Variable    ${Test Data}    ${Test Data Obj}
     ${Config Obj}    Load Json File    ${configFile}
     Set Global Variable    ${CONFIG}    ${Config Obj}
 
 Load Json File
-    [Arguments]    ${File Name}
     [Documentation]    Loads all json files into their json objects.
+    [Arguments]    ${File Name}
     ${Data}    Get File    ${File Name}
     ${Data Obj}    evaluate    json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)    json, collections
     [Return]    ${Data Obj}
 
 Set DV Test Count
+    [Documentation]  Resets test count for data validation test cases.
     set global variable  ${retryCount}    0
     ${retryCount}  convert to integer  ${retryCount}
 
 Set Test Variables
+    [Documentation]  Sets test variables for test data.
     [Arguments]    &{Variables}
     : FOR    ${Var}    IN    @{Variables.keys()}
     \    set test variable    ${${Var}}    ${Test Data["${CONFIG["${Variables["${Var}"]}"]}"]}
 
 End SMM Testing
+    [Documentation]  Closes browsers.
     BrowserControl.Finish Testing
 
 Begin HRMS Testing
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for HRMS test cases.
     Set HRMS Variables  ${hrmsConfigurationData}
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 Set HRMS Variables
+    [Documentation]  Sets Json data files as test variables.
     [Arguments]  ${hrmsConfigurationData}
     ${configurationData}  Load Json File  ${hrmsConfigurationData}
     set global variable  ${configData}  ${configurationData}
@@ -125,41 +139,50 @@ Set HRMS Variables
     set global variable  ${urlsDict}  ${urlsDict}
 
 End HRMS Testing
+    [Documentation]  Closes browsers.
     close browser
 
 Begin Salary Automation
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for salary automation scripts.
     Set HRMS Variables  ${hrmsSalaryData}
     Set Date Time Variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
 End Salary Automation
+    [Documentation]  Closes browser.
     close browser
 
 Begin Salary Testing
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for Salary disbursement test cases.
     open browser  about:blank  ${BROWSER}
     maximize browser window
     Set HRMS Variables  ${hrmsSalaryData}
     Set Date Time Variables
 
 END Salary Testing
+    [Documentation]  Closes browser.
     close browser
 
 Begin ACC Testing
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for ACC test cases.
     open browser  about:blank  ${BROWSER}
     maximize browser window
     Set ACC Variables  ${accData}
     Set Date Time Variables
 
 Set ACC Variables
+    [Documentation]  Sets json data files as test variables for ACC test cases.
     [Arguments]  ${accData}
     ${configurationData}  Load Json File  ${accData}
     set global variable  ${configData}  ${configurationData}
 
 END ACC Testing
+    [Documentation]  Closes browser.
     close browser
 
 Create Employee File
+    [Documentation]  Creates a file.
     create file  ${EMPLOYEE_FILE}
     #set global variable  ${employees}
 
@@ -174,6 +197,7 @@ Set Date Time Variables
     set global variable  ${currentYear}
 
 Set Paths
+    [Documentation]  Sets paths for custom libraries.
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
 
 Remove Files

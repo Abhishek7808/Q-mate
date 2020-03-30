@@ -44,7 +44,7 @@ Mark Attendance Of Employees
     HRMS_Keywords.Approve Marked Attendance
 
 Process And Lock Salary
-    [Documentation]  Processes Salary.
+    [Documentation]  Processes and locks Salary.
     [Tags]  Salary  salaryprocess  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
@@ -53,7 +53,7 @@ Process And Lock Salary
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}
 
 Add Paybill
-    [Documentation]  Adds Paybill.
+    [Documentation]  Fills details in add paybill form, verifies and approves it.
     [Tags]  Salary  Addpaybill  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
@@ -62,11 +62,10 @@ Add Paybill
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 Disburse Paybill
-    [Documentation]  Adds Disbursment
+    [Documentation]  Adds Disbursment, verifies and approves disbursement.
     [Tags]  Salary  AddDisbursement  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
     HRMS_Keywords.Open Salary Disbursment Page
-    sleep   3s
     HRMS_Keywords.Add Disbursement  ${dataDictionary}
     HRMS_Keywords.Approve Salary Disbursement  ${dataDictionary}
     HRMS_Keywords.Create Voucher  ${dataDictionary}

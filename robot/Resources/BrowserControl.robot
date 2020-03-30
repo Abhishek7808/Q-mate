@@ -16,6 +16,7 @@ ${configFile}                           ${SMM_DATA_FILES}${/}config.json
 
 *** Keywords ***
 Switch To
+    [Documentation]  Swithces data json files.(Department data & customer data)
     [Arguments]    ${Switch To}
     ${File Name}    Run Keyword If    '${Switch To}'=='Customer'    Set Variable    ${Customer Key Description File}
     ...    ELSE    Set Variable    ${Department Key Description File}
@@ -40,6 +41,7 @@ Switch To
 #    [Return]    ${Data Obj}
 
 Finish Testing
+    [Documentation]  Close all browsers.
     Close All Browsers
 
 #Set Global Variables
@@ -49,6 +51,7 @@ Finish Testing
 #    Set Global Variable    ${CONFIG}    ${Config Obj}
 
 Open Browsers For SMM
+    [Documentation]  Opens three browsers with name department, customer and verify respectively.
     #set test variable    ${Key Description}    ${Department Key Description}
     #${browser}  set variable  Chrome
     #${dict}    Create Dictionary    executable_path=${${browser} PATH}
@@ -68,6 +71,7 @@ Open Browsers For SMM
     Go To    ${LOGIN URL}
 
 Go To Base State
+    [Documentation]  Opens Login page in all three browsers.
     Switch Browser    Department
     ERP_Keywords.Attempt Logout
     Go To    http://demoprojects.e-connectsolutions.com/ERP-DEMO/SMM

@@ -27,6 +27,7 @@ ${EMPLOYEELOCATION}  Select all
 #    [Tags]  salarycheck  Salarycyclecheck
 
 Admin should able to mark attendance of the employees
+    [Documentation]  Makrs attendance of the top most listed employee of the given paygroup.
     [Tags]  salarycheck  markattendancecheck
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
@@ -38,7 +39,7 @@ Admin should able to mark attendance of the employees
     HRMS_Keywords.Approve Marked Attendance  ${PAYGROUP}
 
 Admin should able to process and lock his salary of the employee
-    [Documentation]  Processes Salary.
+    [Documentation]  Processes and locks salary of the given paygroup.
     [Tags]  salarycheck  salaryprocesscheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
@@ -49,7 +50,7 @@ Admin should able to process and lock his salary of the employee
     HRMS_Keywords.Lock Salary  ${dataDictionary["Filters"]}  ${PAYGROUP}
 
 Admin should able to add salary paybill
-    [Documentation]  Adds Paybill.
+    [Documentation]  Fills details in add paybill form, verifies and approves it.
     [Tags]  salarycheck  Addpaybillcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
@@ -58,7 +59,7 @@ Admin should able to add salary paybill
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 Admin should able to add salary disbursement
-    [Documentation]  Adds Disbursment
+    [Documentation]  Adds Disbursment, verifies and approves disbursement.
     [Tags]  salarycheck  AddDisbursementcheck  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
     HRMS_Keywords.Open Salary Disbursment Page
