@@ -10,15 +10,15 @@ import time
 from robot import run
 import threading
 
-open("/home/divaksh/rajerp/cron/landing_test.txt", "w").write(datetime.now().strftime("%M"))
+open("/home/divaksh/rajerp/cron/landing_test.txt", "w").write(datetime.datetime.now().strftime("%M"))
 report_counter = open("/home/divaksh/rajerp/cron/landing_test.txt").read()
 
-# Case to check downtime
+# Case to check downtime .
 run('/home/divaksh/rajerp/robot/Tests',
     variable=["ENVIRONMENT:production", "BROWSER:headlesschrome"],
     include=["landingpage"], exclude=["debug"],
     outputdir='/home/divaksh/rajerp/reports/test/downtime',
-    report="report-"+datetime.now().strftime("%H")+":"+report_counter,
+    report="report-"+datetime.datetime.now().strftime("%d%m%Y-%H") + report_counter,
     splitlog=True, timestampoutputs=False)
 
 
