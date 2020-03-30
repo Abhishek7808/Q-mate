@@ -17,7 +17,7 @@ report_counter = open("/home/divaksh/rajerp/cron/landing_test.txt").read()
 run('/home/divaksh/rajerp/robot/Tests',
     variable=["ENVIRONMENT:production", "BROWSER:headlesschrome"],
     include=["landingpage"], exclude=["debug"],
-    outputdir='/home/divaksh/rajerp/reports/test/downtime_reports',
+    outputdir='/home/divaksh/rajerp/reports/test/downtime',
     report="report-"+datetime.now().strftime("%H")+":"+report_counter,
     splitlog=True, timestampoutputs=False)
 
