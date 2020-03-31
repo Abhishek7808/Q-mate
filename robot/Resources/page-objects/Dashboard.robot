@@ -1,10 +1,11 @@
 *** Keywords ***
 Go To Dashboard
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/Dashboard  admin_live
+	Go To  http://rajerp.rajasthan.gov.in/home/adminlogin
+	Attempt Login  ${ADMIN_USER_LIVE}
 
 Check For Dashboard Text On The Page
     page should contain element  //span[contains(text(),'Dashboard')]
-    capture page screenshot
+    
 
 Check For Page URL
     ${pageUrl}  get location

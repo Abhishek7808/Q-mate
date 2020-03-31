@@ -15,6 +15,7 @@ Open the Login Page
 Attempt Login
     [Documentation]  Logins the Erp with given credentials
     [Arguments]  ${Credentials}
+    Set Log Level    NONE
     ${username}  get from dictionary  ${Credentials}  username
     ${password}  get from dictionary  ${Credentials}  password
     Login.Fill Username  ${username}
@@ -114,7 +115,9 @@ Open Dashboard
 Verify Landing Page Is Loaded
     [Documentation]  Checks if landing page is loaded, if not then updtes the error.
     ${status}  run keyword and return status  ERP_Keywords.Verify Dashboard Is Loaded
-    run keyword if  ${status} == ${False}  Common_Keywords.Update Error Sheet
+	run keyword if  ${status} == ${False}  capture page screenshot
+    run keyword if  ${status} == ${False}  Common_Keywords.Update Error Sheet  Fail  ELSE  Common_Keywords.Update Error Sheet  Pass
+    run keyword if  ${status} == ${False}  run keyword and continue on failure  Fail  Suspected downtime
 
 Verify Dashboard Is Loaded
     [Documentation]  checks for dashboard text and verifies the url is correct.

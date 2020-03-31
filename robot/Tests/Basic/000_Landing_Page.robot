@@ -13,7 +13,6 @@ Admin should able to access the landing page
     [Tags]  basic  landingpage
     ERP_Keywords.Open Dashboard
     ERP_Keywords.Verify Landing Page Is Loaded
-    ERP_Keywords.Verify Dashboard Is Loaded
 
 
 

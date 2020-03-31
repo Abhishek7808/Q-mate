@@ -290,7 +290,8 @@ Set Login Variable
     set global variable   ${LOGIN}  ${user_credentials}
 
 Update Error Sheet
-    Update LandingPage Error
+    [Arguments]  ${resultStatus}
+    Update Landing Page Error  ${resultStatus}
     #run keyword if any tests failed  Update LandingPage Error
 
 #Begin Disbursement Testing
