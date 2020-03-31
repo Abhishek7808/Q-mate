@@ -21,6 +21,7 @@ Attempt Login
     Login.Fill Username  ${username}
     sleep  1s
     Login.Fill Password  ${password}
+	Set Log Level    INFO
     Login.Submit The Form
 
 Attempt Full Logout
