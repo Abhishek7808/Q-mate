@@ -104,7 +104,7 @@ def update_error_data_on_sheets(module_name):
 
 
 @keyword
-def update_landingPage_error():
+def update_landingPage_error(result_status):
     sheet = client.open("Error Records").worksheet("Landing_Page_Errors")
     time = Addendums.get_current_time()
     date_time = time.split()
@@ -116,10 +116,12 @@ def update_landingPage_error():
     serial_number = get_last_serial_number(sheet, starting_column)
 
     report_counter = open("/home/divaksh/rajerp/cron/landing_test.txt").read()
-    report_link = "https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime/report-" + datetime.datetime.now().strftime("%d%m%Y-%H") + str("%02d"%(int(report_counter)))+".html"
+    report_link = "https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime/"+datetime.datetime.now().strftime("%Y")+'/'+datetime.datetime.now().strftime("%m")+"/log-" + datetime.datetime.now().strftime("%d%m%Y-%H") + str("%02d"%(int(report_counter)))+".html"
 
     update_sheet(sheet,  row_number, starting_column, serial_number)
     update_sheet(sheet, row_number, starting_column+1, date)
     update_sheet(sheet, row_number, starting_column+2, time)
-    update_sheet(sheet, row_number, starting_column+3, report_link)
+    update_sheet(sheet, row_number, starting_column+3, result_status)
+    update_sheet(sheet, row_number, starting_column+4, report_link)
+
 

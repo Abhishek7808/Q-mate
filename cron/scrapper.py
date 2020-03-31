@@ -17,9 +17,11 @@ report_counter = open("/home/divaksh/rajerp/cron/landing_test.txt").read()
 run('/home/divaksh/rajerp/robot/Tests',
     variable=["ENVIRONMENT:production", "BROWSER:headlesschrome"],
     include=["landingpage"], exclude=["debug"],
-    outputdir='/home/divaksh/rajerp/reports/test/downtime',
+    outputdir='/home/divaksh/rajerp/reports/test/downtime/'+datetime.datetime.now().strftime("%Y")+'/'+datetime.datetime.now().strftime("%m"),
     report="report-"+datetime.datetime.now().strftime("%d%m%Y-%H") + report_counter,
-    splitlog=True, timestampoutputs=False)
+    log="log-" + datetime.datetime.now().strftime("%d%m%Y-%H") + report_counter,
+    logtitle="Log "+datetime.datetime.now().strftime("%d-%m-%Y %H:") + report_counter,
+    splitlog=False, timestampoutputs=False)
 
 
 # Run service during the office hours only
