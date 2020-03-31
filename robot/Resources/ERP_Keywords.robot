@@ -21,6 +21,7 @@ Attempt Login
     Login.Fill Username  ${username}
     sleep  1s
     Login.Fill Password  ${password}
+    Set Log Level  INFO
     Login.Submit The Form
 
 Attempt Full Logout
@@ -108,9 +109,9 @@ Run Generic Tests From Other User
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
 
-Open Dashboard
-    [Documentation]  Opens Dashboard.
-    Dashboard.Go To Dashboard
+Perform Login
+    [Documentation]  Performs login.
+    Dashboard.Open Login Page And Do Login
 
 Verify Landing Page Is Loaded
     [Documentation]  Checks if landing page is loaded, if not then updtes the error.
