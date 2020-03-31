@@ -39,29 +39,34 @@ cloumn_index = {
 gen_test = GenericTests
 error_data = Notifications
 
+
 @keyword
 def update_sheet(sheet, row, column, data):
     sheet.update_cell(row, column, data)
+
 
 @keyword
 def get_sheet_data(sheet, row, column):
     return sheet.cell(row, column).value
 
+
 @keyword
 def get_last_row_number(sheet, first_column_index):
     values_list = sheet.col_values(first_column_index)
     last_index = len(values_list)
-    if values_list[last_index-1] == 'Sr. No.':
+    if values_list[last_index - 1] == 'Sr. No.':
         return 4
-    return last_index+1
+    return last_index + 1
+
 
 @keyword
 def get_last_serial_number(sheet, first_column_index):
     values_list = sheet.col_values(first_column_index)
     last_index = len(values_list)
-    if values_list[last_index-1] == 'Sr. No.':
+    if values_list[last_index - 1] == 'Sr. No.':
         return 1
-    return last_index-2
+    return last_index - 2
+
 
 @keyword
 def update_error_data_on_sheets(module_name):
@@ -87,24 +92,24 @@ def update_error_data_on_sheets(module_name):
 
     starting_column = cloumn_index.get(module_name)
     row_number = get_last_row_number(sheet, starting_column)
-    #logger.console(row_number)
+    # logger.console(row_number)
 
     serial_number = get_last_serial_number(sheet, starting_column)
-    #logger.console(serial_number)
+    # logger.console(serial_number)
 
     update_sheet(sheet, row_number, starting_column, serial_number)
-    update_sheet(sheet, row_number, starting_column+1, time)
-    update_sheet(sheet, row_number, starting_column+2, number_of_urls)
-    update_sheet(sheet, row_number, starting_column+3, show_stoppers)
-    update_sheet(sheet, row_number, starting_column+4, mising_title_tags)
-    update_sheet(sheet, row_number, starting_column+5, resource_not_found)
-    update_sheet(sheet, row_number, starting_column+6, permission_issues)
-    update_sheet(sheet, row_number, starting_column+7, high_priority)
-    update_sheet(sheet, row_number, starting_column+8, low_priority)
+    update_sheet(sheet, row_number, starting_column + 1, time)
+    update_sheet(sheet, row_number, starting_column + 2, number_of_urls)
+    update_sheet(sheet, row_number, starting_column + 3, show_stoppers)
+    update_sheet(sheet, row_number, starting_column + 4, mising_title_tags)
+    update_sheet(sheet, row_number, starting_column + 5, resource_not_found)
+    update_sheet(sheet, row_number, starting_column + 6, permission_issues)
+    update_sheet(sheet, row_number, starting_column + 7, high_priority)
+    update_sheet(sheet, row_number, starting_column + 8, low_priority)
 
 
 @keyword
-def update_landingPage_error(result_status):
+def update_landing_page_error(result_status):
     sheet = client.open("Error Records").worksheet("Landing_Page_Errors")
     time = Addendums.get_current_time()
     date_time = time.split()
@@ -115,13 +120,21 @@ def update_landingPage_error(result_status):
     row_number = get_last_row_number(sheet, starting_column)
     serial_number = get_last_serial_number(sheet, starting_column)
 
+    update_sheet(sheet, row_number, starting_column, serial_number)
+    update_sheet(sheet, row_number, starting_column + 1, date)
+    update_sheet(sheet, row_number, starting_column + 2, time)
+    update_sheet(sheet, row_number, starting_column + 3, result_status)
+    update_sheet(sheet, row_number, starting_column + 4, get_landing_page_report_hyperlink_for_spreadsheet())
+
+
+def get_landing_page_report():
     report_counter = open("/home/divaksh/rajerp/cron/landing_test.txt").read()
-    report_link = "https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime/"+datetime.datetime.now().strftime("%Y")+'/'+datetime.datetime.now().strftime("%m")+"/log-" + datetime.datetime.now().strftime("%d%m%Y-%H") + str("%02d"%(int(report_counter)))+".html"
-
-    update_sheet(sheet,  row_number, starting_column, serial_number)
-    update_sheet(sheet, row_number, starting_column+1, date)
-    update_sheet(sheet, row_number, starting_column+2, time)
-    update_sheet(sheet, row_number, starting_column+3, result_status)
-    update_sheet(sheet, row_number, starting_column+4, report_link)
+    report = datetime.datetime.now().strftime('%Y') + '/' + datetime.datetime.now().strftime(
+        '%m') + '/log-' + datetime.datetime.now().strftime(
+        '%d%m%Y-%H') + str('%02d' % (int(report_counter))) + '.html'
+    return report
 
 
+def get_landing_page_report_hyperlink_for_spreadsheet():
+    report_link = '=HYPERLINK("https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime/' + get_landing_page_report() + '#s1-s1-s1-t1-k2-k2-k1","https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime/' + get_landing_page_report() + '")'
+    return report_link

@@ -15,6 +15,7 @@ Open the Login Page
 Attempt Login
     [Documentation]  Logins the Erp with given credentials
     [Arguments]  ${Credentials}
+    Set Log Level    NONE
     ${username}  get from dictionary  ${Credentials}  username
     ${password}  get from dictionary  ${Credentials}  password
     Login.Fill Username  ${username}
