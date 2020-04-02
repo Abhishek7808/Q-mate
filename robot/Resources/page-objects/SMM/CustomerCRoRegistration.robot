@@ -26,8 +26,10 @@ Fetch PO Balance
     Wait Until Element Is Visible    availableQuantity
     ${Amount}    Get Value    availableQuantity
     ${Amount}    Evaluate    ${Amount}+1
+    return from keyword  ${amount}
 
 Input Required Quantity
+    [Arguments]  ${amount}
     Wait Until Keyword Succeeds    5s    200ms    Input Text    productQuantityRequired    ${Amount}
     Press Key    productQuantityRequired    \\09
     Sleep    1s

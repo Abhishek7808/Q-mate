@@ -12,8 +12,6 @@ ${rejectionText}  //span[text()='Rejected']
 Check For Draft
     Page should Contain Element    ${draftText}
 
-
-
 Update draft registration
     Click Button    ${submitButton}
     Sleep    5s
