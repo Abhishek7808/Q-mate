@@ -3,6 +3,7 @@
 *** Keywords ***
 
 Delete All The Prewritten Data Of Company From ERP
+    [Documentation]  Deletes all data which is created using giving company pan number.
     [Arguments]    ${panNo}
     Create Session     ERP DEMO    http://demoprojects.e-connectsolutions.com/erp-demo/
     ${dict}    Get Request    ERP DEMO    api/Login/Validate?loginId=vinodrsmml&password=21232F297A57A5A743894A0E4A801FC3&ipAddress=191.11.100.148
@@ -14,6 +15,7 @@ Delete All The Prewritten Data Of Company From ERP
     run keyword and ignore error  Should Be Equal As Strings    ${Resp.status_code}    200
 
 Delete All The Prewritten Data Of SSOID From ERP
+    [Documentation]  Deletes all data which is created using given ssoid.
     [Arguments]    ${ssoId}
     Create Session    ERP DEMO    http://demoprojects.e-connectsolutions.com/erp-demo/
     ${dict}    Get Request    ERP DEMO    api/Login/Validate?loginId=vinodrsmml&password=21232F297A57A5A743894A0E4A801FC3&ipAddress=191.11.100.148
