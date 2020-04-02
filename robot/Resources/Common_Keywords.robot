@@ -96,7 +96,7 @@ Set Basic Tests Variables
     set global variable  &{INVALID_PASSWORD}
 
 Set Global Variables
-    [Documentation]  Sets json files to use.
+    [Documentation]  Sets json files to use as data files.
     ${Test Data Obj}    Load Json File    ${Test Data File}
     Set Global Variable    ${Test Data}    ${Test Data Obj}
     ${Config Obj}    Load Json File    ${configFile}
@@ -182,11 +182,12 @@ END ACC Testing
     close browser
 
 Create Employee File
-    [Documentation]  Creates a file.
+    [Documentation]  Creates a file. This file is used in salary test cases. Employee code is being written here.
     create file  ${EMPLOYEE_FILE}
     #set global variable  ${employees}
 
 Set Date Time Variables
+    [Documentation]  Sets variables that are used in filling forms where current date, time, financial year are to be filled.
     ${currentFinancialYear}  Common_Keywords.Get Current Financial Year        ###""" Returns Current Financial Year """
     ${currentSalaryCycleName}  SalaryCycle.Get Current Salary Cycle            ###""" Returns Current Salary Cycle """
     ${currentMonth}  Common_Keywords.Get Current Month                  ###""" Returns Current Month """
@@ -201,15 +202,18 @@ Set Paths
     evaluate  sys.path.append(os.path.join(r'${LIBRARY}'))  modules=os, sys
 
 Remove Files
+    [Documentation]  Deletes files so that previously filled data is deleted before new data is filled.
     remove file  ${ERRORFILE}
     remove file  ${DV_REPORT}
 
 Read JSON File
+    [Documentation]  Takes path of json file as argument and returns data of json file.
     [Arguments]  ${JSON_File}
     ${JSON}=  Get file  ${JSON_File}
     return from keyword  ${JSON}
 
 Evaluate And Store JSON File
+    [Documentation]  Loads Json file.
     [Arguments]  ${JSON}
     @{urls_list}=    Evaluate     json.loads('''${json}''')    json
     return from keyword  @{urls_list}
@@ -222,24 +226,29 @@ Change The Number Into A Formatted Amount
     return from keyword  ${formattedAmount}
 
 Read And Evaluate JSON File
+    [Documentation]  Takes path of json file as an argument and loads it into a variable.
     [Arguments]  ${JSON_File}
     ${JSON}   Read JSON File  ${JSON_File}
     ${File_JSON}  Evaluate And Store JSON File  ${JSON}
     return from keyword  ${File_JSON}
 
 Login From Customer
+    [Documentation]  Takes ssoid as argument, log in with ssoid.
     [Arguments]  ${ssoid}
     CustomerLogin.Login From Customer With SSOID  ${ssoid}
 
 Verify Element Text On The Page
+    [Documentation]  Takes text and element locator as arguments and confirms that element contains the text.
     [Arguments]  ${text}  ${element}
     Element Text Should Be    ${element}    ${text}
 
 Login From Department
+    [Documentation]  Opens admin login page and logs in wiht credentials.
     [Arguments]    ${Username}    ${Password}
     login.Department Login   ${Username}    ${Password}
 
 Show Maximum Entries on Page
+    [Documentation]  Selects maximum entries that can be listed in page.
     ${status}  run keyword and return status  page should contain element  DDLpageSize
     run keyword if  ${status} == ${True}  wait until keyword succeeds  15s  ${RETRY INTERVAL}  select last dropdown element  DDLpageSize
     wait until element is not visible  //div[@id='LoadingImage']//div//img  300
@@ -251,6 +260,7 @@ Switch Tab
     Switch Window    ${windowToOpen}
 
 Set Test Data
+    [Documentation]  Sets josn data variable as dataDictionary variable as a test variable.
     [Arguments]  ${dataJson}
     set test variable  ${datadictionary}  ${dataJson}
 
@@ -273,23 +283,26 @@ Get Current Month
     return from keyword  ${month}
 
 Get Current Year
-    [Documentation]
+    [Documentation]  Returns current Year.
     ${currentDate}  get current date
     ${year}  convert date  ${currentDate}  result_format= %Y
     ${year}  strip string  ${year}
     return from keyword  ${year}
 
 Get Current Day
+    [Documentation]  Returns current day.
     ${currentDate}  get current date
     ${year}  convert date  ${currentDate}  result_format= %d
     ${year}  strip string  ${year}
     return from keyword  ${year}
 
 Set Login Variable
+    [Documentation]  Sets login variable.
     [Arguments]  ${user_credentials}
     set global variable   ${LOGIN}  ${user_credentials}
 
 Update Error Sheet
+    [Documentation]  Updates landing page errors on Error_records sheet.
     [Arguments]  ${resultStatus}
     Update Landing Page Error  ${resultStatus}
     #run keyword if any tests failed  Update LandingPage Error

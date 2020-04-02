@@ -20,7 +20,7 @@ Go To Day
     \  click Element  lnkAdd
     \  sleep  2s
     \  select from list by label  ddlProj  RAJERP
-    \  sleep  2s
+    \  sleep  6s
     \  click Element  ddlTask
     \  Press Keys  ddlTask  QA & Automation(Unplanned Task)
     \  Press Keys  ddlTask  ENTER
