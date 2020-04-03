@@ -1594,7 +1594,7 @@
 		"Select Section": {
 			"Value": "select",
 			"Type": "Checkbox",
-			"Locator": "//td[contains(text(),'QMATEsection2')]/preceding-sibling::td//input[@class='SelectItem']"
+			"Locator": ""
 		},
 		"Department":{
 			  "Value":"QMATEdepartment",
@@ -1718,6 +1718,7 @@
 		}
 	},
 	"Grade Dependency": {
+		"URL": "HRM/tadagraderrule/TaDaDependencyGrid",
 		"Add New Dependancy": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1775,6 +1776,7 @@
 		}
 	},
     "TA/DA Grade":{
+		"URL": "HRM/Tadagraderrule",
 	   "Add New Grade": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"
@@ -1913,6 +1915,7 @@
     },
 
   "TA/DA Rule": {
+	  "URL": "TadaRule",
 	  "Add New": {
 		  "Type": "Link",
 		  "Locator": "modals-bootbox-custom"

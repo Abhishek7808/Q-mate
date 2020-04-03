@@ -12,6 +12,14 @@ Click On Add New Department Button
 Click On Edit Button
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
+
+Click On Delete Button
+    [Arguments]  ${value}
+    click element  //td[contains(text(),'${value}')]/following-sibling::td//i[@class='fa fa-trash-o']
+    wait until page contains   Are you Sure to Delete this Record?
+    click element  //button[contains(text(),'OK')]
+    reload page
+
 Fill Department Details
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}

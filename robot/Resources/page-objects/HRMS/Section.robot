@@ -30,6 +30,17 @@ Search For Section
     input text  SearchText  ${sectionName}
     click button  BtnSearchfilter
 
+Select Section
+    [Arguments]  ${sectionName}
+    select checkbox  //td[contains(text(),'${sectionName}')]/preceding-sibling::td//input[@class='SelectItem']
+
+Delete Section
+    [Arguments]  ${dataDictionary}
+    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
+    wait until page contains   Do you really want to delete selected record(s) ?
+    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
+    reload page
+
 Check For Section Entry In Section Table
     [Arguments]  ${sectionName}
     Page should contain element  //td[contains(text(),'${sectionName}')]
@@ -37,3 +48,4 @@ Check For Section Entry In Section Table
 Check For Section Deletion In Section Table
     [Arguments]  ${sectionName}
     Page should not contain element  //td[contains(text(),'${sectionName}')]
+

@@ -135,13 +135,6 @@ User should able to configure pay slip
     HRMS_Keywords.Configure Pay Slip Details  ${dataDictionary}
     HRMS_Keywords.Save Pay Slip Configurations  ${dataDictionary}
 
-#    Go To ERP Page   http://demoprojects.e-connectsolutions.com/ERP-TEST/HRM/PayrollProcess/Index
-#    sleep   5s
-#    Click Element   //*[@id="classListing"]/div[2]/table/tbody/tr[1]/td[12]/div[2]/a
-#    sleep   2s
-#    Click Element   //*[@id="lnkMultipleSalarySlip_11387709"]
-#    sleep   2s
-
 User should able to configure self verification details
     [Documentation]  Configures the self varification details.
     [Tags]  HRMS  selfvarification
@@ -377,16 +370,9 @@ User should able to delete section
     [Tags]  HRMS  section  deletedata
     Common_Keywords.Set Test Data  ${configData["Section"]}
     HRMS_Keywords.Open Section Page
-    HRMS_Keywords.Search Section ENtry  ${dataDictionary["Edit Section"]["Name"]["Value"]}
-
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Search box"]}  ${dataDictionary["Edit Section"]["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Select Section"]}  ${dataDictionary["Select Section"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
-    reload page
-    HRMS_Keywords.Verify Section Deletion  ${dataDictionary["Edit Section"]}
+    HRMS_Keywords.Search Section Entry  ${dataDictionary["Edit Section"]["Name"]["Value"]}
+    HRMS_Keywords.Delete Section Entry  ${dataDictionary}  ${dataDictionary["Edit Section"]["Name"]["Value"]}
+    HRMS_Keywords.Verify Section Deletion  ${dataDictionary["Edit Section"]["Name"]["Value"]}
 
 #############################################################
 # Delete Department after completing the section test cases #
@@ -395,15 +381,11 @@ User should able to delete section
 User should able to delete Department
     [Documentation]  Deletes the Department the Department table. Verifies its deletion in the Department table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-department/
     [Tags]  HRMS  Department  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Department
     Common_Keywords.Set Test Data  ${configData["Department"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit Department"]["Search box"]}  ${dataDictionary["Edit Department"]["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Are you Sure to Delete this Record?
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
-    reload page
-    HRMS_Keywords.Verify Department Deletion  ${dataDictionary["Edit Department"]}
+    HRMS_Keywords.Open Department Page
+    HRMS_Keywords.Search Department Entry  ${dataDictionary["Edit Department"]["Name"]["Value"]}
+    HRMS_Keywords.Delete Department Entry  ${dataDictionary["Edit Department"]["Name"]["Value"]}
+    HRMS_Keywords.Verify Department Deletion  ${dataDictionary["Edit Department"]["Name"]["Value"]}
 
 #################################
 #  ALL TA/DA Grade tests cases  #
@@ -412,102 +394,40 @@ User should able to delete Department
 User should able to add new TA/DA grade
     [Documentation]  Fills the add new TA/DA grade form and submits it. Verifies its entry in the TA/DA grade table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-grade/
     [Tags]  HRMS  TADAgrade  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     Common_Keywords.Set Test Data  ${configData["TA/DA Grade"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add New Grade"]}
-    switch window  NEW
-    FillFields.Input Value Into Field  ${dataDictionary["Grade"]}  ${dataDictionary["Grade"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Effective From"]}  ${dataDictionary["Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Min Range"]}  ${dataDictionary["Basic Pay Min Range"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Max Range"]}  ${dataDictionary["Basic Pay Max Range"]["Value"]}
-    ${webelements}  get webelements  ${dataDictionary["Level Number"]["Locator"]["Locator0"]}
-    set to dictionary  ${dataDictionary["Level Number"]["Locator"]}  Locator1=${webelements}[0]
-    set to dictionary  ${dataDictionary["Designaton"]["Locator"]}  Locator1=${webelements}[1]
-    FillFields.Input Value Into Field  ${dataDictionary["Level Number"]}  ${dataDictionary["Level Number"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Designaton"]}  ${dataDictionary["Designaton"]["Value"]}
-    click element  ${dataDictionary["Basic Pay Max Range"]["Locator"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
+    HRMS_Keywords.Open TA/DA Grade Page
+    HRMS_Keyword.Add New TA/DA Grade
     Common_Keywords.Switch TAB
-    sleep  3s
-    reload page
-    HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary}
+    HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary["Grade"]["Value"]}
 
 User should able to edit TA/DA grade
     [Documentation]  Edits the TA/DA grade details and saves them. verifies its updation in the TA/DA grade table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-grade/
     [Tags]  HRMS  TADAgrade  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     Common_Keywords.Set Test Data  ${configData["TA/DA Grade"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Grade"]["Effective From"]}  ${dataDictionary["Edit TA/DA Grade"]["Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Grade"]["Basic Pay Min Range"]}  ${dataDictionary["Edit TA/DA Grade"]["Basic Pay Min Range"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Grade"]["Basic Pay Max Range"]}  ${dataDictionary["Edit TA/DA Grade"]["Basic Pay Max Range"]["Value"]}
-    ${webelements}  get webelements  ${dataDictionary["Level Number"]["Locator"]["Locator0"]}
-    set to dictionary  ${dataDictionary["Edit TA/DA Grade"]["Level Number"]["Locator"]}  Locator1=${webelements}[0]
-    set to dictionary  ${dataDictionary["Edit TA/DA Grade"]["Designaton"]["Locator"]}  Locator1=${webelements}[1]
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Grade"]["Level Number"]}  ${dataDictionary["Edit TA/DA Grade"]["Level Number"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Grade"]["Designaton"]}  ${dataDictionary["Edit TA/DA Grade"]["Designaton"]["Value"]}
-    click element  ${dataDictionary["Basic Pay Max Range"]["Locator"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    reload page
-    wait until element is visible  BtnSearchfilter  10s
-    HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary}
+    HRMS_Keywords.Open TA/DA Grade Page
+    HRMS_Keywords.Search For TA/DA Grade Entry  ${dataDictionary["Grade"]["Value"]}
+    HRMS_Keywords.Edit TA/DA Grade  ${dataDictionary["Grade"]["Value"]}
+    HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary["Edit TA/DA Grade"]["Grade"]["Value"]}
 
 User should able to delete TA/DA grade
     [Documentation]  Deletes the TA/DA grade from the TA/DA grade table. Verifies its deletion in the TA/DA grade table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-grade/
     [Tags]  HRMS  TADAgrade  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     Common_Keywords.Set Test Data  ${configData["TA/DA Grade"]}
-    Common_Keywords.Show Maximum Entries on Page
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
+    HRMS_Keywords.Open TA/DA Grade Page
+    HRMS_Keywords.Search For TA/DA Grade Entry  ${dataDictionary["Edit TA/DA Grade"]["Grade"]["Value"]}
+    HRMS_Keywords.Delete TA/DA Grade Entry
     FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Do you really want to delete selected record(s) ?
-    sleep  3s
-    press keys  //button[@class='btn btn-primary']  ENTER
 
 User should able to revised TA/DA grade
     [Documentation]  Revises the TA/DA grade details. Verifies its revision in the TA/DA grade table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-grade/
     [Tags]  HRMS  TADAgrade  revisedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/Tadagraderrule
     Common_Keywords.Set Test Data  ${configData["TA/DA Grade"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add New Grade"]}
-    switch window  NEW
-    FillFields.Input Value Into Field  ${dataDictionary["Grade"]}  ${dataDictionary["Grade"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Effective From"]}  ${dataDictionary["Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Min Range"]}  ${dataDictionary["Basic Pay Min Range"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Max Range"]}  ${dataDictionary["Basic Pay Max Range"]["Value"]}
-    ${webelements}  get webelements  ${dataDictionary["Level Number"]["Locator"]["Locator0"]}
-    set to dictionary  ${dataDictionary["Level Number"]["Locator"]}  Locator1=${webelements}[0]
-    set to dictionary  ${dataDictionary["Designaton"]["Locator"]}  Locator1=${webelements}[1]
-    FillFields.Input Value Into Field  ${dataDictionary["Level Number"]}  ${dataDictionary["Level Number"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Designaton"]}  ${dataDictionary["Designaton"]["Value"]}
-    click element  ${dataDictionary["Basic Pay Max Range"]["Locator"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
+    HRMS_Keywords.Open TA/DA Grade Page
+    HRMS_Keyword.Add New TA/DA Grade
     Common_Keywords.Switch TAB
-    sleep  3s
-    reload page
-    HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary}
-    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Revise"]}
-    switch window  NEW
-    FillFields.Input Value Into Field  ${dataDictionary["Revised Effective From"]}  ${dataDictionary["Revised Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Min Range"]}  ${dataDictionary["Basic Pay Min Range"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Max Range"]}  ${dataDictionary["Basic Pay Max Range"]["Value"]}
-    ${webelements}  get webelements  ${dataDictionary["Level Number"]["Locator"]["Locator0"]}
-    set to dictionary  ${dataDictionary["Edit TA/DA Grade"]["Level Number"]["Locator"]}  Locator1=${webelements}[0]
-    set to dictionary  ${dataDictionary["Designaton"]["Locator"]}  Locator1=${webelements}[1]
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Grade"]["Level Number"]}  ${dataDictionary["Edit TA/DA Grade"]["Level Number"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Designaton"]}  ${dataDictionary["Designaton"]["Value"]}
-    click element  ${dataDictionary["Basic Pay Max Range"]["Locator"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    Common_Keywords.Switch TAB
-    sleep  3s
-    reload page
-    wait until element is visible  BtnSearchfilter  10s
-    HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary}
+    HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary["Grade"]["Value"]}
+    HRMS_Keywords.Search For TA/DA Grade Entry  ${dataDictionary["Grade"]["Value"]}
+    HRMS_Keywords.Revise TA/DA Grade  ${dataDictionary["Grade"]["Value"]}
 
 ############################################
 #  ALL TA/DA Grade dependancy tests cases  #
@@ -516,78 +436,29 @@ User should able to revised TA/DA grade
 User should able to add new grade dependancy
     [Documentation]  Fills the add new grade dependancy form and submits it. Verifies its entry in the grade dependancy table. For more info visit http://support.e-connectsolutions.com/erp/how-to/grade-dependency/
     [Tags]  HRMS  gradedependancy  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
     Common_Keywords.Set Test Data  ${configData["Grade Dependency"]}
+    HRMS_Keywords.Open Grade Depandancy Page
     Common_Keywords.Show Maximum Entries on Page
-    ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
-    ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
-    log to console  ${lastGradeDate}
-    ${date}  split string  ${lastGradeDate}  -
-    ${day}  set variable  ${date}[0]
-    ${month}  set variable  ${date}[1]
-    ${year}  set variable  ${date}[2]
-    log to console  ${day}-${month}-${year}
-    ${intday}  convert to integer  ${day}
-    ${day}  run keyword if  ${intday}<10  remove string  ${day}  0  ELSE  set variable  ${day}
-    ${day}  convert to integer  ${day}
-    ${day}  set variable  ${day+1}
-    FillFields.Input Value Into Field  ${dataDictionary["Add New Dependancy"]}
-    set to dictionary  ${dataDictionary["Effective From"]["Value"]}  Day=${day}  Month=${month}  Year=${year}
-    FillFields.Input Value Into Field  ${dataDictionary["Effective From"]}  ${dataDictionary["Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Basic Pay"]}  ${dataDictionary["TA/DA Grade depends on"]["Basic Pay"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Pay Scale"]}  ${dataDictionary["TA/DA Grade depends on"]["Pay Scale"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Level Number"]}  ${dataDictionary["TA/DA Grade depends on"]["Level Number"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Designation"]}  ${dataDictionary["TA/DA Grade depends on"]["Designation"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Save"]}
+    HRMS_Keywords.Add New Grade Dependancy
     HRMS_Keywords.Verify Grade Dependancy Entry  ${dataDictionary}
-    sleep  3s
 
 User should able to edit grade dependancy
     [Documentation]  Edits the grade dependancy details and saves them. verifies its updation in the grade dependancy table. For more info visit http://support.e-connectsolutions.com/erp/how-to/grade-dependency/
     [Tags]  HRMS  gradedependancy  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
     Common_Keywords.Set Test Data  ${configData["Grade Dependency"]}
+    HRMS_Keywords.Open Grade Depandancy Page
     Common_Keywords.Show Maximum Entries on Page
-    ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
-    ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
-    log to console  ${lastGradeDate}
-    ${date}  split string  ${lastGradeDate}  -
-    ${day}  set variable  ${date}[0]
-    ${month}  set variable  ${date}[1]
-    ${year}  set variable  ${date}[2]
-    log to console  ${day}-${month}-${year}
-    ${intday}  convert to integer  ${day}
-    ${day}  run keyword if  ${intday}<10  remove string  ${day}  0  ELSE  set variable  ${day}
-    ${day}  convert to integer  ${day}
-    ${day}  set variable  ${day+1}
-    set to dictionary  ${dataDictionary["Effective From"]["Value"]}  Day=${day}  Month=${month}  Year=${year}
-    set to dictionary  ${dataDictionary["Edit"]}  Locator=//td[contains(text(),'${lastGradeDate}')]/following-sibling::td//i[@class='fa fa-pencil']
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Effective From"]}  ${dataDictionary["Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Basic Pay"]}  ${dataDictionary["TA/DA Grade depends on"]["Basic Pay"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Pay Scale"]}  ${dataDictionary["TA/DA Grade depends on"]["Pay Scale"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Level Number"]}  ${dataDictionary["TA/DA Grade depends on"]["Level Number"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Designation"]}  ${dataDictionary["TA/DA Grade depends on"]["Designation"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Save"]}
+    HRMS_keywords.Edit Grade Dependancy
     HRMS_Keywords.Verify Grade Dependancy Entry  ${dataDictionary}
     sleep  3s
 
 User should able to delete grade dependancy
     [Documentation]  Deletes the grade dependancy from the grade dependancy table. Verifies its deletion in the grade dependancy table. For more info visit http://support.e-connectsolutions.com/erp/how-to/grade-dependency/
     [Tags]  HRMS  gradedependancy  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/tadagraderrule/TaDaDependencyGrid
     Common_Keywords.Set Test Data  ${configData["Grade Dependency"]}
+    HRMS_Keywords.Open Grade Depandancy Page
     Common_Keywords.Show Maximum Entries on Page
-    ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
-    ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
-    ${date}  split string  ${lastGradeDate}  -
-    ${day}  set variable  ${date}[0]
-    ${month}  set variable  ${date}[1]
-    ${year}  set variable  ${date}[2]
-    set to dictionary  ${dataDictionary["Delete"]}  Locator=//td[contains(text(),'${lastGradeDate}')]/following-sibling::td//i[@class='fa fa-trash-o']
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Do you really want to delete selected record?
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
+    HRMS_Keywords.Delete Grade Dependancy Entry
     HRMS_Keywords.Verify Grade Dependancy Deletion  ${dataDictionary}
 
 #################################
@@ -597,71 +468,24 @@ User should able to delete grade dependancy
 User should able to add new TA/DA rule
     [Documentation]  Fills the add new TA/DA rule form and submits it. Verifies its entry in the TA/DA rule table. This test needs grade dependancy test to be executed.  For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-rule/
     [Tags]  HRMS  TADArule  createdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
     Common_Keywords.Set Test Data  ${configData["TA/DA Rule"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Add New"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Unit"]}  ${dataDictionary["Unit"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Allowance Type"]}  ${dataDictionary["Allowance Type"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Effective From"]}  ${dataDictionary["Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Grade"]}  ${dataDictionary["Grade"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Rule"]}  ${dataDictionary["Rule"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Travel Mode"]}  ${dataDictionary["Travel Mode"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Travel Class"]}  ${dataDictionary["Travel Class"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Mileage Allowance"]}  ${dataDictionary["Mileage Allowance"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["City"]}  ${dataDictionary["City"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Amount"]}  ${dataDictionary["Amount"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    sleep  3s
-    reload page
+    HRMS_Keywords.Open TA/DA Rule Page
+    HRMS_Keywords.Add New TA/DA Rule
     HRMS_Keywords.Verify TA/DA Rule Entry  ${dataDictionary}
 
 User should able to add Edit TA/DA rule
     [Documentation]  Edits the TA/DA rule details and saves them. verifies its updation in the TA/DA rule table. This test needs grade dependancy test to be executed.  For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-rule/
     [Tags]  HRMS  TADArule  editdata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
     Common_Keywords.Set Test Data  ${configData["TA/DA Rule"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Unit"]}  ${dataDictionary["Edit TA/DA Rule"]["Unit"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Allowance Type"]}  ${dataDictionary["Edit TA/DA Rule"]["Allowance Type"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Effective From"]}  ${dataDictionary["Edit TA/DA Rule"]["Effective From"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Grade"]}  ${dataDictionary["Edit TA/DA Rule"]["Grade"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Rule"]}  ${dataDictionary["Edit TA/DA Rule"]["Rule"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Travel Mode"]}  ${dataDictionary["Edit TA/DA Rule"]["Travel Mode"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Travel Class"]}  ${dataDictionary["Edit TA/DA Rule"]["Travel Class"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Mileage Allowance"]}  ${dataDictionary["Edit TA/DA Rule"]["Mileage Allowance"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["City"]}  ${dataDictionary["Edit TA/DA Rule"]["City"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Edit TA/DA Rule"]["Amount"]}  ${dataDictionary["Edit TA/DA Rule"]["Amount"]["Value"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-    sleep  3s
-    reload page
+    HRMS_Keywords.Open TA/DA Rule Page
+    HRMS_Keywords.Edit TA/DA Rule Entry  ${dataDictionary["Grade"]["Value"]}
     HRMS_Keywords.Verify TA/DA Rule Entry  ${dataDictionary["Edit TA/DA Rule"]}
 
 User should able to delete TA/DA rule
     [Documentation]  Deletes the TA/DA rule from the TA/DA rule table. Verifies its deletion in the TA/DA rule table.  For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-rule/
     [Tags]  HRMS  TADArule  deletedata
-    Go To ERP Page  http://demoprojects.e-connectsolutions.com/ERP-DEMO/HRM/TadaRule
     Common_Keywords.Set Test Data  ${configData["TA/DA Rule"]}
+    HRMS_Keywords.Open TA/DA Rule Page
     Common_Keywords.Show Maximum Entries on Page
-#    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-    FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    wait until page contains   Do you really want to delete selected record(s) ?
-    sleep  3s
-    FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
+    HRMS_Keywords.Delete TA/DA Rule  ${dataDictionary["Edit TA/DA Rule"]["Grade"]["Value"]}
     HRMS_Keywords.Verify TA/DA Rule Deletion  ${dataDictionary["Edit TA/DA Rule"]}
-
-
-
-
-#    FillFields.Input Value Into Field  ${dataDictionary["Search box"]}  ${dataDictionary["Search box"]["Value"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Search button"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Department"]}  ${dataDictionary["Edit Section"]["Department"]["Value"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Name"]}  ${dataDictionary["Edit Section"]["Name"]["Value"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Code"]}  ${dataDictionary["Edit Section"]["Code"]["Value"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Order By"]}  ${dataDictionary["Edit Section"]["Order By"]["Value"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Edit Section"]["Is Active"]}  ${dataDictionary["Edit Section"]["Is Active"]["Value"]}
-#    FillFields.Input Value Into Field  ${dataDictionary["Save"]}
-#    wait until page contains element  SearchText
-
-#    HRMS_Keywords.Verify Section Entry  ${dataDictionary["Edit Section"]}

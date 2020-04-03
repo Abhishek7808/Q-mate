@@ -627,6 +627,11 @@ Search Department Entry
     Common_Keywords.Show Maximum Entries on Page
     Department.Search For Department  ${value}
 
+Delete Department Entry
+    [Documentation]  Deletes department entry.
+    [Arguments]  ${value}
+    Department.Click On Delete Button  ${value}
+
 Verify Department Entry
     [Documentation]  Verifies entry of department
     [Arguments]  ${value}
@@ -636,11 +641,10 @@ Verify Department Entry
 
 Verify Department Deletion
     [Documentation]  Verifies deletion of department entry.
-    [Arguments]  ${dataDictionary}
-    Common_Keywords.Show Maximum Entries on Page
-    Department.Search For Department  ${dataDictionary}
+    [Arguments]  ${value}
+    HRMS_Keywords.Search Department Entry  ${value}
     sleep  3s
-    Department.Check For Department Deletion In Department Table  ${dataDictionary}
+    Department.Check For Department Deletion In Department Table  ${value}
 
 Open Section Page
     [Documentation]  Opens section page.
@@ -666,6 +670,12 @@ Search Section Entry
     Common_Keywords.Show Maximum Entries on Page
     Section.Search For Section  ${value}
 
+Delete Section Entry
+    [Documentation]  Selects and deletes given section entry.
+    [Arguments]  ${dataDictionary}  ${value}
+    Section.Select Section  ${value}
+    Section.Delete Section  ${dataDictionary}
+
 Verify Section Entry
     [Documentation]  Verifies section entry is created or updated.
     [Arguments]  ${value}
@@ -680,21 +690,78 @@ Verify Section Deletion
     sleep  3s
     Section.Check For Section Deletion In Section Table  ${value}
 
+Open TA/DA Grade Page
+    [Documentation]  Opens TA/DA grade page.
+    TADAgrade.Go To TA/DA Grade Page
+
+Add New TA/DA Grade
+    [Documentation]  Adds new TA/DA grade entry.
+    [Arguments]  ${dataDictionary}
+    TADAgrade.Click On Add Button
+    TADAgrade.Fill Details Into TA/DA Grade Form  ${dataDictionary}
+    TADAgrade.Save Details
+
+Edit TA/DA Grade
+    [Documentation]  Edits TA/DA grade details.
+    [Arguments]  ${dataDictionary}  ${value}
+    TADAgrade.Click On Edit Button  ${value}
+    TADAgrade.Edits Details Of TA/DA grade  ${dataDictionary}
+    TADAgrade.Save Details
+
+Revise TA/DA Grade
+    [Documentation]  Revises TA/DA grade.
+    [Arguments]  ${dataDictionary}  ${value}
+    TADAgrade.Click On Revise Button  ${value}
+    TADAgrade.Fill Revised Details  ${dataDictionary}
+    TADAgrade.Save Details
+
+Delete TA/DA Grade Entry
+    [Documentation]  Deletes TA/DA grade.
+    [Arguments]  ${value}
+    TADAgrade.Click On Delete Button  ${value}
+    TADAgrade.Delete TA/DA Grade
+
+Search For TA/DA Grade Entry
+    [Documentation]  Searches TA/DA Grade Entry In Search Box.
+    [Arguments]  ${value}
+    Common_Keywords.Show Maximum Entries on Page
+    TADAgrade.Search For TA/DA grade  ${value}
+
 Verify TA/DA grade Entry
     [Documentation]  Verifies that TA/DA grade entry is created or updated.
-    [Arguments]  ${dataDictionary}
-    Common_Keywords.Show Maximum Entries on Page
-    TADAgrade.Search For TA/DA grade  ${dataDictionary}
+    [Arguments]  ${value}
+    HRMS_Keywords.Search For TA/DA Grade Entry  ${value}
     sleep  3s
-    TADAgrade.Check For TA/DA grade Entry In TA/DA grade Table  ${dataDictionary}
+    TADAgrade.Check For TA/DA grade Entry In TA/DA grade Table  ${value}
 
 Verify TA/DA grade Deletion
     [Documentation]  Verifies that TA/DA grade entry is deleted.
-    [Arguments]  ${dataDictionary}
-    Common_Keywords.Show Maximum Entries on Page
-    TADAgrade.Search For TA/DA grade  ${dataDictionary}
+    [Arguments]  ${value}
+    HRMS_Keywords.Search For TA/DA Grade Entry  ${value}
     sleep  3s
-    TADAgrade.Check For TA/DA grade Deletion In TA/DA grade Table  ${dataDictionary}
+    TADAgrade.Check For TA/DA grade Deletion In TA/DA grade Table  ${value}
+
+Open Grade Depandancy Page
+    [Documentation]  Opens grade dependancy page.
+    GradeDependancy.Go To Grade Dependancy Page
+
+Add New Grade Dependancy
+    [Documentation]  Adds new grade dependancy.
+    [Arguments]  ${dataDictionary}
+    GradeDependancy.Click On Add New Dependancy Button
+    GradeDependancy.Fill Details  ${dataDictionary}
+    GradeDependancy.Save Details
+
+Edit Grade Dependancy
+    [Documentation]  Edits grade dependancy details.
+    [Arguments]  ${dataDictionary}
+    GradeDependancy.Edit Grade Dependancy Details  ${dataDictionary}
+    GradeDependancy.Save Details
+
+Delete Grade Dependancy Entry
+    [Documentation]  Deletes grade dependancy.
+    [Arguments]  ${dataDictionary}
+    GradeDependancy.Delete Grade Dependancy
 
 Verify Grade Dependancy Entry
     [Documentation]  Verfies that grade dependancy entry is created or updated.
@@ -709,6 +776,29 @@ Verify GradeDependancy Deletion
     Common_Keywords.Show Maximum Entries on Page
     sleep  3s
     GradeDependancy.Check For Grade Dependancy Deletion In Grade Dependancy Table  ${dataDictionary}
+
+Open TA/DA Rule Page
+    [Documentation]  Opens TA/DA rule page.
+    TADARule.Go To TA/DA Rule Page
+
+Add New TA/DA Rule
+    [Documentation]  Adds new TA/DA rule.
+    [Arguments]  ${dataDictionary}
+    TADARule.Click On Add New Button
+    TADARule.Fill Details  ${dataDictionary}
+    TADARule.Save Details
+
+Edit TA/DA Rule Entry
+    [Documentation]  Edits details of TA/DA rule.
+    [Arguments]  ${dataDictionary}  ${value}
+    TADARule.Click On Edit Button  ${value}
+    TADARule.Edit Details  ${dataDictionary}
+    TADARule.Save Details
+
+Delete TA/DA Rule
+    [Documentation]  Deletes TA/DA rule enrty.
+    [Arguments]  ${value}
+    TADARule.Delete Entry  ${value}
 
 Verify TA/DA Rule Entry
     [Documentation]  Verifies that TA/DA rule entry is created or updated.
