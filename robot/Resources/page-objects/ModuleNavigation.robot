@@ -10,6 +10,7 @@ ${NAVIGATION_MENU}              xpath=//div[@id='menu_kis']
 
 *** Keywords ***
 Open Modules Menu
+    [Documentation]  Opens module menu.
     click button  ${MODULE_NAVIGATION_BUTTON}
 
 ###################################
@@ -30,51 +31,67 @@ Open Modules Menu
 #################################
 
 Navigate To HRMS Module
+    [Documentation]  Navigates to HRMS module.
     click link  ${HRMS.link_title}
+
 Go To ERP Page HRMS Dashboard
+    [Documentation]  Opens HRMS dashboard.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}
+
 Verify HRMS Dashboard Is Loaded
+    [Documentation]  Checks that HRMS dashboard is loaded by varifying dashboard title.
     title should be  ${HRMS.dashboard_title}
 
 Navigate To FA Module
+    [Documentation]  Navigates to FA module.
     click link  ${FA.link_title}
+
 Go To ERP Page FA Dashboard
+    [Documentation]  Opens FA dashboard.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${FA.link}
+
 Verify FA Dashboard Is Loaded
+    [Documentation]  Checks that FA dashboard is loaded by varifying dashboard title.
     title should be  ${FA.dashboard_title}
 
 Navigate To UM Module
+    [Documentation]  Navigates to UM module.
     click link  ${UM.link_title}
+
 Go To ERP Page UM Dashboard
-     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${UM.link}
+    [Documentation]  Opens UM dashboard.
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${UM.link}
+
 Verify UM Dashboard Is Loaded
+    [Documentation]  Checks that UM dashboard is loaded by varifying dashboard title.
     title should be  ${UM.dashboard_title}
 
 Navigate To SMM Module
+    [Documentation]  Navigates to SMM module.
     click link  ${SMM.link_title}
+
 Go To ERP Page SMM Dashboard
+    [Documentation]  Opens SMM dashboard.
      Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${SMM.link}
+
 Verify SMM Dashboard Is Loaded
+    [Documentation]  Checks that SMM dashboard is loaded by varifying dashboard title.
     title should be  ${SMM.dashboard_title}
 
-Open Dashboard From Logo
-
-Open Dashboard From Home Button
-
-Open Help Portal From Help Button
-
-Open Notifications
-
 Open User Action Menu
+    [Documentation]  Moves mouse curser to user action menu and opens it.
     wait until element is visible  ${USER_ACTION_DROPDOWN_LINK}
     mouse over  ${USER_ACTION_DROPDOWN_LINK}
 
 Click On Logout
+    [Documentation]  Close all browsers.
     close all browsers
 
 Read JSON File Link
+    [Documentation]  ...
     wait until element is visible  ${LOGOUT_LINK}
     click element  ${LOGOUT_LINK}
 
 Verify Login Page Is Loaded
+    [Documentation]  Verifies that login page is loaded.
     wait until page contains  ${LOGOUT_TEXT}

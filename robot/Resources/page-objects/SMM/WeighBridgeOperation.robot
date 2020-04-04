@@ -6,9 +6,11 @@ ${pageUrl}  SMM/WeighBridge/WeighBridgeOperation
 
 *** Keywords ***
 Go To Weighbridge Operations Page
+    [Documentation]  Opens weighbridge operations page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
 Fill Inward Slip
+    [Documentation]  Fills details in inward slip form.
     [Arguments]  ${croNumber}
     input text  searchByCRO  ${croNumber}${SPACE}
     Sleep    4s
@@ -28,6 +30,7 @@ Fill Inward Slip
     Input Valid Value    Generate In Slip Button
 
 Fill Outward Slip
+    [Documentation]  Fills details in outward slip form.
     [Arguments]  ${croNumber}
     Input Valid Value    Tab In Vehicle
     Sleep    1s

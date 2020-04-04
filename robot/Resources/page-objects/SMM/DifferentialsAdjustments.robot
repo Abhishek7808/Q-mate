@@ -1,15 +1,13 @@
-*** Settings ***
-Documentation    Suite description
-
-
 *** Variables ***
 ${pageUrl}  SMM/Invoice/Adjustment
 
 *** Keywords ***
 Go To Differentials Adjustments Page
+    [Documentation]  Opens differentail adjustments page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
 Fill Debit Note Form
+    [Documentation]  Fills details into debit note form.
     [Arguments]  ${croNumber}  ${invoiceNumber}
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]}
     Input Valid Value    Debit Note Create Button

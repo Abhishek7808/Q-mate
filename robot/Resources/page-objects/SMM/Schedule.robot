@@ -1,18 +1,18 @@
-*** Settings ***
-Documentation    Suite description
-
 *** Variables ***
 ${pageUrl}  SMM/Schedule
 
 *** Keywords ***
 Go To Schedule Page
+    [Documentation]  Opens schedule page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
 Open Schedule
+    [Documentation]  Takes schedule name as argument and open details of it.
     [Arguments]  ${scheduleName}
     Click Element    //span[contains(text(),'${scheduleName}')]/../following-sibling::td/i[@title='View']
 
 Add Formula
+    [Documentation]  Adds formula to the schedule.
     Input Valid Value    Product Management Clear Button
     Select From List By Value    keyword    0
     Select From List By Value    keyword    6
@@ -22,9 +22,11 @@ Add Formula
     Input Valid Value    Product Management Update Button
 
 Add Schedule
+    [Documentation]  Clicks on add schedule button.
     click button  addNewSchedule
 
 Fill Schedule Form
+    [Documentation]  Fills details into schedule form.
     Input Valid Value    Select Component    ${SC["Select Component"]}
     Input Valid Value    Start Date    ${SC["Start From"]}
     Input Valid Value    End Date    ${SC["End"]}

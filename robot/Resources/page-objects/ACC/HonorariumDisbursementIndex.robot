@@ -1,6 +1,7 @@
 *** Keywords ***
 
 Go To Honorarium Disbursement Index Page And Set Variables
+    [Documentation]  Opens honorarium disbursement index page and sets variables for honorarium disbursement scripts.
     HonorariumDisbursementIndex.Set Variables
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
 

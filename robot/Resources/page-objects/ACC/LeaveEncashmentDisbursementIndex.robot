@@ -1,6 +1,7 @@
 *** Keywords ***
 
 Go To Leave Encashment Disbursement Index Page And Set Variables
+    [Documentation]  Opens leave encashment disbursement index page and sets variables for leave encashment disbursement scripts.
     LeaveEncashmentDisbursementIndex.Set Variables
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
 

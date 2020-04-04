@@ -6,15 +6,17 @@ ${selfVarificationPopupText}  //h3[contains(text(),'Your details are not Self Ve
 
 *** Keywords ***
 Go To Manage User Page
+    [Documentation]  Opens Manage User page
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/URM/user
 
 Search Employee
+    [Documentation]  Searches employee by name.
     [Arguments]  ${EmployeeCode}
     input text  //input[@id='SearchText']  ${EmployeeCode}
     click element  //div[@id='DivSearchPanel']//div[1]
 
-
 Impersonate Employee
+    [Documentation]  Does impersonate process.
     Sleep  2s
     click element  ${actionEMP}
     Sleep  2s

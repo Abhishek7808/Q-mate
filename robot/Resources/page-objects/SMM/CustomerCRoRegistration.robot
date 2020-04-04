@@ -3,6 +3,7 @@
 
 *** Keywords ***
 Select Purchase Order for CRO
+    [Documentation]  Takes PO number as argument and selects that purchase order in the CRO form.
     [Arguments]  ${poNumber}
     ${finalPoNumber}  run keyword if  ${poNumber} == None  Get Purchase Order Number From Dropdown  ELSE  ${poNumber}
     Select From List By Label    purchaseOrderId    ${finalPoNumber}
@@ -10,6 +11,7 @@ Select Purchase Order for CRO
     Sleep    2s
 
 Get Purchase Order Number From Dropdown
+    [Documentation]  Fetches and returns purchase order number from the dropdown.
     ${List Item}    Get List Items    purchaseOrderId
     ${List Item}    Catenate    ${List Item}
     ${List Item}    Split String    ${List Item}    ,
@@ -19,29 +21,35 @@ Get Purchase Order Number From Dropdown
     return from keyword  ${List Item}
 
 Select Purchase Order
+    [Documentation]  Selects purchase order from the dropdown.
     [Arguments]  ${poNumber}
     Input Valid Value    Contract Release Order Select PO    ${poNumber}
 
 Fetch PO Balance
+    [Documentation]  Fetches and returns PO balance.
     Wait Until Element Is Visible    availableQuantity
     ${Amount}    Get Value    availableQuantity
     ${Amount}    Evaluate    ${Amount}+1
     return from keyword  ${amount}
 
 Input Required Quantity
+    [Documentation]  Takes amount as argument and fills it into required quantity.
     [Arguments]  ${amount}
     Wait Until Keyword Succeeds    5s    200ms    Input Text    productQuantityRequired    ${Amount}
     Press Key    productQuantityRequired    \\09
     Sleep    1s
 
 Check For Agent Name Contract Release Order Form
+    [Documentation]  Takes agent name as argument and checks that it is visible on the page.
     [Arguments]  ${agentName}
     Element Should Be Visible    //span[contains(text(),'${agentName}')]
 
 Check For Pending CRO
+    [Documentation]  Checks for 'pending' text on the page.
     Wait Until Keyword Succeeds    5s    200ms    Element Should Be Visible    //span[text()='Pending']
 
 Compare FI Balance And CRO Amount
+    [Documentation]  Verifies that FI balance is greater then CRO amount.
     ${Available Value}    Get Text    //button[@id='btnHourglassEmpty']//div[text()='Available Value']/preceding-sibling::div
     ${Available Value}  remove string  ${Available Value}  ,
 #    ${Available Value}    Split String    ${Available Value}    ,
@@ -50,6 +58,7 @@ Compare FI Balance And CRO Amount
     Should Be Equal    '${Status}'    'True'
 
 Fill CRO From Customer Form Without Financial Insturment
+    [Documentation]  Fills CRO details without adding financial instrument details.
     ${List Item}  Get Purchase Order Number From Dropdown
     Wait Until Keyword Succeeds    5s    200ms    Select From List By Label    purchaseOrderId    ${List Item}
     Press Key    purchaseOrderId    //09
@@ -67,6 +76,7 @@ Fill CRO From Customer Form Without Financial Insturment
     \    Should Not Be Equal    ${Val}    ${FI["BG/LC Number"]}
 
 Fill CRO From Customer Form
+    [Documentation]  Fills details into CRO form.
     ${PO No}    Get Selected List Label    purchaseOrderId
     ${PO No}    Strip String    ${PO No}
     ${Status}    Evaluate    '${PO No}'=='${EMPTY}'

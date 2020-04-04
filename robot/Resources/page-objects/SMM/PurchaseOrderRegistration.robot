@@ -1,8 +1,6 @@
-*** Settings ***
-
-
 *** Keywords ***
 Fill Purchase Order Form By Department
+    [Documentation]  Fills details into purchase order form.
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
     Input Valid Value    Purchase Order Enter Customer PAN or Name    ${Val}
     Input Valid Value    Purchase Order Purchasing for Self Use    ${Branch["User Type"]}
@@ -45,6 +43,7 @@ Fill Purchase Order Form By Department
     Wait Until Keyword Succeeds    5s    250ms    Input Valid Value    Purchase Order Submit Button
 
 Approve Purchase Order
+    [Documentation]  Does process of approval of purchase order.
     ${Status}    Run Keyword And Return Status    Page Should Not Contain Button    btnactionApprove
     Run Keyword If    ${Status}    Wait Until Keyword Succeeds    5s    100ms    Click Element    //span[contains(text(),'Company Details')]
     Run Keyword If    ${Status}    Sleep    3s
@@ -59,14 +58,17 @@ Approve Purchase Order
     Click Button    //button[@id='btnconfirmVerify']
 
 Enter Customer PAN
+    [Documentation]  Takes pan number and branch name as argument and fills these details into company name.
     [Arguments]  ${panNo}  ${branchName}
     &{Val}    Create Dictionary    Input=${panNo}    Search=${branchName} (${panNo})
     Input Valid Value    Purchase Order Enter Customer PAN or Name    ${Val}
 
 Add Agent
+    [Documentation]  Clicks on add agent button.
     Click Button    btnAddAgentPo
 
-Fill Agent REgistration Form By Department
+Fill Agent Registration Form By Department
+    [Documentation]  Fills details into agent registration form.
     Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
     sleep  2s
     Input Valid Value    Add Agent Agent Name    ${SSO ID["Name"]}
@@ -86,14 +88,17 @@ Fill Agent REgistration Form By Department
     run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
 
 Select Agent From Registered Agents
+    [Documentation]  Takes agent name as argument and selects given agent from the agent list.
     [Arguments]  ${agentName}
     input text  react-select-2-input  ${agentName}
     Press Key    react-select-2-input    \\13
 
 Submit Form
+    [Documentation]  Clicks on submit form button.
     Wait Until Keyword Succeeds    5s    500ms    Input Valid Value    Purchase Order Submit Button
 
 Update PO By Department
+    [Documentation]  Edits details of purchase order which are editable, if not then shows failure.
     ${status}  run keyword and return status  Input Valid Value    Purchase Order Unit Name    ${PO["Unit Name"]}
     log  ${status}
     run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  Unit Name is not editable
@@ -123,6 +128,7 @@ Update PO By Department
     #run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  element is not editable
 
 Reject Purchase Order
+    [Documentation]  Does rejection process of purchase order.
     Input Valid Value    Purchase Order Agreement    ${PO["Document Upload"]}
     Input Valid Value    Purchase Order Reject Button
     Input Valid Value    Purchase Order Reject Remarks    ${PO["Reject Remarks"]}

@@ -4,6 +4,7 @@ Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Field.robot
 
 *** Keywords ***
 Fill Customer Registration Form By Department
+    [Documentation]  Fills details into customer registrataion form.
     [Arguments]    ${Mode}
     Input Valid Value    User Type    ${Branch["User Type"]}
     Run Keyword If    '${Branch["User Type"]}'=='Traders'    Input Valid Value    TCS Rate    ${Branch["TCS Rate"]}
@@ -52,6 +53,7 @@ Fill Customer Registration Form By Department
     Run Keyword If    '${Mode}'=='Activate'    Input Valid Value    Customer Details Active Button
 
 Fill Add Member Form
+    [Documentation]  Fills details into add member form.
     ${status}  run keyword and return status  page should contain element  //span[contains(text(),'Add Member')]
     run keyword if  ${status} == ${True}  click element  //button[@id='btnView']
     Input Valid Value    SSO ID    ${SSO ID["SSOID"]}
@@ -64,6 +66,7 @@ Fill Add Member Form
     Input Valid Value    Member List Submit Button
 
 Fill Plant Details Form By Department
+    [Documentation]  Fills details into plant details form.
     #[Arguments]    ${Key Description}
     wait until page contains element  //*[@id="plantLocation"]
     Input Valid Value    Plant Location    ${Plant["Plant Location"]}
@@ -81,22 +84,29 @@ Fill Plant Details Form By Department
     Input Valid Value    Plant Details Submit Button
 
 Approve Plant
+    [Documentation]  Clicks on approve button.
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Click Button    action-Approve
 
 Reject Plant
+    [Documentation]  Clicks on reject button.
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    Input Valid Value    Customer Branch Reject Button
 
 Activate Plant
+    [Documentation]  Clicks on active button.
     Input Valid Value    Customer Details Active Button
 
 Deactivate Plant
+    [Documentation]  Clicks on deactivae button.
     Input Valid Value    Customer Details Deactive Button
 
 View Customer List
+    [Documentation]  Clicks on view customer list button
     Input Valid Value    View Customer List
 
 View Member List
+    [Documentation]  Clicks on mumber list button.
     Input Valid Value    Customer Details Member List Button
 
 View Plant Details
+    [Documentation]  Clicks on plant details button.
     Wait Until Keyword Succeeds    5s    250ms    Click Button    plantDetail

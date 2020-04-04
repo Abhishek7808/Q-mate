@@ -1,9 +1,9 @@
 *** Keywords ***
 
 Go To Arrear Disbursement Index Page And Set Variables
+    [Documentation]  Opens arrear disbursement index page and sets variables for arrear disbursement scripts.
     ArrearDisbursementIndex.Set Variables
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
-
 
 Set Variables
     [Documentation]  Sets variables according to the test.

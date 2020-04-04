@@ -1,17 +1,17 @@
-*** Settings ***
-Documentation    Suite description
-
 *** Variables ***
 ${pageUrl}  SMM/Receipt/ReceiptList
 
 *** Keywords ***
 Go To Receipt List Page From Department
+    [Documentation]  Opens reciept list page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
 Add New Receipt
+    [Documentation]  Clicks on add new reciept button.
     Input Valid Value    Generate Receipt Create New Button
 
 Fill Receipt Form
+    [Documentation]  Fills details into receipt form.
     &{Val}    Create Dictionary    Input=${Company["Enter PAN"]}    Search=${Branch["Name"]} (${Company["Enter PAN"]})
     Input Valid Value    Receipt Enter Customer PAN or Name    ${Val}
     ${status}  run keyword and return status  Input Valid Value    Receipt Company Name    ${Company["Company Name"]}
@@ -32,8 +32,10 @@ Fill Receipt Form
     Input Valid Value    Generate Receipt Submit Button
 
 View Reciept Details
+    [Documentation]  Takes branch name as argument and opens reciept details of given branch.
     [Arguments]  ${branchNAme}
     Wait Until Keyword Succeeds    ${RETRY TIME}    ${RETRY INTERVAL}    click element  //span[contains(text(),'${branchName}')]/../following-sibling::td/i[@title='View']
 
 Approve Reciept
-     click button  btnactionApprove
+    [Documentation]  Clicks on approve button.
+    click button  btnactionApprove

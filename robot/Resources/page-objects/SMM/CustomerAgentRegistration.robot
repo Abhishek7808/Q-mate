@@ -1,16 +1,13 @@
-*** Settings ***
-Documentation    Suite description
-
-
 *** Keywords ***
 Edit Agent Name
+    [Documentation]  Takes name as argument and edits agent name.
     [Arguments]  ${newName}
     Wait Until Keyword Succeeds    5s    200ms    Clear Text Value    agentName
     Wait Until Keyword Succeeds    5s    200ms    Input Text Value    agentName    ${newName}
     Wait Until Keyword Succeeds    5s    200ms    Click Button    btnSaveUpdate
 
 Fill Agent
-
+    [Documentation]  Fills details into agents details form.
     Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
     Input Valid Value    Add Agent Agent Name    ${SSO ID["Name"]}
     Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}

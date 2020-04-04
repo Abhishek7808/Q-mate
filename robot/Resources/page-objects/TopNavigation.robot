@@ -13,13 +13,6 @@ ${APPLY PERFERENCE BUTTON}  //*[@id="SAVE_OPTION"]
 ${LOGOUT_TEXT_LIVE}  Rajasthan Single Sign On
 
 *** Keywords ***
-Open Dashboard From Logo
-
-Open Dashboard From Home Button
-
-Open Help Portal From Help Button
-
-Open Notifications
 
 Open User Action Menu
     [Documentation]  Opens the user action menu
@@ -80,13 +73,16 @@ Apply Pereference
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click button  ${APPLY PERFERENCE BUTTON}
 
 Click On Logout Link
+    [Documentation]  Clicks on logout link.
     click element  ${LOGOUT_LINK}
 
 Verify Login Page Is Loaded
+    [Documentation]  Verifies that login page is loaded.
     ${LOGOUT_TEXT}  set variable if  '${ENVIRONMENT}' == 'production'  ${LOGOUT_TEXT_LIVE}  ${LOGOUT_TEXT}
     page should contain  ${LOGOUT_TEXT}
 
 Go Back To Home
+    [Documentation]  Clicks on home button.
     click element  ${HOME_LINK}
 
 Open Preference Unit Page

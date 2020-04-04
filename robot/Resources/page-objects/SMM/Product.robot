@@ -1,18 +1,17 @@
-*** Settings ***
-Documentation    Suite description
-
-
 *** Variables ***
 ${pageUrl}  SMM/Product/ProductList
 
 *** Keywords ***
 Go To Product Page
+    [Documentation]  Opens product page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}
 
 Add Product
+    [Documentation]  Clicks on add product page.
     click button  btnAddProduct
 
 Fill Product Form
+    [Documentation]  Fills details into product form.
     Input Valid Value    Product Name    ${PD["Product Name"]}
     ${status}  run keyword and return status  Input Valid Value    Is Auctionable    ${PD["Is Auctionable"]}
     log  ${status}
@@ -30,6 +29,7 @@ Fill Product Form
     Input Valid Value    Product Details Submit Button
 
 Add Schedule From Product Page
+    [Documentation]  Opens schedule form from product page and fills details into it.
     Click Element    xpath=//span[contains(text(),'Schedules')]
     Sleep    3s
     Click Button    btnAddNew
@@ -57,10 +57,12 @@ Add Schedule From Product Page
     Click Button    btnSaveUpdate
 
 Search Product
+    [Documentation]  Takes product name as argument and searches it.
     [Arguments]  ${productName}
     Wait Until Keyword Succeeds    2s    400ms    Input Valid Value    Product Search By Name    ${productName}
 
 Edit Product Details
+    [Documentation]  Edits details of the product.
     Sleep    2s
     Click Element    //span[contains(text(),'${PD["Product Name"]}')]/../following-sibling::td/i[@title='Edit']
     Sleep    1s

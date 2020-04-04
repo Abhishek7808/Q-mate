@@ -1,18 +1,23 @@
 *** Variables ***
 ${addNewEntry}  //a[@id='modals-bootbox-custom']
 ${submit}  //input[@id='btnSubmit']
+
 *** Keywords ***
 Go To Third Party Deduction Page
+    [Documentation]  Opens third party deduction page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click On ADD New Entry Button
+    [Documentation]  clicks on add new entry button.
     click element  ${addNewEntry}
 
 Select Employee
+    [Documentation]  Takes employee name as argument and selects it from the dropdown.
     [Arguments]  ${dataDictionary}  ${employeeName}
     FillFields.Input Value Into Field  ${dataDictionary["Employee_Name"]}  ${employeeName}
 
 Fill Third Party Deduction
+    [Documentation]  Fills third party deduction form.
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Deduction_type"]}  ${dataDictionary["Deduction_type"]["Value"]}
     set to dictionary  ${dataDictionary["Start_Date"]["Value"]}  Day=1  Month=${currentMonth[0:3]}  Year=${currentYear}
@@ -23,4 +28,5 @@ Fill Third Party Deduction
     FillFields.Input Value Into Field  ${dataDictionary["Amount"]}  ${dataDictionary["Amount"]["Value"]}
 
 Save Details
+    [Documentation]  Clicks on save button.
     click element  ${submit}

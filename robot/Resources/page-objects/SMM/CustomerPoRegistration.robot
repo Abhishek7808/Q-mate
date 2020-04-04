@@ -3,9 +3,11 @@
 
 *** Keywords ***
 Add Agent
+    [Documentation]  Clicks on add agent button.
     Click Button    btnAddAgentPo
 
 Fill Agent Details
+    [Documentation]  Fills details into agent details form.
     Input Valid Value    Add Agent SSO ID    ${SSO ID["SSOID"]}
     Input Valid Value    Add Agent Agent Name    ${SSO ID["Name"]}
     Input Valid Value    Add Agent Validity Date    ${SSO ID["Validity Date"]}
@@ -24,6 +26,7 @@ Fill Agent Details
     run keyword if  '${message}' == 'Agent Plant Relation is already exists'  click button  btnCancelModel
 
 Fill Purchase Order Form
+    [Documentation]  Fills details into purchase order form.
     ${Status}    Run Keyword And Return Status    Should Be Equal    ${PO["Coming Against Auction"]}    Select
     sleep  2s
     Input Valid Value    Purchase Order Coming Against Auction    ${PO["Coming Against Auction"]}
@@ -47,19 +50,24 @@ Fill Purchase Order Form
     Input Valid Value    Purchase Order Submit Button
 
 Check For Agent Name In Purchase Order Form
+    [Documentation]  Takes agent name as argument and verifies that it is visible on the page.
     [Arguments]   ${agentName}
     Element Should Be Visible    //span[contains(text(),'${agentName}')]
 
 Switch To CRO List
+    [Documentation]  Clicks on CRO list tab.
     click element  //span[contains(text(),'CRO List')]
 
 Request CRO
+    [Documentation]  Clicks on request cro button.
     click element  //button[@id='btnRequestCRO']
 
 Check For Approval Of Purchase Order From Customer
+    [Documentation]  Verifies that current page contains "Approved" tag.
     Page should Contain Element    //button/span[text()='Approved']
 
 Edit Purchase Order
+    [Documentation]  Edits details of purchase order.
     Click Button    btnEditPo
     Input Text    newPoQuantity    4500
     Input Text    newPinCode    313002

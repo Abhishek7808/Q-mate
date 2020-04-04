@@ -4,6 +4,7 @@ Resource          ${RESOURCES}${/}OldUiFormHelpers${/}Field.robot
 
 *** Keywords ***
 Fill Customer Registration Form By Customer
+    [Documentation]  Fills details into customer registration form.
     [Arguments]    ${Branch Creation}    ${Mode}
     sleep  2s
     Run Keyword If    '${Branch Creation}'=='New'    Set To Dictionary    ${Key Description["Company Type"]}    Type=Disabled
@@ -68,6 +69,7 @@ Fill Customer Registration Form By Customer
     Run Keyword If    '${Mode}'=='Draft'    Input Valid Value    Customer Details Update Button
 
 Check For Draft Branch In The Draft Branches Popup
+    [Documentation]  Fills company pan into company pan field and then waits for the popup which contains the desired branch name.
     Input Text    ${Key Description["Enter PAN"]["Locator"]}    QMATE6665Q
     Set Focus To Element    ${Key Description["Enter PAN"]["Locator"]}
     Click Element    ${Key Description["Company Type"]["Locator"]}
