@@ -3,6 +3,7 @@ Documentation    Create, edit and delete cadre, For more info visit http://suppo
 
 *** Keywords ***
 Go To Cadre Detail Page
+    [Documentation]  Opens cadre detail page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click On Add New Cadre Button
