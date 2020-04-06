@@ -1058,6 +1058,7 @@
 		}
 	},
 	"Designation":{
+		"URL": "HRM/Designation",
 		"Add Designation": {
 			"Type": "Link",
 			"Locator": "modals-bootbox-custom"

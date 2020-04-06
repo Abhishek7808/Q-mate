@@ -93,7 +93,7 @@ Apply Filters
     click element  //button[contains(text(),'Apply Filter')]
 
 Verify Disbursement
-    [Documentation]
+    [Documentation]  Clicks on action button, clicks on verify text then clicks on OK button.
     wait until page contains element  //th[contains(text(),'Disbursement Detail')]  50s
     click element  //a[@class='btn btn-primary drpWorkflowAction']
     sleep  2s
@@ -103,6 +103,7 @@ Verify Disbursement
     click element  //button[contains(text(),'OK')]
 
 Approve Disbursement
+    [Documentation]  Clicks on action button, clicks on approve text then clicks on OK button.
     click element  //a[@class='btn btn-primary drpWorkflowAction']
     sleep  2s
     click element  //a[contains(text(),'Approve')]
@@ -111,18 +112,22 @@ Approve Disbursement
     click element  //button[contains(text(),'OK')]
 
 Select Status
+    [Documentation]  Takes status as argument and selects repective filter from the dropdown.
     [Arguments]  ${status}
     select from list by label  //select[@id='Status']  ${status}
 
 Click On Actions Button
+    [Documentation]  Clicks on action button.
     page should contain element  //span[contains(text(),'Voucher Not Generated')]
     click element  //span[contains(text(),'Voucher Not Generated')]/../following-sibling::td//a[contains(@class,'btn btn-sm btn-primary')]
     sleep  2s
 
 Select Voucher
+    [Documentation]  Clicks on voucher text.
     click element  //span[contains(text(),'Voucher Not Generated')]/../following-sibling::td//a[contains(text(),'Voucher')]
 
 Save Voucher
+    [Documentation]  Clicks on save voucher button.
     wait until element is not visible  //div[@id='divModel']//div//img  150s
     wait until element is enabled  //input[@id='btnSave']  15s
     click element  //input[@id='btnSave']

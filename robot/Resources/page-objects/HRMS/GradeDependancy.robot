@@ -3,12 +3,15 @@ Documentation    Add, edit and delete grade dependancy. For more info visit http
 
 *** Keywords ***
 Go To Grade Dependancy Page
+    [Documentation]  Opens grade dependancy page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Click On Add New Dependancy Button
+    [Documentation]  Clicks on add new link.
     click element  modals-bootbox-custom
 
 Fill Details
+    [Documentation]  Fills details into grade dependancy form.
     [Arguments]  ${dataDictionary}
     ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
     ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
@@ -30,6 +33,7 @@ Fill Details
     FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Designation"]}  ${dataDictionary["TA/DA Grade depends on"]["Designation"]["Value"]}
 
 Edit Grade Dependancy Details
+    [Documentation]  Edit details into grade dependancy form.
     [Arguments]  ${dataDictionary}
     ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
     ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
@@ -53,9 +57,11 @@ Edit Grade Dependancy Details
     FillFields.Input Value Into Field  ${dataDictionary["TA/DA Grade depends on"]["Designation"]}  ${dataDictionary["TA/DA Grade depends on"]["Designation"]["Value"]}
 
 Save Details
+    [Documentation]  Clicks on save button.
     click button  btnSave
 
 Delete Grade Dependancy
+    [Documentation]  Fetches date of latest grade created and clicks on delete button related to it and then clicks on OK button.
     [Arguments]  ${dataDictionary}
     ${numberOfRows}  get element count  //div[@id='TADAGradeListing']//tr
     ${lastGradeDate}  get table cell  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']  ${numberOfRows}  2
@@ -69,9 +75,11 @@ Delete Grade Dependancy
     FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
 
 Check For Grade Dependancy Entry In Grade Dependancy Table
+    [Documentation]  Checks that given grade dependancy is listed on the current page.
     [Arguments]  ${dataDictionary}
     Page should contain element  //td[contains(text(),'${dataDictionary["Effective From"]["Value"]["Day"]}-${dataDictionary["Effective From"]["Value"]["Month"]}-${dataDictionary["Effective From"]["Value"]["Year"]}')]
 
 Check For Grade Dependancy Deletion In Grade Dependancy Table
+    [Documentation]  Checks that given grade dependancy is not listed on the current page.
     [Arguments]  ${dataDictionary}
     Page should not contain element  //td[contains(text(),'${dataDictionary["Effective From"]["Value"]["Day"]}-${dataDictionary["Effective From"]["Value"]["Month"]}-${dataDictionary["Effective From"]["Value"]["Year"]}')]

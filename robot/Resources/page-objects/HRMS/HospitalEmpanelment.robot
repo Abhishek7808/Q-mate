@@ -3,21 +3,24 @@ Documentation    Add, edit and delete Hospital Empanelment. For more info visit 
 
 *** Keywords ***
 Go To Hospital Empanelment Page
+    [Documentation]  Opens hospital empanelment page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
 Search For Hospital Empanelment
-    [Arguments]  ${value}
+    [Documentation]  Takes hospital name as argument and searches it in the table.
+    [Arguments]  ${hospitalName}
     wait until page contains element  SearchText
     reload page
-    input text  SearchText  ${value}
+    input text  SearchText  ${hospitalName}
     click button  BtnSearchfilter
 
 Select Hospital Empanement
-    [Arguments]  ${value}
-    select checkbox  //td[contains(text(),'${value}')]/preceding-sibling::td//input[1]
+    [Documentation]  Takes hospital name as argument and selects related checkbox.
+    [Arguments]  ${hospitalName}
+    select checkbox  //td[contains(text(),'${hospitalName}')]/preceding-sibling::td//input[1]
 
 Delete Entry
-    click element  //a[contains(text(),'Actions')]
+    [Documentation]  Clicks on actions button then clicks on OK button.
     wait until page contains  //a[contains(text(),'Actions')]
     click element  //a[contains(text(),'Actions')]
     wait until page contains   Do you really want to delete selected record(s) ?
@@ -25,22 +28,27 @@ Delete Entry
 
 
 Check For Hospital Empanelment Entry In Hospital Empanelment Table
-    [Arguments]  ${value}
-    Page should contain element  //td[contains(text(),'${value}')]
+    [Documentation]  Takes hospital name as argument and checks that it is listed on current page.
+    [Arguments]  ${hospitalName}
+    Page should contain element  //td[contains(text(),'${hospitalName}')]
 
 Check For Hospital Empanelment Deletion In Hospital Empanelment Table
-    [Arguments]  ${value}
-    Page should not contain element  //td[contains(text(),'${value}')]
+    [Documentation]  Takes hospital name as argument and checks that it is not listed on current page.
+    [Arguments]  ${hospitalName}
+    Page should not contain element  //td[contains(text(),'${hospitalName}')]
 
 Click On Add New Button
+    [Documentation]  Clicks on add new button.
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Add New"]}
 
 Click On Edit Button
+    [Documentation]  Clicks on edit button.
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Edit"]}
 
 Fill Hospital Empanelment Details
+    [Documentation]  Fills details in hospital empanelment form.
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Name"]}  ${dataDictionary["Name"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Type"]}  ${dataDictionary["Type"]["Value"]}
@@ -55,6 +63,7 @@ Fill Hospital Empanelment Details
     FillFields.Input Value Into Field  ${dataDictionary["Category"]}  ${dataDictionary["Category"]["Value"]}
 
 Edit Hospital Empanelment Details
+    [Documentation]  Edits details in hospital empanelment form.
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Edit Hospital Empanelment"]["Name"]}  ${dataDictionary["Edit Hospital Empanelment"]["Name"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Edit Hospital Empanelment"]["Type"]}  ${dataDictionary["Edit Hospital Empanelment"]["Type"]["Value"]}
@@ -69,5 +78,6 @@ Edit Hospital Empanelment Details
     FillFields.Input Value Into Field  ${dataDictionary["Edit Hospital Empanelment"]["Category"]}  ${dataDictionary["Edit Hospital Empanelment"]["Category"]["Value"]}
 
 Save Details
+    [Documentation]  Clicks on save button.
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Save"]}

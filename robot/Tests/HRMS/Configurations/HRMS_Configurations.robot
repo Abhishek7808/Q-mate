@@ -123,7 +123,7 @@ User should able to delete deputation department
     HRMS_Keywords.Open Deputation Department Page
     HRMS_Keywords.Filter Deputation Departments  ${dataDictionary}  ${dataDictionary["Edit Deputation Department"]}
     HRMS_Keywords.Search Deputaion Department  ${dataDictionary}  ${dataDictionary["Edit Deputation Department"]["Name"]["Value"]}
-    HRMS_Keywords.Delete Deputation Department  ${dataDictionary}
+    HRMS_Keywords.Delete Deputation Department  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
     reload page
     HRMS_Keywords.Verify Deputation Department Deletion  ${dataDictionary}
 
