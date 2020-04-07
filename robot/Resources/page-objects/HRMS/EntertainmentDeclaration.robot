@@ -3,6 +3,7 @@ Documentation    Add, edit and delete tea rate definition. For more info visit h
 
 *** Variables ***
 ${tableID}  //table[contains(@class,'table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable')]
+${declareEntertainmentDeclaration}  modals-bootbox-custom
 
 *** Keywords ***
 Go To Entertainment Declaration Page

@@ -12,30 +12,30 @@ ${After Deleting Photo}    0.1
 
 *** Keywords ***
 Clear Type
-    [Arguments]    ${Key}
     [Documentation]    Selects the appropriate Input Keyword from the dictionary
+    [Arguments]    ${Key}
     Run Keyword    Clear ${Key Description["${Key}"]["Type"]}    ${Key Description["${Key}"]["Locator"]}
 
 Clear AutoSuggest
+    [Documentation]    Clear the Content of the Locator.
     [Arguments]    ${Locator}
-    [Documentation]    Clear the Content of the Locator
     Input Text    ${Locator}    ${EMPTY}
 
 Clear Dropdown
-    [Arguments]    ${Locator}
     [Documentation]    Selects dropdown value identified by locator.
+    [Arguments]    ${Locator}
     ${status}  run keyword and return status  Select From List By Label    ${Locator}    ${EMPTY}
     run keyword if  ${status} == ${False}  Select From List By Label    ${Locator}    None
     log to console  ${EMPTY} empty
 
 Clear Checkbox
-    [Arguments]    ${Locator}
     [Documentation]    Selects checkbox value identified by the locator.
+    [Arguments]    ${Locator}
     Unselect Checkbox    ${Locator}
 
 Clear Date
-    [Arguments]    ${Locator}
     [Documentation]    Input the given date into date field at the locator.
+    [Arguments]    ${Locator}
     ...    Date Format : {"Date": "9", "Month": "Feb", "Year": "1993"}
     #Can't be executed
     Execute JavaScript    return window.document.getElementById('${Locator}').readOnly = false
@@ -45,8 +45,8 @@ Clear Date
     Sleep    ${After Enable Readonly}
 
 Clear File Read Only
-    [Arguments]    ${Locator}
     [Documentation]    Uploads a given file after removing the existing file, if any at the given locator.
+    [Arguments]    ${Locator}
     #${Status}    Run Keyword And Return Status    Page Should Contain Element    //span[@id='remove-button-file-${Locator}FileObject']
     #${Uploaded File Name}    Get Text    ${Uploaded File Name Path}
     #Run Keyword If    ${Status}    Click Element    //span[@id='remove-button-file-${Locator}FileObject']
@@ -54,16 +54,16 @@ Clear File Read Only
     Log    ${Locator}
 
 Clear File
-    [Arguments]    ${Locator}
     [Documentation]    Uploads a given file after removing the existing file, if any at the given locator.
+    [Arguments]    ${Locator}
     ${Status}    Run Keyword And Return Status    Page Should Contain Element    //span[@id='remove-button-file-${Locator}FileObject']|//span[@id='remove-file-${Locator}FileObject']
     #${Uploaded File Name}    Get Text    ${Uploaded File Name Path}
     Run Keyword If    ${Status}    Click Element    //span[@id='remove-button-file-${Locator}FileObject']|//span[@id='remove-file-${Locator}FileObject']
     Sleep    ${After Deleting File}
 
 Clear MultiSelect
-    [Arguments]    ${Locator}
     [Documentation]    Check previous checked checkbox and deselect the value.
+    [Arguments]    ${Locator}
     ...    Selects multiple checkbox value identified by the locator.
     Sleep    ${Before Clicking Open Options Clear}
     ${Box Attr}    Get Element Attribute    xpath=//a[@id='${Locator}']/ancestor::dt/following-sibling::dd//ul    style
@@ -78,23 +78,23 @@ Clear MultiSelect
     Sleep    ${After Unselecting Options}
 
 Clear Read Only
+    [Documentation]    Keyword present for the name sake.
     [Arguments]    ${Locator}
-    [Documentation]    Keyword present for the name sake
     Log    Inside Clear Read Only
 
 Clear Radio Button
-    [Arguments]    ${Locator}
     [Documentation]    Set radio button to the value at the locator.
+    [Arguments]    ${Locator}
     Log    Inside Clear Radio Button
 
 Clear Button
+    [Documentation]    Logs a message to console.
     [Arguments]    ${Locator}
-    [Documentation]    Logs a message to console
     Log    Inside Clear Radio Button
 
 Clear Text Value
+    [Documentation]    Inputs text at the given locator.
     [Arguments]    ${Locator}
-    [Documentation]    Inputs text at the given locator
 #    Clear Element Text  ${Locator}
     Input Text    ${Locator}    ${EMPTY}
 #    Press Keys  ${Locator}  A+BACKSPACE
@@ -106,22 +106,23 @@ Clear Text Value
 #    ...     Repeat Keyword  ${backspaces count +1}  Press Keys  ${Locator}   BACKSPACE    # this is the code for the backspace key; "backspaces count +1" - just too be sure :)
 
 Clear Disabled
-    [Arguments]    ${Locator}
     [Documentation]    Keyword preseent for name sake
+    [Arguments]    ${Locator}
     Log    Inside Clear Disabled
 
 Clear Search Agent
+    [Documentation]    Logs clear message.
     [Arguments]    ${Locator}
     Log    Inside Clear Search Agent
 
 Clear Structure
-    [Arguments]    ${Locator}
     [Documentation]    Set Structure button to the value at the locator.
+    [Arguments]    ${Locator}
     Log    Inside Clear Structure
 
 Clear Product
-    [Arguments]    ${Locator}
     [Documentation]    Set Product button to the value at the locator.
+    [Arguments]    ${Locator}
     Log    Inside Clear Product
 
 Clear Customer
@@ -130,13 +131,13 @@ Clear Customer
     Log    Inside Clear Customer
 
 Clear Agreement
-    [Arguments]    ${Locator}
     [Documentation]    Set Agreement button to the value at the locator.
+    [Arguments]    ${Locator}
     Log    Inside Clear Agreement
 
 Clear Formula
-    [Arguments]    ${Locator}
     [Documentation]    Set Formula button to the value at the locator.
+    [Arguments]    ${Locator}
     Log    Inside Clear Formula
 
 Clear CheckBoxPopup

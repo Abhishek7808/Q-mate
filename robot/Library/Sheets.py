@@ -42,16 +42,19 @@ error_data = Notifications
 
 @keyword
 def update_sheet(sheet, row, column, data):
+    """Updates data in the given sheet, row and column """
     sheet.update_cell(row, column, data)
 
 
 @keyword
 def get_sheet_data(sheet, row, column):
+    """Returns filled data in the given sheet, row and column"""
     return sheet.cell(row, column).value
 
 
 @keyword
 def get_last_row_number(sheet, first_column_index):
+    """Returns last empty row number in the sheet"""
     values_list = sheet.col_values(first_column_index)
     last_index = len(values_list)
     if values_list[last_index - 1] == 'Sr. No.':
@@ -61,6 +64,7 @@ def get_last_row_number(sheet, first_column_index):
 
 @keyword
 def get_last_serial_number(sheet, first_column_index):
+    """Returns last filled serial number in the sheet"""
     values_list = sheet.col_values(first_column_index)
     last_index = len(values_list)
     if values_list[last_index - 1] == 'Sr. No.':
@@ -70,6 +74,7 @@ def get_last_serial_number(sheet, first_column_index):
 
 @keyword
 def update_error_data_on_sheets(module_name):
+    """Updates errors in generic tests error sheet"""
     sheet = client.open("Error Records").worksheet("Generic_Errors")
     error_types = []
     error_priorities = []
@@ -110,6 +115,7 @@ def update_error_data_on_sheets(module_name):
 
 @keyword
 def update_landing_page_error(result_status):
+    """Updates errors in landing page error sheet"""
     sheet = client.open("Error Records").worksheet("Landing_Page_Errors")
     time = Addendums.get_current_time()
     date_time = time.split()
@@ -128,6 +134,7 @@ def update_landing_page_error(result_status):
 
 
 def get_landing_page_report():
+    """Returns report for landing page errors"""
     report_counter = open("/home/divaksh/rajerp/cron/landing_test.txt").read()
     report = datetime.datetime.now().strftime('%Y') + '/' + datetime.datetime.now().strftime(
         '%m') + '/log-' + datetime.datetime.now().strftime(
@@ -136,5 +143,6 @@ def get_landing_page_report():
 
 
 def get_landing_page_report_hyperlink_for_spreadsheet():
+    """Returns report link for landing page errors"""
     report_link = '=HYPERLINK("https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime/' + get_landing_page_report() + '#s1-s1-s1-t1-k2-k2-k1","https://rpa.e-connectsolutions.com/rajerp/reports/test/downtime/' + get_landing_page_report() + '")'
     return report_link

@@ -6,10 +6,12 @@ Resource          ${RESOURCES}${/}OldUiFormHelpers${/}ConfirmXpath.robot
 
 *** Keywords ***
 Input Valid Value
+    [Documentation]   Calls another keyword for input value into field.
     [Arguments]    ${Key}    ${Value}=${EMPTY}
     run keyword and continue on failure  wait until keyword succeeds  5s    100ms  Input Valid Value With Wait    ${Key}    ${Value}
 
 Input Valid Value With Wait
+    [Documentation]  Calls keywords for clearing the field, entering value into field and shows an error if there is an error while confirming the value written into field.
     [Arguments]    ${Key}    ${Value}
     sleep  500ms
     Clear Type    ${Key}
@@ -18,6 +20,7 @@ Input Valid Value With Wait
     run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  Error in confirming the field
 
 Input Valid Values
+    [Documentation]  Fills values in respective fields.
     [Arguments]    ${Key}    ${Values}
     : FOR    ${Value}    IN    @{Values}
     \    Input Valid Value    ${Key}    ${Value}
@@ -70,6 +73,7 @@ Get Data From Type To Keyword Map
     Set Global Variable    ${TYPE TO KEYWORD}    ${Type To Keyword Obj}
 
 Fill Form
+    [Documentation]
     : FOR    ${Page Obj}    IN    @{Form["Pages"]}
     \    set test variable    ${Page}    ${Page Obj}
     \    ${Status}    Run Keyword And Return Status    Fill Page
@@ -86,6 +90,7 @@ Fill Page
     \    Run Keyword And Continue On Failure    Input User Value    ${Element Key}
 
 Confirm Form
+
     : FOR    ${Page Obj}    IN    @{Form["Pages"]}
     \    set test variable    ${Page}    ${Page Obj}
     \    ${Status}    Run Keyword And Return Status    Confirm Page

@@ -21,46 +21,48 @@ ${After Selecting From List}    0.1
 
 *** Keywords ***
 Input Type
+    [Documentation]    Selects the appropriate Input Keyword from the dictionary.
     [Arguments]    ${Key}    ${Value}
-    [Documentation]    Selects the appropriate Input Keyword from the dictionary
     Log    ${Key Description["${Key}"]["Locator"]}
     Run Keyword    Input ${Key Description["${Key}"]["Type"]}    ${Key Description["${Key}"]["Locator"]}    ${Value}
     Run Keyword And Return Status    Press Key  ${Key Description["${Key}"]["Locator"]}  \\09
 
 Input AutoSuggest
+    [Documentation]  Enters values itno search field.
     [Arguments]    ${Locator}    ${Value}
     Input Text    ${Locator}    ${Value["Input"]}
     Sleep    1s
     Click Element    //li[contains(text(),'${Value["Search"]}')]
 
 Input Dropdown
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Selects dropdown value identified by locator.
+    [Arguments]    ${Locator}    ${Value}
     #Click Element    ${Locator}
     Sleep    ${Before Selecting From List}
     Select From List By Label    ${Locator}    ${Value}
     Sleep    ${After Selecting From List}
 
 Input Button
+    [Documentation]  Clicks button of given locator.
     [Arguments]    ${Locator}    ${Value}
     Sleep    1s
     Click Button    ${Locator}
 
 Input Checkbox
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Selects checkbox value identified by the locator.
+    [Arguments]    ${Locator}    ${Value}
     Unselect Checkbox    ${Locator}
     Run Keyword If    '${Value}'=='Select'    Select Checkbox    ${Locator}
 
 Input Working Experience Clear
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Clear working experience.
+    [Arguments]    ${Locator}    ${Value}
     Log    Inside Input Working Experience Clear
 
 Input Date
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Input the given date into date field at the locator.
     ...    Date Format : {"Date": "9", "Month": "Feb", "Year": "1993"}
+    [Arguments]    ${Locator}    ${Value}
     Click Element    ${Locator}
     Click Element    //div[@role='dialog']//h3
     Click Element    //div[text()='${Value["Year"]}']
@@ -81,6 +83,7 @@ Input Date
     wait until keyword succeeds  5s    250ms  Click Element    //span[contains(text(),'OK')]
 
 Date Arrow
+    [Documentation]  Clicks on arrow buttons in date fields.
     [Arguments]    ${arrow}
     Log    ${arrow}
     Run Keyword If    '${arrow}'=='Right'    Click Element    //span[text()='keyboard_arrow_right']
@@ -88,14 +91,15 @@ Date Arrow
     Sleep    0.3
 
 Input Email From SSO
+    [Documentation]  Clicks on the link of the given locator.
     [Arguments]    ${Locator}    ${Value}
     Sleep    ${Before Clicking Get Email}
     Click Link    xpath=//input[@id='${Locator}']/preceding-sibling::label/a
     Sleep    ${After Clicking Get Email}
 
 Input File
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Uploads a given file after removing the existing file, if any at the given locator.
+    [Arguments]    ${Locator}    ${Value}
     Sleep    1s
     ${Status}    Run Keyword And Return Status    Page Should Not Contain Element    //span[@id='download-button-file-${Locator}FileObject']|//span[@id='download-file-${Locator}FileObject']
     ${Status One}    Run Keyword And Return Status    Page Should Contain Element    outlined-button-file
@@ -107,20 +111,21 @@ Input File
     #Set Focus To Element    ${Locator}
 
 Input File Read Only
+    [Documentation]  Logs given value.
     [Arguments]    ${Locator}    ${Value}
     Log    ${Value}
 
 Input Hindi Text
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Inputs hindi text at the given locator
+    [Arguments]    ${Locator}    ${Value}
     Click Element    ${Locator}
     : FOR    ${Hindi Char}    IN    @{Value}
     \    Click Button    xpath=//input[@name='${Locator}']/ancestor::div//button[@data-value='${Hindi Char}']
     Click Button    xpath=//input[@name='${Locator}']/ancestor::div//button[@data-value='Accept']
 
 Input Select
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Selects dropdown value identified by locator.
+    [Arguments]    ${Locator}    ${Value}
     Click Element    ${Locator}    # To be removed....
     Sleep    ${Before Selecting From List}
     Run Keyword And Return Status    Select From List By Label    ${Locator}    ${Value}
@@ -129,25 +134,25 @@ Input Select
     #Click Element    //select[@id='${Locator}']/option[contains(text(),'${Value}')]
 
 Input MultiCheckbox
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Selects multiple checkbox values identified by the locator.
+    [Arguments]    ${Locator}    ${Value}
     : FOR    ${Unselected Value}    IN    @{Value["UnSelect"]}
     \    Unselect Checkbox    ${Locator}/label[contains(text(),'${Unselected Value}')]/preceding-sibling::input
     : FOR    ${Selected Value}    IN    @{Value["Select"]}
     \    Select Checkbox    ${Locator}/label[contains(text(),'${Selected Value}')]/preceding-sibling::input
 
 Input MultiSelect
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Check previous checked checkbox and deselect the value.
     ...    Selects multiple checkbox value identified by the locator.
+    [Arguments]    ${Locator}    ${Value}
     Sleep    ${Before Clicking Open Options}
     : FOR    ${Val}    IN    @{Value}
     \    Select Checkbox    //li[@data-value='${Val}']//input[@type='checkbox']
     Press Keys    //li[@data-value='${Val}']//input[@type='checkbox']    \\09
 
 Input Photo
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Upload a given file after removing the existing file, if any at the given locator.
+    [Arguments]    ${Locator}    ${Value}
     ${Uploaded Photo Locator}    Set Variable    xpath=//input[@id='${Locator}']/following-sibling::div
     ${Uploaded Photo Name Path}    Set Variable    ${Uploaded Photo Locator}//div
     Sleep    ${Before Choosing Photo}
@@ -155,45 +160,48 @@ Input Photo
     Sleep    ${After Choosing Photo}
 
 Input Frame
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Verifies whether the field's selected value from the confirmation alert.
+    [Arguments]    ${Locator}    ${Value}
     Select From List    ${Locator}    ${Value}
     Sleep    ${Before Choosing Yes In Frame}
     Run Keyword If    '${Value}'=='Yes'    Click Button    Yes
 
 Input Read Only
+    [Documentation]    Keyword present for the name sake.
     [Arguments]    ${Locator}    ${Value}
-    [Documentation]    Keyword present for the name sake
     Click Element    ${Locator}
 
 Input Radio Button
-    [Arguments]    ${Locator}    ${Value}
     [Documentation]    Set radio button to the value at the locator.
+    [Arguments]    ${Locator}    ${Value}
     wait until keyword succeeds  5s    250ms  Select Radio Button    ${Locator}    ${Value}
 
 
 Input Text Value
+    [Documentation]    Inputs text at the given locator.
     [Arguments]    ${Locator}    ${Value}
-    [Documentation]    Inputs text at the given locator
     Input Text    ${Locator}    ${Value}
 
 Input Disabled
+    [Documentation]    Keyword present for the name sake.
     [Arguments]    ${Locator}    ${Value}
-    [Documentation]    Keyword present for the name sake
     Log    In ${Value}
 
 Input Search Agent
+    [Documentation]  Enters value into search agemt field
     [Arguments]    ${Locator}    ${Value}
     Input Text    ${Locator}    ${Value}
     Press Key    ${Locator}    \\13
     Sleep    1s
 
 Input Structure
+    [Documentation]  Enters values into structure.
     [Arguments]    ${Locator}    ${Value}
     Click Button    ${Locator["First"]}
     Input Dropdown    ${Locator["Dropdown"]}    ${Value}
 
 Input Product
+    [Documentation]  Selects product.
     [Arguments]    ${Locator}    ${Value}
     Click Element    ${Locator["First"]}
     Sleep    1s
@@ -202,6 +210,7 @@ Input Product
     Input Dropdown    ${Locator["Dropdown"]}    ${Value["Value"]}
 
 Input Customer
+    [Documentation]  Selects customer.
     [Arguments]    ${Locator}    ${Value}
     Click Element    ${Locator["First"]}
     Run Keyword If    '${Value["Type"]'=='Customer'    Click Element    ${Locator["Customer"]}
@@ -209,11 +218,13 @@ Input Customer
     Input Text    ${Locator["Text"]}    ${Value["Value"]}
 
 Input Agreement
+    [Documentation]  Enters values into agreement dropdown.
     [Arguments]    ${Locator}    ${Value}
     Click Element    ${Locator["First"]}
     Input Dropdown    ${Locator["Dropdown"]}    ${Value}
 
 Input Formula
+    [Documentation]  Enters formula.
     [Arguments]    ${Locator}    ${Value}
     : FOR    ${Element}    IN    @{Value}
     \    Run Keyword If    '${Element["Type"]}'=='Keyword'    Input Dropdown    ${Locator["Keyword"]}    ${Element["Value"]}
@@ -221,6 +232,7 @@ Input Formula
     \        ELSE    Click Button    ${Locator["${Element["Value"]}"]}
 
 Input CheckBoxPopup
+    [Documentation]  Enters values into checkbox popups.
     [Arguments]    ${Locator}    ${Values}
     log  ${values}
     log to console  ${values}

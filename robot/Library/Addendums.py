@@ -13,6 +13,7 @@ def count_current_month_days():
     return month_data[1]
 
 def get_current_time():
+    """Returns current time"""
     time = str(datetime.datetime.now())
     time = time.split('.')[0]
     return  time

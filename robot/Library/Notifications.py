@@ -46,9 +46,8 @@ def get_error_details(error_code):
 #def get_error_priority(error_type):
 
 
-
 def find_receiver(json_key, receivers_json):
-    logger.console(json_key)
+    """Returns json file"""
     with open(receivers_json, 'r') as f:
         receivers_dict = json.load(f)
     return receivers_dict.get(json_key)
@@ -82,10 +81,12 @@ def get_generic_table_data(number_of_items, error_urls):
 
 
 def set_table_cell(cell_data, cell_color):
+    """Returns html table cell"""
     return str('<td bgcolor=' + cell_color + '>' + cell_data + '</td>')
 
 
 def get_disbursement_table_data(number_of_items, disbursement_list):
+    """Returns error table data for data validation test cases"""
     table_data = ""
     count = 1
     for x in range(number_of_items):
@@ -104,6 +105,7 @@ def get_disbursement_table_data(number_of_items, disbursement_list):
 
 
 def get_Beneficiary_table_data(number_of_items, beneficiary_list):
+    """Returns error table data for beneficiary test cases"""
     table_data = ""
     count = 1
     for x in range(number_of_items):
@@ -124,6 +126,7 @@ def get_Beneficiary_table_data(number_of_items, beneficiary_list):
 
 
 def get_table_structure():
+    """Returns table structure """
     return """
             <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
             <html lang="en">
@@ -168,6 +171,7 @@ def compose_generic_error_message(module_name, error_urls):
 
 
 def compose_disbursement_message(disbursement_list):
+    """Creates headers for the error email table for data validation test cases"""
     number_of_items = len(disbursement_list)
     html_table = get_table_structure() +\
                             """<tr>
@@ -187,6 +191,7 @@ def compose_disbursement_message(disbursement_list):
 
 
 def compose_Beneficiary_report_message(beneficiary_list):
+    """Creates headers for the error email table for beneficiary test cases"""
     number_of_items = len(beneficiary_list)
     html_table = get_table_structure() +\
                                 """<tr>
@@ -262,6 +267,7 @@ class Notifications:
 
     @keyword
     def send_error_email_notification(self, test_name=None, receivers_json=None, module_name=None ):
+        """Sends error report according to the test name"""
         test_name = format_string(test_name)
         gen_test = GenericTests
         if test_name == 'generictests':
