@@ -16,6 +16,7 @@ def login_user(user_type):
 
 
 def get_organization_credentials(organization):
+    """Takes organization name as argument and returns credentials for logging in that organisation"""
     logger.console(BuiltIn().get_variable_value("${CREDENTIALS_FILE}"))
     f = open(BuiltIn().get_variable_value("${CREDENTIALS_FILE}"), 'r')
     return json.load(f).get(organization)
@@ -63,6 +64,7 @@ class ERP(LibraryComponent):
 
     @keyword
     def select_last_dropdown_element(self, dropdown_id):
+        """Selects last element from the dropdown"""
         dropdown = self.driver.find_element_by_id(dropdown_id)
         dropdown.click()
         options = dropdown.find_elements_by_tag_name('option')
@@ -70,7 +72,7 @@ class ERP(LibraryComponent):
 
     @keyword
     def read_table_data(self, table_id, row_number, column_number):
-        # Reduces time by 90%
+        """Reads table data from the given table, row and column"""
         tbl = self.driver.find_element_by_xpath(table_id)
         rows = tbl.find_elements_by_tag_name("tr")
         cols = rows[int(row_number)].find_elements_by_tag_name("td")
@@ -79,6 +81,7 @@ class ERP(LibraryComponent):
 
     @keyword
     def get_table_column_number(self, table_id, header_text):
+        """Takes table id and header text as argument and returns column number of the respective header"""
         tbl = self.driver.find_element_by_xpath(table_id)
         headers = tbl.find_elements_by_tag_name("th")
         for item in headers:

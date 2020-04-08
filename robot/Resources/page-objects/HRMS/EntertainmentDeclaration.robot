@@ -67,7 +67,6 @@ Submit Details
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Save"]}
 
-
 Check For The New Entry In Entertainment Declaration Table
     [Documentation]  Verifies that listed entry have same details as filled in the form.
     [Arguments]  ${dataDictionary}
