@@ -146,8 +146,8 @@ User should able to configure self verification details
 User should able to add new division
     [Documentation]  Fills the add new division form and submits it. Verifies its entry in the division table.
     [Tags]  HRMS  division  createdata
-    HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Division"]}
+    HRMS_Keywords.Open Division Page
     HRMS_Keywords.Add New Division  ${dataDictionary}
     reload page
     HRMS_Keywords.Verify Division Entry  ${dataDictionary}
@@ -155,8 +155,8 @@ User should able to add new division
 User should able to edit division
     [Documentation]  Edits the division details and saves them. Verifies its updation in the division table.
     [Tags]  HRMS  division  editdata
-    HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Division"]}
+    HRMS_Keywords.Open Division Page
     HRMS_Keywords.Search Division  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
     HRMS_Keywords.Edit Division Details  ${dataDictionary}
     reload page
@@ -165,8 +165,8 @@ User should able to edit division
 User should able to delete division
     [Documentation]  deletes the division from the division table. Verifies its deletion in the division table.
     [Tags]  HRMS  division  deletedata
-    HRMS_Keywords.Open Division Page
     Common_Keywords.Set Test Data  ${configData["Division"]}
+    HRMS_Keywords.Open Division Page
     HRMS_Keywords.Search Division  ${dataDictionary}  ${dataDictionary["Edit Division"]["Name"]["Value"]}
     HRMS_Keywords.Delete Division  ${dataDictionary}
     HRMS_Keywords.Verify Division Deletion  ${dataDictionary}
@@ -174,16 +174,16 @@ User should able to delete division
 User should able to add new designation
     [Documentation]  Fills the add new designation form and submits it. Verifies its entry in the designation table.
     [Tags]  HRMS  designation  createdata
-    HRMS_Keywords.Open Designation Page
     Common_Keywords.Set Test Data  ${configData["Designation"]}
+    HRMS_Keywords.Open Designation Page
     HRMS_Keywords.Add New Designation  ${dataDictionary}
     HRMS_Keywords.Verify Designation Entry  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
 
 User should able to edit designation
     [Documentation]  Edits the designation details and saves it. Verifies its updation in the designation table.
     [Tags]  HRMS  designation  editdata
-    HRMS_Keywords.Open Designation Page
     Common_Keywords.Set Test Data  ${configData["Designation"]}
+    HRMS_Keywords.Open Designation Page
     HRMS_Keywords.Search Designation Name  ${dataDictionary}  ${dataDictionary["Name"]["Value"]}
     HRMS_Keywords.Edit Designation  ${dataDictionary}
     HRMS_Keywords.Verify Designation Entry  ${dataDictionary}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
@@ -191,8 +191,8 @@ User should able to edit designation
 User should able to delete designation
     [Documentation]  Deletes the designation from the designation table. Verifies its deletion from the designation table.
     [Tags]  HRMS  designation  deletedata
-    HRMS_Keywords.Open Designation Page
     Common_Keywords.Set Test Data  ${configData["Designation"]}
+    HRMS_Keywords.Open Designation Page
     HRMS_Keywords.Search Designation Name  ${dataDictionary}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
     HRMS_Keywords.Select Designation From The Table  ${dataDictionary}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
     HRMS_Keywords.Delete Designation  ${dataDictionary}
@@ -242,7 +242,7 @@ User should able to edit qualification
     Common_Keywords.Set Test Data  ${configData["Qualification"]}
     HRMS_Keywords.Open Qualification Page
     HRMS_Keywords.Search Qualification  ${dataDictionary["Qualification Name"]["Value"]}
-    HRMS_Keywords.Edit Qualification  ${dataDictionary}  ${dataDictionary["Qualification Name"]["Value"]}
+    HRMS_Keywords.Edit Qualification  ${dataDictionary}  ${dataDictionary["Qualification Name"]["Value"]}${SPACE}
     HRMS_Keywords.Verify Qualification Entry  ${dataDictionary["Edit Qualification"]["Qualification Name"]["Value"]}
 
 ####################
@@ -292,7 +292,7 @@ User should able to delete cadre detail
     HRMS_Keywords.Open Cadre Detail Page
     HRMS_Keywords.Search For Cadre Entry  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
     HRMS_Keywords.Delete Cadre Entry  ${dataDictionary}  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
-    HRMS_Keywords.Verify Designation Deletion  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
+    HRMS_Keywords.Verify Cadre Detail Deletion  ${dataDictionary["Edit Cadre Detail"]["Name"]["Value"]}
 
 ############################
 # Payment Type Tests Cases #
@@ -321,7 +321,7 @@ User should able to delete Payment Type
     HRMS_Keywords.Open Payment Type Page
     HRMS_Keywords.Search Payment Type  ${dataDictionary["Edit Payment Type"]["Description"]["Value"]}
     HRMS_Keywords.Delete Payment Type Entry  ${dataDictionary}  ${dataDictionary["Edit Payment Type"]["Description"]["Value"]}
-    HRMS_Keywords.Verify Payment Type Deletion  ${dataDictionary["Edit Payment Type"]}
+    HRMS_Keywords.Verify Payment Type Deletion  ${dataDictionary["Edit Payment Type"]["Description"]["Value"]}
 
 #########################
 # Department Test Cases #
@@ -332,6 +332,7 @@ User should able to add new Department
     Common_Keywords.Set Test Data  ${configData["Department"]}
     HRMS_Keywords.Open Department Page
     HRMS_Keywords.Add New Department  ${dataDictionary}
+    HRMS_Keywords.Open Department Page
     HRMS_Keywords.Verify Department Entry  ${dataDictionary["Name"]["Value"]}
 
 User should able to edit Department
@@ -341,6 +342,7 @@ User should able to edit Department
     HRMS_Keywords.Open Department Page
     HRMS_Keywords.Search Department Entry  ${dataDictionary["Name"]["Value"]}
     HRMS_Keywords.Edit Department Entry  ${dataDictionary}
+    HRMS_Keywords.Open Department Page
     HRMS_Keywords.Verify Department Entry  ${dataDictionary["Edit Department"]["Name"]["Value"]}
 
 ########################
@@ -354,6 +356,7 @@ User should able to add new section details
     Common_Keywords.Set Test Data  ${configData["Section"]}
     HRMS_Keywords.Open Section Page
     HRMS_Keywords.Add New Section  ${dataDictionary}
+    HRMS_Keywords.Open Section Page
     HRMS_Keywords.Verify Section Entry  ${dataDictionary["Name"]["Value"]}
 
 User should able to add edit section details
@@ -363,6 +366,7 @@ User should able to add edit section details
     HRMS_Keywords.Open Section Page
     HRMS_Keywords.Search Section Entry  ${dataDictionary["Name"]["Value"]}
     HRMS_Keywords.Edit Section Details  ${dataDictionary}
+    HRMS_Keywords.Open Section Page
     HRMS_Keywords.Verify Section Entry  ${dataDictionary["Edit Section"]["Name"]["Value"]}
 
 User should able to delete section
@@ -372,6 +376,7 @@ User should able to delete section
     HRMS_Keywords.Open Section Page
     HRMS_Keywords.Search Section Entry  ${dataDictionary["Edit Section"]["Name"]["Value"]}
     HRMS_Keywords.Delete Section Entry  ${dataDictionary}  ${dataDictionary["Edit Section"]["Name"]["Value"]}
+    HRMS_Keywords.Open Section Page
     HRMS_Keywords.Verify Section Deletion  ${dataDictionary["Edit Section"]["Name"]["Value"]}
 
 #############################################################
@@ -385,6 +390,7 @@ User should able to delete Department
     HRMS_Keywords.Open Department Page
     HRMS_Keywords.Search Department Entry  ${dataDictionary["Edit Department"]["Name"]["Value"]}
     HRMS_Keywords.Delete Department Entry  ${dataDictionary["Edit Department"]["Name"]["Value"]}
+    HRMS_Keywords.Open Department Page
     HRMS_Keywords.Verify Department Deletion  ${dataDictionary["Edit Department"]["Name"]["Value"]}
 
 #################################
@@ -396,7 +402,7 @@ User should able to add new TA/DA grade
     [Tags]  HRMS  TADAgrade  createdata
     Common_Keywords.Set Test Data  ${configData["TA/DA Grade"]}
     HRMS_Keywords.Open TA/DA Grade Page
-    HRMS_Keyword.Add New TA/DA Grade
+    HRMS_Keywords.Add New TA/DA Grade  ${dataDictionary}
     Common_Keywords.Switch TAB
     HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary["Grade"]["Value"]}
 
@@ -406,7 +412,7 @@ User should able to edit TA/DA grade
     Common_Keywords.Set Test Data  ${configData["TA/DA Grade"]}
     HRMS_Keywords.Open TA/DA Grade Page
     HRMS_Keywords.Search For TA/DA Grade Entry  ${dataDictionary["Grade"]["Value"]}
-    HRMS_Keywords.Edit TA/DA Grade  ${dataDictionary["Grade"]["Value"]}
+    HRMS_Keywords.Edit TA/DA Grade  ${dataDictionary}  ${dataDictionary["Grade"]["Value"]}
     HRMS_Keywords.Verify TA/DA grade Entry  ${dataDictionary["Edit TA/DA Grade"]["Grade"]["Value"]}
 
 User should able to delete TA/DA grade
@@ -439,7 +445,8 @@ User should able to add new grade dependancy
     Common_Keywords.Set Test Data  ${configData["Grade Dependency"]}
     HRMS_Keywords.Open Grade Depandancy Page
     Common_Keywords.Show Maximum Entries on Page
-    HRMS_Keywords.Add New Grade Dependancy
+    HRMS_Keywords.Add New Grade Dependancy  ${dataDictionary}
+    HRMS_Keywords.Open Grade Depandancy Page
     HRMS_Keywords.Verify Grade Dependancy Entry  ${dataDictionary}
 
 User should able to edit grade dependancy
@@ -448,7 +455,8 @@ User should able to edit grade dependancy
     Common_Keywords.Set Test Data  ${configData["Grade Dependency"]}
     HRMS_Keywords.Open Grade Depandancy Page
     Common_Keywords.Show Maximum Entries on Page
-    HRMS_keywords.Edit Grade Dependancy
+    HRMS_keywords.Edit Grade Dependancy  ${dataDictionary}
+    HRMS_Keywords.Open Grade Depandancy Page
     HRMS_Keywords.Verify Grade Dependancy Entry  ${dataDictionary}
     sleep  3s
 
@@ -458,7 +466,8 @@ User should able to delete grade dependancy
     Common_Keywords.Set Test Data  ${configData["Grade Dependency"]}
     HRMS_Keywords.Open Grade Depandancy Page
     Common_Keywords.Show Maximum Entries on Page
-    HRMS_Keywords.Delete Grade Dependancy Entry
+    HRMS_Keywords.Delete Grade Dependancy Entry  ${dataDictionary}
+    HRMS_Keywords.Open Grade Depandancy Page
     HRMS_Keywords.Verify Grade Dependancy Deletion  ${dataDictionary}
 
 #################################
@@ -470,7 +479,7 @@ User should able to add new TA/DA rule
     [Tags]  HRMS  TADArule  createdata
     Common_Keywords.Set Test Data  ${configData["TA/DA Rule"]}
     HRMS_Keywords.Open TA/DA Rule Page
-    HRMS_Keywords.Add New TA/DA Rule
+    HRMS_Keywords.Add New TA/DA Rule  ${dataDictionary}
     HRMS_Keywords.Verify TA/DA Rule Entry  ${dataDictionary}
 
 User should able to add Edit TA/DA rule
@@ -478,7 +487,7 @@ User should able to add Edit TA/DA rule
     [Tags]  HRMS  TADArule  editdata
     Common_Keywords.Set Test Data  ${configData["TA/DA Rule"]}
     HRMS_Keywords.Open TA/DA Rule Page
-    HRMS_Keywords.Edit TA/DA Rule Entry  ${dataDictionary["Grade"]["Value"]}
+    HRMS_Keywords.Edit TA/DA Rule Entry  ${dataDictionary}  ${dataDictionary["Grade"]["Value"]}
     HRMS_Keywords.Verify TA/DA Rule Entry  ${dataDictionary["Edit TA/DA Rule"]}
 
 User should able to delete TA/DA rule
@@ -487,5 +496,5 @@ User should able to delete TA/DA rule
     Common_Keywords.Set Test Data  ${configData["TA/DA Rule"]}
     HRMS_Keywords.Open TA/DA Rule Page
     Common_Keywords.Show Maximum Entries on Page
-    HRMS_Keywords.Delete TA/DA Rule  ${dataDictionary["Edit TA/DA Rule"]["Grade"]["Value"]}
+    HRMS_Keywords.Delete TA/DA Rule  ${dataDictionary}  ${dataDictionary["Edit TA/DA Rule"]["Grade"]["Value"]}
     HRMS_Keywords.Verify TA/DA Rule Deletion  ${dataDictionary["Edit TA/DA Rule"]}

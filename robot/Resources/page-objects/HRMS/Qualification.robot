@@ -38,7 +38,8 @@ Fill Qualification Details
 Click On Edit Button
     [Documentation]  Clicks on edit button.
     [Arguments]  ${value}
-    click element  //td[contains(text(),'${value}')]
+    sleep  3s
+    click element  //td[contains(text(),'${value}')]/following-sibling::td//i[@class='fa fa-pencil']
 
 Edit Qualification Details
     [Documentation]  Edits details in qualification from.

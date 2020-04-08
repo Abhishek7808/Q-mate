@@ -19,14 +19,14 @@ Resource  ${PAGE OBJECTS}/HRMS/TADAgrade.robot
 Resource  ${PAGE OBJECTS}/HRMS/GradeDependancy.robot
 Resource  ${PAGE OBJECTS}/HRMS/TADARule.robot
 Resource  ${PAGE OBJECTS}/HRMS/PaySlipConfiguration.robot
-Resource  ${PAGE OBJECTS}/HRMS/SelfVarification.robot
+Resource  ${PAGE OBJECTS}/HRMS/SelfVerification.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryCycle.robot
 Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDisbursment.robot
-Resource  ${PAGE OBJECTS}/HRMS/ManageUser.robot
-Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
+#Resource  ${PAGE OBJECTS}/HRMS/ManageUser.robot
+#Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentAdmin.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPropsal.robot
 *** Variables ***
@@ -597,11 +597,11 @@ Verify Payment Type Entry
 
 Verify Payment Type Deletion
     [Documentation]  Verifies deletion of payment type.
-    [Arguments]  ${dataDictionary}
+    [Arguments]  ${value}
     Common_Keywords.Show Maximum Entries on Page
-    PaymentType.Search For Payment Type  ${dataDictionary}
+    PaymentType.Search For Payment Type  ${value}
     sleep  3s
-    PaymentType.Check For Payment Type Deletion In Payment Type Table  ${dataDictionary}
+    PaymentType.Check For Payment Type Deletion In Payment Type Table  ${value}
 
 Open Department Page
     [Documentation]  Opens department page.
@@ -761,7 +761,7 @@ Edit Grade Dependancy
 Delete Grade Dependancy Entry
     [Documentation]  Deletes grade dependancy.
     [Arguments]  ${dataDictionary}
-    GradeDependancy.Delete Grade Dependancy
+    GradeDependancy.Delete Grade Dependancy  ${dataDictionary}
 
 Verify Grade Dependancy Entry
     [Documentation]  Verfies that grade dependancy entry is created or updated.

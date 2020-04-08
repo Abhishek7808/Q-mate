@@ -1840,6 +1840,15 @@
 			  "Type": "Text Value",
 			  "Locator": "BasicPayMaxRange"
 	   },
+		"Pay Scale": {
+		   "Value": ["(PB-3) 15600 - 39100+7600"],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator0": "//b[contains(@class,'caret')]",
+				"": "",
+				"Locator2": "//div[contains(@class,'btn-group open')]//li[3]//label/input"
+			}
+	   },
 	   "Level Number": {
 		   "Value": ["L-1",  "L-2"],
 			"Type": "Dropdown-Checkbox",

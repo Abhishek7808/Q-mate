@@ -17,14 +17,17 @@ Search For Hospital Empanelment
 Select Hospital Empanement
     [Documentation]  Takes hospital name as argument and selects related checkbox.
     [Arguments]  ${hospitalName}
+    sleep  3s
     select checkbox  //td[contains(text(),'${hospitalName}')]/preceding-sibling::td//input[1]
 
 Delete Entry
     [Documentation]  Clicks on actions button then clicks on OK button.
-    wait until page contains  //a[contains(text(),'Actions')]
+    wait until page contains element  //a[contains(text(),'Actions')]
     click element  //a[contains(text(),'Actions')]
+    click element  //a[@class='ActionLink']
+    sleep  3s
     wait until page contains   Do you really want to delete selected record(s) ?
-    FillFields.Input Value Into Field  //button[contains(text(),'OK')]
+    click element  //button[contains(text(),'OK')]
 
 
 Check For Hospital Empanelment Entry In Hospital Empanelment Table

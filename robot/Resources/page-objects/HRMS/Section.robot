@@ -39,6 +39,7 @@ Search For Section
 Select Section
     [Documentation]  Takes section name as argument and selects it.
     [Arguments]  ${sectionName}
+    sleep  3s
     select checkbox  //td[contains(text(),'${sectionName}')]/preceding-sibling::td//input[@class='SelectItem']
 
 Delete Section

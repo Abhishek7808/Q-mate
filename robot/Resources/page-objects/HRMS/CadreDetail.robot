@@ -19,6 +19,7 @@ Click On Edit Button
 Select Cadre
     [Documentation]  Takes cadre name as argument and selects it from the list.
     [Arguments]  ${cadreName}
+    sleep  3s
     click element  //td[contains(text(),'${cadreName}')]/preceding-sibling::td//input[@class='SelectItem']
 
 Delete Cadre

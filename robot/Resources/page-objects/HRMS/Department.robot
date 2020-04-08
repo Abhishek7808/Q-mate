@@ -19,8 +19,10 @@ Click On Edit Button
 Click On Delete Button
     [Documentation]  Takes department name as argument and clicks on delete button then clicks on ok button.
     [Arguments]  ${departmentName}
+    sleep  2s
     click element  //td[contains(text(),'${departmentName}')]/following-sibling::td//i[@class='fa fa-trash-o']
     wait until page contains   Are you Sure to Delete this Record?
+    sleep  2s
     click element  //button[contains(text(),'OK')]
     reload page
 

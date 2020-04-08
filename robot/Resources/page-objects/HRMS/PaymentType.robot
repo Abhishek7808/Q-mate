@@ -19,6 +19,7 @@ Click On Edit Button
 Select Payment Type
     [Documentation]  Takes payment type as argument and selects checkbox related to it.
     [Arguments]  ${value}
+    sleep  3s
     click element  //td[contains(text(),'${value}')]/preceding-sibling::td//input[@class='SelectItem']
 
 Delete Payment Type
@@ -51,5 +52,5 @@ Check For Payment Type Entry In Payment Type Table
 
 Check For Payment Type Deletion In Payment Type Table
     [Documentation]  Takes payment type as argument and checks that it is not visible in the current page.
-    [Arguments]  ${dataDictionary}
-    Page should not contain element  //td[contains(text(),'${dataDictionary["Description"]["Value"]}')]
+    [Arguments]  ${value}
+    Page should not contain element  //td[contains(text(),'${value}')]

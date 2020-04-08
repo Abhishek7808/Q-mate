@@ -41,8 +41,11 @@ Fill Details Into TA/DA Grade Form
     FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Min Range"]}  ${dataDictionary["Basic Pay Min Range"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Basic Pay Max Range"]}  ${dataDictionary["Basic Pay Max Range"]["Value"]}
     ${webelements}  get webelements  ${dataDictionary["Level Number"]["Locator"]["Locator0"]}
-    set to dictionary  ${dataDictionary["Level Number"]["Locator"]}  Locator1=${webelements}[0]
-    set to dictionary  ${dataDictionary["Designaton"]["Locator"]}  Locator1=${webelements}[1]
+    set to dictionary  ${dataDictionary["Pay Scale"]["Locator"]}  Locator1=${webelements}[0]
+    set to dictionary  ${dataDictionary["Level Number"]["Locator"]}  Locator1=${webelements}[1]
+    set to dictionary  ${dataDictionary["Designaton"]["Locator"]}  Locator1=${webelements}[2]
+    sleep  2s
+    FillFields.Input Value Into Field  ${dataDictionary["Pay Scale"]}  ${dataDictionary["Pay Scale"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Level Number"]}  ${dataDictionary["Level Number"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Designaton"]}  ${dataDictionary["Designaton"]["Value"]}
     click element  ${dataDictionary["Basic Pay Max Range"]["Locator"]}

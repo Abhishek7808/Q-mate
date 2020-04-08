@@ -34,10 +34,8 @@ Clear Checkbox
     Unselect Checkbox    ${Locator}
 
 Clear Date
-    [Documentation]    Input the given date into date field at the locator.
+    [Documentation]    Input the given date into date field at the locator. Date Format : {"Date": "9", "Month": "Feb", "Year": "1993"}
     [Arguments]    ${Locator}
-    ...    Date Format : {"Date": "9", "Month": "Feb", "Year": "1993"}
-    #Can't be executed
     Execute JavaScript    return window.document.getElementById('${Locator}').readOnly = false
     Sleep    ${After Disable Readonly}
     Input Text    ${Locator}    ${EMPTY}
@@ -62,9 +60,8 @@ Clear File
     Sleep    ${After Deleting File}
 
 Clear MultiSelect
-    [Documentation]    Check previous checked checkbox and deselect the value.
+    [Documentation]    Selects multiple checkbox value identified by the locator.
     [Arguments]    ${Locator}
-    ...    Selects multiple checkbox value identified by the locator.
     Sleep    ${Before Clicking Open Options Clear}
     ${Box Attr}    Get Element Attribute    xpath=//a[@id='${Locator}']/ancestor::dt/following-sibling::dd//ul    style
     ${Box Attr List}    Split String    ${Box Attr}    ;
