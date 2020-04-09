@@ -1,59 +1,45 @@
 *** Variables ***
 
 ${cycle}  SalaryCycleId
-${paybillTable}   //*[@id="classListing"]/div[1]/table
+${paybillTableID}  //*[@id="classListing"]/div[1]/table
 ${paybillTableRow}     //*[@id="classListing"]/div[1]/table/tbody/tr
-#${disbursementTable}  xpath=//*[@id="EmpSalGrid"]
-${reportPageTable}  xpath=//table[@id='HBA']
+${reportPageTableID}  //table[@id='HBA']
+${showMaxDD}  DDLpageSize
 @{finalList}
 
 
 *** Keywords ***
 Go To Disbursement Index Page
+    [Documentation]  Opens disbursement page
     [Arguments]  ${disbursementUnitUrl}
-    [Documentation]  Opens salary disbursement page
     go to erp page  ${BASE_URL.${ENVIRONMENT}}/${disbursementUnitUrl}
-    ${testCount}  convert to integer  ${count}
-    sleep  2s
-    return from keyword  ${testCount}
 
-#Go To Arrear Disbursement Index Page
-#    go to erp page  ${BASE_URL.${ENVIRONMENT}}/${disbursementIndex}
-#    ${testCount}  convert to integer  ${count}
-#    sleep  2s
-#    return from keyword  ${testCount}
-
-#Complete follwoing keyword, it will take unit as an argument and perform tests on it.
-#Match All Paybills Net Amount With The Report For Given Unit
-#    [Documentation]  Matches the Salaries in disburement page and report page for a given unit
-#    [Arguments]  ${unitID}  ${testCount}  ${disbursementUrl}  ${columnText}  ${disbursementTable}
-#    run keyword if  ${unitID} != None  TopNavigation.Select Unit In Preference Modal By ID  ${unitID}  ${testCount}
-#    Go To Disbursement Index Page  ${disbursementUrl}
-#    # Apply Given Cycle Filter
-#    sleep  2s
-#    Check Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}
-
-#Match All Paybills Net Amounts With Reports For All Units
-#    [Documentation]  Matches the Salaries in disburement page and report page for all units
-#    [Arguments]  ${testCount}  ${disbursementUrl}  ${columnText}  ${disbursementTable}
-#    TopNavigation.Open Preference Unit Page
-#    ${allUnits}  TopNavigation.Get Unit Count In Preference Modal
-#    log to console  ${allUnits} number of total units
-#    FOR  ${unit}  IN RANGE  1  ${allUnits}
-#    \   log to console  ${unit} unit
-#    \   TopNavigation.Select Unit In Preference Modal  ${unit}  ${testCount}
-#    \   Go To Disbursement Index Page  ${disbursementUrl}
-#    \   Apply Given Cycle Filter
-#    \   sleep  2s
-#    \   Check Paybill  ${disbursementUrl}  ${columnText}  ${disbursementTable}
-#    \   TopNavigation.Open Preference Unit Page
-
-
-Apply Given Cycle Filter
-    [Documentation]  Opens filter menu in salary disbursement page and applies the given salary cycle filter
+Open Filters
+    [Documentation]  Opens Filter menu on the page.
     NavigationHelper.Select Filter Menu
-    run keyword if  ${cycleID} != None  select from list by value  ${cycle}  ${cycleID}  ELSE  select last dropdown element  ${cycle}
+    ${status}  run keyword and return status  wait until element is visible  //select[@id='Finyear']
+    run keyword if  ${status} == ${False}  NavigationHelper.Select Filter Menu
+
+Apply Filters
+    [Documentation]  Applies filters.
     NavigationHelper.Apply Filter
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
+
+Select Given Financial Year
+    [Documentation]  Opens financial year dropdown and selects financial year.
+    [Arguments]  ${financialYearDD}=Finyear                         # By default financial year dropdown locator is set as Finyear because
+                                                                    # in most of the disbursement pages its id is given Finyear.
+    select from list by value  ${financialYearDD}  ${FINANCIALYEAR}
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
+
+Select Given Cycle Filter
+    [Documentation]  Opens cycle dropdown and selects given cycle.
+    sleep  2s
+    # """ If cycle id is not given then last cycle will be selected."""
+    wait until element is enabled  //select[@id='SalaryCycleId']
+    run keyword if  ${CYCLEID} != None  select from list by value  ${cycle}  ${CYCLEID}  ELSE  select last dropdown element  ${cycle}
+    wait until element is not visible  //div[@id='LoadingImage']//div//img  300
+
 
 Apply Last Cycle Filter
     [Documentation]  Opens filter menu in salary disbursement page and applies the last salary cycle filter
@@ -61,129 +47,178 @@ Apply Last Cycle Filter
     select last dropdown element  ${cycle}
     NavigationHelper.Apply Filter
 
-Check Paybill
-    [Documentation]  Checks the available paybill at the salary disbursement page
-    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTable}  ${employeeIdColumn}=3
-    ${allPaybills}  Get Paybill Count
+Check Paybills
+    [Documentation]  Checks the available paybill at the disbursement page
+    [Arguments]  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${paybillDetailsColumnHead}=Disbursement Detail  ${financialYearDD}=Finyear  ${employeeIdColumn}=3
+    Wait Until Keyword Succeeds    15    200ms    Common_Keywords.Show Maximum Entries on Page
+    ${allPaybills}  DisbursementIndex.Get Paybill Count
     FOR  ${paybill}  IN RANGE  1  ${allPaybills+1}
-    \    ${paybillNumber}  Get Paybill Number  ${paybill}
-    \    @{list1}  Get Data Of Report Page  ${paybill}
-    \    @{list2}  Get Data Of Disbursement Details Page  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
-    \    Compare And Add To Report  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
-    \    Go To Disbursement Index Page  ${disbursementUnitUrl}
-   # log to console  ${finalList} Final List
+    \    log to console  paybill no.${paybill}...
+    \    Common_Keywords.Show Maximum Entries on Page
+    \    sleep  2s
+    \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}  ${paybillDetailsColumnHead}
+    \    DisbursementIndex.Go To Report Page  ${paybillNumber}
+    \    @{ReportData}  DisbursementIndex.Get Data Of Report Page
+    \    Common_Keywords.Switch Tab         # """ Report page opens in a new tab """
+    \    DisbursementIndex.Go To Disbursement Details Page  ${paybillNumber}
+    \    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    \    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
+    \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
+    \    DisbursementIndex.Open Filters     # """ Filters vanish when we come back to the disbursement page so they have to be applied again."""
+    \    DisbursementIndex.Select Given Financial Year  ${financialYearDD}
+    \    DisbursementIndex.Apply Filters
+    \    sleep  5s
+
+Check Specified Paybill
+    [Documentation]  Checks paybill of given number.
+    [Arguments]  ${PAYBILLNO}  ${disbursementUnitUrl}  ${columnToBeFetched}  ${disbursementTableID}  ${employeeIdColumn}=3
+    Common_Keywords.Show Maximum Entries on Page
+    sleep  2s
+    DisbursementIndex.Go To Report Page  ${PAYBILLNO}
+    @{ReportData}  DisbursementIndex.Get Data Of Report Page
+    Common_Keywords.Switch Tab
+    sleep  2s
+    DisbursementIndex.Go To Disbursement Details Page  ${PAYBILLNO}
+    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
+    sleep  2s
+    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
 
 Get Paybill Count
-    [Documentation]  Returns the number of rows in the given paybill
+    [Documentation]  Returns the number of rows in the given paybill table. i.e. returns total number of paybills available.
+    #wait until element is enabled  ${paybillTableID}  10s
+    ${status}  run keyword and return status  page should contain element  ${paybillTableID}  10s
+    run keyword if  ${status} == ${False}  log to console  Paybill not found for this unit
+    run keyword if  ${status} == ${False}  capture page screenshot
+#    ${status}  run keyword and return status  wait until element is enabled  ${paybillTableID}  10s
     ${rowsCount}  get element count  ${paybillTableRow}
-    log to console  ${rowsCount} rows in paybill table
     return from keyword  ${rowsCount}
 
-
 Get Paybill Number
-    [Documentation]  Returns the paybill number from the paybill table
-    [Arguments]  ${paybillTableRow}
-    ${columnNumber}  Get Amount Column Number  ${paybillTable}  Disbursement Detail
-    ${payBillDetails}  get table cell  ${paybillTable}  ${paybillTableRow+1}  ${columnNumber}
-    #${paybillText}  get text  ${payBillDetails}
-    ${paybillTextDict1}  Split String From Right   ${payBillDetails}  Paybill No.
-    ${paybillTextDict2}  Split String From Right  ${paybillTextDict1}[1]  ;
-    # log to console  ${paybillTextDict} paybill dictionary
-    return from keyword  ${paybillTextDict2}[0]
+    [Documentation]  Returns the paybill number of specified row and column.
+    [Arguments]  ${paybillTableRow}   ${paybillDetailsColumnHead}
+    ${columnNumber}  Get Table Column Number  ${paybillTableID}  ${paybillDetailsColumnHead}
+    ${payBillDetails}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get table cell  ${paybillTableID}  ${paybillTableRow+1}  ${columnNumber+1}
+    ${paybillDetailSet1}  Split String From Right  ${payBillDetails}  Paybill No.
+    ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  1  15
+    return from keyword  ${paybillNumber}
 
+#Go To Report Page
+#    [Arguments]   ${paybillTableRow}  ${columnNumber}
+#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/a[2]/i
+#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/ul/li[1]/a[1]
+#    Switch Window  NEW
+
+Go To Report Page
+    [Documentation]  Opens report page of given paybill.
+    [Arguments]  ${paybillNumber}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${paybillNumber}')]/../following-sibling::td//i[contains(@class,'fa fa-edit')]
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //div[contains(@class,'btn-group-xs open')]//li[1]//a[1]
+    Switch Window  NEW
+
+#Go To Report Page Of Specified Paybill
+#    [Arguments]  ${PAYBILLNO}
+#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//a[@class='btn btn-sm btn-primary']
+#    sleep  1s
+#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//a[contains(text(),'Employee List')]
+#    Switch Window  NEW
 
 Get Data Of Report Page
     [Documentation]  Returns the list of salaries of employees listed in report page
-    [Arguments]  ${paybillTableRow}
-    ${columnNumber}  Get Amount Column Number  ${paybillTable}  Actions
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/a[2]/i
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/ul/li[1]/a[1]
-    Switch Tab
+    ${errorStatus}  Generic.Check Error Occurred
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    run keyword if  '${errorStatus}' == '1'  fail  Report page of ${disbursementType} showed an error
     @{list}  create list
-    ${numberOfRows}  get element count  ${reportPageTable}/tbody/tr
-    ${columnNumber}  get element count  ${reportPageTable}/thead/tr/th
+    wait until page contains element  ${reportPageTableID}
+    ${numberOfRows}  get element count  ${reportPageTableID}/tbody/tr
+    ${columnNumber}  get element count  ${reportPageTableID}/thead/tr/th
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
-    \    sleep  2s
-    \    ${salary}  get table cell  ${reportPageTable}  ${row+1}  ${columnNumber}
-    \    ${decimalSalary}  Change The Number Into A Formatted Amount  ${salary}
-    \    append to list   ${list}   ${decimalSalary}
+    \    log to console  ${row} out of ${numberOfRows} processed...
+    \    ${amount}  get table cell  ${reportPageTableID}  ${row+1}  ${columnNumber}
+    \    log to console  ${amount}
+    \    ${formattedAmount}  Common_Keywords.Change The Number Into A Formatted Amount  ${amount}       # """ Fractional part is to be added in this amount so that it can compared fairly with disbursed amount """
+    \    append to list   ${list}   ${formattedAmount}
     close window
     return from keyword  @{list}
 
-Change The Number Into A Formatted Amount
-    [Documentation]  Changes the given salary into a floating point number
-    [Arguments]  ${salary}
-    ${formattedSalary}=  replace string  ${salary}  ,  ${EMPTY}
-    ${decimalSalary}  run keyword if  '${formattedSalary}' != '${EMPTY}'  Evaluate  "%.2f" % ${formattedSalary}
-    return from keyword  ${decimalSalary}
+Go To Disbursement Details Page
+    [Documentation]  Opens disbursement details page of given number.
+    [Arguments]  ${PAYBILLNO}
+    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//i[@class='fa fa-pencil']
 
 Get Data Of Disbursement Details Page
     [Documentation]  Returns the list of salaries of employees listed in disbursement page
-    [Arguments]  ${paybill}  ${columnToBeFetched}  ${disbursementTable}
-    Switch Tab
-    ${columnNumber}  Get Amount Column Number  ${paybillTable}  Actions
-    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybill}]/td[${columnNumber}]/div/div/a[1]/i
-    ${numberOfRows}  get element count  ${disbursementTable}/tbody/tr
-    ${columnNumber}  Get Amount Column Number  ${disbursementTable}  ${columnToBeFetched}
+    [Arguments]  ${columnToBeFetched}  ${disbursementTableID}
+    ${errorStatus}  Generic.Check Error Occurred
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    run keyword if  '${errorStatus}' == '1'  fail  Disbursement page of ${disbursementType} showed an error
+    wait until page contains element  ${disbursementTableID}
+    ${numberOfRows}  get element count  ${disbursementTableID}/tbody/tr
+    ${columnNumber}  Get Table Column Number  ${disbursementTableID}  ${columnToBeFetched}
     @{list}  create list
     FOR  ${row}  IN RANGE  1  ${numberOfRows}
-    \    sleep  2s
-    \    ${status}  run keyword and return status  should be equal as strings  ${columnToBeFetched}  Amount to be Disbursed
-    \    ${elementValue}  Run Keyword if  ${status} == ${True}  get element attribute  //*[@id="EmpSalGrid"]/tbody/tr[1]/td[${columnNumber}]/input  value
-    \    log to console  ${elementValue} value red from table
-    \    ${textValue}  get table cell  ${disbursementTable}  ${row+1}  ${columnNumber}
-    \    ${finalValue}  set variable if  ${elementValue} == None or ${elementValue} == '${EMPTY}'  ${textValue}  ${elementValue}
-    \    log to console  ${finalValue} value of disbursed amount
-    \    ${decimalSalary}  Change The Number Into A Formatted Amount  ${finalValue}
-    \    append to list  ${list}  ${decimalSalary}
+    \    log to console  ${row} out of ${numberOfRows} processed...
+    \    ${amount}  get table cell  ${disbursementTableID}  ${row+1}  ${columnNumber+1}
+    \    log to console  ${amount}
+    \    ${formattedAmount}  Common_Keywords.Change The Number Into A Formatted Amount  ${amount}
+    \    append to list  ${list}  ${formattedAmount}
     return from keyword  @{list}
 
 Compare And Add To Report
     [Documentation]  Compares both report page list and disbursement page list and add the result of camparision into a report
-    [Arguments]  ${list1}  ${list2}  ${paybillNumber}  ${disbursementTable}  ${employeeIdColumn}
-    log to console  ${list1} data of report page
-    log to console  ${list2} data of disbursement page
-    ${numberOfItems}  get length  ${list1}
+    [Arguments]  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
+    log to console  Comparing the amounts of Report page and Disbursement Page for paybill Number ${paybillNumber}...\n ${ReportData} ${disbursementData}
+    ${numberOfItems}  run keyword if  ${ReportData} != []  get length  ${ReportData}  ELSE  get length  ${disbursementData}
     FOR  ${index}  IN RANGE  ${numberOfItems}
-    \   run keyword if  '@{list1}[${index}]' != '@{list2}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
-
-
-Get Amount Column Number
-    [Documentation]  Gives the column number of the 'Net Amount' column
-    [Arguments]  ${tableUrl}  ${requiredText}
-    log to console  ${requiredText}
-    ${text2}  set variable  ${requiredText}
-    log to console  ${text2}
-    ${NumberOfColumns}  get element count  ${tableUrl}/thead/tr/th
-    log to console  ${NumberOfColumns} total number of columns in disbursement table
-    FOR  ${columnNumber}  IN RANGE  1  ${NumberOfColumns+1}
-    \   ${text}   get table cell  ${tableUrl}  1  ${columnNumber}
-    \   log to console  ${text}
-    \   ${status}  run keyword and return status  should be equal as strings  ${text}  ${text2}
-    \   run keyword if  ${status} == ${true}  return from keyword  ${columnNumber}
-    \   log to console  ${columnNumber}
-
+    \   run keyword and continue on failure  run keyword if  '@{ReportData}[${index}]' != '@{disbursementData}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTableID}  ${employeeIdColumn}
+    #\   run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  There is an error in one of the pages of paybill ${paybillNumber}
 
 Add To The Disbusement Test Report
     [Documentation]  Add unmatched salaries to the Test Report
-    [Arguments]  ${paybillNumber}  ${index}  ${disbursementTable}  ${employeeIdColumn}
-    ${employeeID}  DisbursementIndex.Get Employee ID   ${disbursementTable}  ${index}  ${employeeIdColumn}
-    run keyword and continue on failure  fail  Salary of Employee ID ${employeeID} in ${paybillNumber} didn't match
-    append to file  ${ERRORFILE}  Paybill No. ${paybillNumber}, Employee ID. ${employeeID}\n
+    [Arguments]  ${paybillNumber}  ${index}  ${disbursementTableID}  ${employeeIdColumn}
+    ${employeeID}  Get Employee ID   ${disbursementTableID}  ${index}  ${employeeIdColumn}
+    ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
+    run keyword and continue on failure  fail  ${disbursementType}: Disbursement Amount Of Employee ID ${employeeID} in Paybill NUmber: ${paybillNumber} didn't match
+    append to file  ${DV_REPORT}  ${disbursementType}, ${paybillNumber}, ${employeeID}\n
+
+#Get Table Column Number
+#    [Arguments]  ${tableID}  ${requiredText}
+#    ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableID}/thead/tr/th
+#    FOR  ${column}  IN RANGE  1  ${NumberOfColumns}
+#    \   ${status}  run keyword and return status  table cell should contain  ${tableID}  1  ${column}  ${requiredText}
+#    \   run keyword if  ${status} == ${true}  return from keyword  ${column}
+
+#Get Table Column Number
+#    [Documentation]  Gives the column number of the 'Net Amount' column
+#    [Arguments]  ${tableID}  ${requiredText}
+#    ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableID}/thead/tr/th
+#    FOR  ${column}  IN RANGE  1  ${NumberOfColumns+1}
+#    \   ${data}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Read Table Data  ${tableID}  1  ${column-1}
+#    \   ${columnText}  get text  ${data}
+#    #\   run keyword if  '${columnText}' == '${EMPTY}'  Get Table Column Number  ${tableID}  ${requiredText}
+#    \   ${status}  run keyword and return status  should be equal as strings  ${columnText}  ${requiredText}
+#    \   run keyword if  ${status} == ${true}  return from keyword  ${column}
 
 Get Employee ID
     [Documentation]  Returns the employee ID from the given table data
     [Arguments]  ${tableID}  ${rowNumber}  ${columnNumber}
     ${employeeData}   get table cell  ${tableID}  ${rowNumber+2}  ${columnNumber}
-    ${employeeDataDict}  split string  ${employeeData}  -
-    ${employeeID}  get from list  ${employeeDataDict}  0
+    ${employeeDataSet}  split string  ${employeeData}  -
+    ${employeeID}  get from list  ${employeeDataSet}  0
     return from keyword  ${employeeID}
 
-Switch Tab
-    [Documentation]  Switches the robot to the previous tab
-    @{windowTitles}    get window handles
-    ${windowToOpen}=    get from list    ${windowTitles}  -1
-    Select Window    ${windowToOpen}
+Get Disbursement Type
+  [Documentation]  Fetches disbursement type from the disbursement url.
+  [Arguments]  ${disbursementUrl}
+  ${disbursementUrlSet}  split string from right  ${disbursementUrl}  /  1
+  ${stringSet}  split string  ${disbursementUrlSet}[1]  Dis
+  ${disbursementType}  Catenate  ${stringSet}[0] Disbursement
+  return from keyword   ${disbursementType}
+
+#Switch Tab
+#    [Documentation]  Switches the robot to the previous tab
+#    @{windowTitles}    get window handles
+#    ${windowToOpen}=    get from list    ${windowTitles}  -1
+#    Select Window    ${windowToOpen}
 
 Close Last Tab
     [Documentation]  Closes the last tab
@@ -191,10 +226,8 @@ Close Last Tab
     Select Window       title=@{title_var}[0]
     close window
 
-
-#Set This Variable
-#    [Arguments]  ${number}  ${item}
-#    ${number}  set variable  ${item}
-#    log to console  ${number}
-#
-#    return from keyword  ${number}
+Close Current Tab
+    [Documentation]  Closes the current tab
+    ${title_var}        Get Window Titles
+    Select Window       title=@{title_var}[1]
+    close window

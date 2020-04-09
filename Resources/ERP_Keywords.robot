@@ -34,6 +34,7 @@ Attempt Logout
 Test Mutiple Login Failed Scenarios
     [Documentation]  Tests the login functionality with wrong credentials
     [Arguments]  ${Credentials}
+    ERP_Keywords.Open the Login Page
     Attempt Login   ${Credentials}
     Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}
 
@@ -97,5 +98,5 @@ Run Generic Tests From Other User
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform Permission Tests On Urls  ${moduleName}  @{urlsList}
 
-#Check ALL HRM Urls
+
 

@@ -6,7 +6,7 @@
 ${ENVIRONMENT}       demo
 ${BROWSER}           chrome
 &{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://rajerp.rajasthan.gov.in
-${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}/adminlogin
+${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}
 
 
 ####################
@@ -19,25 +19,30 @@ ${LIBRARY_DIR}           Library
 ${DATA_DIR}              Data
 ${RESULTS_DIR}           Results
 ${PAGE_OBJECTS_DIR}      page-objects
-
-
+${DV_DIR}                DV
+${SMM_DIR}               SMM
+${SMM_DATA_DIR}          SMM_DATA
 ###################
 #  Path Settings  #
 ###################
-${ROOT}             ${CURDIR}
-${TESTS}            ${CURDIR}${/}${TESTS_DIR}
-${RESOURCES}        ${CURDIR}${/}${RESOURCE_DIR}
-${PLUGINS}          ${CURDIR}${/}${PLUGINS_DIR}
-${LIBRARY}          ${CURDIR}${/}${LIBRARY_DIR}
-${DATA}             ${CURDIR}${/}${DATA_DIR}
-${RESULTS}          ${CURDIR}${/}${RESULTS_DIR}
-${PAGE OBJECTS}     ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
-
+${ROOT}                         ${CURDIR}
+${TESTS}                        ${CURDIR}${/}${TESTS_DIR}
+${RESOURCES}                    ${CURDIR}${/}${RESOURCE_DIR}
+${PLUGINS}                      ${CURDIR}${/}${PLUGINS_DIR}
+${LIBRARY}                      ${CURDIR}${/}${LIBRARY_DIR}
+${DATA}                         ${CURDIR}${/}${DATA_DIR}
+${RESULTS}                      ${CURDIR}${/}${RESULTS_DIR}
+${PAGE OBJECTS}                 ${RESOURCES}${/}${PAGE_OBJECTS_DIR}
+${DV}                           ${CURDIR}${/}${RESULTS_DIR}${/}${DV_DIR}
+${SMM_PAGE_OBJECTS}             ${PAGE OBJECTS}${/}${SMM_DIR}
+${SMM_DATA_FILES}               ${DATA}${/}${SMM_DATA_DIR}
 
 ######################
 #    File Names      #
 ######################
 ${REPORT_NAME}              ErrorReport.csv
+${DV_REPORT_NAME}           Disbursement.csv
+${CPF_REPORT_NAME}          BeneficiaryReport.csv
 ${URLS_JSON_NAME}           URLs.json
 ${TEST_URLS_JSON_NAME}      TestUrls.json
 ${CONTACTS_JSON_NAME}       Receivers.json
@@ -49,6 +54,8 @@ ${CREDENTIALS_FILE_NAME}    Credentials.json
 #   File Locations   #
 ######################
 ${ERRORFILE}          ${RESULTS}${/}${REPORT_NAME}
+${DV_REPORT}          ${DV}${/}${DV_REPORT_NAME}
+${CPF_REPORT}         ${RESULTS}${/}${CPF_REPORT_NAME}
 ${URLS_JSON}          ${DATA}${/}${URLS_JSON_NAME}
 ${TEST_URLS}          ${DATA}${/}${TEST_URLS_JSON_NAME}
 ${CONTACTS_JSON}      ${DATA}${/}${CONTACTS_JSON_NAME}
@@ -60,8 +67,8 @@ ${CREDENTIALS_FILE}   ${DATA}${/}${CREDENTIALS_FILE_NAME}
 #  Email Settings  #
 ####################
 &{EMAIL}
-...  address=anubhav.verma@e-connectsolutions.com
-...  password=A@nub@19
+...  address=rpa@e-connectsolutions.com
+...  password=R@pa@19
 ${SEND_EMAIL_NOTIFICATIONS}  True
 
 
@@ -70,7 +77,7 @@ ${SEND_EMAIL_NOTIFICATIONS}  True
 ####################
 ${DELAY}          0
 ${RETRY TIME}     10s
-${RETRY INTERVAL}    200ms
+${RETRY INTERVAL}    400ms
 
 
 ########################

@@ -11,7 +11,12 @@ import base64
 
 import GenericTests
 
-error_file = BuiltIn().get_variable_value("${ERRORFILE}")
+#error_file = BuiltIn().get_variable_value("${ERRORFILE}")
+#disbursement_file = BuiltIn().get_variable_value(r"${DV_REPORT}")
+#Beneficiary_report_file = BuiltIn().get_variable_value(r"${CPF_REPORT}")
+
+white = "#fff"
+grey = "#f1f1f1"
 
 
 def notify_false_error_link(url, error_code):
@@ -39,68 +44,110 @@ def get_error_name(error_code):
     return switcher.get(error_code, "No error code found")
 
 
-def find_receiver(module_name, receivers_json):
+def find_receiver(json_key, receivers_json):
     with open(receivers_json, 'r') as f:
         receivers_dict = json.load(f)
-    return receivers_dict.get(module_name)
+    return receivers_dict.get(json_key)
 
 
-def table_data(number_of_items, error_urls):
+def get_generic_table_data(number_of_items, error_urls):
     # """ Creates rows of the error table according to the number of errors"""
     table_data = ""
     count = 1
     for x in range(number_of_items):
         if count % 2 != 0:
-            table_data += '<tr><td bgcolor="#fff">' + str(
-                count) + '</td><td bgcolor="#fff"><a href="' + error_urls[x][
-                              0] + '">' + error_urls[x][
-                              0] + '</a></td><td bgcolor="#fff">' + get_error_name(
-                error_urls[x][1]) + '</td><td bgcolor="#fff"> <a href="' + notify_false_error_link(
-                error_urls[x][
-                    0], error_urls[x][
-                    1]) + '">Notify</a></tr>'
+            table_data += '<tr>' + set_table_cell(str(count), white) + \
+                          set_table_cell('<a href="' + error_urls[x][0] + '">' + error_urls[x][0] + '</a>', white) + \
+                          set_table_cell(get_error_name(error_urls[x][1]), white) + \
+                          set_table_cell('<a href="' + notify_false_error_link(error_urls[x][0],
+                                                                               error_urls[x][1]) + '">Notify</a>',
+                                         white) + '</tr>'
         else:
-            table_data += '<tr><td bgcolor="#f1f1f1">' + str(
-                count) + '</td><td bgcolor="#f1f1f1"><a href="' + error_urls[x][
-                              0] + '">' + error_urls[x][
-                              0] + '</a></td><td bgcolor="#f1f1f1">' + get_error_name(
-                error_urls[x][1]) + '</td><td bgcolor="#f1f1f1"><a href="' + notify_false_error_link(
-                error_urls[x][
-                    0], error_urls[x][
-                    1]) + '">Notify</a></tr>'
+            table_data += '<tr>' + set_table_cell(str(count), grey) + \
+                          set_table_cell('<a href="' + error_urls[x][0] + '">' + error_urls[x][0] + '</a>', grey) + \
+                          set_table_cell(get_error_name(error_urls[x][1]), grey) + \
+                          set_table_cell('<a href="' + notify_false_error_link(error_urls[x][0],
+                                                                               error_urls[x][1]) + '">Notify</a>',
+                                         grey) + '</tr>'
         count += 1
     return table_data
 
 
-def compose_error_message(module_name, error_urls):
+def set_table_cell(cell_data, cell_color):
+    return str('<td bgcolor=' + cell_color + '>' + cell_data + '</td>')
+
+
+def get_disbursement_table_data(number_of_items, disbursement_list):
+    table_data = ""
+    count = 1
+    for x in range(number_of_items):
+        if count % 2 != 0:
+            table_data += '<tr>' + set_table_cell(str(count), white) + \
+                          set_table_cell(disbursement_list[x][0], white) + \
+                          set_table_cell(disbursement_list[x][1], white) + \
+                          set_table_cell(disbursement_list[x][2], white) + '</tr>'
+        else:
+            table_data += '<tr>' + set_table_cell(str(count), grey) + \
+                          set_table_cell(disbursement_list[x][0], grey) + \
+                          set_table_cell(disbursement_list[x][1], grey) + \
+                          set_table_cell(disbursement_list[x][2], grey) + '</tr>'
+        count += 1
+    return table_data
+
+
+def get_Beneficiary_table_data(number_of_items, beneficiary_list):
+    table_data = ""
+    count = 1
+    for x in range(number_of_items):
+        if count % 2 != 0:
+            table_data += '<tr>' + set_table_cell(str(count), white) + \
+                          set_table_cell(beneficiary_list[x][0], white) + \
+                          set_table_cell(beneficiary_list[x][1], white) + \
+                          set_table_cell(beneficiary_list[x][2], white) + \
+                          set_table_cell(beneficiary_list[x][3], white) + '</tr>'
+        else:
+            table_data += '<tr>' + set_table_cell(str(count), grey) + \
+                          set_table_cell(beneficiary_list[x][0], grey) + \
+                          set_table_cell(beneficiary_list[x][1], grey) + \
+                          set_table_cell(beneficiary_list[x][2], grey) + \
+                          set_table_cell(beneficiary_list[x][3], grey) + '</tr>'
+        count += 1
+    return table_data
+
+
+def get_table_structure():
+    return """
+            <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+            <html lang="en">
+            <head>
+              <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            
+              <title></title>
+            
+              <style type="text/css">
+            th, td {
+                vertical-align: middle;
+                align:left;
+            }
+              </style>    
+            
+            </head>
+            <body style="margin:0; padding:0; background-color:#fff;">
+                <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">"""
+
+
+def compose_generic_error_message(module_name, error_urls):
     # """ Compose a html table of errors"""
     number_of_items = len(error_urls)
-    html_table = """
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-  <title></title>
-
-  <style type="text/css">
-th, td {
-    vertical-align: middle;
-    align:left;
-}
-  </style>    
-
-</head>
-<body style="margin:0; padding:0; background-color:#fff;">
-    <table  width="100%" border="1" cellpadding="7" cellspacing="0" bordercolor="#CCCCCC">
-                    <tr>
+    html_table = get_table_structure() +\
+                        """<tr>
                         <th bgcolor="#d1d1d1"> Sr. No. </th>
                         <th bgcolor="#d1d1d1"> URL </th>
                         <th bgcolor="#d1d1d1"> Issue </th>
                         <th bgcolor="#d1d1d1"> False Positive </th>
-                    </tr>""" + table_data(number_of_items, error_urls) + """</table>
+                    </tr>""" + get_generic_table_data(number_of_items, error_urls) + """</table>
                 </body>
                 </html>"""
     message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
@@ -111,6 +158,52 @@ th, td {
     return message
 
 
+def compose_disbursement_message(disbursement_list):
+    number_of_items = len(disbursement_list)
+    html_table = get_table_structure() +\
+                            """<tr>
+                            <th bgcolor="#d1d1d1"> Sr. No. </th>
+                            <th bgcolor="#d1d1d1"> Disbursement Type </th>
+                            <th bgcolor="#d1d1d1"> Paybill No. </th>
+                            <th bgcolor="#d1d1d1"> Employee ID </th>
+                        </tr>""" + get_disbursement_table_data(number_of_items, disbursement_list) + """</table>
+                    </body>
+                    </html>"""
+    # message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
+    #     "${ENVIRONMENT}") + " environment and found possible issues on following pages <br><br>" + html_table + "<br><b>Important: </b>This is an automated email fired by RajERP Bot. There are very thin chances of any false positive report, but just in case, if you find any, please do let us know about it by clicking on the <u>Notify</u> link right next to the URL."
+
+    #    logger.console(message)
+
+    return html_table
+
+
+def compose_Beneficiary_report_message(beneficiary_list):
+    number_of_items = len(beneficiary_list)
+    html_table = get_table_structure() +\
+                                """<tr>
+                                <th bgcolor="#d1d1d1"> Sr. No. </th>
+                                <th bgcolor="#d1d1d1"> Organisation Name </th>
+                                <th bgcolor="#d1d1d1"> Employee Code </th>
+                                <th bgcolor="#d1d1d1"> Financial Year </th>
+                                <th bgcolor="#d1d1d1"> Error Field </th>
+                            </tr>""" + get_Beneficiary_table_data(number_of_items, beneficiary_list) + """</table>
+                        </body>
+                        </html>"""
+    # message = "Namaste,<br>RajERP Bot recently went for an audit on  " + module_name + " module on " + BuiltIn().get_variable_value(
+    #     "${ENVIRONMENT}") + " environment and found possible issues on following pages <br><br>" + html_table + "<br><b>Important: </b>This is an automated email fired by RajERP Bot. There are very thin chances of any false positive report, but just in case, if you find any, please do let us know about it by clicking on the <u>Notify</u> link right next to the URL."
+
+    #    logger.console(message)
+
+    return html_table
+
+
+def format_string(text):
+    text = str(text)
+    text = text.lower()
+    text = text.strip()
+    test_name = text.replace(" ", "")
+    return test_name
+
 class Notifications:
 
     @keyword
@@ -118,18 +211,15 @@ class Notifications:
         # """Sends an email to the person given as a parameter"""
         qmate_email = BuiltIn().get_variable_value("${EMAIL.address}")
         qmate_password = BuiltIn().get_variable_value("${EMAIL.password}")
-
         # set up the SMTP server
         #  s = smtplib.SMTP_SSL(host='smtp.gmail.com', port=465)
         smtp_obj = smtplib.SMTP(host='smtp.e-connectsolutions.com', port=587)
-
         # debug mode
         #       smtp_obj.set_debuglevel(1)
 
         smtp_obj.starttls()
         # logger.console(qmate_password)ehlo()
         smtp_obj.login(qmate_email, qmate_password)
-
         msg = MIMEMultipart()  # create a message
 
         # Prints out the message body for our sake
@@ -145,9 +235,15 @@ class Notifications:
         # add in the message body
         msg.attach(MIMEText(email_message, 'html'))
 
+        email_ids = msg['To'].split(",")
+        email_id_error = None
+        for item in email_ids:
+            try:
+                smtp_obj.sendmail(qmate_email, item, msg.as_string())
+            except smtplib.SMTPRecipientsRefused as email_id_error:
+                logger.write("Given email id is not valid")
         # send the message via the server set up earlier.
         #        smtp_obj_response = smtp_obj.send_message(msg.as_string())
-        smtp_obj.sendmail(qmate_email, msg["To"].split(","), msg.as_string())
 
         # check the email response
         #        logger.console(smtp_obj_response)
@@ -156,19 +252,34 @@ class Notifications:
         smtp_obj.quit()
 
     @keyword
-    def send_error_email_notification(self, module_name, receivers_json):
-        #        logger.console(find_receiver(module_name, receivers_json).get('emailid'))
+    def send_error_email_notification(self, test_name=None, receivers_json=None, module_name=None ):
+        test_name = format_string(test_name)
         gen_test = GenericTests
-        error_urls = gen_test.filter_module_error_url(module_name)
+        if test_name == 'generictests':
+            error_urls = gen_test.filter_module_error_url(module_name)
+            if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
+                emails_ids = find_receiver(module_name, receivers_json)
+                email_subject = "Audit Report of " + module_name
+                email_message = compose_generic_error_message(module_name, error_urls)
+                self.send_email(emails_ids, email_subject, email_message)
 
-        # logger.console(error_urls)
+        if test_name == 'datavalidation':
+            disbursement_list = gen_test.read_file_return_list(BuiltIn().get_variable_value(r"${DV_REPORT}"))
+            if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(disbursement_list) != 0:
+                email_message = compose_disbursement_message(disbursement_list)
+                email_subject = "Disbursement Report"
+                emails_ids = find_receiver("DISBURSEMENTS", receivers_json)
+                self.send_email(emails_ids, email_subject, email_message)
 
-        # check if error notifications needs to sent
-        if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(error_urls) != 0:
-            emails_ids = find_receiver(module_name, receivers_json)
-            email_subject = "Audit Report of " + module_name
-            email_message = compose_error_message(module_name, error_urls)
-            self.send_email(emails_ids.get('emailid'), email_subject, email_message)
+        if test_name == 'cpfbeneficiary':
+            beneficiary_list = gen_test.read_file_return_list(BuiltIn().get_variable_value(r"${CPF_REPORT}"))
+            if BuiltIn().get_variable_value("${SEND_EMAIL_NOTIFICATIONS}") and len(beneficiary_list) != 0:
+                email_message = compose_Beneficiary_report_message(beneficiary_list)
+                email_subject = "Beneficiary Report"
+                emails_ids = 'anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com'
+                self.send_email(emails_ids, email_subject, email_message)
+
+
 
     @keyword
     def send_error_push_notification(self):

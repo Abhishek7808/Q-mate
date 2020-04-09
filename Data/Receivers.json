@@ -1,14 +1,3 @@
 {
-  "HRM": {
-    "emailid": "anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com"
-  },
-  "ACC": {
-    "emailid": "divaksh.jain@e-connectsolutions.com"
-  },
-  "URM": {
-    "emailid": "divaksh.jain@e-connectsolutions.com"
-  },
-  "SMM": {
-    "emailid": "divaksh.jain@e-connectsolutions.com"
-  }
+  "HRM":  "anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com",  "ACC":  "divaksh.jain@e-connectsolutions.com", "URM":  "anubhav.verma@e-connectsolutions.com", "SMM":  "divaksh.jain@e-connectsolutions.com,anubhav.verma@e-connectsolutions.com",   "CPF":  "anubhav.verma@e-connectsolutions.com", "DISBURSEMENTS": "anubhav.verma@e-connectsolutions.com,divaksh.jain@e-connectsolutions.com"
 }

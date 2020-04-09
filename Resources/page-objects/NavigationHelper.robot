@@ -10,5 +10,5 @@ Select Filter Menu
 
 
 Apply Filter
-     click button  ${APPLY FILTER}
+     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click button  ${APPLY FILTER}
 
