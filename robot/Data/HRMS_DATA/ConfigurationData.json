@@ -1,0 +1,2107 @@
+{
+	"Leave Encasement Rule": {
+		"Leave Type": {
+			"Value": "Privilege Leave",
+			"Type": "Dropdown",
+			"Locator": "LeaveTypeId"
+		},
+		"Service Status": {
+			"Value": "Probation",
+			"Type": "Dropdown",
+			"Locator": "ServiceStatus"
+		},
+		"Employee Class": {
+			"Value": "Worksmen",
+			"Type": "Dropdown",
+			"Locator": "ClassGroup"
+		}
+	},
+	"Tea Rate Definition": {
+		"URL": "HRM/Reimbursement/EntertainmentDeclareIndex",
+		"Declare": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit Button": {
+			"Type": "Element",
+			"Locator": "td//i[@class='fa fa-pencil']"
+		},
+		"Filter": {
+			"Type": "Button",
+			"Locator": "//button[@class='btn btn-default']"
+		},
+		"Filter Type": {
+			"Type": "Dropdown",
+			"Value": "Tea Rate",
+			"Locator": "Type_ID"
+		},
+		"Apply Filter": {
+			"Type": "Button",
+			"Locator": "btnformfilter"
+		},
+		"Effective Date": {
+			"Value": {
+				"Day": "5",
+				"Month": "Nov",
+				"Year": "2018"
+			},
+			"Type": "Date",
+			"Locator": "EffectiveDate"
+		},
+		"Type": {
+			"Value": "Tea Rate",
+			"Type": "Dropdown",
+			"Locator": "type"
+		},
+		"Rate": {
+			"Value": "100.00",
+			"Type": "Text Value",
+			"Locator": "rate"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "Tea Rate",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "//button[@id='BtnSearchfilter']//i[@class='fa fa-search']"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "td//i[contains(@class,'fa fa-trash-o')]"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Edit Tea Rate Definition": {
+			"Effective Date": {
+				"Value": {
+					"Day": "6",
+					"Month": "Nov",
+					"Year": "2019"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveDate"
+			},
+			"Type": {
+				"Value": "Tea Rate",
+				"Type": "Dropdown",
+				"Locator": "type"
+			},
+			"Rate": {
+				"Value": "105",
+				"Type": "Text Value",
+				"Locator": "rate"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
+		}
+	},
+	"Budget": {
+		"Name": {
+			"Value": "QMATEBUDGETHEAD",
+			"Type": "Text Value",
+			"Locator": "BUDGET_NAME"
+		}
+	},
+	"Work Flow Configuration": {
+		"Entity ID": {
+			"Value": "0294",
+			"Type": "Text Value",
+			"Locator": "WorkFlowEntityId"
+		},
+		"Name": {
+			"Value": "QMATEWorkflow",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Actions": {
+			"Value": "Configure",
+			"Type": "Button",
+			"Locator1": "//td[contains(text(),'0294')]/../following-sibling:://a[contains(text(),'Actions')]",
+			"Locator2": "//a[contains(text(),'Configure')]"
+		},
+		"Organization Name": {
+			"Value": "Raj ERP",
+			"Type": "Dropdown",
+			"Locator": "OrganizationId"
+		},
+		"Menu Name": {
+			"Value": "QMATEMenu",
+			"Type": "Dropdown",
+			"Locator": "select2-drop"
+		},
+		"Approved": {
+			"Value": "Approved",
+			"Type": "Dropdown",
+			"Locator": "classListing"
+		},
+		"Allowed": {
+			"Value": "Select",
+			"Type": "Checkbox",
+			"Locator": "chk_4_4"
+		},
+		"Notify": {
+			"Value": "Select",
+			"Type": "Checkbox",
+			"Locator": "notify_4_4"
+		},
+		"Post Status": {
+			"Value": "Approved",
+			"Type": "Dropdown",
+			"Locator": "PostStatus_4_4"
+		},
+		"Action Panel": {
+			"Value": "Advance",
+			"Type": "Dropdown",
+			"Locator": "ActionPanel_4_4"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+	},
+	"Entity Actions": {
+		"Add New Record": {
+			"Type": "Button",
+			"Locator": "modals-bootbox-custom"
+		},
+		"id": {
+			"Value": "0294",
+			"Type": "Text Value",
+			"Locator": "NextId"
+		},
+		"Name": {
+			"Value": "QMATEApprove",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Description": {
+			"Value": "This is for testing purpose",
+			"Type": "Text Value",
+			"Locator": "Description"
+		}
+	},
+	"Entity Status": {
+		"Add New Record": {
+			"Type": "Button",
+			"Locator": "modals-bootbox-custom"
+		},
+		"id": {
+			"Value": "0294",
+			"Type": "Text Value",
+			"Locator": "NextId"
+		},
+		"Name": {
+			"Value": "QMATElocked",
+			"Type": "Text Value",
+			"Locator": "Name"
+		}
+	},
+	"Menu Manager": {
+		"Add New Menu": {
+			"Type": "Button",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Project": {
+			"Value": "E-Prashasan",
+			"Type": "Dropdown",
+			"Locator": "ProjectId"
+		},
+		"Menu Object Type": {
+			"Value": "Module",
+			"Type": "Dropdown",
+			"Locator": "MenuType"
+		},
+		"Menu Title": {
+			"Value": "QMATEMenu",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Parent Menu Object": {
+			"Value": "E-Prashasan",
+			"Type": "Dropdown",
+			"Locator": "select2-drop"
+		},
+		"Is Active": {
+			"Value": "Active",
+			"Type": "Dropdown",
+			"Locator": "IsActive"
+		},
+		"List Mode Page Title": {
+			"Value": "QMATEPageTitle",
+			"Type": "Text Value",
+			"Locator": "NameListMode"
+		},
+		"New Mode Page Title": {
+			"Value": "QMATEPageTitle",
+			"Type": "Text Value",
+			"Locator": "NameNewMode"
+		},
+		"Edit Mode Page Title": {
+			"Value": "QMATEPageTitle",
+			"Type": "Text Value",
+			"Locator": "NameEditMode"
+		},
+		"Menu Object Icon CSS": {
+			"Value": "QMATEMenuObject",
+			"Type": "Text Value",
+			"Locator": "IconCss"
+		},
+		"Display Order": {
+			"Value": "0",
+			"Type": "Text Value",
+			"Locator": "Order"
+		},
+		"Context": {
+			"Value": "Unit",
+			"Type": "Dropdown",
+			"Locator": "RoleContextId"
+		},
+		"URL": {
+			"Value": "QMATEUrl",
+			"Type": "Text Value",
+			"Locator": "Url"
+		},
+		"Notification Target Url": {
+			"Value": "QMATETargetUrl",
+			"Type": "Text Value",
+			"Locator": "NotificationTargetUrl"
+		},
+		"Open Form": {
+			"Value": "Select",
+			"Type": "Checkbox",
+			"Locator": "//div[5]//div[2]//input[1]"
+		},
+		"Workflow Entity": {
+			"Value": "QMATEWorkflow",
+			"Type": "Dropdown",
+			"Locator": "//div[contains(@class,'widget')]//div[1]//div[1]//button[1]"
+		},
+		"Form/Workflow Actions": {
+			"Value": "QMATEApprove",
+			"Type": "Dropdown",
+			"Locator": "//div[contains(@class,'widget-body innerAll inner-2x')]//div[2]//div[1]//button[1]"
+		},
+		"Entity/Workflow Status": {
+			"Value": "QMATElocked",
+			"Type": "Dropdown",
+			"Locator": "//div[contains(@class,'col-table-row')]//div[3]//div[1]//button[1]"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+	},
+	"Medical Approval Limit": {
+		"Effective From": {
+			"Value": {
+				"Day": "5",
+				"Month": "Nov",
+				"Year": "2018"
+			},
+			"Type": "Date",
+			"Locator": "EFFECTIVE_FROM"
+		},
+		"Min Value": {
+			"Value": "10",
+			"Type": "Text Value",
+			"Locator": "MinValue"
+		},
+		"Max Value": {
+			"Value": "100",
+			"Type": "Text Value",
+			"Locator": "MaxValue"
+		},
+		"WorkFlow": {
+			"Value": "100",
+			"Type": "Dropdown",
+			"Locator": "WorkflowId"
+		},
+		"Paybill Generate At": {
+			"Value": "Head Office",
+			"Type": "Dropdown",
+			"Locator": "PAYBILL_GENERATE_AT"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+	},
+	"Post Class": {
+		"URL": "HRM/PostConfig/PostClassIndex",
+		"Add New Post Class": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEPostClass",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Filter": {
+			"Type": "Button",
+			"Locator": "//button[@class='btn btn-default']"
+		},
+		"Filter Type": {
+			"Type": "Dropdown",
+			"Value": "Worksmen",
+			"Locator": "ClassGroup"
+		},
+		"Apply Filter": {
+			"Type": "Button",
+			"Locator": "btnformfilter"
+		},
+		"Name": {
+			"Value": "QMATEPostClass",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Class Group": {
+			"Value": "Worksmen",
+			"Type": "Dropdown",
+			"Locator": "CLASS_GROUP_ID"
+		},
+		"Seniority Level": {
+			"Value": "1",
+			"Type": "Text Value",
+			"Locator": "SeniorityLevel"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Delete Post Class": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEPostClass2')]/following-sibling::td//i[@class='fa fa-times']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Update": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEPostClass')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Update Post Class": {
+			"Name": {
+				"Value": "QMATEPostClass2",
+				"Type": "Text Value",
+				"Locator": "Name"
+			},
+			"Class Group": {
+				"Value": "Executive",
+				"Type": "Dropdown",
+				"Locator": "CLASS_GROUP_ID"
+			},
+			"Seniority Level": {
+				"Value": "2",
+				"Type": "Text Value",
+				"Locator": "SeniorityLevel"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
+		}
+	},
+	"Enquiry Decision Type": {
+		"URL": "HRM/EnquiryDecision",
+		"Add New": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit Button": {
+			"Type": "Element",
+			"Locator": "td//i[@class='fa fa-pencil']"
+		},
+		"Decision Name": {
+			"Value": "QMATEDecision",
+			"Type": "Text Value",
+			"Locator": "DECISION_NAME"
+		},
+		"Enquiry Type": {
+			"Value": "Explanation",
+			"Type": "Dropdown",
+			"Locator": "EnquiryType"
+		},
+		"Impact On": {
+			"Value": [
+				"Salary",
+				"AGI Cumulative"
+			],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator1": "DivDesicion",
+				"Locator2": "//*[@id='parDrView']/div/ul/li[5]/a/label/input",
+				"Locator3": "//*[@id='parDrView']/div/ul/li[4]/a/label/input"
+			}
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEdecision",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Action Checkbox": {
+			"Type": "Checkbox",
+			"Value": "select",
+			"Locator": "//td[contains(text(),'QMATEDecision')]/preceding-sibling::td//input"
+		},
+		"Delete Button": {
+			"Type": "Element",
+			"Locator": "td//i[@class='fa fa-trash-o']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Edit Enquiry Decision Type": {
+			"Decision Name": {
+				"Value": "QMATEDecision2",
+				"Type": "Text Value",
+				"Locator": "DECISION_NAME"
+			},
+			"Enquiry Type": {
+				"Value": "Major",
+				"Type": "Dropdown",
+				"Locator": "EnquiryType"
+			},
+			"Impact On": {
+				"Value": [" Promotion Non Cumulative"," ACP Cumulative"],
+				"Type": "Dropdown-Checkbox",
+				"Locator": {
+					"Locator1": "DivDesicion",
+					"Locator2": "//*[@id='parDrView']/div/ul/li[7]/a/label/input",
+					"Locator3": "//*[@id='parDrView']/div/ul/li[4]/a/label/input"
+				}
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
+		}
+	},
+	"Position": {
+		"Add New": {
+			"Type": "Button",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Unit": {
+			"Value": "Abu Road",
+			"Type": "Dropdown",
+			"Locator": "s2id_UNIT_ID"
+		},
+		"Employee Position": {
+			"Value": "QMATEEmployee",
+			"Type": "Text Value",
+			"Locator": "NAME"
+		},
+		"Is Unique": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Isunique"
+		},
+		"Role": {
+			"Value": "QMATERole",
+			"Type": "Dropdown-Checkbox",
+			"Locator1": "//div[@class='btn-group']",
+			"Locator2": "//label[contains(text(),'QMATERole')]"
+		},
+		"Active": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Isactive"
+		},
+		"Department Head": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "DEPART_HEAD"
+		},
+		"Unit Head": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "UNIT_HEAD"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+	},
+	"Deputation Department": {
+		"URL": "HRM/DeputationDepartment",
+		"Add New": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type":"Actions",
+			"Locator": {
+				"Locator1": "td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "td//a[contains(text(),'Edit')]"
+			}
+		},
+		"Delete": {
+			"Type":"Actions",
+			"Locator": {
+				"Locator1": "td//a[@class='btn btn-primary btn-sm']",
+				"Locator2": "td//a[contains(text(),'Delete')]"
+			}
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEPostClass",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+        "Ok": {
+            "Type": "Button",
+            "Locator": "//button[contains(text(),'OK')]"
+        },
+		"Filter Button": {
+			"Type": "Button",
+			"Locator1": "//button[@class='btn btn-default']",
+			"Locator2": "//i[@class='fa fa-filter']"
+		},
+		"Governing Authorities Filter": {
+			"Value": "Central Govt.",
+			"Type": "Dropdown",
+			"Locator": "EmpBelongsTo"
+		},
+		"State Filter": {
+			"Value": "RAJASTHAN",
+			"Type": "Dropdown",
+			"Locator": "State"
+		},
+		"City Filter": {
+			"Value": "Jaipur",
+			"Type": "Dropdown",
+			"Locator": "City"
+		},
+		"Apply Filter Button": {
+			"Type": "Button",
+			"Locator": "btnformfilter"
+		},
+		"Name": {
+			"Value": "QMATEDeputationDepartment",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Governing Authorities": {
+			"Value": "Central Govt.",
+			"Type": "Dropdown",
+			"Locator": "BelongsTo"
+		},
+		"Address": {
+			"Value": "Jaipur",
+			"Type": "Text Value",
+			"Locator": "Address"
+		},
+		"Email": {
+			"Value": "QMATE@gmail.com",
+			"Type": "Text Value",
+			"Locator": "Email"
+		},
+		"Contact No": {
+			"Value": "0294029402",
+			"Type": "Text Value",
+			"Locator": "ContactNo"
+		},
+		"State": {
+			"Value": "RAJASTHAN",
+			"Type": "Dropdown",
+			"Locator": "State"
+		},
+		"City": {
+			"Value": "Jaipur",
+			"Type": "Dropdown",
+			"Locator": "City"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "//button[@id='save']"
+		},
+		"Edit Deputation Department": {
+			"Governing Authorities Filter": {
+				"Value": "Central Govt.",
+				"Type": "Dropdown",
+				"Locator": "EmpBelongsTo"
+			},
+			"State Filter": {
+				"Value": "RAJASTHAN",
+				"Type": "Dropdown",
+				"Locator": "State"
+			},
+			"City Filter": {
+				"Value": "Jaipur",
+				"Type": "Dropdown",
+				"Locator": "City"
+			},
+			"Name": {
+				"Value": "QMATEDeputationDepartment2",
+				"Type": "Text Value",
+				"Locator": "Name"
+			},
+			"Governing Authorities": {
+				"Value": "State Govt.",
+				"Type": "Dropdown",
+				"Locator": "BelongsTo"
+			},
+			"Address": {
+				"Value": "Delhi",
+				"Type": "Text Value",
+				"Locator": "Address"
+			},
+			"Email": {
+				"Value": "QMATE2@gmail.com",
+				"Type": "Text Value",
+				"Locator": "Email"
+			},
+			"Contact No": {
+				"Value": "0294029401",
+				"Type": "Text Value",
+				"Locator": "ContactNo"
+			},
+			"State": {
+				"Value": "DELHI",
+				"Type": "Dropdown",
+				"Locator": "State"
+			},
+			"City": {
+				"Value": "Delhi",
+				"Type": "Dropdown",
+				"Locator": "City"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "save"
+			}
+		}
+	},
+	"Self Verification Configuration": {
+		"URL": "HRM/EMPSELFVERIFICATION/SelfVerificationConfiguration",
+		"Raise Self Verification Popup": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "ddlSelfVPop"
+		},
+		"Is Self Verification Mandatory": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "ddlSelfVMan"
+		},
+		"Send SMS Notification": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "SendSms"
+		},
+		"Send Email Notification": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "SendEmail"
+		},
+		"Enable Self Verification of Enrollment Detail": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Sections_0__HasAccess"
+		},
+		"Enable Self Verification of Personal Detail": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Sections_1__HasAccess"
+		},
+		"Enable Self Verification of Official Detail": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Sections_2__HasAccess"
+		},
+		"Enable Self Verification of Salary Detail": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Sections_3__HasAccess"
+		},
+		"Enable Self Verification of Other Detail": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Sections_4__HasAccess"
+		},
+		"Enable Self Verification of Nominee Detail": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "Sections_5__HasAccess"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+	},
+	"Pay Slip Configuration": {
+		"URL": "HRM/Common/PaySlipConfiguration",
+		"Page/View Name": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": ""
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": "//select[@name='[0].SelectedValue']"
+			}
+		},
+		"Show Other Details": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[1].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": ["CPF", "EPF", "PRAN", "GPF"],
+				"Type": "Dropdown-Checkbox",
+				"Locator":{
+					"Locator1": "//td[contains(text(),'Show Other Details')]/following-sibling::td//b[@class='caret']",
+					"Locator2": "//*[@id='MainBody']//tr[2]//ul/li[6]/a/label/input",
+					"Locator3": "//*[@id='MainBody']//tr[2]//ul/li[7]/a/label/input",
+					"Locator4": "//*[@id='MainBody']//tr[2]//ul/li[8]/a/label/input",
+					"Locator5": "//*[@id='MainBody']//tr[2]//ul/li[9]/a/label/input"
+				}
+			}
+		},
+		"Show Net Payable In Words": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[2].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": ""
+			}
+		},
+		"Show DDO Details": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[3].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": ""
+			}
+		},
+		"Show Birthday Message": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[4].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "Happy Birthday! #EMPFULLNAME#",
+				"Type": "Text Value",
+				"Locator": "//input[contains(@name,'[4].SelectedValue')]"
+			}
+		},
+		"Show PF Balance": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[5].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": ""
+			}
+		},
+		"Show Net Payable Rounded Off": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[6].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": ""
+			}
+		},
+		"Show Gross Salary with Employer Contribution": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[7].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": ""
+			}
+		},
+		"Show Loan Details": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[8].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": ""
+			}
+		},
+		"Show Leave Balances": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[9].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": ["Privilege Leave (PL)","Quarantine Leave (QL)"," Restricted Holiday Leave (RHL)"],
+				"Type": "Dropdown-Checkbox",
+				"Locator":{
+					"Locator1": "//td[contains(text(),'Show Leave Balances')]/following-sibling::td//b[@class='caret']",
+					"Locator2": "//*[@id='MainBody']//tr[10]/td[4]//ul/li[2]/a/label/input",
+					"Locator3": "//*[@id='MainBody']//tr[10]/td[4]//ul/li[3]/a/label/input",
+					"Locator4": "//*[@id='MainBody']//tr[10]/td[4]//ul/li[4]/a/label/input"
+				}
+			}
+		},
+		"Show LWP Days": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[10].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "GenericSalaryPrint",
+				"Type": "Dropdown",
+				"Locator": ""
+			}
+		},
+		"Language": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[11].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": "English",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[11].SelectedValue')]"
+			}
+		},
+		"Show Salary Annexure": {
+			"Show/Hide": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "//select[contains(@name,'[12].Is_Active')]"
+			},
+			"Selected Values": {
+				"Value": ["Absentee Details","Progressive Total","Leave Balance(Availed/Balance)"],
+				"Type": "Dropdown-Checkbox",
+				"Locator":{
+					"Locator1": "//td[contains(text(),'Show Salary Annexure')]/following-sibling::td//b[@class='caret']",
+					"Locator2": "//*[@id='MainBody']//tr[13]/td[4]//ul/li[2]/a/label/input",
+					"Locator3": "//*[@id='MainBody']//tr[13]/td[4]//ul/li[3]/a/label/input",
+					"Locator4": "//*[@id='MainBody']//tr[13]/td[4]//ul/li[4]/a/label/input"
+				}
+			}
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		}
+	},
+	"Shift Policies": {
+		"Timing Policy": {
+			"Timing Policy": {
+				"Type": "Button",
+				"Locator": "//span[contains(text(),'Timing Policy')]"
+			},
+			"Add New": {
+				"Type": "Button",
+				"Locator": "headhide"
+			},
+			"Name": {
+				"Value": "QMATETiming",
+				"Type": "Text Value",
+				"Locator": "txtName"
+			},
+			"In Time Relaxation": {
+				"Value": "5",
+				"Type": "Text Value",
+				"Locator": "InTimeRelaxation"
+			},
+			"Out Time Relaxation": {
+				"Value": "5",
+				"Type": "Text Value",
+				"Locator": "OutTimeRelaxation"
+			},
+			"Full Day Presence Relaxation": {
+				"Value": "5",
+				"Type": "Text Value",
+				"Locator": "FullDayRelaxation"
+			},
+			"Allow Half Day Presence": {
+				"Value": "Yes",
+				"Type": "Dropdown",
+				"Locator": "AllowHalfDayPresence"
+			},
+			"Half Day Presence Relaxation": {
+				"Value": "5",
+				"Type": "Text Value",
+				"Locator": "HalfDayRelaxation"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
+		},
+		"Weekly Off Policy": {
+			"Weekly Off Policy": {
+				"Type": "Button",
+				"Locator": "//span[contains(text(),'Weekly Off Policy')]"
+			},
+			"Add New": {
+				"Type": "Button",
+				"Locator": "headhide"
+			},
+			"Name": {
+				"Value": "QMATEWeeklyOff",
+				"Type": "Text Value",
+				"Locator": "txtName"
+			},
+			"Policy Type": {
+				"Value": "Fixed",
+				"Type": "Text Value",
+				"Locator": "PolicyType"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
+		}
+	},
+	"Division": {
+		"URL": "HRM/division",
+		"Add New Division": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+				"Type": "Element",
+				"Locator": "//td[contains(text(),'QMATEdivision')]/following-sibling::td//i[contains(@class,'fa fa-pencil')]"
+			},
+		"Name": {
+			"Value": "QMATEdivision",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Search": {
+			"Search Bar": {
+				"Type": "Text Value",
+				"Value": "",
+				"Locator": "SearchText"
+			},
+			"Search Button": {
+				"Type": "Button",
+				"Locator": "BtnSearchfilter"
+			}
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdivision')]/following-sibling::td//i[contains(@class,'fa fa-times')]"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(@class,'btn btn-primary')]"
+		},
+
+		"Edit Division": {
+			"Name": {
+				"Value": "QMATEdivision2",
+				"Type": "Text Value",
+				"Locator": "Name"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			}
+		}
+	},
+	"Designation":{
+		"URL": "HRM/Designation",
+		"Add Designation": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Name":{
+			  "Value":"QMATEdesignation",
+			  "Type": "Text Value",
+			  "Locator": "NAME"
+		},
+		"Post":{
+			   "Value": "Manager (Law)",
+			   "Type": "Dropdown",
+			   "Locator": "PostId"
+		},
+    	"Is Fourth Class":{
+			   "Value": "select",
+			   "Type": "Checkbox",
+			   "Locator": "chkclass"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEdesignation",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "//button[@id='BtnSearchfilter']//i[@class='fa fa-search']"
+		},
+		"Select Designation": {
+			"Value": "select",
+			"Type": "Checkbox",
+			"Locator": "//td[contains(text(),'QMATEdesignation')]/preceding-sibling::td//input[@class='SelectItem']"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdesignation')]/following-sibling::td//i[@class='fa fa-pencil']"
+			},
+		"Delete": {
+			"Type": "Actions",
+			"Locator": {
+				"Locator1": "//a[contains(text(),'Actions')]",
+				"Locator2": "//a[@class='ActionLink']"
+			}
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(@class,'btn btn-primary')]"
+		},
+		"Edit Designation":{
+			"Name": {
+				"Value": "QMATEdesignation2",
+				"Type": "Text Value",
+				"Locator": "NAME"
+			},
+			"Post": {
+				"Value": "A.G.M. (Fin/Inv.)",
+				"Type": "Dropdown",
+				"Locator": "PostId"
+			},
+			"Is Fourth Class": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkclass"
+			},
+			"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEdesignation2",
+				"Locator": "SearchText"
+		}
+		}
+    },
+	"Hospital Empanelment": {
+		"URL": "HRM/HospitalEmpanelment",
+		"Add New": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEhospital')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEhospital')]/following-sibling::td//i[@class='fa fa-trash-o']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEhospital",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Name": {
+			"Value": "QMATEhospital",
+			"Type": "Text Value",
+			"Locator": "NAME"
+		},
+		"Type": {
+			"Value": "Government",
+			"Type": "Dropdown",
+			"Locator": "Type"
+		},
+		"Is Exempted": {
+			"Value": "Yes",
+			"Type": "Dropdown",
+			"Locator": "IsExempted"
+		},
+		"Address": {
+			"Value": "QMATEcity",
+			"Type": "Text Value",
+			"Locator": "ADDRESS"
+		},
+		"State": {
+			"Value": "RAJASTHAN",
+			"Type": "Dropdown",
+			"Locator": "State_Id"
+		},
+		"City": {
+			"Value": "Jaipur",
+			"Type": "Text Value",
+			"Locator": "CITY"
+		},
+		"Contact No": {
+			"Value": "0294029402",
+			"Type": "Text Value",
+			"Locator": "CONTACTNO"
+		},
+		"Alternate Contact No": {
+			"Value": "9474565532",
+			"Type": "Text Value",
+			"Locator": "CONTACTNO1"
+		},
+		"Discount Rate": {
+			"Value": "10",
+			"Type": "Text Value",
+			"Locator": "DISCOUNT_RATE"
+		},
+		"Last Validate": {
+			"Value": {
+				"Day": "6",
+				"Month": "Dec",
+				"Year": "2019"
+			},
+			"Type": "Date",
+			"Locator": "LAST_VALIDATE"
+		},
+		"Category": {
+			"Value": "QMATEtype",
+			"Type": "Text Value",
+			"Locator": "CATEGORY"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Edit Hospital Empanelment": {
+			"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEhospital2",
+				"Locator": "SearchText"
+			},
+			"Search button": {
+				"Type": "Element",
+				"Locator": "BtnSearchfilter"
+			},
+			"Name": {
+				"Value": "QMATEhospital2",
+				"Type": "Text Value",
+				"Locator": "NAME"
+			},
+			"Type": {
+				"Value": "Private",
+				"Type": "Dropdown",
+				"Locator": "Type"
+			},
+			"Is Exempted": {
+				"Value": "No",
+				"Type": "Dropdown",
+				"Locator": "IsExempted"
+			},
+			"Address": {
+				"Value": "QMATEcity2",
+				"Type": "Text Value",
+				"Locator": "ADDRESS"
+			},
+			"State": {
+				"Value": "GOA",
+				"Type": "Dropdown",
+				"Locator": "State_Id"
+			},
+			"City": {
+				"Value": "QMATEcity2",
+				"Type": "Text Value",
+				"Locator": "CITY"
+			},
+			"Contact No": {
+				"Value": "0294029401",
+				"Type": "Text Value",
+				"Locator": "CONTACTNO"
+			},
+			"Alternate Contact No": {
+				"Value": "0294029400",
+				"Type": "Text Value",
+				"Locator": "CONTACTNO1"
+			},
+			"Discount Rate": {
+				"Value": "20",
+				"Type": "Text Value",
+				"Locator": "DISCOUNT_RATE"
+			},
+			"Last Validate": {
+				"Value": {
+					"Day": "2",
+					"Month": "Nov",
+					"Year": "2020"
+				},
+				"Type": "Date",
+				"Locator": "LAST_VALIDATE"
+			},
+			"Category": {
+				"Value": "QMATEtype2",
+				"Type": "Text Value",
+				"Locator": "CATEGORY"
+			}
+		}
+	},
+	"Qualification":{
+		"URL": "HRM/QualificationMaster",
+		"Add New": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Search box": {
+				"Type": "Text Value",
+				"Value": "Bachelors of QMATE",
+				"Locator": "SearchText"
+			},
+		"Search button": {
+				"Type": "Element",
+				"Locator": "BtnSearchfilter"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'Bachelors of QMATE')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Qualification Name":{
+			  "Value": "Bachelors of QMATE",
+			   "Type": "Text Value",
+			   "Locator": "DESCRIPTION"
+			},
+		"Is professional":{
+			   "Value": "Yes",
+			   "Type": "Dropdown",
+			   "Locator": "GROUP1ID"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Edit Qualification": {
+			"Qualification Name":{
+			  "Value": "Bachelors of QMATE2",
+			   "Type": "Text Value",
+			   "Locator": "DESCRIPTION"
+			},
+			"Is professional":{
+			   "Value": "No",
+			   "Type": "Dropdown",
+			   "Locator": "GROUP1ID"
+		    }
+		}
+	},
+    "Empanelled Officer": {
+		"URL": "HRM/EnquiryPanelImpanelment/EmpanelledIndex",
+		"Add New Entry": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEofficer",
+				"Locator": "SearchText"
+			},
+		"Search button": {
+				"Type": "Element",
+				"Locator": "BtnSearchfilter"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEofficer')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Name":{
+			  "Value": "QMATEofficer",
+			   "Type": "Text Value",
+			   "Locator": "Name"
+			},
+		"Contact No.":{
+			   "Value": "0294029401",
+			   "Type": "Text Value",
+			   "Locator": "ContactNumber"
+		},
+		"Effective Date": {
+				"Value": {
+					"Day": "2",
+					"Month": "Nov",
+					"Year": "2020"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveDate"
+			},
+		"Effective Till Date": {
+				"Value": {
+					"Day": "2",
+					"Month": "Dec",
+					"Year": "2020"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveTillDate"
+			},
+		"Department":{
+			  "Value": "QMATEdepartment",
+			   "Type": "Text Value",
+			   "Locator": "Department"
+			},
+		"Designation":{
+			   "Value": "QMATEdesignation",
+			   "Type": "Text Value",
+			   "Locator": "Designation"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Edit Empanelled Officer": {
+			"Name":{
+				   "Value": "QMATEofficer2",
+				   "Type": "Text Value",
+				   "Locator": "Name"
+			},
+			"Contact No.":{
+				   "Value": "029429402",
+				   "Type": "Text Value",
+				   "Locator": "ContactNumber"
+			},
+			"Effective Date": {
+					"Value": {
+						"Day": "3",
+						"Month": "Nov",
+						"Year": "2020"
+					},
+					"Type": "Date",
+					"Locator": "EffectiveDate"
+				},
+			"Effective Till Date": {
+					"Value": {
+						"Day": "3",
+						"Month": "Dec",
+						"Year": "2020"
+					},
+					"Type": "Date",
+					"Locator": "EffectiveTillDate"
+				},
+			"Department":{
+				  "Value": "QMATEdepartment2",
+				   "Type": "Text Value",
+				   "Locator": "Department"
+				},
+			"Designation":{
+				   "Value": "QMATEdesignation2",
+				   "Type": "Text Value",
+				   "Locator": "Designation"
+			}
+		}
+    },
+	"Cadre Details":{
+		"URL": "HRM/Cader",
+		"Add Cadre": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEcadre')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Actions",
+			"Locator": {
+				"Locator1": "//a[contains(text(),'Actions')]",
+				"Locator2": "//a[@class='ActionLink']"
+			}
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEcadre",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Name":{
+			  "Value": "QMATEcadre",
+			  "Type": "Text Value",
+			  "Locator": "NAME"
+		},
+		"Order By":{
+			   "Value": "02",
+			   "Type": "Text Value",
+			   "Locator": "ORDERBY"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Select Cadre Detail": {
+			"Value": "select",
+			"Type": "Checkbox",
+			"Locator": "//td[contains(text(),'QMATEcadre2')]/preceding-sibling::td//input[@class='SelectItem']"
+		},
+		"Edit Cadre Detail": {
+			"Name":{
+				  "Value": "QMATEcadre2",
+				  "Type": "Text Value",
+				  "Locator": "NAME"
+		},
+		"Order By":{
+				   "Value": "94",
+				   "Type": "Text Value",
+				   "Locator": "ORDERBY"
+		}
+		}
+	},
+	"Payment Type": {
+		"URL": "HRM/PaymentType",
+		"Add Payment Type": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEpayment')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Actions",
+			"Locator": {
+				"Locator1": "//a[contains(text(),'Actions')]",
+				"Locator2": "//a[@class='ActionLink']"
+			}
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEpayment",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Select Payment Type": {
+			"Value": "select",
+			"Type": "Checkbox",
+			"Locator": "//td[contains(text(),'QMATEpayment2')]/preceding-sibling::td//input[@class='SelectItem']"
+		},
+		"Description":{
+			  "Value": "QMATEpayment",
+			  "Type": "Text Value",
+			  "Locator": "DESCRIPTION"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Edit Payment Type": {
+			"Description":{
+			  "Value": "QMATEpayment2",
+			  "Type": "Text Value",
+			  "Locator": "DESCRIPTION"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEpayment2",
+			"Locator": "SearchText"
+		}
+		}
+	},
+	"Section":{
+		"URL": "HRM/Section",
+		"Add Section": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEsection')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Actions",
+			"Locator": {
+				"Locator1": "//a[contains(text(),'Actions')]",
+				"Locator2": "//a[@class='ActionLink']"
+			}
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEsection",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Select Section": {
+			"Value": "select",
+			"Type": "Checkbox",
+			"Locator": ""
+		},
+		"Department":{
+			  "Value":"QMATEdepartment",
+			  "Type": "Dropdown",
+			  "Locator": "DeptId"
+			},
+		"Name":{
+			  "Value":"QMATEsection",
+			  "Type": "Text Value",
+			  "Locator": "NAME"
+			},
+		"Code":{
+			  "Value":"0294",
+			  "Type": "Text Value",
+			  "Locator": "Code"
+			},
+		"Order By":{
+			   "Value": "029",
+			   "Type": "Text Value",
+			   "Locator": "ORDERBY"
+			},
+		"Is Active":{
+			   "Value": "Yes",
+			   "Type": "Dropdown",
+			   "Locator": "IS_ACTIVE"
+			},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Edit Section": {
+			"Department":{
+			  "Value":"QMATEdepartment2",
+			  "Type": "Dropdown",
+			  "Locator": "DeptId"
+			},
+			"Name":{
+				  "Value":"QMATEsection2",
+				  "Type": "Text Value",
+				  "Locator": "NAME"
+				},
+			"Code":{
+				  "Value":"029402",
+				  "Type": "Text Value",
+				  "Locator": "Code"
+				},
+			"Order By":{
+				   "Value": "024",
+				   "Type": "Text Value",
+				   "Locator": "ORDERBY"
+				},
+			"Is Active":{
+				   "Value": "Yes",
+				   "Type": "Dropdown",
+				   "Locator": "IS_ACTIVE"
+				},
+			"Search box": {
+					"Type": "Text Value",
+					"Value": "QMATEsection2",
+					"Locator": "SearchText"
+				},
+			"Search button": {
+					"Type": "Element",
+					"Locator": "BtnSearchfilter"
+				},
+			"Select Section": {
+					"Value": "select",
+					"Type": "Checkbox",
+					"Locator": "//td[contains(text(),'QMATEsection2')]/preceding-sibling::td//input[@class='SelectItem']"
+				}
+			}
+		},
+	"Department": {
+		"URL": "HRM/Department",
+		"Add": {
+		"Type": "Link",
+		"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdepartment')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+		"Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEdepartment2')]/following-sibling::td//i[@class='fa fa-trash-o']"
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEdepartment",
+			"Locator": "SearchText"
+		},
+		"Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+		},
+		"Name": {
+			"Value": "QMATEdepartment",
+			"Type": "Text Value",
+			"Locator": "Name"
+		},
+		"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+			},
+		"Edit Department": {
+			"Name": {
+				"Value": "QMATEdepartment2",
+				"Type": "Text Value",
+				"Locator": "Name"
+			},
+			"Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEdepartment2",
+				"Locator": "SearchText"
+			}
+
+		}
+	},
+	"Grade Dependency": {
+		"URL": "HRM/tadagraderrule/TaDaDependencyGrid",
+		"Add New Dependancy": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+		"Edit": {
+			"Type": "Element",
+			"": ""
+		},
+		"Delete": {
+			"Type": "Element",
+			"": ""
+		},
+		"Ok": {
+			"Type": "Button",
+			"Locator": "//button[contains(text(),'OK')]"
+		},
+		"Save": {
+			"Type": "Button",
+			"Locator": "btnSave"
+		},
+		"Effective From": {
+			"Value": {
+				"Day": "6",
+				"Month": "Dec",
+				"Year": "2022"
+			},
+			"Type": "Date",
+			"Locator": "EffectiveFrom"
+		},
+		"TA/DA Grade depends on": {
+			"Basic Pay": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkBasicPay"
+			},
+			"Pay Scale": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkPayscale"
+			},
+			"Level Number": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkLevelNo"
+			},
+			"Designation": {
+				"Value": "select",
+				"Type": "Checkbox",
+				"Locator": "chkDesignation"
+			},
+			"Save": {
+				"Type": "Button",
+				"Locator": "btnSave"
+		}
+		}
+	},
+    "TA/DA Grade":{
+		"URL": "HRM/Tadagraderrule",
+	   "Add New Grade": {
+			"Type": "Link",
+			"Locator": "modals-bootbox-custom"
+		},
+	   "Edit": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-pencil']"
+		},
+	   "Revise": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-pencil-square-o']"
+		},
+	   "Delete": {
+			"Type": "Element",
+			"Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td//i[@class='fa fa-trash-o']"
+	   },
+	   "Ok": {
+			"Type": "Element",
+			"Locator": "//button[@class='btn btn-primary']"
+	   },
+	   "Search box": {
+			"Type": "Text Value",
+			"Value": "QMATEgrade",
+			"Locator": "SearchText"
+	   },
+	   "Search button": {
+			"Type": "Element",
+			"Locator": "BtnSearchfilter"
+	   },
+	   "Grade":{
+			  "Value":"QMATEgrade",
+			  "Type": "Text Value",
+			  "Locator": "Grade"
+	   },
+	   "Effective From":{
+			  "Value": {
+					"Day": "2",
+					"Month": "Dec",
+					"Year": "2019"
+			  },
+			  "Type":"Date",
+			  "Locator": "EffectiveFrom"
+	   },
+		"Revised Effective From":{
+			  "Value": {
+					"Day": "8",
+					"Month": "Dec",
+					"Year": "2019"
+			  },
+			  "Type":"Date",
+			  "Locator": "EffectiveFrom"
+	   },
+	   "Basic Pay Min Range":{
+			  "Value":"10000",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMinRange"
+	   },
+	   "Basic Pay Max Range":{
+			  "Value": "20000",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMaxRange"
+	   },
+		"Pay Scale": {
+		   "Value": ["(PB-3) 15600 - 39100+7600"],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator0": "//b[contains(@class,'caret')]",
+				"": "",
+				"Locator2": "//div[contains(@class,'btn-group open')]//li[3]//label/input"
+			}
+	   },
+	   "Level Number": {
+		   "Value": ["L-1",  "L-2"],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator0": "//b[contains(@class,'caret')]",
+				"": "",
+				"Locator2": "//div[contains(@class,'btn-group open')]//li[3]//label/input",
+				"Locator3": "//div[contains(@class,'btn-group open')]//li[4]//label/input"
+			}
+	   },
+	   "Designaton": {
+		   "Value": ["QMATEdesignaton"],
+			"Type": "Dropdown-Checkbox",
+			"Locator": {
+				"Locator0": "//b[contains(@class,'caret')]",
+				"": "",
+				"Locator2": "//div[contains(@class,'btn-group open')]//li[119]//label/input"
+			}
+	   },
+	   "Save":{
+			  "Type": "Button",
+			  "Locator": "btnSave"
+	   },
+	   "Edit TA/DA Grade": {
+		   "Grade":{
+			  "Value":"QMATEgrade2",
+			  "Type": "Text Value",
+			  "Locator": "Grade"
+	   	   },
+		   "Effective From":{
+			  "Value": {
+					"Day": "10",
+					"Month": "Dec",
+					"Year": "2019"
+			  },
+			  "Type":"Date",
+			  "Locator": "EffectiveFrom"
+	       },
+		   "Basic Pay Min Range":{
+			  "Value":"10000",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMinRange"
+	       },
+	       "Basic Pay Max Range":{
+			  "Value": "15000",
+			  "Type": "Text Value",
+			  "Locator": "BasicPayMaxRange"
+		   },
+		   "Level Number": {
+			   "Value": ["L-3",  "L-4"],
+				"Type": "Dropdown-Checkbox",
+				"Locator": {
+					"Locator0": "//b[contains(@class,'caret')]",
+					"": "",
+					"Locator2": "//div[contains(@class,'btn-group open')]//li[5]//label/input",
+					"Locator3": "//div[contains(@class,'btn-group open')]//li[6]//label/input"
+				}
+		   },
+		   "Designaton": {
+			   "Value": ["QMATEdesignaton"],
+			   "Type": "Dropdown-Checkbox",
+			   "Locator": {
+					   "Locator0": "//b[contains(@class,'caret')]",
+					   "": "",
+					   "Locator2": "//div[contains(@class,'btn-group open')]//li[119]//label/input"
+			   }
+		   },
+		   "Search box": {
+				"Type": "Text Value",
+				"Value": "QMATEgrade2",
+				"Locator": "SearchText"
+		   }
+	   }
+    },
+
+  "TA/DA Rule": {
+	  "URL": "TadaRule",
+	  "Add New": {
+		  "Type": "Link",
+		  "Locator": "modals-bootbox-custom"
+	  },
+	  "Unit": {
+		  "Value": "Head Office",
+		  "Type": "Dropdown",
+		  "Locator": "UNIT_ID"
+	  },
+	  "Edit": {
+		  "Type": "Element",
+		  "Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td[contains(text(),'01-Jan-2020')]/following-sibling::td//i[@class='fa fa-pencil']"
+	  },
+	  "Delete": {
+		  "Type": "Element",
+		  "Locator": "//td[contains(text(),'QMATEgrade')]/following-sibling::td[contains(text(),'02-Jan-2020')]/following-sibling::td//i[@class='fa fa-trash-o']"
+	  },
+	  "Ok": {
+		  "Type": "Button",
+		  "Locator": "//button[contains(text(),'OK')]"
+	  },
+	  "Search box": {
+		  "Type": "Text Value",
+		  "Value": "QMATEgrade",
+		  "Locator": "SearchText"
+	  },
+	  "Search button": {
+		  "Type": "Element",
+		  "Locator": "BtnSearchfilter"
+	  },
+	  "Allowance Type": {
+		  "Value": "Travel",
+		  "Type": "Dropdown",
+		  "Locator": "ENTITY_TYPE"
+	  },
+	  "Effective From": {
+		  "Value": {
+			  "Day": "1",
+			  "Month": "Jan",
+			  "Year": "2020"
+		  },
+		  "Type": "Date",
+		  "Locator": "EFFECTIVE_DATE"
+	  },
+	  "Grade": {
+		  "Value": "QMATEgrade",
+		  "Type": "Dropdown",
+		  "Locator": "Grade"
+	  },
+	  "Rule": {
+		  "Value": "Active",
+		  "Type": "Dropdown",
+		  "Locator": "Rule"
+	  },
+	  "Travel Mode": {
+		  "Value": "Bus",
+		  "Type": "Dropdown",
+		  "Locator": "TravelMode"
+	  },
+	  "Travel Class": {
+		  "Value": [
+			  "Silver Line",
+			  "Volvo"
+		  ],
+		  "Type": "Dropdown-Checkbox",
+		  "Locator": {
+			  "Locator1": "//div[@id='Travel']//b[@class='caret']",
+			  "Locator2": "//*[@id='Travel']//ul/li[2]/a/label/input",
+			  "Locator3": "//*[@id='Travel']//ul/li[3]/a/label/input"
+		  }
+	  },
+	  "Mileage Allowance": {
+		  "Type": "Text Value",
+		  "Value": "500",
+		  "Locator": "HRMS_TOUR_BILL_ELIGIBILITY_MILEAGE_ALLOWANCE"
+	  },
+	  "City": {
+		  "Value": "Bari",
+		  "Type": "Dropdown",
+		  "Locator": "TourEligDetailCity"
+	  },
+	  "Amount": {
+		  "Type": "Text Value",
+		  "Value": "500",
+		  "Locator": "TourEligDetailAmount"
+	  },
+	  "Save": {
+		  "Value": "",
+		  "Type": "Button",
+		  "Locator": "btnSave"
+	  },
+	  "Edit TA/DA Rule": {
+		  "Unit": {
+			  "Value": "Ajmer",
+			  "Type": "Dropdown",
+			  "Locator": "UNIT_ID"
+		  },
+		  "Allowance Type": {
+			  "Value": "Travel",
+			  "Type": "Dropdown",
+			  "Locator": "ENTITY_TYPE"
+		  },
+		  "Effective From": {
+			  "Value": {
+				  "Day": "2",
+				  "Month": "Jan",
+				  "Year": "2020"
+			  },
+			  "Type": "Date",
+			  "Locator": "EFFECTIVE_DATE"
+		  },
+		  "Grade": {
+			  "Value": "QMATEgrade",
+			  "Type": "Dropdown",
+			  "Locator": "Grade"
+		  },
+		  "Rule": {
+			  "Value": "Active",
+			  "Type": "Dropdown",
+			  "Locator": "Rule"
+		  },
+		  "Travel Mode": {
+			  "Value": "Flight",
+			  "Type": "Dropdown",
+			  "Locator": "TravelMode"
+		  },
+		  "Travel Class": {
+			  "Value": [
+				  "First Class",
+				  "Economy"
+			  ],
+			  "Type": "Dropdown-Checkbox",
+			  "Locator": {
+				  "Locator1": "//div[@id='Travel']//b[@class='caret']",
+				  "Locator2": "//*[@id='Travel']//ul/li[2]/a/label/input",
+				  "Locator3": "//*[@id='Travel']//ul/li[3]/a/label/input"
+			  }
+		  },
+			  "Mileage Allowance": {
+				  "Type": "Text Value",
+				  "Value": "5000",
+				  "Locator": "HRMS_TOUR_BILL_ELIGIBILITY_MILEAGE_ALLOWANCE"
+			  },
+			  "City": {
+				  "Value": "Banera",
+				  "Type": "Dropdown",
+				  "Locator": "TourEligDetailCity"
+			  },
+			  "Amount": {
+				  "Type": "Text Value",
+				  "Value": "7000",
+				  "Locator": "TourEligDetailAmount"
+			  }
+		  }
+	  },
+      "EntertainmentDeclaration": {
+			"Effective Date": {
+				"Value": {
+					"Day": "5",
+					"Month": "Nov",
+					"Year": "2018"
+				},
+				"Type": "Date",
+				"Locator": "EffectiveDate"
+			},
+			"Type": {
+				"Value": "Tea Rate",
+				"Type": "Dropdown",
+				"Locator": "type"
+			},
+			"Rate": {
+				"Value": "100.00",
+				"Type": "Text Value",
+				"Locator": "rate"
+			}
+	}
+  }
+
+

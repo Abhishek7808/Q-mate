@@ -1,5 +1,20 @@
-Results
+robot/Results
+robot/Result
+robot/Tests/Results
+robot/Tests/Result
+robot/DebugResult
+robot/.idea
+robot/Tests/DEBUG.robot
+log
+__pycache__
+rajerpenv
+reports
 .idea
+<<<<<<< HEAD
 DEBUG.robot
 testingPython.py
 debug.log
+=======
+Results
+testingPython.py
+>>>>>>> gui
