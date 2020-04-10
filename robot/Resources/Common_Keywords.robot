@@ -29,7 +29,7 @@ Library           DateTime
 #@{moduleNames}  ${HRMS.name}  ${FA.name}  ${UM.name}  ${SMM.name}  ${CPF.name}
 ${None}  None
 ${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
-${hrmsSalaryData}  ${DATA}/HRMS_DATA/HrmsData.json
+${hrmsData}  ${DATA}/HRMS_DATA/HrmsData.json
 ${accData}  ${DATA}/ACC_DATA/AccData.json
 ${urlsJson}   ${DATA}/URLs.json
 ${financialYear}
@@ -130,6 +130,16 @@ Begin HRMS Testing
     open browser  about:blank  ${BROWSER}
     maximize browser window
 
+Begin Leave Encashment Testing
+    [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for leave encashment test cases.
+    Set HRMS Variables  ${hrmsData}
+    open browser  about:blank  ${BROWSER}
+    maximize browser window
+
+End Leave Encashment Testing
+    [Documentation]  Closes browser.
+    close browser
+
 Set HRMS Variables
     [Documentation]  Sets Json data files as test variables.
     [Arguments]  ${hrmsConfigurationData}
@@ -144,7 +154,7 @@ End HRMS Testing
 
 Begin Salary Automation
     [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for salary automation scripts.
-    Set HRMS Variables  ${hrmsSalaryData}
+    Set HRMS Variables  ${hrmsData}
     Set Date Time Variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
@@ -157,7 +167,7 @@ Begin Salary Testing
     [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for Salary disbursement test cases.
     open browser  about:blank  ${BROWSER}
     maximize browser window
-    Set HRMS Variables  ${hrmsSalaryData}
+    Set HRMS Variables  ${hrmsData}
     Set Date Time Variables
 
 END Salary Testing

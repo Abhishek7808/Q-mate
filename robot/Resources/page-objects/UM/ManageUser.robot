@@ -1,5 +1,5 @@
 *** Variables ***
-${actionEMP}  //a[@class='btn btn-primary']
+${actionEMP}  //a[contains(text(),'Actions')]
 ${Impersonate}  //a[contains(text(),'Impersonate')]
 ${impersonateOkButton}  //button[contains(text(),'OK')]
 ${selfVarificationPopupText}  //h3[contains(text(),'Your details are not Self Verified.')]
@@ -17,7 +17,7 @@ Search Employee
 
 Impersonate Employee
     [Documentation]  Does impersonate process.
-    Sleep  2s
+    Sleep  5s
     click element  ${actionEMP}
     Sleep  2s
     click element  ${Impersonate}

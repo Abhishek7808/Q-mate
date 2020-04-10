@@ -25,8 +25,8 @@ Resource  ${PAGE OBJECTS}/HRMS/ManualAttendance.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDetail.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryPaybill.robot
 Resource  ${PAGE OBJECTS}/HRMS/SalaryDisbursment.robot
-#Resource  ${PAGE OBJECTS}/HRMS/ManageUser.robot
-#Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
+Resource  ${PAGE OBJECTS}/UM/ManageUser.robot
+Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentAdmin.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPropsal.robot
 *** Variables ***
@@ -1130,7 +1130,7 @@ Mark Attendance Of Given Employee
 
 Open Manage User Page
     [Documentation]  Opens manage user page.
-    LeaveEncashment.Go To Manage User Page
+    ManageUser.Go To Manage User Page
 
 Impersonate into employee ID
     [Documentation]  Impersonates employee whose employee id is given.
