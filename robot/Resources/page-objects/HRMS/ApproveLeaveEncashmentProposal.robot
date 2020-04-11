@@ -12,8 +12,8 @@ Select Employee Location
     [Arguments]  ${EMPLOYEELOATION}
     click element  //a[@class='select2-choice']//div//b
     sleep  2s
-    input text  //input[@class='select2-input']  ${EMPLOYEELOATION}
-    press keys  //input[@class='select2-input']  ENTER
+    input text  //*[@id="select2-drop"]/div/input  ${EMPLOYEELOATION}
+    press keys  //*[@id="select2-drop"]/div/input  ENTER
 
 Apply Filters
     [Documentation]  Clicks on apply filter.

@@ -13,13 +13,11 @@ ${No.Leave}  //input[@id='LEAVE_DAYS_APPLIED']
 ${Search}  //input[@id='SearchText']
 ${Submit}  //input[@id='btnSave']
 
-
 *** Keywords ***
 
 Go To Employee Privilege Leave Encashment Page
     [Documentation]  Opens privilege leave encashment page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/HRM/LeaveEncashment/Index?q=8U+3wF0Q7l5j2PeQj4qX4M2S1KctwrB7
-
 
 Open Filters
     [Documentation]  Clicks on open filter button.

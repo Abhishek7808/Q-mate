@@ -1,7 +1,6 @@
 *** Settings ***
-Documentation    Suite description
-Resource          ${RESOURCES}${/}NewUiFormHelpers${/}FillFields.robot
 Resource          ../../../Configuration.resource
+Resource          ${RESOURCES}${/}NewUiFormHelpers${/}FillFields.robot
 Resource          ${RESOURCES}${/}Common_Keywords.robot
 Resource          ${RESOURCES}/ERP_Keywords.robot
 Resource          ${RESOURCES}/HRMS_Keywords.robot
@@ -10,7 +9,9 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 
 *** Variables ***
 ${EMPLOYEEID}  jvvnl.28981
-${EMPLOYEENAME}  xyz
+${EMPLOYEECODE}  49158
+${EMPLOYEELOCATION}  ......ACOS, Bharatpur (ACOS, BPR)
+${PAYGROUP}  ACOS, Bharatpur Ministerial Staff
 
 *** Test Cases ***
 Employee should able to apply leave encashment
@@ -25,21 +26,21 @@ Admin should able to apply leave encashment
     [Tags]  HRMS  admin  LeaveEncash  apply
     Common_Keywords.Set Test Data  ${configData["Leave_Encashment_Admin"]}
     HRMS_Keywords.Open Leave Encashment Page
-    HRMS_Keywords.Add Leave Encashment  ${dataDictionary}  ${EMPLOYEENAME}
+    HRMS_Keywords.Add Leave Encashment  ${dataDictionary}  ${EMPLOYEECODE}
     HRMS_Keywords.Open Leave Encashment Page
-    HRMS_Keywords.Verify Leave Encashment Entry
+    #HRMS_Keywords.Verify Leave Encashment Entry  ${EMPLOYEECODE}
 
 Admin should able to add leave encashment proposal
     [Documentation]  Fills leave encashment proposal details
-    [Tags]  HRMS  admin  LeaveEncash
+    [Tags]  HRMS  admin  LeaveEncash  proposal
     Common_Keywords.Set Test Data  ${configData["Encash_Proposal"]}
     HRMS_Keywords.Open Leave Encashment Proposal Page
     HRMS_Keywords.Add Leave Encashment Proposal  ${dataDictionary}  ${PAYGROUP}  ${EMPLOYEELOCATION}
 
 Admin should able to approve leave encashment proposal
     [Documentation]  Approves proposal and issues order.
-    [Tags]  HRMS  admin  LeaveEncash
+    [Tags]  HRMS  admin  LeaveEncash  approve
     HRMS_Keywords.Open Leave Encashment Proposal Approval Page
-    HRMS_Keywords.Select Leave Encashment Filters  ${EMPLOYEELOATION}
+    HRMS_Keywords.Select Leave Encashment Filters  ${EMPLOYEELOCATION}
     HRMS_Keywords.Issue Order For Leave Encashment Proposal
 

@@ -15,9 +15,6 @@ Go To Plant List Page
     [Documentation]  Opens plant list page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${PLANTLIST_LINK}
 
-#Go To ERP Page Add
-#    click button  ${ADD_CUSTOMER_BUTTON}
-
 Apply Plant Status Filter
     [Documentation]  Takes plant status as argument, Inputs branch name in the search bar and applies status filter.
     [Arguments]  ${plantStatus}

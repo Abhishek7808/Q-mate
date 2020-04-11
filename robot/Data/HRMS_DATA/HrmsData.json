@@ -1435,7 +1435,7 @@
   "Leave_Encashment_Admin": {
       "URL": "HRM/LeaveEncashment?q=8U+3wF0Q7l7KAX/XmkJC7w==",
       "Employee_Name": {
-          "Type": "Text-Value",
+          "Type": "Text Value",
           "Locator": "//input[@id='EMPLOYEE']"
       },
       "Leave_Type": {
@@ -1445,7 +1445,7 @@
       },
       "Leave_Days": {
           "Value": "10",
-          "Type": "Text-Value",
+          "Type": "Text Value",
           "Locator": "//input[@id='LEAVE_DAYS_APPLIED']"
       }
   },

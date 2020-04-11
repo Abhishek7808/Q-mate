@@ -11,7 +11,7 @@ Fill Proposal Details
     [Documentation]  Fills details into leave encashment proposal form.
     [Arguments]  ${dataDictionary}  ${PAYGROUP}  ${EMPLOYEELOCATION}
     FillFields.Input Value Into Field  ${dataDictionary["Pay_Group"]}  ${PAYGROUP}
-    FillFields.Input Value Into Field  ${dataDictionary["Pay_Group"]}  ${EMPLOYEELOCATION}
+    FillFields.Input Value Into Field  ${dataDictionary["Location"]}  ${EMPLOYEELOCATION}
 
 Submit Details
     [Documentation]  Clicks on submit button.

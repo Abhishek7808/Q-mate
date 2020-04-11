@@ -11,14 +11,19 @@ Fill Leave Encashment Details
     [Documentation]  Fills details into leave encashment form.
     [Arguments]  ${dataDictionary}  ${EMPLOYEENAME}
     FillFields.Input Value Into Field  ${dataDictionary["Employee_Name"]}  ${EMPLOYEENAME}
+    sleep  5s
+    press keys  ${dataDictionary["Employee_Name"]["Locator"]}  ARROW_DOWN
+    press keys  ${dataDictionary["Employee_Name"]["Locator"]}  ENTER
     FillFields.Input Value Into Field  ${dataDictionary["Leave_Type"]}  ${dataDictionary["Leave_Type"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Leave_Days"]}  ${dataDictionary["Leave_Days"]["Value"]}
 
 Submit Details
     [Documentation]  Clicks on submit button.
     click element  //input[@id='btnSave']
+    capture page screenshot
 
 Verify Leave Encashment Entry In Table
     [Documentation]  Takes employee name as argument and checks that it is listed on the current page.
     [Arguments]  ${EMPLOYEENAME}
+    input text
     page should contain  ${EMPLOYEENAME}

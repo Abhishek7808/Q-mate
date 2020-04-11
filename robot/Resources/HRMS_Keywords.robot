@@ -29,6 +29,7 @@ Resource  ${PAGE OBJECTS}/UM/ManageUser.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentAdmin.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPropsal.robot
+Resource  ${PAGE OBJECTS}/HRMS/ApproveLeaveEncashmentProposal.robot
 *** Variables ***
 ${employeeStatus}  Status
 
@@ -1182,6 +1183,7 @@ Select Leave Encashment Filters
     [Documentation]  Open and selects leave encashment filters.
     [Arguments]  ${EMPLOYEELOATION}
     ApproveLeaveEncashmentProposal.Open Filters
+    sleep  3s
     ApproveLeaveEncashmentProposal.Select Employee Location  ${EMPLOYEELOATION}
     ApproveLeaveEncashmentProposal.Apply Filters
 
