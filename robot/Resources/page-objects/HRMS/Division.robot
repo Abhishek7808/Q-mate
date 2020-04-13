@@ -51,6 +51,6 @@ Delete Division Entry
     [Documentation]  Clicks on delete butto, waits for the popup to be appeared and then clicks on OK button.
     [Arguments]  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Delete"]}
-    page should contain   Do you really want to Delete this Division ??
+    page should contain   Do you really want to Delete this Division ?
     FillFields.Input Value Into Field  ${dataDictionary["Ok"]}
     reload page

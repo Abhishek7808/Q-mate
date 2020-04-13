@@ -32,8 +32,6 @@ Select Employees
     [Documentation]  Switches to new tab and selects all employees.
     switch window  NEW
     select checkbox  //input[@id='chk_all']
-#    FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
-#    \   select checkbox  ${employeeTable}/tbody/tr[${employee}]/td[1]/input
 
 Select First Employee
     [Documentation]  Switches to new tab and selects top most listed employee.

@@ -18,7 +18,7 @@ Employee should able to apply leave encashment
     [Documentation]  Imperosnates an employee.
     [Tags]  HRMS  employee  LeaveEncash
     HRMS_Keywords.Open Manage User Page
-    HRMS_Keywords.Impersonate into employee ID  ${EMPLOYEEID}
+    HRMS_Keywords.Impersonate into employee ID  ${EMPLOYEEID}           ###""" Employee code is required and can be given from command line or can be set in the variables section written above. """
     HRMS_Keywords.Encash Privilege Leave
 
 Admin should able to apply leave encashment
@@ -35,6 +35,7 @@ Admin should able to add leave encashment proposal
     [Tags]  HRMS  admin  LeaveEncash  proposal
     Common_Keywords.Set Test Data  ${configData["Encash_Proposal"]}
     HRMS_Keywords.Open Leave Encashment Proposal Page
+    ###""" Paygroup amd Employee Location are required and can be given from command line or can be set in the variables section written above. """
     HRMS_Keywords.Add Leave Encashment Proposal  ${dataDictionary}  ${PAYGROUP}  ${EMPLOYEELOCATION}
 
 Admin should able to approve leave encashment proposal

@@ -7,9 +7,9 @@ Go To Bonus Disbursement Index Page And Set Variables
 
 Set Variables
     [Documentation]  Sets variables according to the test.
-    # """ Each disbursement have its own variables to set up before the testing"""
+    ###""" Each disbursement have its own variables to set up before the testing"""
     set test variable  ${disbursementUrl}  HRM/HonorariumDisbursement/BonusDisbursementIndex
-    set test variable  ${disburseTableColumnHead}  Net Amount       # """ It is set for fetching disbursement amount"""
+    set test variable  ${disburseTableColumnHead}  Net Amount       ###""" It is set for fetching disbursement amount"""
     set test variable  ${disbursementTableID}  //*[@id="EmpSalGrid"]
 
 

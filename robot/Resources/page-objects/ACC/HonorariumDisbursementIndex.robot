@@ -7,9 +7,9 @@ Go To Honorarium Disbursement Index Page And Set Variables
 
 Set Variables
     [Documentation]  Sets variables according to the test.
-    # """ Each disbursement have its own variables to set up before the testing"""
+    ###""" Each disbursement have its own variables to set up before the testing"""
     set test variable  ${disbursementUrl}  HRM/HonorariumDisbursement
-    set test variable  ${disburseTableColumnText}  Net Amount       # """ It is set for fetching disbursement amount"""
+    set test variable  ${disburseTableColumnText}  Net Amount       ###""" It is set for fetching disbursement amount"""
     set test variable  ${disbursementTableID}  //*[@id="EmpSalGrid"]
 
 Match All Paybills Net Amount With The Report For Given Unit

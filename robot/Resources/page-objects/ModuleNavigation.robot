@@ -1,9 +1,7 @@
 *** Settings ***
 Library  SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 
-
 *** Variables ***
-#Locators
 ${MODULE_NAVIGATION_BUTTON}     xpath=//button[@id='on_scroll']
 ${NAVIGATION_MENU}              xpath=//div[@id='menu_kis']
 
@@ -32,51 +30,51 @@ Open Modules Menu
 
 Navigate To HRMS Module
     [Documentation]  Navigates to HRMS module.
-    click link  ${HRMS.link_title}
+    click link  ${HRMS.link_title}                  ###""" Variable is defined in "Configuration.resource" file.
 
 Go To ERP Page HRMS Dashboard
     [Documentation]  Opens HRMS dashboard.
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${HRMS.link}              ###""" Variable is defined in "Configuration.resource" file.
 
 Verify HRMS Dashboard Is Loaded
     [Documentation]  Checks that HRMS dashboard is loaded by varifying dashboard title.
-    title should be  ${HRMS.dashboard_title}
+    title should be  ${HRMS.dashboard_title}        ###""" Variable is defined in "Configuration.resource" file.
 
 Navigate To FA Module
     [Documentation]  Navigates to FA module.
-    click link  ${FA.link_title}
+    click link  ${FA.link_title}                    ###""" Variable is defined in "Configuration.resource" file.
 
 Go To ERP Page FA Dashboard
     [Documentation]  Opens FA dashboard.
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${FA.link}
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${FA.link}                ###""" Variable is defined in "Configuration.resource" file.
 
 Verify FA Dashboard Is Loaded
     [Documentation]  Checks that FA dashboard is loaded by varifying dashboard title.
-    title should be  ${FA.dashboard_title}
+    title should be  ${FA.dashboard_title}          ###""" Variable is defined in "Configuration.resource" file.
 
 Navigate To UM Module
     [Documentation]  Navigates to UM module.
-    click link  ${UM.link_title}
+    click link  ${UM.link_title}                    ###""" Variable is defined in "Configuration.resource" file.
 
 Go To ERP Page UM Dashboard
     [Documentation]  Opens UM dashboard.
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${UM.link}
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${UM.link}                 ###""" Variable is defined in "Configuration.resource" file.
 
 Verify UM Dashboard Is Loaded
     [Documentation]  Checks that UM dashboard is loaded by varifying dashboard title.
-    title should be  ${UM.dashboard_title}
+    title should be  ${UM.dashboard_title}          ###""" Variable is defined in "Configuration.resource" file.
 
 Navigate To SMM Module
     [Documentation]  Navigates to SMM module.
-    click link  ${SMM.link_title}
+    click link  ${SMM.link_title}                   ###""" Variable is defined in "Configuration.resource" file.
 
 Go To ERP Page SMM Dashboard
     [Documentation]  Opens SMM dashboard.
-     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${SMM.link}
+     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}${SMM.link}              ###""" Variable is defined in "Configuration.resource" file.
 
 Verify SMM Dashboard Is Loaded
     [Documentation]  Checks that SMM dashboard is loaded by varifying dashboard title.
-    title should be  ${SMM.dashboard_title}
+    title should be  ${SMM.dashboard_title}         ###""" Variable is defined in "Configuration.resource" file.
 
 Open User Action Menu
     [Documentation]  Moves mouse curser to user action menu and opens it.

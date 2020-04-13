@@ -7,12 +7,12 @@ Go To Salary Disbursement Index Page And Set Variables
 
 Set Variables
     [Documentation]  Sets variables according to the test.
-    # """ Each disbursement have its own variables to set up before the testing"""
+    ###""" Each disbursement have its own variables to set up before the testing"""
     set test variable  ${disbursementUrl}  HRM/salaryDisbursment/SalayDisbursmentIndex
-    set test variable  ${disburseTableColumnHead}  Net Amount            # """ It is set for fetching disbursement amount"""
+    set test variable  ${disburseTableColumnHead}  Net Amount            ###""" It is set for fetching disbursement amount"""
     set test variable  ${disbursementTableID}  //*[@id="EmpSalGrid"]
-    set test variable  ${paybillDetailsColumnHead}  PayBill Detail       # """ It is set for fetching paybill Number from Paybill """
-    set test variable  ${employeeIdColumn}          4            # """ It is set for fetching employee id from disbursement data table """
+    set test variable  ${paybillDetailsColumnHead}  PayBill Detail       ###""" It is set for fetching paybill Number from Paybill """
+    set test variable  ${employeeIdColumn}          4            ###""" It is set for fetching employee id from disbursement data table """
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
@@ -59,10 +59,6 @@ Check Salary Paybills
     \    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
     \    close window
     \    Common_Keywords.Switch Tab
-#    \    Open Filters
-#    \    Select Given Financial Year
-#    \    Apply Filters
-#    \    sleep  2s
 
 Check Specified Salary Paybill
     [Documentation]  Checks paybill of given number.

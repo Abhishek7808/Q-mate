@@ -16,10 +16,7 @@ Click On Add Button
 Fill Salary Cycle Form
     [Documentation]  Fills Salary Cycle Details in Salary Cycle form.
     [Arguments]  ${dataDictionary}
-#    ${financialYear}  Common_Keywords.Get Current Financial Year        ###""" Returns Current Financial Year """
-#    ${salaryCycleName}  SalaryCycle.Get Current Salary Cycle            ###""" Returns Current Salary Cycle """
-#    ${currentMonth}  Common_Keywords.Get Current Month                  ###""" Returns Current Month """
-#    ${currentYear}  Common_Keywords.Get Current Year                    ###""" Returns Current Year """
+    ###""" Variables ${currentFinancialYear}, ${currentFinancialYear}, ${currentMonth} and ${currentYear} were set from "__init__.robot" file when test case started."""
     FillFields.Input Value Into Field  ${dataDictionary["Description"]}  ${currentSalaryCycleName}
     select from list by value  ${dataDictionary["Financial_Year"]["Locator"]}  ${currentFinancialYear}
     FillFields.Input Value Into Field  ${dataDictionary["Type"]}  ${dataDictionary["Type"]["Value"]}

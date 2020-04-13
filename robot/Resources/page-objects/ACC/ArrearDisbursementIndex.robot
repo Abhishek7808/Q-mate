@@ -7,7 +7,7 @@ Go To Arrear Disbursement Index Page And Set Variables
 
 Set Variables
     [Documentation]  Sets variables according to the test.
-    # """ Each disbursement have its own variables to set up before the testing"""
+    ###""" Each disbursement have its own variables to set up before the testing"""
     set test variable  ${disbursementUrl}  HRM/ArrearDisbursement/ArrearDisbursementIndex
     set test variable  ${disburseTableColumnHead}  Amount to be Disbursed
     set test variable  ${disbursementTableID}  //*[@id="EmpSalGrid"]

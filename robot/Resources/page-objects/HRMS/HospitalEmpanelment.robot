@@ -29,7 +29,6 @@ Delete Entry
     wait until page contains   Do you really want to delete selected record(s) ?
     click element  //button[contains(text(),'OK')]
 
-
 Check For Hospital Empanelment Entry In Hospital Empanelment Table
     [Documentation]  Takes hospital name as argument and checks that it is listed on current page.
     [Arguments]  ${hospitalName}

@@ -28,12 +28,8 @@ Fill Salary Paybill Form
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
     SalaryPaybill.Unselect Employee Location
-#    ${PAYGROUP}  set variable if  ${TEST_PAYGROUP} == None  ${PAYGROUP}  ${TEST_PAYGROUP}
-#    set global variable  ${PAYGROUP}
     HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${PAYGROUP}
     sleep  5s
-    #HRMS_Keywords.Select Employee Location  ${dataDictionary}
-    #FillFields.Input Value Into Field  ${dataDictionary["Bill Date"]}  ${dataDictionary["Bill Date"]["Value"]}
     HRMS_Keywords.Select Payment unit  ${dataDictionary}
     FillFields.Input Value Into Field  ${dataDictionary["Payslip Unit"]}  ${PAYSLIPUNIT}
 
@@ -76,10 +72,6 @@ Get Latest Paybill Number
     ${lastIndex}  set variable  ${listLength-1}
     log to console  ${paybillNumbers}[${lastIndex}]
     set global variable  ${latestPaybillCreated}  ${paybillNumbers}[${lastIndex}]
-
-#    remove from list  ${DISBURSEMENT_PAYBILLS}  0
-#    append to list  ${DISBURSEMENT_PAYBILLS}  ${latestPaybillCreated}
-#    set global variable  ${DISBURSEMENT_PAYBILLS}
     return from keyword  ${paybillNumbers}[0]
 
 Get Salary Paybill Number
@@ -97,27 +89,23 @@ Search Paybill
 
 Verify Paybill
     [Documentation]  Clicks on verify text then writes remarks and clicks on save button.
-    #click element  //td[contains(text(),'Pending')]/following-sibling::${approvalButton}
     click element  //${approvalButton}
     ${status}  run keyword and return status  wait until element is visible  ${verifyText}
     run keyword if  ${status} == ${FALSE}  SalaryPaybill.Verify Paybill
     click element  ${verifyText}
     sleep  3s
-    #wait until page contains  Do you really want to Verify and Forward for Approval selected record(s) ?
     click element  //input[@id='CheckSchedule']
     input text  //textarea[@id='Remarks']  xyz
     click element  //input[@id='btnSave']
 
 Approve Paybill
     [Documentation]  Clicks on approve text then writes remarks and clicks on save button.
-    #click element  //td[contains(text(),'Verified')]/following-sibling::${approvalButton}
     click element  //${approvalButton}
     wait until element is visible  ${approveText}
     click element  ${approveText}
     sleep  3s
     click element  //input[@id='CheckSchedule']
     input text  //textarea[@id='Remarks']  xyz
-    #wait until page contains  Do you really want to Forward For Approval selected record(s) ?
     click element  //input[@id='btnSave']
 
 Select Status

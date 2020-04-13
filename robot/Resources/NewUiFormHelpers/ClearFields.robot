@@ -18,7 +18,6 @@ Clear Dropdown-Checkbox
     FOR  ${item}  IN RANGE  2  ${count}+2
     \   set focus to element  ${locator["Locator${item}"]}
     \   unselect checkbox  ${locator["Locator${item}"]}
-    #click element  ${locator["Locator1"]}
 
 Clear Date
     [Documentation]    Input the given date into date field at the locator.

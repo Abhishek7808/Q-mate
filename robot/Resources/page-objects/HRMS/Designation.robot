@@ -68,7 +68,6 @@ Edit Designation Details
 Select Designation Checkbox
     [Documentation]  Takes designation name as argument and selects releated checkbox.
     [Arguments]  ${dataDictionary}  ${desingnationName}
-    #FillFields.Input Value Into Field  ${dataDictionary["Select Designation"]}  ${desingnationName}
     sleep  3s
     select checkbox  //td[contains(text(),'${desingnationName}')]/preceding-sibling::td//input[@class='SelectItem']
 

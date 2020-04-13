@@ -84,9 +84,10 @@ Begin SMM Testing
 
 Set Basic Tests Variables
     [Documentation]  Sets variables for basic test cases.
+    ###""" These dictionary variables are defined in "Login_Data.robot" file. """
     &{ADMIN_USER}  set variable if  '${ENVIRONMENT}' == 'production'  &{ADMIN_USER_LIVE}  &{ADMIN_USER}
     &{NON_ADMIN_USER}  set variable if  '${ENVIRONMENT}' == 'production'  &{NON_ADMIN_USER_LIVE}  &{NON_ADMIN_USER}
-    ${invalid_username}  Generate random string             ###""" Generates randome string everytime test case runs
+    ${invalid_username}  Generate random string             ###""" Generates randome username everytime test case runs, SO that limit can not exceed """
     set to dictionary  ${INVALID_USER}  username=${invalid_username}
     ${username}  Generate random string
     set to dictionary  ${INVALID_PASSWORD}  username=${username}
@@ -191,10 +192,17 @@ END ACC Testing
     [Documentation]  Closes browser.
     close browser
 
+Begin CPF Testing
+    [Documentation]  Opens browser.
+    open browser  about:blank  ${BROWSER}
+
+End CPF Testing
+    [Documentation]  Closes browser.
+    close browser
+
 Create Employee File
-    [Documentation]  Creates a file. This file is used in salary test cases. Employee code is being written here.
-    create file  ${EMPLOYEE_FILE}
-    #set global variable  ${employees}
+    [Documentation]  Creates a file. This file is used in salary test cases. Employee code is being written here. So that all processes can be done on a single employee.
+    create file  ${EMPLOYEE_FILE}               ###""" File path is defined in "Configurations.robot" file name is EmployeeCode.txt
 
 Set Date Time Variables
     [Documentation]  Sets variables that are used in filling forms where current date, time, financial year are to be filled.

@@ -22,10 +22,10 @@ ${ISGAZETTED}  None
 ${latestPaybillCreated}  1021/2019-2020
 ${EMPLOYEELOCATION}  Select all
 
-*** Test Cases ***
-#Salary Cycle should be created
-#    [Tags]  salarycheck  Salarycyclecheck
+###""" robot -d robot/Results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg --variable PAYGROUP:"" --variable FINANCIALYEAR:"" --variable SALARYCYCLE:"" -i salarycheck robot/Tests.
+###""" If financial year and salary cycle are not given by user then current financial year and salary cycle will be chosen. """
 
+*** Test Cases ***
 Admin should able to mark attendance of the employees
     [Documentation]  Makrs attendance of the top most listed employee of the given paygroup.
     [Tags]  salarycheck  markattendancecheck
@@ -55,7 +55,6 @@ Admin should able to add salary paybill
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
-    #HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}
     HRMS_Keywords.Approve Salary Paybill  ${dataDictionary}
 
 Admin should able to add salary disbursement

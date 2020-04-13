@@ -35,14 +35,14 @@ Attempt Logout
     Login.Go To Logout
 
 Test Mutiple Login Failed Scenarios
-    [Documentation]  Tests the login functionality with wrong credentials
+    [Documentation]  Opens login page, Tests the login functionality with wrong credentials
     [Arguments]  ${Credentials}
     ERP_Keywords.Open the Login Page
     Attempt Login   ${Credentials}
     Login.Verify Login Message  ${Credentials.ExpectedResponseMessage}
 
 Test Mutiple Login Successful Scenarios
-    [Documentation]  Tests the login functionality with right credentials
+    [Documentation]  Opens login page, Tests the login functionality with right credentials
     [Arguments]  ${Credentials}
     ERP_Keywords.Open the Login Page
     ${status}  run keyword and return status  Login.Verify Page Loaded
@@ -60,39 +60,34 @@ Login To ERP
 
 Go To ERP
     [Documentation]  Opens the ERP login page
-    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}
+    Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}          ###""" This variable is defined in "Configuration.resource" file. """
 
 Go To Home
     [Documentation]  Opens the home page
     TopNavigation.Go Back To Home
 
 Test UM
-    [Documentation]  Test UM module
+    [Documentation]  Opens UM module and verifies dashboard is loaded.
     ModuleNavigation.Open Modules Menu
     ModuleNavigation.Navigate To UM Module
-#    Run Generic Tests From Admin
     ModuleNavigation.Verify UM Dashboard Is Loaded
-    #Go To ERP Page Home
 
 Test HRMS
-    [Documentation]  Test HRMS module
+    [Documentation]  Opens HRMS module and verifies dashboard is loaded.
     ModuleNavigation.Open Modules Menu
     ModuleNavigation.Navigate To HRMS Module
-#    Run Generic Tests From Admin
     ModuleNavigation.Verify HRMS Dashboard Is Loaded
-    #Go To ERP Page Home
 
 Test FA
-    [Documentation]  Test FA module
+    [Documentation]  Opens FA module and verifies dashboard is loaded.
     ModuleNavigation.Open Modules Menu
     ModuleNavigation.Navigate To FA Module
-#   Run Generic Tests From Admin
     ModuleNavigation.Verify FA Dashboard Is Loaded
-    #Go To ERP Page Home
 
 Run Generic Tests From Admin
     [Documentation]  runs generic tests, uses admin id for login.
     [Arguments]  ${moduleName}
+    ###""" A list of modules names is created which is used when error emails are fired for each module one by one."""
     ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}          ###"""Adds module into the List if it is not in the list .
     run keyword if  ${status} == ${True}  append to list  ${moduleNames}  ${moduleName}
     set global variable  @{moduleNames}
@@ -103,7 +98,8 @@ Run Generic Tests From Other User
     [Documentation]  runs generic tests, uses non admin id for login.
     [Arguments]  ${moduleName}
     Attempt Logout
-    ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}
+    ###""" A list of modules names is created which is used when error emails are fired for each module one by one."""
+    ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}          ###"""Adds module into the List if it is not in the list .
     run keyword if  ${status} == ${True}  append to list  ${moduleNames}  ${moduleName}
     set global variable  @{moduleNames}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}

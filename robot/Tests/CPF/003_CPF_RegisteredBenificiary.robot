@@ -1,12 +1,12 @@
 *** Settings ***
 Documentation  ERP Tests
-Resource  ../Configuration.resource
+Resource  ../../Configuration.resource
 Resource  ${RESOURCES}/Common_Keywords.robot
 Resource  ${RESOURCES}/ERP_Keywords.robot
+Resource  ${RESOURCES}/CPF_Keywords.robot
 Resource  ${PAGE OBJECTS}${/}${FA.name}/DisbursementIndex.robot
 Resource  ${PAGE OBJECTS}/Generic.robot
 Resource  ${DATA}/Login_Data.robot
-#Resource  ${COMMONDATA}
 Library   SeleniumLibrary  plugins=${PLUGINS}${/}ERP.py
 Library   Collections
 Library   OperatingSystem
@@ -22,16 +22,11 @@ ${wrongEmployeeID}  05385
 
 &{employeeIdDict}
 
-*** Keywords ***
-
-
-
 *** Test Cases ***
 Benificiary details of each employee should be displayed
     [Documentation]  Checks for employees ledger in registered beneficiary table.
     [Tags]  Beneficiary
     CPF_Keywords.Open Registered Benificiary Page
-    #Select Most Number Of Elements In Page  DDLpageSize
     Common_Keywords.Show Maximum Entries on Page
     CPF_Keywords.Check Registered Benificiary
 

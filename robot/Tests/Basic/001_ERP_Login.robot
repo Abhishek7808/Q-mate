@@ -11,23 +11,22 @@ Resource  ${PAGE OBJECTS}/TopNavigation.robot
 
 User should able to access login page
     [Documentation]  verifies that user is able to access the login page.
-    [Tags]  login  loginpage
-    run keyword and ignore error  ERP_Keywords.Attempt Full Logout          ###""" Attempts logout if user is already logged in
+    [Tags]  Basic  login  loginpage
+    run keyword and ignore error  ERP_Keywords.Attempt Full Logout          ###""" Attempts logout if user is already logged in """
     ERP_Keywords.Open the Login Page
 
 Invalid login scenarios should display correct error messages
     [Documentation]  Verifies that their is correct error message when user tires to log in with wrong credentials.
-    [Tags]  login  invalidlogin
-    [Template]  Test Mutiple Login Failed Scenarios
-    ${INVALID_USER}
+    [Tags]  Basic  login  invalidlogin
+    [Template]  Test Mutiple Login Failed Scenarios             ###""" This keyword is defined in ERP_Keywords.robot file. """
+    ${INVALID_USER}             ###""" These variables are being set in "Begin Basic Testing -> Set Basic Tests Variables" keyword in common keywords file."""
     ${INVALID_PASSWORD}
-    #${BLANK_USER}
 
 Users should able to login with correct username and password
     [Documentation]  Verifies that user is able to log in successfully when tries to log in with right credentials.
-    [Tags]  login  validlogin
-    [Template]  Test Mutiple Login Successful Scenarios
-    ${ADMIN_USER}
+    [Tags]  Basic  login  validlogin
+    [Template]  Test Mutiple Login Successful Scenarios         ###""" This keyword is defined in ERP_Keywords.robot file. """
+    ${ADMIN_USER}               ###""" These variables are being set in "Begin Basic Testing -> Set Basic Tests Variables" keyword in common keywords file."""
     ${NONADMIN_USER}
 
 

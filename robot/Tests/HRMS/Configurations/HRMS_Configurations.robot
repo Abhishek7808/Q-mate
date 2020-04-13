@@ -9,6 +9,10 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 #${hrmsConfigurationData}  ${DATA}/HRMS_DATA/ConfigurationData.json
 
 *** Test Cases ***
+############################
+# Tea Rate Definiton Cases #
+############################
+
 User should able to declare tea rate definition
     [Documentation]  Fills the tea rate definition form and submits it. Verifies its entry in the tea rate definition table.
     [Tags]  HRMS  tearatedefinition  createdata
@@ -36,6 +40,10 @@ User should able to delete tea rate definition
     HRMS_Keywords.Apply Tea Rate Filter  ${dataDictionary}
     HRMS_Keywords.Delete Tea Rate Definition  ${dataDictionary}
     HRMS_Keywords.Verify Tea Rate Deletion  ${dataDictionary["Edit Tea Rate Definition"]}
+
+##########################
+# Enquiry Decision Cases #
+##########################
 
 User should able to add new enquiry decision type
     [Documentation]  Fills the add new enquiry decision type form and submits it. Verifies its entry in enquiry decision table.
@@ -66,6 +74,10 @@ User should able to delete enquiry decision type
     HRMS_Keywords.Delete Enquiry Decision Type  ${dataDictionary}
     HRMS_Keywords.Verify Enquiry Decision Type Deletion  ${dataDictionary}
 
+####################
+# Post Class Cases #
+####################
+
 User should be able to create post class
     [Documentation]  Fills the add new post class form and submits it. Verifies its entry in the post class table.
     [Tags]  HRMS  postclass  createdata
@@ -95,6 +107,10 @@ User should able to delete post class
     HRMS_Keywords.Delete Post Class  ${dataDictionary}
     HRMS_Keywords.Verify Post Class deletion  ${dataDictionary}
     sleep  5s
+
+###############################
+# Deputation Department Cases #
+###############################
 
 User should able to add new deputation department
     [Documentation]  Fills the add new deputation department form and submits it. Verifies its entry in the deputation department table.
@@ -127,6 +143,10 @@ User should able to delete deputation department
     reload page
     HRMS_Keywords.Verify Deputation Department Deletion  ${dataDictionary}
 
+#################################
+# Pay Slip Configurations Cases #
+#################################
+
 User should able to configure pay slip
     [Documentation]  Configures different details for pay slip.
     [Tags]  HRMS  payslipconfiguration
@@ -135,6 +155,10 @@ User should able to configure pay slip
     HRMS_Keywords.Configure Pay Slip Details  ${dataDictionary}
     HRMS_Keywords.Save Pay Slip Configurations  ${dataDictionary}
 
+###########################
+# Self Varification Cases #
+###########################
+
 User should able to configure self verification details
     [Documentation]  Configures the self varification details.
     [Tags]  HRMS  selfvarification
@@ -142,6 +166,10 @@ User should able to configure self verification details
     HRMS_Keywords.Open Self Verification Configuration Page
     HRMS_Keywords.Configure Self Varification Details  ${dataDictionary}
     HRMS_Keywords.Save Self Varification Detatils  ${dataDictionary}
+
+##################
+# Division Cases #
+##################
 
 User should able to add new division
     [Documentation]  Fills the add new division form and submits it. Verifies its entry in the division table.
@@ -171,6 +199,10 @@ User should able to delete division
     HRMS_Keywords.Delete Division  ${dataDictionary}
     HRMS_Keywords.Verify Division Deletion  ${dataDictionary}
 
+#####################
+# Designation Cases #
+#####################
+
 User should able to add new designation
     [Documentation]  Fills the add new designation form and submits it. Verifies its entry in the designation table.
     [Tags]  HRMS  designation  createdata
@@ -197,6 +229,10 @@ User should able to delete designation
     HRMS_Keywords.Select Designation From The Table  ${dataDictionary}  ${dataDictionary["Edit Designation"]["Name"]["Value"]}
     HRMS_Keywords.Delete Designation  ${dataDictionary}
     HRMS_Keywords.Verify Designation Deletion  ${dataDictionary}
+
+##############################
+# Hospital Empanelment Cases #
+##############################
 
 User should able to add new hospital empanelment
     [Documentation]  Fills the add new hospital empanelment form and submits it. Verifies its entry in the hospital empanelment table.
@@ -228,6 +264,7 @@ User should able to delete hospital empanelment
 #######################
 # Qualification Cases #
 #######################
+
 User should able to add new qualification
     [Documentation]  Fills the add new qualification form and submits it. Verifies its entry in the qualification table.
     [Tags]  HRMS  qualification  createdata
@@ -248,6 +285,7 @@ User should able to edit qualification
 ####################
 # Empanelled Cases #
 ####################
+
 User should able to add new empanelled officer
     [Documentation]  Fills the add new empanelled officer form and submits it. Verifies its entry in the empanelled officer table.
     [Tags]  HRMS  empanelledofficer  createdata
@@ -268,6 +306,7 @@ User should able to edit new empanelled officer         ###"""Not working becaus
 ####################
 # Cadre Test Cases #
 ####################
+
 User should able to add new cadre detail
     [Documentation]  Fills the add new cadre detail form and submits it. Verifies its entry in the cadre detail table. For more info visit http://support.e-connectsolutions.com/erp/how-to/cadre-configuration/
     [Tags]  HRMS  cadredetail  createdata
@@ -297,6 +336,7 @@ User should able to delete cadre detail
 ############################
 # Payment Type Tests Cases #
 ############################
+
 User should able to add Payment Type
     [Documentation]  Fills the add new Payment Type form and submits it. Verifies its entry in the Payment Type table. For more info visit http://support.e-connectsolutions.com/erp/how-to/payment-type-configuration/
     [Tags]  HRMS  PaymentType  createdata
@@ -326,6 +366,7 @@ User should able to delete Payment Type
 #########################
 # Department Test Cases #
 #########################
+
 User should able to add new Department
     [Documentation]  Fills the add Department form and submits it. Verifies its entry in the Department table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-department/
     [Tags]  HRMS  department  createdata
@@ -348,6 +389,7 @@ User should able to edit Department
 ########################
 # Section Tests Cases #
 ########################
+
 # Note: Department data will be used in this form
 
 User should able to add new section details

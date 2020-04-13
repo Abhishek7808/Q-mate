@@ -7,11 +7,11 @@ Go To Leave Encashment Disbursement Index Page And Set Variables
 
 Set Variables
     [Documentation]  Sets variables according to the test.
-    # """ Each disbursement have its own variables to set up before the testing"""
+    ###""" Each disbursement have its own variables to set up before the testing"""
     set test variable  ${disbursementUrl}  HRM/LeaveEncashmentDisbursement/LeaveEncashDisbursmentIndex
-    set test variable  ${disburseTableColummHead}  Leave Encashment Amount          # """ It is set for fetching disbursement amount"""
+    set test variable  ${disburseTableColummHead}  Leave Encashment Amount          ###""" It is set for fetching disbursement amount"""
     set test variable  ${disbursementTableID}  //*[@id="classlisting"]/div/table
-    set test variable  ${employeeIdColumn}  2           # """ It is set for fetching employee id from disbursement data table """
+    set test variable  ${employeeIdColumn}  2           ###""" It is set for fetching employee id from disbursement data table """
 
 Match All Paybills Net Amount With The Report For Given Unit
     [Documentation]  Matches the Salaries in disburement page and report page for a given unit
@@ -66,7 +66,7 @@ Check Specified Leave Encashment Paybill
     sleep  2s
     DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${PAYBILLNO}  ${disbursementTableID}  ${employeeIdColumn}
 
-Go To Disbursement Details Page                      ###### Travel Expences and Leave Encashment Paybills have different button
+Go To Disbursement Details Page                      ###""" Travel Expences and Leave Encashment Paybills have different button
     [Documentation]  Opens disbursement details page of given paybill.
     [Arguments]  ${PAYBILLNO}
     click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//i[@class='fa fa-eye']

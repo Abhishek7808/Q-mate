@@ -27,15 +27,15 @@ Apply Filters
 
 Select Given Financial Year
     [Documentation]  Opens financial year dropdown and selects financial year.
-    [Arguments]  ${financialYearDD}=Finyear                         # By default financial year dropdown locator is set as Finyear because
-                                                                    # in most of the disbursement pages its id is given Finyear.
+    [Arguments]  ${financialYearDD}=Finyear                         ###""" By default financial year dropdown locator is set as Finyear because
+                                                                    ###""" in most of the disbursement pages its id is given Finyear.
     select from list by value  ${financialYearDD}  ${FINANCIALYEAR}
     wait until element is not visible  //div[@id='LoadingImage']//div//img  300
 
 Select Given Cycle Filter
     [Documentation]  Opens cycle dropdown and selects given cycle.
     sleep  2s
-    # """ If cycle id is not given then last cycle will be selected."""
+    ### """ If cycle id is not given then last cycle will be selected."""
     wait until element is enabled  //select[@id='SalaryCycleId']
     run keyword if  ${CYCLEID} != None  select from list by value  ${cycle}  ${CYCLEID}  ELSE  select last dropdown element  ${cycle}
     wait until element is not visible  //div[@id='LoadingImage']//div//img  300
@@ -59,12 +59,12 @@ Check Paybills
     \    ${paybillNumber}  DisbursementIndex.Get Paybill Number  ${paybill}  ${paybillDetailsColumnHead}
     \    DisbursementIndex.Go To Report Page  ${paybillNumber}
     \    @{ReportData}  DisbursementIndex.Get Data Of Report Page
-    \    Common_Keywords.Switch Tab         # """ Report page opens in a new tab """
+    \    Common_Keywords.Switch Tab         ### """ Report page opens in a new tab """
     \    DisbursementIndex.Go To Disbursement Details Page  ${paybillNumber}
     \    @{disbursementData}  DisbursementIndex.Get Data Of Disbursement Details Page  ${columnToBeFetched}  ${disbursementTableID}
     \    DisbursementIndex.Compare And Add To Report  ${ReportData}  ${disbursementData}  ${paybillNumber}  ${disbursementTableID}  ${employeeIdColumn}
     \    DisbursementIndex.Go To Disbursement Index Page  ${disbursementUnitUrl}
-    \    DisbursementIndex.Open Filters     # """ Filters vanish when we come back to the disbursement page so they have to be applied again."""
+    \    DisbursementIndex.Open Filters     ### """ Filters vanish when we come back to the disbursement page so they have to be applied again."""
     \    DisbursementIndex.Select Given Financial Year  ${financialYearDD}
     \    DisbursementIndex.Apply Filters
     \    sleep  5s
@@ -102,12 +102,6 @@ Get Paybill Number
     ${paybillNumber}  get substring  ${paybillDetailSet1}[1]  1  15
     return from keyword  ${paybillNumber}
 
-#Go To Report Page
-#    [Arguments]   ${paybillTableRow}  ${columnNumber}
-#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/a[2]/i
-#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //*[@id="classListing"]/div[1]/table/tbody/tr[${paybillTableRow}]/td[${columnNumber}]/div/div/ul/li[1]/a[1]
-#    Switch Window  NEW
-
 Go To Report Page
     [Documentation]  Opens report page of given paybill.
     [Arguments]  ${paybillNumber}
@@ -115,16 +109,9 @@ Go To Report Page
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //div[contains(@class,'btn-group-xs open')]//li[1]//a[1]
     Switch Window  NEW
 
-#Go To Report Page Of Specified Paybill
-#    [Arguments]  ${PAYBILLNO}
-#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//a[@class='btn btn-sm btn-primary']
-#    sleep  1s
-#    wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  click element  //span[contains(text(),'${PAYBILLNO}')]/../following-sibling::td//a[contains(text(),'Employee List')]
-#    Switch Window  NEW
-
 Get Data Of Report Page
     [Documentation]  Returns the list of salaries of employees listed in report page
-    ${errorStatus}  Generic.Check Error Occurred
+    ${errorStatus}  Generic.Check Error Occurred                    ###""" Checks for an error in report page."""
     ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
     run keyword if  '${errorStatus}' == '1'  fail  Report page of ${disbursementType} showed an error
     @{list}  create list
@@ -135,7 +122,7 @@ Get Data Of Report Page
     \    log to console  ${row} out of ${numberOfRows} processed...
     \    ${amount}  get table cell  ${reportPageTableID}  ${row+1}  ${columnNumber}
     \    log to console  ${amount}
-    \    ${formattedAmount}  Common_Keywords.Change The Number Into A Formatted Amount  ${amount}       # """ Fractional part is to be added in this amount so that it can compared fairly with disbursed amount """
+    \    ${formattedAmount}  Common_Keywords.Change The Number Into A Formatted Amount  ${amount}      ### """ Fractional part is to be added in this amount so that it can compared fairly with disbursed amount """
     \    append to list   ${list}   ${formattedAmount}
     close window
     return from keyword  @{list}
@@ -170,7 +157,6 @@ Compare And Add To Report
     ${numberOfItems}  run keyword if  ${ReportData} != []  get length  ${ReportData}  ELSE  get length  ${disbursementData}
     FOR  ${index}  IN RANGE  ${numberOfItems}
     \   run keyword and continue on failure  run keyword if  '@{ReportData}[${index}]' != '@{disbursementData}[${index}]'  Add To The Disbusement Test Report  ${paybillNumber}  ${index}  ${disbursementTableID}  ${employeeIdColumn}
-    #\   run keyword and continue on failure  run keyword if  ${status} == ${False}  fail  There is an error in one of the pages of paybill ${paybillNumber}
 
 Add To The Disbusement Test Report
     [Documentation]  Add unmatched salaries to the Test Report
@@ -179,24 +165,6 @@ Add To The Disbusement Test Report
     ${disbursementType}  Get Disbursement Type  ${disbursementUrl}
     run keyword and continue on failure  fail  ${disbursementType}: Disbursement Amount Of Employee ID ${employeeID} in Paybill NUmber: ${paybillNumber} didn't match
     append to file  ${DV_REPORT}  ${disbursementType}, ${paybillNumber}, ${employeeID}\n
-
-#Get Table Column Number
-#    [Arguments]  ${tableID}  ${requiredText}
-#    ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableID}/thead/tr/th
-#    FOR  ${column}  IN RANGE  1  ${NumberOfColumns}
-#    \   ${status}  run keyword and return status  table cell should contain  ${tableID}  1  ${column}  ${requiredText}
-#    \   run keyword if  ${status} == ${true}  return from keyword  ${column}
-
-#Get Table Column Number
-#    [Documentation]  Gives the column number of the 'Net Amount' column
-#    [Arguments]  ${tableID}  ${requiredText}
-#    ${NumberOfColumns}   wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  get element count  ${tableID}/thead/tr/th
-#    FOR  ${column}  IN RANGE  1  ${NumberOfColumns+1}
-#    \   ${data}  wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  Read Table Data  ${tableID}  1  ${column-1}
-#    \   ${columnText}  get text  ${data}
-#    #\   run keyword if  '${columnText}' == '${EMPTY}'  Get Table Column Number  ${tableID}  ${requiredText}
-#    \   ${status}  run keyword and return status  should be equal as strings  ${columnText}  ${requiredText}
-#    \   run keyword if  ${status} == ${true}  return from keyword  ${column}
 
 Get Employee ID
     [Documentation]  Returns the employee ID from the given table data
@@ -213,12 +181,6 @@ Get Disbursement Type
   ${stringSet}  split string  ${disbursementUrlSet}[1]  Dis
   ${disbursementType}  Catenate  ${stringSet}[0] Disbursement
   return from keyword   ${disbursementType}
-
-#Switch Tab
-#    [Documentation]  Switches the robot to the previous tab
-#    @{windowTitles}    get window handles
-#    ${windowToOpen}=    get from list    ${windowTitles}  -1
-#    Select Window    ${windowToOpen}
 
 Close Last Tab
     [Documentation]  Closes the last tab

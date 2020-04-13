@@ -43,7 +43,6 @@ Open New Tab
     Execute Javascript    window.open('')
     Get Window Titles
     Select Window    title=undefined
-    # Go To   ${URL}
 
 Check For Errors In Registered Benificiary Table
     [Documentation]  checks ledger, balance summary and summary report errors for each employee.
@@ -66,8 +65,7 @@ Check Ledger Error
     ${result}  Generic.Check Error Occurred
     run keyword if  ${result} == 1  append to file  ${CPF_REPORT}  ${organisationName}, ${employeeCode}, ${financialYear}, Error in Ledger Print\n
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  DisbursementIndex.Close Current Tab
-    DisbursementIndex.Switch Tab
-    #Go To Registered Benificiary Page
+    Common_Keywords.Switch Tab
 
 Check Balance Summary Error
     [Documentation]  Checks for error in balance summery page.
@@ -78,8 +76,7 @@ Check Balance Summary Error
     # ${errorResult}  set variable if  ${result} == '1'  2
     run keyword if  ${result} == '1'  append to file  ${CPF_REPORT}  ${employeeCode}, ${financialYear}, Error in Balance Summary\n
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  DisbursementIndex.Close Current Tab
-    DisbursementIndex.Switch Tab
-    #Go To Registered Benificiary Page
+    Common_Keywords.Switch Tab
 
 Check Summary Report Error
     [Documentation]  Chekcs for error in summery report page.
@@ -90,10 +87,9 @@ Check Summary Report Error
     # ${errorResult}  set variable if  ${result} == '1'  3
     run keyword if  ${result} == '1'  append to file  ${CPF_REPORT}  ${employeeCode}, Error in Summary Report\n
     wait until keyword succeeds  ${RETRY TIME}  ${RETRY INTERVAL}  DisbursementIndex.Close Current Tab
-    DisbursementIndex.Switch Tab
-    #Go To Registered Benificiary Page
+    Common_Keywords.Switch Tab
 
 Send CPF Test Report To Developers
     [Documentation]  Sends an email in which employees with errors are listed.
     sleep  10s
-    Send Error Email Notification  None  None  Cpf Beneficiary
+    Send Error Email Notification  Cpf Beneficiary

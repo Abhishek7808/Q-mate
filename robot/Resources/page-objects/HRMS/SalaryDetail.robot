@@ -47,8 +47,6 @@ Select Employee
     [Documentation]  Number of employees is given by user, selects given number of employees for marking attendance.
     wait until element is not visible  //div[@id='LoadingImage']//div//img  300
     FOR  ${employee}  IN RANGE  1  ${NUMBER_OF_EMPLOYEES}+1
-    \   #page should contain element  //span[contains(text(),'Withheld')]
-    \   #click element  //span[contains(text(),'Withheld')]/preceding-sibling::input
     \   select checkbox  //tr[${employee}]//td[1]//input[1]
 
 Click On Lock
@@ -73,11 +71,6 @@ Select Employee Location
     FOR  ${locator}  IN  @{locators}
     \   run keyword and ignore error  click element  ${locator}
     press keys  ${dataDictionary["Employee Location"]["Locator"]["Locator1"]}  TAB
-#    ${listLength}  get length   ${locators}
-#    click element  ${locators}[${listLength-2}]
-#    press keys  ${dataDictionary["Employee Location"]["Locator"]["Locator1"]}  TAB
-#    ${status}  run keyword and return status  click element  ${locators}[1]
-#    run keyword if  ${status} == ${FALSE}  click element  ${locators}[1]
 
 Select All Employees
     [Documentation]  Selects all employees for processing salaries.
@@ -91,8 +84,6 @@ Select All Employees
 
 Click On Next Button
     [Documentation]  Clicks on next button.
-#    ${nextLocator}  get webelements  //li[@class='next disabled']
-#    page should not contain  ${nextLocator}[0]
     click element  //a[contains(text(),'Next')]
     ${nextStatus}  run keyword and return status  page should not contain element  //li[@class='next disabled']
     return from keyword  ${nextStatus}
@@ -105,8 +96,6 @@ Select Employees
 
 Click On Actions Button
     [Documentation]  Clicks on action button.
-    #${employeeCode}  Get File  ${EMPLOYEE_FILE}
-    #click element  //span[contains(text(),'${employeeCode}')]/following-sibling::td//[contains(text(),'Actions')]
     wait until page contains element  //th[contains(text(),'S.No.')]
     sleep  2s
     click element  //div[contains(@class,'btn-group-xs pull-right input-group')]//a[contains(@class,'btn btn-primary')][contains(text(),'Actions')]
@@ -114,7 +103,6 @@ Click On Actions Button
 Open Salary Slip
     [Documentation]  Opens salary slip.
     sleep  5s
-    #click element  //span[contains(text(),'${employeeCode}')]/following-sibling::a[@id='lnkMultipleSalarySlip_724902']
     click element  //div[contains(@class,'btn-group-xs pull-right input-group open')]//ul[contains(@class,'dropdown-menu pull-right')]
 
 Verify Salary Slip
@@ -131,4 +119,3 @@ Click On Search Button
     [Documentation]  Clicks on search button.
     click element  //button[@id='BtnSearchfilter']//i[contains(@class,'fa fa-search')]
     sleep  7s
-    #wait until page contains element  //th[contains(text(),'S.No.')]  15s

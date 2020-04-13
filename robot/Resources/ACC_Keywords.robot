@@ -9,9 +9,9 @@ Open Third Party Deduction Page
 
 Add New Third Party Deduction
     [Documentation]  Fills details into third party deduction form.
-    [Arguments]  ${dataDictionary}  ${employeeName}
+    [Arguments]  ${dataDictionary}  ${employeeCode}
     ThirdPartyDeduction.Click On ADD New Entry Button
-    ThirdPartyDeduction.Select Employee  ${dataDictionary}  ${employeeName}
+    ThirdPartyDeduction.Select Employee  ${dataDictionary}  ${employeeCode}
     ThirdPartyDeduction.Fill Third Party Deduction  ${dataDictionary}
     ThirdPartyDeduction.Save Details
 

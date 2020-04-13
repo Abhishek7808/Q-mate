@@ -967,11 +967,9 @@ Select Financial Year
 Select Month
     [Documentation]  Selects Salary Cycle Month in Mark Attendance Filter
     [Arguments]  ${dataDictionary}
-    ${salaryCycleName}  set variable if  '${SALARYCYCLE}' == 'None'  ${currentSalaryCycleName}  ${SALARYCYCLE}
+    ${salaryCycleName}  set variable if  '${SALARYCYCLE}' == 'None'  ${currentSalaryCycleName}  ${SALARYCYCLE}                   ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
     set global variable  ${salaryCycleName}
     FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
-#    run keyword if  ${SALARYCYCLEID} != None  select from list by value  ${dataDictionary["Month"]["Locator"]}  ${SALARYCYCLEID}        ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
-#    run keyword if  ${SALARYCYCLEID} == None  FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
 
 Select Employee Location
     [Documentation]  Selects employee location from the dropdown.
@@ -1124,7 +1122,7 @@ Mark Attendance Of Given Employee
     [Arguments]  ${EmployeeCode}
     ManualAttendance.Search Employee  ${EmployeeCode}
     ManualAttendance.Select Given Employee  ${EmployeeCode}
-    ManualAttendance.Load Employee Code
+    ManualAttendance.Load Employee Code                     ###""" Loads employee code of the enployee whose attendance is marked into a file."""
     ManualAttendance.Click On Submit Button
     ManualAttendance.Verify Submit Popup
     ManualAttendance.Click On Ok Button
@@ -1137,8 +1135,8 @@ Impersonate into employee ID
     [Documentation]  Impersonates employee whose employee id is given.
     [Arguments]  ${EmployeeCode}
     ManageUser.Search Employee  ${EmployeeCode}
-#    Leave_encash.Open Filters
-#    Leave_encash.Apply Filters
+    #Leave_encash.Open Filters
+    #Leave_encash.Apply Filters
     #Leave_encash.Select Employee
     ManageUser.Impersonate Employee
 

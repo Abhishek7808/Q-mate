@@ -27,6 +27,7 @@ client = gspread.authorize(creds)
 # print(sheet.get_all_records())
 
 cloumn_index = {
+    """Contains first column of the respective table in the sheet"""
     "HRM": 1,
     "ACC": 11,
     "URM": 21,

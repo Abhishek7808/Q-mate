@@ -18,7 +18,6 @@ ${PAYGROUP}  Zonal Chief Engineer (JZ),Jaipur Technical Staff
 ${SALARYFINANCIALYEAR}  20192020           #20172018
 ${SALARYCYCLE}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
-#${PAYGROUP}  select
 ${PAYMENTUNIT}  Bharatpur Zone
 ${PAYSLIPUNIT}  head office
 ${DESIGNATION}  None
@@ -35,19 +34,21 @@ Admin should able to add third party deduction for an employee
     [Tags]  acc  liabilitypayments  thirdpartydeduction
     Common_Keywords.Set Test Data  ${configData["Third_Party_Deduction"]}
     ACC_Keywords.Open Third Party Deduction Page
-    ACC_Keywords.Add New Third Party Deduction  ${dataDictionary}  ${EMPLOYEECODE}
+    ACC_Keywords.Add New Third Party Deduction  ${dataDictionary}  ${EMPLOYEECODE}              ###""" Employee code is required and can be given from command line or can be set in the variables section written above. """
 
 Admin should able to disburse the salary of the selected employee
     [Documentation]  Selects an employee and process his/her salary.
     [Tags]  acc  liabilitypayments  Salarydisbursement
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
+    ###""" Paygroup is required and can be given from command line or can be set in the variables section written above. """
     HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}  ${PAYGROUP}
     HRMS_Keywords.Mark Attendance Of Given Employee  ${EMPLOYEECODE}
     HRMS_Keywords.Apply Filters For Marked Attendance  Submitted  ${PAYGROUP}
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}  ${PAYGROUP}
     HRMS_Keywords.Apply Filters For Marked Attendance  Verified  ${PAYGROUP}
     HRMS_Keywords.Approve Marked Attendance  ${PAYGROUP}
+    ###""" For Further process Salary disbursement test cases are used. """
     run  robot -d robot/results --variable BROWSER:${BROWSER} --variable ENVIRONMENT:${ENVIRONMENT} --variable LOGIN:${LOGIN} --variable PAYGROUP:"${PAYGROUP}" -i salaryprocesscheck -i Addpaybillcheck -i AddDisbursementcheck robot/Tests
 
 Admin should able to add Liability payment
@@ -83,9 +84,9 @@ Admin should able to generate payment
     ACC_Keywords.Set Liability Payments Filters  ${dataDictionary}  Draft
     ACC_Keywords.Generate Payment  ${EMPLOYEECODE}
 
-#Admin should able to add Liability payments
-#    [Documentation]  Adds Liability payments details for an employee.
-#    [Tags]  acc  liabilitypayments  addLiability
-#    Common_Keywords.Set Test Data  ${configData["Add_Liability_Payment"]}
-#    ACC_Keywords.Open Liability Payments Page
-#    ACC_Keywords.Add Liability Payment  ${dataDictionary}  ${EMPLOYEECODE}
+Admin should able to add Liability payments
+    [Documentation]  Adds Liability payments details for an employee.
+    [Tags]  acc  liabilitypayments  addLiability
+    Common_Keywords.Set Test Data  ${configData["Add_Liability_Payment"]}
+    ACC_Keywords.Open Liability Payments Page
+    ACC_Keywords.Add Liability Payment  ${dataDictionary}  ${EMPLOYEECODE}

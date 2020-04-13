@@ -5,7 +5,6 @@ Go To Exgratia Disbursement Index Page And Set Variables
     ExgratiaDisbursementIndex.Set Variables
     DisbursementIndex.Go To Disbursement Index Page  ${disbursementUrl}
 
-
 Set Variables
     [Documentation]  Sets variables according to the test.
     # """ Each disbursement have its own variables to set up before the testing"""

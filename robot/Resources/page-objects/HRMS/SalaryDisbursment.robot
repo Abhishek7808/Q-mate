@@ -20,22 +20,7 @@ Fill Salary Disbursment Form
     ${currentYear}  Common_Keywords.Get Current Year
     ${currentDay}  Common_Keywords.Get Current Day
     set global variable   ${currentYear}
-    #HRMS_Keywords.Select Financial_Year  ${dataDictionary}
-    #HRMS_Keywords.Select Month  ${dataDictionary}
-    #set to dictionary  ${dataDictionary["Disbursment_Date"]["Value"]}  Day=${currentDay}  Month=${currentMonth[0:3]}  Year=${currentYear}
     HRMS_Keywords.Select Date  ${DisbursementDate}  ${currentDay}  ${currentMonth[0:3]}  ${currentYear}
-    #FillFields.Input Value Into Field  ${dataDictionary["Disbursment_Date"]}  ${dataDictionary["Disbursment_Date"]["Value"]}
-    #HRMS_Keywords.Select Payment unit  ${dataDictionary}
-    #sleep  2s
-    #HRMS_Keywords.Select Multi Paygroups   //*[@id="SalaryPayments"]/div[2]/div[1]/div/button
-    #sleep  5s
-    #HRMS_Keywords.Select Multi Paybills    //*[@id="SalaryPayments"]/div[2]/div[2]/div/button
-    #FillFields.Input Value Into Field  ${dataDictionary["Remarks"]}  ${dataDictionary["Remarks"]["Value"]}
-    #sleep  3s
-    #set to dictionary  ${dataDictionary["Payment Detail"]["Credit_Date"]["Value"]}  Day=1  Month=${currentMonth[0:3]}  Year=${currentYear}
-    #FillFields.Input Value Into Field  ${dataDictionary["Payment Detail"]["Credit_Date"]}  ${dataDictionary["Payment Detail"]["Credit_Date"]["Value"]}
-    #HRMS_Keywords.Select Date  ${CreditDate}  ${currentDay}  ${currentMonth[0:3]}  ${currentYear}
-    ####   FillFields.Input Value Into Field  ${dataDictionary["Payment Detail"]["Payment Location"]}  ${PAYMENTUNIT}
     FillFields.Input Value Into Field  ${dataDictionary["Payment Detail"]["Payment_Mode"]}  ${dataDictionary["Payment Detail"]["Payment_Mode"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Payment Detail"]["Company_Bank"]}  state bank of india
     sleep  3s
@@ -60,7 +45,6 @@ Fill Pending Paybills Form
     Page should contain element   //input[@class='SelectItemss']
     Wait Until Element Is Visible  //input[@class='SelectItemss']
     set focus to element  //input[@class='SelectItemss']
-    #Select Checkbox   //input[@class='SelectItemss']
     Click element   //input[@class='SelectItemss']
     click element  //a[@id='btnDisburse']
 
@@ -78,8 +62,6 @@ Open Filters
 Select Filters
     [Documentation]  Selects values in filters.
     [Arguments]  ${status}
-#    ${finYear}  Common_Keywords.Get Current Financial Year
-#    select from list by value  //select[@id='Finyear']  ${finYear}
     HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
     HRMS_Keywords.Select Month   ${dataDictionary["Filters"]}
     HRMS_Keywords.Select Pay Group   ${dataDictionary["Filters"]}  ${PAYGROUP}

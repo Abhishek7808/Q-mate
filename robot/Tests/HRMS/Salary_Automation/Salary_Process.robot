@@ -23,6 +23,9 @@ ${ISGAZETTED}  None
 ${latestPaybillCreated}  1021/2019-2020
 ${EMPLOYEELOCATION}  Select all
 
+
+###""" robot -d robot/Results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg --variable PAYGROUP:"" --variable FINANCIALYEAR:"" --variable SALARYCYCLE:"" -i salary robot/Tests.
+###""" If financial year and salary cycle are not given by user then current financial year and salary cycle will be chosen. """
 *** Test Cases ***
 
 Create Salary Cycle
@@ -37,7 +40,7 @@ Mark Attendance Of Employees
     [Tags]  Salary  markAttendance  createdata
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
-    HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}       ###""" This will not select paygroup
+    HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}       ###""" This will not select paygroup."""###
     HRMS_Keywords.Submit Marked Attendance
     HRMS_Keywords.Apply Filters For Marked Attendance
     HRMS_Keywords.Verify Marked Attendance  ${dataDictionary["Filters"]}
