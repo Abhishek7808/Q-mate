@@ -30,6 +30,8 @@ Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentAdmin.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPropsal.robot
 Resource  ${PAGE OBJECTS}/HRMS/ApproveLeaveEncashmentProposal.robot
+Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentProcess.robot
+
 *** Variables ***
 ${employeeStatus}  Status
 
@@ -1197,3 +1199,24 @@ Issue Order For Leave Encashment Proposal
     ApproveLeaveEncashmentProposal.Approve Proposal
     ApproveLeaveEncashmentProposal.Click On Action Button
     ApproveLeaveEncashmentProposal.Issue Order
+
+Open Leave Encashment Process Page
+    [Documentation]  Opens Leave Encashment process page.
+    LeaveEncashmentProcess.Open Leave Encashment Process Page
+
+Process Leave Encashment
+    [Documentation]  Processes leave encashment.
+    [Arguments]  ${currentFinancialYear}  ${currentMonth}  ${employeelocation}  ${paygroup}
+    LeaveEncashmentProcess.Click On Action Button
+    LeaveEncashmentProcess.Click On Process Link
+    LeaveEncashmentProcess.Select Financial year  ${currentFinancialYear}
+    LeaveEncashmentProcess.Select Month  ${currentMonth}
+    LeaveEncashmentProcess.Select Employee Location  ${employeelocation}
+    LeaveEncashmentProcess.Select Paygroup  ${paygroup}
+    LeaveEncashmentProcess.Click On Process Button
+    LeaveEncashmentProcess.Click On Final Process Button
+
+Lock Leave Encshment
+    [Documentation]  Locks leave encashment.
+    LeaveEncashmentProcess.Click On Action Button
+    LeaveEncashmentProcess.Click On Lock Button

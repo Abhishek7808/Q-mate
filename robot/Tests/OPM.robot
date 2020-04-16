@@ -22,7 +22,7 @@ Go To Day
     \  select from list by label  ddlProj  RAJERP
     \  sleep  6s
     \  click Element  ddlTask
-    \  Press Keys  ddlTask  QA & Automation(Unplanned Task)
+    \  Press Keys  ddlTask  T
     \  Press Keys  ddlTask  ENTER
     \  Input Text  txtHrs  ${workingHours}
     \  Click Element  LnkSave
@@ -36,8 +36,8 @@ Goto the Untilized hours page
     [Tags]  opm
     open browser  http://projects.e-connectsolutions.com/login.aspx  chrome
     maximize browser window
-    Input Text  txtUserName  102709
-    Input Password  txtPassword  Golu@141
+    Input Text  txtUserName  103049
+    Input Password  txtPassword  Qwertypasta@2
     Click Element  btnLogin
     Go To  http://projects.e-connectsolutions.com/OPM/UnutilizedHours.aspx
     sleep  2s

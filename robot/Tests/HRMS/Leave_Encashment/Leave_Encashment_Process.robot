@@ -45,3 +45,11 @@ Admin should able to approve leave encashment proposal
     HRMS_Keywords.Select Leave Encashment Filters  ${EMPLOYEELOCATION}
     HRMS_Keywords.Issue Order For Leave Encashment Proposal
 
+Admin should able to process and lock leave encashment
+    [Documentation]  Processes leave encashment proposal.
+    [Tags]  HRMS  admin  leaveEncash  process
+    Common_Keywords.Set Test Data  ${configData["Leave_Encashment_Process"]}
+    HRMS_Keywords.Open Leave Encashment Process Page
+    HRMS_Keywords.Process Leave Encashment  ${currentFinancialYear}  ${currentMonth}  ${EMPLOYEELOCATION}  ${PAYGROUP}
+    HRMS_Keywords.Lock Leave Encshment
+

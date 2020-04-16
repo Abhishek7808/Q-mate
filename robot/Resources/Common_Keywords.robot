@@ -134,6 +134,7 @@ Begin HRMS Testing
 Begin Leave Encashment Testing
     [Documentation]  Sets environment(i.e. variables, paths, files, browsers etc.) for leave encashment test cases.
     Set HRMS Variables  ${hrmsData}
+    set date time variables
     open browser  about:blank  ${BROWSER}
     maximize browser window
 

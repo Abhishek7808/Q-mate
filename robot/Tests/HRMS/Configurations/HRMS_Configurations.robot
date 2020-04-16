@@ -441,7 +441,7 @@ User should able to delete Department
 
 User should able to add new TA/DA grade
     [Documentation]  Fills the add new TA/DA grade form and submits it. Verifies its entry in the TA/DA grade table. For more info visit http://support.e-connectsolutions.com/erp/how-to/configure-ta-da-grade/
-    [Tags]  HRMS  TADAgrade  createdata
+    [Tags]  HRMS     createdata
     Common_Keywords.Set Test Data  ${configData["TA/DA Grade"]}
     HRMS_Keywords.Open TA/DA Grade Page
     HRMS_Keywords.Add New TA/DA Grade  ${dataDictionary}

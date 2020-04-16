@@ -2,6 +2,7 @@
 Resource  ${PAGE OBJECTS}/ACC/ThirdPartyDeduction.robot
 Resource  ${PAGE OBJECTS}/ACC/LiabilityPayments.robot
 
+
 *** Keywords ***
 Open Third Party Deduction Page
     [Documentation]  Opens third party deduction page.
@@ -51,4 +52,3 @@ Generate Payment
     LiabilityPayments.Select Ledger
     LiabilityPayments.Verify Employee Is Listed  ${EMPLOYEECODE}
     LiabilityPayments.Click On Generate Payment
-
