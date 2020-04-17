@@ -10,6 +10,7 @@ Admin should able to access the landing page
     [Tags]  basic  landingpage
     ERP_Keywords.Perform Login
     ERP_Keywords.Verify Landing Page Is Loaded
+    ERP_Keywords.Attempt Logout
 
 
 

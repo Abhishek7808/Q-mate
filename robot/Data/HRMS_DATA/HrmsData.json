@@ -1470,5 +1470,10 @@
   },
   "Leave_Encashment_Process": {
         "URL": "HRM/LeaveEncashment?q=8U+3wF0Q7l6ZwbB7K1t9G0W5hD1/uC/P"
+  },
+  "Leave_Encashment_Paybill": {
+        "URL": "HRM/LeaveEncashmentPaybill"
+
   }
+
 }

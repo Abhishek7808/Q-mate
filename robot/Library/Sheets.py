@@ -15,9 +15,6 @@ creds = ServiceAccountCredentials.from_json_keyfile_name('/home/divaksh/rajerp/r
 
 client = gspread.authorize(creds)
 
-# Find a workbook by name and open the first sheet
-# Make sure you use the right name here.
-
 
 # Extract and print all of the values
 # list_of_hashes = sheet.get_all_records()

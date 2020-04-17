@@ -30,7 +30,8 @@ Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentEmployee.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentAdmin.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPropsal.robot
 Resource  ${PAGE OBJECTS}/HRMS/ApproveLeaveEncashmentProposal.robot
-Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentProcess.robot
+Resource  ${PAGE OBJECTS}/HRMS/ProcessLeaveEncashment.robot
+Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPaybill.robot
 
 *** Variables ***
 ${employeeStatus}  Status
@@ -1202,21 +1203,29 @@ Issue Order For Leave Encashment Proposal
 
 Open Leave Encashment Process Page
     [Documentation]  Opens Leave Encashment process page.
-    LeaveEncashmentProcess.Open Leave Encashment Process Page
+    ProcessLeaveEncashment.Open Leave Encashment Process Page
 
 Process Leave Encashment
     [Documentation]  Processes leave encashment.
     [Arguments]  ${currentFinancialYear}  ${currentMonth}  ${employeelocation}  ${paygroup}
-    LeaveEncashmentProcess.Click On Action Button
-    LeaveEncashmentProcess.Click On Process Link
-    LeaveEncashmentProcess.Select Financial year  ${currentFinancialYear}
-    LeaveEncashmentProcess.Select Month  ${currentMonth}
-    LeaveEncashmentProcess.Select Employee Location  ${employeelocation}
-    LeaveEncashmentProcess.Select Paygroup  ${paygroup}
-    LeaveEncashmentProcess.Click On Process Button
-    LeaveEncashmentProcess.Click On Final Process Button
+    ProcessLeaveEncashment.Click On Action Button
+    ProcessLeaveEncashment.Click On Process Link
+    ProcessLeaveEncashment.Select Financial year  ${currentFinancialYear}
+    ProcessLeaveEncashment.Select Month  ${currentMonth}
+    ProcessLeaveEncashment.Select Employee Location  ${employeelocation}
+    ProcessLeaveEncashment.Select Paygroup  ${paygroup}
+    ProcessLeaveEncashment.Click On Process Button
+    ProcessLeaveEncashment.Click On Final Process Button
 
 Lock Leave Encshment
     [Documentation]  Locks leave encashment.
-    LeaveEncashmentProcess.Click On Action Button
-    LeaveEncashmentProcess.Click On Lock Button
+    ProcessLeaveEncashment.Click On Action Button
+    ProcessLeaveEncashment.Click On Lock Button
+
+Open Leave Encashment Paybill Page
+    [Documentation]  Opens Leave Emcashment paybill page.
+    LeaveEncashmentPaybill.Go To Leave Encashment Paybill Page
+
+Add Leave Encashment Paybill
+    [Documentation]  Opens add paybill form and fills details into it.
+    LeaveEncashmentPaybill.Click On Add Paybill Link

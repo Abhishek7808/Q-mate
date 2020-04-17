@@ -8,6 +8,9 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 
 
 *** Variables ***
+
+#robot -d robot/Results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg -i adminANDleaveencashANDpaybill robot/Tests
+
 ${EMPLOYEEID}  jvvnl.28981
 ${EMPLOYEECODE}  49158
 ${EMPLOYEELOCATION}  ......ACOS, Bharatpur (ACOS, BPR)
@@ -53,3 +56,9 @@ Admin should able to process and lock leave encashment
     HRMS_Keywords.Process Leave Encashment  ${currentFinancialYear}  ${currentMonth}  ${EMPLOYEELOCATION}  ${PAYGROUP}
     HRMS_Keywords.Lock Leave Encshment
 
+Admin should able to add paybill
+    [Documentation]  Fills details into paybill form, verifies and approves it.
+    [Tags]  HRMS  admin  leaveEncash  paybill
+    Common_Keywords.Set Test Data  ${configData["Leave_Encashment_Paybill"]}
+    HRMS_Keywords.Open Leave Encashment Paybill Page
+    HRMS_Keywords.Add Leave Encashment Paybill
