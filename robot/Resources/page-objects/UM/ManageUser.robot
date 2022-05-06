@@ -27,3 +27,6 @@ Impersonate Employee
     ${status}  run keyword and return status  page should contain element  ${selfVarificationPopupText}
     run keyword if  ${status} == ${True}  click element  //button[@id='btnSkip']
     capture page screenshot
+
+Go To Logout Link
+    Go to  http://103.203.137.148/STG_TEST/Utility/DeImpersonate

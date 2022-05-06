@@ -1313,3 +1313,4 @@
 [0413/121756.075:ERROR:process_reader_win.cc(123)] NtOpenThread: {Access Denied} A process has requested access to an object, but has not been granted those access rights. (0xc0000022)
 [0413/121756.253:ERROR:exception_snapshot_win.cc(98)] thread ID 6456 not found in process
 [0413/121756.253:ERROR:exception_snapshot_win.cc(98)] thread ID 3512 not found in process
+[1218/155257.109:ERROR:filesystem_win.cc(129)] GetFileAttributes C:\Users\Admin\AppData\Local\Temp\scoped_dir3256_1104834639\Crashpad\attachments\94df44a9-b5cc-41e3-a0f3-0cadbbddce7d: The system cannot find the path specified. (0x3)

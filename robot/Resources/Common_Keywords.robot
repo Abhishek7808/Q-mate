@@ -40,7 +40,13 @@ Begin Basic Testing
     Set Paths               ###""" Sets paths for using custom libraries.
     Remove Files            ###""" Previously created files are deleted before the new ones are created.
     Set Basic Tests Variables
-    open browser  about:blank  ${BROWSER}
+    ${chrome_options}=  Evaluate  sys.modules['selenium.webdriver'].ChromeOptions()  sys, selenium.webdriver
+    Call Method    ${chrome_options}    add_argument    test-type
+    Call Method    ${chrome_options}    add_argument    --disable-extensions
+    Call Method    ${chrome_options}    add_argument    --headless
+    Call Method    ${chrome_options}    add_argument    --disable-gpu
+    Call Method    ${chrome_options}    add_argument    --no-sandbox
+    Create Webdriver    Chrome    chrome_options=${chrome_options}
     maximize browser window
 
 End Basic Testing

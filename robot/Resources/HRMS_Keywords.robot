@@ -1229,3 +1229,6 @@ Open Leave Encashment Paybill Page
 Add Leave Encashment Paybill
     [Documentation]  Opens add paybill form and fills details into it.
     LeaveEncashmentPaybill.Click On Add Paybill Link
+
+Do Logout Impersonate
+    ManageUser.Go To Logout Link

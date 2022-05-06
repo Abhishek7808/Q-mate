@@ -30,14 +30,14 @@ ${EMPLOYEELOCATION}  Select all
 
 Create Salary Cycle
     [Documentation]  Fills details in Salary Cycle form and submits it. Creates Salary cycle of current month and year.
-    [Tags]  Salary  SalaryCycle  createdata  salarycheck
+    [Tags]  HRMS  Salary  SalaryCycle  createdata  salarycheck
     Common_Keywords.Set Test Data  ${configData["Salary_Cycle"]}
     HRMS_Keywords.Open Salary Cycle Page
     HRMS_Keywords.Add Salary Cycle  ${dataDictionary}           ###""" Adds salary cycle of the current month and year """###
 
 Mark Attendance Of Employees
     [Documentation]  Fills details in Mark Attendance form and submits it.
-    [Tags]  Salary  markAttendance  createdata
+    [Tags]  HRMS  Salary  markAttendance  createdata
     Common_Keywords.Set Test Data  ${configData["Mark_Attendance"]}
     HRMS_Keywords.Open Manual Attendance Page
     HRMS_Keywords.Set Mark Attendance Criteria  ${dataDictionary}       ###""" This will not select paygroup."""###
@@ -48,7 +48,7 @@ Mark Attendance Of Employees
 
 Process And Lock Salary
     [Documentation]  Processes and locks Salary.
-    [Tags]  Salary  salaryprocess  createdata
+    [Tags]  HRMS  Salary  salaryprocess  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Detail_Process"]}
     HRMS_Keywords.Open Salary Detail Page
     HRMS_Keywords.Process Salary  ${dataDictionary}
@@ -57,7 +57,7 @@ Process And Lock Salary
 
 Add Paybill
     [Documentation]  Fills details in add paybill form, verifies and approves it.
-    [Tags]  Salary  Addpaybill  createdata
+    [Tags]  HRMS  Salary  Addpaybill  createdata
     Common_Keywords.Set Test Data  ${configData["Salary_Paybill"]}
     HRMS_Keywords.Open Salary Paybill Page
     HRMS_Keywords.Add Salary Paybill  ${dataDictionary}
@@ -66,7 +66,7 @@ Add Paybill
 
 Disburse Paybill
     [Documentation]  Adds Disbursment, verifies and approves disbursement.
-    [Tags]  Salary  AddDisbursement  createdata
+    [Tags]  HRMS  Salary  AddDisbursement  createdata
     Common_Keywords.Set Test Data  ${configData["Salary Disbursement Process"]}
     HRMS_Keywords.Open Salary Disbursment Page
     HRMS_Keywords.Add Disbursement  ${dataDictionary}

@@ -1,6 +1,6 @@
 *** Settings ***
 Resource  ${PAGE OBJECTS}${/}${CPF.name}/RegisteredBenificiary.robot
-
+Resource  ${PAGE OBJECTS}${/}${CPF.name}/LoanApplication.robot
 *** Variables ***
 ${beneficiaryTable}  //*[@id="classListing"]
 
@@ -18,4 +18,8 @@ Check Registered Benificiary
     \   RegisteredBenificiary.Check For Errors In Registered Benificiary Table  ${tableRows}  ${organisatioName}
     Send CPF Test Report To Developers
 
+Open Loan Application Page
+    LoanApplication.Go To Loan Application Page
 
+Fire Queries
+    LoanApplication.Open Detail File

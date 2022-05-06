@@ -54,7 +54,7 @@ Open ERP Page
     [Documentation]  Opens the ERP page of given url
     [Arguments]  ${pageUrl}
     [Timeout]  120
-    ${userType}  run keyword if  '${ENVIRONMENT}' == 'demo' or '${ENVIRONMENT}' == 'test'  set variable  admin  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  admin_live
+    ${userType}  run keyword if  '${ENVIRONMENT}' == 'dev' or '${ENVIRONMENT}' == 'test'  set variable  admin  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  admin_live
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
     #wait until page contains element  //a[@class='fa fa-home fa-3x']  20s
 
@@ -62,7 +62,7 @@ Open ERP Page Without Permission
     [Documentation]  Opens the ERP page with citizen credentials
     [Arguments]  ${pageUrl}
     [Timeout]  120
-    ${userType}  run keyword if  '${ENVIRONMENT}' == 'demo' or '${ENVIRONMENT}' == 'test'  set variable  citizen  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  citizen_live
+    ${userType}  run keyword if  '${ENVIRONMENT}' == 'dev' or '${ENVIRONMENT}' == 'test'  set variable  citizen  ELSE IF  '${ENVIRONMENT}' == 'production'  set variable  citizen_live
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${pageUrl}  ${userType}
     #wait until page contains element  //a[@class='fa fa-home fa-3x']  20s
 

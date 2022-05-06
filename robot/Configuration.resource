@@ -3,9 +3,9 @@
 ##########################
 #  Environment Settings  #
 ##########################
-${ENVIRONMENT}       demo
+${ENVIRONMENT}       dev
 ${BROWSER}           headlesschrome
-&{BASE_URL}          demo=http://demoprojects.e-connectsolutions.com/ERP-DEMO  test=http://demoprojects.e-connectsolutions.com/ERP-TEST  production=http://rajerp.rajasthan.gov.in  stg=http://103.203.137.148/STG_TEST
+&{BASE_URL}          dev=http://demoprojects.e-connectsolutions.com/EPRASH_dev  test=http://demoprojects.e-connectsolutions.com/EPRASH_test  production=http://rajerp.discoms.rajasthan.gov.in  stg=http://103.203.137.148/STG_TEST
 ${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}/adminlogin
 
 ####################
@@ -62,6 +62,7 @@ ${CONTACTS_JSON}      ${DATA}${/}${CONTACTS_JSON_NAME}
 ${COMMON_DATA}        ${DATA}${/}${COMMON_DATA_NAME}
 ${CREDENTIALS_FILE}   ${DATA}${/}${CREDENTIALS_FILE_NAME}
 ${EMPLOYEE_FILE}        ${DATA}${/}${EMPLOYEE_FILE_NAME}
+${LOAN_APPLICATIONS_FILE}   ${DATA}${/}CPF_DATA${/}loan_applications_.txt
 
 ####################
 #  Email Settings  #

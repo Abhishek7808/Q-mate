@@ -11,8 +11,8 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 
 #robot -d robot/Results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg -i adminANDleaveencashANDpaybill robot/Tests
 
-${EMPLOYEEID}  jvvnl.28981
-${EMPLOYEECODE}  49158
+${EMPLOYEEID}  no5149
+${EMPLOYEECODE}  no5149
 ${EMPLOYEELOCATION}  ......ACOS, Bharatpur (ACOS, BPR)
 ${PAYGROUP}  ACOS, Bharatpur Ministerial Staff
 
@@ -23,6 +23,7 @@ Employee should able to apply leave encashment
     HRMS_Keywords.Open Manage User Page
     HRMS_Keywords.Impersonate into employee ID  ${EMPLOYEEID}           ###""" Employee code is required and can be given from command line or can be set in the variables section written above. """
     HRMS_Keywords.Encash Privilege Leave
+    HRMS_Keywords.Do Logout Impersonate
 
 Admin should able to apply leave encashment
     [Documentation]  Fills leave encashment form from admin side
