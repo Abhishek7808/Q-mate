@@ -20,7 +20,7 @@ Fill Salary Disbursment Form
     ${currentYear}  Common_Keywords.Get Current Year
     ${currentDay}  Common_Keywords.Get Current Day
     set global variable   ${currentYear}
-    HRMS_Keywords.Select Date  ${DisbursementDate}  ${currentDay}  ${currentMonth[0:3]}  ${currentYear}
+    #HRMS_Keywords.Select Date  ${DisbursementDate}  ${currentDay}  ${currentMonth[0:3]}  ${currentYear}
     FillFields.Input Value Into Field  ${dataDictionary["Payment Detail"]["Payment_Mode"]}  ${dataDictionary["Payment Detail"]["Payment_Mode"]["Value"]}
     FillFields.Input Value Into Field  ${dataDictionary["Payment Detail"]["Company_Bank"]}  state bank of india
     sleep  3s
@@ -39,8 +39,8 @@ Fill Pending Paybills Form
     [Arguments]  ${dataDictionary}
     HRMS_Keywords.Select Financial_Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
-    HRMS_Keywords.Select Payment unit  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group   ${dataDictionary}  ${PAYGROUP}
+    #HRMS_Keywords.Select Payment unit  ${dataDictionary}
+    #HRMS_Keywords.Select Pay Group   ${dataDictionary}  ${PAYGROUP}
     sleep  2s
     Page should contain element   //input[@class='SelectItemss']
     Wait Until Element Is Visible  //input[@class='SelectItemss']
@@ -55,7 +55,8 @@ Disburse Details
 Open Filters
     [Documentation]  Opens filter.
     sleep  4s
-    click element  //button[@id='btnFilter']
+    #click element  //button[@id='btnFilter']
+    click element   //button/i[@class='fa fa-filter']
     ${status}  run keyword and return status  wait until page contains  Search Filter
     run keyword if  ${status} == ${FALSE}  SalaryDisbursment.Open Filters
 
@@ -64,8 +65,8 @@ Select Filters
     [Arguments]  ${status}
     HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
     HRMS_Keywords.Select Month   ${dataDictionary["Filters"]}
-    HRMS_Keywords.Select Pay Group   ${dataDictionary["Filters"]}  ${PAYGROUP}
-    FillFields.Input Value Into Field  ${dataDictionary["Filters"]["Payment Location"]}  Select All
+    #HRMS_Keywords.Select Pay Group   ${dataDictionary["Filters"]}  ${PAYGROUP}
+    #FillFields.Input Value Into Field  ${dataDictionary["Filters"]["Payment Location"]}  Select All
     SalaryDisbursment.Select Status  ${status}
 
 Apply Filters
@@ -79,6 +80,7 @@ Verify Disbursement
     wait until page contains element  //th[contains(text(),'Disbursement Detail')]  50s
     click element  //a[@class='btn btn-primary drpWorkflowAction']
     sleep  2s
+    wait until page contains  //a[contains(text(),'Verify')]
     click element  //a[contains(text(),'Verify')]
     sleep  3s
     wait until page contains  Do you really want to Verify selected record(s) ?

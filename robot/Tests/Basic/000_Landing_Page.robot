@@ -1,6 +1,6 @@
 *** Settings ***
 
-Resource  ../Configuration.resource
+Resource  ../../Configuration.resource
 Resource  ${RESOURCES}/Common_Keywords.robot
 Resource  ${RESOURCES}/ERP_Keywords.robot
 

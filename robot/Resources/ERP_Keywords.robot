@@ -90,7 +90,7 @@ Run Generic Tests From Admin
     ###""" A list of modules names is created which is used when error emails are fired for each module one by one."""
     ${status}  run keyword and return status  list should not contain value  ${moduleNames}  ${moduleName}          ###"""Adds module into the List if it is not in the list .
     run keyword if  ${status} == ${True}  append to list  ${moduleNames}  ${moduleName}
-    set global variable  @{moduleNames}
+    #set global variable  @{moduleNames}
     @{urlsList}  Generic.Get All Module Urls  ${moduleName}
     Generic.Perform All Critical Generic Tests On Urls  ${moduleName}  @{urlsList}
 

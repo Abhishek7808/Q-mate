@@ -1,8 +1,9 @@
 *** Settings ***
 Documentation  Generic Tests
-Resource  ../Configuration.resource
-Resource  ${RESOURCES}/Common_Keywords.robot
-Resource  ${RESOURCES}/ERP_Keywords.robot
+#Resource  ../Configuration.resource
+Resource  ../../Configuration.resource
+Resource  ${RESOURCES}${/}Common_Keywords.robot
+Resource  ${RESOURCES}${/}ERP_Keywords.robot
 Resource  ${DATA}/Login_Data.robot
 Library   Collections
 
@@ -19,7 +20,7 @@ Library   Collections
 All ERP module pages should be working for admin user
     [Documentation]  Tests if yellow pages are appearing or title tags are missing.
     [Tags]  critical  generictests  common
-    [Template]  Run Generic Tests From Admin                ###""" Keyword defination can be found in "ERP_Keywords.robot" file."""
+    [Template]  Run Generic Tests From Admin              ###""" Keyword defination can be found in "ERP_Keywords.robot" file."""
        ${HRMS.name}                                         ###""" Variables are defined in "Configuration.resource" file."""
        ${FA.name}
        ${UM.name}

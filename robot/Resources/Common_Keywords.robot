@@ -303,7 +303,7 @@ Get Current Financial Year
 Get Current Month
     [Documentation]  Returns current month.
     ${currentDate}  get current date
-    ${month}  convert date  ${currentDate}  result_format= %B
+    ${month}  convert date  ${currentDate}  result_format=%B
     ${month}  strip string  ${month}
     return from keyword  ${month}
 

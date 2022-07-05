@@ -11,7 +11,8 @@ import Addendums
 # use creds to create a client to interact with the Google Drive API
 scope = ['https://spreadsheets.google.com/feeds', 'https://www.googleapis.com/auth/drive']
 
-creds = ServiceAccountCredentials.from_json_keyfile_name('/home/divaksh/rajerp/robot/Data/Client_secret.json', scope)
+# creds = ServiceAccountCredentials.from_json_keyfile_name('/home/divaksh/rajerp/robot/Data/Client_secret.json', scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name('D:/Q-mate (source_code)/Q-mate/robot/Data/Client_secret.json', scope)
 
 client = gspread.authorize(creds)
 

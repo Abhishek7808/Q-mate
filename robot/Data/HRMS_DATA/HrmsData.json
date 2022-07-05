@@ -152,7 +152,7 @@
       "Locator": "btnSave"
     },
     "Financial_Year": {
-      "Value": "20192020",
+      "Value": "20222023",
       "Type": "Dropdown",
       "Locator": "FinYear"
     },
@@ -162,7 +162,7 @@
       "Locator": "SalaryCycleID"
     },
     "Pay Group": {
-      "Value": "",
+      "Value": "CO",
       "Type": "SearchSelectDropdown",
       "Locator": {
         "Locator1": "s2id_PbGroupID",
@@ -176,7 +176,7 @@
         "Locator": "SalaryCycleID"
       },
       "Pay Group": {
-        "Value": "",
+        "Value": "Head Office",
         "Type": "SearchSelectDropdown",
         "Locator": {
           "Locator1": "//div[@id='s2id_PayGroupIdIndex']",
@@ -184,7 +184,7 @@
         }
       },
       "Payment Unit": {
-         "Value": "",
+         "Value": "Head Office",
         "Type": "SearchSelectDropdown",
         "Locator": {
           "Locator1": "//div[@id='s2id_UnitIds']",
@@ -193,15 +193,15 @@
       }
     },
     "Financial Year": {
-      "Value": "20192020",
+      "Value": "20222023",
       "Type": "Dropdown",
       "Locator": "FinYear"
     },
     "Bill Date": {
       "Value": {
-        "Day": "05",
-        "Month": "fab",
-        "Year": "2020"
+        "Day": "09",
+        "Month": "Jun",
+        "Year": "2022"
       },
       "Type": "Date",
       "Locator": "BILL_DATE"
@@ -210,7 +210,7 @@
       "Value": "Head Office",
       "Type": "SearchSelectDropdown",
       "Locator": {
-        "Locator1": "s2id_UnitId",
+        "Locator1": "//div[@id='s2id_UnitId']",
         "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
       }
     },
@@ -234,9 +234,9 @@
     },
     "Bill Date": {
       "Value": {
-        "Day": "05",
-        "Month": "fab",
-        "Year": "2020"
+        "Day": "09",
+        "Month": "jun",
+        "Year": "2022"
       },
       "Type": "Date",
       "Locator": "BILL_DATE"
@@ -1447,7 +1447,12 @@
           "Value": "10",
           "Type": "Text Value",
           "Locator": "//input[@id='LEAVE_DAYS_APPLIED']"
-      }
+      },
+    "Leave_Balance": {
+      "Value": "",
+      "Type" : "",
+      "Locator" : "//input[@id='LEAVE_ENCASHED']"
+    }
   },
   "Encash_Proposal": {
       "URL": "HRM/LeaveEncashmentProposal",
@@ -1474,6 +1479,84 @@
   "Leave_Encashment_Paybill": {
         "URL": "HRM/LeaveEncashmentPaybill"
 
-  }
+  },
 
+"Review_Attendance": {
+    "URL": "HRM/FreezeSalaryAttendance/AttendanceFreezeIndex",
+    "Financial_Year": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='Finyear']"
+    },
+    "Month": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='Month']"
+    },
+    "Employee Location": {
+      "Value": "Head Office",
+      "Type": "SearchSelectDropdown",
+      "Locator1": "//div[@id='s2id_UnitId']",
+      "Locator2": "//*[@id='select2-drop']/div/input"
+    },
+    "Pay Group": {
+      "Value": "",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "//div[@id='s2id_Paygroup']",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Employee Unit": {
+      "Value": "",
+      "Type": "SearchSelectDropDown",
+      "Locator": {
+        "Locator1": "//select[@id='SubUnit']",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Designation": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//div[@id='s2id_ddlDesignation']"
+    },
+    "Division": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "DIVISION"
+    },
+    "Is Gazetted": {
+      "Value": "",
+      "Type": "Dropdown",
+      "Locator": "//select[@id='ddlGazetted']"
+    },
+    "Filters": {
+      "Financial_Year": {
+        "Type": "Dropdown",
+        "Value": "20222023",
+        "Locator": "FinancialYear"
+      },
+      "Month": {
+        "Type": "Dropdown",
+        "Value": "Salary June 22",
+        "Locator": "CycleId"
+      },
+      "Pay Group": {
+        "Type": "SearchSelectDropdown",
+        "Value": "RIICO STAFF (Head Office)",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_PaygroupId']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
+      "Employee Location": {
+        "Value": "",
+        "Type": "SearchSelectDropDown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_Unit']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      }
+    }
+  }
 }

@@ -18,7 +18,7 @@ ${PAYGROUP}  Zonal Chief Engineer (JZ),Jaipur Technical Staff
 ${SALARYFINANCIALYEAR}  20192020           #20172018
 ${SALARYCYCLE}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
-${PAYMENTUNIT}  Bharatpur Zone
+${PAYMENTUNIT}  Head Office
 ${PAYSLIPUNIT}  head office
 ${DESIGNATION}  None
 ${DIVISION}  None

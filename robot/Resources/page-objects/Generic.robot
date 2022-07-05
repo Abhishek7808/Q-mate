@@ -21,10 +21,16 @@ Perform All Critical Generic Tests On Urls
     [Documentation]  Performs all tests on the urls of given module
     [Arguments]  ${moduleName}  @{moduleUrls}
     #create file  ${ERRORFILE}
-    :FOR  ${url}  IN  @{moduleUrls}
-    \   Run Keyword And Continue On Failure  Open ERP Page  ${url}
-    \   ${result}  Check Page Error
-    \   run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
+    #Replacing Old For Loop Syntax with New Syntax
+    FOR  ${url}  IN  @{moduleUrls}
+    Run Keyword And Continue On Failure  Open ERP Page  ${url}
+    ${result}  Check Page Error
+    run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
+    END
+    #:FOR  ${url}  IN  @{moduleUrls}
+    #\   Run Keyword And Continue On Failure  Open ERP Page  ${url}
+    #\   ${result}  Check Page Error
+    #\   run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
     #Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 Add Failed Url To The Fatal Error List

@@ -12,7 +12,7 @@ ${SALARYFINANCIALYEAR}  None           #20172018
 ${SALARYCYCLE}  None          #58
 ${NUMBER_OF_EMPLOYEES}  ${1}
 ${PAYGROUP}  select
-${PAYMENTUNIT}  Bharatpur Zone
+${PAYMENTUNIT}  Head Office
 ${PAYSLIPUNIT}  head office
 ${DESIGNATION}  None
 ${DIVISION}  None

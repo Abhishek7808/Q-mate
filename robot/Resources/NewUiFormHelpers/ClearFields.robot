@@ -57,6 +57,7 @@ Clear Checkbox
 Clear SearchSelectDropdown
     [Documentation]  Sets None value into the dropdown of the given locator.
     [Arguments]  ${Locator}  ${value}
+    LOG MANY        TEST VALUE IN CLEAR SEARCHSELETION L-${Locator} V- ${value}
     click element  ${Locator["Locator1"]}
     input text  ${Locator["Locator2"]}  Select
     press keys  ${Locator["Locator2"]}  ENTER

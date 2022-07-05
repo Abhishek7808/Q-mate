@@ -10,8 +10,14 @@ Click On Add Leave Encashment
 Fill Leave Encashment Details
     [Documentation]  Fills details into leave encashment form.
     [Arguments]  ${dataDictionary}  ${EMPLOYEENAME}
+    #FOR  ${i}   IN RANGE    5
+    #FillFields.Input Value Into Field  ${dataDictionary["Employee_Name"]}  ${EMPLOYEENAME}
+    #Sleep   5S
+    #${Leave_Bal}    Get Value   ${dataDictionary["Leave_Balance"]["Locator"]}
+    #Exit For Loop If    ${Leave_Bal} >0
+    #END
     FillFields.Input Value Into Field  ${dataDictionary["Employee_Name"]}  ${EMPLOYEENAME}
-    sleep  5s
+    Sleep   15S
     press keys  ${dataDictionary["Employee_Name"]["Locator"]}  ARROW_DOWN
     press keys  ${dataDictionary["Employee_Name"]["Locator"]}  ENTER
     FillFields.Input Value Into Field  ${dataDictionary["Leave_Type"]}  ${dataDictionary["Leave_Type"]["Value"]}

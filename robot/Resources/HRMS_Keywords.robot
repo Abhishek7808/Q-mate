@@ -32,6 +32,8 @@ Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPropsal.robot
 Resource  ${PAGE OBJECTS}/HRMS/ApproveLeaveEncashmentProposal.robot
 Resource  ${PAGE OBJECTS}/HRMS/ProcessLeaveEncashment.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPaybill.robot
+Resource  ${PAGE OBJECTS}/HRMS/ReviewAttendance.robot
+Resource  NewUiFormHelpers/InputFields.robot
 
 *** Variables ***
 ${employeeStatus}  Status
@@ -831,9 +833,17 @@ Add Salary Cycle
     SalaryCycle.Fill Salary Cycle Form  ${dataDictionary}
     SalaryCycle.Submit Details
 
+Verify Salary Cycle
+    [Documentation]  Check the new salary cycle page.
+    SalaryCycle.Verify Salary Cycle Entry
+
 Open Manual Attendance Page
     [Documentation]  Opens manual attendance page.
     ManualAttendance.Go To Manual Attendance Page
+
+Open Review Attendance Page
+    [Documentation]  Opens review attendance page.
+    ReviewAttendance.Go To Review Attendance Page
 
 Set Mark Attendance Criteria
     [Documentation]  Applies filters for listing of employees.
@@ -849,10 +859,48 @@ Set Mark Attendance Criteria
     ManualAttendance.Apply Criteria
     sleep  2s
 
+Set Review Attendance Criteria
+    [Documentation]  Applies filters for listing of employees.
+    [Arguments]  ${dataDictionary}  ${payGroup}=select all
+    ReviewAttendance.Click On Review Attendance Button
+    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+    HRMS_Keywords.Select Month  ${dataDictionary}
+    #HRMS_Keywords.Select Employee Location  ${dataDictionary}      *** Need R&D on issue comes from this line ***
+    ReviewAttendance.Apply Criteria
+    sleep  2s
+
+Apply Filters For Reviewed Attendance
+    [Documentation]  Selects filters for marked attendance so that desired entry is listed.
+    switch window   Review Salary Attendance
+    ReviewAttendance.Open Filters
+    sleep  2s
+    HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
+    sleep  2s
+    HRMS_Keywords.Select Month  ${dataDictionary["Filters"]}
+    #HRMS_Keywords.Select Pay Group  ${dataDictionary["Filters"]}  ${payGroup}
+    #HRMS_Keywords.Select Employee Location  ${dataDictionary["Filters"]}
+    #ManualAttendance.Select Status  ${status}
+    ReviewAttendance.Apply Filters
+    sleep  15s
+
+Submit Marked Attendance
+    [Documentation]  Submits marked attendance of employee/employees.
+    ManualAttendance.Select Employees
+    ManualAttendance.Click On Submit Button
+    ManualAttendance.Verify Submit Popup
+    ManualAttendance.Click On Ok Button
+
+Submit Reviewed Attendance
+    [Documentation]  Submits reviewed attendance of employee/employees.
+    ReviewAttendance.Select Employees
+    ReviewAttendance.Click On mark attendance Button
+    ReviewAttendance.Verify Submit Popup
+    ReviewAttendance.Click On Ok Button
+
 Apply Filters For Marked Attendance
     [Documentation]  Selects filters for marked attendance so that desired entry is listed.
     [Arguments]  ${status}  ${payGroup}=select all
-    ManualAttendance.Open Filters
+    ReviewAttendance.Open Filters
     sleep  2s
     HRMS_Keywords.Select Financial Year  ${dataDictionary["Filters"]}
     sleep  2s
@@ -863,20 +911,19 @@ Apply Filters For Marked Attendance
     ManualAttendance.Apply Filters
     sleep  2s
 
-Submit Marked Attendance
-    [Documentation]  Submits marked attendance of employee/employees.
-    ManualAttendance.Select Employees
-    ManualAttendance.Click On Submit Button
-    ManualAttendance.Verify Submit Popup
-    ManualAttendance.Click On Ok Button
-
 Verify Marked Attendance
     [Documentation]  Does verification of the submitted attendance.
     [Arguments]  ${dataDictionary}  ${payGroup}
     Common_Keywords.Show Maximum Entries On Page
     sleep  3s
-    ManualAttendance.Click On Actions Button  Submitted  ${payGroup}
-    ManualAttendance.Verify Attendance
+    ReviewAttendance.Click On Actions Button  Submitted  ${payGroup}
+    ReviewAttendance.Verify Attendance
+
+Verify Reviewed Mark Attendance
+    [Documentation]  Does verify for marked attendance.
+    Common_Keywords.Show Maximum Entries On Page
+    sleep  3s
+
 
 Approve Marked Attendance
     [Documentation]  Approves verified attendance.
@@ -896,15 +943,20 @@ Process Salary
     sleep  4s
     SalaryDetail.Click On Process
     sleep  3s
+    wait until page contains    ${dataDictionary["Financial_Year"]["Locator"]}
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
-    SalaryDetail.Select Employee Location  ${dataDictionary}
-    HRMS_Keywords.Select Designation  ${dataDictionary}
-    HRMS_Keywords.Select Division  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
+    #SalaryDetail.Select Employee Location  ${dataDictionary}
+    #HRMS_Keywords.Select Designation  ${dataDictionary}
+    #HRMS_Keywords.Select Division  ${dataDictionary}
+    #HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     SalaryDetail.Click On Process button
     SalaryDetail.Select All Employees
     SalaryDetail.Process Salary
+
+Check Request Status
+    [Documentation]  Check the Salary Processed status.
+    SalaryDetail.Open Check Request Status
 
 View Salary Slip
     [Documentation]  Filter out employee whose salary is processed, Opens his salary slip.
@@ -933,20 +985,41 @@ Search Employee
 Lock Salary
     [Documentation]  Filter out employee whose salary is processed, Locks his salary.
     [Arguments]  ${dataDictionary}  ${payGroup}=Select One
+    SalaryDetail.SearchEmployee
     SalaryDetail.Open Filters
     sleep  2s
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     sleep  2s
     HRMS_Keywords.Select Month  ${dataDictionary}
-    SalaryDetail.Select Employee Location  ${dataDictionary}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
+    #SalaryDetail.Select Employee Location  ${dataDictionary}
+    #HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
     HRMS_Keywords.Select Status  Withheld
     SalaryDetail.Apply Filters
-    Common_Keywords.Show Maximum Entries On Page
+    #Common_Keywords.Show Maximum Entries On Page
     SalaryDetail.Select Employees  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']//thead//tr//th//input
     SalaryDetail.Click On Action Button
     SalaryDetail.Click On Lock
     SalaryDetail.Lock Salary
+
+
+
+#Lock Salary
+#    [Documentation]  Filter out employee whose salary is processed, Locks his salary.
+#    [Arguments]  ${dataDictionary}  ${payGroup}=Select One
+#    SalaryDetail.Open Filters
+#    sleep  2s
+#    HRMS_Keywords.Select Financial Year  ${dataDictionary}
+#    sleep  2s
+#    HRMS_Keywords.Select Month  ${dataDictionary}
+#    SalaryDetail.Select Employee Location  ${dataDictionary}
+#    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${payGroup}
+#    HRMS_Keywords.Select Status  Withheld
+#    SalaryDetail.Apply Filters
+#    Common_Keywords.Show Maximum Entries On Page
+#    SalaryDetail.Select Employees  //table[@class='table table-bordered table-condensed table-striped table-primary table-vertical-center checkboxs js-table-sortable ui-sortable']//thead//tr//th//input
+#    SalaryDetail.Click On Action Button
+#    SalaryDetail.Click On Lock
+#    SalaryDetail.Lock Salary
 
 Open Salary Paybill Page
     [Documentation]  Opens salary paybill page.
@@ -973,6 +1046,7 @@ Select Month
     ${salaryCycleName}  set variable if  '${SALARYCYCLE}' == 'None'  ${currentSalaryCycleName}  ${SALARYCYCLE}                   ###""" If User does not gives Salary cycle then Current SAlary Cycle will be selected."""
     set global variable  ${salaryCycleName}
     FillFields.Input Value Into Field   ${dataDictionary["Month"]}  ${salaryCycleName}
+
 
 Select Employee Location
     [Documentation]  Selects employee location from the dropdown.
@@ -1009,6 +1083,21 @@ Select Is Gazetted
     [Arguments]  ${dataDictionary}
     Run keyword if  '${ISGAZETTED}' != 'None'  FillFields.Input Value Into Field  ${dataDictionary["Is Gazetted"]}  ${ISGAZETTED}
 
+#Approve Salary Paybill
+#    [Documentation]  Does varofocation of paybill then approves it.
+#    [Arguments]  ${dataDictionary}
+#    SalaryPaybill.Go To Approve Salary Paybill Page
+#    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Pending
+#    SalaryPaybill.Get Latest Paybill Number
+#    SalaryPaybill.Search Paybill
+#    sleep  3s
+#    SalaryPaybill.Verify Paybill
+#    sleep  5s
+#   reload page
+#    HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Verified and Forwarded for Approval
+#    sleep  5s
+#    SalaryPaybill.Approve Paybill
+
 Approve Salary Paybill
     [Documentation]  Does varofocation of paybill then approves it.
     [Arguments]  ${dataDictionary}
@@ -1023,14 +1112,16 @@ Approve Salary Paybill
     HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Verified and Forwarded for Approval
     sleep  5s
     SalaryPaybill.Approve Paybill
+    #HRMS_Keywords.VerifyApprovePaybill
+
 
 Set Filters For Paybill
     [Documentation]  Selects filters for the lisiting of desired paybill.
-    [Arguments]  ${dataDictionary}  ${status}
+    [Arguments]  ${dataDictionary}      ${status}
     SalaryPaybill.Open Filters
     HRMS_Keywords.Select Month  ${dataDictionary["Filter"]}
-    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
-    HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
+    #HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
+    #HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
     SalaryPaybill.Select Status  ${status}
     SalaryPaybill.Apply Filters
 
@@ -1092,11 +1183,11 @@ Approve Salary Disbursement
     SalaryDisbursment.Select Filters  Pending
     SalaryDisbursment.Apply Filters
     sleep  4s
-    SalaryDisbursment.Verify Disbursement
-    SalaryDisbursment.Open Filters
-    SalaryDisbursment.Select Filters  Verified
-    SalaryDisbursment.Apply Filters
-    sleep  4s
+    #SalaryDisbursment.Verify Disbursement
+    #SalaryDisbursment.Open Filters
+    #SalaryDisbursment.Select Filters  Verified
+    #SalaryDisbursment.Apply Filters
+    #sleep  4s
     SalaryDisbursment.Approve Disbursement
 
 Create Voucher
@@ -1175,6 +1266,7 @@ Add Leave Encashment Proposal
     LeaveEncashmentPropsal.Click On Add Button
     LeaveEncashmentPropsal.Fill Proposal Details  ${dataDictionary}  ${PAYGROUP}  ${EMPLOYEELOCATION}
     LeaveEncashmentPropsal.Submit Details
+    LeaveEncashmentPropsal.Verify Details
 
 Open Leave Encashment Proposal Approval Page
     [Documentation]  Opens leave encashment proposal approval page.
@@ -1196,8 +1288,14 @@ View Leave Encashment Proposal
 
 Issue Order For Leave Encashment Proposal
     [Documentation]  Approves leave encashment proposal and then issues order.
+    #---Approve The Record---
+    ApproveLeaveEncashmentProposal.Edit the record
     ApproveLeaveEncashmentProposal.Click On Action Button
     ApproveLeaveEncashmentProposal.Approve Proposal
+    #---Order Issue for Record---
+    Open Leave Encashment Proposal Approval Page
+    HRMS_Keywords.Select Leave Encashment Filters       ${EMPLOYEELOCATION}
+    ApproveLeaveEncashmentProposal.Edit the record
     ApproveLeaveEncashmentProposal.Click On Action Button
     ApproveLeaveEncashmentProposal.Issue Order
 
@@ -1211,16 +1309,20 @@ Process Leave Encashment
     ProcessLeaveEncashment.Click On Action Button
     ProcessLeaveEncashment.Click On Process Link
     ProcessLeaveEncashment.Select Financial year  ${currentFinancialYear}
+    Log Many    ${currentFinancialYear}
     ProcessLeaveEncashment.Select Month  ${currentMonth}
-    ProcessLeaveEncashment.Select Employee Location  ${employeelocation}
-    ProcessLeaveEncashment.Select Paygroup  ${paygroup}
+    #ProcessLeaveEncashment.Select Employee Location  ${employeelocation}
+    #ProcessLeaveEncashment.Select Paygroup  ${paygroup}
     ProcessLeaveEncashment.Click On Process Button
     ProcessLeaveEncashment.Click On Final Process Button
 
 Lock Leave Encshment
     [Documentation]  Locks leave encashment.
+    ProcessLeaveEncashment.SearchEmployee
+    ProcessLeaveEncashment.SelectEmployee    //div[@class='List']//table//thead//tr//th//input[@type='checkbox']
     ProcessLeaveEncashment.Click On Action Button
     ProcessLeaveEncashment.Click On Lock Button
+    ProcessLeaveEncashment.Lock Salary
 
 Open Leave Encashment Paybill Page
     [Documentation]  Opens Leave Emcashment paybill page.
@@ -1232,3 +1334,21 @@ Add Leave Encashment Paybill
 
 Do Logout Impersonate
     ManageUser.Go To Logout Link
+
+Select Employee Payment Location
+     [Documentation]  Selects employee location.
+     set focus to element    //div[@id='s2id_UnitId']
+     click element   //div[@id='s2id_UnitId']
+     Log Many   ${dataDictionary}  ${Payment Unit}
+     Input Text   //body/div[@id='select2-drop']/div[1]/input[1]   ${dataDictionary}  ${Payment Unit}
+
+VerifyApprovePaybill
+     [Documentation]  Verify the Approve paybill.
+     Wait until page contains      //input[@id='SearchText']
+     SalaryPaybill.Search Paybill
+     HRMS_Keywords.Set Filters For Paybill  ${dataDictionary}  Approved
+     capture page screenshot
+
+Check LE Request Status
+    [Documentation]  Check the LE Processed status.
+    ProcessLeaveEncashment.Open Check Request Status

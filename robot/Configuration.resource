@@ -3,9 +3,9 @@
 ##########################
 #  Environment Settings  #
 ##########################
-${ENVIRONMENT}       dev
-${BROWSER}           headlesschrome
-&{BASE_URL}          dev=http://demoprojects.e-connectsolutions.com/EPRASH_dev  test=http://demoprojects.e-connectsolutions.com/EPRASH_test  production=http://rajerp.discoms.rajasthan.gov.in  stg=http://103.203.137.148/STG_TEST
+${ENVIRONMENT}       test
+${BROWSER}           chrome
+&{BASE_URL}          dev=https://demoprojects.e-connectsolutions.com/eprash-dev  test=https://demoprojects.e-connectsolutions.com/eprash-test  production=http://rajerp.discoms.rajasthan.gov.in  stg=http://103.203.137.148/STG_TEST
 ${LOGIN_URL}         ${BASE_URL.${ENVIRONMENT}}/adminlogin
 
 ####################

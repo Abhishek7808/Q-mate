@@ -25,7 +25,8 @@ Impersonate Employee
     click element  ${impersonateOkButton}
     sleep  2s
     ${status}  run keyword and return status  page should contain element  ${selfVarificationPopupText}
-    run keyword if  ${status} == ${True}  click element  //button[@id='btnSkip']
+    #run keyword if  ${status} == ${True}  click element  //button[@id='btnSkip']
+    run keyword if  ${status} == ${True}  click element  //button[@class='btn btn-default' and text()='Cancel']
     capture page screenshot
 
 Go To Logout Link

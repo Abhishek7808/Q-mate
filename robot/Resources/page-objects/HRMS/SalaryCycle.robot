@@ -29,11 +29,17 @@ Fill Salary Cycle Form
 Get Current Salary Cycle
     [Documentation]  Returns Current Date in the 'Month Year' format.
     ${currentDate}  get current date
-    ${date}  convert date  ${currentDate}  result_format= %B %Y
+    ${date}  convert date  ${currentDate}  result_format=%B %Y
     return from keyword  ${date}
 
 Submit Details
     [Documentation]  Clicks on Submit Details button.
     click button  ${save}
     capture page screenshot
+
+Verify Salary Cycle Entry
+    [Documentation]  It will check the Confirmation Message and Entry on List.
+    Wait until Page Contains        New record saved successfully
+    Go To Salary Cycle Page
+    Wait Until Page Contains Element        //td[contains(text(),'${currentSalaryCycleName}')]         ###"It's a Xpath"###
 

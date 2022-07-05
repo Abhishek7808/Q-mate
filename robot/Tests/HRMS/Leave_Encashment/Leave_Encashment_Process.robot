@@ -11,10 +11,15 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 
 #robot -d robot/Results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg -i adminANDleaveencashANDpaybill robot/Tests
 
-${EMPLOYEEID}  no5149
-${EMPLOYEECODE}  no5149
-${EMPLOYEELOCATION}  ......ACOS, Bharatpur (ACOS, BPR)
-${PAYGROUP}  ACOS, Bharatpur Ministerial Staff
+${EMPLOYEEID}  21284
+${EMPLOYEECODE}  21284
+${EMPLOYEELOCATION}  Head Office
+${PAYGROUP}  RSMML CO Paybill
+
+#${EMPLOYEEID}  no5149
+#${EMPLOYEECODE}  no5149
+#${EMPLOYEELOCATION}  ......ACOS, Bharatpur (ACOS, BPR)
+#${PAYGROUP}  ACOS, Bharatpur Ministerial Staff
 
 *** Test Cases ***
 Employee should able to apply leave encashment
@@ -55,6 +60,8 @@ Admin should able to process and lock leave encashment
     Common_Keywords.Set Test Data  ${configData["Leave_Encashment_Process"]}
     HRMS_Keywords.Open Leave Encashment Process Page
     HRMS_Keywords.Process Leave Encashment  ${currentFinancialYear}  ${currentMonth}  ${EMPLOYEELOCATION}  ${PAYGROUP}
+    HRMS_Keywords.Open Leave Encashment Process Page
+    HRMS_Keywords.Check LE Request Status
     HRMS_Keywords.Lock Leave Encshment
 
 Admin should able to add paybill

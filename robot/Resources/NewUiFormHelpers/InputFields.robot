@@ -7,6 +7,8 @@ Input Text Value
 Input Dropdown
     [Documentation]  Takes locator and value as arguments and selects given value from the dropdown of the given locator.
     [Arguments]  ${locator}  ${value}
+    Log to console      TEST1-${locator}
+    Log to console      TEST2-${value}
     select from list by label  ${locator}  ${value}
 
 Input Dropdown-Checkbox

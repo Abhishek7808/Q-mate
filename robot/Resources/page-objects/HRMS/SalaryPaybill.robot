@@ -27,18 +27,19 @@ Fill Salary Paybill Form
     [Arguments]  ${dataDictionary}
     HRMS_Keywords.Select Financial Year  ${dataDictionary}
     HRMS_Keywords.Select Month  ${dataDictionary}
-    SalaryPaybill.Unselect Employee Location
-    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${PAYGROUP}
+    HRMS_Keywords.Select Pay Group  ${dataDictionary}  ${dataDictionary["Pay Group"]["Value"]}
+    #HRMS_Keywords.Select Employee Payment Location
+    #SalaryPaybill.Unselect Employee Location
     sleep  5s
     HRMS_Keywords.Select Payment unit  ${dataDictionary}
-    FillFields.Input Value Into Field  ${dataDictionary["Payslip Unit"]}  ${PAYSLIPUNIT}
+    #FillFields.Input Value Into Field  ${dataDictionary["Payslip Unit"]}  ${PAYSLIPUNIT}
 
-Unselect Employee Location
-    [Documentation]  Unselects previously selected employee location.
-    set focus to element  //body[contains(@class,'breakpoint-768 pace-done')]/div[@id='containerfluid']/div[@id='content']/div[@id='MainBody']/form[contains(@class,'form-horizontal')]/div[contains(@class,'layout-app')]/div[contains(@class,'col-md-12')]/div[contains(@class,'col-separator box col-separator-first col-unscrollable')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app hasNiceScroll')]/div[contains(@class,'widget-body innerAll inner-2x')]/div[contains(@class,'row')]/div[1]/div[1]
-    click element  //body[contains(@class,'breakpoint-768 pace-done')]/div[@id='containerfluid']/div[@id='content']/div[@id='MainBody']/form[contains(@class,'form-horizontal')]/div[contains(@class,'layout-app')]/div[contains(@class,'col-md-12')]/div[contains(@class,'col-separator box col-separator-first col-unscrollable')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app hasNiceScroll')]/div[contains(@class,'widget-body innerAll inner-2x')]/div[contains(@class,'row')]/div[1]/div[1]
-    click element  //label[contains(text(),'Select all')]
-    click element  //label[contains(text(),'Select all')]
+#Unselect Employee Location
+#    [Documentation]  Unselects previously selected employee location.
+#    set focus to element  //body[contains(@class,'breakpoint-768 pace-done')]/div[@id='containerfluid']/div[@id='content']/div[@id='MainBody']/form[contains(@class,'form-horizontal')]/div[contains(@class,'layout-app')]/div[contains(@class,'col-md-12')]/div[contains(@class,'col-separator box col-separator-first col-unscrollable')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app hasNiceScroll')]/div[contains(@class,'widget-body innerAll inner-2x')]/div[contains(@class,'row')]/div[1]/div[1]
+#    click element  //body[contains(@class,'breakpoint-768 pace-done')]/div[@id='containerfluid']/div[@id='content']/div[@id='MainBody']/form[contains(@class,'form-horizontal')]/div[contains(@class,'layout-app')]/div[contains(@class,'col-md-12')]/div[contains(@class,'col-separator box col-separator-first col-unscrollable')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app')]/div[contains(@class,'col-table-row')]/div[contains(@class,'col-app hasNiceScroll')]/div[contains(@class,'widget-body innerAll inner-2x')]/div[contains(@class,'row')]/div[1]/div[1]
+#    click element  //label[contains(text(),'Select all')]
+#    click element  //label[contains(text(),'Select all')]
 
 Submit Details
     [Documentation]  Clicks on submit button.
@@ -59,14 +60,30 @@ Apply Filters
     [Documentation]  Clicks on apply filter button.
     click element  ${applyPaybillFilter}
 
+#Get Latest Paybill Number
+#    [Documentation]  Fetches paybill number from all the paybills listed and returns latest paybill number.
+#    Common_Keywords.Show Maximum Entries On Page
+#    ${allPaybills}  get element count  ${paybilltable}//tr
+#    log  ${allPaybills}
+#    FOR  ${paybill}  IN RANGE  2  ${allPaybills+1}
+#        ${paybilNumber}  Get Salary Paybill Number  ${paybill}
+#        ${paybilNumber}  convert to integer  ${paybilNumber}
+#        append to list  ${paybillNumbers}  ${paybilNumber}
+#    END
+#    sort list  ${paybillNumbers}
+#    ${listLength}  get length  ${paybillNumbers}
+#   ${lastIndex}  set variable  ${listLength-1}
+#    log to console  ${paybillNumbers}[${lastIndex}]
+#    set global variable  ${latestPaybillCreated}  ${paybillNumbers}[${lastIndex}]
+#    return from keyword  ${paybillNumbers}[0]
+
 Get Latest Paybill Number
     [Documentation]  Fetches paybill number from all the paybills listed and returns latest paybill number.
-    Common_Keywords.Show Maximum Entries On Page
-    ${allPaybills}  get element count  ${paybilltable}//tr
-    FOR  ${paybill}  IN RANGE  2  ${allPaybills+1}
-    \   ${paybilNumber}  Get Salary Paybill Number  ${paybill}
-    \   ${paybilNumber}  convert to integer  ${paybilNumber}
-    \   append to list  ${paybillNumbers}  ${paybilNumber}
+    #Common_Keywords.Show Maximum Entries On Page
+    #${allPaybills}  get element count  ${paybilltable}//tr
+    ${paybilNumber}  Get Salary Paybill Number   1
+    ${paybilNumber}  convert to integer  ${paybilNumber}
+    append to list  ${paybillNumbers}  ${paybilNumber}
     sort list  ${paybillNumbers}
     ${listLength}  get length  ${paybillNumbers}
     ${lastIndex}  set variable  ${listLength-1}
@@ -74,10 +91,22 @@ Get Latest Paybill Number
     set global variable  ${latestPaybillCreated}  ${paybillNumbers}[${lastIndex}]
     return from keyword  ${paybillNumbers}[0]
 
+
+#Get Salary Paybill Number
+#    [Documentation]  Fetches and returns salary paybill numbers.
+#    [Arguments]  ${paybill}
+#    ${paybillDetails}  get table cell  ${paybilltable}  ${paybill}  2
+#    ${paybill}  split string  ${paybillDetails}  No. :
+#    ${paybillNumber}  split string  ${paybill}[1]  /
+#    return from keyword  ${paybillNumber}[0]
+
+
 Get Salary Paybill Number
     [Documentation]  Fetches and returns salary paybill numbers.
     [Arguments]  ${paybill}
-    ${paybillDetails}  get table cell  ${paybilltable}  ${paybill}  2
+    Wait until Page Contains Element     //tbody/tr[1]/td[3]
+    Sleep  3s
+    ${paybillDetails}   get text    //tbody/tr[1]/td[3]
     ${paybill}  split string  ${paybillDetails}  No. :
     ${paybillNumber}  split string  ${paybill}[1]  /
     return from keyword  ${paybillNumber}[0]
@@ -106,9 +135,15 @@ Approve Paybill
     sleep  3s
     click element  //input[@id='CheckSchedule']
     input text  //textarea[@id='Remarks']  xyz
+    sleep  3s
     click element  //input[@id='btnSave']
+    Sleep  3s
+    capture page screenshot
+    Wait until page contains    Voucher Generated Successfully      30s
+    capture page screenshot
 
 Select Status
     [Documentation]  Takes status as argument and selects it from the filter dropdown.
     [Arguments]  ${status}
     select from list by label  //select[@id='status']  ${status}
+
