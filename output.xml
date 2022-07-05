@@ -1,0 +1,708 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.0 on win32)" generated="20220628 17:26:00.204" rpa="false" schemaversion="3">
+<suite id="s1" name="Leave Encashment" source="D:\Q-mate (source_code)\Q-mate\robot\Tests\HRMS\Leave_Encashment">
+<kw name="Begin Leave Encashment Testing" library="Common_Keywords" type="SETUP">
+<doc>Sets environment(i.e. variables, paths, files, browsers etc.) for leave encashment test cases.</doc>
+<kw name="Set HRMS Variables" library="Common_Keywords">
+<arg>${hrmsData}</arg>
+<doc>Sets Json data files as test variables.</doc>
+<kw name="Load Json File" library="Common_Keywords">
+<var>${configurationData}</var>
+<arg>${hrmsConfigurationData}</arg>
+<doc>Loads all json files into their json objects.</doc>
+<kw name="Get File" library="OperatingSystem">
+<var>${Data}</var>
+<arg>${File Name}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20220628 17:26:02.549" level="INFO" html="true">Getting file '&lt;a href="file://D:\Q-mate (source_code)\Q-mate\robot\Data\HRMS_DATA\HrmsData.json"&gt;D:\Q-mate (source_code)\Q-mate\robot\Data\HRMS_DATA\HrmsData.json&lt;/a&gt;'.</msg>
+<msg timestamp="20220628 17:26:02.551" level="INFO">${Data} = {
+  "Salary_Cycle": {
+    "URL": "HRM/SalaryCycle",
+    "Description": {
+      "Value": "",
+      "Type": "Text Value",
+      "Locator": "DESCRIPTION"
+    },
+    "Financial_Year": {
+      "Value": "20...</msg>
+<status status="PASS" starttime="20220628 17:26:02.549" endtime="20220628 17:26:02.551"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${Data Obj}</var>
+<arg>json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)</arg>
+<arg>json, collections</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220628 17:26:02.556" level="INFO">${Data Obj} = OrderedDict([('Salary_Cycle', OrderedDict([('URL', 'HRM/SalaryCycle'), ('Description', OrderedDict([('Value', ''), ('Type', 'Text Value'), ('Locator', 'DESCRIPTION')])), ('Financial_Year', OrderedDict...</msg>
+<status status="PASS" starttime="20220628 17:26:02.552" endtime="20220628 17:26:02.556"/>
+</kw>
+<msg timestamp="20220628 17:26:02.559" level="INFO">${configurationData} = OrderedDict([('Salary_Cycle', OrderedDict([('URL', 'HRM/SalaryCycle'), ('Description', OrderedDict([('Value', ''), ('Type', 'Text Value'), ('Locator', 'DESCRIPTION')])), ('Financial_Year', OrderedDict...</msg>
+<status status="PASS" starttime="20220628 17:26:02.548" endtime="20220628 17:26:02.559"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${configData}</arg>
+<arg>${configurationData}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220628 17:26:02.567" level="INFO">${configData} = OrderedDict([('Salary_Cycle', OrderedDict([('URL', 'HRM/SalaryCycle'), ('Description', OrderedDict([('Value', ''), ('Type', 'Text Value'), ('Locator', 'DESCRIPTION')])), ('Financial_Year', OrderedDict...</msg>
+<status status="PASS" starttime="20220628 17:26:02.559" endtime="20220628 17:26:02.568"/>
+</kw>
+<kw name="Load Json File" library="Common_Keywords">
+<var>${urlsDict}</var>
+<arg>${urlsJson}</arg>
+<doc>Loads all json files into their json objects.</doc>
+<kw name="Get File" library="OperatingSystem">
+<var>${Data}</var>
+<arg>${File Name}</arg>
+<doc>Returns the contents of a specified file.</doc>
+<msg timestamp="20220628 17:26:02.569" level="INFO" html="true">Getting file '&lt;a href="file://D:\Q-mate (source_code)\Q-mate\robot\Data\URLs.json"&gt;D:\Q-mate (source_code)\Q-mate\robot\Data\URLs.json&lt;/a&gt;'.</msg>
+<msg timestamp="20220628 17:26:02.572" level="INFO">${Data} = [
+  {
+    "NAME": "Deviation Statement",
+    "MODULE": "WPM",
+    "URL": "wpm/DeviationStatement"
+  },
+  {
+    "NAME": "Disbursement Statement",
+    "MODULE": "TLM",
+    "URL": "TLM/misfilter/Statemen...</msg>
+<status status="PASS" starttime="20220628 17:26:02.569" endtime="20220628 17:26:02.572"/>
+</kw>
+<kw name="Evaluate" library="BuiltIn">
+<var>${Data Obj}</var>
+<arg>json.loads('''${Data}''', object_pairs_hook=collections.OrderedDict)</arg>
+<arg>json, collections</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<msg timestamp="20220628 17:26:02.587" level="INFO">${Data Obj} = [OrderedDict([('NAME', 'Deviation Statement'), ('MODULE', 'WPM'), ('URL', 'wpm/DeviationStatement')]), OrderedDict([('NAME', 'Disbursement Statement'), ('MODULE', 'TLM'), ('URL', 'TLM/misfilter/Statem...</msg>
+<status status="PASS" starttime="20220628 17:26:02.572" endtime="20220628 17:26:02.588"/>
+</kw>
+<msg timestamp="20220628 17:26:02.594" level="INFO">${urlsDict} = [OrderedDict([('NAME', 'Deviation Statement'), ('MODULE', 'WPM'), ('URL', 'wpm/DeviationStatement')]), OrderedDict([('NAME', 'Disbursement Statement'), ('MODULE', 'TLM'), ('URL', 'TLM/misfilter/Statem...</msg>
+<status status="PASS" starttime="20220628 17:26:02.568" endtime="20220628 17:26:02.594"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${urlsDict}</arg>
+<arg>${urlsDict}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220628 17:26:02.606" level="INFO">${urlsDict} = [OrderedDict([('NAME', 'Deviation Statement'), ('MODULE', 'WPM'), ('URL', 'wpm/DeviationStatement')]), OrderedDict([('NAME', 'Disbursement Statement'), ('MODULE', 'TLM'), ('URL', 'TLM/misfilter/Statem...</msg>
+<status status="PASS" starttime="20220628 17:26:02.595" endtime="20220628 17:26:02.606"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:02.547" endtime="20220628 17:26:02.606"/>
+</kw>
+<kw name="Set Date Time Variables" library="Common_Keywords">
+<doc>Sets variables that are used in filling forms where current date, time, financial year are to be filled.</doc>
+<kw name="Get Current Financial Year" library="Common_Keywords">
+<var>${currentFinancialYear}</var>
+<doc>Returns current financial year.</doc>
+<kw name="Get Current Date" library="DateTime">
+<var>${currentDate}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220628 17:26:02.608" level="INFO">${currentDate} = 2022-06-28 17:26:02.608</msg>
+<status status="PASS" starttime="20220628 17:26:02.607" endtime="20220628 17:26:02.608"/>
+</kw>
+<kw name="Split String" library="String">
+<var>${dateDictionary}</var>
+<arg>${currentDate}</arg>
+<arg>-</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220628 17:26:02.609" level="INFO">${dateDictionary} = ['2022', '06', '28 17:26:02.608']</msg>
+<status status="PASS" starttime="20220628 17:26:02.608" endtime="20220628 17:26:02.609"/>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<var>${currentMonth}</var>
+<arg>${dateDictionary}[1]</arg>
+<doc>Converts the given item to an integer number.</doc>
+<msg timestamp="20220628 17:26:02.610" level="INFO">${currentMonth} = 6</msg>
+<status status="PASS" starttime="20220628 17:26:02.609" endtime="20220628 17:26:02.610"/>
+</kw>
+<kw name="Convert To Integer" library="BuiltIn">
+<var>${currentYear}</var>
+<arg>${dateDictionary}[0]</arg>
+<doc>Converts the given item to an integer number.</doc>
+<msg timestamp="20220628 17:26:02.611" level="INFO">${currentYear} = 2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.610" endtime="20220628 17:26:02.611"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${nextYear}</var>
+<arg>${currentYear+1}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220628 17:26:02.614" level="INFO">${nextYear} = 2023</msg>
+<status status="PASS" starttime="20220628 17:26:02.611" endtime="20220628 17:26:02.614"/>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<var>${previousYear}</var>
+<arg>${currentYear-1}</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<msg timestamp="20220628 17:26:02.617" level="INFO">${previousYear} = 2021</msg>
+<status status="PASS" starttime="20220628 17:26:02.614" endtime="20220628 17:26:02.617"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${currentMonth}&gt;4</arg>
+<arg>set global variable</arg>
+<arg>${financialYear}</arg>
+<arg>${currentYear}${nextYear}</arg>
+<arg>ELSE</arg>
+<arg>set global variable</arg>
+<arg>${financialYear}</arg>
+<arg>${previousYear}${currentYear}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${financialYear}</arg>
+<arg>${currentYear}${nextYear}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220628 17:26:02.619" level="INFO">${financialYear} = 20222023</msg>
+<status status="PASS" starttime="20220628 17:26:02.618" endtime="20220628 17:26:02.619"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:02.617" endtime="20220628 17:26:02.619"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${financialYear}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220628 17:26:02.619" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220628 17:26:02.619" endtime="20220628 17:26:02.620"/>
+</kw>
+<msg timestamp="20220628 17:26:02.621" level="INFO">${currentFinancialYear} = 20222023</msg>
+<status status="PASS" starttime="20220628 17:26:02.607" endtime="20220628 17:26:02.621"/>
+</kw>
+<kw name="Get Current Salary Cycle" library="SalaryCycle">
+<var>${currentSalaryCycleName}</var>
+<doc>Returns Current Date in the 'Month Year' format.</doc>
+<kw name="Get Current Date" library="DateTime">
+<var>${currentDate}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220628 17:26:02.622" level="INFO">${currentDate} = 2022-06-28 17:26:02.622</msg>
+<status status="PASS" starttime="20220628 17:26:02.622" endtime="20220628 17:26:02.622"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${date}</var>
+<arg>${currentDate}</arg>
+<arg>result_format=%B %Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20220628 17:26:02.629" level="INFO">${date} = June 2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.623" endtime="20220628 17:26:02.629"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${date}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220628 17:26:02.630" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220628 17:26:02.630" endtime="20220628 17:26:02.630"/>
+</kw>
+<msg timestamp="20220628 17:26:02.631" level="INFO">${currentSalaryCycleName} = June 2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.621" endtime="20220628 17:26:02.631"/>
+</kw>
+<kw name="Get Current Month" library="Common_Keywords">
+<var>${currentMonth}</var>
+<doc>Returns current month.</doc>
+<kw name="Get Current Date" library="DateTime">
+<var>${currentDate}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220628 17:26:02.632" level="INFO">${currentDate} = 2022-06-28 17:26:02.632</msg>
+<status status="PASS" starttime="20220628 17:26:02.632" endtime="20220628 17:26:02.632"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${month}</var>
+<arg>${currentDate}</arg>
+<arg>result_format=%B</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20220628 17:26:02.633" level="INFO">${month} = June</msg>
+<status status="PASS" starttime="20220628 17:26:02.632" endtime="20220628 17:26:02.633"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${month}</var>
+<arg>${month}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20220628 17:26:02.634" level="INFO">${month} = June</msg>
+<status status="PASS" starttime="20220628 17:26:02.633" endtime="20220628 17:26:02.634"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${month}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220628 17:26:02.634" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220628 17:26:02.634" endtime="20220628 17:26:02.635"/>
+</kw>
+<msg timestamp="20220628 17:26:02.635" level="INFO">${currentMonth} = June</msg>
+<status status="PASS" starttime="20220628 17:26:02.631" endtime="20220628 17:26:02.635"/>
+</kw>
+<kw name="Get Current Year" library="Common_Keywords">
+<var>${currentYear}</var>
+<doc>Returns current Year.</doc>
+<kw name="Get Current Date" library="DateTime">
+<var>${currentDate}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220628 17:26:02.636" level="INFO">${currentDate} = 2022-06-28 17:26:02.636</msg>
+<status status="PASS" starttime="20220628 17:26:02.636" endtime="20220628 17:26:02.636"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${year}</var>
+<arg>${currentDate}</arg>
+<arg>result_format= %Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20220628 17:26:02.637" level="INFO">${year} =  2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.636" endtime="20220628 17:26:02.637"/>
+</kw>
+<kw name="Strip String" library="String">
+<var>${year}</var>
+<arg>${year}</arg>
+<doc>Remove leading and/or trailing whitespaces from the given string.</doc>
+<msg timestamp="20220628 17:26:02.638" level="INFO">${year} = 2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.637" endtime="20220628 17:26:02.638"/>
+</kw>
+<kw name="Return From Keyword" library="BuiltIn">
+<arg>${year}</arg>
+<doc>Returns from the enclosing user keyword.</doc>
+<msg timestamp="20220628 17:26:02.638" level="INFO">Returning from the enclosing user keyword.</msg>
+<status status="PASS" starttime="20220628 17:26:02.638" endtime="20220628 17:26:02.638"/>
+</kw>
+<msg timestamp="20220628 17:26:02.639" level="INFO">${currentYear} = 2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.635" endtime="20220628 17:26:02.639"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${currentFinancialYear}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220628 17:26:02.640" level="INFO">${currentFinancialYear} = 20222023</msg>
+<status status="PASS" starttime="20220628 17:26:02.639" endtime="20220628 17:26:02.640"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${currentSalaryCycleName}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220628 17:26:02.641" level="INFO">${currentSalaryCycleName} = June 2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.640" endtime="20220628 17:26:02.641"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${currentMonth}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220628 17:26:02.642" level="INFO">${currentMonth} = June</msg>
+<status status="PASS" starttime="20220628 17:26:02.641" endtime="20220628 17:26:02.642"/>
+</kw>
+<kw name="Set Global Variable" library="BuiltIn">
+<arg>${currentYear}</arg>
+<doc>Makes a variable available globally in all tests and suites.</doc>
+<msg timestamp="20220628 17:26:02.643" level="INFO">${currentYear} = 2022</msg>
+<status status="PASS" starttime="20220628 17:26:02.642" endtime="20220628 17:26:02.643"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:02.607" endtime="20220628 17:26:02.643"/>
+</kw>
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>about:blank</arg>
+<arg>${BROWSER}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20220628 17:26:02.644" level="INFO">Opening browser 'chrome' to base url 'about:blank'.</msg>
+<status status="PASS" starttime="20220628 17:26:02.643" endtime="20220628 17:26:05.941"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220628 17:26:05.943" endtime="20220628 17:26:06.118"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:02.547" endtime="20220628 17:26:06.118"/>
+</kw>
+<suite id="s1-s1" name="Leave Encashment Process" source="D:\Q-mate (source_code)\Q-mate\robot\Tests\HRMS\Leave_Encashment\Leave_Encashment_Process.robot">
+<test id="s1-s1-t1" name="Admin should able to process and lock leave encashment" line="57">
+<kw name="Set Test Data" library="Common_Keywords">
+<arg>${configData["Leave_Encashment_Process"]}</arg>
+<doc>Sets josn data variable as dataDictionary variable as a test variable.</doc>
+<kw name="Set Test Variable" library="BuiltIn">
+<arg>${datadictionary}</arg>
+<arg>${dataJson}</arg>
+<doc>Makes a variable available everywhere within the scope of the current test.</doc>
+<msg timestamp="20220628 17:26:07.137" level="INFO">${datadictionary} = OrderedDict([('URL', 'HRM/LeaveEncashment?q=8U+3wF0Q7l6ZwbB7K1t9G0W5hD1/uC/P')])</msg>
+<status status="PASS" starttime="20220628 17:26:07.129" endtime="20220628 17:26:07.138"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:07.124" endtime="20220628 17:26:07.138"/>
+</kw>
+<kw name="Open Leave Encashment Process Page" library="HRMS_Keywords">
+<doc>Opens Leave Encashment process page.</doc>
+<kw name="Open Leave Encashment Process Page" library="ProcessLeaveEncashment">
+<doc>Opens Leave Encashment Process Page.</doc>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<arg>${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}</arg>
+<tag>plugin</tag>
+<kw name="Attempt Login" library="ERP_Keywords">
+<arg>{'username': 'kritika.rsmml', 'password': 'admin'}</arg>
+<doc>Logins the Erp with given credentials</doc>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>NONE</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<status status="PASS" starttime="20220628 17:26:09.494" endtime="20220628 17:26:09.495"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${username}</var>
+<arg>${Credentials}</arg>
+<arg>username</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20220628 17:26:09.498" endtime="20220628 17:26:09.499"/>
+</kw>
+<kw name="Get From Dictionary" library="Collections">
+<var>${password}</var>
+<arg>${Credentials}</arg>
+<arg>password</arg>
+<doc>Returns a value from the given ``dictionary`` based on the given ``key``.</doc>
+<status status="PASS" starttime="20220628 17:26:09.500" endtime="20220628 17:26:09.500"/>
+</kw>
+<kw name="Fill Username" library="Login">
+<arg>${username}</arg>
+<doc>Fills username in the username box.</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_USERNAME_INPUT}</arg>
+<arg>${username}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20220628 17:26:09.503" endtime="20220628 17:26:09.703"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:09.501" endtime="20220628 17:26:09.704"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="PASS" starttime="20220628 17:26:09.704" endtime="20220628 17:26:10.706"/>
+</kw>
+<kw name="Fill Password" library="Login">
+<arg>${password}</arg>
+<doc>Fills password.</doc>
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>${LOGIN_PASSWORD_INPUT}</arg>
+<arg>${password}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" starttime="20220628 17:26:10.709" endtime="20220628 17:26:10.946"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:10.707" endtime="20220628 17:26:10.946"/>
+</kw>
+<kw name="Set Log Level" library="BuiltIn">
+<arg>INFO</arg>
+<doc>Sets the log threshold to the specified level and returns the old level.</doc>
+<msg timestamp="20220628 17:26:10.948" level="INFO">Log level changed from NONE to INFO.</msg>
+<status status="PASS" starttime="20220628 17:26:10.947" endtime="20220628 17:26:10.948"/>
+</kw>
+<kw name="Submit The Form" library="Login">
+<doc>Clicks on login button.</doc>
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>${LOGIN_BUTTON}</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20220628 17:26:10.951" level="INFO">Clicking button 'id=btnLogin'.</msg>
+<status status="PASS" starttime="20220628 17:26:10.950" endtime="20220628 17:26:16.733"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:10.949" endtime="20220628 17:26:16.734"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:09.493" endtime="20220628 17:26:16.734"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:07.141" endtime="20220628 17:26:18.934"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:07.140" endtime="20220628 17:26:18.935"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:07.139" endtime="20220628 17:26:18.935"/>
+</kw>
+<kw name="Process Leave Encashment" library="HRMS_Keywords">
+<arg>${currentFinancialYear}</arg>
+<arg>${currentMonth}</arg>
+<arg>${EMPLOYEELOCATION}</arg>
+<arg>${PAYGROUP}</arg>
+<doc>Processes leave encashment.</doc>
+<kw name="Click On Action Button" library="ProcessLeaveEncashment">
+<doc>Clicks on action button.</doc>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//a[contains(text(),'Actions')]</arg>
+<arg>20S</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220628 17:26:18.948" endtime="20220628 17:26:19.032"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//a[contains(text(),'Actions')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220628 17:26:19.034" level="INFO">Clicking element '//a[contains(text(),'Actions')]'.</msg>
+<status status="PASS" starttime="20220628 17:26:19.033" endtime="20220628 17:26:19.142"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:18.947" endtime="20220628 17:26:19.142"/>
+</kw>
+<kw name="Click On Process Link" library="ProcessLeaveEncashment">
+<doc>Clicks on process button.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//a[contains(text(),'Process')]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220628 17:26:19.147" level="INFO">Clicking element '//a[contains(text(),'Process')]'.</msg>
+<status status="PASS" starttime="20220628 17:26:19.146" endtime="20220628 17:26:19.358"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//select[@id='ddlFinyear']</arg>
+<arg>20s</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220628 17:26:19.358" endtime="20220628 17:26:27.542"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:19.143" endtime="20220628 17:26:27.543"/>
+</kw>
+<kw name="Select Financial year" library="ProcessLeaveEncashment">
+<arg>${currentFinancialYear}</arg>
+<doc>Takes financialyear as argument and selects it from the dropdown.</doc>
+<kw name="Select From List By Value" library="SeleniumLibrary">
+<arg>//select[@id='ddlFinyear']</arg>
+<arg>${financialYear}</arg>
+<doc>Selects options from selection list ``locator`` by ``values``.</doc>
+<msg timestamp="20220628 17:26:27.545" level="INFO">Selecting options from selection list '//select[@id='ddlFinyear']' by value 20222023.</msg>
+<status status="PASS" starttime="20220628 17:26:27.545" endtime="20220628 17:26:27.679"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:27.543" endtime="20220628 17:26:27.679"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>${currentFinancialYear}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20220628 17:26:27.680" level="INFO">20222023</msg>
+<status status="PASS" starttime="20220628 17:26:27.680" endtime="20220628 17:26:27.680"/>
+</kw>
+<kw name="Select Month" library="ProcessLeaveEncashment">
+<arg>${currentMonth}</arg>
+<doc>Takes month as argument and selects it from the dropdown.</doc>
+<kw name="Split String" library="String">
+<var>${FY}</var>
+<arg>${financialYear}</arg>
+<arg>20</arg>
+<doc>Splits the ``string`` using ``separator`` as a delimiter string.</doc>
+<msg timestamp="20220628 17:26:27.684" level="INFO">${FY} = ['', '22', '23']</msg>
+<status status="PASS" starttime="20220628 17:26:27.683" endtime="20220628 17:26:27.684"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>${FY}[1]</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20220628 17:26:27.685" level="INFO">22</msg>
+<status status="PASS" starttime="20220628 17:26:27.685" endtime="20220628 17:26:27.685"/>
+</kw>
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>//select[@id='Month']</arg>
+<arg>${month} ${FY}[1]</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20220628 17:26:27.687" level="INFO">Selecting options from selection list '//select[@id='Month']' by label June 22.</msg>
+<status status="PASS" starttime="20220628 17:26:27.686" endtime="20220628 17:26:27.877"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:27.681" endtime="20220628 17:26:27.877"/>
+</kw>
+<kw name="Click On Process Button" library="ProcessLeaveEncashment">
+<doc>Clicks on process butoon.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//a[@id='btnSave']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220628 17:26:27.880" level="INFO">Clicking element '//a[@id='btnSave']'.</msg>
+<status status="PASS" starttime="20220628 17:26:27.880" endtime="20220628 17:26:28.264"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:27.878" endtime="20220628 17:26:28.264"/>
+</kw>
+<kw name="Click On Final Process Button" library="ProcessLeaveEncashment">
+<doc>Clicks on process butoon.</doc>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>Process Leave</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220628 17:26:28.267" endtime="20220628 17:26:29.733"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>//input[@id='btnSave']</arg>
+<arg>10S</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220628 17:26:29.734" endtime="20220628 17:26:29.756"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//input[@id='btnSave']</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220628 17:26:29.758" level="INFO">Clicking element '//input[@id='btnSave']'.</msg>
+<status status="PASS" starttime="20220628 17:26:29.757" endtime="20220628 17:26:30.870"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:28.265" endtime="20220628 17:26:30.870"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:18.945" endtime="20220628 17:26:30.870"/>
+</kw>
+<kw name="Open Leave Encashment Process Page" library="HRMS_Keywords">
+<doc>Opens Leave Encashment process page.</doc>
+<kw name="Open Leave Encashment Process Page" library="ProcessLeaveEncashment">
+<doc>Opens Leave Encashment Process Page.</doc>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<arg>${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}</arg>
+<tag>plugin</tag>
+<status status="PASS" starttime="20220628 17:26:31.019" endtime="20220628 17:26:32.628"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:31.018" endtime="20220628 17:26:32.628"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:31.018" endtime="20220628 17:26:32.628"/>
+</kw>
+<kw name="Check LE Request Status" library="HRMS_Keywords">
+<doc>Check the LE Processed status.</doc>
+<kw name="Open Check Request Status" library="ProcessLeaveEncashment">
+<doc>Clicks on Check Request Status button.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${checkRequestStatusButton}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220628 17:26:32.639" level="INFO">Clicking element '//a[contains(text(),'Check Request Status')]'.</msg>
+<status status="PASS" starttime="20220628 17:26:32.639" endtime="20220628 17:26:32.827"/>
+</kw>
+<kw name="Switch Window" library="SeleniumLibrary">
+<arg>Request Detail</arg>
+<doc>Switches to browser window matching ``locator``.</doc>
+<status status="PASS" starttime="20220628 17:26:32.827" endtime="20220628 17:26:34.952"/>
+</kw>
+<kw name="Queue Status" library="ProcessLeaveEncashment">
+<doc>Recusrively Check LE status until it finished.</doc>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<arg>get text</arg>
+<arg>//tbody/tr[1]/td[4]</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get Text" library="SeleniumLibrary">
+<arg>//tbody/tr[1]/td[4]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<status status="PASS" starttime="20220628 17:26:34.954" endtime="20220628 17:26:35.015"/>
+</kw>
+<msg timestamp="20220628 17:26:35.015" level="INFO">${status} = ('PASS', 'Started')</msg>
+<status status="PASS" starttime="20220628 17:26:34.953" endtime="20220628 17:26:35.015"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>Value of ${status}[0], value of ${status}[1]</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20220628 17:26:35.017" level="INFO">Value of PASS, value of Started</msg>
+<status status="PASS" starttime="20220628 17:26:35.016" endtime="20220628 17:26:35.017"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220628 17:26:35.275" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-130.png"&gt;&lt;img src="selenium-screenshot-130.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220628 17:26:35.018" endtime="20220628 17:26:35.275"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Run Keyword If</arg>
+<arg>'${status}[1]' == '${Pending}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE IF</arg>
+<arg>'${status}[1]' == '${Started}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE</arg>
+<arg>Open Leave Encashment Process Page</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}[1]' == '${Pending}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE IF</arg>
+<arg>'${status}[1]' == '${Started}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE</arg>
+<arg>Open Leave Encashment Process Page</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Wait Status Queue" library="SalaryDetail">
+<doc>Wait and Recheck the Salary in every 30 seconds.</doc>
+<kw name="Sleep" library="BuiltIn">
+<arg>30s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220628 17:27:05.281" level="INFO">Slept 30 seconds</msg>
+<status status="PASS" starttime="20220628 17:26:35.281" endtime="20220628 17:27:05.282"/>
+</kw>
+<kw name="Queue Status" library="SalaryDetail">
+<doc>Recusrively Check salary status until it finished.</doc>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<var>${status}</var>
+<arg>get text</arg>
+<arg>//tbody/tr[1]/td[4]</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Get Text" library="SeleniumLibrary">
+<arg>//tbody/tr[1]/td[4]</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220628 17:27:05.478" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-131.png"&gt;&lt;img src="selenium-screenshot-131.png" width="800px"&gt;&lt;/a&gt;</msg>
+<msg timestamp="20220628 17:27:05.479" level="FAIL">Element with locator '//tbody/tr[1]/td[4]' not found.</msg>
+<status status="FAIL" starttime="20220628 17:27:05.286" endtime="20220628 17:27:05.567"/>
+</kw>
+<msg timestamp="20220628 17:27:05.567" level="INFO">${status} = ('FAIL', "Element with locator '//tbody/tr[1]/td[4]' not found.")</msg>
+<status status="PASS" starttime="20220628 17:27:05.285" endtime="20220628 17:27:05.568"/>
+</kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>Value of ${status}[0], value of ${status}[1]</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20220628 17:27:05.569" level="INFO">Value of FAIL, value of Element with locator '//tbody/tr[1]/td[4]' not found.</msg>
+<status status="PASS" starttime="20220628 17:27:05.568" endtime="20220628 17:27:05.569"/>
+</kw>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20220628 17:27:05.742" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-132.png"&gt;&lt;img src="selenium-screenshot-132.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220628 17:27:05.570" endtime="20220628 17:27:05.742"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Run Keyword If</arg>
+<arg>'${status}[1]' == '${Pending}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE IF</arg>
+<arg>'${status}[1]' == '${Started}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE</arg>
+<arg>Go To Salary Detail Page</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>'${status}[1]' == '${Pending}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE IF</arg>
+<arg>'${status}[1]' == '${Started}'</arg>
+<arg>Wait Status Queue</arg>
+<arg>ELSE</arg>
+<arg>Go To Salary Detail Page</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<msg timestamp="20220628 17:27:05.745" level="FAIL">Evaluating expression ''Element with locator '//tbody/tr[1]/td[4]' not found.' == 'Pending'' failed: SyntaxError: invalid syntax. Perhaps you forgot a comma? (&lt;string&gt;, line 1)</msg>
+<status status="FAIL" starttime="20220628 17:27:05.744" endtime="20220628 17:27:05.819"/>
+</kw>
+<status status="PASS" starttime="20220628 17:27:05.743" endtime="20220628 17:27:05.819"/>
+</kw>
+<kw name="Go To Salary Detail Page" library="SalaryDetail">
+<doc>Opens salary detail page.</doc>
+<kw name="Go To Erp Page" library="SeleniumLibrary">
+<arg>${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}</arg>
+<tag>plugin</tag>
+<status status="PASS" starttime="20220628 17:27:05.821" endtime="20220628 17:27:08.215"/>
+</kw>
+<status status="PASS" starttime="20220628 17:27:05.820" endtime="20220628 17:27:08.215"/>
+</kw>
+<status status="PASS" starttime="20220628 17:27:05.283" endtime="20220628 17:27:08.215"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:35.280" endtime="20220628 17:27:08.215"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:35.278" endtime="20220628 17:27:08.216"/>
+</kw>
+<status status="PASS" starttime="20220628 17:26:35.277" endtime="20220628 17:27:08.216"/>
+</kw>
+<kw name="Open Leave Encashment Process Page">
+<msg timestamp="20220628 17:27:08.217" level="FAIL">Multiple keywords with name 'Open Leave Encashment Process Page' found. Give the full name of the keyword you want to use:
+    HRMS_Keywords.Open Leave Encashment Process Page
+    ProcessLeaveEncashment.Open Leave Encashment Process Page</msg>
+<status status="FAIL" starttime="20220628 17:27:08.217" endtime="20220628 17:27:08.217"/>
+</kw>
+<status status="FAIL" starttime="20220628 17:26:34.952" endtime="20220628 17:27:08.219"/>
+</kw>
+<status status="FAIL" starttime="20220628 17:26:32.638" endtime="20220628 17:27:08.220"/>
+</kw>
+<status status="FAIL" starttime="20220628 17:26:32.637" endtime="20220628 17:27:08.221"/>
+</kw>
+<kw name="Lock Leave Encshment" library="HRMS_Keywords">
+<doc>Locks leave encashment.</doc>
+<status status="NOT RUN" starttime="20220628 17:27:08.222" endtime="20220628 17:27:08.222"/>
+</kw>
+<doc>Processes leave encashment proposal.</doc>
+<tag>admin</tag>
+<tag>HRMS</tag>
+<tag>leaveEncash</tag>
+<tag>process</tag>
+<status status="FAIL" starttime="20220628 17:26:07.122" endtime="20220628 17:27:08.224">Multiple keywords with name 'Open Leave Encashment Process Page' found. Give the full name of the keyword you want to use:
+    HRMS_Keywords.Open Leave Encashment Process Page
+    ProcessLeaveEncashment.Open Leave Encashment Process Page</status>
+</test>
+<status status="FAIL" starttime="20220628 17:26:06.119" endtime="20220628 17:27:08.228"/>
+</suite>
+<kw name="End Leave Encashment Testing" library="Common_Keywords" type="TEARDOWN">
+<doc>Closes browser.</doc>
+<kw name="Close Browser" library="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="PASS" starttime="20220628 17:27:08.232" endtime="20220628 17:27:11.908"/>
+</kw>
+<status status="PASS" starttime="20220628 17:27:08.231" endtime="20220628 17:27:11.909"/>
+</kw>
+<status status="FAIL" starttime="20220628 17:26:00.210" endtime="20220628 17:27:11.909"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">admin</stat>
+<stat pass="0" fail="1" skip="0">HRMS</stat>
+<stat pass="0" fail="1" skip="0">leaveEncash</stat>
+<stat pass="0" fail="1" skip="0">process</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Leave Encashment">Leave Encashment</stat>
+<stat pass="0" fail="1" skip="0" id="s1-s1" name="Leave Encashment Process">Leave Encashment.Leave Encashment Process</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

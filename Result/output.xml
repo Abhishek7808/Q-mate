@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 5.0 (Python 3.10.0 on win32)" generated="20220622 16:47:47.568" rpa="false" schemaversion="3">
+<suite id="s1" name="000 Landing Page" source="D:\Q-mate (source_code)\Q-mate\robot\Tests\Basic\000_Landing_Page.robot">
+<test id="s1-t1" name="Admin should able to access the landing page" line="8">
+<kw name="Log Many" library="BuiltIn">
+<arg>${RESOURCES}/ERP_Keywords.robot</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20220622 16:47:50.624" level="INFO">D:\Q-mate (source_code)\Q-mate\robot\Resources/ERP_Keywords.robot</msg>
+<status status="PASS" starttime="20220622 16:47:50.624" endtime="20220622 16:47:50.624"/>
+</kw>
+<kw name="Perform Login" library="ERP_Keywords">
+<doc>Performs login.</doc>
+<kw name="Open Login Page And Do Login" library="Dashboard">
+<doc>Opens login page and do login.</doc>
+<kw name="Go To" library="SeleniumLibrary">
+<arg>http://rajerp.rajasthan.gov.in/home/adminlogin</arg>
+<doc>Navigates the current browser window to the provided ``url``.</doc>
+<msg timestamp="20220622 16:47:50.624" level="INFO">Opening url 'http://rajerp.rajasthan.gov.in/home/adminlogin'</msg>
+<msg timestamp="20220622 16:47:50.624" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<msg timestamp="20220622 16:47:50.624" level="FAIL">No browser is open.</msg>
+<status status="FAIL" starttime="20220622 16:47:50.624" endtime="20220622 16:47:50.640"/>
+</kw>
+<kw name="Attempt Login" library="ERP_Keywords">
+<arg>${ADMIN_USER_LIVE}</arg>
+<doc>Logins the Erp with given credentials</doc>
+<status status="NOT RUN" starttime="20220622 16:47:50.640" endtime="20220622 16:47:50.640"/>
+</kw>
+<status status="FAIL" starttime="20220622 16:47:50.624" endtime="20220622 16:47:50.640"/>
+</kw>
+<status status="FAIL" starttime="20220622 16:47:50.624" endtime="20220622 16:47:50.648"/>
+</kw>
+<kw name="Verify Landing Page Is Loaded" library="ERP_Keywords">
+<doc>Checks if landing page is loaded, if not then updtes the error.</doc>
+<status status="NOT RUN" starttime="20220622 16:47:50.656" endtime="20220622 16:47:50.656"/>
+</kw>
+<kw name="Attempt Logout" library="ERP_Keywords">
+<doc>Do logout directly</doc>
+<status status="NOT RUN" starttime="20220622 16:47:50.656" endtime="20220622 16:47:50.656"/>
+</kw>
+<doc>Does login into ERP and checks that dashboard is loaded.</doc>
+<tag>basic</tag>
+<tag>landingpage</tag>
+<status status="FAIL" starttime="20220622 16:47:50.616" endtime="20220622 16:47:50.656">No browser is open.</status>
+</test>
+<status status="FAIL" starttime="20220622 16:47:47.576" endtime="20220622 16:47:50.656"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="0" fail="1" skip="0">basic</stat>
+<stat pass="0" fail="1" skip="0">landingpage</stat>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="000 Landing Page">000 Landing Page</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
