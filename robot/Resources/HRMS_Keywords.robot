@@ -33,6 +33,7 @@ Resource  ${PAGE OBJECTS}/HRMS/ApproveLeaveEncashmentProposal.robot
 Resource  ${PAGE OBJECTS}/HRMS/ProcessLeaveEncashment.robot
 Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentPaybill.robot
 Resource  ${PAGE OBJECTS}/HRMS/ReviewAttendance.robot
+Resource  ${PAGE OBJECTS}/HRMS/LeaveEncashmentDisbursment.robot
 Resource  NewUiFormHelpers/InputFields.robot
 
 *** Variables ***
@@ -1301,7 +1302,7 @@ Issue Order For Leave Encashment Proposal
 
 Open Leave Encashment Process Page
     [Documentation]  Opens Leave Encashment process page.
-    ProcessLeaveEncashment.Open Leave Encashment Process Page
+    ProcessLeaveEncashment.Go To Leave Encashment Process Page
 
 Process Leave Encashment
     [Documentation]  Processes leave encashment.
@@ -1331,6 +1332,9 @@ Open Leave Encashment Paybill Page
 Add Leave Encashment Paybill
     [Documentation]  Opens add paybill form and fills details into it.
     LeaveEncashmentPaybill.Click On Add Paybill Link
+    LeaveEncashmentPaybill.Fill LE Paybill Form   ${dataDictionary}
+    LeaveEncashmentPaybill.Save Details
+
 
 Do Logout Impersonate
     ManageUser.Go To Logout Link
@@ -1352,3 +1356,61 @@ VerifyApprovePaybill
 Check LE Request Status
     [Documentation]  Check the LE Processed status.
     ProcessLeaveEncashment.Open Check Request Status
+
+Set Filters For LE Paybill
+    [Documentation]  Selects filters for the lisiting of desired paybill.
+    [Arguments]  ${dataDictionary}      ${status}
+    LeaveEncashmentPaybill.Open Filters
+    HRMS_Keywords.Select Pay Group  ${dataDictionary["Filter"]}  ${PAYGROUP}
+    #HRMS_Keywords.Select Payment unit  ${dataDictionary["Filter"]}
+    LeaveEncashmentPaybill.Select Status  ${status}
+    LeaveEncashmentPaybill.Apply Filters
+
+Approve LE Paybill
+    [Documentation]  Does varification of paybill then approves it.
+    [Arguments]  ${dataDictionary}
+    LeaveEncashmentPaybill.Go To Approve LE Paybill Page
+    HRMS_Keywords.Set Filters For LE Paybill  ${dataDictionary}  Pending
+    LeaveEncashmentPaybill.Get Latest Paybill Number
+    LeaveEncashmentPaybill.Search Paybill
+    sleep  5s
+    LeaveEncashmentPaybill.Approve Paybill
+
+Verify LE Approved Paybill
+    [Documentation]  Does varification of approved paybill.
+    [Arguments]  ${dataDictionary}
+    HRMS_Keywords.Set Filters For LE Paybill  ${dataDictionary}    Approved
+    LeaveEncashmentPaybill.Verify LE Approved Paybill
+
+Open LE Disbursment Page
+    [Documentation]  Opens LE disbursement page.
+    LeaveEncashmentDisbursment.Go_To_LE_Disbursment_Page
+
+LE Add Disbursement
+    [Documentation]  Opens pending paybill filter, selects details into it and add disbursement.
+    [Arguments]  ${dataDictionary}
+    LeaveEncashmentDisbursment.Click On Pending Paybill button
+    LeaveEncashmentDisbursment.Fill Pending Paybill Details     ${dataDictionary}
+    #LeaveEncashmentDisbursment.Click On Add Disbursment button
+    #LeaveEncashmentDisbursment.Fill Leave Encashment Disbursment Form  ${dataDictionary}
+    LeaveEncashmentDisbursment.Fill Leave Encashment Payment Details Form   ${dataDictionary}
+    LeaveEncashmentDisbursment.Submit Details
+
+Approve LE Disbursement
+    [Documentation]  Does varification of LE disbursement then approves it.
+    [Arguments]  ${dataDictionary}
+    LeaveEncashmentDisbursment.Go_To_LE_Disbursment_Page
+    LeaveEncashmentDisbursment.Open Filters
+    LeaveEncashmentDisbursment.Select Filters  Default
+    LeaveEncashmentDisbursment.Apply Filters
+    sleep  4s
+    LeaveEncashmentDisbursment.Approve Disbursement
+
+Create LE Voucher
+    [Documentation]  Selects filters for listing approvred LE dibursements and then create voucher.
+    [Arguments]  ${dataDictionary}
+    LeaveEncashmentDisbursment.Open Filters
+    LeaveEncashmentDisbursment.Select Filters  Approved
+    LeaveEncashmentDisbursment.Apply Filters
+    sleep  3s
+    LeaveEncashmentDisbursment.Create Voucher Disbursement

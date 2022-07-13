@@ -21,7 +21,6 @@ Resource          ${DATA}${/}Login_Data.robot
 Library           ${LIBRARY}${/}Addendums.py
 Library           DateTime
 *** Variables ***
-
 #Overwrite default configuration
 #${ENVIRONMENT} =  demo
 #${BROWSER} =  firefox

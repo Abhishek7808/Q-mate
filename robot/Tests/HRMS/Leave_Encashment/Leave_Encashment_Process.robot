@@ -11,8 +11,8 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 
 #robot -d robot/Results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg -i adminANDleaveencashANDpaybill robot/Tests
 
-${EMPLOYEEID}  21284
-${EMPLOYEECODE}  21284
+${EMPLOYEEID}  21971
+${EMPLOYEECODE}  21971
 ${EMPLOYEELOCATION}  Head Office
 ${PAYGROUP}  RSMML CO Paybill
 
@@ -68,5 +68,18 @@ Admin should able to add paybill
     [Documentation]  Fills details into paybill form, verifies and approves it.
     [Tags]  HRMS  admin  leaveEncash  paybill
     Common_Keywords.Set Test Data  ${configData["Leave_Encashment_Paybill"]}
+    Log Many    ${dataDictionary}   console=yes
     HRMS_Keywords.Open Leave Encashment Paybill Page
     HRMS_Keywords.Add Leave Encashment Paybill
+    HRMS_Keywords.Set Filters For LE Paybill  ${dataDictionary}    Pending
+    HRMS_Keywords.Approve LE Paybill   ${dataDictionary}
+    HRMS_Keywords.Verify LE Approved Paybill    ${dataDictionary}
+
+Admin should able to Disburse Paybill
+    [Documentation]  Adds Disbursment, verifies and approves disbursement.
+    [Tags]  HRMS  admin  LeaveEncash  Disbursment
+    Common_Keywords.Set Test Data  ${configData["Leave Encash Disbursement Process"]}
+    HRMS_Keywords.Open LE Disbursment Page
+    HRMS_Keywords.LE Add Disbursement  ${dataDictionary}
+    HRMS_Keywords.Approve LE Disbursement  ${dataDictionary}
+    HRMS_Keywords.Create LE Voucher  ${dataDictionary}

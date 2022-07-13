@@ -6,7 +6,7 @@ ${lockConfirm}  //button[contains(text(),'OK')]
 ${checkRequestStatusButton}     //a[contains(text(),'Check Request Status')]
 
 *** Keywords ***
-Open Leave Encashment Process Page
+Go To Leave Encashment Process Page
     [Documentation]  Opens Leave Encashment Process Page.
     Go To ERP Page  ${BASE_URL.${ENVIRONMENT}}/${dataDictionary["URL"]}
 
@@ -82,14 +82,19 @@ Open Check Request Status
     [Documentation]  Clicks on Check Request Status button.
     click element   ${checkRequestStatusButton}
     Switch Window   Request Detail
-    ProcessLeaveEncashment.Queue Status
+    ProcessLeaveEncashment.Queue Status LE
 
-Queue Status
+Queue Status LE
     [Documentation]  Recusrively Check LE status until it finished.
     ${status}   Run Keyword And Ignore Error   get text    //tbody/tr[1]/td[4]
     Log Many    Value of ${status}[0], value of ${status}[1]
     capture page screenshot
-    Run Keyword And Ignore Error     Run Keyword If    '${status}[1]' == '${Pending}'     Wait Status Queue
-                                     ...    ELSE IF    '${status}[1]' == '${Started}'     Wait Status Queue
-                                     ...    ELSE      Open Leave Encashment Process Page
-    Open Leave Encashment Process Page
+    Run Keyword And Ignore Error     Run Keyword If    '${status}[1]' == '${Pending}'     Wait Status Queue LE
+                                     ...    ELSE IF    '${status}[1]' == '${Started}'     Wait Status Queue LE
+                                     ...    ELSE      Go To Leave Encashment Process Page
+    Go To Leave Encashment Process Page
+
+Wait Status Queue LE
+    [Documentation]  Wait and Recheck the LE in every 30 seconds.
+    Sleep   30s
+    ProcessLeaveEncashment.Queue Status LE

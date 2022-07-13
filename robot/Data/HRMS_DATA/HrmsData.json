@@ -1477,11 +1477,290 @@
         "URL": "HRM/LeaveEncashment?q=8U+3wF0Q7l6ZwbB7K1t9G0W5hD1/uC/P"
   },
   "Leave_Encashment_Paybill": {
-        "URL": "HRM/LeaveEncashmentPaybill"
+        "URL": "HRM/LeaveEncashmentPaybill",
+        "Back To List": {
+          "Value": "",
+          "Type": "Button",
+          "Locator": "btn btn-primary BackToList"
+        },
+        "Save": {
+          "Value": "",
+          "Type": "Button",
+          "Locator": "btnSave"
+        },
 
+        "Pay Group": {
+          "Value": "CO",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "s2id_PbGroupID",
+            "Locator2": "//*[@id='select2-drop']/div/input"
+          }
+        },
+         "Payment Location": {
+              "Value": "Head Office",
+              "Type": "SearchSelectDropdown",
+              "Locator": {
+                "Locator1": "s2id_UnitId",
+                "Locator2": "//*[@id='select2-drop']/div/input"
+              }
+         },
+        "Remark": {
+          "Value": "Test",
+          "Type": "Text Value",
+          "Locator": "//input[@id='txtremarks']"
+        },
+        "Pay with": {
+          "Value": "Bank/Cash",
+          "Type": "Dropdown",
+          "Locator": "//select[@id='PayWithId']"
+        },
+        "Start Date":{
+          "Value": "",
+          "Type": "Date",
+          "Locator": "//input[@id='BILL_START_DATE']"
+        },
+        "End Date":{
+          "Value": "",
+          "Type": "Date",
+          "Locator": "//input[@id='BILL_END_DATE']"
+        },
+        "Filter": {
+             "Financial Year": {
+              "Value": "20222023",
+              "Type": "Dropdown",
+              "Locator": "FINYEAR"
+               },
+              "Pay Group": {
+                "Value": "CO",
+                "Type": "SearchSelectDropdown",
+                "Locator": {
+                  "Locator1": "//div[@id='s2id_PayGroupIdIndex']",
+                  "Locator2": "//*[@id='select2-drop']/div/input"
+                }
+              },
+              "Payment Location": {
+                 "Value": "Head Office",
+                "Type": "SearchSelectDropdown",
+                "Locator": {
+                  "Locator1": "//div[@id='s2id_UnitIds']",
+                  "Locator2": "//*[@id='select2-drop']/div/input"
+                }
+              },
+            "Status": {
+              "Value": "",
+              "Type": "Dropdown",
+              "Locator": "status"
+            }
+        },
+        "Financial Year": {
+          "Value": "20222023",
+          "Type": "Dropdown",
+          "Locator": "FinYear"
+        },
+        "Bill Date": {
+          "Value": {
+            "Day": "09",
+            "Month": "Jun",
+            "Year": "2022"
+          },
+          "Type": "Date",
+          "Locator": "BILL_DATE"
+        },
+        "Payment Unit": {
+          "Value": "Head Office",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "//div[@id='s2id_UnitId']",
+            "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+          }
+        },
+        "Manual Bill No": {
+          "Value": "1243",
+          "Type": "Text-value",
+          "Locator": "txtManualBillNo"
+        },
+        "Payslip Unit": {
+          "Value": "Head Office",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "s2id_PayUnitId",
+            "Locator2": "//*[@id='select2-drop']/div/input"
+          }
+        },
+        "Remarks": {
+          "Value": "",
+          "Type": "Text-value",
+          "Locator": "txtremarks"
+        },
+        "Bill Date": {
+          "Value": {
+            "Day": "09",
+            "Month": "jun",
+            "Year": "2022"
+          },
+          "Type": "Date",
+          "Locator": "BILL_DATE"
+        },
+        "Payment Unit": {
+          "Value": "Head Office",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "s2id_UnitId",
+            "Locator2": "//div[@id='select2-drop']//input[contains(@class,'select2-input')]"
+          }
+    }
   },
-
-"Review_Attendance": {
+  "Leave Encash Disbursement Process": {
+    "URL": "HRM/LeaveEncashmentDisbursement/LeaveEncashDisbursmentIndex",
+    "Back To List": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "btn btn-primary BackToList"
+    },
+    "Start_Date": {
+      "Value": "01-Apr-2022",
+      "Type": "Text Box",
+      "Locator": "//input[@id='BILL_START_DATE']"
+    },
+    "End_Date": {
+      "Value": "",
+      "Type": "Text Box",
+      "Locator": "//input[@id='BILL_END_DATE']"
+    },
+    "Disbursement_Date": {
+      "Value": "",
+      "Type": "Text Box",
+      "Locator": "//input[@id='HRMS_SALARY_DISBURSMENT_MASTER_BILL_DATE' and @type='text']"
+    },
+    "Payment Location": {
+      "Value": "Head Office",
+      "Type": "SearchSelectDropdown",
+      "Locator": {
+        "Locator1": "id:s2id_UnitId",
+        "Locator2": "//*[@id='select2-drop']/div/input"
+      }
+    },
+    "Pay Group": {
+      "Value": "CO",
+      "Type": "Dropdown-CheckBox",
+      "Locator": {
+        "Locator1": "id:MSPayGroupIds",
+        "Locator2": "//*[@class='btn-group open']//*[@class='multiselect-container dropdown-menu']//li//div//input[@type='text']"
+      }
+    },
+    "Paybill No": {
+      "Value": "",
+      "Type": "Text-value",
+      "Locator": {
+        "Locator1": "id:MSPaybillIds",
+        "Locator2": "//ul//li//div//input[@class='form-control multiselect-search valid']"
+      }
+    },
+    "Remarks": {
+      "Value": "done",
+      "Type": "Text Value",
+      "Locator": "HRMS_SALARY_DISBURSMENT_MASTER_REMARKS"
+    },
+    "Pending Paybill Pop Up": {
+        "Pending Paybill Button":{
+          "Value": "",
+          "Type": "Button",
+          "Locator": "//a[@class='btn btn-primary OpenDialog']"
+        },
+        "Payment Location": {
+          "Value": "Head Office",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "//div[@id='s2id_AccUnitId']",
+            "Locator2": "//*[@id='select2-drop']/div/input"
+          }
+      },
+        "Pay Group": {
+          "Value": "CO",
+          "Type": "SearchSelectDropdown",
+          "Locator": {
+            "Locator1": "id:s2id_PayGroupId",
+            "Locator2": "//*[@id='select2-drop']/div/input"
+          }
+    },
+        "Paybill No": {
+          "Value": "2022-2023",
+          "Type": "Text-Value",
+          "Locator": "id:PaybillId"
+      },
+      "Disburse Button": {
+          "Value": "",
+          "Type": "button",
+          "Locator": "id:btnDisburse"
+      }
+    },
+    "Payment Detail": {
+      "Credit_Date": {
+        "Value": {
+          "Day": "16",
+          "Month": "Feb",
+          "Year": "2020"
+        },
+        "Type": "Date",
+        "Locator": "id:CreditDate"
+      },
+      "Payment_Mode": {
+        "Value": "Cash",
+        "Type": "Dropdown",
+        "Locator": "id:PaymentMode"
+      },
+      "Ledger": {
+        "Value": "CASH IN HAND",
+        "Type": "Dropdown",
+        "Locator": "id:AccountLedger"
+      }
+    },
+    "Save": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "id:btnSave"
+    },
+    "Cancel": {
+      "Value": "",
+      "Type": "Button",
+      "Locator": "id:btnCancel"
+    },
+    "Filters": {
+      "Bill From Date": {
+        "Value": "",
+        "Type": "Date",
+        "Locator":"//input[@id='Fromdate']"
+      },
+      "Bill To Date": {
+        "Value": "",
+        "Type": "Date",
+        "Locator":"//input[@id='Todate']"
+      },
+      "Pay Group": {
+        "Value": "",
+        "Type": "SearchSelectDropdown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_PayGroup']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
+      "Payment Location": {
+        "Value": "",
+        "Type": "SearchSelectDropdown",
+        "Locator": {
+          "Locator1": "//div[@id='s2id_UnitIds']",
+          "Locator2": "//*[@id='select2-drop']/div/input"
+        }
+      },
+      "Status": {
+        "Value": "",
+        "Type": "Dropdown",
+        "Locator": "status"
+      }
+    }
+  },
+  "Review_Attendance": {
     "URL": "HRM/FreezeSalaryAttendance/AttendanceFreezeIndex",
     "Financial_Year": {
       "Value": "",

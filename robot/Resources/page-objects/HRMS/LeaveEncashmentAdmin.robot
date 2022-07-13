@@ -17,7 +17,7 @@ Fill Leave Encashment Details
     #Exit For Loop If    ${Leave_Bal} >0
     #END
     FillFields.Input Value Into Field  ${dataDictionary["Employee_Name"]}  ${EMPLOYEENAME}
-    Sleep   15S
+    Sleep   25S
     press keys  ${dataDictionary["Employee_Name"]["Locator"]}  ARROW_DOWN
     press keys  ${dataDictionary["Employee_Name"]["Locator"]}  ENTER
     FillFields.Input Value Into Field  ${dataDictionary["Leave_Type"]}  ${dataDictionary["Leave_Type"]["Value"]}
@@ -25,6 +25,7 @@ Fill Leave Encashment Details
 
 Submit Details
     [Documentation]  Clicks on submit button.
+    sleep   5s
     click element  //input[@id='btnSave']
     capture page screenshot
 
