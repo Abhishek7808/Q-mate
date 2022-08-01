@@ -23,9 +23,9 @@ Perform All Critical Generic Tests On Urls
     #create file  ${ERRORFILE}
     #Replacing Old For Loop Syntax with New Syntax
     FOR  ${url}  IN  @{moduleUrls}
-    Run Keyword And Continue On Failure  Open ERP Page  ${url}
-    ${result}  Check Page Error
-    run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
+        Run Keyword And Continue On Failure  Open ERP Page  ${url}
+        ${result}  Check Page Error
+        run keyword unless  ${result} == None   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
     END
     #:FOR  ${url}  IN  @{moduleUrls}
     #\   Run Keyword And Continue On Failure  Open ERP Page  ${url}
@@ -102,11 +102,17 @@ Perform Permission Tests On Urls
     [Documentation]  Performs permission tests on the urls of given module
     [Arguments]  ${moduleName}  @{moduleUrls}
     #create file  ${ERRORFILE}
-    :FOR  ${url}  IN  @{moduleUrls}
+    FOR  ${url}  IN  @{moduleUrls}
     \   Run Keyword And Continue On Failure  Open ERP Page Without Permission  ${url}
     \   ${errorCheck}  Check Error Occurred  #if page has any other error do not report it
     \   ${result}  run keyword if  ${errorCheck} == None   Check Permissions
     \   run keyword if  ${result} == 4   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
+    END
+    #:FOR  ${url}  IN  @{moduleUrls}
+    #\   Run Keyword And Continue On Failure  Open ERP Page Without Permission  ${url}
+    #\   ${errorCheck}  Check Error Occurred  #if page has any other error do not report it
+    #\   ${result}  run keyword if  ${errorCheck} == None   Check Permissions
+    #\   run keyword if  ${result} == 4   Add Failed Url To The Fatal Error List  ${BASE_URL.${ENVIRONMENT}}/${url}  ${result}
     #Report Fatal Errors To Developers  ${moduleName}  @{fatalErorrs}
 
 Check Permissions

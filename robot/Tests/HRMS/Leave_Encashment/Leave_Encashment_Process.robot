@@ -8,10 +8,12 @@ Resource          ${RESOURCES}/HRMS_Keywords.robot
 
 
 *** Variables ***
-
 #robot -d robot/Results --variable BROWSER:chrome --variable ENVIRONMENT:stg --variable LOGIN:stg -i adminANDleaveencashANDpaybill robot/Tests
 
-${EMPLOYEEID}  21971
+########## RUN THIS CMD TO EXCECUTE COMPLETE LEAVE ENCASHMENT PROCESS ############
+#robot -i admin  robot\Tests\HRMS\Leave_Encashment\
+
+${EMPLOYEEID}  21971                    ####Change the Employee_ID and EmployeeCode each time you run the case
 ${EMPLOYEECODE}  21971
 ${EMPLOYEELOCATION}  Head Office
 ${PAYGROUP}  RSMML CO Paybill

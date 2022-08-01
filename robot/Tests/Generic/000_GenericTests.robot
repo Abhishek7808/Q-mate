@@ -21,14 +21,14 @@ All ERP module pages should be working for admin user
     [Documentation]  Tests if yellow pages are appearing or title tags are missing.
     [Tags]  critical  generictests  common
     [Template]  Run Generic Tests From Admin              ###""" Keyword defination can be found in "ERP_Keywords.robot" file."""
-       ${HRMS.name}                                         ###""" Variables are defined in "Configuration.resource" file."""
+#       ${HRMS.name}                                         ###""" Variables are defined in "Configuration.resource" file."""
        ${FA.name}
-       ${UM.name}
-       ${SMM.name}
-       ${CPF.name}
-       ${GPF.name}
-       ${MM.name}
-       ${WPM.name}
+#       ${UM.name}
+#       ${SMM.name}
+#       ${CPF.name}
+#       ${GPF.name}
+#       ${MM.name}
+#       ${WPM.name}
 #      ${AMS.name}
 #      ${TLM.name}
 #      ${IMS.name}

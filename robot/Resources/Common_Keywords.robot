@@ -77,8 +77,9 @@ Begin Generic Testing
 End Generic Testing
     [Documentation]  Sends error report email for generic test cases and updates the same on google sheet.
     FOR  ${item}  IN  @{moduleNames}
-    \   run keyword if any tests failed  Send Error Email Notification  generic tests  ${CONTACTS_JSON}  ${item}
-    \   Update Error Data On Sheets  ${item}
+        run keyword if any tests failed  Send Error Email Notification  generic tests  ${CONTACTS_JSON}  ${item}
+        Update Error Data On Sheets  ${item}
+    END
     close browser
 
 Begin SMM Testing
