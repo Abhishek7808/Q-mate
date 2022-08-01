@@ -70,7 +70,7 @@
     "url": "https://demoprojects.e-connectsolutions.com/eprash-test/hrm/DivisionSalaryHead/index",
     "Filter button": "//button[@id='btnformfilter']",
     "Financial Year": {
-      "Value": "",
+      "Value": "2022-23",
       "Type": "Dropdown",
       "Locator": "//select[@id='FinancialYear']"
     },
@@ -202,7 +202,7 @@
     },
     "Financial Year":
     {
-      "Value": "",
+      "Value": "2022-23",
       "Type": "Dropdown ",
       "Locator": "xpath://select[@id='FinancialYear']"
     },

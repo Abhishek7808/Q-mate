@@ -8,7 +8,7 @@ Suite Teardown   Close All Browsers
 *** Test Cases ***
 Monthly Report Salary testcase
     [Documentation]   Monthly Report Testing
-    [Tags]  Monthly MIS Report
+    [Tags]  HRMS Monthly MIS Report
     MIS_Keywords.Go to Loginpage
     MIS_Keywords.Open ReportOfSalary
     MIS_Keywords.Verify Salary Report

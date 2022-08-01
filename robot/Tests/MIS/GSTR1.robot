@@ -9,6 +9,6 @@ Suite Teardown   Close All Browsers
 *** Test Cases ***
 GSTR1 Sales Report
     [Documentation]   GSTR1 Sales Report Testing
-    [Tags]  admin GSTR1 Sales Report
+    [Tags]  FA GSTR1 Sales Report
     MIS_Keywords.GSTR1_Login_Window
     MIS_Keywords.Open GSTR1 Sales Report

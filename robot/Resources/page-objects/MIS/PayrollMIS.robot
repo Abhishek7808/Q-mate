@@ -28,7 +28,7 @@ Open Report
     go to       ${object["Payroll MIS"]["url"]}
 
 Fill Salary Report
-    Select From List By Index      ${object["Payroll MIS"]["Financial Year"]["Locator"]}    5
+    Select From List By Label      ${object["Payroll MIS"]["Financial Year"]["Locator"]}    ${object["Payroll MIS"]["Financial Year"]["Value"]}
     Wait until page contains element    ${object["Payroll MIS"]["Financial Year"]["Locator"]}
     Select From List By Index      ${object["Payroll MIS"]["Cycle Type"]["Locator"]}  1
     sleep   3s
@@ -57,7 +57,7 @@ View Button
 
 Fill Arrear Report
 
-    Select From List By Index      ${object["Payroll MIS"]["Financial Year"]["Locator"]}    5
+    Select From List By Label      ${object["Payroll MIS"]["Financial Year"]["Locator"]}    ${object["Payroll MIS"]["Financial Year"]["Value"]}
     Wait until page contains element    ${object["Payroll MIS"]["Financial Year"]["Locator"]}
     Select From List By Index      ${object["Payroll MIS"]["Cycle Type"]["Locator"]}  2
     sleep   3s
@@ -77,7 +77,7 @@ Fill Arrear Report
     click element    ${object["Payroll MIS"]["Pay Group"]["Locator"]["Locator2"]}
 
 Fill Leave Encashment Report
-    Select From List By Index      ${object["Payroll MIS"]["Financial Year"]["Locator"]}    5
+    Select From List By Label      ${object["Payroll MIS"]["Financial Year"]["Locator"]}    ${object["Payroll MIS"]["Financial Year"]["Value"]}
     Wait until page contains element    ${object["Payroll MIS"]["Financial Year"]["Locator"]}
     Select From List By Index      ${object["Payroll MIS"]["Cycle Type"]["Locator"]}  3
     sleep   4s
@@ -100,8 +100,8 @@ Fill Leave Encashment Report
 #select date
    # [Arguments]     ${locator1}  ${month}  ${year}  ${date}
     click element    ${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator1"]}
-    select from list by index    ${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator2"]}   3
-    select from list by index    ${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator3"]}   0
+    select from list by index    ${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator2"]}   0     #### Month Selection ###
+    select from list by index    ${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator3"]}   0     #### Year Selection ###
     Get WebElement      ${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator4"]}
     @{alldates} =   Get WebElements    ${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator4"]}
     log many   @{alldates}
@@ -113,14 +113,14 @@ Fill Leave Encashment Report
 
     click element    ${object["Payroll MIS"]["To Date"]["Locator"]["Locator1"]}
     select from list by index    ${object["Payroll MIS"]["To Date"]["Locator"]["Locator2"]}   3
-    select from list by index    ${object["Payroll MIS"]["To Date"]["Locator"]["Locator3"]}   0
+    select from list by index    ${object["Payroll MIS"]["To Date"]["Locator"]["Locator3"]}   1
     Get WebElement      ${object["Payroll MIS"]["To Date"]["Locator"]["Locator4"]}
     @{alldates} =   Get WebElements    ${object["Payroll MIS"]["To Date"]["Locator"]["Locator4"]}
     log many   @{alldates}
     FOR     ${date}     IN       @{all dates}
             ${date_text} =    Get Text   ${date}
-            Run Keyword If        ${date_text} == 5    Click element     //tbody/tr/td/a [text()=${date_text}]
-            Exit For Loop If      ${date_text} == 5
+            Run Keyword If        ${date_text} == 31    Click element     //tbody/tr/td/a [text()=${date_text}]
+            Exit For Loop If      ${date_text} == 31
     END
 
     ${currentdate}=  Get Current Date
@@ -145,6 +145,7 @@ Verify Report
     #scroll element into view    xpath: //*[@id="tabletab1"]/tbody/tr[1]
     #${check} =  Get Text   xpath: //*[@id="tabletab1"]/tbody/tr[1]
     #Run Keyword If   '${check}'  == '1'
+    scroll element into view        xpath: //*[@id="tabletab1"]/tbody/tr[1]
     Capture Page Screenshot
 
 

@@ -1,388 +1,1187 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 5.0 (Python 3.10.0 on win32)" generated="20220801 15:58:15.338" rpa="false" schemaversion="3">
-<suite id="s1" name="IncomeTax Report" source="D:\Q-mate (source_code)\Q-mate\robot\Tests\MIS\IncomeTax_Report.robot">
-<test id="s1-t1" name="IncomeTaxDetection Report" line="9">
-<kw name="Go to ERP page" library="MIS_Keywords">
-<kw name="Logintoapp1" library="IncomeTax">
+<robot generator="Robot 5.0 (Python 3.10.0 on win32)" generated="20220801 17:22:52.741" rpa="false" schemaversion="3">
+<suite id="s1" name="Payroll MIS" source="D:\Q-mate (source_code)\Q-mate\robot\Tests\MIS\Payroll_MIS.robot">
+<test id="s1-t1" name="PayrollMIS Report" line="9">
+<kw name="Login to ERP Page" library="MIS_Keywords">
+<kw name="Logintoapp" library="PayrollMIS">
 <kw name="Open Browser" library="SeleniumLibrary">
 <arg>${url}</arg>
 <arg>${browser}</arg>
 <doc>Opens a new browser instance to the optional ``url``.</doc>
-<msg timestamp="20220801 15:58:16.481" level="INFO">Opening browser 'chrome' to base url 'https://demoprojects.e-connectsolutions.com/eprash-test'.</msg>
-<status status="PASS" starttime="20220801 15:58:16.481" endtime="20220801 15:58:34.572"/>
+<msg timestamp="20220801 17:22:53.813" level="INFO">Opening browser 'chrome' to base url 'https://demoprojects.e-connectsolutions.com/eprash-test'.</msg>
+<status status="PASS" starttime="20220801 17:22:53.813" endtime="20220801 17:23:04.109"/>
 </kw>
 <kw name="Wait Until Page Contains" library="SeleniumLibrary">
 <arg>Password</arg>
 <doc>Waits until ``text`` appears on the current page.</doc>
-<status status="PASS" starttime="20220801 15:58:34.572" endtime="20220801 15:58:34.598"/>
+<status status="PASS" starttime="20220801 17:23:04.110" endtime="20220801 17:23:04.141"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20220801 17:23:04.142" endtime="20220801 17:23:04.344"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>id:LoginIdForShow</arg>
 <arg>kritika.rsmml</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220801 15:58:34.599" level="INFO">Typing text 'kritika.rsmml' into text field 'id:LoginIdForShow'.</msg>
-<status status="PASS" starttime="20220801 15:58:34.598" endtime="20220801 15:58:34.796"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:58:36.799" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20220801 15:58:34.796" endtime="20220801 15:58:36.799"/>
+<msg timestamp="20220801 17:23:04.345" level="INFO">Typing text 'kritika.rsmml' into text field 'id:LoginIdForShow'.</msg>
+<status status="PASS" starttime="20220801 17:23:04.345" endtime="20220801 17:23:04.511"/>
 </kw>
 <kw name="Input Text" library="SeleniumLibrary">
 <arg>id:PasswordForShow</arg>
 <arg>admin</arg>
 <doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220801 15:58:36.800" level="INFO">Typing text 'admin' into text field 'id:PasswordForShow'.</msg>
-<status status="PASS" starttime="20220801 15:58:36.799" endtime="20220801 15:58:36.985"/>
+<msg timestamp="20220801 17:23:04.511" level="INFO">Typing text 'admin' into text field 'id:PasswordForShow'.</msg>
+<status status="PASS" starttime="20220801 17:23:04.511" endtime="20220801 17:23:04.788"/>
 </kw>
 <kw name="Click Element" library="SeleniumLibrary">
 <arg>xpath://*[@id="btnLogin"]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220801 15:58:36.986" level="INFO">Clicking element 'xpath://*[@id="btnLogin"]'.</msg>
-<status status="PASS" starttime="20220801 15:58:36.986" endtime="20220801 15:58:44.278"/>
+<msg timestamp="20220801 17:23:04.789" level="INFO">Clicking element 'xpath://*[@id="btnLogin"]'.</msg>
+<status status="PASS" starttime="20220801 17:23:04.788" endtime="20220801 17:23:08.422"/>
 </kw>
-<status status="PASS" starttime="20220801 15:58:16.481" endtime="20220801 15:58:44.279"/>
+<status status="PASS" starttime="20220801 17:22:53.813" endtime="20220801 17:23:08.422"/>
 </kw>
-<kw name="Load json1" library="IncomeTax">
+<kw name="Load json" library="PayrollMIS">
 <kw name="Get File" library="OperatingSystem">
 <var>${data}</var>
 <arg>${groupdata}</arg>
 <doc>Returns the contents of a specified file.</doc>
-<msg timestamp="20220801 15:58:44.280" level="INFO" html="true">Getting file '&lt;a href="file://D:\Q-mate (source_code)\Q-mate\robot\Data\ERP_MIS\MIS.json"&gt;D:\Q-mate (source_code)\Q-mate\robot\Data\ERP_MIS\MIS.json&lt;/a&gt;'.</msg>
-<msg timestamp="20220801 15:58:44.349" level="INFO">${data} = {
+<msg timestamp="20220801 17:23:08.424" level="INFO" html="true">Getting file '&lt;a href="file://D:\Q-mate (source_code)\Q-mate\robot\Data\ERP_MIS\MIS.json"&gt;D:\Q-mate (source_code)\Q-mate\robot\Data\ERP_MIS\MIS.json&lt;/a&gt;'.</msg>
+<msg timestamp="20220801 17:23:08.458" level="INFO">${data} = {
   "Ledger Listing": {
     "url": "https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISReport/report/LedgerlistFilter",
     "Account Name": {
       "Value": "BILLS TO PAY(655)",
       "Typ...</msg>
-<status status="PASS" starttime="20220801 15:58:44.280" endtime="20220801 15:58:44.349"/>
+<status status="PASS" starttime="20220801 17:23:08.423" endtime="20220801 17:23:08.458"/>
 </kw>
 <kw name="Evaluate" library="BuiltIn">
 <var>${object}</var>
 <arg>json.loads('''${data}''')</arg>
 <arg>json</arg>
 <doc>Evaluates the given expression in Python and returns the result.</doc>
-<msg timestamp="20220801 15:58:44.351" level="INFO">${object} = {'Ledger Listing': {'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISReport/report/LedgerlistFilter', 'Account Name': {'Value': 'BILLS TO PAY(655)', 'Type': 'Dropdown searchable'...</msg>
-<status status="PASS" starttime="20220801 15:58:44.349" endtime="20220801 15:58:44.351"/>
+<msg timestamp="20220801 17:23:08.460" level="INFO">${object} = {'Ledger Listing': {'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISReport/report/LedgerlistFilter', 'Account Name': {'Value': 'BILLS TO PAY(655)', 'Type': 'Dropdown searchable'...</msg>
+<status status="PASS" starttime="20220801 17:23:08.458" endtime="20220801 17:23:08.461"/>
 </kw>
 <kw name="Set Global Variable" library="BuiltIn">
 <arg>${object}</arg>
 <doc>Makes a variable available globally in all tests and suites.</doc>
-<msg timestamp="20220801 15:58:44.356" level="INFO">${object} = {'Ledger Listing': {'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISReport/report/LedgerlistFilter', 'Account Name': {'Value': 'BILLS TO PAY(655)', 'Type': 'Dropdown searchable'...</msg>
-<status status="PASS" starttime="20220801 15:58:44.351" endtime="20220801 15:58:44.356"/>
+<msg timestamp="20220801 17:23:08.463" level="INFO">${object} = {'Ledger Listing': {'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISReport/report/LedgerlistFilter', 'Account Name': {'Value': 'BILLS TO PAY(655)', 'Type': 'Dropdown searchable'...</msg>
+<status status="PASS" starttime="20220801 17:23:08.461" endtime="20220801 17:23:08.463"/>
 </kw>
 <kw name="Log Many" library="BuiltIn">
 <arg>&amp;{object}</arg>
 <arg>console=yes</arg>
 <doc>Logs the given messages as separate entries using the INFO level.</doc>
-<msg timestamp="20220801 15:58:44.359" level="INFO">Ledger Listing={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISReport/report/LedgerlistFilter', 'Account Name': {'Value': 'BILLS TO PAY(655)', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath://span[contains(text(),'--Select One--')]", 'Locator2': "xpath://body/div[@id='select2-drop']/div[1]/input[1]"}}, 'Voucher Type': {'Value': 'Select all', 'Type': 'Multiselect Dropdown', 'Locator': {'Locator1': "xpath://div[@class='btn-group']//button[@type='button']", 'Locator2': "xpath://label[@class='checkbox']//input[@value='multiselect-all']"}}, 'Unit': {'Value': 'Head Office (CO)', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "//span[contains(text(),'Head Office (CO)')]", 'Locator2': "//div[@id='select2-drop']//div[@class='select2-search']//input[@type='text']"}}, 'Status': {'Value': 'All', 'Type': 'Dropdown', 'Locator': "xpath://select[@id='Status']"}, 'Show Child Unit': {'Value': 'Single Unit', 'Type': 'Dropdown', 'Locator': "xpath://select[@id='showSingleUnit']"}, 'View': {'Value': 'Ledger View', 'Type': 'Dropdown', 'Locator': "xpath://select[@id='ShowView']"}, 'Date To': {'Value': '', 'Type': 'Datepicker', 'Locator': "xpath://input[@id='txtTDATE']"}, 'Date From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='txtFDATE']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Viewbutton': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnView']"}, 'Reset': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnReset']"}}</msg>
-<msg timestamp="20220801 15:58:44.359" level="INFO">Monthly Report={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/hrm/DivisionSalaryHead/index', 'Filter button': "//button[@id='btnformfilter']", 'Financial Year': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='FinancialYear']"}, 'Cycle Type': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='Cycletype']"}, 'Salary Cycle': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='SalaryCycleId']"}, 'Checkbox': {'Value': '', 'Type': 'Checkbox', 'Locator': "//input[@id='chkUnit']"}, 'Apply filter': {'Value': '', 'Type': 'Button', 'Locator': "//div[@class='btn-group btn-group-xs pull-right']//button[@type='submit']"}, 'Voucher Date From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='VoucherFromDate']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Voucher Date To': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='VoucherToDate']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}}</msg>
-<msg timestamp="20220801 15:58:44.360" level="INFO">Annexure C1={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/PayrollProcess/SalaryDetailReportFilter?q=QBoVzdEQJ2A=', 'Financial Year': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='Finyear']"}, 'Location': {'Value': '', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//div[@class='select2-container' and @id='s2id_UnitId']", 'Locator2': "//body/div[@id='select2-drop']/div/input"}}, 'Type': {'Value': '', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//div[@class='col-md-2']//button[@class='multiselect dropdown-toggle btn btn-default']", 'Locator2': "//div[@class='btn-group open']//div[@class='input-group']//input[@class='form-control multiselect-search']", 'Locator3': "//li[@class='multiselect-item multiselect-all active']//label//input[@type='checkbox']", 'Locator4': "//label[@class='checkbox']//input[@parentid='0' and @value='10']"}}, 'Checkbox': {'Value': '', 'Type': 'Checkbox', 'Locator': "//input[@id='chkUnit']"}, 'Salary Head': {'Value': '', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//*[@id='divsalaryhead']/div/button", 'Locator2': "//div[@id='divsalaryhead']//div//input[@class='form-control multiselect-search']", 'Locator3': "//label[@class='checkbox']//input[@value='491']"}}, 'Date From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='DisbursedDtFrom']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Date To': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='DisbursedDtTo']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Viewbutton': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnView']"}}</msg>
-<msg timestamp="20220801 15:58:44.360" level="INFO">Payroll MIS={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/MIS/SalaryFilter', 'Cycle Type': {'Value': {'Value1': 'Salary', 'Value2': 'Arrear', 'Value3': 'Leave Enchashment'}, 'Type': 'Dropdown ', 'Locator': "xpath: //select[@id='Cycletype']"}, 'Financial Year': {'Value': '', 'Type': 'Dropdown ', 'Locator': "xpath://select[@id='FinancialYear']"}, 'Payroll Cycle': {'Value': '', 'Type': 'Dropdown', 'Locator': "xpath : //select[@id='SalaryCycleId'] "}, 'Payroll Status': {'Value': '', 'Type': 'Dropdown ', 'Locator': "xpath : //select[@id='LockStatus']"}, 'Office Type': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath : //div[@class='col-md-4']//div[@class='row']//button[@title='None selected']", 'Locator2': "xpath : //div[@class='btn-group open']//ul//li//a//label//input[1] "}}, 'Pay Group': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath : //div[@id='divPayGroup']", 'Locator2': "xpath : //div[@id='divPayGroup']//div[@id='parDrView']/div/ul/li[3]/a  "}}, 'Payment Location': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath :  //div[@id='payunitdiv']//div[@id='parDrView']/div/button  ", 'Locator2': "xpath :  //*[@id='parDrView']/div[@class='btn-group open']/ul/li[2]/a/label  "}}, 'Employee Location': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath : //div[@id='fdivunit']//div[@id='parDrView']/div/button ", 'Locator2': "xpath : //div[@class='btn-group open']//ul//li[2]//a//label//input[1] "}}, 'View Annexure Reports Button': {'Value': '', 'Type': 'Button ', 'Locator': "xpath : //input[@id='btnAnnexureReports']"}, 'View Button': {'Value': '', 'Type': 'Button ', 'Locator': {'Locator1': "xpath : //input[@id='btnView'] ", 'Locator2': "xpath : //div[@id='LoadingImage']//img  "}}, 'Cancel Button': {'Value': '', 'Type': 'Button ', 'Locator': "xpath : //input[@id='btnCancel'] "}, 'LE Application From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath: //input[@id='LEFromDate']", 'Locator2': "xpath://select[@class='ui-datepicker-month']", 'Locator3': "xpath://select[@class='ui-datepicker-year']", 'Locator4': 'xpath: //tbody/tr/td/a'}}, 'To Date': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath: //input[@id='LEToDate']", 'Locator2': "xpath: //select[@class='ui-datepicker-month']", 'Locator3': "xpath: //select[@class='ui-datepicker-year']", 'Locator4': 'xpath: //tbody/tr/td/a '}}}</msg>
-<msg timestamp="20220801 15:58:44.360" level="INFO">Income Tax Deduction={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/MIS/IncomeTaxDeductionIndex', 'Financial year': {'Value': '4', 'Type': 'Dropdown', 'Locator': "//select[@id='FINYEAR']"}, 'Location': {'Value': '', 'Type': 'Searchable Dropdown', 'Locator': {'Locator1': "//div[@id='s2id_unitid']", 'Locator2': "//body/div[@id='select2-drop']/div/input"}}, 'Pay Group': {'Value': '', 'Type': 'Searchable Dropdown', 'Locator': {'Locator1': "//div[@id='s2id_PbGroupID']/a ", 'Locator2': "//*[@id='select2-drop']/ul/li[2]/div "}}, 'Division': {'Value': '', 'Type': 'checkbox Dropdown', 'Locator': {'Locator1': "//div[@class='btn-group']", 'Locator2': "//div[@class='btn-group open']/ul/li[1]"}}, 'Employee Name': {'Value': '', 'Type': 'Searchable Dropdown', 'Locator': {'Locator1': "//div[@id='s2id_EmployeeId']/a/span ", 'Locator2': "//*[@id='select2-drop']/ul/li[2]/div "}}, 'Report Type': {'Value': '1', 'Type': 'Dropdown', 'Locator': "//select[@id='ReportType']"}, 'Show Child Location Employee': {'Value': '', 'Type': 'checkbox', 'Locator': "//*[@id='chkUnit']"}, 'View Button': {'Value': '', 'Type': 'checkbox', 'Locator': "//input[@id='btnView']"}, 'Calculation done for': {'Value': '', 'Type': '', 'Locator': "//label[@id='lblCalculatedEmp'] "}, 'Remaining Employees': {'Value': '', 'Type': '', 'Locator': "//label[@id='lblRemainingEmp']"}, 'Recalculate': {'Value': '', 'Type': '', 'Locator': "//*[@id='lblcalculatetext'] "}}</msg>
-<msg timestamp="20220801 15:58:44.360" level="INFO">GSTR1={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISFilter/GSTR1Filter', 'GSTR Type': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='ddlGSTType']"}, 'Unit': {'Value': 'Head Office(CO)', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//div[@id='s2id_Unit']", 'Locator2': "//div[@class='select2-search']//input[@class='select2-input']", 'Locator3': "//*[@id='select2-drop']/ul/li[23]/div"}}, 'From Date': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='txtFDATE']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'To Date': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='txtTDATE']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Viewbutton': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnView']"}}</msg>
-<msg timestamp="20220801 15:58:44.360" level="INFO">console=yes</msg>
-<status status="PASS" starttime="20220801 15:58:44.357" endtime="20220801 15:58:44.360"/>
+<msg timestamp="20220801 17:23:08.467" level="INFO">Ledger Listing={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISReport/report/LedgerlistFilter', 'Account Name': {'Value': 'BILLS TO PAY(655)', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath://span[contains(text(),'--Select One--')]", 'Locator2': "xpath://body/div[@id='select2-drop']/div[1]/input[1]"}}, 'Voucher Type': {'Value': 'Select all', 'Type': 'Multiselect Dropdown', 'Locator': {'Locator1': "xpath://div[@class='btn-group']//button[@type='button']", 'Locator2': "xpath://label[@class='checkbox']//input[@value='multiselect-all']"}}, 'Unit': {'Value': 'Head Office (CO)', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "//span[contains(text(),'Head Office (CO)')]", 'Locator2': "//div[@id='select2-drop']//div[@class='select2-search']//input[@type='text']"}}, 'Status': {'Value': 'All', 'Type': 'Dropdown', 'Locator': "xpath://select[@id='Status']"}, 'Show Child Unit': {'Value': 'Single Unit', 'Type': 'Dropdown', 'Locator': "xpath://select[@id='showSingleUnit']"}, 'View': {'Value': 'Ledger View', 'Type': 'Dropdown', 'Locator': "xpath://select[@id='ShowView']"}, 'Date To': {'Value': '', 'Type': 'Datepicker', 'Locator': "xpath://input[@id='txtTDATE']"}, 'Date From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='txtFDATE']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Viewbutton': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnView']"}, 'Reset': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnReset']"}}</msg>
+<msg timestamp="20220801 17:23:08.467" level="INFO">Monthly Report={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/hrm/DivisionSalaryHead/index', 'Filter button': "//button[@id='btnformfilter']", 'Financial Year': {'Value': '2022-23', 'Type': 'Dropdown', 'Locator': "//select[@id='FinancialYear']"}, 'Cycle Type': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='Cycletype']"}, 'Salary Cycle': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='SalaryCycleId']"}, 'Checkbox': {'Value': '', 'Type': 'Checkbox', 'Locator': "//input[@id='chkUnit']"}, 'Apply filter': {'Value': '', 'Type': 'Button', 'Locator': "//div[@class='btn-group btn-group-xs pull-right']//button[@type='submit']"}, 'Voucher Date From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='VoucherFromDate']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Voucher Date To': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='VoucherToDate']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}}</msg>
+<msg timestamp="20220801 17:23:08.467" level="INFO">Annexure C1={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/PayrollProcess/SalaryDetailReportFilter?q=QBoVzdEQJ2A=', 'Financial Year': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='Finyear']"}, 'Location': {'Value': '', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//div[@class='select2-container' and @id='s2id_UnitId']", 'Locator2': "//body/div[@id='select2-drop']/div/input"}}, 'Type': {'Value': '', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//div[@class='col-md-2']//button[@class='multiselect dropdown-toggle btn btn-default']", 'Locator2': "//div[@class='btn-group open']//div[@class='input-group']//input[@class='form-control multiselect-search']", 'Locator3': "//li[@class='multiselect-item multiselect-all active']//label//input[@type='checkbox']", 'Locator4': "//label[@class='checkbox']//input[@parentid='0' and @value='10']"}}, 'Checkbox': {'Value': '', 'Type': 'Checkbox', 'Locator': "//input[@id='chkUnit']"}, 'Salary Head': {'Value': '', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//*[@id='divsalaryhead']/div/button", 'Locator2': "//div[@id='divsalaryhead']//div//input[@class='form-control multiselect-search']", 'Locator3': "//label[@class='checkbox']//input[@value='491']"}}, 'Date From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='DisbursedDtFrom']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Date To': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='DisbursedDtTo']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Viewbutton': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnView']"}}</msg>
+<msg timestamp="20220801 17:23:08.468" level="INFO">Payroll MIS={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/MIS/SalaryFilter', 'Cycle Type': {'Value': {'Value1': 'Salary', 'Value2': 'Arrear', 'Value3': 'Leave Enchashment'}, 'Type': 'Dropdown ', 'Locator': "xpath: //select[@id='Cycletype']"}, 'Financial Year': {'Value': '2022-23', 'Type': 'Dropdown ', 'Locator': "xpath://select[@id='FinancialYear']"}, 'Payroll Cycle': {'Value': '', 'Type': 'Dropdown', 'Locator': "xpath : //select[@id='SalaryCycleId'] "}, 'Payroll Status': {'Value': '', 'Type': 'Dropdown ', 'Locator': "xpath : //select[@id='LockStatus']"}, 'Office Type': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath : //div[@class='col-md-4']//div[@class='row']//button[@title='None selected']", 'Locator2': "xpath : //div[@class='btn-group open']//ul//li//a//label//input[1] "}}, 'Pay Group': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath : //div[@id='divPayGroup']", 'Locator2': "xpath : //div[@id='divPayGroup']//div[@id='parDrView']/div/ul/li[3]/a  "}}, 'Payment Location': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath :  //div[@id='payunitdiv']//div[@id='parDrView']/div/button  ", 'Locator2': "xpath :  //*[@id='parDrView']/div[@class='btn-group open']/ul/li[2]/a/label  "}}, 'Employee Location': {'Value': '', 'Type': 'Dropdown searchable', 'Locator': {'Locator1': "xpath : //div[@id='fdivunit']//div[@id='parDrView']/div/button ", 'Locator2': "xpath : //div[@class='btn-group open']//ul//li[2]//a//label//input[1] "}}, 'View Annexure Reports Button': {'Value': '', 'Type': 'Button ', 'Locator': "xpath : //input[@id='btnAnnexureReports']"}, 'View Button': {'Value': '', 'Type': 'Button ', 'Locator': {'Locator1': "xpath : //input[@id='btnView'] ", 'Locator2': "xpath : //div[@id='LoadingImage']//img  "}}, 'Cancel Button': {'Value': '', 'Type': 'Button ', 'Locator': "xpath : //input[@id='btnCancel'] "}, 'LE Application From': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath: //input[@id='LEFromDate']", 'Locator2': "xpath://select[@class='ui-datepicker-month']", 'Locator3': "xpath://select[@class='ui-datepicker-year']", 'Locator4': 'xpath: //tbody/tr/td/a'}}, 'To Date': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath: //input[@id='LEToDate']", 'Locator2': "xpath: //select[@class='ui-datepicker-month']", 'Locator3': "xpath: //select[@class='ui-datepicker-year']", 'Locator4': 'xpath: //tbody/tr/td/a '}}}</msg>
+<msg timestamp="20220801 17:23:08.468" level="INFO">Income Tax Deduction={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/MIS/IncomeTaxDeductionIndex', 'Financial year': {'Value': '4', 'Type': 'Dropdown', 'Locator': "//select[@id='FINYEAR']"}, 'Location': {'Value': '', 'Type': 'Searchable Dropdown', 'Locator': {'Locator1': "//div[@id='s2id_unitid']", 'Locator2': "//body/div[@id='select2-drop']/div/input"}}, 'Pay Group': {'Value': '', 'Type': 'Searchable Dropdown', 'Locator': {'Locator1': "//div[@id='s2id_PbGroupID']/a ", 'Locator2': "//*[@id='select2-drop']/ul/li[2]/div "}}, 'Division': {'Value': '', 'Type': 'checkbox Dropdown', 'Locator': {'Locator1': "//div[@class='btn-group']", 'Locator2': "//div[@class='btn-group open']/ul/li[1]"}}, 'Employee Name': {'Value': '', 'Type': 'Searchable Dropdown', 'Locator': {'Locator1': "//div[@id='s2id_EmployeeId']/a/span ", 'Locator2': "//*[@id='select2-drop']/ul/li[2]/div "}}, 'Report Type': {'Value': '1', 'Type': 'Dropdown', 'Locator': "//select[@id='ReportType']"}, 'Show Child Location Employee': {'Value': '', 'Type': 'checkbox', 'Locator': "//*[@id='chkUnit']"}, 'View Button': {'Value': '', 'Type': 'checkbox', 'Locator': "//input[@id='btnView']"}, 'Calculation done for': {'Value': '', 'Type': '', 'Locator': "//label[@id='lblCalculatedEmp'] "}, 'Remaining Employees': {'Value': '', 'Type': '', 'Locator': "//label[@id='lblRemainingEmp']"}, 'Recalculate': {'Value': '', 'Type': '', 'Locator': "//*[@id='lblcalculatetext'] "}}</msg>
+<msg timestamp="20220801 17:23:08.468" level="INFO">GSTR1={'url': 'https://demoprojects.e-connectsolutions.com/eprash-test/ACC/MISFilter/GSTR1Filter', 'GSTR Type': {'Value': '', 'Type': 'Dropdown', 'Locator': "//select[@id='ddlGSTType']"}, 'Unit': {'Value': 'Head Office(CO)', 'Type': 'Dropdown Searchable', 'Locator': {'Locator1': "//div[@id='s2id_Unit']", 'Locator2': "//div[@class='select2-search']//input[@class='select2-input']", 'Locator3': "//*[@id='select2-drop']/ul/li[23]/div"}}, 'From Date': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='txtFDATE']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'To Date': {'Value': '', 'Type': 'Datepicker', 'Locator': {'Locator1': "xpath://input[@id='txtTDATE']", 'Locator2': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-month']", 'Locator3': "xpath://div[@class='ui-datepicker-title']//select[@class='ui-datepicker-year']", 'Locator4': "xpath://table[@class='ui-datepicker-calendar']//a"}}, 'Viewbutton': {'Value': '', 'Type': 'Button', 'Locator': "xpath://input[@id='btnView']"}}</msg>
+<msg timestamp="20220801 17:23:08.468" level="INFO">console=yes</msg>
+<status status="PASS" starttime="20220801 17:23:08.464" endtime="20220801 17:23:08.468"/>
 </kw>
-<status status="PASS" starttime="20220801 15:58:44.279" endtime="20220801 15:58:44.361"/>
+<status status="PASS" starttime="20220801 17:23:08.422" endtime="20220801 17:23:08.469"/>
 </kw>
-<status status="PASS" starttime="20220801 15:58:16.481" endtime="20220801 15:58:44.361"/>
+<status status="PASS" starttime="20220801 17:22:53.813" endtime="20220801 17:23:08.469"/>
 </kw>
-<kw name="Income Tax Report" library="MIS_Keywords">
-<kw name="Fill Report Filter" library="IncomeTax">
-<doc>This keyword will fill the filters and wait until one or more employee details calculate</doc>
+<kw name="Leave Encashment Report" library="MIS_Keywords">
+<kw name="Open Report" library="PayrollMIS">
 <kw name="Go To" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['url']}</arg>
+<arg>${object["Payroll MIS"]["url"]}</arg>
 <doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20220801 15:58:44.364" level="INFO">Opening url 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/MIS/IncomeTaxDeductionIndex'</msg>
-<status status="PASS" starttime="20220801 15:58:44.362" endtime="20220801 15:58:50.582"/>
+<msg timestamp="20220801 17:23:08.474" level="INFO">Opening url 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/MIS/SalaryFilter'</msg>
+<status status="PASS" starttime="20220801 17:23:08.473" endtime="20220801 17:23:11.945"/>
 </kw>
-<kw name="Fill filters" library="IncomeTax">
-<doc>Filling the report filters</doc>
-<kw name="Select From List By Index" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Financial year']['Locator']}</arg>
-<arg>${object['Income Tax Deduction']['Financial year']['Value']}</arg>
-<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
-<msg timestamp="20220801 15:58:50.588" level="INFO">Selecting options from selection list '//select[@id='FINYEAR']' by index 4.</msg>
-<status status="PASS" starttime="20220801 15:58:50.583" endtime="20220801 15:58:50.900"/>
+<status status="PASS" starttime="20220801 17:23:08.472" endtime="20220801 17:23:11.945"/>
 </kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Location']['Locator']['Locator1']}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220801 15:58:50.904" level="INFO">Clicking element '//div[@id='s2id_unitid']'.</msg>
-<status status="PASS" starttime="20220801 15:58:50.901" endtime="20220801 15:58:51.168"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Location']['Locator']['Locator2']}</arg>
-<arg>Head Office</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220801 15:58:51.171" level="INFO">Typing text 'Head Office' into text field '//body/div[@id='select2-drop']/div/input'.</msg>
-<status status="PASS" starttime="20220801 15:58:51.169" endtime="20220801 15:58:51.508"/>
-</kw>
-<kw name="Press Keys" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Location']['Locator']['Locator2']}</arg>
-<arg>\ue007</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<msg timestamp="20220801 15:58:51.512" level="INFO">Sending key(s) ('\ue007',) to //body/div[@id='select2-drop']/div/input element.</msg>
-<msg timestamp="20220801 15:58:51.827" level="INFO">Sending key </msg>
-<status status="PASS" starttime="20220801 15:58:51.508" endtime="20220801 15:58:51.904"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:58:53.906" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20220801 15:58:51.904" endtime="20220801 15:58:53.906"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:58:55.907" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20220801 15:58:53.906" endtime="20220801 15:58:55.907"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>1s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:58:56.909" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20220801 15:58:55.908" endtime="20220801 15:58:56.909"/>
-</kw>
-<kw name="Select From List By Index" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Report Type']['Locator']}</arg>
-<arg>${object['Income Tax Deduction']['Report Type']['Value']}</arg>
-<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
-<msg timestamp="20220801 15:58:56.912" level="INFO">Selecting options from selection list '//select[@id='ReportType']' by index 1.</msg>
-<status status="PASS" starttime="20220801 15:58:56.909" endtime="20220801 15:58:57.094"/>
-</kw>
-<status status="PASS" starttime="20220801 15:58:50.582" endtime="20220801 15:58:57.095"/>
-</kw>
-<kw name="Recalculate details" library="IncomeTax">
-<kw name="Sleep" library="BuiltIn">
-<arg>30S</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:59:27.096" level="INFO">Slept 30 seconds</msg>
-<status status="PASS" starttime="20220801 15:58:57.096" endtime="20220801 15:59:27.096"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Recalculate']['Locator']}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220801 15:59:27.098" level="INFO">Clicking element '//*[@id='lblcalculatetext'] '.</msg>
-<status status="PASS" starttime="20220801 15:59:27.096" endtime="20220801 15:59:27.195"/>
+<kw name="Fill Leave Encashment Report" library="PayrollMIS">
+<kw name="Select From List By Label" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Financial Year"]["Locator"]}</arg>
+<arg>${object["Payroll MIS"]["Financial Year"]["Value"]}</arg>
+<doc>Selects options from selection list ``locator`` by ``labels``.</doc>
+<msg timestamp="20220801 17:23:11.949" level="INFO">Selecting options from selection list 'xpath://select[@id='FinancialYear']' by label 2022-23.</msg>
+<status status="PASS" starttime="20220801 17:23:11.946" endtime="20220801 17:23:12.063"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
-<arg>//button[contains(text(),'OK')]</arg>
-<arg>30s</arg>
+<arg>${object["Payroll MIS"]["Financial Year"]["Locator"]}</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220801 15:59:27.195" endtime="20220801 15:59:27.230"/>
-</kw>
-<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
-<arg>//button[contains(text(),'OK')]</arg>
-<arg>30s</arg>
-<doc>Waits until the element ``locator`` is visible.</doc>
-<status status="PASS" starttime="20220801 15:59:27.231" endtime="20220801 15:59:27.519"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>//button[contains(text(),'OK')]</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220801 15:59:27.520" level="INFO">Clicking element '//button[contains(text(),'OK')]'.</msg>
-<status status="PASS" starttime="20220801 15:59:27.519" endtime="20220801 15:59:27.630"/>
-</kw>
-<status status="PASS" starttime="20220801 15:58:57.095" endtime="20220801 15:59:27.630"/>
-</kw>
-<kw name="Recursive Loop" library="IncomeTax">
-<doc>It will check until atleast</doc>
-<kw name="Sleep" library="BuiltIn">
-<arg>10s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:59:37.632" level="INFO">Slept 10 seconds</msg>
-<status status="PASS" starttime="20220801 15:59:27.631" endtime="20220801 15:59:37.632"/>
-</kw>
-<kw name="Go To" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['url']}</arg>
-<doc>Navigates the current browser window to the provided ``url``.</doc>
-<msg timestamp="20220801 15:59:37.635" level="INFO">Opening url 'https://demoprojects.e-connectsolutions.com/eprash-test/HRM/MIS/IncomeTaxDeductionIndex'</msg>
-<status status="PASS" starttime="20220801 15:59:37.633" endtime="20220801 15:59:42.889"/>
-</kw>
-<kw name="Fill filters" library="IncomeTax">
-<doc>Filling the report filters</doc>
-<kw name="Select From List By Index" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Financial year']['Locator']}</arg>
-<arg>${object['Income Tax Deduction']['Financial year']['Value']}</arg>
-<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
-<msg timestamp="20220801 15:59:42.895" level="INFO">Selecting options from selection list '//select[@id='FINYEAR']' by index 4.</msg>
-<status status="PASS" starttime="20220801 15:59:42.891" endtime="20220801 15:59:43.096"/>
-</kw>
-<kw name="Click Element" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Location']['Locator']['Locator1']}</arg>
-<doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220801 15:59:43.098" level="INFO">Clicking element '//div[@id='s2id_unitid']'.</msg>
-<status status="PASS" starttime="20220801 15:59:43.097" endtime="20220801 15:59:43.303"/>
-</kw>
-<kw name="Input Text" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Location']['Locator']['Locator2']}</arg>
-<arg>Head Office</arg>
-<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
-<msg timestamp="20220801 15:59:43.305" level="INFO">Typing text 'Head Office' into text field '//body/div[@id='select2-drop']/div/input'.</msg>
-<status status="PASS" starttime="20220801 15:59:43.303" endtime="20220801 15:59:43.594"/>
-</kw>
-<kw name="Press Keys" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Location']['Locator']['Locator2']}</arg>
-<arg>\ue007</arg>
-<doc>Simulates the user pressing key(s) to an element or on the active browser.</doc>
-<msg timestamp="20220801 15:59:43.596" level="INFO">Sending key(s) ('\ue007',) to //body/div[@id='select2-drop']/div/input element.</msg>
-<msg timestamp="20220801 15:59:43.916" level="INFO">Sending key </msg>
-<status status="PASS" starttime="20220801 15:59:43.594" endtime="20220801 15:59:43.986"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:59:45.988" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20220801 15:59:43.986" endtime="20220801 15:59:45.988"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>2s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:59:47.990" level="INFO">Slept 2 seconds</msg>
-<status status="PASS" starttime="20220801 15:59:45.988" endtime="20220801 15:59:47.990"/>
-</kw>
-<kw name="Sleep" library="BuiltIn">
-<arg>1s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:59:48.991" level="INFO">Slept 1 second</msg>
-<status status="PASS" starttime="20220801 15:59:47.991" endtime="20220801 15:59:48.991"/>
+<status status="PASS" starttime="20220801 17:23:12.063" endtime="20220801 17:23:12.076"/>
 </kw>
 <kw name="Select From List By Index" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Report Type']['Locator']}</arg>
-<arg>${object['Income Tax Deduction']['Report Type']['Value']}</arg>
+<arg>${object["Payroll MIS"]["Cycle Type"]["Locator"]}</arg>
+<arg>3</arg>
 <doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
-<msg timestamp="20220801 15:59:48.996" level="INFO">Selecting options from selection list '//select[@id='ReportType']' by index 1.</msg>
-<status status="PASS" starttime="20220801 15:59:48.992" endtime="20220801 15:59:49.276"/>
+<msg timestamp="20220801 17:23:12.078" level="INFO">Selecting options from selection list 'xpath: //select[@id='Cycletype']' by index 3.</msg>
+<status status="PASS" starttime="20220801 17:23:12.076" endtime="20220801 17:23:12.631"/>
 </kw>
-<status status="PASS" starttime="20220801 15:59:42.889" endtime="20220801 15:59:49.276"/>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220801 17:23:16.634" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" starttime="20220801 17:23:12.632" endtime="20220801 17:23:16.634"/>
+</kw>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Payroll Status"]["Locator"]}</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<msg timestamp="20220801 17:23:16.636" level="INFO">Selecting options from selection list 'xpath : //select[@id='LockStatus']' by index 0.</msg>
+<status status="PASS" starttime="20220801 17:23:16.634" endtime="20220801 17:23:16.717"/>
 </kw>
 <kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['Calculation done for']['Locator']}</arg>
-<arg>30s</arg>
+<arg>${object["Payroll MIS"]["Office Type"]["Locator"]["Locator1"]}</arg>
 <doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220801 15:59:49.276" endtime="20220801 15:59:49.336"/>
+<status status="PASS" starttime="20220801 17:23:16.718" endtime="20220801 17:23:16.737"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Office Type"]["Locator"]["Locator1"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:16.739" level="INFO">Clicking element 'xpath : //div[@class='col-md-4']//div[@class='row']//button[@title='None selected']'.</msg>
+<status status="PASS" starttime="20220801 17:23:16.737" endtime="20220801 17:23:16.843"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Office Type"]["Locator"]["Locator2"]}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220801 17:23:16.844" endtime="20220801 17:23:16.888"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Office Type"]["Locator"]["Locator2"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:16.890" level="INFO">Clicking element 'xpath : //div[@class='btn-group open']//ul//li//a//label//input[1] '.</msg>
+<status status="PASS" starttime="20220801 17:23:16.888" endtime="20220801 17:23:17.124"/>
+</kw>
+<kw name="Sleep" library="BuiltIn">
+<arg>4s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<msg timestamp="20220801 17:23:21.125" level="INFO">Slept 4 seconds</msg>
+<status status="PASS" starttime="20220801 17:23:17.124" endtime="20220801 17:23:21.125"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Employee Location"]["Locator"]["Locator1"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:21.127" level="INFO">Clicking element 'xpath : //div[@id='fdivunit']//div[@id='parDrView']/div/button '.</msg>
+<status status="PASS" starttime="20220801 17:23:21.125" endtime="20220801 17:23:21.271"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Employee Location"]["Locator"]["Locator2"]}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220801 17:23:21.271" endtime="20220801 17:23:21.298"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Employee Location"]["Locator"]["Locator2"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:21.300" level="INFO">Clicking element 'xpath : //div[@class='btn-group open']//ul//li[2]//a//label//input[1] '.</msg>
+<status status="PASS" starttime="20220801 17:23:21.298" endtime="20220801 17:23:21.720"/>
 </kw>
 <kw name="Sleep" library="BuiltIn">
 <arg>5s</arg>
 <doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:59:54.339" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20220801 15:59:49.336" endtime="20220801 15:59:54.339"/>
+<msg timestamp="20220801 17:23:26.722" level="INFO">Slept 5 seconds</msg>
+<status status="PASS" starttime="20220801 17:23:21.721" endtime="20220801 17:23:26.722"/>
 </kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${Emp_Count}</var>
-<arg>//b[@id='btext']/span[1]/label</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220801 15:59:54.387" level="INFO">${Emp_Count} = 4</msg>
-<status status="PASS" starttime="20220801 15:59:54.339" endtime="20220801 15:59:54.387"/>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Pay Group"]["Locator"]["Locator1"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:26.724" level="INFO">Clicking element 'xpath : //div[@id='divPayGroup']'.</msg>
+<status status="PASS" starttime="20220801 17:23:26.722" endtime="20220801 17:23:26.848"/>
+</kw>
+<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Pay Group"]["Locator"]["Locator2"]}</arg>
+<doc>Waits until the element ``locator`` appears on the current page.</doc>
+<status status="PASS" starttime="20220801 17:23:26.849" endtime="20220801 17:23:26.882"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["Pay Group"]["Locator"]["Locator2"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:26.883" level="INFO">Clicking element 'xpath : //div[@id='divPayGroup']//div[@id='parDrView']/div/ul/li[3]/a  '.</msg>
+<status status="PASS" starttime="20220801 17:23:26.882" endtime="20220801 17:23:27.045"/>
+</kw>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator1"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:27.050" level="INFO">Clicking element 'xpath: //input[@id='LEFromDate']'.</msg>
+<status status="PASS" starttime="20220801 17:23:27.046" endtime="20220801 17:23:27.494"/>
+</kw>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator2"]}</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<msg timestamp="20220801 17:23:27.496" level="INFO">Selecting options from selection list 'xpath://select[@class='ui-datepicker-month']' by index 0.</msg>
+<status status="PASS" starttime="20220801 17:23:27.494" endtime="20220801 17:23:27.752"/>
+</kw>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator3"]}</arg>
+<arg>0</arg>
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<msg timestamp="20220801 17:23:27.754" level="INFO">Selecting options from selection list 'xpath://select[@class='ui-datepicker-year']' by index 0.</msg>
+<status status="PASS" starttime="20220801 17:23:27.752" endtime="20220801 17:23:27.834"/>
+</kw>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator4"]}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" starttime="20220801 17:23:27.835" endtime="20220801 17:23:27.871"/>
+</kw>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>@{alldates}</var>
+<arg>${object["Payroll MIS"]["LE Application From"]["Locator"]["Locator4"]}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20220801 17:23:27.885" level="INFO">@{alldates} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="ef9de284-d05b-4a0e-8ecf-15dcc55c925b")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (ses...</msg>
+<status status="PASS" starttime="20220801 17:23:27.871" endtime="20220801 17:23:27.885"/>
 </kw>
 <kw name="Log Many" library="BuiltIn">
-<arg>${Emp_Count}</arg>
+<arg>@{alldates}</arg>
 <doc>Logs the given messages as separate entries using the INFO level.</doc>
-<msg timestamp="20220801 15:59:54.387" level="INFO">4</msg>
-<status status="PASS" starttime="20220801 15:59:54.387" endtime="20220801 15:59:54.387"/>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="ef9de284-d05b-4a0e-8ecf-15dcc55c925b")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="5ac37343-438e-40f0-9362-135983d83d90")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="bfc1fdfb-a4c2-4071-9fad-512fd7d8a587")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="fa9ed3fc-3e60-4dbf-915e-998ccb4c4be8")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="64544216-177f-4db1-8812-964b9ea4e96b")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="3df3d7ae-0843-4aef-8003-b247b4edbbed")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="d8ed6e00-3af0-458f-9cfc-556f9e7ae685")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="24ef0626-345c-46d0-a88a-3f185dcce11b")&gt;</msg>
+<msg timestamp="20220801 17:23:27.886" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="1be9af8d-3033-4f77-8314-ecaaca97559a")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="d33fe557-755e-4c81-8cd6-caf9f4aa4911")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="62ec7582-1e6d-4d4e-9cfd-f9876b500839")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="860e647c-a656-4ace-ae8d-4abc5af4859f")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="44e6b5d3-4d96-471a-9df1-f596f977244f")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="27bf589b-93b7-47e0-8891-adc155bece30")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="07c7de49-201c-4170-9c89-c62e119d3363")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="92c9e7b4-b77d-47d9-8c94-013b8548afb6")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="3117acea-3cf9-4e37-b13e-f571e911cb05")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="d4ba03b0-c72a-47f6-a1c3-eb1679d275e5")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="d2219afb-857b-4674-ba48-9fbc26441f84")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="ccdeeb27-1e84-4d9d-8d64-bcda58b6f8cf")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="268eceb5-badf-4ae1-901d-9b15d534c3a6")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="761d2be8-829e-4eae-9643-8004281279d5")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="2a6afcbd-9368-4994-922e-c478b7628513")&gt;</msg>
+<msg timestamp="20220801 17:23:27.887" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="3e855f0a-051c-408a-a777-b33902ec5b18")&gt;</msg>
+<msg timestamp="20220801 17:23:27.888" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="fa0fee79-96b9-46a7-88db-56ff3564a82f")&gt;</msg>
+<msg timestamp="20220801 17:23:27.888" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="6d8a220f-a4f4-4bc8-864d-41648f9d4e9d")&gt;</msg>
+<msg timestamp="20220801 17:23:27.888" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="1c955339-a549-4920-80a2-f7de583186d1")&gt;</msg>
+<msg timestamp="20220801 17:23:27.888" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="2bdef314-e189-41ae-91fe-6746ded5c964")&gt;</msg>
+<msg timestamp="20220801 17:23:27.888" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="e373b76a-12e2-496f-986f-9ddd8c82dce5")&gt;</msg>
+<msg timestamp="20220801 17:23:27.888" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="aa266386-786b-45cc-bab8-d745a85cc4d4")&gt;</msg>
+<status status="PASS" starttime="20220801 17:23:27.885" endtime="20220801 17:23:27.888"/>
+</kw>
+<for flavor="IN">
+<var>${date}</var>
+<value>@{all dates}</value>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="ef9de284-d05b-4a0e-8ecf-15dcc55c925b")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:27.910" level="INFO">${date_text} = 1</msg>
+<status status="PASS" starttime="20220801 17:23:27.889" endtime="20220801 17:23:27.910"/>
 </kw>
 <kw name="Run Keyword If" library="BuiltIn">
-<arg>'${Emp_Count}' == '${EMPTY}'</arg>
-<arg>Recursive Loop</arg>
+<arg>${date_text} == 1</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
 <doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<status status="PASS" starttime="20220801 15:59:54.388" endtime="20220801 15:59:54.389"/>
-</kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${Emp_Count}' &gt; '2'</arg>
-<arg>View Report</arg>
-<arg>ELSE</arg>
-<arg>Recursive Loop</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
-<kw name="View Report" library="IncomeTax">
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 15:59:59.392" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20220801 15:59:54.390" endtime="20220801 15:59:59.392"/>
-</kw>
 <kw name="Click Element" library="SeleniumLibrary">
-<arg>${object['Income Tax Deduction']['View Button']['Locator']}</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
 <doc>Click the element identified by ``locator``.</doc>
-<msg timestamp="20220801 15:59:59.396" level="INFO">Clicking element '//input[@id='btnView']'.</msg>
-<status status="PASS" starttime="20220801 15:59:59.393" endtime="20220801 15:59:59.729"/>
+<msg timestamp="20220801 17:23:27.912" level="INFO">Clicking element '//tbody/tr/td/a [text()=1]'.</msg>
+<status status="PASS" starttime="20220801 17:23:27.911" endtime="20220801 17:23:28.008"/>
 </kw>
-<status status="PASS" starttime="20220801 15:59:54.390" endtime="20220801 15:59:59.729"/>
+<status status="PASS" starttime="20220801 17:23:27.910" endtime="20220801 17:23:28.008"/>
 </kw>
-<status status="PASS" starttime="20220801 15:59:54.389" endtime="20220801 15:59:59.729"/>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 1</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20220801 17:23:28.010" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20220801 17:23:28.009" endtime="20220801 17:23:28.011"/>
 </kw>
-<status status="PASS" starttime="20220801 15:59:27.630" endtime="20220801 15:59:59.729"/>
+<status status="PASS" starttime="20220801 17:23:27.888" endtime="20220801 17:23:28.011"/>
+</iter>
+<status status="PASS" starttime="20220801 17:23:27.888" endtime="20220801 17:23:28.012"/>
+</for>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["To Date"]["Locator"]["Locator1"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.014" level="INFO">Clicking element 'xpath: //input[@id='LEToDate']'.</msg>
+<status status="PASS" starttime="20220801 17:23:28.012" endtime="20220801 17:23:28.303"/>
 </kw>
-<status status="PASS" starttime="20220801 15:58:44.362" endtime="20220801 15:59:59.736"/>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["To Date"]["Locator"]["Locator2"]}</arg>
+<arg>3</arg>
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<msg timestamp="20220801 17:23:28.307" level="INFO">Selecting options from selection list 'xpath: //select[@class='ui-datepicker-month']' by index 3.</msg>
+<status status="PASS" starttime="20220801 17:23:28.303" endtime="20220801 17:23:28.613"/>
 </kw>
-<status status="PASS" starttime="20220801 15:58:44.361" endtime="20220801 15:59:59.736"/>
+<kw name="Select From List By Index" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["To Date"]["Locator"]["Locator3"]}</arg>
+<arg>1</arg>
+<doc>Selects options from selection list ``locator`` by ``indexes``.</doc>
+<msg timestamp="20220801 17:23:28.615" level="INFO">Selecting options from selection list 'xpath: //select[@class='ui-datepicker-year']' by index 1.</msg>
+<status status="PASS" starttime="20220801 17:23:28.613" endtime="20220801 17:23:28.816"/>
 </kw>
-<kw name="Verify Income Tax Report" library="MIS_Keywords">
-<kw name="Verify Report" library="IncomeTax">
-<kw name="Sleep" library="BuiltIn">
-<arg>5s</arg>
-<doc>Pauses the test executed for the given time.</doc>
-<msg timestamp="20220801 16:00:04.744" level="INFO">Slept 5 seconds</msg>
-<status status="PASS" starttime="20220801 15:59:59.743" endtime="20220801 16:00:04.744"/>
+<kw name="Get WebElement" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["To Date"]["Locator"]["Locator4"]}</arg>
+<doc>Returns the first WebElement matching the given ``locator``.</doc>
+<status status="PASS" starttime="20220801 17:23:28.816" endtime="20220801 17:23:28.845"/>
 </kw>
-<kw name="Switch Window" library="SeleniumLibrary">
-<arg>Income Tax Deduction Report</arg>
-<doc>Switches to browser window matching ``locator``.</doc>
-<status status="PASS" starttime="20220801 16:00:04.745" endtime="20220801 16:00:04.983"/>
+<kw name="Get WebElements" library="SeleniumLibrary">
+<var>@{alldates}</var>
+<arg>${object["Payroll MIS"]["To Date"]["Locator"]["Locator4"]}</arg>
+<doc>Returns a list of WebElement objects matching the ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.860" level="INFO">@{alldates} = [ &lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="40856810-9f4f-4ff2-a480-8d287b0303bd")&gt; | &lt;selenium.webdriver.remote.webelement.WebElement (ses...</msg>
+<status status="PASS" starttime="20220801 17:23:28.846" endtime="20220801 17:23:28.861"/>
 </kw>
+<kw name="Log Many" library="BuiltIn">
+<arg>@{alldates}</arg>
+<doc>Logs the given messages as separate entries using the INFO level.</doc>
+<msg timestamp="20220801 17:23:28.861" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="40856810-9f4f-4ff2-a480-8d287b0303bd")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="4634fce5-417a-4a91-a9e2-9f548063358d")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="b15f1e15-92bd-46f1-a5c4-e5e239cf875f")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="5aa09de6-7c05-480a-95d3-171cbc985408")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="979b5a2e-83be-4437-88c5-2dc753848bd9")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="49d6298e-ac66-4ccb-abfd-2f49299b88d2")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="627809d0-3f17-4189-bc1e-2dc34acf35e0")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="ca685ac7-9994-44e4-90d1-1e9b4b658880")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="8c10a74e-5f18-40af-8997-65a57abaa241")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="a81050f0-5eb7-46bb-8ae4-80c1311fa499")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="e2e0c746-b787-4ea5-b074-a6964264352e")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="409218d8-cb10-439d-84e8-65dfbbc6f91c")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="86a8ec56-4637-45f9-9cf3-810dc65878d1")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="1e4b70f1-830d-490c-b2aa-b7c9f4b31fa3")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="22677ab6-21ba-40c8-8676-6cd30cddfcbb")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="69f51734-4f84-4d7f-9f86-696f33644148")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="f4024530-0b0f-4229-9d72-e8b57913279c")&gt;</msg>
+<msg timestamp="20220801 17:23:28.862" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="491c1308-7323-4388-8e18-3fd6dee1f1a0")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="856a6642-0ad3-40e7-9625-d3de657c8a4c")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="16344d49-14b4-42a8-8fc8-7690ba7f7b23")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="33119d7a-15b2-427d-b1e8-2bcdfe272451")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="b25d0c57-7c96-4218-b4c1-6863fc3ceb3c")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="3c6def4a-06ff-4810-8d8d-789e3e7f788d")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="bdb5b8d4-e714-4eea-8aaa-c9296a3fe1f9")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="9b08527a-4f7e-4c85-bb71-0c730db23620")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="4ed7a99f-b865-4f65-8c98-5ac30feace20")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="94f6eb3c-0b4d-4a38-8a0e-26e4310dc5cf")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="0a16c5c9-b814-4615-a38d-5c78c286b851")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="7ce84244-6484-4de2-9f84-6608634fdbcf")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="1da2b97d-b57d-4090-9aed-ff9423823302")&gt;</msg>
+<msg timestamp="20220801 17:23:28.863" level="INFO">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="3613dffc-ccfa-441a-ab0a-b7f318bd9d55")&gt;</msg>
+<status status="PASS" starttime="20220801 17:23:28.861" endtime="20220801 17:23:28.864"/>
+</kw>
+<for flavor="IN">
+<var>${date}</var>
+<value>@{all dates}</value>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="40856810-9f4f-4ff2-a480-8d287b0303bd")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.884" level="INFO">${date_text} = 1</msg>
+<status status="PASS" starttime="20220801 17:23:28.864" endtime="20220801 17:23:28.884"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.885" endtime="20220801 17:23:28.885"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.885" endtime="20220801 17:23:28.886"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:28.864" endtime="20220801 17:23:28.886"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="4634fce5-417a-4a91-a9e2-9f548063358d")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.905" level="INFO">${date_text} = 2</msg>
+<status status="PASS" starttime="20220801 17:23:28.886" endtime="20220801 17:23:28.905"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.906" endtime="20220801 17:23:28.906"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.906" endtime="20220801 17:23:28.907"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:28.886" endtime="20220801 17:23:28.907"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="b15f1e15-92bd-46f1-a5c4-e5e239cf875f")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.928" level="INFO">${date_text} = 3</msg>
+<status status="PASS" starttime="20220801 17:23:28.907" endtime="20220801 17:23:28.928"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.928" endtime="20220801 17:23:28.929"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.929" endtime="20220801 17:23:28.930"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:28.907" endtime="20220801 17:23:28.930"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="5aa09de6-7c05-480a-95d3-171cbc985408")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.948" level="INFO">${date_text} = 4</msg>
+<status status="PASS" starttime="20220801 17:23:28.930" endtime="20220801 17:23:28.948"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.949" endtime="20220801 17:23:28.949"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.949" endtime="20220801 17:23:28.950"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:28.930" endtime="20220801 17:23:28.950"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="979b5a2e-83be-4437-88c5-2dc753848bd9")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.969" level="INFO">${date_text} = 5</msg>
+<status status="PASS" starttime="20220801 17:23:28.951" endtime="20220801 17:23:28.969"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.970" endtime="20220801 17:23:28.970"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.970" endtime="20220801 17:23:28.971"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:28.950" endtime="20220801 17:23:28.971"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="49d6298e-ac66-4ccb-abfd-2f49299b88d2")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:28.988" level="INFO">${date_text} = 6</msg>
+<status status="PASS" starttime="20220801 17:23:28.971" endtime="20220801 17:23:28.989"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.989" endtime="20220801 17:23:28.989"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:28.990" endtime="20220801 17:23:28.990"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:28.971" endtime="20220801 17:23:28.990"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="627809d0-3f17-4189-bc1e-2dc34acf35e0")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.009" level="INFO">${date_text} = 7</msg>
+<status status="PASS" starttime="20220801 17:23:28.991" endtime="20220801 17:23:29.009"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.009" endtime="20220801 17:23:29.009"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.010" endtime="20220801 17:23:29.010"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:28.990" endtime="20220801 17:23:29.010"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="ca685ac7-9994-44e4-90d1-1e9b4b658880")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.030" level="INFO">${date_text} = 8</msg>
+<status status="PASS" starttime="20220801 17:23:29.011" endtime="20220801 17:23:29.030"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.031" endtime="20220801 17:23:29.031"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.032" endtime="20220801 17:23:29.032"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.010" endtime="20220801 17:23:29.032"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="8c10a74e-5f18-40af-8997-65a57abaa241")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.053" level="INFO">${date_text} = 9</msg>
+<status status="PASS" starttime="20220801 17:23:29.033" endtime="20220801 17:23:29.053"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.053" endtime="20220801 17:23:29.054"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.054" endtime="20220801 17:23:29.055"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.032" endtime="20220801 17:23:29.056"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="a81050f0-5eb7-46bb-8ae4-80c1311fa499")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.075" level="INFO">${date_text} = 10</msg>
+<status status="PASS" starttime="20220801 17:23:29.056" endtime="20220801 17:23:29.075"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.076" endtime="20220801 17:23:29.076"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.077" endtime="20220801 17:23:29.077"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.056" endtime="20220801 17:23:29.078"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="e2e0c746-b787-4ea5-b074-a6964264352e")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.100" level="INFO">${date_text} = 11</msg>
+<status status="PASS" starttime="20220801 17:23:29.078" endtime="20220801 17:23:29.100"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.100" endtime="20220801 17:23:29.101"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.101" endtime="20220801 17:23:29.102"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.078" endtime="20220801 17:23:29.102"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="409218d8-cb10-439d-84e8-65dfbbc6f91c")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.123" level="INFO">${date_text} = 12</msg>
+<status status="PASS" starttime="20220801 17:23:29.102" endtime="20220801 17:23:29.123"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.123" endtime="20220801 17:23:29.124"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.124" endtime="20220801 17:23:29.125"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.102" endtime="20220801 17:23:29.125"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="86a8ec56-4637-45f9-9cf3-810dc65878d1")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.144" level="INFO">${date_text} = 13</msg>
+<status status="PASS" starttime="20220801 17:23:29.125" endtime="20220801 17:23:29.144"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.144" endtime="20220801 17:23:29.144"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.145" endtime="20220801 17:23:29.145"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.125" endtime="20220801 17:23:29.145"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="1e4b70f1-830d-490c-b2aa-b7c9f4b31fa3")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.164" level="INFO">${date_text} = 14</msg>
+<status status="PASS" starttime="20220801 17:23:29.146" endtime="20220801 17:23:29.164"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.164" endtime="20220801 17:23:29.165"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.165" endtime="20220801 17:23:29.166"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.145" endtime="20220801 17:23:29.166"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="22677ab6-21ba-40c8-8676-6cd30cddfcbb")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.185" level="INFO">${date_text} = 15</msg>
+<status status="PASS" starttime="20220801 17:23:29.166" endtime="20220801 17:23:29.185"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.186" endtime="20220801 17:23:29.186"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.186" endtime="20220801 17:23:29.187"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.166" endtime="20220801 17:23:29.187"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="69f51734-4f84-4d7f-9f86-696f33644148")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.208" level="INFO">${date_text} = 16</msg>
+<status status="PASS" starttime="20220801 17:23:29.187" endtime="20220801 17:23:29.208"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.208" endtime="20220801 17:23:29.209"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.209" endtime="20220801 17:23:29.210"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.187" endtime="20220801 17:23:29.210"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="f4024530-0b0f-4229-9d72-e8b57913279c")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.236" level="INFO">${date_text} = 17</msg>
+<status status="PASS" starttime="20220801 17:23:29.210" endtime="20220801 17:23:29.237"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.237" endtime="20220801 17:23:29.238"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.238" endtime="20220801 17:23:29.238"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.210" endtime="20220801 17:23:29.238"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="491c1308-7323-4388-8e18-3fd6dee1f1a0")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.259" level="INFO">${date_text} = 18</msg>
+<status status="PASS" starttime="20220801 17:23:29.239" endtime="20220801 17:23:29.259"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.259" endtime="20220801 17:23:29.260"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.260" endtime="20220801 17:23:29.261"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.239" endtime="20220801 17:23:29.261"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="856a6642-0ad3-40e7-9625-d3de657c8a4c")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.282" level="INFO">${date_text} = 19</msg>
+<status status="PASS" starttime="20220801 17:23:29.261" endtime="20220801 17:23:29.282"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.283" endtime="20220801 17:23:29.284"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.284" endtime="20220801 17:23:29.285"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.261" endtime="20220801 17:23:29.285"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="16344d49-14b4-42a8-8fc8-7690ba7f7b23")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.307" level="INFO">${date_text} = 20</msg>
+<status status="PASS" starttime="20220801 17:23:29.285" endtime="20220801 17:23:29.307"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.308" endtime="20220801 17:23:29.308"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.309" endtime="20220801 17:23:29.309"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.285" endtime="20220801 17:23:29.309"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="33119d7a-15b2-427d-b1e8-2bcdfe272451")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.330" level="INFO">${date_text} = 21</msg>
+<status status="PASS" starttime="20220801 17:23:29.310" endtime="20220801 17:23:29.330"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.330" endtime="20220801 17:23:29.331"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.331" endtime="20220801 17:23:29.332"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.310" endtime="20220801 17:23:29.332"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="b25d0c57-7c96-4218-b4c1-6863fc3ceb3c")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.357" level="INFO">${date_text} = 22</msg>
+<status status="PASS" starttime="20220801 17:23:29.332" endtime="20220801 17:23:29.357"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.357" endtime="20220801 17:23:29.358"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.358" endtime="20220801 17:23:29.359"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.332" endtime="20220801 17:23:29.359"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="3c6def4a-06ff-4810-8d8d-789e3e7f788d")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.380" level="INFO">${date_text} = 23</msg>
+<status status="PASS" starttime="20220801 17:23:29.359" endtime="20220801 17:23:29.380"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.380" endtime="20220801 17:23:29.381"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.381" endtime="20220801 17:23:29.382"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.359" endtime="20220801 17:23:29.382"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="bdb5b8d4-e714-4eea-8aaa-c9296a3fe1f9")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.411" level="INFO">${date_text} = 24</msg>
+<status status="PASS" starttime="20220801 17:23:29.383" endtime="20220801 17:23:29.411"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.411" endtime="20220801 17:23:29.412"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.412" endtime="20220801 17:23:29.413"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.382" endtime="20220801 17:23:29.413"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="9b08527a-4f7e-4c85-bb71-0c730db23620")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.433" level="INFO">${date_text} = 25</msg>
+<status status="PASS" starttime="20220801 17:23:29.414" endtime="20220801 17:23:29.433"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.433" endtime="20220801 17:23:29.434"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.434" endtime="20220801 17:23:29.435"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.413" endtime="20220801 17:23:29.435"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="4ed7a99f-b865-4f65-8c98-5ac30feace20")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.455" level="INFO">${date_text} = 26</msg>
+<status status="PASS" starttime="20220801 17:23:29.435" endtime="20220801 17:23:29.455"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.455" endtime="20220801 17:23:29.456"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.456" endtime="20220801 17:23:29.457"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.435" endtime="20220801 17:23:29.457"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="94f6eb3c-0b4d-4a38-8a0e-26e4310dc5cf")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.476" level="INFO">${date_text} = 27</msg>
+<status status="PASS" starttime="20220801 17:23:29.458" endtime="20220801 17:23:29.476"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.477" endtime="20220801 17:23:29.477"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.478" endtime="20220801 17:23:29.478"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.458" endtime="20220801 17:23:29.478"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="0a16c5c9-b814-4615-a38d-5c78c286b851")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.499" level="INFO">${date_text} = 28</msg>
+<status status="PASS" starttime="20220801 17:23:29.479" endtime="20220801 17:23:29.499"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.500" endtime="20220801 17:23:29.500"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.500" endtime="20220801 17:23:29.501"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.479" endtime="20220801 17:23:29.501"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="7ce84244-6484-4de2-9f84-6608634fdbcf")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.522" level="INFO">${date_text} = 29</msg>
+<status status="PASS" starttime="20220801 17:23:29.501" endtime="20220801 17:23:29.522"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.522" endtime="20220801 17:23:29.523"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.523" endtime="20220801 17:23:29.524"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.501" endtime="20220801 17:23:29.524"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="1da2b97d-b57d-4090-9aed-ff9423823302")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.547" level="INFO">${date_text} = 30</msg>
+<status status="PASS" starttime="20220801 17:23:29.525" endtime="20220801 17:23:29.547"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.547" endtime="20220801 17:23:29.548"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<status status="PASS" starttime="20220801 17:23:29.548" endtime="20220801 17:23:29.549"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.524" endtime="20220801 17:23:29.549"/>
+</iter>
+<iter>
+<var name="${date}">&lt;selenium.webdriver.remote.webelement.WebElement (session="ab775624459f1c090762a5750042f1f6", element="3613dffc-ccfa-441a-ab0a-b7f318bd9d55")&gt;</var>
+<kw name="Get Text" library="SeleniumLibrary">
+<var>${date_text}</var>
+<arg>${date}</arg>
+<doc>Returns the text value of the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.568" level="INFO">${date_text} = 31</msg>
+<status status="PASS" starttime="20220801 17:23:29.549" endtime="20220801 17:23:29.568"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<arg>Click element</arg>
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>//tbody/tr/td/a [text()=${date_text}]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.569" level="INFO">Clicking element '//tbody/tr/td/a [text()=31]'.</msg>
+<status status="PASS" starttime="20220801 17:23:29.569" endtime="20220801 17:23:29.669"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.568" endtime="20220801 17:23:29.670"/>
+</kw>
+<kw name="Exit For Loop If" library="BuiltIn">
+<arg>${date_text} == 31</arg>
+<doc>Stops executing the enclosing FOR loop if the ``condition`` is true.</doc>
+<msg timestamp="20220801 17:23:29.671" level="INFO">Exiting for loop altogether.</msg>
+<status status="PASS" starttime="20220801 17:23:29.670" endtime="20220801 17:23:29.672"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.549" endtime="20220801 17:23:29.672"/>
+</iter>
+<status status="PASS" starttime="20220801 17:23:28.864" endtime="20220801 17:23:29.672"/>
+</for>
+<kw name="Get Current Date" library="DateTime">
+<var>${currentdate}</var>
+<doc>Returns current local or UTC time with an optional increment.</doc>
+<msg timestamp="20220801 17:23:29.672" level="INFO">${currentdate} = 2022-08-01 17:23:29.672</msg>
+<status status="PASS" starttime="20220801 17:23:29.672" endtime="20220801 17:23:29.673"/>
+</kw>
+<kw name="Convert Date" library="DateTime">
+<var>${convert}</var>
+<arg>${currentdate}</arg>
+<arg>result_format=%d-%b-%Y</arg>
+<doc>Converts between supported `date formats`.</doc>
+<msg timestamp="20220801 17:23:29.705" level="INFO">${convert} = 01-Aug-2022</msg>
+<status status="PASS" starttime="20220801 17:23:29.673" endtime="20220801 17:23:29.705"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${convert}</arg>
+<arg>console=yes</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20220801 17:23:29.706" level="INFO">01-Aug-2022</msg>
+<status status="PASS" starttime="20220801 17:23:29.706" endtime="20220801 17:23:29.719"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:11.945" endtime="20220801 17:23:29.720"/>
+</kw>
+<kw name="View Button" library="PayrollMIS">
+<kw name="Click Element" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["View Button"]["Locator"]["Locator1"]}</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<msg timestamp="20220801 17:23:29.722" level="INFO">Clicking element 'xpath : //input[@id='btnView'] '.</msg>
+<status status="PASS" starttime="20220801 17:23:29.721" endtime="20220801 17:23:30.156"/>
+</kw>
+<kw name="Wait Until Page Does Not Contain" library="SeleniumLibrary">
+<arg>${object["Payroll MIS"]["View Button"]["Locator"]["Locator2"]}</arg>
+<doc>Waits until ``text`` disappears from the current page.</doc>
+<status status="PASS" starttime="20220801 17:23:30.156" endtime="20220801 17:23:30.198"/>
+</kw>
+<status status="PASS" starttime="20220801 17:23:29.720" endtime="20220801 17:23:30.198"/>
+</kw>
+<kw name="Verify Report" library="PayrollMIS">
 <kw name="Wait Until Page Does Not Contain" library="SeleniumLibrary">
 <arg>Sorry, an error occurred while processing your request</arg>
 <arg>15s</arg>
 <doc>Waits until ``text`` disappears from the current page.</doc>
-<status status="PASS" starttime="20220801 16:00:04.983" endtime="20220801 16:00:05.003"/>
+<status status="PASS" starttime="20220801 17:23:30.199" endtime="20220801 17:23:30.223"/>
 </kw>
-<kw name="Wait Until Page Contains Element" library="SeleniumLibrary">
-<arg>//div[@class='widget-body innerAll ']//table[@id='export_table1']//tbody//tr[1]//td[1]</arg>
-<arg>10s</arg>
-<doc>Waits until the element ``locator`` appears on the current page.</doc>
-<status status="PASS" starttime="20220801 16:00:05.003" endtime="20220801 16:00:05.019"/>
+<kw name="Wait Until Element Is Not Visible" library="SeleniumLibrary">
+<arg>xpath: /div[@id='LoadingImage']//img</arg>
+<arg>timeout=240</arg>
+<doc>Waits until the element ``locator`` is not visible.</doc>
+<status status="PASS" starttime="20220801 17:23:30.223" endtime="20220801 17:23:30.240"/>
 </kw>
-<kw name="Get Text" library="SeleniumLibrary">
-<var>${check}</var>
-<arg>//div[@class='widget-body innerAll ']//table[@id='export_table1']//tbody//tr[1]//td[1]</arg>
-<doc>Returns the text value of the element identified by ``locator``.</doc>
-<msg timestamp="20220801 16:00:05.048" level="INFO">${check} = 1</msg>
-<status status="PASS" starttime="20220801 16:00:05.019" endtime="20220801 16:00:05.048"/>
+<kw name="Wait Until Element Is Visible" library="SeleniumLibrary">
+<arg>xpath: //*[@id="tabletab1"]/tbody/tr[1]</arg>
+<arg>timeout=240</arg>
+<doc>Waits until the element ``locator`` is visible.</doc>
+<status status="PASS" starttime="20220801 17:23:30.240" endtime="20220801 17:23:31.814"/>
 </kw>
-<kw name="Run Keyword If" library="BuiltIn">
-<arg>'${check}' &gt;= '1'</arg>
-<arg>Capture Page Screenshot</arg>
-<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<kw name="Scroll Element Into View" library="SeleniumLibrary">
+<arg>xpath: //*[@id="tabletab1"]/tbody/tr[1]</arg>
+<doc>Scrolls the element identified by ``locator`` into view.</doc>
+<status status="PASS" starttime="20220801 17:23:31.814" endtime="20220801 17:23:32.123"/>
+</kw>
 <kw name="Capture Page Screenshot" library="SeleniumLibrary">
 <doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
-<msg timestamp="20220801 16:00:05.191" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-13.png"&gt;&lt;img src="selenium-screenshot-13.png" width="800px"&gt;&lt;/a&gt;</msg>
-<status status="PASS" starttime="20220801 16:00:05.048" endtime="20220801 16:00:05.191"/>
+<msg timestamp="20220801 17:23:32.315" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-25.png"&gt;&lt;img src="selenium-screenshot-25.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20220801 17:23:32.123" endtime="20220801 17:23:32.315"/>
 </kw>
-<status status="PASS" starttime="20220801 16:00:05.048" endtime="20220801 16:00:05.191"/>
+<status status="PASS" starttime="20220801 17:23:30.198" endtime="20220801 17:23:32.316"/>
 </kw>
-<status status="PASS" starttime="20220801 15:59:59.743" endtime="20220801 16:00:05.192"/>
+<status status="PASS" starttime="20220801 17:23:08.471" endtime="20220801 17:23:32.316"/>
 </kw>
-<status status="PASS" starttime="20220801 15:59:59.741" endtime="20220801 16:00:05.192"/>
-</kw>
-<doc>IncomeTaxDetection Report Testing</doc>
-<status status="PASS" starttime="20220801 15:58:16.481" endtime="20220801 16:00:05.193"/>
+<doc>Payroll MIS Report Testing</doc>
+<tag>HRMS Payroll MIS</tag>
+<status status="PASS" starttime="20220801 17:22:53.813" endtime="20220801 17:23:32.318"/>
 </test>
 <kw name="Close All Browsers" library="SeleniumLibrary" type="TEARDOWN">
 <doc>Closes all open browsers and resets the browser cache.</doc>
-<status status="PASS" starttime="20220801 16:00:05.195" endtime="20220801 16:00:36.498"/>
+<status status="PASS" starttime="20220801 17:23:32.322" endtime="20220801 17:23:38.453"/>
 </kw>
-<status status="PASS" starttime="20220801 15:58:15.346" endtime="20220801 16:00:36.498"/>
+<status status="PASS" starttime="20220801 17:22:52.749" endtime="20220801 17:23:38.453"/>
 </suite>
 <statistics>
 <total>
 <stat pass="1" fail="0" skip="0">All Tests</stat>
 </total>
 <tag>
+<stat pass="1" fail="0" skip="0">HRMS Payroll MIS</stat>
 </tag>
 <suite>
-<stat pass="1" fail="0" skip="0" id="s1" name="IncomeTax Report">IncomeTax Report</stat>
+<stat pass="1" fail="0" skip="0" id="s1" name="Payroll MIS">Payroll MIS</stat>
 </suite>
 </statistics>
 <errors>

@@ -8,7 +8,7 @@ Suite Teardown   Close All Browsers
 *** Test Cases ***
 PayrollMIS Report
     [Documentation]   Payroll MIS Report Testing
-    [Tags]  admin Payroll MIS
+    [Tags]  HRMS Payroll MIS
     MIS_Keywords.Login to ERP Page
     MIS_Keywords.Salary Report
     MIS_Keywords.Arrear Report
